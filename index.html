@@ -164,19 +164,16 @@
 				replace = replace.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 				$(".textarea textarea").val(replace);
 			}
-
 			function replace_two() {
 				var replace = $(".textarea textarea").val();
 				replace = replace.replace(/\'/g, "&apos;");
 				$(".textarea textarea").val(replace);
 			}
-
 			function replace_thr() {
 				var replace = $(".textarea textarea").val();
 				replace = replace.replace(/\"/g, "&quot;");
 				$(".textarea textarea").val(replace);
 			}
-
 			function replace() {
 				var input = $("#BeautifierCode .replace .input input").val();
 				var output = $("#BeautifierCode .replace .output input").val();
