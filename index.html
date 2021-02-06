@@ -1,10 +1,209 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="/favicon.png">
+		<title>Beautifier Code</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ngovanhiep/css/css.min.css">
+		<style type="text/css">
+			* {
+				font-family: "Roboto", sans-serif;
+			}
+
+			body {
+				background: #E9EBEE;
+				padding: 1rem;
+			}
+
+			#BeautifierCode {
+				background: #FFF;
+				box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, 0.3);
+			}
+
+			#BeautifierCode form {
+				display: grid;
+				grid-gap: 1rem;
+				padding: 1rem;
+			}
+
+			#BeautifierCode form button[type=reset] {
+				width: 100%;
+				height: 40px;
+				border: 0;
+				display: block;
+				padding: 0 1rem;
+				background: #E52165;
+				color: #FFF;
+				font-size: 1rem;
+				user-select: none;
+				outline: none;
+				cursor: pointer;
+				border-radius: 4px;
+				box-shadow: 0 6px 1rem -0.5rem #322E2F;
+				transition: 0.2s;
+			}
+
+			#BeautifierCode form button[type=reset]:hover {
+				box-shadow: 0 2px 1rem -0.5rem #322E2F;
+			}
+
+			#BeautifierCode form .btn {
+				width: 100%;
+				height: 40px;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+				grid-gap: 1rem;
+			}
+
+			#BeautifierCode form .btn button {
+				border: 0;
+				display: block;
+				padding: 0 1rem;
+				background: #36B9CC;
+				color: #FFF;
+				font-size: 1rem;
+				user-select: none;
+				outline: none;
+				cursor: pointer;
+				border-radius: 4px;
+				box-shadow: 0 6px 1rem -0.5rem #322E2F;
+				transition: 0.2s;
+			}
+
+			#BeautifierCode form .btn button:hover {
+				box-shadow: 0 2px 1rem -0.5rem #322E2F;
+			}
+
+			#BeautifierCode form .textarea {
+				background: #F5F5F5;
+				border-radius: 4px;
+			}
+
+			#BeautifierCode form .textarea textarea {
+				color: #8898AA;
+				display: block;
+				resize: none;
+				font-size: 14px;
+				font-weight: 400;
+				width: 100%;
+				background: 0;
+				border: 0;
+				border-radius: 0;
+				padding: 1rem;
+			}
+
+			#BeautifierCode form .textarea textarea::placeholder {
+				color: #C9CCD1;
+			}
+
+			#BeautifierCode form .replace {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			#BeautifierCode form .replace .gr {
+				background: #F5F5F5;
+				border-radius: 4px;
+				width: 100%;
+			}
+
+			#BeautifierCode form .replace .gr input {
+				color: #8898AA;
+				display: block;
+				resize: none;
+				font-size: 14px;
+				font-weight: 500;
+				width: 100%;
+				background: 0;
+				border: 0;
+				border-radius: 0;
+				padding: 1rem;
+			}
+
+			#BeautifierCode form .replace .gr input::placeholder {
+				color: #C9CCD1;
+			}
+
+			#BeautifierCode form .replace button {
+				flex-shrink: 0;
+				background: #1CC88A;
+				color: #FFF;
+				font-size: 14px;
+				font-weight: 500;
+				width: 48.8px;
+				height: 48.8px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 0 1rem;
+				user-select: none;
+				cursor: pointer;
+				border: 0;
+				border-radius: 4px;
+				box-shadow: 0 6px 1rem -0.5rem #322E2F;
+				transition: 0.2s;
+			}
+
+			#BeautifierCode form .replace button:hover {
+				box-shadow: 0 2px 1rem -0.5rem #322E2F;
+			}
+
+			@media screen and (max-width: 600px) {
+				#BeautifierCode .textarea textarea {
+					font-size: 1rem;
+				}
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			function replace_one() {
+				var replace = $(".textarea textarea").val();
+				replace = replace.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+				$(".textarea textarea").val(replace);
+			}
+
+			function replace_two() {
+				var replace = $(".textarea textarea").val();
+				replace = replace.replace(/\'/g, "&apos;");
+				$(".textarea textarea").val(replace);
+			}
+
+			function replace_thr() {
+				var replace = $(".textarea textarea").val();
+				replace = replace.replace(/\"/g, "&quot;");
+				$(".textarea textarea").val(replace);
+			}
+
+			function replace() {
+				var input = $("#BeautifierCode .replace .input input").val();
+				var output = $("#BeautifierCode .replace .output input").val();
+				var replace = $(".textarea textarea").val();
+				replace = replace.replaceAll(input, output);
+				$(".textarea textarea").val(replace);
+			}
+		</script>
 	</head>
 	<body>
-		<h1>This is a Heading</h1>
-		<p>This is a paragraph.</p>
+		<div id="BeautifierCode">
+			<form action="">
+				<div class="btn">
+					<button type="button" onclick="replace_one()">Đổi &lt;&gt; sang &amp;lt;&amp;gt;</button>
+					<button type="button" onclick="replace_two()">Đổi ' sang &ampapos;</button>
+					<button type="button" onclick="replace_thr()">Đổi " sang &ampquot;</button>
+				</div>
+				<button type="reset">Reset</button>
+				<div class="textarea">
+					<textarea rows="21" placeholder="Paste code here..."></textarea>
+				</div>
+				<div class="replace">
+					<div class="gr input"><input type="text" placeholder="Paste code here..."></div>
+					<button type="button" onclick="replace()"><i class="material-icons">arrow_forward</i></button>
+					<div class="gr output"><input type="text" placeholder="Paste code here..."></div>
+				</div>
+			</form>
+		</div>
 	</body>
 </html>
