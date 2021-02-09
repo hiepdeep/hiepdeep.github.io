@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="../../favicon.png">
+		<title>Users Image</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ngovanhiep/css/css.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<style type="text/css">
+			#userImage {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+				--w: 0.5rem;
+				grid-gap: var(--w);
+				padding: var(--w);
+			}
+			#userImage img {
+				height: auto;
+				display: block;
+				border-radius: 4px;
+			}
+		</style>
+		<script type="text/javascript">
+			var userID = [
+				"_heocon11",
+				"blmhuong",
+				"buithimailinh2212",
+				"dodotramanh95",
+				"ha_thi_duyen",
+				"hieupm",
+				"hoaahanassii",
+				"huanhoahong1102",
+				"javierr",
+				"kieutrinh155",
+				"kiti_014",
+				"khanhan19999",
+				"khanhtranggggg",
+				"lebaoofficial",
+				"ngavu160197",
+				"ngocmoai",
+				"quynh_bongoficial",
+				"quynhchi",
+				"thaotaotau",
+				"thinhseu",
+				"trananhhoang12",
+				"tranggtits",
+				"tranhuyentrangne",
+				"xanhkakao",
+				"xxdeniz827xx"
+			];
+			var image = "";
+			for (var i, i = 0; i < userID.length; i++) {
+				image += "<img src='" + userID[i] + ".jpg'>";
+			}
+			document.getElementById("userImage").innerHTML = image;
+		</script>
+	</head>
+	<body>
+		<div id="userImage"></div>
+	</body>
+</html>
