@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="/favicon.png">
+		<title>HiepDeep - Bài Viết</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ngovanhiep/css/css.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<style type="text/css">
+			:root {
+				--body-background: #E9EBEE;
+				--dark: #322E2F;
+				--blue: #5890FF;
+				--pink: #FF3677;
+				--green: #1CC88A;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				background: var(--body-background);
+				font-family: "Google Sans", sans-serif;
+			}
+
+			.container header {
+				background: #FFF;
+				width: 100%;
+				height: 50px;
+				box-shadow: 0 4px 9px 0 rgba(67, 65, 79, 0.1);
+				padding: 0 1rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.container header .header-left {
+				display: flex;
+				align-items: center;
+			}
+
+			.container header .header-left .logo a {
+				height: 32px;
+				display: block;
+			}
+
+			.container header .header-left .logo a img {
+				width: auto;
+				display: block;
+			}
+
+			.container header .header-right {
+				position: relative;
+			}
+
+			.container header .header-right .member-name {
+				width: 32px;
+				height: 32px;
+				border-radius: 50%;
+				overflow: hidden;
+				cursor: pointer;
+				box-shadow: 0 4px 9px 0 rgba(67, 65, 79, 0.1);
+			}
+
+			.container header .header-right .member-name img {
+				display: block;
+			}
+
+			.container .mainContainer {
+				display: flex;
+				margin: 1rem auto;
+				width: calc(100% - 2rem);
+				max-width: 1088px;
+				--border: 4px;
+			}
+
+			.container .mainContainer .colLeft {
+				width: 100%;
+			}
+
+			.container .mainContainer .colLeft .post-outer {
+				display: grid;
+				grid-gap: 1rem;
+			}
+
+			.container .mainContainer .colLeft .post-outer>div {
+				background: #FFF;
+				overflow: hidden;
+				border-radius: var(--border);
+				box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header {
+				display: grid;
+				grid-gap: 1rem;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .thumbnail {
+				box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .thumbnail a {
+				position: relative;
+				display: block;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .thumbnail a:before {
+				content: "";
+				font-family: "Material Icons";
+				position: absolute;
+				background: rgba(0, 0, 0, 0.38);
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+				color: #FFF;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 24px;
+				opacity: 0;
+				transition: 0.25s;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .thumbnail a:hover:before {
+				opacity: 1;
+				font-size: 96px;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .thumbnail a img {
+				display: block;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .title {
+				font-size: 18px;
+				font-weight: 500;
+				text-transform: uppercase;
+				letter-spacing: 0.04em;
+				padding: 0 1rem;
+				color: rgba(0, 0, 0, 0.87);
+				line-height: 24px;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .metadata {
+				display: flex;
+				margin-bottom: 1rem;
+				padding: 0 1rem;
+				user-select: none;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .metadata>div,
+			.container .mainContainer .colLeft .post-outer .post .post-header .metadata>a {
+				display: flex;
+				align-items: center;
+				margin-right: 1rem;
+				cursor: pointer;
+				color: rgba(0, 0, 0, 0.54);
+				transition: 0.25s;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .metadata>div:hover,
+			.container .mainContainer .colLeft .post-outer .post .post-header .metadata>a:hover {
+				color: rgba(0, 0, 0, 0.87);
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .metadata>div .material-icons,
+			.container .mainContainer .colLeft .post-outer .post .post-header .metadata>a .material-icons {
+				background: #E9EBEE;
+				display: block;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-right: 0.5rem;
+				font-size: 20px;
+				border-radius: 35% 65% 65% 35%/65% 45% 55% 35%;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-header .metadata>div .total,
+			.container .mainContainer .colLeft .post-outer .post .post-header .metadata>a .total {
+				font-size: 14px;
+				font-weight: 500;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post .post-body {
+				line-height: 20px;
+				font-size: 15px;
+				text-align: justify;
+				padding: 0 1rem 1rem;
+				color: rgba(0, 0, 0, 0.87);
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this {
+				background: #FFF;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 1rem;
+				border-radius: var(--border);
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this h2 {
+				font-size: 15px;
+				font-weight: 500;
+				color: rgba(0, 0, 0, 0.87);
+				user-select: none;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this ul {
+				display: flex;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this ul li+li {
+				margin-left: 1rem;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this ul li a {
+				display: block;
+				width: 34px;
+				line-height: 34px;
+				text-align: center;
+				position: relative;
+				opacity: 1;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this ul li a:hover {
+				opacity: 0.54;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this ul li a:before {
+				display: block;
+				font-family: FontAwesome;
+				color: #FFF;
+				border-radius: var(--border);
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this ul li a.facebook:before {
+				content: "";
+				background: #1877F2;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this ul li a.twitter:before {
+				content: "";
+				background: #55ACEE;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this ul li a.pinterest:before {
+				content: "";
+				background: #CB2027;
+			}
+
+			.container .mainContainer .colLeft .post-outer .post-footer .share-this ul li a.linkedin:before {
+				content: "";
+				background: #007BB5;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment {
+				width: 100%;
+				display: grid;
+				grid-gap: 1rem;
+				background: unset;
+				border-radius: unset;
+				box-shadow: unset;
+				overflow: unset;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #commentForm {
+				box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #commentForm form {
+				background: #FFF;
+				display: flex;
+				width: 100%;
+				justify-content: space-between;
+				padding: 1rem;
+				border-radius: var(--border);
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #commentForm form .avatar {
+				width: 58px;
+				height: 58px;
+				flex-shrink: 0;
+				margin-right: 1rem;
+				border-radius: var(--border);
+				overflow: hidden;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #commentForm form .avatar img {
+				display: block;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #commentForm form .content {
+				width: 100%;
+				overflow: hidden;
+				display: grid;
+				grid-gap: 0.5rem;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #commentForm form .content #content {
+				line-height: 20px;
+				font-size: 14px;
+				padding: 0.5rem;
+				min-height: 58px;
+				background: #FFF;
+				border-radius: 4px;
+				border: 1px solid var(--body-background);
+				color: rgba(0, 0, 0, 0.87);
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #commentForm form .content #content:hover {
+				border-color: rgba(0, 0, 0, 0.38);
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #commentForm form .content button[name*=submit] {
+				font-family: "Google Sans", sans-serif;
+				background: var(--blue);
+				color: #FFF;
+				font-size: 15px;
+				font-weight: 500;
+				border: 0;
+				width: 100%;
+				height: 34px;
+				border-radius: var(--border);
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #commentForm form .content button[name*=submit]:hover {
+				opacity: 0.87;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment .comments-total {
+				font-size: 14px;
+				font-weight: 500;
+				color: rgba(0, 0, 0, 0.54);
+				user-select: none;
+				margin-bottom: 1rem;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul {
+				display: grid;
+				grid-auto-columns: 100%;
+				grid-gap: 1rem;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul li {
+				display: flex;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul li .avatar-image {
+				width: 40px;
+				height: 40px;
+				flex-shrink: 0;
+				border-radius: var(--border);
+				overflow: hidden;
+				margin-right: 1rem;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul li .avatar-image img {
+				display: block;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul li .comment-block {
+				display: grid;
+				grid-auto-columns: 100%;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul li .comment-block .comment-header {
+				display: flex;
+				line-height: 20px;
+				font-size: 14px;
+				font-weight: 500;
+				user-select: none;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul li .comment-block .comment-header .fullName {
+				margin-right: 12px;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul li .comment-block .comment-header .fullName a {
+				color: rgba(0, 0, 0, 0.87);
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul li .comment-block .comment-header .datetime {
+				color: #000;
+				opacity: 0.38;
+				position: relative;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul li .comment-block .comment-header .datetime:after {
+				content: "";
+				position: absolute;
+				background: #000;
+				width: 4px;
+				height: 4px;
+				right: calc(100% + 4px);
+				top: calc(50% - 4px/2);
+				border-radius: 50%;
+			}
+
+			.container .mainContainer .colLeft .post-outer #comment #listcomment ul li .comment-block .comment-content {
+				line-height: 20px;
+				font-size: 14px;
+				text-align: justify;
+			}
+
+			.container .mainContainer .colRight {
+				margin: 0 0 0 1rem;
+				width: 300px;
+				flex-shrink: 0;
+				height: calc(100vh - 50px - 2rem);
+				border-radius: var(--border);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				opacity: 0.38;
+				border: 2px dashed #000;
+				color: #000;
+				font-weight: 500;
+				user-select: none;
+			}
+
+			.container footer {
+				background: #161823;
+				color: #FFF;
+				width: 100%;
+				height: 50px;
+				padding: 0 1rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				font-size: 14px;
+				position: relative;
+			}
+
+			.container footer .footer-left #copyright a {
+				color: var(--blue);
+				font-weight: 500;
+			}
+		</style>
+		<script type="text/javascript">
+			function exec(value) {
+				document.execCommand(value, false, "");
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="header-left">
+					<div class="logo">
+						<a href="javascript:;">
+							<img src="https://hiepdeep.github.io/favicon.png">
+						</a>
+					</div>
+				</div>
+				<div class="header-right">
+					<h2 class="member-name">
+						<img src="https://hiepdeep.github.io/pictures/users/ngavu160197.jpg">
+					</h2>
+				</div>
+			</header>
+			<div class="mainContainer">
+				<div class="colLeft">
+					<div class="post-outer">
+						<div class="post">
+							<div class="post-header">
+								<div class="thumbnail">
+									<a href="javascript:;">
+										<img src="https://i3.ytimg.com/vi/f02mOEt11OQ/maxresdefault.jpg">
+									</a>
+								</div>
+								<div class="title">Molestiae vitae facere, nobis odio cumque repellat suscipit maxime, earum fuga obcaecati impedit maiores voluptate excepturi</div>
+								<div class="metadata">
+									<a href="">
+										<span class="material-icons">equalizer</span>
+										<span class="total">47.484</span>
+									</a>
+									<a href="#listcomment">
+										<span class="material-icons">chat_bubble</span>
+										<span class="total">1.498</span>
+									</a>
+									<a href="">
+										<span class="material-icons">thumb_up</span>
+										<span class="total">202</span>
+									</a>
+									<a href="">
+										<span class="material-icons">watch_later</span>
+										<span class="total">09/02/2021</span>
+									</a>
+								</div>
+							</div>
+							<div class="post-body">
+								<p><b>Lorem Ipsum là gì?</b></p>
+								<p>Lorem Ipsum chỉ đơn giản là một đoạn văn bản giả, được dùng vào việc trình bày và dàn trang phục vụ cho in ấn. Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn bản này không những đã tồn tại năm thế kỉ, mà khi được áp dụng vào tin học văn phòng, nội dung của nó vẫn không hề bị thay đổi. Nó đã được phổ biến trong những năm 1960 nhờ việc bán những bản giấy Letraset in những đoạn Lorem Ipsum, và gần đây hơn, được sử dụng trong các ứng dụng dàn trang, như Aldus PageMaker.</p>
+								<p><br></p>
+								<p><b>Tại sao lại sử dụng nó?</b></p>
+								<p>Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. Lorem Ipsum có ưu điểm hơn so với đoạn văn bản chỉ gồm nội dung kiểu "Nội dung, nội dung, nội dung" là nó khiến văn bản giống thật hơn, bình thường hơn. Nhiều phần mềm thiết kế giao diện web và dàn trang ngày nay đã sử dụng Lorem Ipsum làm đoạn văn bản giả, và nếu bạn thử tìm các đoạn "Lorem ipsum" trên mạng thì sẽ khám phá ra nhiều trang web hiện vẫn đang trong quá trình xây dựng. Có nhiều phiên bản khác nhau đã xuất hiện, đôi khi do vô tình, nhiều khi do cố ý (xen thêm vào những câu hài hước hay thông tục).</p>
+							</div>
+						</div>
+						<div class="post-footer">
+							<div class="share-this">
+								<h2>Chia sẻ với</h2>
+								<ul>
+									<li>
+										<a href="javascript:;" class="facebook"></a>
+									</li>
+									<li>
+										<a href="javascript:;" class="twitter"></a>
+									</li>
+									<li>
+										<a href="javascript:;" class="pinterest"></a>
+									</li>
+									<li>
+										<a href="javascript:;" class="linkedin"></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div id="comment">
+							<div id="commentForm">
+								<form action="">
+									<div class="avatar">
+										<img src="https://hiepdeep.github.io/pictures/users/ngavu160197.jpg">
+									</div>
+									<div class="content">
+										<div id="content" role="textbox" contenteditable>
+											<p>Dòng này có <i>chữ nghiêng</i> và <b>chữ đậm</b>.</p>
+											<p><br></p>
+										</div>
+										<button type="button" name="submit">Bình luận</button>
+									</div>
+								</form>
+							</div>
+							<div id="listcomment">
+								<div class="comments-total"><span class="total-cmt">1.498</span> bình luận</div>
+								<ul>
+									<li class="comment" data-comment="">
+										<div class="avatar-image"><img src="https://hiepdeep.github.io/pictures/users/ngocmoai.jpg"></div>
+										<div class="comment-block">
+											<div class="comment-header">
+												<div class="fullName"><a href="javascript:;">Trần Ngọc Mai</a></div>
+												<div class="datetime">2 phút trước</div>
+											</div>
+											<div class="comment-content">Ở Bilgewater, người chết không được chôn mà thả về đại dương trong những quan tài ngâm dưới những bia mộ nổi.</div>
+										</div>
+									</li>
+									<li class="comment" data-comment="">
+										<div class="avatar-image"><img src="https://hiepdeep.github.io/pictures/users/kieutrinh155.jpg"></div>
+										<div class="comment-block">
+											<div class="comment-header">
+												<div class="fullName"><a href="javascript:;">Xiu Kieu Trinh</a></div>
+												<div class="datetime">2 giờ trước</div>
+											</div>
+											<div class="comment-content">Truyền thuyết kể rằng Avarosa, nữ hoàng thời xa xưa của Freljord, đã bị sát hại bởi chính chị em của mình.</div>
+										</div>
+									</li>
+									<li class="comment" data-comment="">
+										<div class="avatar-image"><img src="https://hiepdeep.github.io/pictures/users/huanhoahong1102.jpg"></div>
+										<div class="comment-block">
+											<div class="comment-header">
+												<div class="fullName"><a href="javascript:;">Huấn Hoa Hòe</a></div>
+												<div class="datetime">6 giờ trước</div>
+											</div>
+											<div class="comment-content">Sau này, chỉ có làm thì mới có ăn...</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="colRight">colRight</div>
+			</div>
+			<footer>
+				<div class="footer-left">
+					<div id="copyright">© 2020 <a href="">HiepDeep</a> - All Rights Reserved</div>
+				</div>
+				<div class="footer-right">footer-right</div>
+			</footer>
+		</div>
+	</body>
+</html>
