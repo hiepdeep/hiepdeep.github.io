@@ -56,18 +56,22 @@
 
 			#BeautifierCode form .textarea textarea {
 				font-family: "Consolas";
+				font-size: 14px;
 				font-weight: 700;
 				color: #8898AA;
 				display: block;
 				resize: none;
-				font-size: 14px;
-				font-weight: 400;
 				width: 100%;
 				background: 0;
 				border: 0;
 				border-radius: 0;
 				padding: 1rem;
 				height: calc(100vh - 48*2px - 6rem);
+				border: 1px solid transparent;
+			}
+
+			#BeautifierCode form .textarea textarea:hover {
+				border-color: rgba(0,0,0,0.54);
 			}
 
 			#BeautifierCode form .textarea textarea::placeholder {
@@ -84,6 +88,11 @@
 				background: #F5F5F5;
 				border-radius: 4px;
 				width: 100%;
+				border: 1px solid transparent;
+			}
+
+			#BeautifierCode form .replace .gr:hover {
+				border-color: rgba(0,0,0,0.54);
 			}
 
 			#BeautifierCode form .replace .gr input {
@@ -97,7 +106,7 @@
 				border: 0;
 				border-radius: 0;
 				padding: 0 1rem;
-				height: 48px;
+				height: 46px;
 			}
 
 			#BeautifierCode form .replace .gr input::placeholder {
