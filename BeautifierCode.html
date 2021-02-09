@@ -49,33 +49,6 @@
 				box-shadow: 0 2px 1rem -0.5rem #322E2F;
 			}
 
-			#BeautifierCode form .btn {
-				width: 100%;
-				height: 40px;
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-				grid-gap: 1rem;
-			}
-
-			#BeautifierCode form .btn button {
-				border: 0;
-				display: block;
-				padding: 0 1rem;
-				background: #36B9CC;
-				color: #FFF;
-				font-size: 1rem;
-				user-select: none;
-				outline: none;
-				cursor: pointer;
-				border-radius: 4px;
-				box-shadow: 0 6px 1rem -0.5rem #322E2F;
-				transition: 0.2s;
-			}
-
-			#BeautifierCode form .btn button:hover {
-				box-shadow: 0 2px 1rem -0.5rem #322E2F;
-			}
-
 			#BeautifierCode form .textarea {
 				background: #F5F5F5;
 				border-radius: 4px;
@@ -159,21 +132,6 @@
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script type="text/javascript">
-			function replace_one() {
-				var replace = $(".textarea textarea").val();
-				replace = replace.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-				$(".textarea textarea").val(replace);
-			}
-			function replace_two() {
-				var replace = $(".textarea textarea").val();
-				replace = replace.replace(/\'/g, "&apos;");
-				$(".textarea textarea").val(replace);
-			}
-			function replace_thr() {
-				var replace = $(".textarea textarea").val();
-				replace = replace.replace(/\"/g, "&quot;");
-				$(".textarea textarea").val(replace);
-			}
 			function replace() {
 				var input = $("#BeautifierCode .replace .input input").val();
 				var output = $("#BeautifierCode .replace .output input").val();
@@ -186,11 +144,6 @@
 	<body>
 		<div id="BeautifierCode">
 			<form action="">
-				<div class="btn">
-					<button type="button" onclick="replace_one()">Đổi &lt;&gt; sang &amp;lt;&amp;gt;</button>
-					<button type="button" onclick="replace_two()">Đổi ' sang &ampapos;</button>
-					<button type="button" onclick="replace_thr()">Đổi " sang &ampquot;</button>
-				</div>
 				<button type="reset">Reset</button>
 				<div class="textarea">
 					<textarea rows="21" placeholder="Paste code here..."></textarea>
