@@ -52,6 +52,11 @@
 			#BeautifierCode form .textarea {
 				background: #F5F5F5;
 				border-radius: 4px;
+				border: 1px solid transparent;
+			}
+
+			#BeautifierCode form .textarea:hover {
+				border-color: rgba(0,0,0,0.54);
 			}
 
 			#BeautifierCode form .textarea textarea {
@@ -66,12 +71,7 @@
 				border: 0;
 				border-radius: 0;
 				padding: 1rem;
-				height: calc(100vh - 48*2px - 6rem);
-				border: 1px solid transparent;
-			}
-
-			#BeautifierCode form .textarea textarea:hover {
-				border-color: rgba(0,0,0,0.54);
+				height: calc(100vh - 48*2px - 6rem - 2px);
 			}
 
 			#BeautifierCode form .textarea textarea::placeholder {
