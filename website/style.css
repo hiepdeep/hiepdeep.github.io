@@ -7,6 +7,9 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	position: fixed;
+	top: 0;
+	z-index: 9999;
 }
 
 .container header .header-left {
@@ -43,7 +46,7 @@
 
 .container .mainContainer {
 	display: flex;
-	margin: 1rem auto;
+	margin: calc(1rem + 50px) auto 1rem;
 	width: calc(100% - 2rem);
 	max-width: 1088px;
 	--border: 4px;
