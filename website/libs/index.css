@@ -15,7 +15,7 @@
 }
 
 .container .mainContainer .colLeft .GridPost {
-	background: #fff;
+	background: #FFF;
 	width: 100%;
 	padding: 1rem;
 	border-radius: var(--border);
@@ -27,10 +27,14 @@
 	user-select: none;
 	overflow: hidden;
 	opacity: 0.87;
-	cursor: pointer;
 }
 
-.container .mainContainer .colLeft .GridPost .widget-content .post img {
+.container .mainContainer .colLeft .GridPost .widget-content .post a {
+	display: block;
+	height: 100%;
+}
+
+.container .mainContainer .colLeft .GridPost .widget-content .post a img {
 	display: block;
 }
 
