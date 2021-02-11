@@ -14,9 +14,9 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	text-decoration: none;
 	cursor: pointer;
 	-webkit-user-select: none;
-	   -moz-user-select: none;
-		-ms-user-select: none;
-			user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 :link, :hover, :focus, :active, :visited {
@@ -55,7 +55,7 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	margin: 0;
 	padding: 0;
 	-webkit-box-sizing: border-box;
-			box-sizing: border-box;
+	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 }
 
@@ -68,7 +68,7 @@ img {
 	height: 100%;
 	display: block;
 	-o-object-fit: cover;
-	   object-fit: cover;
+	object-fit: cover;
 }
 
 ol, ul, li {
