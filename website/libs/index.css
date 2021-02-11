@@ -10,6 +10,10 @@
 	width: 100%;
 }
 
+.container .mainContainer .colLeft>div+div {
+	margin-top: 1rem;
+}
+
 .container .mainContainer .colLeft .GridPost {
 	background: #fff;
 	width: 100%;
