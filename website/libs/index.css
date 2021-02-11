@@ -10,7 +10,7 @@
 	width: 100%;
 }
 
-.container .mainContainer .colLeft .YzppXZX {
+.container .mainContainer .colLeft .PopularPost{
 	background: #FFF;
 	width: 100%;
 	padding: 1rem;
@@ -18,25 +18,25 @@
 	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
-.container .mainContainer .colLeft .YzppXZX .widget-header {
+.container .mainContainer .colLeft .PopularPost.widget-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 1rem;
 }
 
-.container .mainContainer .colLeft .YzppXZX .widget-header .widget-title h2 {
+.container .mainContainer .colLeft .PopularPost.widget-header .widget-title h2 {
 	font-size: 15px;
 	font-weight: 500;
 	color: rgba(0, 0, 0, 0.54);
 	user-select: none;
 }
 
-.container .mainContainer .colLeft .YzppXZX .widget-header .btn {
+.container .mainContainer .colLeft .PopularPost.widget-header .btn {
 	display: flex;
 }
 
-.container .mainContainer .colLeft .YzppXZX .widget-header .btn button {
+.container .mainContainer .colLeft .PopularPost.widget-header .btn button {
 	border: 0;
 	width: 34px;
 	height: 34px;
@@ -47,11 +47,11 @@
 	border-radius: 50%;
 }
 
-.container .mainContainer .colLeft .YzppXZX .widget-header .btn button+button {
+.container .mainContainer .colLeft .PopularPost.widget-header .btn button+button {
 	margin-left: 1rem;
 }
 
-.container .mainContainer .colLeft .YzppXZX .widget-header .btn button:before {
+.container .mainContainer .colLeft .PopularPost.widget-header .btn button:before {
 	content: "";
 	position: absolute;
 	background: rgba(0, 0, 0, 0.1);
@@ -64,21 +64,21 @@
 	transition: 0.25s;
 }
 
-.container .mainContainer .colLeft .YzppXZX .widget-header .btn button:hover {
+.container .mainContainer .colLeft .PopularPost.widget-header .btn button:hover {
 	color: rgba(0, 0, 0, 0.54);
 }
 
-.container .mainContainer .colLeft .YzppXZX .widget-header .btn button:hover:before {
+.container .mainContainer .colLeft .PopularPost.widget-header .btn button:hover:before {
 	transform: scale(1);
 }
 
-.container .mainContainer .colLeft .YzppXZX .widget-content {
+.container .mainContainer .colLeft .PopularPost.widget-content {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
 	grid-gap: 1rem;
 }
 
-.container .mainContainer .colLeft .YzppXZX .widget-content .post {
+.container .mainContainer .colLeft .PopularPost.widget-content .post {
 	line-height: 70px;
 	text-align: center;
 	border-radius: var(--border);
