@@ -3,7 +3,6 @@
 	margin: calc(1rem + 50px) auto 1rem;
 	width: calc(100% - 2rem);
 	max-width: 1088px;
-	--border: 4px;
 }
 
 .container .mainContainer .colLeft {
@@ -18,8 +17,8 @@
 	background: #fff;
 	width: 100%;
 	padding: 1rem;
-	border-radius: var(--border);
-	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-1);
 }
 
 .container .mainContainer .colLeft .GridPost .widget-header {
@@ -32,7 +31,7 @@
 .container .mainContainer .colLeft .GridPost .widget-header .widget-title h2 {
 	font-size: 15px;
 	font-weight: 500;
-	color: rgba(0, 0, 0, 0.54);
+	color: var(--black-rgb-54);;
 	user-select: none;
 }
 
@@ -45,7 +44,7 @@
 	width: 30px;
 	height: 30px;
 	background: 0;
-	color: rgba(0, 0, 0, 0.38);
+	color: var(--black-rgb-38);;
 	position: relative;
 	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 	border-radius: 50%;
@@ -69,7 +68,7 @@
 }
 
 .container .mainContainer .colLeft .GridPost .widget-header .btn button:hover {
-	color: rgba(0, 0, 0, 0.54);
+	color: var(--black-rgb-54);;
 }
 
 .container .mainContainer .colLeft .GridPost .widget-header .btn button:hover:before {
@@ -82,7 +81,7 @@
 }
 
 .container .mainContainer .colLeft .GridPost .widget-content .post {
-	border-radius: var(--border);
+	border-radius: var(--radius);
 	user-select: none;
 	overflow: hidden;
 	opacity: 0.87;
@@ -137,8 +136,8 @@
 	overflow: hidden;
 	width: 100%;
 	max-width: 300px;
-	border-radius: var(--border);
-	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-1);
 }
 
 .container .mainContainer .colRight .sidebar .widget-title {
@@ -152,7 +151,7 @@
 	font-size: 15px;
 	font-weight: 500;
 	padding: 10px 0;
-	color: rgba(0, 0, 0, 0.54);
+	color: var(--black-rgb-54);;
 	position: relative;
 }
 

@@ -41,7 +41,7 @@
 	margin: 0 0 0 1rem;
 	position: relative;
 	overflow: hidden;
-	border: 2px solid rgba(0, 0, 0, 0.38);
+	border: 2px solid var(--black-rgb-38);
 	transition: 0.5s;
 }
 
@@ -63,7 +63,7 @@
 
 .container header .row .header-left .search span {
 	position: absolute;
-	color: rgba(0, 0, 0, 0.38);
+	color: var(--black-rgb-38);
 	width: 28px;
 	height: 100%;
 	top: 0;
@@ -77,11 +77,11 @@
 
 .container header .row .header-left .search:hover {
 	width: 100%;
-	border-color: rgba(0, 0, 0, 0.54);
+	border-color: var(--black-rgb-54);
 }
 
 .container header .row .header-left .search:hover span {
-	color: rgba(0, 0, 0, 0.54);
+	color: var(--black-rgb-54);
 }
 
 .container header .row .header-right {
