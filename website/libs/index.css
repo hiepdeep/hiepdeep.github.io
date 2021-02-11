@@ -22,6 +22,18 @@
 	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
+.container .mainContainer .colLeft .GridPost .widget-content .post {
+	border-radius: var(--border);
+	user-select: none;
+	overflow: hidden;
+	opacity: 0.87;
+	cursor: pointer;
+}
+
+.container .mainContainer .colLeft .GridPost .widget-content .post img {
+	display: block;
+}
+
 .container .mainContainer .colLeft .PopularPost .widget-header {
 	display: flex;
 	justify-content: space-between;
@@ -82,17 +94,6 @@
 	grid-gap: 1rem;
 }
 
-.container .mainContainer .colLeft .PopularPost .widget-content .post {
-	line-height: 70px;
-	text-align: center;
-	border-radius: var(--border);
-	border: 2px dashed #000;
-	color: #000;
-	font-weight: 500;
-	user-select: none;
-	opacity: 0.38;
-}
-
 .container .mainContainer .colLeft .TrendingPost .widget-header {
 	display: flex;
 	justify-content: space-between;
@@ -151,17 +152,6 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
 	grid-gap: 1rem;
-}
-
-.container .mainContainer .colLeft .TrendingPost .widget-content .post {
-	line-height: 70px;
-	text-align: center;
-	border: 2px dashed #000;
-	border-radius: var(--border);
-	color: #000;
-	font-weight: 500;
-	user-select: none;
-	opacity: 0.38;
 }
 
 .container .mainContainer .colLeft .TrendingPost .widget-content .post:nth-child(1) {
