@@ -180,6 +180,10 @@
 	flex-shrink: 0;
 }
 
+.container .mainContainer .colRight>div+div {
+	margin-top: 1rem;
+}
+
 .container .mainContainer .colRight .sidebar {
 	margin: 0 auto 1rem;
 	background: #fff;
