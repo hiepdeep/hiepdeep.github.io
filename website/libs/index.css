@@ -8,16 +8,6 @@
 
 .container .mainContainer .colLeft {
 	width: 100%;
-	height: calc(100vh - 50px - 2rem);
-	border-radius: var(--border);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	opacity: 0.38;
-	border: 2px dashed #000;
-	color: #000;
-	font-weight: 500;
-	user-select: none;
 }
 
 .container .mainContainer .colLeft .YzppXZX {
