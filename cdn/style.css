@@ -1,0 +1,16 @@
+:root {
+	--light: #E9EBEE;
+	--dark: #322E2F;
+	--blue: #5890FF;
+	--pink: #FF3677;
+	--green: #1CC88A;
+	--radius: 4px;
+	--black-rgb-87: rgba(0,0,0,0.87);
+	--black-clr-87: #212121;
+	--black-rgb-54: rgba(0,0,0,0.54);
+	--black-clr-54: #757575;
+	--black-rgb-38: rgba(0,0,0,0.38);
+	--black-clr-38: #9E9E9E;
+	--shadow-1: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+	--shadow-2: 0 0.25rem 1rem 0 rgba(0, 0, 0, 0.25);
+}
