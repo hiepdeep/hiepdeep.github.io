@@ -81,7 +81,9 @@
 			];
 			var img = "";
 			for (var i, i = 0; i < image.length; i++) {
-				img += "<img src='image/" + image[i] + ".jpg' alt='" + image[i] + "'>";
+				if (!image[i] == "") {
+					img += "<img src='image/" + image[i] + ".jpg' alt='" + image[i] + "'>";
+				}
 			}
 			document.getElementById("leagueoflegends").innerHTML = img;
 		</script>
