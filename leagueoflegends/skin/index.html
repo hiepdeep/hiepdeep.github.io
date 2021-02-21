@@ -23,6 +23,10 @@
 				display: block;
 				box-shadow: var(--shadow-2);
 			}
+			#leagueoflegends image {
+				width: 100%;
+				display: block;
+			}
 		</style>
 	</head>
 	<body>
@@ -170,7 +174,24 @@
 			var img = "";
 			for (var i, i = 0; i < image.length; i++) {
 				if (!image[i] == "") {
-					img += "<img src='image/" + image[i] + ".jpg' alt='" + image[i] + "'>";
+					img += "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 48 48'>";
+						img += "<defs>";
+							img += "<style>.cls-1 {fill: none;}.cls-2 {clip-path: url(#clip-path);}.cls-3 {fill: #d0a85c;}</style>";
+							img += "<clipPath id='clip-path'>";
+								img += "<path class='cls-1' d='M43,24A19,19,0,1,1,18,6l6,6,6-6A19,19,0,0,1,43,24Z'/>";
+							img += "</clipPath>";
+						img += "</defs>";
+						img += "<g id='Layer_2' data-name='Layer 2'>";
+							img += "<g id='THUMB'>";
+								img += "<g class='cls-2'>";
+									img += "<image xlink:href='" + image[i] + ".jpg'/>";
+								img += "</g>";
+								img += "<path class='cls-3' d='M44,24A20,20,0,1,1,17.19,5.19L18,6A19,19,0,1,0,30,6l.79-.79A20,20,0,0,1,44,24Z'/>";
+								img += "<path class='cls-3' d='M33.87,2.13A21.93,21.93,0,0,0,31,1L26.79,5.21,24,8,21.21,5.21,17,1a21.93,21.93,0,0,0-2.9,1.1,24,24,0,1,0,19.74,0ZM24,46A22,22,0,0,1,15.64,3.64L24,12l8.36-8.36A22,22,0,0,1,24,46Z'/>";
+								img += "<path class='cls-3' d='M28.56.44,26.82,2.18,25,4,24,5,23,4,21.18,2.18,19.44.44a23.85,23.85,0,0,1,9.12,0Z'/>";
+							img += "</g>";
+						img += "</g>";
+					img += "</svg>";
 				}
 			}
 			document.getElementById("leagueoflegends").innerHTML = img;
