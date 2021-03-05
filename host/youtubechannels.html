@@ -6,273 +6,104 @@
 		<meta content="width=device-width, initial-scale=1" name="viewport">
 		<link rel="icon" href="favicon.png">
 		<title>YouTube API - Channels</title>
+		<link rel="stylesheet" href="../cdn/style.css">
 		<style type="text/css">
 			body {
-				background: #E9EBEE;
-				margin: 0 auto;
+				background: var(--light);
+				font-family: "Google Sans", sans-serif;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				padding: 1rem;
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-				grid-gap: 1rem;
-				max-width: 700px;
+				height: 100vh;
 			}
-			table {
-				table-layout: fixed;
-				border-spacing: 2px;
+
+			.channels {
+				background: #FFF;
+				display: flex;
+				padding: 1rem;
+				border-radius: var(--radius);
+				box-shadow: var(--shadow-1);
+				max-width: 500px;
+				user-select: none;
 			}
-			table, table th, table td {
-				border: 1px solid #9E9E9E;
+
+			.channels .thumb {
+				flex-shrink: 0;
+				display: block;
+				width: 208px;
+				height: 208px;
+				border-radius: var(--radius);
+				overflow: hidden;
+				box-shadow: var(--shadow-2);
 			}
-			table th {
-				font-size: 15px;
-				line-height: 40px;
+
+			.channels .thumb img {
+				display: block;
 			}
-			table td {
-				user-select: all;
-				color: #212121;
+
+			.channels .metaData {
+				width: 100%;
+				margin-left: 1rem;
+				color: var(--black-rgb-54);
 				font-size: 14px;
 				font-weight: 700;
-				line-height: 24px;
-				text-align: center;
-				cursor: pointer;
+				display: grid;
+				grid-gap: 1rem;
+			}
+
+			.channels .metaData>div {
+				display: flex;
+				align-items: center;
+			}
+
+			.channels .metaData>div .material-icons {
+				background: #E9EBEE;
+				display: block;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-right: 1rem;
+				font-size: 20px;
+				border-radius: 35% 65% 65% 35%/65% 45% 55% 35%;
 			}
 		</style>
 	</head>
 	<body>
-		<table>
-			<tbody>
-				<tr>
-					<td>あ</td>
-					<td>い</td>
-					<td>う</td>
-					<td>え</td>
-					<td>お</td>
-				</tr>
-				<tr>
-					<td>か</td>
-					<td>き</td>
-					<td>く</td>
-					<td>け</td>
-					<td>こ</td>
-				</tr>
-				<tr>
-					<td>さ</td>
-					<td>し</td>
-					<td>す</td>
-					<td>せ</td>
-					<td>そ</td>
-				</tr>
-				<tr>
-					<td>た</td>
-					<td>ち</td>
-					<td>つ</td>
-					<td>て</td>
-					<td>と</td>
-				</tr>
-				<tr>
-					<td>な</td>
-					<td>に</td>
-					<td>ぬ</td>
-					<td>ね</td>
-					<td>の</td>
-				</tr>
-				<tr>
-					<td>は</td>
-					<td>ひ</td>
-					<td>ふ</td>
-					<td>へ</td>
-					<td>ほ</td>
-				</tr>
-				<tr>
-					<td>ま</td>
-					<td>み</td>
-					<td>む</td>
-					<td>め</td>
-					<td>も</td>
-				</tr>
-				<tr>
-					<td>や</td>
-					<td></td>
-					<td>ゆ</td>
-					<td></td>
-					<td>よ</td>
-				</tr>
-				<tr>
-					<td>ら</td>
-					<td>り</td>
-					<td>る</td>
-					<td>れ</td>
-					<td>ろ</td>
-				</tr>
-				<tr>
-					<td>わ</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>を</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td>ん</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>が</td>
-					<td>ぎ</td>
-					<td>ぐ</td>
-					<td>げ</td>
-					<td>ご</td>
-				</tr>
-				<tr>
-					<td>ざ</td>
-					<td>じ</td>
-					<td>ず</td>
-					<td>ぜ</td>
-					<td>ぞ</td>
-				</tr>
-				<tr>
-					<td>だ</td>
-					<td>ぢ</td>
-					<td>づ</td>
-					<td>で</td>
-					<td>ど</td>
-				</tr>
-				<tr>
-					<td>ば</td>
-					<td>び</td>
-					<td>ぶ</td>
-					<td>べ</td>
-					<td>ぼ</td>
-				</tr>
-				<tr>
-					<td>ぱ</td>
-					<td>ぴ</td>
-					<td>ぷ</td>
-					<td>ぺ</td>
-					<td>ぽ</td>
-				</tr>
-				<tr hidden>
-					<td colspan="5">っ</td>
-				</tr>
-			</tbody>
-		</table>
-		<table>
-			<tbody>
-				<tr>
-					<td>ア</td>
-					<td>イ</td>
-					<td>ウ</td>
-					<td>エ</td>
-					<td>オ</td>
-				</tr>
-				<tr>
-					<td>カ</td>
-					<td>キ</td>
-					<td>ク</td>
-					<td>ケ</td>
-					<td>コ</td>
-				</tr>
-				<tr>
-					<td>サ</td>
-					<td>シ</td>
-					<td>ス</td>
-					<td>セ</td>
-					<td>ソ</td>
-				</tr>
-				<tr>
-					<td>タ</td>
-					<td>チ</td>
-					<td>ツ</td>
-					<td>テ</td>
-					<td>ト</td>
-				</tr>
-				<tr>
-					<td>ナ</td>
-					<td>ニ</td>
-					<td>ヌ</td>
-					<td>ネ</td>
-					<td>ノ</td>
-				</tr>
-				<tr>
-					<td>ハ</td>
-					<td>ヒ</td>
-					<td>フ</td>
-					<td>ヘ</td>
-					<td>ホ</td>
-				</tr>
-				<tr>
-					<td>マ</td>
-					<td>ミ</td>
-					<td>ム</td>
-					<td>メ</td>
-					<td>モ</td>
-				</tr>
-				<tr>
-					<td>ヤ</td>
-					<td></td>
-					<td>ユ</td>
-					<td></td>
-					<td>ヨ</td>
-				</tr>
-				<tr>
-					<td>ラ</td>
-					<td>リ</td>
-					<td>ル</td>
-					<td>レ</td>
-					<td>ロ</td>
-				</tr>
-				<tr>
-					<td>ワ</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>ヲ</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td>ン</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>ガ</td>
-					<td>ギ</td>
-					<td>グ</td>
-					<td>ゲ</td>
-					<td>ゴ</td>
-				</tr>
-				<tr>
-					<td>ザ</td>
-					<td>ジ</td>
-					<td>ズ</td>
-					<td>ゼ</td>
-					<td>ゾ</td>
-				</tr>
-				<tr>
-					<td>ダ</td>
-					<td>ヂ</td>
-					<td>ヅ</td>
-					<td>デ</td>
-					<td>ド</td>
-				</tr>
-				<tr>
-					<td>バ</td>
-					<td>ビ</td>
-					<td>ブ</td>
-					<td>ベ</td>
-					<td>ボ</td>
-				</tr>
-				<tr>
-					<td>パ</td>
-					<td>ピ</td>
-					<td>プ</td>
-					<td>ペ</td>
-					<td>ポ</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="channels"></div>
+		<script type="text/javascript">
+			var url = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics&fields=items(id,snippet(title,description,customUrl,publishedAt,thumbnails,country),statistics)&id=UCyV9xgnGA-Ztrqx_bD9B5ag&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
+			$.getJSON(url, function(data) {
+				var result = data.items[0];
+				var channels = "";
+				channels += "<a href='https://www.youtube.com/channel/" + result.id + "' target='_blank' class='thumb'>";
+					channels += "<img src='" + result.snippet.thumbnails.medium.url + "'>";
+				channels += "</a>";
+				channels += "<div class='metaData'>";
+					channels += "<div class='subscriberCount'>";
+						channels += "<span class='material-icons'>subscriptions</span>";
+						channels += "<span class='total'>" + result.statistics.subscriberCount + " lượt đăng ký</span>";
+					channels += "</div>";
+					channels += "<div class='viewCount'>";
+						channels += "<span class='material-icons'>equalizer</span>";
+						channels += "<span class='total'>" + result.statistics.viewCount + " lượt xem</span>";
+					channels += "</div>";
+					channels += "<div class='videoCount'>";
+						channels += "<span class='material-icons'>playlist_play</span>";
+						channels += "<span class='total'>" + result.statistics.videoCount + " video</span>";
+					channels += "</div>";
+					channels += "<div class='videoCount'>";
+						channels += "<span class='material-icons'>query_builder</span>";
+						var D = result.snippet.publishedAt.substr(8, 2);
+						var M = result.snippet.publishedAt.substr(5, 2);
+						var Y = result.snippet.publishedAt.substr(0, 4);
+						channels += "<span class='total'>" + D + " thg " + M + ", " + Y + "</span>";
+					channels += "</div>";
+				channels += "</div>";
+				$(".channels").html(channels);
+			});
+		</script>
 	</body>
 </html>
