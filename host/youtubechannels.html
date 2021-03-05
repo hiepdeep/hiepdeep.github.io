@@ -70,9 +70,10 @@
 				border-radius: 35% 65% 65% 35%/65% 45% 55% 35%;
 			}
 		</style>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 	</head>
 	<body>
-		<div class="channels"></div>
+		<div id="channels"></div>
 		<script type="text/javascript">
 			var url = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics&fields=items(id,snippet(title,description,customUrl,publishedAt,thumbnails,country),statistics)&id=UCyV9xgnGA-Ztrqx_bD9B5ag&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
 			$.getJSON(url, function(data) {
@@ -102,7 +103,8 @@
 						channels += "<span class='total'>" + D + " thg " + M + ", " + Y + "</span>";
 					channels += "</div>";
 				channels += "</div>";
-				$(".channels").html(channels);
+				//$(".channels").html(channels);
+				document.getElementById("channels").innerHTML = channels;
 			});
 		</script>
 	</body>
