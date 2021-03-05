@@ -73,7 +73,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div id="channels"></div>
+		<div class="channels"></div>
 		<script type="text/javascript">
 			var url = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics&fields=items(id,snippet(title,description,customUrl,publishedAt,thumbnails,country),statistics)&id=UCyV9xgnGA-Ztrqx_bD9B5ag&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
 			$.getJSON(url, function(data) {
