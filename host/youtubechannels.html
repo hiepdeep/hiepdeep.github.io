@@ -70,7 +70,7 @@
 				border-radius: 35% 65% 65% 35%/65% 45% 55% 35%;
 			}
 		</style>
-		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<div id="channels"></div>
@@ -103,8 +103,7 @@
 						channels += "<span class='total'>" + D + " thg " + M + ", " + Y + "</span>";
 					channels += "</div>";
 				channels += "</div>";
-				//$(".channels").html(channels);
-				document.getElementById("channels").innerHTML = channels;
+				$(".channels").html(channels);
 			});
 		</script>
 	</body>
