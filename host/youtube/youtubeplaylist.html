@@ -62,7 +62,7 @@
 
 			.playlist ul li .metaData a.title {
 				display: -webkit-box;
-				-webkit-line-clamp: 2;
+				-webkit-line-clamp: 1;
 				-webkit-box-orient: vertical;
 				overflow: hidden;
 			}
@@ -82,13 +82,13 @@
 			var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=" + MAX + "&playlistId=" + PLAYLIST + "&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
 			$.getJSON(url, function(data) {
 				var result = data.items;
+				var playlist = "";
 				var i;
 				for (i = 0; i < result.length; i++) {
 					var videoID = result[i].snippet.resourceId.videoId;
-					var video = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&fields=items(id,snippet(publishedAt,channelId,title,thumbnails(medium),channelTitle),statistics)&part=statistics&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
+					var video = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&fields=items(id,snippet(publishedAt,channelId,title,thumbnails(medium),channelTitle),statistics)&part=snippet,statistics&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
 					$.get(video, function(str){
 						var vd = str.items[0];
-						var playlist = "";
 						playlist += "<li>";
 							playlist += "<a href='https://youtu.be/" + vd.id + "' target='_blank' class='thumb'>";
 								playlist += "<img src='" + vd.snippet.thumbnails.medium.url + "'>";
@@ -98,7 +98,7 @@
 								playlist += "<a href='https://www.youtube.com/channel/" + vd.snippet.channelId + "' target='_blank' class='author'>" + vd.snippet.channelTitle + "</a>";
 							playlist += "</div>";
 						playlist += "</li>";
-						$(".playlist").html(playlist);
+						$(".playlist").html("<ul>" + playlist + "</ul>");
 					});
 				}
 			});
