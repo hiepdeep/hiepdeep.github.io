@@ -13,97 +13,94 @@
 				font-family: "Google Sans", sans-serif;
 				display: flex;
 				justify-content: center;
-				align-items: center;
 				padding: 1rem;
-				height: 100vh;
 			}
 
-			.channels {
+			.playlist {
 				background: #FFF;
-				display: flex;
 				padding: 1rem;
 				border-radius: var(--radius);
 				box-shadow: var(--shadow-1);
 				max-width: 500px;
-				user-select: none;
 			}
 
-			.channels .thumb {
+			.playlist ul {
+				display: grid;
+				grid-gap: 1rem;
+			}
+
+			.playlist ul li {
+				display: flex;
+			}
+
+			.playlist ul li .thumb {
 				flex-shrink: 0;
 				display: block;
-				width: 208px;
-				height: 208px;
+				width: 160px;
+				height: 90px;
 				border-radius: var(--radius);
 				overflow: hidden;
 				box-shadow: var(--shadow-2);
 			}
 
-			.channels .thumb img {
+			.playlist ul li .thumb img {
 				display: block;
 			}
 
-			.channels .metaData {
+			.playlist ul li .metaData {
 				width: 100%;
-				margin-left: 1rem;
-				color: var(--black-rgb-54);
-				font-size: 14px;
-				font-weight: 700;
-				display: grid;
-				grid-gap: 1rem;
+				padding-left: 1rem;
 			}
 
-			.channels .metaData>div {
-				display: flex;
-				align-items: center;
-			}
-
-			.channels .metaData>div .material-icons {
-				background: #E9EBEE;
+			.playlist ul li .metaData a {
 				display: block;
-				width: 40px;
-				height: 40px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				margin-right: 1rem;
-				font-size: 20px;
-				border-radius: 35% 65% 65% 35%/65% 45% 55% 35%;
+				color: var(--black-rgb-87);
+				line-height: 20px;
+				font-size: 14px;
+				font-weight: 500;
+			}
+
+			.playlist ul li .metaData a.title {
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			.playlist ul li .metaData a.author {
+				color: var(--black-rgb-54);
 			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div class="channels"></div>
+		<div class="playlist"></div>
 		<script type="text/javascript">
-			var url = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics&fields=items(id,snippet(title,description,customUrl,publishedAt,thumbnails,country),statistics)&id=UCyV9xgnGA-Ztrqx_bD9B5ag&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
+			var GET = "https://www.googleapis.com/youtube/v3/playlistItems";
+			var PART = "snippet";
+			var FIELDS = "items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))";
+			var MAX = "3";
+			var PLAYLIST = "PLvQUnzYRDn2RtvXsIE43_-bZoanKwLg5L";
+			var KEY = "AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
+			var url = GET + "?part=" + PART + "&fields=" + FIELDS + "&maxResults=" + MAX + "&playlistId=" + PLAYLIST + "&key=" + KEY;
 			$.getJSON(url, function(data) {
-				var result = data.items[0];
-				var channels = "";
-				channels += "<a href='https://www.youtube.com/channel/" + result.id + "' target='_blank' class='thumb'>";
-					channels += "<img src='" + result.snippet.thumbnails.medium.url + "'>";
-				channels += "</a>";
-				channels += "<div class='metaData'>";
-					channels += "<div class='subscriberCount'>";
-						channels += "<span class='material-icons'>subscriptions</span>";
-						channels += "<span class='total'>" + result.statistics.subscriberCount + " lượt đăng ký</span>";
-					channels += "</div>";
-					channels += "<div class='viewCount'>";
-						channels += "<span class='material-icons'>equalizer</span>";
-						channels += "<span class='total'>" + result.statistics.viewCount + " lượt xem</span>";
-					channels += "</div>";
-					channels += "<div class='videoCount'>";
-						channels += "<span class='material-icons'>playlist_play</span>";
-						channels += "<span class='total'>" + result.statistics.videoCount + " video</span>";
-					channels += "</div>";
-					channels += "<div class='videoCount'>";
-						channels += "<span class='material-icons'>query_builder</span>";
-						var D = result.snippet.publishedAt.substr(8, 2);
-						var M = result.snippet.publishedAt.substr(5, 2);
-						var Y = result.snippet.publishedAt.substr(0, 4);
-						channels += "<span class='total'>" + D + " thg " + M + ", " + Y + "</span>";
-					channels += "</div>";
-				channels += "</div>";
-				$(".channels").html(channels);
+				var result = data.items;
+				var playlist = "";
+				playlist += "<ul>";
+				var i;
+				for (i = 0; i < result.length; i++) {
+					playlist += "<li>";
+						playlist += "<a href='https://youtu.be/" + result[i].snippet.resourceId.videoId + "' target='_blank' class='thumb'>";
+							playlist += "<img src='" + result[i].snippet.thumbnails.medium.url + "'>";
+						playlist += "</a>";
+						playlist += "<div class='metaData'>";
+							playlist += "<a href='https://youtu.be/" + result[i].snippet.resourceId.videoId + "' target='_blank' class='title'>" + result[i].snippet.title + "</a>";
+							playlist += "<a href='https://www.youtube.com/channel/" + result[i].snippet.videoOwnerChannelId + "' target='_blank' class='author'>" + result[i].snippet.videoOwnerChannelTitle + "</a>";
+						playlist += "</div>";
+					playlist += "</li>";
+				}	
+				playlist += "</ul>";
+				$(".playlist").html(playlist);
 			});
 		</script>
 	</body>
