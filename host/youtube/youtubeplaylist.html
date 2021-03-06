@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="https://www.youtube.com/s/desktop/9ba58884/img/favicon_96.png">
+		<title>YouTube API - Channels</title>
+		<link rel="stylesheet" href="../../cdn/style.css">
+		<style type="text/css">
+			body {
+				background: var(--light);
+				font-family: "Google Sans", sans-serif;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 1rem;
+				height: 100vh;
+			}
+
+			.channels {
+				background: #FFF;
+				display: flex;
+				padding: 1rem;
+				border-radius: var(--radius);
+				box-shadow: var(--shadow-1);
+				max-width: 500px;
+				user-select: none;
+			}
+
+			.channels .thumb {
+				flex-shrink: 0;
+				display: block;
+				width: 208px;
+				height: 208px;
+				border-radius: var(--radius);
+				overflow: hidden;
+				box-shadow: var(--shadow-2);
+			}
+
+			.channels .thumb img {
+				display: block;
+			}
+
+			.channels .metaData {
+				width: 100%;
+				margin-left: 1rem;
+				color: var(--black-rgb-54);
+				font-size: 14px;
+				font-weight: 700;
+				display: grid;
+				grid-gap: 1rem;
+			}
+
+			.channels .metaData>div {
+				display: flex;
+				align-items: center;
+			}
+
+			.channels .metaData>div .material-icons {
+				background: #E9EBEE;
+				display: block;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-right: 1rem;
+				font-size: 20px;
+				border-radius: 35% 65% 65% 35%/65% 45% 55% 35%;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="channels"></div>
+		<script type="text/javascript">
+			var url = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics&fields=items(id,snippet(title,description,customUrl,publishedAt,thumbnails,country),statistics)&id=UCyV9xgnGA-Ztrqx_bD9B5ag&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
+			$.getJSON(url, function(data) {
+				var result = data.items[0];
+				var channels = "";
+				channels += "<a href='https://www.youtube.com/channel/" + result.id + "' target='_blank' class='thumb'>";
+					channels += "<img src='" + result.snippet.thumbnails.medium.url + "'>";
+				channels += "</a>";
+				channels += "<div class='metaData'>";
+					channels += "<div class='subscriberCount'>";
+						channels += "<span class='material-icons'>subscriptions</span>";
+						channels += "<span class='total'>" + result.statistics.subscriberCount + " lượt đăng ký</span>";
+					channels += "</div>";
+					channels += "<div class='viewCount'>";
+						channels += "<span class='material-icons'>equalizer</span>";
+						channels += "<span class='total'>" + result.statistics.viewCount + " lượt xem</span>";
+					channels += "</div>";
+					channels += "<div class='videoCount'>";
+						channels += "<span class='material-icons'>playlist_play</span>";
+						channels += "<span class='total'>" + result.statistics.videoCount + " video</span>";
+					channels += "</div>";
+					channels += "<div class='videoCount'>";
+						channels += "<span class='material-icons'>query_builder</span>";
+						var D = result.snippet.publishedAt.substr(8, 2);
+						var M = result.snippet.publishedAt.substr(5, 2);
+						var Y = result.snippet.publishedAt.substr(0, 4);
+						channels += "<span class='total'>" + D + " thg " + M + ", " + Y + "</span>";
+					channels += "</div>";
+				channels += "</div>";
+				$(".channels").html(channels);
+			});
+		</script>
+	</body>
+</html>
