@@ -76,31 +76,31 @@
 	<body>
 		<div class="playlist"></div>
 		<script type="text/javascript">
-			var GET = "https://www.googleapis.com/youtube/v3/playlistItems";
-			var PART = "snippet";
-			var FIELDS = "items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))";
 			var MAX = "5";
 			var PLAYLIST = "PLvQUnzYRDn2RtvXsIE43_-bZoanKwLg5L";
 			var KEY = "AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
-			var url = GET + "?part=" + PART + "&fields=" + FIELDS + "&maxResults=" + MAX + "&playlistId=" + PLAYLIST + "&key=" + KEY;
+			var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=" + MAX + "&playlistId=" + PLAYLIST + "&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
 			$.getJSON(url, function(data) {
 				var result = data.items;
-				var playlist = "";
-				playlist += "<ul>";
 				var i;
 				for (i = 0; i < result.length; i++) {
-					playlist += "<li>";
-						playlist += "<a href='https://youtu.be/" + result[i].snippet.resourceId.videoId + "' target='_blank' class='thumb'>";
-							playlist += "<img src='" + result[i].snippet.thumbnails.medium.url + "'>";
-						playlist += "</a>";
-						playlist += "<div class='metaData'>";
-							playlist += "<a href='https://youtu.be/" + result[i].snippet.resourceId.videoId + "' target='_blank' class='title'>" + result[i].snippet.title + "</a>";
-							playlist += "<a href='https://www.youtube.com/channel/" + result[i].snippet.videoOwnerChannelId + "' target='_blank' class='author'>" + result[i].snippet.videoOwnerChannelTitle + "</a>";
-						playlist += "</div>";
-					playlist += "</li>";
-				}	
-				playlist += "</ul>";
-				$(".playlist").html(playlist);
+					var videoID = result[i].snippet.resourceId.videoId;
+					var video = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&fields=items(id,snippet(publishedAt,channelId,title,thumbnails(medium),channelTitle),statistics)&part=statistics&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
+					$.get(video, function(str){
+						var vd = str.items[0];
+						var playlist = "";
+						playlist += "<li>";
+							playlist += "<a href='https://youtu.be/" + vd.id + "' target='_blank' class='thumb'>";
+								playlist += "<img src='" + vd.snippet.thumbnails.medium.url + "'>";
+							playlist += "</a>";
+							playlist += "<div class='metaData'>";
+								playlist += "<a href='https://youtu.be/" + vd.id + "' target='_blank' class='title'>" + vd.snippet.title + "</a>";
+								playlist += "<a href='https://www.youtube.com/channel/" + vd.snippet.channelId + "' target='_blank' class='author'>" + vd.snippet.channelTitle + "</a>";
+							playlist += "</div>";
+						playlist += "</li>";
+						$(".playlist").html(playlist);
+					});
+				}
 			});
 		</script>
 	</body>
