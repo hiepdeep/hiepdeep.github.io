@@ -21,7 +21,7 @@
 				padding: 1rem;
 				border-radius: var(--radius);
 				box-shadow: var(--shadow-1);
-				max-width: 500px;
+				max-width: 550px;
 			}
 
 			.playlist ul {
@@ -47,28 +47,59 @@
 				display: block;
 			}
 
-			.playlist ul li .metaData {
-				width: 100%;
-				padding-left: 1rem;
+			.playlist ul li .content {
+				margin-left: 1rem;
 			}
 
-			.playlist ul li .metaData a {
-				display: block;
+			.playlist ul li .content .title {
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
 				color: var(--black-rgb-87);
 				line-height: 20px;
 				font-size: 14px;
 				font-weight: 500;
 			}
 
-			.playlist ul li .metaData a.title {
-				display: -webkit-box;
-				-webkit-line-clamp: 1;
-				-webkit-box-orient: vertical;
-				overflow: hidden;
+			.playlist ul li .content .metaData {
+				display: flex;
+				margin-top: 0.5rem;
+				opacity: 0.54;
+				user-select: none;
 			}
 
-			.playlist ul li .metaData a.author {
+			.playlist ul li .content .metaData>div {
+				display: flex;
+				align-items: center;
+				margin-right: 4px;
+			}
+
+			.playlist ul li .content .metaData>div .material-icons {
+				background: #E9EBEE;
+				display: block;
+				width: 28px;
+				height: 28px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-right: 4px;
+				font-size: 14px;
+				border-radius: var(--radius);
+			}
+
+			.playlist ul li .content .metaData>div .total {
+				font-size: 12px;
+				font-weight: 500;
+			}
+
+			.playlist ul li .content .author {
+				margin-top: 0.5rem;
+				display: block;
 				color: var(--black-rgb-54);
+				line-height: 20px;
+				font-size: 14px;
+				font-weight: 500;
 			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
