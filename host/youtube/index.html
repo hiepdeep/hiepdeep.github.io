@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="https://www.youtube.com/s/desktop/9ba58884/img/favicon_96.png">
+		<title>YouTube API</title>
+		<link rel="stylesheet" href="../../cdn/style.css">
+		<style type="text/css">
+			body {
+				background: var(--light);
+				font-family: "Google Sans", sans-serif;
+				padding: 1rem;
+			}
+
+			.YoutubeAPI h2 {
+				font-size: 24px;
+				font-weight: 500;
+				color: var(--black-rgb-54);
+				text-align: center;
+				margin-bottom: 1rem;
+				user-select: none;
+			}
+
+			.YoutubeAPI ul {
+				display: grid;
+				grid-gap: 1rem;
+				margin-bottom: 1rem;
+			}
+
+			.YoutubeAPI ul li {
+				background: #FFF;
+				border-radius: var(--radius);
+				box-shadow: var(--shadow-1);
+			}
+
+			.YoutubeAPI ul li input {
+				font-family: "Google Sans", sans-serif;
+				width: 100%;
+				border: 0;
+				background: 0;
+				padding: 1rem;
+				font-size: 14px;
+				font-weight: 500;
+				color: var(--black-rgb-54);
+			}
+
+			.YoutubeAPI .backlinks {
+				display: flex;
+				justify-content: space-evenly;
+				background: #FFF;
+				padding: 1rem;
+				border-radius: var(--radius);
+				box-shadow: var(--shadow-1);
+			}
+
+			.YoutubeAPI .backlinks a {
+				--w: 192px;
+				width: var(--w);
+				height: var(--w);
+				border: 2px solid #FFF;
+				border-radius: var(--radius);
+				box-shadow: var(--shadow-1);
+			}
+
+			.YoutubeAPI .backlinks a:hover {
+				border: 2px solid var(--pink);
+			}
+
+			.YoutubeAPI .backlinks a img {
+				display: block;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="YoutubeAPI">
+			<h2>Youtube API</h2>
+			<ul>
+				<li>
+					<input type="text" value="https://developers.google.com/youtube/v3/docs/videos/list">
+				</li>
+				<li>
+					<input type="text" value="https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics,brandingSettings,localizations&fields=items(id,snippet(customUrl,localized,publishedAt,thumbnails(medium,high),country),statistics,brandingSettings(image))&id=UCyV9xgnGA-Ztrqx_bD9B5ag&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA">
+				</li>
+				<li>
+					<input type="text" value="https://www.googleapis.com/youtube/v3/videos?id=_uXQTmkEusM&fields=items(id,snippet(publishedAt,channelId,title,thumbnails(medium),channelTitle),statistics)&part=snippet,statistics&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA">
+				</li>
+				<li>
+					<input type="text" value="https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=50&playlistId=PLvQUnzYRDn2RtvXsIE43_-bZoanKwLg5L&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA">
+				</li>
+				<li>
+					<input type="text" value="https://www.googleapis.com/youtube/v3/commentThreads?part=id,snippet,replies&videoId=AmpCyFObf2Q&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA">
+				</li>
+				<li>
+					<input type="text" value="https://www.googleapis.com/youtube/v3/search?part=snippet&q=Jay%20Chou%20Mojito&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA">
+				</li>
+				<li>
+					<input type="text" value="https://www.googleapis.com/youtube/v3/search?part=id,snippet&channelId=UCyV9xgnGA-Ztrqx_bD9B5ag&order=date&maxResults=20&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA">
+				</li>
+			</ul>
+			<div class="backlinks">
+				<a target="_blank" href="https://hiepdeep.github.io/host/youtube/youtubechannels.html">
+					<img src="https://hiepdeep.github.io/host/youtube/youtubechannels.png">
+				</a>
+				<a target="_blank" href="https://hiepdeep.github.io/host/youtube/youtubeplaylist.html">
+					<img src="https://hiepdeep.github.io/host/youtube/youtubeplaylist.png">
+				</a>
+			</div>
+		</div>
+	</body>
+</html>
