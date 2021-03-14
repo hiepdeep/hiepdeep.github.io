@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="https://www.youtube.com/s/desktop/9ba58884/img/favicon_96.png">
+		<title>YouTube API</title>
+		<link rel="stylesheet" href="../../cdn/style.css">
+		<style type="text/css">
+			body {
+				background: var(--light);
+				font-family: "Google Sans", sans-serif;
+				padding: 1rem;
+			}
+
+			.YoutubeAPI h2 {
+				font-size: 24px;
+				font-weight: 500;
+				color: var(--black-rgb-54);
+				text-align: center;
+				margin-bottom: 1rem;
+				user-select: none;
+			}
+
+			.YoutubeAPI ul {
+				display: grid;
+				grid-gap: 1rem;
+				margin-bottom: 1rem;
+			}
+
+			.YoutubeAPI ul li {
+				background: #FFF;
+				border-radius: var(--radius);
+				box-shadow: var(--shadow-1);
+			}
+
+			.YoutubeAPI ul li input {
+				font-family: "Google Sans", sans-serif;
+				width: 100%;
+				border: 0;
+				background: 0;
+				padding: 1rem;
+				font-size: 14px;
+				font-weight: 500;
+				color: var(--black-rgb-54);
+			}
+
+			.YoutubeAPI .backlinks {
+				display: flex;
+				justify-content: space-evenly;
+				background: #FFF;
+				padding: 1rem;
+				border-radius: var(--radius);
+				box-shadow: var(--shadow-1);
+			}
+
+			.YoutubeAPI .backlinks a {
+				--w: 192px;
+				width: var(--w);
+				height: var(--w);
+				border: 2px solid #FFF;
+				border-radius: var(--radius);
+				box-shadow: var(--shadow-1);
+			}
+
+			.YoutubeAPI .backlinks a:hover {
+				border: 2px solid var(--pink);
+			}
+
+			.YoutubeAPI .backlinks a img {
+				display: block;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class='YouTubeAPI'></div>
+		<script type="text/javascript">
+			var channelId = "UCyV9xgnGA-Ztrqx_bD9B5ag";
+			var KEY = "AIzaSyBH4ODUks0VOH0Phz7DoZWTp-nEQZlxDN4";
+			var getChannels = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics,brandingSettings&id=" + channelId + "&key=" + KEY;
+			$.getJSON(getChannels, function(channels) {
+				var channels = channels.items[0];
+				var e = "";
+				e += "<div class='channels-header'>";
+					e += "<div class='channels-user'>";
+						e += "<div class='channels-avatar'><img src='" + channels.snippet.thumbnails.medium.url + "'></div>";
+						e += "<div class='channels-name'>";
+							e += "<h1 class='name'>" + channels.snippet.title + "</h1>";
+							e += "<h3 class='username'>@" + channels.snippet.customUrl + "</h3>";
+						e += "</div>";
+					e += "</div>";
+					e += "<div class='channels-header-nav'></div>";
+				e += "</div>";
+				e += "<div class='main-wrapper'>";
+					e += "<div id='leftCol'>";
+						e += "<div class='statistics'>";
+							e += "<div class='item-'>";
+								e += "<span class='material-icons'>subscriptions</span><span class='total'>" + channels.statistics.subscriberCount + " lượt đăng ký</span>";
+							e += "</div>";
+							e += "<div class='item-'>";
+								e += "<span class='material-icons'>equalizer</span><span class='total'>" + channels.statistics.viewCount + " lượt lượt xem</span>";
+							e += "</div>";
+							e += "<div class='item-'>";
+								e += "<span class='material-icons'>playlist_play</span><span class='total'>" + channels.statistics.videoCount + " video</span>";
+							e += "</div>";
+							e += "<div class='item-'>";
+								e += "<span class='material-icons'>query_builder</span>";
+								var cl_D = channels.snippet.publishedAt.substr(8, 2);
+								var cl_M = channels.snippet.publishedAt.substr(5, 2);
+								var cl_Y = channels.snippet.publishedAt.substr(0, 4);
+								e += "<span class='total'>" + cl_D + " thg " + cl_M + ", " + cl_Y + "</span>";
+							e += "</div>";
+						e += "</div>";
+					e += "</div>";
+					e += "<div id='contentCol'>";
+						var getPlaylist = "https://www.googleapis.com/youtube/v3/search?part=id,snippet&channelId=" + channelId + "&order=date&maxResults=9&key=" + KEY;
+						e += getPlaylist;
+					e += "</div>";
+				e += "</div>";
+				$(".YouTubeAPI").html(e);
+			});
+		</script>
+	</body>
+</html>
