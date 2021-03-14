@@ -11,65 +11,119 @@
 			body {
 				background: var(--light);
 				font-family: "Google Sans", sans-serif;
-				padding: 1rem;
 			}
 
-			.YoutubeAPI h2 {
-				font-size: 24px;
-				font-weight: 500;
-				color: var(--black-rgb-54);
-				text-align: center;
+			.YouTubeAPI {
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				max-width: 1036px;
+				width: calc(100% - 2rem);
+				margin: 1rem auto;
+			}
+
+			.YouTubeAPI .channels-header {
+				background: #322E2F;
+				height: 300px;
+				position: relative;
 				margin-bottom: 1rem;
-				user-select: none;
+				border-bottom: calc(1rem + 24px) solid transparent;
 			}
 
-			.YoutubeAPI ul {
+			.YouTubeAPI .channels-header .channels-user {
+				display: flex;
+				align-items: center;
+				position: absolute;
+				bottom: -24px;
+				left: 1rem;
+				z-index: 2;
+			}
+
+			.YouTubeAPI .channels-header .channels-user .channels-avatar {
+				width: 100px;
+				height: 100px;
+				margin-right: 1rem;
+				.border-radius: 50%;
+				overflow: hidden;
+				border: 4px solid #FFF;
+			}
+
+			.YouTubeAPI .channels-header .channels-user .channels-avatar img {
+				display: block;
+			}
+
+			.YouTubeAPI .channels-header .channels-user .channels-name {
+				line-height: 20px;
+			}
+
+			.YouTubeAPI .channels-header .channels-user .channels-name h1.name {
+				color: #FFF;
+				font-size: 18px;
+				font-weight: 500;
+			}
+
+			.YouTubeAPI .channels-header .channels-user .channels-name h3.username {
+				color: #FFF;
+				font-size: 12px;
+				font-weight: 400;
+				font-style: italic;
+			}
+
+			.YouTubeAPI .channels-header .channels-header-nav {
+				background: #FFF;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				height: calc(1rem + 24px);
+				z-index: 1;
+			}
+
+			.YouTubeAPI .main-wrapper {
+				display: flex;
+			}
+
+			.YouTubeAPI .main-wrapper #leftCol {
+				width: 300px;
+				flex-shrink: 0;
+			}
+
+			.YouTubeAPI .main-wrapper #leftCol .statistics {
+				background: #FFF;
+				padding: 1rem;
+				color: var(--black-rgb-54);
 				display: grid;
 				grid-gap: 1rem;
-				margin-bottom: 1rem;
 			}
 
-			.YoutubeAPI ul li {
-				background: #FFF;
-				border-radius: var(--radius);
-				box-shadow: var(--shadow-1);
+			.YouTubeAPI .main-wrapper #leftCol .statistics>div {
+				display: flex;
+				align-items: center;
 			}
 
-			.YoutubeAPI ul li input {
-				font-family: "Google Sans", sans-serif;
-				width: 100%;
-				border: 0;
-				background: 0;
-				padding: 1rem;
+			.YouTubeAPI .main-wrapper #leftCol .statistics>div .material-icons {
+				background: #E9EBEE;
+				display: block;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-right: 1rem;
+				font-size: 20px;
+				border-radius: 35% 65% 65% 35%/65% 45% 55% 35%;
+			}
+
+			.YouTubeAPI .main-wrapper #leftCol .statistics>div .total {
 				font-size: 14px;
 				font-weight: 500;
-				color: var(--black-rgb-54);
 			}
 
-			.YoutubeAPI .backlinks {
-				display: flex;
-				justify-content: space-evenly;
+			.YouTubeAPI .main-wrapper #contentCol {
+				flex-shrink: 1;
+				width: 100%;
+				margin-left: 1rem;
 				background: #FFF;
-				padding: 1rem;
-				border-radius: var(--radius);
-				box-shadow: var(--shadow-1);
-			}
-
-			.YoutubeAPI .backlinks a {
-				--w: 192px;
-				width: var(--w);
-				height: var(--w);
-				border: 2px solid #FFF;
-				border-radius: var(--radius);
-				box-shadow: var(--shadow-1);
-			}
-
-			.YoutubeAPI .backlinks a:hover {
-				border: 2px solid var(--pink);
-			}
-
-			.YoutubeAPI .backlinks a img {
-				display: block;
 			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
