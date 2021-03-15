@@ -18,142 +18,116 @@
 
 			.YoutubeAPI {
 				width: 100%;
-				max-width: 1036px;
+				max-width: 1232px;
 			}
 
-			.YoutubeAPI .header {
-				background: var(--dark);
-				width: 100%;
-				height: 300px;
-				position: relative;
-				border-bottom: 3rem solid #FFF;
-				user-select: none;
-				background-image: url("pictures/banner.jpg");
-				background-position: center;
-				background-repeat: center;
-				background-size: cover;
-			}
-
-			.YoutubeAPI .header .userData {
-				display: flex;
-				align-items: flex-end;
-				position: absolute;
-				left: calc(1rem - 4px);
-				bottom: -2rem;
-			}
-
-			.YoutubeAPI .header .userData .thumb {
-				flex-shrink: 0;
-				width: 92px;
-				height: 92px;
-				background: #000;
-				border: 4px solid #FFF;
-			}
-
-			.YoutubeAPI .header .userData .nameData {
-				margin-left: 0.5rem;
-			}
-
-			.YoutubeAPI .header .userData .nameData a {
-				display: block;
-				font-size: 15px;
-				font-weight: 700;
-				line-height: 2rem;
-			}
-
-			.YoutubeAPI .header .userData .nameData .fullname {
-				color: rgb(22 24 36);
-			}
-
-			.YoutubeAPI .header .userData .nameData .username {
-				color: var(--black-rgb-38);
-			}
-
-			.YoutubeAPI .main-wrapper {
-				display: flex;
-				justify-content: space-between;
-				margin: 1rem 0 0;
-			}
-
-			.YoutubeAPI .main-wrapper .colLeft {
-				flex-shrink: 0;
-				width: 300px;
-				margin-right: 1rem;
-			}
-
-			.YoutubeAPI .main-wrapper .colLeft .statistics {
-				background: #FFF;
-				padding: 1rem;
-				display: grid;
-				grid-gap: 1rem;
-				user-select: none;
-			}
-
-			.YoutubeAPI .main-wrapper .colLeft .statistics .item {
+			.YoutubeAPI .channel {
+				background: linear-gradient(90deg, #ffb583 0%, #bb53b4 49%, #4359d0 100%);
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				padding: 1rem;
 			}
 
-			.YoutubeAPI .main-wrapper .colLeft .statistics .item .material-icons {
-				color: var(--black-rgb-54);
+			.YoutubeAPI .channel .userData {
+				display: flex;
+				align-items: center;
+			}
+
+			.YoutubeAPI .channel .userData .thumb {
+				width: 92px;
+				height: 92px;
+				border-radius: 50%;
+				overflow: hidden;
+				border: 4px solid #FFF;
+				box-shadow: var(--shadow-2);
+			}
+
+			.YoutubeAPI .channel .userData .dataTitle {
+				margin-left: 1rem;
+			}
+
+			.YoutubeAPI .channel .userData .dataTitle .title {
+				color: rgba(255, 255, 255, 0.87);
 				font-size: 24px;
+				font-weight: 500;
 			}
 
-			.YoutubeAPI .main-wrapper .colLeft .statistics .item .total {
-				color: var(--black-rgb-54);
+			.YoutubeAPI .channel .userData .dataTitle .title a {
+				color: #FFF;
+				font-weight: 700;
+			}
+
+			.YoutubeAPI .channel .userData .dataTitle .date {
+				color: rgba(255, 255, 255, 0.87);
 				font-size: 14px;
+				font-weight: 500;
+			}
+
+			.YoutubeAPI .channel .statistics {
+				width: 50%;
+				display: grid;
+				grid-gap: 1rem;
+				grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+			}
+
+			.YoutubeAPI .channel .statistics .item {
+				height: 80px;
+				background: white;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 1rem;
+				box-shadow: var(--shadow-2);
+			}
+
+			.YoutubeAPI .channel .statistics .item .material-icons {
+				font-size: 48px;
+				color: var(--bg);
+			}
+
+			.YoutubeAPI .channel .statistics .item .data {
+				display: flex;
+				align-items: flex-end;
+				flex-direction: column;
+			}
+
+			.YoutubeAPI .channel .statistics .item .data .total {
+				color: var(--black-rgb-87);
+				font-size: 20px;
+				font-weight: 500;
+			}
+
+			.YoutubeAPI .channel .statistics .item .data .title {
+				color: var(--black-rgb-38);
+				font-size: 12px;
 				font-weight: 700;
 				text-transform: uppercase;
 			}
 
-			.YoutubeAPI .main-wrapper .colLeft .statistics>div .material-icons {
-				color: var(--black-rgb-54);
-				display: block;
-				font-size: 24px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				margin-right: 1rem;
-			}
-
-			.YoutubeAPI .main-wrapper .colLeft .statistics>div .total {
-				color: var(--black-rgb-54);
-				font-size: 14px;
-				font-weight: 700;
-			}
-
-			.YoutubeAPI .main-wrapper .colRight {
-				width: 100%;
-			}
-
-			.YoutubeAPI .main-wrapper .colRight .playlist {
+			.YoutubeAPI .playlist {
+				margin-top: 1rem;
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(296px, 1fr));
 				grid-gap: 1rem;
 				width: 100%;
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video {
+			.YoutubeAPI .playlist .video {
 				background: #FFF;
-				transition: 0.25s;
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video:hover {
-				box-shadow: var(--shadow-1);
-			}
-
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .thumb {
+			.YoutubeAPI .playlist .video .thumb {
 				display: block;
 				overflow: hidden;
 				position: relative;
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .thumb img {
+			.YoutubeAPI .playlist .video .thumb img {
 				transform: scale(1.05);
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .thumb .rating {
+			.YoutubeAPI .playlist .video .thumb .rating {
 				position: absolute;
 				width: 100%;
 				height: 4px;
@@ -164,11 +138,11 @@
 				background-image: linear-gradient(90deg, #F00 var(--rating), var(--light) 0);
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .data {
+			.YoutubeAPI .playlist .video .data {
 				padding: 1rem;
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .title {
+			.YoutubeAPI .playlist .video .data .title {
 				color: var(--black-rgb-87);
 				font-size: 14px;
 				font-weight: 700;
@@ -180,33 +154,33 @@
 				margin-bottom: 0.5rem;
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics {
+			.YoutubeAPI .playlist .video .data .statistics {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				user-select: none;
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- {
+			.YoutubeAPI .playlist .video .data .statistics .item- {
 				display: flex;
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- .item {
+			.YoutubeAPI .playlist .video .data .statistics .item- .item {
 				margin-right: 0.5rem;
 				background: var(--light);
 				display: flex;
 				align-items: center;
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- .item:first-child .material-icons {
-				background: var(--blue);
+			.YoutubeAPI .playlist .video .data .statistics .item- .item:first-child .material-icons {
+				background: rgba(255, 54, 119, 0.87);
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- .item:last-child .material-icons {
-				background: var(--green);
+			.YoutubeAPI .playlist .video .data .statistics .item- .item:last-child .material-icons {
+				background: rgba(255, 127, 80, 0.87);
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- .item .material-icons {
+			.YoutubeAPI .playlist .video .data .statistics .item- .item .material-icons {
 				display: block;
 				width: 24px;
 				height: 24px;
@@ -217,14 +191,14 @@
 				color: #FFF;
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- .item .total {
+			.YoutubeAPI .playlist .video .data .statistics .item- .item .total {
 				color: var(--black-rgb-54);
 				padding: 0 0.5rem;
 				font-size: 14px;
 				font-weight: 500;
 			}
 
-			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .date {
+			.YoutubeAPI .playlist .video .data .statistics .date {
 				color: var(--black-rgb-54);
 				font-size: 14px;
 				font-weight: 500;
@@ -236,160 +210,151 @@
 		<div class="YoutubeAPI"></div>
 		<script type="text/javascript">
 			var channelID = "UCyV9xgnGA-Ztrqx_bD9B5ag";
-			var keyAPI = "AIzaSyDZDlUHbwIVIiYBKbFar-avT-vY4bpL0Tk";
-			$.getJSON("https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics", {id: channelID, key: keyAPI}, function(data) {
+			var keyAPI = "AIzaSyCZXhE1bXeXdnQydBSGe16aJUHbh3FOpv8";
+			$.getJSON("https://youtube.googleapis.com/youtube/v3/channels", {
+				part: "snippet,statistics",
+				id: channelID,
+				key: keyAPI
+			}, function(data) {
 				var results = data.items[0];
 				var channels = "";
-				channels += "<div class='header'>";
+				channels += "<div class='channel'>";
 					channels += "<div class='userData'>";
-						channels += "<a class='thumb' href='https://www.youtube.com/channel/" + results.id + "' target='_blank'><img src='" + results.snippet.thumbnails.high.url + "'></a>";
-						channels += "<div class='nameData'>";
-							channels += "<a class='fullname' href='https://www.youtube.com/channel/" + results.id + "' target='_blank'>" + results.snippet.title + "</a>";
-							// channels += "<a class='username' href='https://www.youtube.com/channel/" + results.id + "' target='_blank'>" + results.snippet.customUrl + "</a>";
+						channels += "<div class='thumb'><img src='" + results.snippet.thumbnails.high.url + "'></div>";
+						channels += "<div class='dataTitle'>";
+							channels += "<div class='title'>Welcome <a href='https://www.youtube.com/channel/" + results.id + "'>" + results.snippet.title + "</a></div>";
+							channels += "<div class='date'>Today is a great day, so are you &lt;3</div>";
 						channels += "</div>";
 					channels += "</div>";
-				channels += "</div>";
-				channels += "<div class='main-wrapper'>";
-					channels += "<div class='colLeft'>";
-						channels += "<div class='statistics'>";
-							channels += "<div class='item'>";
-								channels += "<span class='material-icons'>subscriptions</span><span class='total'>" + results.statistics.subscriberCount + " lượt đăng ký</span>";
-							channels += "</div>";
-							channels += "<div class='item'>";
-								function viewCount() {
-									var num = results.statistics.viewCount;
-									var res = num.split("");
-									switch (res.length) {
-										case 4:
-										case 5:
-										case 6:
-											comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
-											if (comma <= 0) {
-												return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
-											}
-											else {
-												return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
-											}
-											break;
-										case 7:
-										case 8:
-										case 9:
-											comma = num.replace(/(\d+)(\d{1})(\d{5})/, "$2");
-											if (comma <= 0) {
-												return num.replace(/(\d+)(\d{1})(\d{5})/, "$1 Tr");
-											}
-											else {
-												return num.replace(/(\d+)(\d{1})(\d{5})/, "$1,$2 Tr");
-											}
-											break;
-										case 10:
-										case 11:
-										case 12:
-											comma = num.replace(/(\d+)(\d{1})(\d{8})/, "$2");
-											if (comma <= 0) {
-												return num.replace(/(\d+)(\d{1})(\d{8})/, "$1 T");
-											}
-											else {
-												return num.replace(/(\d+)(\d{1})(\d{8})/, "$1,$2 T");
-											}
-									}
+					channels += "<div class='statistics'>";
+						channels += "<div class='item' style='--bg: rgba(88,144,255,87%);'>";
+							channels += "<span class='material-icons'>subscriptions</span>";
+							channels += "<div class='data'><span class='total'>" + results.statistics.subscriberCount + "</span><span class='title'>Subscribes</span></div>";
+						channels += "</div>";
+						channels += "<div class='item' style='--bg: rgba(255,54,119,87%);'>";
+							channels += "<span class='material-icons'>equalizer</span>";
+							function viewCount() {
+								var num = results.statistics.viewCount;
+								var res = num.split("");
+								switch (res.length) {
+									case 4:
+									case 5:
+									case 6:
+										comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+										if (comma <= 0) {
+											return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
+										}
+										else {
+											return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
+										}
+										break;
+									case 7:
+									case 8:
+									case 9:
+										comma = num.replace(/(\d+)(\d{1})(\d{5})/, "$2");
+										if (comma <= 0) {
+											return num.replace(/(\d+)(\d{1})(\d{5})/, "$1 Tr");
+										}
+										else {
+											return num.replace(/(\d+)(\d{1})(\d{5})/, "$1,$2 Tr");
+										}
+										break;
+									case 10:
+									case 11:
+									case 12:
+										comma = num.replace(/(\d+)(\d{1})(\d{8})/, "$2");
+										if (comma <= 0) {
+											return num.replace(/(\d+)(\d{1})(\d{8})/, "$1 T");
+										}
+										else {
+											return num.replace(/(\d+)(\d{1})(\d{8})/, "$1,$2 T");
+										}
 								}
-								channels += "<span class='material-icons'>equalizer</span><span class='total'>" + viewCount() + " lượt xem</span>";
-							channels += "</div>";
-							channels += "<div class='item'>";
-								channels += "<span class='material-icons'>movie</span><span class='total'>" + results.statistics.videoCount + " video</span>";
-							channels += "</div>";
-							channels += "<div class='item'>";
-								var cl_D = results.snippet.publishedAt.substr(8, 2);
-								var cl_M = results.snippet.publishedAt.substr(5, 2);
-								var cl_Y = results.snippet.publishedAt.substr(0, 4);
-								channels += "<span class='material-icons'>watch_later</span><span class='total'>" + cl_D + " thg " + cl_M + ", " + cl_Y + "</span>";
-							channels += "</div>";
+							}
+							channels += "<div class='data'><span class='total'>" + viewCount() + "</span><span class='title'>Views</span></div>";
+						channels += "</div>";
+						channels += "<div class='item' style='--bg: rgba(28,200,138,87%);'>";
+							channels += "<span class='material-icons'>movie</span>";
+							channels += "<div class='data'><span class='total'>" + results.statistics.videoCount + "</span><span class='title'>Videos</span></div>";
 						channels += "</div>";
 					channels += "</div>";
-					channels += "<div class='colRight'>";
-						channels += "<div class='playlist'></div>";
-					channels += "</div>";
 				channels += "</div>";
+				channels += "<div class='playlist'></div>";
 				$(".YoutubeAPI").html(channels);
 			});
 			function getVIDEO(channelID, keyAPI) {
 				$.getJSON("https://www.googleapis.com/youtube/v3/search?part=id,snippet&order=date&maxResults=20", {channelId: channelID, key: keyAPI}, function(data) {
-				var results = data.items;
-				var e = "";
-				var i;
-				for (i = 0; i < results.length; i++) {
-					if (results[i].id.kind == "youtube#video") {
-						var videoID = results[i].id.videoId;
-						var getVIDEO = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&part=snippet,statistics&key=" + keyAPI;
-						$.getJSON(getVIDEO, function(video) {
-							var video = video.items[0];
-							e += "<div class='video'>";
-								e += "<a class='thumb' href='https://youtu.be/" + video.id + "' target='_blank'>";
-									e += "<img src='https://i.ytimg.com/vi/" + video.id + "/maxresdefault.jpg'>";
-									e += "<div class='rating' style='--likeCount: " + video.statistics.likeCount + "; --dislikeCount: " + video.statistics.dislikeCount + "'></div>";
-								e += "</a>";
-								e += "<div class='data'>";
-									e += "<a href='https://youtu.be/" + video.id + "' class='title' target='_blank'>" + video.snippet.title + "</a>";
-									e += "<div class='statistics'>";
-										function viewCount() {
-											var num = video.statistics.viewCount;
-											var res = num.split("");
-											switch (res.length) {
-												case 4:
-												case 5:
-												case 6:
-													comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
-													if (comma <= 0) {
-														return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
-													}
-													else {
-														return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
-													}
-													break;
-												case 7:
-												case 8:
-												case 9:
-													comma = num.replace(/(\d+)(\d{1})(\d{5})/, "$2");
-													if (comma <= 0) {
-														return num.replace(/(\d+)(\d{1})(\d{5})/, "$1 Tr");
-													}
-													else {
-														return num.replace(/(\d+)(\d{1})(\d{5})/, "$1,$2 Tr");
-													}
-													break;
-												case 10:
-												case 11:
-												case 12:
-													comma = num.replace(/(\d+)(\d{1})(\d{8})/, "$2");
-													if (comma <= 0) {
-														return num.replace(/(\d+)(\d{1})(\d{8})/, "$1 T");
-													}
-													else {
-														return num.replace(/(\d+)(\d{1})(\d{8})/, "$1,$2 T");
-													}
+					var results = data.items;
+					var e = "";
+					var i;
+					for (i = 0; i < results.length; i++) {
+						if (results[i].id.kind == "youtube#video") {
+							var videoID = results[i].id.videoId;
+							var getVIDEO = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&part=snippet,statistics&key=" + keyAPI;
+							$.getJSON(getVIDEO, function(video) {
+								var video = video.items[0];
+								e += "<div class='video'>";
+									e += "<a class='thumb' href='https://youtu.be/" + video.id + "' target='_blank'>";
+										e += "<img src='https://i.ytimg.com/vi/" + video.id + "/maxresdefault.jpg'>";
+										e += "<div class='rating' style='--likeCount: " + video.statistics.likeCount + "; --dislikeCount: " + video.statistics.dislikeCount + "'></div>";
+									e += "</a>";
+									e += "<div class='data'>";
+										e += "<a href='https://youtu.be/" + video.id + "' class='title' target='_blank'>" + video.snippet.title + "</a>";
+										e += "<div class='statistics'>";
+											function viewCount() {
+												var num = video.statistics.viewCount;
+												var res = num.split("");
+												switch (res.length) {
+													case 4:
+													case 5:
+													case 6:
+														comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+														if (comma <= 0) {
+															return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
+														}
+														else {
+															return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
+														}
+														break;
+													case 7:
+													case 8:
+													case 9:
+														comma = num.replace(/(\d+)(\d{1})(\d{5})/, "$2");
+														if (comma <= 0) {
+															return num.replace(/(\d+)(\d{1})(\d{5})/, "$1 Tr");
+														}
+														else {
+															return num.replace(/(\d+)(\d{1})(\d{5})/, "$1,$2 Tr");
+														}
+														break;
+													case 10:
+													case 11:
+													case 12:
+														comma = num.replace(/(\d+)(\d{1})(\d{8})/, "$2");
+														if (comma <= 0) {
+															return num.replace(/(\d+)(\d{1})(\d{8})/, "$1 T");
+														}
+														else {
+															return num.replace(/(\d+)(\d{1})(\d{8})/, "$1,$2 T");
+														}
+												}
 											}
-										}
-										e += "<div class='item-'>";
-											e += "<div class='item'>";
-												e += "<span class='material-icons'>equalizer</span><div class='total'>" + viewCount() + "</div>";
+											e += "<div class='item-'>";
+												e += "<div class='item'><span class='material-icons'>equalizer</span><div class='total'>" + viewCount() + "</div></div>";
+												e += "<div class='item'><span class='material-icons'>mode_comment</span><div class='total'>" + video.statistics.commentCount + "</div></div>";
 											e += "</div>";
-											e += "<div class='item'>";
-												e += "<span class='material-icons'>mode_comment</span><div class='total'>" + video.statistics.commentCount + "</div>";
-											e += "</div>";
+											var video_D = video.snippet.publishedAt.substr(8, 2);
+											var video_M = video.snippet.publishedAt.substr(5, 2);
+											var video_Y = video.snippet.publishedAt.substr(0, 4);
+											e += "<div class='date'>" + video_D + " thg " + video_M + ", " + video_Y + "</div>";
 										e += "</div>";
-										var video_D = video.snippet.publishedAt.substr(8, 2);
-										var video_M = video.snippet.publishedAt.substr(5, 2);
-										var video_Y = video.snippet.publishedAt.substr(0, 4);
-										e += "<div class='date'>" + video_D + " thg " + video_M + ", " + video_Y + "</div>";
 									e += "</div>";
 								e += "</div>";
-							e += "</div>";
-							$(".YoutubeAPI .main-wrapper .colRight .playlist").html(e);
-						});
+								$(".YoutubeAPI .playlist").html(e);
+							});
+						}
 					}
-				}
-			});
+				});
 			}
 			getVIDEO(channelID, keyAPI);
 		</script>
