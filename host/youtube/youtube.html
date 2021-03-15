@@ -13,61 +13,204 @@
 				font-family: "Google Sans", sans-serif;
 				display: flex;
 				justify-content: center;
-				align-items: center;
 				padding: 1rem;
-				height: 100vh;
 			}
 
-			.channels {
-				background: #FFF;
-				display: flex;
-				padding: 1rem;
-				border-radius: var(--radius);
-				box-shadow: var(--shadow-1);
-				max-width: 500px;
+			.YoutubeAPI {
+				width: 100%;
+				max-width: 1036px;
+			}
+
+			.YoutubeAPI .header {
+				background: var(--dark);
+				width: 100%;
+				height: 300px;
+				position: relative;
+				border-bottom: 3rem solid #FFF;
 				user-select: none;
 			}
 
-			.channels .thumb {
+			.YoutubeAPI .header .userData {
+				display: flex;
+				align-items: flex-end;
+				position: absolute;
+				left: 1rem;
+				bottom: -2rem;
+			}
+
+			.YoutubeAPI .header .userData .thumb {
 				flex-shrink: 0;
-				display: block;
-				width: 208px;
-				height: 208px;
-				border-radius: var(--radius);
-				overflow: hidden;
-				box-shadow: var(--shadow-2);
+				width: 92px;
+				height: 92px;
+				background: #000;
+				border: 4px solid #FFF;
 			}
 
-			.channels .thumb img {
-				display: block;
-			}
-
-			.channels .metaData {
-				width: 100%;
-				margin-left: 1rem;
-				color: var(--black-rgb-54);
-				font-size: 14px;
+			.YoutubeAPI .header .userData .nameData {
+				font-size: 15px;
 				font-weight: 700;
+				line-height: 2rem;
+				margin-left: 0.5rem;
+			}
+
+			.YoutubeAPI .header .userData .nameData .fullname {
+				color: #FFF;
+			}
+
+			.YoutubeAPI .header .userData .nameData .username {
+				color: var(--black-rgb-38);
+			}
+
+			.YoutubeAPI .main-wrapper {
+				display: flex;
+				justify-content: space-between;
+				margin: 1rem 0 0;
+			}
+
+			.YoutubeAPI .main-wrapper .colLeft {
+				flex-shrink: 0;
+				width: 300px;
+				margin-right: 1rem;
+				background: #FFF;
+			}
+
+			.YoutubeAPI .main-wrapper .colLeft .statistics {
+				background: #FFF;
+				padding: 1rem;
 				display: grid;
 				grid-gap: 1rem;
+				user-select: none;
 			}
 
-			.channels .metaData>div {
+			.YoutubeAPI .main-wrapper .colLeft .statistics>div {
 				display: flex;
 				align-items: center;
 			}
 
-			.channels .metaData>div .material-icons {
-				background: #E9EBEE;
+			.YoutubeAPI .main-wrapper .colLeft .statistics>div .material-icons {
+				color: var(--black-rgb-38);
+				background: var(--light);
 				display: block;
-				width: 40px;
-				height: 40px;
+				width: 48px;
+				height: 48px;
+				font-size: 24px;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				margin-right: 1rem;
-				font-size: 20px;
-				border-radius: 35% 65% 65% 35%/65% 45% 55% 35%;
+			}
+
+			.YoutubeAPI .main-wrapper .colLeft .statistics>div .total {
+				color: var(--black-rgb-54);
+				font-size: 14px;
+				font-weight: 700;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight {
+				width: 100%;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(296px, 1fr));
+				grid-gap: 1rem;
+				width: 100%;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video {
+				background: #FFF;
+				transition: 0.25s;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video:hover {
+				box-shadow: var(--shadow-1);
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .thumb {
+				display: block;
+				overflow: hidden;
+				position: relative;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .thumb img {
+				transform: scale(1.05);
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .thumb .rating {
+				position: absolute;
+				width: 100%;
+				height: 4px;
+				background: red;
+				bottom: 0;
+				--sum: calc(var(--likeCount) + var(--dislikeCount));
+				--rating: calc(100% * var(--likeCount) / var(--sum));
+				background-image: linear-gradient(90deg, #F00 var(--rating), var(--light) 0);
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .data {
+				padding: 1rem;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .title {
+				color: var(--black-rgb-87);
+				font-size: 14px;
+				font-weight: 700;
+				line-height: 20px;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				margin-bottom: 0.5rem;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				user-select: none;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- {
+				display: flex;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- .item {
+				margin-right: 0.5rem;
+				background: var(--light);
+				display: flex;
+				align-items: center;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- .item:first-child .material-icons {
+				background: var(--blue);
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- .item:last-child .material-icons {
+				background: var(--green);
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- .item .material-icons {
+				display: block;
+				width: 24px;
+				height: 24px;
+				font-size: 15px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: #FFF;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .item- .item .total {
+				color: var(--black-rgb-54);
+				padding: 0 0.5rem;
+				font-size: 14px;
+				font-weight: 500;
+			}
+
+			.YoutubeAPI .main-wrapper .colRight .playlist .video .data .statistics .date {
+				color: var(--black-rgb-54);
+				font-size: 14px;
+				font-weight: 500;
 			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
