@@ -89,9 +89,22 @@
 				user-select: none;
 			}
 
-			.YoutubeAPI .main-wrapper .colLeft .statistics>div {
+			.YoutubeAPI .main-wrapper .colLeft .statistics .item {
 				display: flex;
+				justify-content: space-between;
 				align-items: center;
+			}
+
+			.YoutubeAPI .main-wrapper .colLeft .statistics .item .material-icons {
+				color: var(--black-rgb-54);
+				font-size: 24px;
+			}
+
+			.YoutubeAPI .main-wrapper .colLeft .statistics .item .total {
+				color: var(--black-rgb-54);
+				font-size: 14px;
+				font-weight: 700;
+				text-transform: uppercase;
 			}
 
 			.YoutubeAPI .main-wrapper .colLeft .statistics>div .material-icons {
@@ -239,10 +252,10 @@
 				channels += "<div class='main-wrapper'>";
 					channels += "<div class='colLeft'>";
 						channels += "<div class='statistics'>";
-							channels += "<div class='item-'>";
+							channels += "<div class='item'>";
 								channels += "<span class='material-icons'>subscriptions</span><span class='total'>" + results.statistics.subscriberCount + " lượt đăng ký</span>";
 							channels += "</div>";
-							channels += "<div class='item-'>";
+							channels += "<div class='item'>";
 								function viewCount() {
 									var num = results.statistics.viewCount;
 									var res = num.split("");
@@ -283,10 +296,10 @@
 								}
 								channels += "<span class='material-icons'>equalizer</span><span class='total'>" + viewCount() + " lượt xem</span>";
 							channels += "</div>";
-							channels += "<div class='item-'>";
+							channels += "<div class='item'>";
 								channels += "<span class='material-icons'>movie</span><span class='total'>" + results.statistics.videoCount + " video</span>";
 							channels += "</div>";
-							channels += "<div class='item-'>";
+							channels += "<div class='item'>";
 								var cl_D = results.snippet.publishedAt.substr(8, 2);
 								var cl_M = results.snippet.publishedAt.substr(5, 2);
 								var cl_Y = results.snippet.publishedAt.substr(0, 4);
