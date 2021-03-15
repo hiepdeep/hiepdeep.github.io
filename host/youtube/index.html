@@ -31,19 +31,27 @@
 
 			.YoutubeAPI ul li {
 				background: #FFF;
+				padding: 1rem;
 				border-radius: var(--radius);
 				box-shadow: var(--shadow-1);
 			}
 
-			.YoutubeAPI ul li input {
-				font-family: "Google Sans", sans-serif;
-				width: 100%;
-				border: 0;
-				background: 0;
-				padding: 1rem;
+			.YoutubeAPI ul li span {
+				color: var(--black-rgb-54);
 				font-size: 14px;
 				font-weight: 500;
-				color: var(--black-rgb-54);
+				line-height: 20px;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			.YoutubeAPI ul li span * {
+				font-size: 14px !important;
+				font-weight: 500 !important;
+				line-height: 20px !important;
+				font-style: inherit !important;
 			}
 
 			.YoutubeAPI .backlinks {
@@ -75,22 +83,22 @@
 			<h2>Youtube API</h2>
 			<ul>
 				<li>
-					<input type="text" value="https://developers.google.com/youtube/v3/docs/videos/list">
+					<span contenteditable>https://developers.google.com/youtube/v3/docs/videos/list</span>
 				</li>
 				<li>
-					<input type="text" value="https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics,brandingSettings,localizations&fields=items(id,snippet(customUrl,localized,publishedAt,thumbnails(medium,high),country),statistics,brandingSettings(image))&id=UCyV9xgnGA-Ztrqx_bD9B5ag&key=[KEY_API]">
+					<span contenteditable>https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics,brandingSettings,localizations&fields=items(id,snippet(customUrl,localized,publishedAt,thumbnails(medium,high),country),statistics,brandingSettings(image))&id=UCyV9xgnGA-Ztrqx_bD9B5ag&key=[KEY_API]</span>
 				</li>
 				<li>
-					<input type="text" value="https://www.googleapis.com/youtube/v3/videos?id=_uXQTmkEusM&fields=items(id,snippet(publishedAt,channelId,title,thumbnails(medium),channelTitle),statistics)&part=snippet,statistics&key=[KEY_API]">
+					<span contenteditable>https://www.googleapis.com/youtube/v3/videos?id=_uXQTmkEusM&fields=items(id,snippet(publishedAt,channelId,title,thumbnails(medium),channelTitle),statistics)&part=snippet,statistics&key=[KEY_API]</span>
 				</li>
 				<li>
-					<input type="text" value="https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=50&playlistId=PLvQUnzYRDn2RtvXsIE43_-bZoanKwLg5L&key=[KEY_API]">
+					<span contenteditable>https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=50&playlistId=PLvQUnzYRDn2RtvXsIE43_-bZoanKwLg5L&key=[KEY_API]</span>
 				</li>
 				<li>
-					<input type="text" value="https://www.googleapis.com/youtube/v3/commentThreads?part=id,snippet,replies&videoId=AmpCyFObf2Q&key=[KEY_API]">
+					<span contenteditable>https://www.googleapis.com/youtube/v3/commentThreads?part=id,snippet,replies&videoId=AmpCyFObf2Q&key=[KEY_API]</span>
 				</li>
 				<li>
-					<input type="text" value="https://www.googleapis.com/youtube/v3/search?part=id,snippet&channelId=UCyV9xgnGA-Ztrqx_bD9B5ag&order=date&maxResults=20&key=[KEY_API]">
+					<span contenteditable>https://www.googleapis.com/youtube/v3/search?part=id,snippet&channelId=UCyV9xgnGA-Ztrqx_bD9B5ag&order=date&maxResults=20&key=[KEY_API]</span>
 				</li>
 			</ul>
 			<div class="backlinks">
