@@ -233,10 +233,10 @@
 				var channels = "";
 				channels += "<div class='header'>";
 					channels += "<div class='userData'>";
-						channels += "<a href='https://www.youtube.com/channel/" + results.id + "' target='_blank' class='thumb'><img src='" + results.snippet.thumbnails.high.url + "'></a>";
+						channels += "<a class='thumb' href='https://www.youtube.com/channel/" + results.id + "' target='_blank'><img src='" + results.snippet.thumbnails.high.url + "'></a>";
 						channels += "<div class='nameData'>";
-							channels += "<div class='fullname'>" + results.snippet.title + "</div>";
-							channels += "<div class='username'>" + results.snippet.customUrl + "</div>";
+							channels += "<a class='fullname'> href='https://www.youtube.com/channel/" + results.id + "' target='_blank'" + results.snippet.title + "</a>";
+							channels += "<a class='username'> href='https://www.youtube.com/channel/" + results.id + "' target='_blank'" + results.snippet.customUrl + "</a>";
 						channels += "</div>";
 					channels += "</div>";
 				channels += "</div>";
@@ -316,12 +316,12 @@
 						$.getJSON(getVIDEO, function(video) {
 							var video = video.items[0];
 							e += "<div class='video'>";
-								e += "<a class='thumb' href='https://youtu.be/" + video.id + "'>";
+								e += "<a class='thumb' href='https://youtu.be/" + video.id + "' target='_blank'>";
 									e += "<img src='https://i.ytimg.com/vi/" + video.id + "/maxresdefault.jpg'>";
 									e += "<div class='rating' style='--likeCount: " + video.statistics.likeCount + "; --dislikeCount: " + video.statistics.dislikeCount + "'></div>";
 								e += "</a>";
 								e += "<div class='data'>";
-									e += "<a href='https://youtu.be/" + video.id + "' class='title'>" + video.snippet.title + "</a>";
+									e += "<a href='https://youtu.be/" + video.id + "' class='title' target='_blank'>" + video.snippet.title + "</a>";
 									e += "<div class='statistics'>";
 										function viewCount() {
 											var num = video.statistics.viewCount;
