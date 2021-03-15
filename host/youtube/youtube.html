@@ -11,97 +11,53 @@
 			body {
 				background: var(--light);
 				font-family: "Google Sans", sans-serif;
-			}
-
-			.YouTubeAPI {
 				display: flex;
-				flex-direction: column;
-				position: relative;
-				max-width: 1036px;
-				width: calc(100% - 2rem);
-				margin: 1rem auto;
-			}
-
-			.YouTubeAPI .channels-header {
-				background: #322E2F;
-				height: 300px;
-				position: relative;
-				margin-bottom: 1rem;
-				border-bottom: calc(1rem + 24px) solid transparent;
-			}
-
-			.YouTubeAPI .channels-header .channels-user {
-				display: flex;
+				justify-content: center;
 				align-items: center;
-				position: absolute;
-				bottom: -24px;
-				left: 1rem;
-				z-index: 2;
+				padding: 1rem;
+				height: 100vh;
 			}
 
-			.YouTubeAPI .channels-header .channels-user .channels-avatar {
-				width: 100px;
-				height: 100px;
-				margin-right: 1rem;
-				.border-radius: 50%;
+			.channels {
+				background: #FFF;
+				display: flex;
+				padding: 1rem;
+				border-radius: var(--radius);
+				box-shadow: var(--shadow-1);
+				max-width: 500px;
+				user-select: none;
+			}
+
+			.channels .thumb {
+				flex-shrink: 0;
+				display: block;
+				width: 208px;
+				height: 208px;
+				border-radius: var(--radius);
 				overflow: hidden;
-				border: 4px solid #FFF;
+				box-shadow: var(--shadow-2);
 			}
 
-			.YouTubeAPI .channels-header .channels-user .channels-avatar img {
+			.channels .thumb img {
 				display: block;
 			}
 
-			.YouTubeAPI .channels-header .channels-user .channels-name {
-				line-height: 20px;
-			}
-
-			.YouTubeAPI .channels-header .channels-user .channels-name h1.name {
-				color: #FFF;
-				font-size: 18px;
-				font-weight: 500;
-			}
-
-			.YouTubeAPI .channels-header .channels-user .channels-name h3.username {
-				color: #FFF;
-				font-size: 12px;
-				font-weight: 400;
-				font-style: italic;
-			}
-
-			.YouTubeAPI .channels-header .channels-header-nav {
-				background: #FFF;
-				position: absolute;
-				top: 100%;
-				left: 0;
+			.channels .metaData {
 				width: 100%;
-				height: calc(1rem + 24px);
-				z-index: 1;
-			}
-
-			.YouTubeAPI .main-wrapper {
-				display: flex;
-			}
-
-			.YouTubeAPI .main-wrapper #leftCol {
-				width: 300px;
-				flex-shrink: 0;
-			}
-
-			.YouTubeAPI .main-wrapper #leftCol .statistics {
-				background: #FFF;
-				padding: 1rem;
+				margin-left: 1rem;
 				color: var(--black-rgb-54);
+				font-size: 14px;
+				font-weight: 700;
 				display: grid;
 				grid-gap: 1rem;
 			}
 
-			.YouTubeAPI .main-wrapper #leftCol .statistics>div {
+			.channels .metaData>div {
 				display: flex;
 				align-items: center;
 			}
 
-			.YouTubeAPI .main-wrapper #leftCol .statistics>div .material-icons {
+			.channels .metaData>div .material-icons {
 				background: #E9EBEE;
 				display: block;
 				width: 40px;
@@ -113,68 +69,171 @@
 				font-size: 20px;
 				border-radius: 35% 65% 65% 35%/65% 45% 55% 35%;
 			}
-
-			.YouTubeAPI .main-wrapper #leftCol .statistics>div .total {
-				font-size: 14px;
-				font-weight: 500;
-			}
-
-			.YouTubeAPI .main-wrapper #contentCol {
-				flex-shrink: 1;
-				width: 100%;
-				margin-left: 1rem;
-				background: #FFF;
-			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div class='YouTubeAPI'></div>
+		<div class="YoutubeAPI"></div>
 		<script type="text/javascript">
-			var channelId = "UCyV9xgnGA-Ztrqx_bD9B5ag";
-			var KEY = "AIzaSyDmi5gTRgaMaWTZkf2YNhxxNWPT4CQOBeE";
-			var getChannels = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics,brandingSettings&id=" + channelId + "&key=" + KEY;
-			$.getJSON(getChannels, function(channels) {
-				var channels = channels.items[0];
-				var e = "";
-				e += "<div class='channels-header'>";
-					e += "<div class='channels-user'>";
-						e += "<div class='channels-avatar'><img src='" + channels.snippet.thumbnails.medium.url + "'></div>";
-						e += "<div class='channels-name'>";
-							e += "<h1 class='name'>" + channels.snippet.title + "</h1>";
-							e += "<h3 class='username'>@" + channels.snippet.customUrl + "</h3>";
-						e += "</div>";
-					e += "</div>";
-					e += "<div class='channels-header-nav'></div>";
-				e += "</div>";
-				e += "<div class='main-wrapper'>";
-					e += "<div id='leftCol'>";
-						e += "<div class='statistics'>";
-							e += "<div class='item-'>";
-								e += "<span class='material-icons'>subscriptions</span><span class='total'>" + channels.statistics.subscriberCount + " lượt đăng ký</span>";
-							e += "</div>";
-							e += "<div class='item-'>";
-								e += "<span class='material-icons'>equalizer</span><span class='total'>" + channels.statistics.viewCount + " lượt lượt xem</span>";
-							e += "</div>";
-							e += "<div class='item-'>";
-								e += "<span class='material-icons'>playlist_play</span><span class='total'>" + channels.statistics.videoCount + " video</span>";
-							e += "</div>";
-							e += "<div class='item-'>";
-								e += "<span class='material-icons'>query_builder</span>";
-								var cl_D = channels.snippet.publishedAt.substr(8, 2);
-								var cl_M = channels.snippet.publishedAt.substr(5, 2);
-								var cl_Y = channels.snippet.publishedAt.substr(0, 4);
-								e += "<span class='total'>" + cl_D + " thg " + cl_M + ", " + cl_Y + "</span>";
-							e += "</div>";
-						e += "</div>";
-					e += "</div>";
-					e += "<div id='contentCol'>";
-						var getPlaylist = "https://www.googleapis.com/youtube/v3/search?part=id,snippet&channelId=" + channelId + "&order=date&maxResults=9&key=" + KEY;
-						e += getPlaylist;
-					e += "</div>";
-				e += "</div>";
-				$(".YouTubeAPI").html(e);
+			var channelID = "UCyV9xgnGA-Ztrqx_bD9B5ag";
+			var keyAPI = "AIzaSyAPZKvIB0e9uy8IFYvzJsTN9wn6zsxuV9s";
+
+			$.getJSON("https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics", {id: channelID, key: keyAPI}, function(data) {
+				var results = data.items[0];
+				var channels = "";
+				channels += "<div class='header'>";
+					channels += "<div class='userData'>";
+						channels += "<div class='thumb'><img src='" + results.snippet.thumbnails.high.url + "'></div>";
+						channels += "<div class='nameData'>";
+							channels += "<div class='fullname'>" + results.snippet.title + "</div>";
+							channels += "<div class='username'>" + results.snippet.customUrl + "</div>";
+						channels += "</div>";
+					channels += "</div>";
+				channels += "</div>";
+				channels += "<div class='main-wrapper'>";
+					channels += "<div class='colLeft'>";
+						channels += "<div class='statistics'>";
+							channels += "<div class='item-'>";
+								channels += "<span class='material-icons'>subscriptions</span><span class='total'>" + results.statistics.subscriberCount + " lượt đăng ký</span>";
+							channels += "</div>";
+							channels += "<div class='item-'>";
+								function viewCount() {
+									var num = results.statistics.viewCount;
+									var res = num.split("");
+									switch (res.length) {
+										case 4:
+										case 5:
+										case 6:
+											comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+											if (comma <= 0) {
+												return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
+											}
+											else {
+												return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
+											}
+											break;
+										case 7:
+										case 8:
+										case 9:
+											comma = num.replace(/(\d+)(\d{1})(\d{5})/, "$2");
+											if (comma <= 0) {
+												return num.replace(/(\d+)(\d{1})(\d{5})/, "$1 Tr");
+											}
+											else {
+												return num.replace(/(\d+)(\d{1})(\d{5})/, "$1,$2 Tr");
+											}
+											break;
+										case 10:
+										case 11:
+										case 12:
+											comma = num.replace(/(\d+)(\d{1})(\d{8})/, "$2");
+											if (comma <= 0) {
+												return num.replace(/(\d+)(\d{1})(\d{8})/, "$1 T");
+											}
+											else {
+												return num.replace(/(\d+)(\d{1})(\d{8})/, "$1,$2 T");
+											}
+									}
+								}
+								channels += "<span class='material-icons'>equalizer</span><span class='total'>" + viewCount() + " lượt xem</span>";
+							channels += "</div>";
+							channels += "<div class='item-'>";
+								channels += "<span class='material-icons'>playlist_play</span><span class='total'>" + results.statistics.videoCount + " video</span>";
+							channels += "</div>";
+							channels += "<div class='item-'>";
+								var cl_D = results.snippet.publishedAt.substr(8, 2);
+								var cl_M = results.snippet.publishedAt.substr(5, 2);
+								var cl_Y = results.snippet.publishedAt.substr(0, 4);
+								channels += "<span class='material-icons'>query_builder</span><span class='total'>" + cl_D + " thg " + cl_M + ", " + cl_Y + "</span>";
+							channels += "</div>";
+						channels += "</div>";
+					channels += "</div>";
+					channels += "<div class='colRight'>";
+						channels += "<div class='playlist'></div>";
+					channels += "</div>";
+				channels += "</div>";
+				
+				$(".YoutubeAPI").html(channels);
 			});
+			function getVIDEO(channelID, keyAPI) {
+				$.getJSON("https://www.googleapis.com/youtube/v3/search?part=id,snippet&order=date&maxResults=20", {channelId: channelID, key: keyAPI}, function(data) {
+				var results = data.items;
+				var e = "";
+				var i;
+				for (i = 0; i < results.length; i++) {
+					if (results[i].id.kind == "youtube#video") {
+						var videoID = results[i].id.videoId;
+						var getVIDEO = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&part=snippet,statistics&key=" + keyAPI;
+						$.getJSON(getVIDEO, function(video) {
+							var video = video.items[0];
+							e += "<div class='video'>";
+								e += "<a class='thumb' href='https://youtu.be/" + video.id + "'>";
+									e += "<img src='https://i.ytimg.com/vi/" + video.id + "/maxresdefault.jpg'>";
+									e += "<div class='rating' style='--likeCount: " + video.statistics.likeCount + "; --dislikeCount: " + video.statistics.dislikeCount + "'></div>";
+								e += "</a>";
+								e += "<div class='data'>";
+									e += "<a href='https://youtu.be/" + video.id + "' class='title'>" + video.snippet.title + "</a>";
+									e += "<div class='statistics'>";
+										function viewCount() {
+											var num = video.statistics.viewCount;
+											var res = num.split("");
+											switch (res.length) {
+												case 4:
+												case 5:
+												case 6:
+													comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+													if (comma <= 0) {
+														return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
+													}
+													else {
+														return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
+													}
+													break;
+												case 7:
+												case 8:
+												case 9:
+													comma = num.replace(/(\d+)(\d{1})(\d{5})/, "$2");
+													if (comma <= 0) {
+														return num.replace(/(\d+)(\d{1})(\d{5})/, "$1 Tr");
+													}
+													else {
+														return num.replace(/(\d+)(\d{1})(\d{5})/, "$1,$2 Tr");
+													}
+													break;
+												case 10:
+												case 11:
+												case 12:
+													comma = num.replace(/(\d+)(\d{1})(\d{8})/, "$2");
+													if (comma <= 0) {
+														return num.replace(/(\d+)(\d{1})(\d{8})/, "$1 T");
+													}
+													else {
+														return num.replace(/(\d+)(\d{1})(\d{8})/, "$1,$2 T");
+													}
+											}
+										}
+										e += "<div class='item-'>";
+											e += "<div class='item'>";
+												e += "<span class='material-icons'>equalizer</span><div class='total'>" + viewCount() + "</div>";
+											e += "</div>";
+											e += "<div class='item'>";
+												e += "<span class='material-icons'>mode_comment</span><div class='total'>" + video.statistics.commentCount + "</div>";
+											e += "</div>";
+										e += "</div>";
+										var video_D = video.snippet.publishedAt.substr(8, 2);
+										var video_M = video.snippet.publishedAt.substr(5, 2);
+										var video_Y = video.snippet.publishedAt.substr(0, 4);
+										e += "<div class='date'>" + video_D + " thg " + video_M + ", " + video_Y + "</div>";
+									e += "</div>";
+								e += "</div>";
+							e += "</div>";
+							$(".YoutubeAPI .main-wrapper .colRight .playlist").html(e);
+						});
+					}
+				}
+			});
+			}
+			getVIDEO(channelID, keyAPI);
 		</script>
 	</body>
 </html>
