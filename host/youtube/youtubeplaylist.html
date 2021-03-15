@@ -109,15 +109,15 @@
 		<script type="text/javascript">
 			var MAX = "5";
 			var PLAYLIST = "PLvQUnzYRDn2RBxOL_LyuugQOZqzf307u9";
-			var KEY = "AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
-			var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=" + MAX + "&playlistId=" + PLAYLIST + "&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
+			var KEY = "AIzaSyAMqEe_-rbYi0qhXYl7fPUsoOLG4ZVrfAY";
+			var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=" + MAX + "&playlistId=" + PLAYLIST + "&key=AIzaSyAMqEe_-rbYi0qhXYl7fPUsoOLG4ZVrfAY";
 			$.getJSON(url, function(data) {
 				var result = data.items;
 				var playlist = "";
 				var i;
 				for (i = 0; i < result.length; i++) {
 					var videoID = result[i].snippet.resourceId.videoId;
-					var video = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&fields=items(id,snippet,statistics)&part=snippet,statistics&key=AIzaSyDpLX11iVigH2dZfqTClOgHWiPf4w9Y8hA";
+					var video = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&fields=items(id,snippet,statistics)&part=snippet,statistics&key=AIzaSyAMqEe_-rbYi0qhXYl7fPUsoOLG4ZVrfAY";
 					$.getJSON(video, function(str){
 						var vd = str.items[0];
 						playlist += "<li>";
