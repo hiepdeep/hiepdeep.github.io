@@ -24,10 +24,10 @@
 
 			.YoutubeAPI .channel {
 				background: linear-gradient(to right, rgb(52, 148, 230), rgb(236, 110, 173));
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
 				padding: 1rem;
+				display: grid;
+				grid-gap: 1rem;
+				grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 			}
 
 			.YoutubeAPI .channel .userData {
@@ -73,7 +73,7 @@
 			}
 
 			.YoutubeAPI .channel .statistics .item {
-				height: 80px;
+				height: 92px;
 				background: white;
 				display: flex;
 				justify-content: space-between;
