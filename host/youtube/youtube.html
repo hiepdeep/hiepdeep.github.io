@@ -283,81 +283,78 @@
 				channels += "<div class='playlist'></div>";
 				$(".YoutubeAPI").html(channels);
 			});
-			function getVIDEO(channelID, keyAPI) {
-				$.getJSON("https://www.googleapis.com/youtube/v3/search?part=id,snippet&order=date&maxResults=20", {channelId: channelID, key: keyAPI}, function(data) {
-					var results = data.items;
-					var e = "";
-					var i;
-					for (i = 0; i < results.length; i++) {
-						if (results[i].id.kind == "youtube#video") {
-							var videoID = results[i].id.videoId;
-							var getVIDEO = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&part=snippet,statistics&key=" + keyAPI;
-							$.getJSON(getVIDEO, function(video) {
-								var video = video.items[0];
-								e += "<div class='video'>";
-									e += "<a class='thumb' href='https://youtu.be/" + video.id + "' target='_blank'>";
-										e += "<img src='https://i.ytimg.com/vi/" + video.id + "/maxresdefault.jpg'>";
-										e += "<div class='rating' style='--likeCount: " + video.statistics.likeCount + "; --dislikeCount: " + video.statistics.dislikeCount + "'></div>";
-									e += "</a>";
-									e += "<div class='data'>";
-										e += "<a href='https://youtu.be/" + video.id + "' class='title' target='_blank'>" + video.snippet.title + "</a>";
-										e += "<div class='statistics'>";
-											function viewCount() {
-												var num = video.statistics.viewCount;
-												var res = num.split("");
-												switch (res.length) {
-													case 4:
-													case 5:
-													case 6:
-														comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
-														if (comma <= 0) {
-															return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
-														}
-														else {
-															return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
-														}
-														break;
-													case 7:
-													case 8:
-													case 9:
-														comma = num.replace(/(\d+)(\d{1})(\d{5})/, "$2");
-														if (comma <= 0) {
-															return num.replace(/(\d+)(\d{1})(\d{5})/, "$1 Tr");
-														}
-														else {
-															return num.replace(/(\d+)(\d{1})(\d{5})/, "$1,$2 Tr");
-														}
-														break;
-													case 10:
-													case 11:
-													case 12:
-														comma = num.replace(/(\d+)(\d{1})(\d{8})/, "$2");
-														if (comma <= 0) {
-															return num.replace(/(\d+)(\d{1})(\d{8})/, "$1 T");
-														}
-														else {
-															return num.replace(/(\d+)(\d{1})(\d{8})/, "$1,$2 T");
-														}
-												}
+			$.getJSON("https://www.googleapis.com/youtube/v3/search?part=id,snippet&order=date&maxResults=20", {channelId: channelID, key: keyAPI}, function(data) {
+				var results = data.items;
+				var e = "";
+				var i;
+				for (i = 0; i < results.length; i++) {
+					if (results[i].id.kind == "youtube#video") {
+						var videoID = results[i].id.videoId;
+						var getVIDEO = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&part=snippet,statistics&key=" + keyAPI;
+						$.getJSON(getVIDEO, function(video) {
+							var video = video.items[0];
+							e += "<div class='video'>";
+								e += "<a class='thumb' href='https://youtu.be/" + video.id + "' target='_blank'>";
+									e += "<img src='https://i.ytimg.com/vi/" + video.id + "/maxresdefault.jpg'>";
+									e += "<div class='rating' style='--likeCount: " + video.statistics.likeCount + "; --dislikeCount: " + video.statistics.dislikeCount + "'></div>";
+								e += "</a>";
+								e += "<div class='data'>";
+									e += "<a href='https://youtu.be/" + video.id + "' class='title' target='_blank'>" + video.snippet.title + "</a>";
+									e += "<div class='statistics'>";
+										function viewCount() {
+											var num = video.statistics.viewCount;
+											var res = num.split("");
+											switch (res.length) {
+												case 4:
+												case 5:
+												case 6:
+													comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+													if (comma <= 0) {
+														return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
+													}
+													else {
+														return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
+													}
+													break;
+												case 7:
+												case 8:
+												case 9:
+													comma = num.replace(/(\d+)(\d{1})(\d{5})/, "$2");
+													if (comma <= 0) {
+														return num.replace(/(\d+)(\d{1})(\d{5})/, "$1 Tr");
+													}
+													else {
+														return num.replace(/(\d+)(\d{1})(\d{5})/, "$1,$2 Tr");
+													}
+													break;
+												case 10:
+												case 11:
+												case 12:
+													comma = num.replace(/(\d+)(\d{1})(\d{8})/, "$2");
+													if (comma <= 0) {
+														return num.replace(/(\d+)(\d{1})(\d{8})/, "$1 T");
+													}
+													else {
+														return num.replace(/(\d+)(\d{1})(\d{8})/, "$1,$2 T");
+													}
 											}
-											e += "<div class='item-'>";
-												e += "<div class='item'><span class='material-icons'>equalizer</span><div class='total'>" + viewCount() + "</div></div>";
-												e += "<div class='item'><span class='material-icons'>mode_comment</span><div class='total'>" + video.statistics.commentCount + "</div></div>";
-											e += "</div>";
-											var video_D = video.snippet.publishedAt.substr(8, 2);
-											var video_M = video.snippet.publishedAt.substr(5, 2);
-											var video_Y = video.snippet.publishedAt.substr(0, 4);
-											e += "<div class='date'>" + video_D + " thg " + video_M + ", " + video_Y + "</div>";
+										}
+										e += "<div class='item-'>";
+											e += "<div class='item'><span class='material-icons'>equalizer</span><div class='total'>" + viewCount() + "</div></div>";
+											e += "<div class='item'><span class='material-icons'>mode_comment</span><div class='total'>" + video.statistics.commentCount + "</div></div>";
 										e += "</div>";
+										var video_D = video.snippet.publishedAt.substr(8, 2);
+										var video_M = video.snippet.publishedAt.substr(5, 2);
+										var video_Y = video.snippet.publishedAt.substr(0, 4);
+										e += "<div class='date'>" + video_D + " thg " + video_M + ", " + video_Y + "</div>";
 									e += "</div>";
 								e += "</div>";
-								$(".YoutubeAPI .playlist").html(e);
-							});
-						}
+							e += "</div>";
+							$(".YoutubeAPI .playlist").html(e);
+						});
 					}
-				});
-			}
-			getVIDEO(channelID, keyAPI);
+				}
+			});
 		</script>
 	</body>
 </html>
