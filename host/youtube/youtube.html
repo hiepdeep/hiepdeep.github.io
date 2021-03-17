@@ -251,14 +251,17 @@
 								switch (res.length) {
 									case 4:
 									case 5:
-									case 6:
-										comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+										comma = str.replace(/(\d+)(\d{1})(\d{2})/, "$2");
 										if (comma <= 0) {
-											return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
+											return str.replace(/(\d+)(\d{1})(\d{2})/, "$1 N lượt xem");
 										}
 										else {
-											return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
+											return str.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N lượt xem");
 										}
+										break;
+									case 6:
+										comma = str.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+										return str.replace(/(\d+)(\d{1})(\d{2})/, "$1 N lượt xem");
 										break;
 									case 7:
 									case 8:
@@ -318,14 +321,17 @@
 											switch (res.length) {
 												case 4:
 												case 5:
-												case 6:
-													comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+													comma = str.replace(/(\d+)(\d{1})(\d{2})/, "$2");
 													if (comma <= 0) {
-														return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
+														return str.replace(/(\d+)(\d{1})(\d{2})/, "$1 N lượt xem");
 													}
 													else {
-														return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
+														return str.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N lượt xem");
 													}
+													break;
+												case 6:
+													comma = str.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+													return str.replace(/(\d+)(\d{1})(\d{2})/, "$1 N lượt xem");
 													break;
 												case 7:
 												case 8:
