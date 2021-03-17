@@ -222,8 +222,34 @@
 	<body>
 		<div class="YoutubeAPI"></div>
 		<script type="text/javascript">
+			var libs_KEY = [
+				"AIzaSyCW2pN3FIDIcCNiLjoHFLIzjbp7mRFLAMI",
+				"AIzaSyD9ca5eh4kxKbeOkL9JEtv8NLZoJO6ciEE",
+				"AIzaSyAMqEe_-rbYi0qhXYl7fPUsoOLG4ZVrfAY",
+				"AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
+				"AIzaSyA6PVeWXWLkcXZaath72GGJ-TDxvLYAkG8",
+				"AIzaSyDcxCTneoolsMGhrbXjxf14jg9ozDrP-QQ",
+				"AIzaSyAqVGNQExGhMtPk4fbP4M1AAwJjhRrMq68",
+				"AIzaSyCZXhE1bXeXdnQydBSGe16aJUHbh3FOpv8",
+				"AIzaSyD35CDtIMjHJrW9USpTFBRANp22tjCLd1o",
+				"AIzaSyApCz53mni5YdeWRvPiiBdxwBxtRMWVHHo",
+				"AIzaSyA8L9Lifu-p-vY-eLhOXrWgQB-3LuYrWJY",
+				"AIzaSyA5-eOVh51GSRiwIEmsQvUUqUojguobefI",
+				"AIzaSyAPZKvIB0e9uy8IFYvzJsTN9wn6zsxuV9s",
+				"AIzaSyBJAq6WUpm-QtlWJpKCDX56_Jxhk7GYVMA",
+				"AIzaSyAMqEe_-rbYi0qhXYl7fPUsoOLG4ZVrfAY",
+				"AIzaSyDmi5gTRgaMaWTZkf2YNhxxNWPT4CQOBeE",
+				"AIzaSyCxLHRvLD6QaeCNmERMbqHMq3DY6kds_gk",
+				"AIzaSyDZDlUHbwIVIiYBKbFar-avT-vY4bpL0Tk",
+				"AIzaSyAk94371-Wk2HQdydTdeCjy8jkLy96NeCM",
+				"AIzaSyCW2pN3FIDIcCNiLjoHFLIzjbp7mRFLAMI",
+				
+				"AIzaSyAVsSGQGdq6sviQN0-r0XYTln7CTaXg-0U",
+				"AIzaSyA08bG5gHpKMW4vt0Z--AVYeepXp5VmTzw",
+				"AIzaSyClCJEgN8nBpplIq2d-FCmrpxZZKjyoPQE"
+			]
 			var channelID = "UCyV9xgnGA-Ztrqx_bD9B5ag";
-			var keyAPI = "AIzaSyAk94371-Wk2HQdydTdeCjy8jkLy96NeCM";
+			var keyAPI = libs_KEY[Math.floor(Math.random() * libs_KEY.length)];
 			$.getJSON("https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics", {
 				id: channelID,
 				key: keyAPI
