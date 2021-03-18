@@ -84,6 +84,30 @@
 
 			.container .main-wrapper .colRight .item .widget-thumb {
 				display: block;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.container .main-wrapper .colRight .item .widget-thumb:before {
+				content: "\e880";
+				font-family: "Material Icons";
+				position: absolute;
+				background: var(--black-rgb-38);
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+				color: #FFF;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 24px;
+				opacity: 0;
+				transition: 0.25s;
+			}
+
+			.container .main-wrapper .colRight .item .widget-thumb:hover:before {
+				opacity: 1;
+				transform: scale(3);
 			}
 
 			.container .main-wrapper .colRight .item .widget-title {
