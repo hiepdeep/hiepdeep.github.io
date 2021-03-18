@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="favicon.png">
+		<title>HIEPDEEP</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hiepdeep/cdn/style.min.css">
+		<style type="text/css">
+			body {
+				background: var(--light);
+				font-family: "Google Sans", sans-serif;
+				display: flex;
+				justify-content: center;
+				padding: 1rem;
+			}
+
+			.container {
+				width: 100%;
+				max-width: 720px;
+			}
+
+			.container .header {
+				background: #161823;
+				width: 100%;
+				height: 300px;
+				position: relative;
+				border-bottom: 100px solid #FFF;
+				user-select: none;
+			}
+
+			.container .header .userData {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				position: absolute;
+				left: calc(50% - 120px/2);
+				bottom: -100px;
+			}
+
+			.container .header .userData .thumb {
+				flex-shrink: 0;
+				width: 120px;
+				height: 120px;
+				background: #000;
+				border: 4px solid #FFF;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+
+			.container .header .userData .nameData {
+				font-size: 15px;
+				font-weight: 700;
+				line-height: 40px;
+			}
+
+			.container .header .userData .nameData .fullname {
+				color: var(--black-rgb-54);
+			}
+
+			.container .main-wrapper {
+				display: flex;
+				justify-content: space-between;
+				margin: 1rem 0 0;
+			}
+
+			.container .main-wrapper .colLeft {
+				flex-shrink: 0;
+				width: 240px;
+				margin-right: 1rem;
+				background: #FFF;
+				height: 240px;
+				padding: 1rem;
+				border: 2px solid;
+				opacity: 10%;
+			}
+
+			.container .main-wrapper .colRight {
+				width: 100%;
+				background: #FFF;
+			}
+
+			.container .main-wrapper .colRight .item .widget-thumb {
+				display: block;
+			}
+
+			.container .main-wrapper .colRight .item .widget-title {
+				padding: 1rem;
+				color: var(--black-rgb-87);
+				font-size: 14px;
+				font-weight: 700;
+				line-height: 20px;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<div class="userData">
+					<div class="thumb">
+						<img src="/cdn/pictures/thumbnail.jpg">
+					</div>
+					<div class="nameData">
+						<a class="fullname" href="">HIEPDEEP</a>
+					</div>
+				</div>
+			</div>
+			<div class="main-wrapper">
+				<div class="colLeft">colLeft</div>
+				<div class="colRight">
+					<div class="item">
+						<a href="https://hiepdeep.github.io/youtube/" target="_blank" class="widget-thumb">
+							<img src="/cdn/pictures/YoutubeAPI.png">
+						</a>
+						<a href="https://hiepdeep.github.io/youtube/" target="_blank" class="widget-title">Youtube API</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
