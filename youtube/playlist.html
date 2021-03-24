@@ -107,10 +107,36 @@
 	<body>
 		<div class="playlist"></div>
 		<script type="text/javascript">
+			var libs_KEY = [
+				"AIzaSyCW2pN3FIDIcCNiLjoHFLIzjbp7mRFLAMI",
+				"AIzaSyD9ca5eh4kxKbeOkL9JEtv8NLZoJO6ciEE",
+				"AIzaSyAMqEe_-rbYi0qhXYl7fPUsoOLG4ZVrfAY",
+				"AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
+				"AIzaSyA6PVeWXWLkcXZaath72GGJ-TDxvLYAkG8",
+				"AIzaSyDcxCTneoolsMGhrbXjxf14jg9ozDrP-QQ",
+				"AIzaSyAqVGNQExGhMtPk4fbP4M1AAwJjhRrMq68",
+				"AIzaSyCZXhE1bXeXdnQydBSGe16aJUHbh3FOpv8",
+				"AIzaSyD35CDtIMjHJrW9USpTFBRANp22tjCLd1o",
+				"AIzaSyApCz53mni5YdeWRvPiiBdxwBxtRMWVHHo",
+				"AIzaSyA8L9Lifu-p-vY-eLhOXrWgQB-3LuYrWJY",
+				"AIzaSyA5-eOVh51GSRiwIEmsQvUUqUojguobefI",
+				"AIzaSyAPZKvIB0e9uy8IFYvzJsTN9wn6zsxuV9s",
+				"AIzaSyBJAq6WUpm-QtlWJpKCDX56_Jxhk7GYVMA",
+				"AIzaSyAMqEe_-rbYi0qhXYl7fPUsoOLG4ZVrfAY",
+				"AIzaSyDmi5gTRgaMaWTZkf2YNhxxNWPT4CQOBeE",
+				"AIzaSyCxLHRvLD6QaeCNmERMbqHMq3DY6kds_gk",
+				"AIzaSyDZDlUHbwIVIiYBKbFar-avT-vY4bpL0Tk",
+				"AIzaSyAk94371-Wk2HQdydTdeCjy8jkLy96NeCM",
+				"AIzaSyCW2pN3FIDIcCNiLjoHFLIzjbp7mRFLAMI",
+				
+				"AIzaSyAVsSGQGdq6sviQN0-r0XYTln7CTaXg-0U",
+				"AIzaSyA08bG5gHpKMW4vt0Z--AVYeepXp5VmTzw",
+				"AIzaSyClCJEgN8nBpplIq2d-FCmrpxZZKjyoPQE"
+			]
 			var MAX = "5";
 			var PLAYLIST = "PLvQUnzYRDn2SOHrTIs5XFEF0dig-S2Yzj";
-			var KEY = "AIzaSyAMqEe_-rbYi0qhXYl7fPUsoOLG4ZVrfAY";
-			var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=" + MAX + "&playlistId=" + PLAYLIST + "&key=AIzaSyAMqEe_-rbYi0qhXYl7fPUsoOLG4ZVrfAY";
+			var KEY = libs_KEY[Math.floor(Math.random() * libs_KEY.length)];
+			var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=" + MAX + "&playlistId=" + PLAYLIST + "&key=" + KEY;
 			$.getJSON(url, function(data) {
 				var result = data.items;
 				var playlist = "";
