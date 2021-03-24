@@ -14,15 +14,16 @@
 				display: flex;
 				justify-content: center;
 				padding: 1rem;
+				letter-spacing: 0.04em;
 			}
 
 			.container {
 				width: 100%;
-				max-width: 720px;
+				max-width: 796px;
 			}
 
 			.container .header {
-				background: #161824;
+				background: #161823;
 				width: 100%;
 				height: 200px;
 				position: relative;
@@ -59,37 +60,137 @@
 				color: var(--black-rgb-54);
 			}
 
-			.container .main-wrapper {
+			.container .nav {
+				margin: 1rem 0 0;
+				background: #FFF;
 				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				user-select: none;
+			}
+
+			.container .nav ul {
+				display: flex;
+			}
+
+			.container .nav ul.uLeft li {
+				padding: 0 1rem;
+				line-height: 40px;
+				position: relative;
+				display: block;
+				color: var(--black-rgb-54);
+				font-size: 14px;
+				font-weight: 700;
+				cursor: pointer;
+			}
+
+			.container .nav ul.uLeft li:before {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 2px;
+				left: 0;
+				bottom: 0;
+				transition: 0.25s;
+			}
+
+			.container .nav ul.uLeft li:hover:before {
+				background: var(--blue);
+			}
+
+			.container .nav ul.uLeft li.active:before {
+				background: var(--blue);
+			}
+
+			.container .nav ul.uRight li a {
+				line-height: 40px;
+				display: block;
+				padding: 0 1rem;
+				color: var(--black-rgb-54);
+				font-size: 14px;
+				font-weight: 700;
+				position: relative;
+			}
+
+			.container .nav ul.uRight li a:before {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 2px;
+				left: 0;
+				bottom: 0;
+				transition: 0.25s;
+			}
+
+			.container .nav ul.uRight li a:hover:before {
+				background: var(--blue);
+			}
+
+			.container .tab-content {
+				display: none;
+			}
+
+			.container .tab-content#tab-1.active {
+				display: flex;
+			}
+
+			.container .tab-content#tab-2.active {
+				display: block;
+			}
+
+			.container .tab-content#tab-3.active {
+				display: grid;
+			}
+
+			.container #tab-1 {
 				justify-content: space-between;
 				margin: 1rem 0 0;
 			}
 
-			.container .main-wrapper .colLeft {
+			.container #tab-1 .colLeft {
 				flex-shrink: 0;
-				width: 240px;
+				width: 300px;
 				margin-right: 1rem;
-				background: #FFF;
-				height: 240px;
-				padding: 1rem;
-				border: 2px solid;
-				opacity: 10%;
-				display: none;
 			}
 
-			.container .main-wrapper .colRight {
+			.container #tab-1 .colLeft .widget {
+				background: #FFF;
+			}
+
+			.container #tab-1 .colLeft .widget .widget-title {
+				display: block;
+				border-bottom: 2px solid #CCC;
+			}
+
+			.container #tab-1 .colLeft .widget .widget-title h2 {
+				display: inline-block;
+				border-bottom: 2px solid;
+				margin-bottom: -2px;
+				padding: 1rem;
+				color: var(--black-clr-54);
+				font-size: 15px;
+				font-weight: 500;
+			}
+
+			.container #tab-1 .colLeft .widget .widget-content {
+				padding: 1rem;
+				color: var(--black-clr-38);
+				font-size: 14px;
+			}
+
+			.container #tab-1 .colRight {
 				width: 100%;
 				background: #FFF;
 			}
 
-			.container .main-wrapper .colRight .item .widget-thumb {
+			.container #tab-1 .colRight .widget .widget-thumb {
 				display: block;
 				position: relative;
 				overflow: hidden;
 			}
 
-			.container .main-wrapper .colRight .item .widget-thumb:before {
-				content: "\e880";
+			.container #tab-1 .colRight .widget .widget-thumb:before {
+				content: "";
 				font-family: "Material Icons";
 				position: absolute;
 				background: var(--black-rgb-38);
@@ -105,12 +206,12 @@
 				transition: 0.25s;
 			}
 
-			.container .main-wrapper .colRight .item .widget-thumb:hover:before {
+			.container #tab-1 .colRight .widget .widget-thumb:hover:before {
 				opacity: 1;
-				font-size: 96px;
+				font-size: 48px;
 			}
 
-			.container .main-wrapper .colRight .item .widget-title {
+			.container #tab-1 .colRight .widget .widget-title {
 				padding: 1rem;
 				color: var(--black-rgb-87);
 				font-size: 14px;
@@ -120,6 +221,60 @@
 				-webkit-line-clamp: 1;
 				-webkit-box-orient: vertical;
 				overflow: hidden;
+			}
+
+			.container #tab-2 {
+				margin: 1rem 0 0;
+				padding: 1rem;
+				background: #FFF;
+				font-size: 14px;
+				font-weight: 500;
+				color: var(--black-rgb-38);
+			}
+
+			.container #tab-3 {
+				margin: 1rem 0 0;
+				background: #FFF;
+				grid-template-columns: repeat(auto-fit, minmax(276px, 1fr));
+				grid-gap: 1rem;
+				padding: 1rem;
+			}
+
+			.container #tab-3 li {
+				display: flex;
+				align-items: center;
+			}
+
+			.container #tab-3 li .thumb {
+				flex-shrink: 0;
+				width: 48px;
+				height: 48px;
+			}
+
+			.container #tab-3 li .thumb svg image {
+				width: 100%;
+			}
+
+			.container #tab-3 li .metaData {
+				width: 100%;
+				margin-left: 1rem;
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.container #tab-3 li .metaData .name {
+				color: var(--black-rgb-87);
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 24px;
+			}
+
+			.container #tab-3 li .metaData .add {
+				color: var(--black-rgb-38);
+			}
+
+			.container #tab-3 li .metaData .add:hover {
+				color: var(--black-rgb-54);
 			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -132,14 +287,31 @@
 						<img src="/cdn/pictures/thumbnail.jpg">
 					</div>
 					<div class="nameData">
-						<a class="fullname" href="">HIEPDEEP</a>
+						<a class="fullname" href="javascript:;">Ngo Van Hiep</a>
 					</div>
 				</div>
 			</div>
-			<div class="main-wrapper">
-				<div class="colLeft">colLeft</div>
+			<div class="nav">
+				<ul class="uLeft">
+					<li class="tab-link active" data-tab="tab-1">Posts</li>
+					<li class="tab-link" data-tab="tab-2">Introduce</li>
+					<li class="tab-link" data-tab="tab-3">Friends (4.984)</li>
+				</ul>
+				<ul class="uRight">
+					<li><a href="javascript:;">Edit Profile</a></li>
+				</ul>
+			</div>
+			<div id="tab-1" class="tab-content active">
+				<div class="colLeft">
+					<div class="widget">
+						<div class="widget-title">
+							<h2>Widget Title</h2>
+						</div>
+						<div class="widget-content">Widget Content</div>
+					</div>
+				</div>
 				<div class="colRight">
-					<div class="item">
+					<div class="widget">
 						<a href="https://hiepdeep.github.io/youtube/" target="_blank" class="widget-thumb">
 							<img src="/cdn/pictures/YoutubeAPI.png">
 						</a>
@@ -147,6 +319,50 @@
 					</div>
 				</div>
 			</div>
+			<div id="tab-2" class="tab-content">Introduce</div>
+			<div id="tab-3" class="tab-content">Friends</div>
 		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){	
+				$(".container .nav ul.uLeft li").click(function(){
+					var tab_id = $(this).attr("data-tab");
+					$(".container .nav ul.uLeft li").removeClass("active");
+					$(".container .tab-content").removeClass("active");
+					$(this).addClass("active");
+					$("#"+tab_id).addClass("active");
+				})
+			})
+			$.getJSON("https://randomuser.me/api/", {
+				nat: "ca",
+				// gender: "female",
+				results: 7
+			}, function(data) {
+				var results = data.results;
+				var e = "";
+				for (i = 0; i < results.length; i++) {
+					e += "<li>";
+						e += "<div class='thumb'>";
+							e += "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 24 24'>";
+								e += "<defs>";
+									e += "<style>.cls-1 {fill: none;}.cls-2 {clip-path: url(#clip-path);}.cls-3 {fill: #ff3677;}</style>";
+									e += "<clipPath id='clip-path'>";
+										e += "<circle class='cls-1' cx='12' cy='12' r='10'/>";
+									e += "</clipPath>";
+								e += "</defs>";
+								e += "<g class='cls-2'>";
+									e += "<image xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='" + results[i].picture.large + "'/>";
+								e += "</g>";
+								e += "<path class='cls-3' d='M12,0A12,12,0,1,0,24,12,12,12,0,0,0,12,0Zm0,23A11,11,0,1,1,23,12,11,11,0,0,1,12,23Z'/>";
+							e += "</svg>";
+						e += "</div>";
+						e += "<div class='metaData'>";
+							e += "<a href='javascript:;' class='name'>" + results[i].name.first + " " + results[i].name.last + "</a>";
+							e += "<a href='javascript:;' class='add material-icons'>person_remove</a>";
+						e += "</div>";
+					e += "</li>";
+				}
+				$("#tab-3").html(e);
+			});
+		</script>
 	</body>
 </html>
