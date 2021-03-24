@@ -227,11 +227,49 @@
 			.container #tab-2 {
 				margin: 1rem 0 0;
 				padding: 1rem;
+			}
+
+			.container #tab-2 ul {
+				display: grid;
+				grid-gap: 1rem;
+				margin-bottom: 1rem;
+			}
+
+			.container #tab-2 ul li {
 				background: #FFF;
+				padding: 1rem;
+				border-radius: var(--radius);
+				box-shadow: var(--shadow-1);
+			}
+
+			.container #tab-2 ul li span {
+				color: var(--black-rgb-54);
 				font-size: 14px;
 				font-weight: 500;
-				color: var(--black-rgb-38);
+				line-height: 20px;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				word-break: break-all;
 			}
+
+			.container #tab-2 ul li span * {
+				font-size: 14px !important;
+				font-weight: 500 !important;
+				line-height: 20px !important;
+				font-style: inherit !important;
+			}
+
+
+
+
+
+
+
+
+
+
 
 			.container #tab-3 {
 				margin: 1rem 0 0;
@@ -321,7 +359,16 @@
 					</div>
 				</div>
 			</div>
-			<div id="tab-2" class="tab-content">Introduce</div>
+			<div id="tab-2" class="tab-content">
+				<ul>
+					<li><span contenteditable>https://developers.google.com/youtube/v3/docs/videos/list</span></li>
+					<li><span contenteditable>https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics,brandingSettings,localizations&fields=items(id,snippet(customUrl,localized,publishedAt,thumbnails(medium,high),country),statistics,brandingSettings(image))&id=UCyV9xgnGA-Ztrqx_bD9B5ag&key=[KEY_API]</span></li>
+					<li><span contenteditable>https://www.googleapis.com/youtube/v3/videos?id=_uXQTmkEusM&fields=items(id,snippet(publishedAt,channelId,title,thumbnails(medium),channelTitle),statistics)&part=snippet,statistics&key=[KEY_API]</span></li>
+					<li><span contenteditable>https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=50&playlistId=PLvQUnzYRDn2RtvXsIE43_-bZoanKwLg5L&key=[KEY_API]</span></li>
+					<li><span contenteditable>https://www.googleapis.com/youtube/v3/commentThreads?part=id,snippet,replies&videoId=AmpCyFObf2Q&key=[KEY_API]</span></li>
+					<li><span contenteditable>https://www.googleapis.com/youtube/v3/search?part=id,snippet&channelId=UCyV9xgnGA-Ztrqx_bD9B5ag&order=date&maxResults=20&key=[KEY_API]</span></li>
+				</ul>
+			</div>
 			<div id="tab-3" class="tab-content">Friends</div>
 		</div>
 		<script type="text/javascript">
