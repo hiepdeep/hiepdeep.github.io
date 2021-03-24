@@ -130,7 +130,48 @@
 								playlist += "<div class='metaData'>";
 									playlist += "<div class='viewCount'>";
 										playlist += "<span class='material-icons'>equalizer</span>";
-										playlist += "<span class='total'>" + vd.statistics.viewCount + "</span>";
+										function viewCount(e) {
+											var num = e; // vd.statistics.viewCount
+											var res = num.split("");
+											switch (res.length) {
+												case 4:
+												case 5:
+													comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+													if (comma <= 0) {
+														return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
+													}
+													else {
+														return num.replace(/(\d+)(\d{1})(\d{2})/, "$1,$2 N");
+													}
+													break;
+												case 6:
+													comma = num.replace(/(\d+)(\d{1})(\d{2})/, "$2");
+													return num.replace(/(\d+)(\d{1})(\d{2})/, "$1 N");
+													break;
+												case 7:
+												case 8:
+												case 9:
+													comma = num.replace(/(\d+)(\d{1})(\d{5})/, "$2");
+													if (comma <= 0) {
+														return num.replace(/(\d+)(\d{1})(\d{5})/, "$1 Tr");
+													}
+													else {
+														return num.replace(/(\d+)(\d{1})(\d{5})/, "$1,$2 Tr");
+													}
+													break;
+												case 10:
+												case 11:
+												case 12:
+													comma = num.replace(/(\d+)(\d{1})(\d{8})/, "$2");
+													if (comma <= 0) {
+														return num.replace(/(\d+)(\d{1})(\d{8})/, "$1 T");
+													}
+													else {
+														return num.replace(/(\d+)(\d{1})(\d{8})/, "$1,$2 T");
+													}
+											}
+										}
+										playlist += "<span class='total'>" + viewCount("vd.statistics.viewCount") + "</span>";
 									playlist += "</div>";
 									playlist += "<div class='commentCount'>";
 										playlist += "<span class='material-icons'>mode_comment</span>";
