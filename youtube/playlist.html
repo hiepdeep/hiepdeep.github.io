@@ -130,8 +130,8 @@
 								playlist += "<div class='metaData'>";
 									playlist += "<div class='viewCount'>";
 										playlist += "<span class='material-icons'>equalizer</span>";
-										function viewCount(e) {
-											var num = e; // vd.statistics.viewCount
+										function viewCount() {
+											var num = vd.statistics.viewCount;
 											var res = num.split("");
 											switch (res.length) {
 												case 4:
@@ -171,7 +171,7 @@
 													}
 											}
 										}
-										playlist += "<span class='total'>" + viewCount("vd.statistics.viewCount") + "</span>";
+										playlist += "<span class='total'>" + viewCount() + "</span>";
 									playlist += "</div>";
 									playlist += "<div class='commentCount'>";
 										playlist += "<span class='material-icons'>mode_comment</span>";
