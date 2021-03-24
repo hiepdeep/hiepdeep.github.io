@@ -134,7 +134,7 @@
 				"AIzaSyClCJEgN8nBpplIq2d-FCmrpxZZKjyoPQE"
 			]
 			var MAX = "5";
-			var PLAYLIST = "PLvQUnzYRDn2SOHrTIs5XFEF0dig-S2Yzj";
+			var PLAYLIST = "PLvQUnzYRDn2TBqfHLZ1CjQFL4MtkGm53B";
 			var KEY = libs_KEY[Math.floor(Math.random() * libs_KEY.length)];
 			var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=items(snippet(publishedAt,title,thumbnails(medium),resourceId(videoId),videoOwnerChannelTitle,videoOwnerChannelId))&maxResults=" + MAX + "&playlistId=" + PLAYLIST + "&key=" + KEY;
 			$.getJSON(url, function(data) {
