@@ -17,14 +17,17 @@
 
 			.box {
 				display: grid;
-				grid-gap: 1rem;
+				grid-gap: calc(1rem + 4px);
 				grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
 				background: #FFF;
-				padding: 1rem;
+				padding: calc(1rem + 4px);
 			}
 
-			.box .item .thumb svg image {
-				width: 100%;
+			.box .item .thumb {
+				border-radius: 50%;
+				overflow: hidden;
+				border: 4px solid #FFF;
+				box-shadow: 0 0 0 4px var(--green);
 			}
 
 			.box .item .metadata {
@@ -136,20 +139,7 @@
 			for (var i, i = 0; i < userID.length; i++) {
 				if (!userID[i].fullName == "") {
 					e += "<div class='item'>";
-						e += "<div class='thumb'>";
-							e += "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 24 24'>";
-								e += "<defs>";
-									e += "<style>.cls-1 {fill: none;}.cls-2 {clip-path: url(#clip-path);}.cls-3 {fill: #ff3677;}</style>";
-									e += "<clipPath id='clip-path'>";
-										e += "<circle class='cls-1' cx='12' cy='12' r='10'/>";
-									e += "</clipPath>";
-								e += "</defs>";
-								e += "<g class='cls-2'>";
-									e += "<image xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='userImage/" + userID[i].userID + ".jpg'/>";
-								e += "</g>";
-								e += "<path class='cls-3' d='M12,0A12,12,0,1,0,24,12,12,12,0,0,0,12,0Zm0,23A11,11,0,1,1,23,12,11,11,0,0,1,12,23Z'/>";
-							e += "</svg>";
-						e += "</div>";
+						e += "<div class='thumb'><img src='userImage/" + userID[i].userID + ".jpg'></div>";
 						e += "<div class='metadata'>";
 							e += "<div class='name'>" + userID[i].fullName + "</div>";
 							// e += "<div class='uname'>" + userID[i].userID + "</div>";
