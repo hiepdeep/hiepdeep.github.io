@@ -9,18 +9,40 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hiepdeep/cdn/style.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<style type="text/css">
-			#userImage {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
-				--w: 1rem;
-				grid-gap: var(--w);
-				padding: var(--w);
+			body {
+				background: var(--light);
+				font-family: "Google Sans", sans-serif;
+				padding: 1rem;
 			}
-			#userImage img {
-				height: auto;
-				display: block;
-				border-radius: 4px;
-				cursor: pointer;
+
+			.box {
+				display: grid;
+				grid-gap: 1rem;
+				grid-template-columns: repeat(auto-fit, minmax(116px, 1fr));
+				background: #FFF;
+				padding: 1rem;
+			}
+
+			.box .item .thumb {
+				border-radius: 50%;
+				overflow: hidden;
+				border: 4px solid var(--green);
+			}
+
+			.box .item .metadata {
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 20px;
+				padding: 1rem 0 0;
+				text-align: center;
+			}
+
+			.box .item .metadata .name {
+				color: var(--black-rgb-54);
+			}
+
+			.box .item .metadata .uname {
+				color: var(--black-rgb-38);
 			}
 		</style>
 	</head>
@@ -28,49 +50,102 @@
 		<div id="userImage"></div>
 		<script type="text/javascript">
 			var userID = [
-				"blmhuong",
-				"buithimailinh2212",
-				"dodotramanh95",
-				"ha_thi_duyen",
-				"hieupm",
-				"hoaahanassii",
-				"huanhoahong1102",
-				"javierr",
-				"kieutrinh155",
-				"kiti_014",
-				"khanhan19999",
-				"khanhtranggggg",
-				"lebaoofficial",
-				"ngavu160197",
-				"ngocmoai",
-				"quynh_bongoficial",
-				"quynhchi",
-				"thaotaotau",
-				"thinhseu",
-				"trananhhoang12",
-				"tranggtits",
-				"tranhuyentrangne",
-				"xanhkakao",
-				"xxdeniz827xx",
-				"dinhtrangthao03",
-				"fukada0318",
-				"lelunglinh68",
-				"thanhem_27",
-				"thu_thaotran",
-				"zaheun0202",
-				"thanhhien1311",
-				"lebong95",
-				"linhbep13",
-				"iammeoangel",
-				"thanhhien",
-				
-				"ID_00000001"
+				{
+					fullName: "Bùi Thị Mai Linh",
+					userID: "buithimailinh2212"
+				},
+				{
+					fullName: "Đỗ Thị Trâm Anh",
+					userID: "dodotramanh95"
+				},
+				{
+					fullName: "Trần Ánh Hoàng",
+					userID: "trananhhoang12"
+				},
+				{
+					fullName: "Thu Thảo Trần",
+					userID: "thu_thaotran"
+				},
+				{
+					fullName: "Thanh Hiền",
+					userID: "thanhhien1311"
+				},
+				{
+					fullName: "Le Bong",
+					userID: "lebong95"
+				},
+				{
+					fullName: "Quỳnh Chi",
+					userID: "quynhchi"
+				},
+				{
+					fullName: "Ngọc Mai",
+					userID: "ngocmoai"
+				},
+				{
+					fullName: "Nga Vũ",
+					userID: "ngavu160197"
+				},
+				{
+					fullName: "Dinh Trang Thao",
+					userID: "dinhtrangthao03"
+				},
+				{
+					fullName: "Thao Tao Tau",
+					userID: "thaotaotau"
+				},
+				{
+					fullName: "Trang Dien",
+					userID: "khanhtranggggg"
+				},
+				{
+					fullName: "Trần Huyền Trang",
+					userID: "tranhuyentrangne"
+				},
+				{
+					fullName: "Khanh Han",
+					userID: "khanhan19999"
+				},
+				{
+					fullName: "Kiều Trinh",
+					userID: "kieutrinh155"
+				},
+				{
+					fullName: "Linh Bep",
+					userID: "linhbep13"
+				},
+				{
+					fullName: "",
+					userID: ""
+				},
+				{
+					fullName: "",
+					userID: ""
+				},
+				{
+					fullName: "",
+					userID: ""
+				},
+				{
+					fullName: "",
+					userID: ""
+				}
 			];
-			var image = "";
+			var e = "";
+			e += "<div class='box'>";
 			for (var i, i = 0; i < userID.length; i++) {
-				image += "<img src='" + userID[i] + ".jpg'>";
+				if (!userID[i].fullName == "") {
+					e += "<div class='item'>";
+						e += "<div class='thumb'><img src='userImage/" + userID[i].userID + ".jpg'></div>";
+						e += "<div class='metadata'>";
+							e += "<div class='name'>" + userID[i].fullName + "</div>";
+							e += "<div class='uname'>" + userID[i].userID + "</div>";
+						e += "</div>";	
+					e += "</div>";
+				}
 			}
-			document.getElementById("userImage").innerHTML = image;
+			e += "</div>";
+			document.getElementById("userImage").innerHTML = e;
 		</script>
 	</body>
 </html>
