@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="favicon.ico">
+		<title>League of Legends</title>
+		<link rel="stylesheet" href="/cdn/style.css">
+		<style type="text/css">
+			body {
+				background: #010A13;
+			}
+			#leagueoflegends {
+				padding: 1rem;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+				grid-gap: 1rem;
+			}
+			#leagueoflegends image {
+				width: 100%;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="notepad"></div>
+		<script type="text/javascript">
+			var url = [
+				{
+					"title": "CSS clip-path maker",
+					"link": "http://bennettfeely.com/clippy"
+				},
+				{
+					"title": "Icons - Material Design",
+					"link": "https://material.io/resources/icons/?style=baseline"
+				}
+			]
+
+			var e = "";
+			for (i = 0; i < url.length; i++) {
+				e += "<p>";
+					e += "<a href='" + url[i].link + "' target='_blank'>" + url[i].title + "</a>";
+				e += "</p>";
+			}
+
+			document.getElementById("notepad").innerHTML = e;
+		</script>
+	</body>
+</html>
