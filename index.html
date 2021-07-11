@@ -187,8 +187,36 @@
 
 			.container #tab-1 .colLeft .widget .widget-content {
 				padding: 1rem;
-				color: var(--black-clr-38);
-				font-size: 14px;
+			}
+
+			.container #tab-1 .colLeft .widget .widget-content .media {
+				width: 100%;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+				grid-gap: 1rem;
+			}
+
+			.container #tab-1 .colLeft .widget .widget-content .media a {
+				position: relative;
+				height: 100px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 2rem;
+				color: #FFF;
+				opacity: 0.75;
+			}
+
+			.container #tab-1 .colLeft .widget .widget-content .media a:hover {
+				opacity: 1;
+			}
+
+			.container #tab-1 .colLeft .widget .widget-content .media a[class*=facebook] {
+				background: #5890FF;
+			}
+
+			.container #tab-1 .colLeft .widget .widget-content .media a[class*=instagram] {
+				background: #E4405F;
 			}
 
 			.container #tab-1 .colRight {
