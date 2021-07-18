@@ -205,12 +205,20 @@
 				align-items: center;
 				font-size: 2rem;
 				color: #FFF;
-				opacity: 0.75;
 				transition: 0.25s;
 			}
 
-			.container #tab-1 .colLeft .widget .widget-content .media a:hover {
-				opacity: 1;
+			.container #tab-1 .colLeft .widget .widget-content .media a:after {
+				content: "";
+				position: absolute;
+				background: rgb(255 255 255 / 25%);
+				width: 100%;
+				height: 100%;
+				clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+			}
+
+			.container #tab-1 .colLeft .widget .widget-content .media a:hover:after {
+				clip-path: polygon(75% 0, 100% 0, 100% 100%, 25% 100%);
 			}
 
 			.container #tab-1 .colLeft .widget .widget-content .media a[class*=facebook] {
