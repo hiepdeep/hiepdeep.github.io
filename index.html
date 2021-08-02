@@ -247,18 +247,41 @@
 				grid-gap: 1rem;
 			}
 
-			.container #tab-1 .colRight .widget {
+			.container #tab-1 .colRight .widgetPost {
 				background: #FFF;
+				display: grid;
+				grid-gap: 0.5rem;
+				padding: 0.5rem;
 			}
 
-			.container #tab-1 .colRight .widget .widget-thumb {
+			.container #tab-1 .colRight .widgetPost .headPost {
+				display: flex;
+				align-items: center;
+			}
+
+			.container #tab-1 .colRight .widgetPost .headPost .thumbUser {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				margin-right: 0.5rem;
+				overflow: hidden;
+			}
+
+			.container #tab-1 .colRight .widgetPost .headPost .nameUser {
+				color: var(--black-rgb-87);
+				font-size: 14px;
+				font-weight: 500;
+				letter-spacing: 0.04em;
+			}
+
+			.container #tab-1 .colRight .widgetPost .contentPost a {
 				display: block;
 				position: relative;
 				overflow: hidden;
 			}
 
-			.container #tab-1 .colRight .widget .widget-thumb:before {
-				content: "";
+			.container #tab-1 .colRight .widgetPost .contentPost a:before {
+				content: "";
 				font-family: "Material Icons";
 				position: absolute;
 				background: var(--black-rgb-38);
@@ -274,22 +297,9 @@
 				transition: 0.25s;
 			}
 
-			.container #tab-1 .colRight .widget .widget-thumb:hover:before {
+			.container #tab-1 .colRight .widgetPost .contentPost a:hover:before {
 				opacity: 1;
 				font-size: 48px;
-			}
-
-			.container #tab-1 .colRight .widget .widget-title {
-				padding: 1rem;
-				color: var(--black-rgb-87);
-				font-size: 14px;
-				font-weight: 700;
-				line-height: 20px;
-				display: -webkit-box;
-				-webkit-line-clamp: 1;
-				-webkit-box-orient: vertical;
-				overflow: hidden;
-				display: none;
 			}
 
 			.container #tab-2 {
@@ -414,7 +424,7 @@
 						<img src="/cdn/pictures/thumbnail.jpg">
 					</div>
 					<div class="nameData">
-						<a class="fullname" href="">Ngo Van Hiep</a>
+						<a class="fullname" href="/">Ngo Van Hiep</a>
 					</div>
 				</div>
 			</div>
@@ -446,17 +456,31 @@
 					</div>
 				</div>
 				<div class="colRight">
-					<div class="widget">
-						<a href="https://hiepdeep.github.io/youtube/" target="_blank" class="widget-thumb">
-							<img src="/youtube/pictures/youtubeAPI.png">
-						</a>
-						<a href="https://hiepdeep.github.io/youtube/" target="_blank" class="widget-title">Youtube API</a>
+					<div class="widgetPost">
+						<div class="headPost">
+							<a href="/" class="thumbUser">
+								<img src="/cdn/pictures/thumbnail.jpg">
+							</a>
+							<a href="/" class="nameUser">HiepDeep</a>
+						</div>
+						<div class="contentPost">
+							<a href="/youtube" target="_blank">
+								<img src="/youtube/pictures/youtubeAPI.png">
+							</a>
+						</div>
 					</div>
-					<div class="widget">
-						<a href="https://hiepdeep.github.io/youtube/playlist.html" target="_blank" class="widget-thumb">
-							<img src="/youtube/pictures/playlist.png">
-						</a>
-						<a href="https://hiepdeep.github.io/youtube/" target="_blank" class="widget-title">Youtube API Playlist</a>
+					<div class="widgetPost">
+						<div class="headPost">
+							<a href="/" class="thumbUser">
+								<img src="/cdn/pictures/thumbnail.jpg">
+							</a>
+							<a href="/" class="nameUser">HiepDeep</a>
+						</div>
+						<div class="contentPost">
+							<a href="/youtube/playlist.html" target="_blank">
+								<img src="/youtube/pictures/playlist.png">
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
