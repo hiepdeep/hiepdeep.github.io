@@ -142,28 +142,6 @@
 					font-size: 1rem;
 				}
 			}
-
-			.BaZzYgK {
-				position: relative;
-			}
-
-			.BaZzYgK:hover:before {
-				width: 500px;
-				height: 500px;
-			}
-
-			.BaZzYgK:before {
-				content: "";
-				position: absolute;
-				top: var(--y);
-				left: var(--x);
-				transform: translate(-50%, -50%);
-				width: 0;
-				height: 0;
-				border-radius: 50%;
-				background: #5890FF;
-				transition: width 0.5s, height 0.5s;
-			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script type="text/javascript">
@@ -174,26 +152,18 @@
 				replace = replace.replaceAll(input, output);
 				$(".textarea textarea").val(replace);
 			}
-			const btn = document.querySelector(".BaZzYgK");
-			btn.onmousemove = function(e) {
-				const x = e.pageX - btn.offsetLeft;
-				const y = e.pageY - btn.offsetTop;
-				
-				btn.style.setProperty("--x", x + "px");
-				btn.style.setProperty("--y", y + "px");
-			}
 		</script>
 	</head>
 	<body>
 		<div id="BeautifierCode">
 			<form action="">
-				<button type="reset" class="BaZzYgK">RESET</button>
+				<button type="reset">RESET</button>
 				<div class="textarea">
 					<textarea rows="21" placeholder="Paste code here..."></textarea>
 				</div>
 				<div class="replace">
 					<div class="gr input"><input type="text" placeholder="Paste code here..."></div>
-					<button type="button" onclick="replace()" class="BaZzYgK"><i class="material-icons">arrow_forward</i></button>
+					<button type="button" onclick="replace()"><i class="material-icons">arrow_forward</i></button>
 					<div class="gr output"><input type="text" placeholder="Paste code here..."></div>
 				</div>
 			</form>
