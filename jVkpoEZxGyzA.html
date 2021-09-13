@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="/cdn/favicon/favicon.svg">
+		<title>HiepDeep | Landing Page</title>
+		<link rel="stylesheet" href="/cdn/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<style type="text/css">
+			::-webkit-scrollbar {
+				display: none;
+			}
+
+			body {
+				background: var(--light);
+				font-family: "Roboto", sans-serif;
+				letter-spacing: 0.04em;
+			}
+
+			.container header {
+				background: #fff;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				height: 42px;
+			}
+
+			.container header .row {
+				width: 100%;
+				max-width: 1080px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 0 auto;
+				padding: 0 1rem;
+			}
+
+			.container header .row .logo {
+				height: calc(42px - 12px);
+			}
+
+			.container header .row nav {
+				display: flex;
+				gap: 1rem;
+			}
+
+			.container header .row nav>li {
+				position: relative;
+			}
+
+			.container header .row nav>li:before {
+				content: "";
+				position: absolute;
+				background: #618cf6;
+				width: 0px;
+				height: 2px;
+				left: 50%;
+				top: 0;
+				transform: translateX(-50%);
+				transition: 0.25s;
+			}
+
+			.container header .row nav>li:hover:before {
+				width: 100%;
+			}
+
+			.container header .row nav>li>a {
+				display: block;
+				line-height: 42px;
+				color: var(--black-rgb-38);
+				font-size: 14px;
+				font-weight: 500;
+				overflow: hidden;
+			}
+
+			.container header .row nav>li>a.home {
+				color: #618cf6;
+			}
+
+			.container header .row nav>li:hover>ul {
+				visibility: visible;
+				opacity: 1;
+				top: 100%;
+			}
+
+			.container header .row nav>li>ul {
+				position: absolute;
+				overflow: hidden;
+				left: 50%;
+				transform: translateX(-50%);
+				z-index: 9;
+				padding-top: 10px;
+				visibility: hidden;
+				opacity: 0;
+				top: 130%;
+				transition: 0.25s;
+			}
+
+			.container header .row nav>li>ul:before {
+				content: "";
+				position: absolute;
+				background: #fff;
+				width: 14px;
+				height: 14px;
+				top: 3px;
+				left: 50%;
+				transform: translateX(-50%) rotate(45deg);
+			}
+
+			.container header .row nav>li>ul li a {
+				display: block;
+				white-space: nowrap;
+				padding: 0 10px;
+				color: #1d2236;
+				background: #fff;
+				line-height: 42px;
+				color: var(--black-rgb-38);
+				font-size: 14px;
+				font-weight: 500;
+			}
+
+			.container header .row nav>li>ul li a:hover {
+				color: #618cf6;
+			}
+
+			.container .uG0fsAF7 {
+				background: url("https://mannatthemes.com/assets/images/bg-home.jpg");
+				clip-path: ellipse(150% 100% at 50% 0%);
+				background-position: center;
+				background-size: cover;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: calc(50vh - 42px);
+				font-size: 2rem;
+			}
+
+			.container .uG0fsAF7:hover .welcome span {
+				letter-spacing: 0.4em;
+			}
+
+			.container .uG0fsAF7:hover .welcome .dataName {
+				letter-spacing: 1em;
+			}
+
+			.container .uG0fsAF7 .welcome {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 1rem;
+			}
+
+			.container .uG0fsAF7 .welcome span {
+				font-size: 1rem;
+				color: rgba(255, 255, 255, 0.5);
+				transition: 0.5s;
+				user-select: none;
+			}
+
+			.container .uG0fsAF7 .welcome .dataName {
+				color: #fff;
+				letter-spacing: 0.4em;
+				transition: 1s;
+			}
+
+			.container .hexColor {
+				margin-top: -54px;
+				display: flex;
+				justify-content: center;
+				position: relative;
+				z-index: 9;
+				gap: 1rem;
+			}
+
+			.container .hexColor li .view {
+				width: 192px;
+				height: 108px;
+				background: var(--clr);
+				border-radius: 4px;
+				margin: 0 0 0.5rem;
+				cursor: pointer;
+				box-shadow: var(--shadow-1);
+			}
+
+			.container .hexColor li .hex {
+				font-size: 14px;
+				font-weight: 500;
+				display: block;
+				line-height: 24px;
+				text-align: center;
+			}
+
+			.container .boxContent {
+				width: 100%;
+				max-width: 1080px;
+				margin: 1rem auto;
+				padding: 0 1rem;
+			}
+
+			.container .boxContent .widget .wTitle {
+				text-align: center;
+				margin-bottom: 1rem;
+			}
+
+			.container .boxContent .widget .wTitle h2 {
+				color: var(--black-clr-54);
+				font-size: 1rem;
+				font-weight: 500;
+				text-transform: uppercase;
+				padding: 1rem 0;
+				display: inline-block;
+				position: relative;
+			}
+
+			.container .boxContent .widget .wTitle h2:before {
+				content: "";
+				position: absolute;
+				background: #618cf6;
+				width: 30%;
+				height: 4px;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			.container .boxContent .widget .wContent {
+				display: flex;
+				justify-content: center;
+				gap: 1rem;
+			}
+
+			.container .boxContent .widget .wContent a {
+				width: 100px;
+				height: 100px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: var(--bg_ic);
+				border-radius: 4px;
+				box-shadow: var(--shadow-1);
+				position: relative;
+			}
+
+			.container .boxContent .widget .wContent a:hover:before {
+				width: 50%;
+			}
+
+			.container .boxContent .widget .wContent a:before {
+				content: "";
+				position: absolute;
+				background: var(--bg_ic);
+				width: 30%;
+				height: 4px;
+				bottom: calc(-4px - 1rem);
+				border-radius: 4px;
+				transition: 0.25s;
+			}
+
+			.container .boxContent .widget .wContent a span.fab {
+				color: #fff;
+				font-size: 42px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="row">
+					<a href="/" class="logo">
+						<img src="/cdn/favicon/bMyB4uQ3.svg" alt="">
+					</a>
+					<nav>
+						<li><a href="javascript:;" class="home">Home</a></li>
+						<li>
+							<a href="javascript:;">Products</a>
+							<ul>
+								<li><a target="_blank" href="/youtube">Youtube API Channel</a></li>
+								<li><a target="_blank" href="/hosting/BeautifierCode">Beautifier Code</a></li>
+							</ul>
+						</li>
+						<li><a href="javascript:;">About</a></li>
+						<li><a href="javascript:;">Contact</a></li>
+					</nav>
+				</div>
+			</header>
+			<div class="uG0fsAF7">
+				<div class="welcome"><span>Welcome To</span><a href="/" class="dataName">HIEPDEEP</a></div>
+			</div>
+			<div class="hexColor">
+				<li>
+					<div class="view" style="--clr: #1D2236;"></div>
+					<span class="hex">#1D2236</span>
+				</li>
+				<li>
+					<div class="view" style="--clr: #618CF6;"></div>
+					<span class="hex">#618CF6</span>
+				</li>
+				<li>
+					<div class="view" style="--clr: #F1F1E6;"></div>
+					<span class="hex">#F1F1E6</span>
+				</li>
+			</div>
+			<div class="boxContent">
+				<div class="widget mediaSocial">
+					<div class="wTitle"><h2>Mạng Xã Hội</h2></div>
+					<div class="wContent">
+						<a target="_blank" href="/" style="--bg_ic: linear-gradient(0deg, #0062e0 0%, #19afff 100%);">
+							<span class="fab fa-facebook-f"></span>
+						</a>
+						<a target="_blank" href="/" style="--bg_ic: linear-gradient(45deg, #ffd600 0%, #ff0100 50%, #d800b9 100%);">
+							<span class="fab fa-instagram"></span>
+						</a>
+						<a target="_blank" href="/" style="--bg_ic: #55acee;">
+							<span class="fab fa-twitter"></span>
+						</a>
+						<a target="_blank" href="/" style="--bg_ic: #ff0000;">
+							<span class="fab fa-youtube"></span>
+						</a>
+						<a target="_blank" href="/" style="--bg_ic: linear-gradient(45deg, #08fff9 0%, #f00044 100%);">
+							<span class="fab fa-tiktok"></span>
+						</a>
+						<a target="_blank" href="/" style="--bg_ic: #212121;">
+							<span class="fab fa-codepen"></span>
+						</a>
+						<a target="_blank" href="/" style="--bg_ic: #5c6bc0;">
+							<span class="fab fa-discord"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
