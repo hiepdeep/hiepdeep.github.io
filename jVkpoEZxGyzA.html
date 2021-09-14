@@ -141,10 +141,6 @@
 				letter-spacing: 0.4em;
 			}
 
-			.container .uG0fsAF7:hover .welcome .dataName {
-				letter-spacing: 1em;
-			}
-
 			.container .uG0fsAF7 .welcome {
 				display: flex;
 				flex-direction: column;
@@ -155,18 +151,17 @@
 			.container .uG0fsAF7 .welcome span {
 				font-size: 1rem;
 				color: rgba(255, 255, 255, 0.5);
-				transition: 0.5s;
 				user-select: none;
+				animation: span 4s linear infinite alternate;
 			}
 
 			.container .uG0fsAF7 .welcome .dataName {
 				color: #fff;
 				letter-spacing: 0.4em;
-				transition: 1s;
-				animation: dataName 5s linear 2s infinite alternate;
+				animation: dataName 6s linear infinite alternate;
 			}
 
-			@-webkit-keyframes dataName {
+			@keyframes span {
 				0%   {letter-spacing: 0.4em;}
 				50%  {letter-spacing: 1em;}
 				100% {letter-spacing: 0.4em;}
@@ -224,22 +219,10 @@
 				text-transform: uppercase;
 				padding: 1rem 0;
 				display: inline-block;
-				position: relative;
 				max-width: calc(700px + 6rem);
 				width: 100%;
 				border: 2px solid;
 				border-radius: 4px;
-			}
-
-			.container .boxContent .widget .wTitle h2:before {
-				/*content: "";*/
-				position: absolute;
-				background: #618cf6;
-				width: 30%;
-				height: 4px;
-				bottom: 0;
-				left: 50%;
-				transform: translateX(-50%);
 			}
 
 			.container .boxContent .widget .wContent {
@@ -260,10 +243,6 @@
 				position: relative;
 			}
 
-			.container .boxContent .widget .wContent a:hover:before {
-				width: 50%;
-			}
-
 			.container .boxContent .widget .wContent a:before {
 				content: "";
 				position: absolute;
@@ -273,6 +252,10 @@
 				bottom: calc(-4px - 1rem);
 				border-radius: 4px;
 				transition: 0.25s;
+			}
+
+			.container .boxContent .widget .wContent a:hover:before {
+				width: 50%;
 			}
 
 			.container .boxContent .widget .wContent a span.fab {
