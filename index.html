@@ -431,59 +431,9 @@
 			</div>
 			<div class="nav">
 				<ul class="uLeft">
-					<li class="tab-link active" data-tab="tab-1">Posts</li>
-					<li class="tab-link" data-tab="tab-2">Introduce</li>
-					<!-- <li class="tab-link" data-tab="tab-3">Friends (4.984)</li> -->
+					<li class="tab-link active" data-tab="tab-2">Introduce</li>
 					<li class="tab-link" data-tab="tab-4">LMHT</li>
 				</ul>
-				<ul class="uRight">
-					<li><a href="javascript:;">Edit Profile</a></li>
-				</ul>
-			</div>
-			<div id="tab-1" class="tab-content active">
-				<div class="colLeft">
-					<div class="widget">
-						<div class="widget-title">
-							<h2>Mạng Xã Hội</h2>
-						</div>
-						<div class="widget-content">
-							<div class="media">
-								<a target="_blank" href="https://www.facebook.com/hiepdeep" class="uil uil-facebook-f"></a>
-								<a target="_blank" href="https://www.instagram.com/hiepdeep" class="uil uil-instagram"></a>
-								<a target="_blank" href="https://twitter.com/hiepdeep" class="uil uil-twitter"></a>
-								<a target="_blank" href="https://www.youtube.com/c/hiepdeep" class="uil uil-youtube"></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="colRight">
-					<div class="widgetPost">
-						<div class="headPost">
-							<a href="/" class="thumbUser">
-								<img src="/cdn/pictures/1080h/zW9IR0eb.png">
-							</a>
-							<a href="/" class="nameUser">Ngo Van Hiep</a>
-						</div>
-						<div class="contentPost">
-							<a href="/youtube" target="_blank">
-								<img src="/youtube/pictures/youtubeAPI.png">
-							</a>
-						</div>
-					</div>
-					<div class="widgetPost">
-						<div class="headPost">
-							<a href="/" class="thumbUser">
-								<img src="/cdn/pictures/1080h/zW9IR0eb.png">
-							</a>
-							<a href="/" class="nameUser">Ngo Van Hiep</a>
-						</div>
-						<div class="contentPost">
-							<a href="/youtube/playlist.html" target="_blank">
-								<img src="/youtube/pictures/youtubePlaylist.png">
-							</a>
-						</div>
-					</div>
-				</div>
 			</div>
 			<div id="tab-2" class="tab-content">
 				<ul>
@@ -498,7 +448,6 @@
 					<li><span contenteditable>https://www.googleapis.com/youtube/v3/search?part=id,snippet&channelId=UCyV9xgnGA-Ztrqx_bD9B5ag&order=date&maxResults=20&key=[KEY_API]</span></li>
 				</ul>
 			</div>
-			<div id="tab-3" class="tab-content">Friends</div>
 			<div id="tab-4" class="tab-content">
 				<ul>
 					<li><span contenteditable>Bạn có thể nhìn lính của mình trên bản đồ nhỏ để biết lính địch đang ở đâu.</span></li>
@@ -524,37 +473,6 @@
 					$("#"+tab_id).addClass("active");
 				})
 			})
-			$.getJSON("https://randomuser.me/api/", {
-				nat: "ca",
-				// gender: "female",
-				results: 7
-			}, function(data) {
-				var results = data.results;
-				var e = "";
-				for (i = 0; i < results.length; i++) {
-					e += "<li>";
-						e += "<div class='thumb'>";
-							e += "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 24 24'>";
-								e += "<defs>";
-									e += "<style>.cls-1 {fill: none;}.cls-2 {clip-path: url(#clip-path);}.cls-3 {fill: #ff3677;}</style>";
-									e += "<clipPath id='clip-path'>";
-										e += "<circle class='cls-1' cx='12' cy='12' r='10'/>";
-									e += "</clipPath>";
-								e += "</defs>";
-								e += "<g class='cls-2'>";
-									e += "<image xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='" + results[i].picture.large + "'/>";
-								e += "</g>";
-								e += "<path class='cls-3' d='M12,0A12,12,0,1,0,24,12,12,12,0,0,0,12,0Zm0,23A11,11,0,1,1,23,12,11,11,0,0,1,12,23Z'/>";
-							e += "</svg>";
-						e += "</div>";
-						e += "<div class='metaData'>";
-							e += "<a href='javascript:;' class='name'>" + results[i].name.first + " " + results[i].name.last + "</a>";
-							e += "<a href='javascript:;' class='add material-icons'>person_remove</a>";
-						e += "</div>";
-					e += "</li>";
-				}
-				$("#tab-3").html(e);
-			});
 		</script>
 	</body>
 </html>
