@@ -12,13 +12,15 @@
 				background: #E9EBEE;
 				font-family: "Google Sans", sans-serif;
 			}
-			#PornHub {
+
+			#gamebox {
 				padding: 1rem;
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 				grid-gap: 1rem;
 			}
-			#PornHub a {
+
+			#gamebox a {
 				font-size: 15px;
 				font-weight: 500;
 				color: var(--dark);
@@ -27,17 +29,17 @@
 				justify-content: center;
 				align-items: center;
 				border: 1px solid;
-				opacity: 0.34;
+				opacity: 0.54;
 				user-select: all;
 			}
 
-			#PornHub a:hover {
+			#gamebox a:hover {
 				opacity: 1;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="PornHub"></div>
+		<div id="gamebox"></div>
 		<script type="text/javascript">
 			var viewkey = [
 				"ph5f28f23120dba",
@@ -62,7 +64,7 @@
 			for (var l, l = 0; l < viewkey.length; l++) {
 				link += "<a href='https://www.pornhub.com/view_video.php?viewkey=" + viewkey[l] + "' target='_blank'>" + viewkey[l] + "</a>";
 			}
-			document.getElementById("PornHub").innerHTML = link;
+			document.getElementById("gamebox").innerHTML = link;
 		</script>
 	</body>
 </html>
