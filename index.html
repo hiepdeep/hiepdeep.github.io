@@ -14,264 +14,201 @@
 		<meta property="og:url" content="https://hiepdeep.github.io">
 		<meta property="og:title" content="HiepDeep | Sense and Simplicity">
 		<meta property="og:description" content="Lorem Ipsum is simply dummy text of the printing and typesetting industry">
-		<meta property="og:image" content="/cdn/pictures/metahead.png">
+		<meta property="og:image" content="/cdn/pictures/meta.png">
 		
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image">
 		<meta property="twitter:url" content="https://hiepdeep.github.io">
 		<meta property="twitter:title" content="HiepDeep | Sense and Simplicity">
 		<meta property="twitter:description" content="Lorem Ipsum is simply dummy text of the printing and typesetting industry">
-		<meta property="twitter:image" content="/cdn/pictures/metahead.png">
+		<meta property="twitter:image" content="/cdn/pictures/meta.png">
 
 		<link rel="stylesheet" href="/cdn/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<style type="text/css">
-			::-webkit-scrollbar {
-				display: none;
-			}
-
 			body {
 				background: var(--light);
 				font-family: "Be Vietnam Pro", sans-serif;
 				letter-spacing: 0.04em;
-			}
-
-			.container header {
-				background: #fff;
 				display: flex;
-				justify-content: space-between;
+				justify-content: center;
 				align-items: center;
-				height: 42px;
-			}
-
-			.container header .row {
-				width: 100%;
-				max-width: 1080px;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin: 0 auto;
-				padding: 0 1rem;
-			}
-
-			.container header .row .logo {
-				height: calc(42px - 12px);
-			}
-
-			.container header .row nav {
-				display: flex;
-				gap: 1rem;
-			}
-
-			.container header .row nav>li {
-				position: relative;
-			}
-
-			.container header .row nav>li:before {
-				content: "";
-				position: absolute;
-				background: #618cf6;
-				width: 0px;
-				height: 2px;
-				left: 50%;
-				top: 0;
-				transform: translateX(-50%);
-				transition: 0.25s;
-			}
-
-			.container header .row nav>li:hover:before {
-				width: 100%;
-			}
-
-			.container header .row nav>li>a {
-				display: block;
-				line-height: 42px;
-				color: var(--black-rgb-38);
-				font-size: 14px;
-				font-weight: 500;
+				height: 100vh;
+				padding: 12px;
 				overflow: hidden;
 			}
 
-			.container header .row nav>li>a.home {
-				color: #618cf6;
-			}
-
-			.container header .row nav>li:hover>ul {
-				visibility: visible;
-				opacity: 1;
-				top: 100%;
-			}
-
-			.container header .row nav>li>ul {
-				position: absolute;
-				overflow: hidden;
-				left: 50%;
-				transform: translateX(-50%);
-				z-index: 9;
-				padding-top: 10px;
-				visibility: hidden;
-				opacity: 0;
-				top: 130%;
-				transition: 0.25s;
-			}
-
-			.container header .row nav>li>ul:before {
-				content: "";
-				position: absolute;
-				background: #fff;
-				width: 14px;
-				height: 14px;
-				top: 3px;
-				left: 50%;
-				transform: translateX(-50%) rotate(45deg);
-			}
-
-			.container header .row nav>li>ul li a {
-				display: block;
-				white-space: nowrap;
-				padding: 0 10px;
-				color: #1d2236;
-				background: #fff;
-				line-height: 42px;
-				color: var(--black-rgb-38);
-				font-size: 14px;
-				font-weight: 500;
-			}
-
-			.container header .row nav>li>ul li a:hover {
-				color: #618cf6;
-			}
-
-			.container .uG0fsAF7 {
-				background: url("https://mannatthemes.com/assets/images/bg-home.jpg");
-				/*clip-path: ellipse(150% 100% at 50% 0%);*/
+			.card {
+				background: url("/cdn/pictures/720h/thumbnail/1vvyyhteIv4.jpg");
 				background-position: center;
 				background-size: cover;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				height: calc(100vh - 42px - 162px - 3rem);
-				font-size: 2rem;
-			}
-
-			.container .uG0fsAF7 .welcome {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 1rem;
-			}
-
-			.container .uG0fsAF7 .welcome span {
-				font-size: 1rem;
-				color: rgba(255, 255, 255, 0.5);
-				user-select: none;
-			}
-
-			.container .uG0fsAF7 .welcome .dataName {
-				color: #fff;
-				letter-spacing: 0.4em;
-			}
-
-			.container .hexColor {
-				margin-top: -54px;
-				display: none;
-				justify-content: center;
-				position: relative;
-				z-index: 9;
-				gap: 1rem;
-			}
-
-			.container .hexColor li .view {
-				width: 192px;
-				height: 108px;
-				background: var(--clr);
-				border-radius: 4px;
-				margin: 0 0 0.5rem;
-				cursor: pointer;
-				box-shadow: var(--shadow-1);
-			}
-
-			.container .hexColor li .hex {
-				font-size: 14px;
-				font-weight: 500;
-				display: block;
-				line-height: 24px;
-				text-align: center;
-			}
-
-			.container .boxContent {
-				width: 100%;
-				max-width: 1080px;
-				margin: 1rem auto;
-				padding: 0 1rem;
-			}
-
-			.container .boxContent .widget .wTitle {
-				text-align: center;
-				margin-bottom: 1rem;
-			}
-
-			.container .boxContent .widget .wTitle h2 {
-				color: rgba(29, 34, 54, 0.54);
-				font-size: 14px;
-				text-transform: uppercase;
-				display: inline-block;
-				max-width: calc(600px + 5rem);
-				width: 100%;
-				line-height: 38px;
-				border: 2px solid;
-				border-radius: 4px;
-				user-select: none;
-			}
-
-			.container .boxContent .widget .wContent {
-				display: flex;
-				justify-content: center;
-				gap: 1rem;
-			}
-
-			.container .boxContent .widget .wContent a {
-				width: 100px;
-				height: 100px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				background: var(--bg_ic);
-				border-radius: 4px;
-				box-shadow: var(--shadow-1);
+				width: 1280px;
+				height: 720px;
+				box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 				position: relative;
 			}
 
-			.container .boxContent .widget .wContent a:before {
+			.card:before {
 				content: "";
 				position: absolute;
-				background: var(--bg_ic);
-				width: 30%;
-				height: 4px;
-				bottom: calc(-4px - 1rem);
-				border-radius: 4px;
+				width: 100vw;
+				height: 100vh;
+				background: inherit;
+				z-index: -1;
+				filter: blur(25px);
+				opacity: 0.75;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%) scale(1.2);
+			}
+
+			.card .header {
+				background: rgba(255, 255, 255, 0.25);
+				width: 100%;
+				border-bottom: 3px solid #f7f8ff;
+				backdrop-filter: blur(10px);
+			}
+
+			.card .header .row {
+				display: flex;
+				justify-content: space-between;
+				height: 48px;
+				padding: 0 12px;
+			}
+
+			.card .header .row .favicon {
+				height: calc(48px - 24px);
+				margin-top: 12px;
+				box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+			}
+
+			.card .header .row nav {
+				display: flex;
+				gap: 12px;
+			}
+
+			.card .header .row nav>li a {
+				line-height: 48px;
+				display: block;
+				color: var(--black-rgb-54);
+				font-size: 14px;
+				font-weight: 500;
+			}
+
+			.card .header .row nav>li a:hover {
+				color: #5890FF;
+			}
+
+			.card .header .row nav>li ul {
+				visibility: hidden;
+				opacity: 0;
+				position: absolute;
+				top: calc(100% + 3px);
+				right: 0;
+				background: rgba(255, 255, 255, 0.75);
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
+				width: calc(254px + 24px);
+				height: 309px;
+				padding: 12px;
 				transition: 0.25s;
 			}
 
-			.container .boxContent .widget .wContent a:hover:before {
-				width: 50%;
+			.card .header .row nav>li ul:before {
+				content: "";
+				position: absolute;
+				background: transparent;
+				width: 100%;
+				height: 3px;
+				left: 0;
+				bottom: 100%;
 			}
 
-			.container .boxContent .widget .wContent a span.fab {
-				color: #fff;
+			.card .header .row nav>li:hover ul {
+				visibility: visible;
+				opacity: 1;
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
+				height: 618px;
+			}
+
+			.card .welcome {
+				background: rgba(0, 0, 0, 0.25);
+				width: 100%;
+				height: calc(100% - 51px - 51px);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				font-weight: 600;
+			}
+
+			.card .welcome a {
+				color: rgba(255, 255, 255, 0.75);
 				font-size: 42px;
+				text-transform: uppercase;
+			}
+
+			.card .welcome span {
+				color: rgba(255, 255, 255, 0.75);
+				font-size: 24px;
+			}
+
+			.card .footer {
+				background: rgba(0, 0, 0, 0.25);
+				width: 100%;
+				height: 51px;
+				border-top: 3px solid #f7f8ff;
+				position: relative;
+				backdrop-filter: blur(10px);
+			}
+
+			.card .footer:before {
+				position: absolute;
+				background: #FF3677;
+				width: 48px;
+				height: 48px;
+				right: 12px;
+				bottom: calc(100% + 15px);
+				box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+				border-radius: 4px;
+			}
+
+			.card .footer .mediaSocial {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 12px;
+				padding: 0 12px;
+				height: 100%;
+			}
+
+			.card .footer .mediaSocial a {
+				width: 24px;
+				height: 24px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 4px;
+				box-shadow: 0 0 0px 2px rgba(255, 255, 255, 0.25);
+				color: #FFF;
+				font-size: 12px;
+				transition: 0.25s;
+			}
+
+			.card .footer .mediaSocial a:hover {
+				background: var(--bg_ic);
+				box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.25);
 			}
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<header>
+		<div class="card">
+			<div class="header">
 				<div class="row">
-					<a href="" class="logo">
-						<img src="/cdn/favicon/bMyB4uQ3.svg" alt="">
+					<a href="" class="favicon">
+						<img src="/cdn/favicon/favicon.svg">
 					</a>
 					<nav>
-						<li><a href="javascript:;" class="home">Home</a></li>
+						<li><a href="" class="home">Home</a></li>
 						<li>
 							<a href="javascript:;">Products</a>
 							<ul>
@@ -281,51 +218,35 @@
 								<li><a target="_blank" href="/hosting/notepad">Notepad</a></li>
 							</ul>
 						</li>
-						<li><a href="javascript:;">About</a></li>
-						<li><a href="javascript:;">Contact</a></li>
+						<li><a href="">About</a></li>
+						<li><a href="">Contact</a></li>
 					</nav>
 				</div>
-			</header>
-			<div class="uG0fsAF7">
-				<div class="welcome"><span>Welcome To</span><a href="" class="dataName">HIEPDEEP</a></div>
 			</div>
-			<div class="hexColor">
-				<li>
-					<div class="view" style="--clr: #1D2236;"></div>
-					<span class="hex">#1D2236</span>
-				</li>
-				<li>
-					<div class="view" style="--clr: #618CF6;"></div>
-					<span class="hex">#618CF6</span>
-				</li>
-				<li>
-					<div class="view" style="--clr: #F1F1E6;"></div>
-					<span class="hex">#F1F1E6</span>
-				</li>
+			<div class="welcome">
+				<a href="">HiepDeep</a>
+				<span>Sense and Simplicity</span>
 			</div>
-			<div class="boxContent">
-				<div class="widget mediaSocial">
-					<div class="wTitle"><h2>Media Social</h2></div>
-					<div class="wContent">
-						<a target="_blank" href="https://www.facebook.com/hiepdeep" style="--bg_ic: linear-gradient(0deg, #0062e0 0%, #19afff 100%);">
-							<span class="fab fa-facebook-f"></span>
-						</a>
-						<a target="_blank" href="https://www.instagram.com/hiepdeep" style="--bg_ic: linear-gradient(45deg, #ffd600 0%, #ff0100 50%, #d800b9 100%);">
-							<span class="fab fa-instagram"></span>
-						</a>
-						<a target="_blank" href="https://twitter.com/hiepdeep" style="--bg_ic: #55acee;">
-							<span class="fab fa-twitter"></span>
-						</a>
-						<a target="_blank" href="https://www.youtube.com/c/hiepdeep" style="--bg_ic: #ff0000;">
-							<span class="fab fa-youtube"></span>
-						</a>
-						<a target="_blank" href="https://www.tiktok.com/@hiepdeep" style="--bg_ic: linear-gradient(135deg, #08fff9 0%, #f00044 100%);">
-							<span class="fab fa-tiktok"></span>
-						</a>
-						<a target="_blank" href="https://codepen.io/hiepdeep" style="--bg_ic: #212121;">
-							<span class="fab fa-codepen"></span>
-						</a>
-					</div>
+			<div class="footer">
+				<div class="mediaSocial">
+					<a target="_blank" href="https://www.facebook.com/hiepdeep" style="--bg_ic: linear-gradient(0deg, #0062e0 0%, #19afff 100%);">
+						<span class="fab fa-facebook-f"></span>
+					</a>
+					<a target="_blank" href="https://www.instagram.com/hiepdeep" style="--bg_ic: linear-gradient(45deg, #ffd600 0%, #ff0100 50%, #d800b9 100%);">
+						<span class="fab fa-instagram"></span>
+					</a>
+					<a target="_blank" href="https://twitter.com/hiepdeep" style="--bg_ic: #55acee;">
+						<span class="fab fa-twitter"></span>
+					</a>
+					<a target="_blank" href="https://www.youtube.com/c/hiepdeep" style="--bg_ic: #ff0000;">
+						<span class="fab fa-youtube"></span>
+					</a>
+					<a target="_blank" href="https://www.tiktok.com/@hiepdeep" style="--bg_ic: linear-gradient(135deg, #08fff9 0%, #f00044 100%);">
+						<span class="fab fa-tiktok"></span>
+					</a>
+					<a target="_blank" href="https://codepen.io/hiepdeep" style="--bg_ic: #212121;">
+						<span class="fab fa-codepen"></span>
+					</a>
 				</div>
 			</div>
 		</div>
