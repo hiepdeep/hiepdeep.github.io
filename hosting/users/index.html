@@ -15,7 +15,7 @@
 				padding: 1rem;
 			}
 
-			.box {
+			.userImage {
 				display: grid;
 				grid-gap: calc(1rem + 4px);
 				grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
@@ -23,14 +23,14 @@
 				padding: calc(1rem + 4px);
 			}
 
-			.box .item .thumb {
+			.userImage .item .thumb {
 				border-radius: 50%;
 				overflow: hidden;
 				border: 4px solid #FFF;
 				box-shadow: 0 0 0 4px var(--green);
 			}
 
-			.box .item .metadata {
+			.userImage .item .metadata {
 				font-size: 14px;
 				font-weight: 500;
 				line-height: 20px;
@@ -40,11 +40,11 @@
 				cursor: pointer;
 			}
 
-			.box .item .metadata .name {
+			.userImage .item .metadata .name {
 				color: var(--black-rgb-54);
 			}
 
-			.box .item .metadata .uname {
+			.userImage .item .metadata .uname {
 				color: var(--black-rgb-38);
 			}
 		</style>
@@ -135,7 +135,6 @@
 				}
 			];
 			var e = "";
-			e += "<div class='box'>";
 			for (var i, i = 0; i < userID.length; i++) {
 				if (!userID[i].fullName == "") {
 					e += "<div class='item'>";
@@ -147,7 +146,6 @@
 					e += "</div>";
 				}
 			}
-			e += "</div>";
 			document.getElementById("userImage").innerHTML = e;
 		</script>
 	</body>
