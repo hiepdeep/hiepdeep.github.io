@@ -30,9 +30,15 @@
 				background: var(--light);
 				font-family: "Be Vietnam Pro", sans-serif;
 				letter-spacing: 0.04em;
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
-				justify-content: center;
-				align-items: center;
+				-webkit-box-pack: center;
+					-ms-flex-pack: center;
+						justify-content: center;
+				-webkit-box-align: center;
+					-ms-flex-align: center;
+						align-items: center;
 				height: 100vh;
 				padding: 12px;
 				overflow: hidden;
@@ -44,7 +50,8 @@
 				background-size: cover;
 				width: 1280px;
 				height: 720px;
-				box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+				-webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+						box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 				position: relative;
 			}
 
@@ -55,23 +62,31 @@
 				height: 100vh;
 				background: inherit;
 				z-index: -1;
-				filter: blur(25px);
+				-webkit-filter: blur(25px);
+						filter: blur(25px);
 				opacity: 0.75;
 				left: 50%;
 				top: 50%;
-				transform: translate(-50%, -50%) scale(1.2);
+				-webkit-transform: translate(-50%, -50%) scale(1.2);
+					-ms-transform: translate(-50%, -50%) scale(1.2);
+						transform: translate(-50%, -50%) scale(1.2);
 			}
 
 			.card .header {
 				background: rgba(255, 255, 255, 0.25);
 				width: 100%;
 				border-bottom: 3px solid #f7f8ff;
-				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+						backdrop-filter: blur(10px);
 			}
 
 			.card .header .row {
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
-				justify-content: space-between;
+				-webkit-box-pack: justify;
+					-ms-flex-pack: justify;
+						justify-content: space-between;
 				height: 48px;
 				padding: 0 12px;
 			}
@@ -79,10 +94,13 @@
 			.card .header .row .favicon {
 				height: calc(48px - 24px);
 				margin-top: 12px;
-				box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+				-webkit-box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+						box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 			}
 
 			.card .header .row nav {
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
 				gap: 12px;
 			}
@@ -106,10 +124,14 @@
 				top: calc(100% + 3px);
 				right: 0;
 				background: rgba(255, 255, 255, 0.75);
+				background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.75)), to(rgba(255, 255, 255, 0)));
+				background: -o-linear-gradient(top, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
 				background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
 				width: calc(254px + 24px);
 				height: 309px;
 				padding: 12px;
+				-webkit-transition: 0.25s;
+				-o-transition: 0.25s;
 				transition: 0.25s;
 			}
 
@@ -126,6 +148,8 @@
 			.card .header .row nav>li:hover ul {
 				visibility: visible;
 				opacity: 1;
+				background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.75)), to(rgba(255, 255, 255, 0)));
+				background: -o-linear-gradient(top, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
 				background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
 				height: 618px;
 			}
@@ -134,10 +158,19 @@
 				background: rgba(0, 0, 0, 0.25);
 				width: 100%;
 				height: calc(100% - 51px - 51px);
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
+				-webkit-box-pack: center;
+					-ms-flex-pack: center;
+						justify-content: center;
+				-webkit-box-align: center;
+					-ms-flex-align: center;
+						align-items: center;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+					-ms-flex-direction: column;
+						flex-direction: column;
 				font-weight: 600;
 			}
 
@@ -158,7 +191,8 @@
 				height: 51px;
 				border-top: 3px solid #f7f8ff;
 				position: relative;
-				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+						backdrop-filter: blur(10px);
 			}
 
 			.card .footer:before {
@@ -168,14 +202,21 @@
 				height: 48px;
 				right: 12px;
 				bottom: calc(100% + 15px);
-				box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+				-webkit-box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+						box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 				border-radius: 4px;
 			}
 
 			.card .footer .mediaSocial {
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
-				justify-content: space-between;
-				align-items: center;
+				-webkit-box-pack: justify;
+					-ms-flex-pack: justify;
+						justify-content: space-between;
+				-webkit-box-align: center;
+					-ms-flex-align: center;
+						align-items: center;
 				gap: 12px;
 				padding: 0 12px;
 				height: 100%;
@@ -184,19 +225,29 @@
 			.card .footer .mediaSocial a {
 				width: 24px;
 				height: 24px;
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
-				justify-content: center;
-				align-items: center;
+				-webkit-box-pack: center;
+					-ms-flex-pack: center;
+						justify-content: center;
+				-webkit-box-align: center;
+					-ms-flex-align: center;
+						align-items: center;
 				border-radius: 4px;
-				box-shadow: 0 0 0px 2px rgba(255, 255, 255, 0.25);
+				-webkit-box-shadow: 0 0 0px 2px rgba(255, 255, 255, 0.25);
+						box-shadow: 0 0 0px 2px rgba(255, 255, 255, 0.25);
 				color: #FFF;
 				font-size: 12px;
+				-webkit-transition: 0.25s;
+				-o-transition: 0.25s;
 				transition: 0.25s;
 			}
 
 			.card .footer .mediaSocial a:hover {
 				background: var(--bg_ic);
-				box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.25);
+				-webkit-box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.25);
+						box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.25);
 			}
 		</style>
 	</head>
