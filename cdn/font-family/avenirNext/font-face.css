@@ -1,0 +1,11 @@
+@font-face {
+	font-family: "Avenir Next";
+	src: url(static/AvenirNextRegular.otf);
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Avenir Next";
+	src: url(static/AvenirNextBold.otf);
+	font-weight: bold;
+}
