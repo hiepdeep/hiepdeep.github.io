@@ -27,224 +27,169 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<style type="text/css">
 			body {
-				background: var(--light);
+				background: rgba(22, 24, 36, 0.9);
 				font-family: "Be Vietnam Pro", sans-serif;
 				letter-spacing: 0.04em;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				height: 100vh;
-				padding: 12px;
-				overflow: hidden;
 			}
 
-			.card {
-				background: url("https://hiepdeep.imgix.net/background/pexels-photo-450035.jpeg?h=1080&fit=crop&crop=entropy");
-				background-position: center;
-				background-size: cover;
-				width: 1280px;
-				height: 720px;
-				box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-				position: relative;
-			}
-
-			.card:before {
-				content: "";
-				position: absolute;
-				width: 100vw;
-				height: 100vh;
-				background: inherit;
-				z-index: -1;
-				filter: blur(25px);
-				opacity: 0.75;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%) scale(1.2);
-			}
-
-			.card:after {
-				content: "";
-				position: absolute;
-				width: 100vw;
-				height: 100vh;
-				background: rgb(0, 0, 0, 50%);
-				z-index: -1;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%) scale(1.2);
-			}
-
-			.card .header {
-				background: rgba(0, 0, 0, 0.25);
-				width: 100%;
-				border-bottom: 3px solid rgba(255, 255, 255, 0.5);
-				backdrop-filter: blur(10px);
-			}
-
-			.card .header .row {
-				display: flex;
-				justify-content: space-between;
-				height: 48px;
-				padding: 0 12px;
-			}
-
-			.card .header .row .favicon {
-				height: calc(48px - 24px);
-				margin-top: 12px;
-				box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-			}
-
-			.card .header .row nav {
+			.container {
 				display: flex;
 				gap: 12px;
+				--shadow: 0px 10px 20px -10px rgb(255, 255, 255, 5%);
 			}
 
-			.card .header .row nav>li a {
-				line-height: 48px;
-				display: block;
+			.container .colLeft {
+				width: 320px;
+				flex-shrink: 0;
+				background: #161824;
+				border-radius: 4px;
+				box-shadow: var(--shadow);
+			}
+
+			.container .colLeft .nav>li>a {
 				color: rgba(255, 255, 255, 0.5);
-				font-size: 14px;
+				height: 42px;
+				font-size: 15px;
 				font-weight: 500;
 				transition: 0.25s;
+				display: flex;
+				align-items: center;
 			}
 
-			.card .header .row nav>li a:hover {
-				color: rgba(255, 255, 255, 1);
+			.container .colLeft .nav>li>a:hover {
+				color: white;
 			}
 
-			.card .header .row nav>li ul {
-				visibility: hidden;
-				opacity: 0;
-				position: absolute;
-				top: calc(100% + 3px);
-				right: 0;
-				background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0) 100%);
-				width: calc(254px + 24px);
-				height: 200px;
-				padding: 12px;
-				transition: 0.25s;
+			.container .colLeft .nav>li>a:hover span:after {
+				height: 24px;
 			}
 
-			.card .header .row nav>li ul:before {
+			.container .colLeft .nav>li>a span {
+				margin-right: 12px;
+				font-size: 24px;
+				padding: 4px;
+				position: relative;
+				width: 42px;
+				height: 42px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.container .colLeft .nav>li>a span:after {
 				content: "";
 				position: absolute;
-				background: transparent;
-				width: 100%;
-				height: 3px;
-				left: 0;
-				bottom: 100%;
-			}
-
-			.card .header .row nav>li:hover ul {
-				visibility: visible;
-				opacity: 1;
-				background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0) 100%);
-				height: 618px;
-			}
-
-			.card .welcome {
-				background: rgba(0, 0, 0, 0.25);
-				width: 100%;
-				height: calc(100% - 51px - 51px);
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-				font-weight: 600;
-			}
-
-			.card .welcome a {
-				color: rgba(255, 255, 255, 0.75);
-				font-size: 42px;
-				text-transform: uppercase;
-			}
-
-			.card .welcome a:hover {
-				color: rgba(255, 255, 255, 1);
-			}
-
-			.card .welcome span {
-				color: rgba(255, 255, 255, 0.75);
-				font-size: 24px;
-			}
-
-			.card .footer {
-				background: rgba(0, 0, 0, 0.25);
-				width: 100%;
-				height: 51px;
-				border-top: 3px solid rgba(255, 255, 255, 0.5);
-				position: relative;
-				backdrop-filter: blur(10px);
-			}
-
-			.card .footer:before {
-				position: absolute;
-				background: #FF3677;
-				width: 48px;
-				height: 48px;
-				right: 12px;
-				bottom: calc(100% + 15px);
-				box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-				border-radius: 4px;
-			}
-
-			.card .footer .mediaSocial {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				gap: 12px;
-				padding: 0 12px;
-				height: 100%;
-			}
-
-			.card .footer .mediaSocial a {
-				width: 24px;
-				height: 24px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				border-radius: 4px;
-				box-shadow: 0 0 0px 2px rgba(255, 255, 255, 0.25);
-				color: #FFF;
-				font-size: 12px;
+				background: #5890FF;
+				width: 2px;
+				height: 12px;
+				right: -1px;
+				top: 50%;
+				transform: translateY(-50%);
 				transition: 0.25s;
 			}
 
-			.card .footer .mediaSocial a:hover {
+			.container .colLeft .nav>li ul {
+				margin-left: 42px;
+			}
+
+			.container .colLeft .nav>li ul li a {
+				color: rgba(255, 255, 255, 0.5);
+				height: 42px;
+				font-size: 15px;
+				font-weight: 500;
+				transition: 0.25s;
+				display: flex;
+				align-items: center;
+				padding: 0 12px;
+				position: relative;
+			}
+
+			.container .colLeft .nav>li ul li a:before {
+				content: "";
+				position: absolute;
+				background: #FE8884;
+				width: 2px;
+				height: 12px;
+				left: -1px;
+				top: 50%;
+				transform: translateY(-50%);
+				transition: 0.25s;
+			}
+
+			.container .colLeft .nav>li ul li a:hover {
+				color: white;
+			}
+
+			.container .colLeft .nav>li ul li a:hover:before {
+				height: 24px;
+			}
+
+			.container .colRight .favicon {
+				width: 540px;
+				border-radius: 4px;
+				overflow: hidden;
+				user-select: none;
+				box-shadow: var(--shadow);
+			}
+
+			.container .colRight .mediaSocial {
+				margin-top: 12px;
+				display: flex;
+				gap: 12px;
+				justify-content: space-between;
+			}
+
+			.container .colRight .mediaSocial:hover a {
+				opacity: 0.25;
+			}
+
+			.container .colRight .mediaSocial a {
+				width: 100%;
+				height: calc(80px * 9/16);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 4px;
+				color: #FFF;
+				font-size: 14px;
+				transition: 0.25s;
 				background: var(--bg_ic);
-				box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.25);
+				transition: 0.25s;
+				box-shadow: var(--shadow);
+			}
+
+			.container .colRight .mediaSocial a:hover {
+				opacity: 1;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="card">
-			<div class="header">
-				<div class="row">
-					<a href="" class="favicon">
-						<img src="/cdn/favicon/favicon.svg">
-					</a>
-					<nav>
-						<li><a href="" class="home">Home</a></li>
-						<li>
-							<a href="">Products</a>
-							<ul>
-								<li><a target="_blank" href="/youtube">Youtube API Channel</a></li>
-								<li><a target="_blank" href="/hosting/beautifier">Beautifier Code</a></li>
-								<li><a target="_blank" href="/hosting/getthumbnail">Get Thumbnail Youtube</a></li>
-								<li><a target="_blank" href="/hosting/introduce">Introduce</a></li>
-								<li><a target="_blank" href="/hosting/notepad">Notepad</a></li>
-							</ul>
-						</li>
-						<li><a href="">About</a></li>
-						<li><a href="">Contact</a></li>
-					</nav>
+		<div class="container">
+			<div class="colLeft">
+				<div class="nav">
+					<li>
+						<a href=""><span class="material-icons">explore</span> Products</a>
+						<ul>
+							<li><a target="_blank" href="/youtube">Youtube API Channel</a></li>
+							<li><a target="_blank" href="/hosting/beautifier">Beautifier Code</a></li>
+							<li><a target="_blank" href="/hosting/getthumbnail">Get Thumbnail Youtube</a></li>
+							<li><a target="_blank" href="/hosting/introduce">Introduce</a></li>
+							<li><a target="_blank" href="/hosting/notepad">Notepad</a></li>
+						</ul>
+					</li>
+					<li><a href=""><span class="material-icons">account_circle</span> About</a></li>
+					<li><a href=""><span class="material-icons">flag_circle</span> Contact</a></li>
+					<li><a href=""><span class="material-icons">help</span> Support</a></li>
 				</div>
 			</div>
-			<div class="welcome">
-				<a href="">HiepDeep</a>
-				<span>Sense and Simplicity</span>
-			</div>
-			<div class="footer">
+			<div class="colRight">
+				<div class="favicon">
+					<img src="https://hiepdeep.github.io/cdn/pictures/1080h/BzoE5iQ1.png" alt="">
+				</div>
 				<div class="mediaSocial">
 					<a target="_blank" href="https://www.facebook.com/hiepdeep" style="--bg_ic: linear-gradient(0deg, #0062e0 0%, #19afff 100%);">
 						<span class="fab fa-facebook-f"></span>
