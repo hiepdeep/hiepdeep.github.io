@@ -27,205 +27,194 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<style type="text/css">
 			body {
-				background: rgba(22, 24, 36, 0.9);
+				background: linear-gradient(45deg, #43CBFF, #9708CC);
 				font-family: "Be Vietnam Pro", sans-serif;
-				letter-spacing: 0.04em;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				height: 100vh;
-			}
-
-			.container {
-				display: flex;
-				gap: 12px;
-				--shadow: 0px 10px 20px -10px rgb(255, 255, 255, 5%);
-			}
-
-			.container:before {
-				content: "";
-				position: absolute;
-				background: url("/cdn/pictures/1920w/F3Ri9hXx.png");
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: cover;
+				letter-spacing: 0.04em;
+				padding: 24px;
+			}
+
+			.container {
+				background: #161824;
+				width: 1280px;
+				height: 720px;
+				border-radius: 4px;
+				overflow: hidden;
+			}
+
+			.container .s3BOGj3b {
+				background: url(https://hiepdeep.github.io/cdn/pictures/background/M4cXIg4q.jpg);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				height: calc(24px + 320px + 24px);
+				position: relative;
+			}
+
+			.container .s3BOGj3b .i4f4BxWl {
+				display: flex;
+				align-items: flex-end;
+				gap: 24px;
+				position: absolute;
 				width: 100%;
+				top: 24px;
+				padding: 0 24px;
+			}
+
+			.container .s3BOGj3b .i4f4BxWl .thumb {
+				display: block;
+				width: 320px;
+				border: 6px solid #fff;
+			}
+
+			.container .s3BOGj3b .i4f4BxWl .nameUser {
+				line-height: 48px;
+				font-size: 22px;
+				font-weight: 400;
+				color: #fff;
+			}
+
+			.container .s3BOGj3b .i4f4BxWl .nameUser .fName {
+				font-weight: 600;
+			}
+
+			.container .s3BOGj3b .gaJE3qY8 {
+				position: absolute;
+				width: 50%;
+				bottom: 24px;
+				right: 0;
+				padding: 0 24px;
+				display: flex;
+				justify-content: flex-end;
+				gap: 12px;
+			}
+
+			.container .s3BOGj3b .gaJE3qY8 .jkK06kMQ {
+				background: var(--bg_ic);
+				color: #fff;
+				width: 48px;
+				height: 48px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				opacity: 0.75;
+			}
+
+			.container .s3BOGj3b .gaJE3qY8 .jkK06kMQ:hover {
+				opacity: 1;
+			}
+
+			.container .dS33pmWC {
+				margin-top: 24px;
+				display: flex;
+				gap: 24px;
+				padding: 0 24px;
+				height: calc(327px - 24px);
+			}
+
+			.container .dS33pmWC .uFq6U1bA {
+				width: 320px;
+				flex-shrink: 0;
+				background: rgba(255, 255, 255, 0.1);
+				position: relative;
+			}
+
+			.container .dS33pmWC .uFq6U1bA:before {
+				content: "";
+				position: absolute;
+				background: #43454e;
+				width: 6px;
 				height: 100%;
 				top: 0;
 				left: 0;
-				opacity: 0.5;
-				z-index: -1;
+				transition: 0.25s;
 			}
 
-			.container .colLeft {
-				width: 320px;
-				flex-shrink: 0;
-				background: #161824;
-				border-radius: 4px;
-				box-shadow: var(--shadow);
-			}
-
-			.container .colLeft .nav>li>a {
+			.container .dS33pmWC .uFq6U1bA .nav li a {
+				display: block;
+				line-height: 42px;
+				padding: 0 24px;
+				position: relative;
 				color: rgba(255, 255, 255, 0.5);
-				height: 42px;
 				font-size: 15px;
 				font-weight: 500;
-				transition: 0.25s;
-				display: flex;
-				align-items: center;
 			}
 
-			.container .colLeft .nav>li>a:hover {
-				color: white;
-			}
-
-			.container .colLeft .nav>li>a:hover span:after {
-				height: 24px;
-			}
-
-			.container .colLeft .nav>li>a span {
-				margin-right: 12px;
-				font-size: 24px;
-				padding: 4px;
-				position: relative;
-				width: 42px;
-				height: 42px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-
-			.container .colLeft .nav>li>a span:after {
+			.container .dS33pmWC .uFq6U1bA .nav li a:before {
 				content: "";
 				position: absolute;
+				background: #43454e;
+				width: 6px;
+				height: 100%;
+				top: 0;
+				left: 0;
+			}
+
+			.container .dS33pmWC .uFq6U1bA .nav li a:hover {
+				color: #fff;
+			}
+
+			.container .dS33pmWC .uFq6U1bA .nav li a:hover:before {
 				background: #5890FF;
-				width: 2px;
-				height: 12px;
-				right: -1px;
-				top: 50%;
-				transform: translateY(-50%);
-				transition: 0.25s;
 			}
 
-			.container .colLeft .nav>li ul {
-				margin-left: 42px;
-			}
-
-			.container .colLeft .nav>li ul li a {
-				color: rgba(255, 255, 255, 0.5);
-				height: 42px;
-				font-size: 15px;
-				font-weight: 500;
-				transition: 0.25s;
-				display: flex;
-				align-items: center;
-				padding: 0 12px;
-				position: relative;
-			}
-
-			.container .colLeft .nav>li ul li a:before {
-				content: "";
-				position: absolute;
-				background: #FE8884;
-				width: 2px;
-				height: 12px;
-				left: -1px;
-				top: 50%;
-				transform: translateY(-50%);
-				transition: 0.25s;
-			}
-
-			.container .colLeft .nav>li ul li a:hover {
-				color: white;
-			}
-
-			.container .colLeft .nav>li ul li a:hover:before {
-				height: 24px;
-			}
-
-			.container .colRight .favicon {
-				width: 540px;
-				border-radius: 4px;
-				overflow: hidden;
-				user-select: none;
-				box-shadow: var(--shadow);
-			}
-
-			.container .colRight .mediaSocial {
-				margin-top: 12px;
-				display: flex;
-				gap: 12px;
-				justify-content: space-between;
-			}
-
-			.container .colRight .mediaSocial:hover a {
-				opacity: 0.25;
-			}
-
-			.container .colRight .mediaSocial a {
+			.container .dS33pmWC .tQ17aYfN {
+				background: rgba(255, 255, 255, 0.1);
 				width: 100%;
-				height: calc(80px * 9/16);
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				border-radius: 4px;
-				color: #FFF;
-				font-size: 14px;
-				transition: 0.25s;
-				background: var(--bg_ic);
-				transition: 0.25s;
-				box-shadow: var(--shadow);
-			}
-
-			.container .colRight .mediaSocial a:hover {
-				opacity: 1;
+				color: rgba(255, 255, 255, 0.5);
 			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
-			<div class="colLeft">
-				<div class="nav">
-					<li>
-						<a href=""><span class="material-icons">explore</span> Products</a>
-						<ul>
-							<li><a target="_blank" href="/youtube">Youtube API Channel</a></li>
-							<li><a target="_blank" href="/hosting/beautifier">Beautifier Code</a></li>
-							<li><a target="_blank" href="/hosting/getthumbnail">Get Thumbnail Youtube</a></li>
-							<li><a target="_blank" href="/hosting/introduce">Introduce</a></li>
-							<li><a target="_blank" href="/hosting/notepad">Notepad</a></li>
-						</ul>
-					</li>
-					<!-- <li><a href=""><span class="material-icons">account_circle</span> About</a></li> -->
-					<!-- <li><a href=""><span class="material-icons">flag_circle</span> Contact</a></li> -->
-					<!-- <li><a href=""><span class="material-icons">help</span> Support</a></li> -->
+			<div class="s3BOGj3b">
+				<div class="i4f4BxWl">
+					<a class="thumb" href="">
+						<img src="/cdn/pictures/1080h/zEW7E9sc.png">
+					</a>
+					<a class="nameUser" href=""><span class="fName">Ngo Van</span> Hiep</a>
 				</div>
-			</div>
-			<div class="colRight">
-				<div class="favicon">
-					<img src="/cdn/pictures/1080h/BzoE5iQ1.png" alt="">
-				</div>
-				<div class="mediaSocial">
-					<a target="_blank" href="https://www.facebook.com/hiepdeep" style="--bg_ic: linear-gradient(0deg, #0062e0 0%, #19afff 100%);">
+				<div class="gaJE3qY8">
+					<a class="jkK06kMQ" href="https://www.facebook.com/hiepdeep" style="--bg_ic: linear-gradient(0deg, #0062e0, #19afff);">
 						<span class="fab fa-facebook-f"></span>
 					</a>
-					<a target="_blank" href="https://www.instagram.com/hiepdeep" style="--bg_ic: linear-gradient(45deg, #ffd600 0%, #ff0100 50%, #d800b9 100%);">
+					<a class="jkK06kMQ" href="https://www.instagram.com/hiepdeep" style="--bg_ic: linear-gradient(45deg, #ffd600, #ff0100, #d800b9);">
 						<span class="fab fa-instagram"></span>
 					</a>
-					<a target="_blank" href="https://twitter.com/hiepdeep" style="--bg_ic: #55acee;">
+					<a class="jkK06kMQ" href="https://twitter.com/hiepdeep" style="--bg_ic: #55acee;">
 						<span class="fab fa-twitter"></span>
 					</a>
-					<a target="_blank" href="https://www.twitch.tv/hiepdeep" style="--bg_ic: #772ce8;">
+					<a class="jkK06kMQ" href="https://www.twitch.tv/hiepdeep" style="--bg_ic: #772ce8;">
 						<span class="fab fa-twitch"></span>
 					</a>
-					<a target="_blank" href="https://www.youtube.com/c/hiepdeep" style="--bg_ic: #ff0000;">
+					<a class="jkK06kMQ" href="https://www.youtube.com/c/hiepdeep" style="--bg_ic: #ff0000;">
 						<span class="fab fa-youtube"></span>
 					</a>
-					<a target="_blank" href="https://www.tiktok.com/@hiepdeep" style="--bg_ic: linear-gradient(135deg, #08fff9 0%, #f00044 100%);">
+					<a class="jkK06kMQ" href="https://www.tiktok.com/@hiepdeep" style="--bg_ic: linear-gradient(135deg, #08fff9, #f00044);">
 						<span class="fab fa-tiktok"></span>
 					</a>
-					<!-- <a target="_blank" href="https://codepen.io/hiepdeep" style="--bg_ic: #212121;"><span class="fab fa-codepen"></span></a> -->
 				</div>
+			</div>
+			<div class="dS33pmWC">
+				<div class="uFq6U1bA">
+					<div class="nav">
+						<li><a target="_blank" href="/youtube">Youtube API Channel</a></li>
+						<li><a target="_blank" href="/hosting/beautifier">Beautifier Code</a></li>
+						<li><a target="_blank" href="/hosting/getthumbnail">Get Thumbnail Youtube</a></li>
+						<li><a target="_blank" href="/hosting/introduce">Introduce</a></li>
+						<li><a target="_blank" href="/hosting/notepad">Notepad</a></li>
+					</div>
+				</div>
+				<div class="tQ17aYfN text">tQ17aYfN</div>
 			</div>
 		</div>
 	</body>
