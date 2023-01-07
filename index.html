@@ -8,26 +8,22 @@
 		<title>HiepDeep | Sense and Simplicity</title>
 		<meta name="title" content="HiepDeep | Sense and Simplicity">
 		<meta name="description" content="Lorem Ipsum is simply dummy text of the printing and typesetting industry">
-
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website">
 		<meta property="og:url" content="https://hiepdeep.github.io">
 		<meta property="og:title" content="HiepDeep | Sense and Simplicity">
 		<meta property="og:description" content="Lorem Ipsum is simply dummy text of the printing and typesetting industry">
 		<meta property="og:image" content="/cdn/pictures/meta.png">
-		
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image">
 		<meta property="twitter:url" content="https://hiepdeep.github.io">
 		<meta property="twitter:title" content="HiepDeep | Sense and Simplicity">
 		<meta property="twitter:description" content="Lorem Ipsum is simply dummy text of the printing and typesetting industry">
 		<meta property="twitter:image" content="/cdn/pictures/meta.png">
-
 		<link rel="stylesheet" href="/cdn/style.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<style type="text/css">
 			body {
-				background: linear-gradient(45deg, #43CBFF, #9708CC);
+				background-image: url("https://hiepdeep.github.io/cdn/pictures/background/bg.jpg");
 				font-family: "Be Vietnam Pro", sans-serif;
 				display: flex;
 				justify-content: center;
@@ -37,186 +33,190 @@
 				background-repeat: no-repeat;
 				background-size: cover;
 				letter-spacing: 0.04em;
-				padding: 24px;
 			}
-
-			.container {
-				background: #161824;
+			body:before {
+				content: "";
+				position: absolute;
+				background: rgba(0, 0, 0, 0.5);
+				width: 100%;
+				height: 100%;
+			}
+			.countdown {
+				background: linear-gradient(135deg, rgba(106, 175, 230, 0.5) 20%, rgba(210, 113, 190, 0.5) 80%);
 				width: 1280px;
 				height: 720px;
-				border-radius: 4px;
 				overflow: hidden;
-			}
-
-			.container .s3BOGj3b {
-				background: url(https://hiepdeep.github.io/cdn/pictures/background/M4cXIg4q.jpg);
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: cover;
-				height: calc(24px + 320px + 24px);
 				position: relative;
-			}
-
-			.container .s3BOGj3b .i4f4BxWl {
+				z-index: 9;
+				box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.9);
+				padding: 48px;
+				border-radius: 24px;
 				display: flex;
-				align-items: flex-end;
+				justify-content: space-between;
+			}
+			.countdown .colL {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
 				gap: 24px;
-				position: absolute;
-				width: 100%;
-				top: 24px;
-				padding: 0 24px;
 			}
-
-			.container .s3BOGj3b .i4f4BxWl .thumb {
-				display: block;
-				width: 320px;
-				border: 6px solid #43454e;
-			}
-
-			.container .s3BOGj3b .i4f4BxWl .nameUser {
-				line-height: 48px;
-				font-size: 22px;
-				font-weight: 400;
-				color: #fff;
-			}
-
-			.container .s3BOGj3b .i4f4BxWl .nameUser .fName {
-				font-weight: 600;
-			}
-
-			.container .s3BOGj3b .gaJE3qY8 {
-				position: absolute;
-				width: 50%;
-				bottom: 24px;
-				right: 0;
-				padding: 0 24px;
+			.countdown .colL .row {
 				display: flex;
-				justify-content: flex-end;
-				gap: 12px;
+				flex-direction: column;
+				gap: 24px;
 			}
-
-			.container .s3BOGj3b .gaJE3qY8 .jkK06kMQ {
-				background: var(--bg_ic);
+			.countdown .colL .row .h2 {
 				color: #fff;
-				width: 48px;
-				height: 48px;
+				font-size: 72px;
+				font-weight: bold;
 				display: flex;
-				justify-content: center;
-				align-items: center;
+				flex-direction: column;
+			}
+			.countdown .colL .row .h3 {
+				color: #fff;
+				font-size: 24px;
 				opacity: 0.75;
-			}
-
-			.container .s3BOGj3b .gaJE3qY8 .jkK06kMQ:hover {
-				opacity: 1;
-			}
-
-			.container .dS33pmWC {
-				margin-top: 24px;
 				display: flex;
-				gap: 24px;
-				padding: 0 24px;
-				height: calc(327px - 24px);
+				flex-direction: column;
+				gap: 6px;
 			}
-
-			.container .dS33pmWC .uFq6U1bA {
-				width: 320px;
-				flex-shrink: 0;
-				background: rgba(255, 255, 255, 0.1);
-				position: relative;
-			}
-
-			.container .dS33pmWC .uFq6U1bA:before {
-				content: "";
-				position: absolute;
-				background: #43454e;
-				width: 6px;
-				height: 100%;
-				top: 0;
-				left: 0;
-				transition: 0.25s;
-			}
-
-			.container .dS33pmWC .uFq6U1bA .nav li a {
+			.countdown .colL .row a {
+				background: #ff1064;
+				width: 120px;
+				height: 50px;
 				display: block;
-				line-height: 42px;
-				padding: 0 24px;
-				position: relative;
-				color: rgba(255, 255, 255, 0.5);
-				font-size: 15px;
-				font-weight: 500;
-			}
-
-			.container .dS33pmWC .uFq6U1bA .nav li a:before {
-				content: "";
-				position: absolute;
-				background: #43454e;
-				width: 6px;
-				height: 100%;
-				top: 0;
-				left: 0;
-			}
-
-			.container .dS33pmWC .uFq6U1bA .nav li a:hover {
-				color: #fff;
-				background: rgba(255, 255, 255, 0.1);
-			}
-
-			.container .dS33pmWC .uFq6U1bA .nav li a:hover:before {
-				background: #5890FF;
-			}
-
-			.container .dS33pmWC .tQ17aYfN {
-				background: rgba(255, 255, 255, 0.1);
-				width: 100%;
+				border-radius: 36px;
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				color: rgba(255, 255, 255, 0.5);
+				color: #fff;
+				font-size: 16px;
+				font-weight: bold;
+				box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.9);
+				border: 2px solid #ddd;
+			}
+			.countdown .colL .copyright {
+				display: flex;
+				gap: 24px;
+				position: relative;
+			}
+			.countdown .colL .copyright:before {
+				content: "";
+				background: rgba(255, 255, 255, 0.2);
+				position: absolute;
+				width: 2px;
+				height: 50%;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 51px;
+			}
+			.countdown .colL .copyright img {
+				width: auto;
+				height: 40px;
+			}
+			.countdown .colR {
+				width: 25%;
+				display: grid;
+				grid-template-columns: auto auto;
+				grid-gap: 12px;
+			}
+			.countdown .colR .t {
+				font-family: "consolas";
+				background: rgba(255, 48, 48, 0.75);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 100px;
+				font-weight: bold;
+				border: 2px solid rgba(255, 255, 255, 0.75);
+			}
+			.countdown:before, .countdown:after {
+				content: "";
+				position: absolute;
+				background: rgba(255, 0, 0, 0.25);
+				width: 1280px;
+				height: 1280px;
+				right: -38%;
+				bottom: -95%;
+				border-radius: 40%;
+				z-index: -1;
+			}
+			.countdown:before {
+				animation: water 20s linear infinite;
+			}
+
+			.countdown:after {
+				animation: water 30s linear infinite;
+			}
+			@keyframes water {
+				0% {
+					transform: rotate(0deg);
+				}
+
+				100% {
+					transform: rotate(360deg);
+				}
 			}
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<div class="s3BOGj3b">
-				<div class="i4f4BxWl">
-					<a class="thumb" href="">
-						<img src="/cdn/pictures/1080h/zEW7E9sc.png">
-					</a>
-					<a class="nameUser" href=""><span class="fName">HIEP</span>DEEP</a>
-				</div>
-				<div class="gaJE3qY8">
-					<a class="jkK06kMQ" target="_blank" href="https://www.facebook.com/hiepdeep" style="--bg_ic: linear-gradient(0deg, #0062e0, #19afff);">
-						<span class="fab fa-facebook-f"></span>
-					</a>
-					<a class="jkK06kMQ" target="_blank" href="https://www.instagram.com/hiepdeep/" style="--bg_ic: linear-gradient(45deg, #ffd600, #ff0100, #d800b9);">
-						<span class="fab fa-instagram"></span>
-					</a>
-					<a class="jkK06kMQ" target="_blank" href="https://twitter.com/hiepdeep" style="--bg_ic: #55acee;">
-						<span class="fab fa-twitter"></span>
-					</a>
-					<a class="jkK06kMQ" target="_blank" href="https://www.twitch.tv/hiepdeep" style="--bg_ic: #772ce8;">
-						<span class="fab fa-twitch"></span>
-					</a>
-					<a class="jkK06kMQ" target="_blank" href="https://www.youtube.com/c/hiepdeep" style="--bg_ic: #ff0000;">
-						<span class="fab fa-youtube"></span>
-					</a>
-					<a class="jkK06kMQ" target="_blank" href="https://www.tiktok.com/@hiepdeep" style="--bg_ic: linear-gradient(135deg, #08fff9, #f00044);">
-						<span class="fab fa-tiktok"></span>
-					</a>
-				</div>
-			</div>
-			<div class="dS33pmWC">
-				<div class="uFq6U1bA">
-					<div class="nav">
-						<li><a target="_blank" href="/youtube">Youtube API Channel</a></li>
-						<li><a target="_blank" href="/hosting/beautifier">Beautifier Code</a></li>
-						<li><a target="_blank" href="/hosting/getthumbnail">Get Thumbnail Youtube</a></li>
-						<li><a target="_blank" href="/hosting/introduce">Introduce</a></li>
-						<li><a target="_blank" href="/hosting/notepad">Notepad</a></li>
+		<div class="countdown">
+			<div class="colL">
+				<div class="row">
+					<div class="h2">
+						<span>Countdown</span>
+						<span>to New Year 2024</span>
 					</div>
+					<div class="h3">
+						<span>Share witht your friends warm words</span>
+						<span>to all the wishes in the new</span>
+						<span>year will be granted</span>
+					</div>
+					<a href="">Share</a>
 				</div>
-				<div class="tQ17aYfN text"></div>
+				<div class="copyright">
+					<img src="https://hiepdeep.netlify.app/cdn/pictures/Asset17.png" alt="">
+					<img src="https://hiepdeep.netlify.app/cdn/pictures/asset4-w.png" alt="">
+				</div>
 			</div>
+			<div class="colR"></div>
 		</div>
+		<script type="text/javascript">
+			const colR = document.querySelector('.colR');
+			// Đặt ngày đếm
+			var countDownDate = new Date("January 22, 2023 0:0:0").getTime();
+			// Cập nhật đếm ngược cứ sau 1 giây
+			var x = setInterval(function() {
+				// Nhận ngày và thời gian
+				var now = new Date().getTime();
+				// Tìm khoảng cách giữa bây giờ và ngày đếm ngược
+				var distance = countDownDate - now;
+				// Tính toán thời gian cho ngày, giờ, phút và giây
+				var d = Math.floor(distance / (1000 * 60 * 60 * 24));
+				var h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+				var s = Math.floor((distance % (1000 * 60)) / 1000);
+				d = checkTime(d);
+				h = checkTime(h);
+				m = checkTime(m);
+				s = checkTime(s);
+				function checkTime(i) {
+					if (i < 10) {
+						i = "0" + i;
+					}
+					return i;
+				}
+				var time = d + "" + h + "" + m + "" + s;
+				var r = "";
+				for (let i = 0; i < time.split("").length; i++) {
+					r += `<span class="t">${time.split("")[i]}</span>`;
+				}
+				colR.innerHTML = r;
+				if (distance < 0) {
+					clearInterval(x);
+					document.getElementById("countdown").innerHTML = "Chúc Mừng Năm Mới 2022!";
+				}
+			});
+		</script>
 	</body>
 </html>
