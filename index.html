@@ -54,6 +54,7 @@
 				display: flex;
 				justify-content: space-between;
 				backdrop-filter: blur(2px);
+				animation: zoom 6s ease-in-out infinite;
 			}
 			.countdown .colL {
 				display: flex;
@@ -149,6 +150,14 @@
 
 			.countdown:after {
 				animation: water 30s linear infinite;
+			}
+			@keyframes zoom {
+				0%, 100% {
+					transform: scale(1.02);
+				}
+				50% {
+					transform: scale(0.98);
+				}
 			}
 			@keyframes water {
 				0% {
