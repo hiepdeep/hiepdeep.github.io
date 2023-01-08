@@ -132,7 +132,7 @@
 			}
 			.countdown .colR .t {
 				font-family: "consolas";
-				background: rgba(255, 48, 48, 0.75);
+				background: rgba(255, 48, 48, 1);
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -140,6 +140,7 @@
 				font-weight: bold;
 				border: 2px solid rgba(255, 255, 255, 0.75);
 				border-radius: 24px;
+				overflow: hidden;
 			}
 			.countdown:before, .countdown:after {
 				content: "";
@@ -201,6 +202,10 @@
 			<div class="colR"></div>
 		</div>
 		<script type="text/javascript">
+			let sd = `0px 0px #ccc`;
+			for (let i = 1; i < 100; i++) {
+				sd += `, ${i}px ${i}px #ccc`;
+			}
 			const colR = document.querySelector('.colR');
 			// Đặt ngày đếm
 			var countDownDate = new Date("January 22, 2023 0:0:0").getTime();
@@ -228,7 +233,7 @@
 				var time = d + "" + h + "" + m + "" + s;
 				var r = "";
 				for (let i = 0; i < time.split("").length; i++) {
-					r += `<span class="t">${time.split("")[i]}</span>`;
+					r += `<span class="t" style="text-shadow: ${sd}">${time.split("")[i]}</span>`;
 				}
 				colR.innerHTML = r;
 				if (distance < 0) {
