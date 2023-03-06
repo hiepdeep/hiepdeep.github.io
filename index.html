@@ -5,242 +5,214 @@
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 		<meta content="width=device-width, initial-scale=1" name="viewport">
 		<link rel="icon" href="/cdn/favicon/favicon.svg">
-		<title>HiepDeep | New Year 2023</title>
-		<meta name="title" content="HiepDeep | New Year 2023">
-		<meta name="description" content="HiepDeep | New Year 2023">
+		<title>HiepDeep | New Year 2024</title>
+		<meta name="title" content="HiepDeep | New Year 2024">
+		<meta name="description" content="HiepDeep | New Year 2024">
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website">
 		<meta property="og:url" content="https://hiepdeep.github.io">
-		<meta property="og:title" content="HiepDeep | New Year 2023">
-		<meta property="og:description" content="HiepDeep | New Year 2023">
+		<meta property="og:title" content="HiepDeep | New Year 2024">
+		<meta property="og:description" content="HiepDeep | New Year 2024">
 		<meta property="og:image" content="/cdn/pictures/meta/countdown2023.png">
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image">
-		<meta property="twitter:url" content="https://hiepdeep.github.io">
-		<meta property="twitter:title" content="HiepDeep | New Year 2023">
-		<meta property="twitter:description" content="HiepDeep | New Year 2023">
-		<meta property="twitter:image" content="/cdn/pictures/meta/countdown2023.png">
-		<link rel="stylesheet" href="/cdn/style.css">
 		<style type="text/css">
 			body {
-				background-image: url("/cdn/pictures/background/firework-display-singapore.jpg");
-				font-family: "Be Vietnam Pro", sans-serif;
+				background: #1D2236;
+				font-family: "consolas", sans-serif;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				height: 100vh;
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: cover;
-				letter-spacing: 0.04em;
+				overflow: hidden;
 			}
-			body:before {
+			.timess {
+				position: relative;
+				height: 48px;
+				display: flex;
+				gap: 2px;
+				overflow: hidden;
+				-webkit-box-reflect: below 2px linear-gradient(transparent, #0004);
+			}
+			.timess:before,
+			.timess:after {
 				content: "";
 				position: absolute;
-				background: rgba(0, 0, 0, 0.5);
+				background: #000;
 				width: 100%;
-				height: 100%;
-			}
-			.countdown {
-				background: linear-gradient(135deg, rgba(106, 175, 230, 0.1) 20%, rgba(210, 113, 190, 0.1) 80%);
-				width: 1280px;
-				height: 720px;
-				overflow: hidden;
-				position: relative;
+				height: 2px;
+				left: 0;
 				z-index: 9;
-				box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.9);
-				padding: 48px;
-				border-radius: 48px;
-				display: flex;
-				justify-content: space-between;
-				backdrop-filter: blur(10px);
-				animation: zoom 6s ease-in-out infinite;
 			}
-			.countdown .colL {
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-				gap: 24px;
+			.timess:before {
+				top: -2px;
 			}
-			.countdown .colL .row {
-				display: flex;
-				flex-direction: column;
-				gap: 24px;
+			.timess:after {
+				bottom: -2px;
 			}
-			.countdown .colL .row .h2 {
-				color: #fff;
-				font-size: 72px;
-				font-weight: bold;
-				display: flex;
-				flex-direction: column;
-				background-image: url("/cdn/pictures/720h/thumbnail/Ch8CaiTz_T0.jpg");
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: cover;
-				-webkit-text-fill-color: transparent;
-				-webkit-background-clip: text;
-				-webkit-text-stroke-width: 1px;
-				-webkit-text-stroke-color: #fff;
-			}
-			.countdown .colL .row .h3 {
-				color: #fff;
-				font-size: 24px;
-				opacity: 0.75;
-				display: flex;
-				flex-direction: column;
-				gap: 6px;
-			}
-			.countdown .colL .row a {
-				background: #ff1064;
-				width: 120px;
-				height: 50px;
-				display: block;
-				border-radius: 36px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				color: #fff;
-				font-size: 16px;
-				font-weight: bold;
-				box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.9);
-				border: 2px solid #ddd;
-			}
-			.countdown .colL .copyright {
-				display: flex;
-				gap: 24px;
+			.timess .times {
 				position: relative;
+				width: 48px;
 			}
-			.countdown .colL .copyright:before {
-				content: "";
-				background: rgba(255, 255, 255, 0.2);
+			.timess .times #time {
 				position: absolute;
-				width: 2px;
-				height: 50%;
-				top: 50%;
-				transform: translateY(-50%);
-				left: 51px;
-			}
-			.countdown .colL .copyright img {
-				width: auto;
-				height: 40px;
-			}
-			.countdown .colR {
-				width: 25%;
-				display: grid;
-				grid-template-columns: auto auto;
-				grid-gap: 12px;
-			}
-			.countdown .colR .t {
-				font-family: "consolas";
-				background: rgba(255, 48, 48, 1);
+				left: 0;
+				top: 0px;
+				transition: all 0.5s cubic-bezier(0.85, 0, 0.5, 1);
 				display: flex;
-				justify-content: center;
-				align-items: center;
-				font-size: 100px;
+				flex-direction: column;
+				gap: 2px;
+				background: #1D2236;
+			}
+			.timess .times #time #t {
+				background: #ccc;
+				display: block;
+				width: 48px;
+				height: 48px;
+				line-height: 48px;
+				text-align: center;
 				font-weight: bold;
-				border: 2px solid #ff2f2f;
-				border-radius: 24px;
 				overflow: hidden;
-			}
-			.countdown:before, .countdown:after {
-				content: "";
-				position: absolute;
-				background: rgba(255, 255, 0, 0.25);
-				width: 1280px;
-				height: 1280px;
-				right: -38%;
-				bottom: -95%;
-				border-radius: 40%;
-				z-index: -1;
-			}
-			.countdown:before {
-				animation: water 20s linear infinite;
-			}
-
-			.countdown:after {
-				animation: water 30s linear infinite;
-			}
-			@keyframes zoom {
-				0%, 100% {
-					transform: scale(1.02);
-				}
-				50% {
-					transform: scale(0.98);
-				}
-			}
-			@keyframes water {
-				0% {
-					transform: rotate(0deg);
-				}
-
-				100% {
-					transform: rotate(360deg);
-				}
 			}
 		</style>
 	</head>
 	<body>
-		<div class="countdown">
-			<div class="colL">
-				<div class="row">
-					<div class="h2">
-						<span>Countdown</span>
-						<span>to New Year 2023</span>
-					</div>
-					<div class="h3">
-						<span>Share witht your friends warm words</span>
-						<span>to all the wishes in the new</span>
-						<span>year will be granted</span>
-					</div>
-					<a href="">Share</a>
-				</div>
-				<div class="copyright">
-					<img src="/cdn/favicon/h-w.svg" alt="">
-					<img src="/cdn/favicon/hiepdeep-w.svg" alt="">
+		<div class="timess">
+			<div class="times">
+				<div id="time">
+					<span id="t">0</span>
+					<span id="t">1</span>
+					<span id="t">2</span>
+					<span id="t">3</span>
+					<span id="t">4</span>
+					<span id="t">5</span>
+					<span id="t">6</span>
+					<span id="t">7</span>
+					<span id="t">8</span>
+					<span id="t">9</span>
 				</div>
 			</div>
-			<div class="colR"></div>
+			<div class="times">
+				<div id="time">
+					<span id="t">0</span>
+					<span id="t">1</span>
+					<span id="t">2</span>
+					<span id="t">3</span>
+					<span id="t">4</span>
+					<span id="t">5</span>
+					<span id="t">6</span>
+					<span id="t">7</span>
+					<span id="t">8</span>
+					<span id="t">9</span>
+				</div>
+			</div>
+			<div class="times">
+				<div id="time">
+					<span id="t">0</span>
+					<span id="t">1</span>
+					<span id="t">2</span>
+				</div>
+			</div>
+			<div class="times">
+				<div id="time">
+					<span id="t">0</span>
+					<span id="t">1</span>
+					<span id="t">2</span>
+					<span id="t">3</span>
+					<span id="t">4</span>
+					<span id="t">5</span>
+					<span id="t">6</span>
+					<span id="t">7</span>
+					<span id="t">8</span>
+					<span id="t">9</span>
+				</div>
+			</div>
+			<div class="times">
+				<div id="time">
+					<span id="t">0</span>
+					<span id="t">1</span>
+					<span id="t">2</span>
+					<span id="t">3</span>
+					<span id="t">4</span>
+					<span id="t">5</span>
+				</div>
+			</div>
+			<div class="times">
+				<div id="time">
+					<span id="t">0</span>
+					<span id="t">1</span>
+					<span id="t">2</span>
+					<span id="t">3</span>
+					<span id="t">4</span>
+					<span id="t">5</span>
+					<span id="t">6</span>
+					<span id="t">7</span>
+					<span id="t">8</span>
+					<span id="t">9</span>
+				</div>
+			</div>
+			<div class="times">
+				<div id="time">
+					<span id="t">0</span>
+					<span id="t">1</span>
+					<span id="t">2</span>
+					<span id="t">3</span>
+					<span id="t">4</span>
+					<span id="t">5</span>
+				</div>
+			</div>
+			<div class="times">
+				<div id="time">
+					<span id="t">0</span>
+					<span id="t">1</span>
+					<span id="t">2</span>
+					<span id="t">3</span>
+					<span id="t">4</span>
+					<span id="t">5</span>
+					<span id="t">6</span>
+					<span id="t">7</span>
+					<span id="t">8</span>
+					<span id="t">9</span>
+				</div>
+			</div>
 		</div>
 		<script type="text/javascript">
-			let sd = `0px 0px #ff2f2f`;
-			for (let i = 1; i < 100; i++) {
-				sd += `, ${i}px ${i}px #ff2f2f`;
-			}
-			const colR = document.querySelector('.colR');
-			// Đặt ngày đếm
-			var countDownDate = new Date("January 22, 2023 0:0:0").getTime();
-			// Cập nhật đếm ngược cứ sau 1 giây
-			var x = setInterval(function() {
-				// Nhận ngày và thời gian
+			console.clear();
+			var x = setInterval(timer);
+			var countDownDate = new Date("January 10, 2024 0:0:0").getTime();
+			function timer() {
 				var now = new Date().getTime();
-				// Tìm khoảng cách giữa bây giờ và ngày đếm ngược
 				var distance = countDownDate - now;
-				// Tính toán thời gian cho ngày, giờ, phút và giây
-				var d = Math.floor(distance / (1000 * 60 * 60 * 24));
-				var h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-				var s = Math.floor((distance % (1000 * 60)) / 1000);
-				d = checkTime(d);
-				h = checkTime(h);
-				m = checkTime(m);
-				s = checkTime(s);
+				var d, h, m, s;
+				d = checkTime(Math.floor(distance / (1000 * 60 * 60 * 24)));
+				h = checkTime(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+				m = checkTime(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+				s = checkTime(Math.floor((distance % (1000 * 60)) / 1000));
 				function checkTime(i) {
 					if (i < 10) {
 						i = "0" + i;
+					} else if (i > 99) {
+						i = "99";
 					}
 					return i;
 				}
-				var time = d + "" + h + "" + m + "" + s;
-				var r = "";
-				for (let i = 0; i < time.split("").length; i++) {
-					r += `<span class="t" style="text-shadow: ${sd}">${time.split("")[i]}</span>`;
+				var timessssss = d + "" + h + "" + m + "" + s;
+				let gap = 2;
+				let hgt = 48;
+				for (let i = 0; i < time.length; i++) {
+					let tsss = timessssss.substring(Math.round(i), Math.round(i + 1));
+					let tm = hgt - (hgt * (Math.round(tsss) + 1)) - (Math.round(tsss) * gap);
+					time[i].style.top = tm + "px";
 				}
-				colR.innerHTML = r;
+				let rr = "0px 0px #bbb";
+				for (let i = 0; i < document.getElementsByTagName("span").length; i++) {
+					for (let j = 1; j < 50; j++) {
+						rr += `, ${j}px ${j}px #bbb`;
+					}
+				}
 				if (distance < 0) {
 					clearInterval(x);
-					document.getElementById("countdown").innerHTML = "Chúc Mừng Năm Mới 2023!";
+					document.getElementById("countdown").innerHTML = "Chúc Mừng Năm Mới 2022!";
 				}
-			});
+			}
 		</script>
 	</body>
 </html>
