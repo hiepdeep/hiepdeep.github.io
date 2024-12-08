@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="../../cdn/favicon/favicon.svg">
+		<title>Users Image</title>
+		<link rel="stylesheet" href="../../cdn/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<style type="text/css">
+			body {
+				background: var(--light);
+				font-family: "Be Vietnam Pro", sans-serif;
+				padding: 1rem;
+			}
+
+			#userImage {
+				display: grid;
+				grid-gap: calc(1rem + 4px);
+				grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+			}
+
+			#userImage .item .thumb {
+				border-radius: 50%;
+				overflow: hidden;
+				background: linear-gradient(90deg, #eeaeca 0%, #94bbe9 100%);
+				padding: 8px;
+			}
+
+			#userImage .item .thumb img {
+				border-radius: 50%;
+				box-shadow: 0 0 0 4px #fff;
+			}
+
+			#userImage .item .metadata {
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 20px;
+				padding: 1rem 0 0;
+				text-align: center;
+				user-select: none;
+				cursor: pointer;
+			}
+
+			.userImage .item .metadata .name {
+				color: var(--black-rgb-54);
+			}
+
+			.userImage .item .metadata .uname {
+				color: var(--black-rgb-38);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="userImage"></div>
+		<script type="text/javascript">
+			var userID = [
+				{
+					fullName: "Mai Huong",
+					userID: "blmhuong"
+				},
+				{
+					fullName: "Bùi Thị Mai Linh",
+					userID: "buithimailinh2212"
+				},
+				{
+					fullName: "Dinh Trang Thao",
+					userID: "dinhtrangthao03"
+				},
+				{
+					fullName: "Đỗ Thị Trâm Anh",
+					userID: "dodotramanh95"
+				},
+				{
+					fullName: "Kiều Trinh",
+					userID: "kieutrinh155"
+				},
+				{
+					fullName: "My Lê",
+					userID: "kiti_014"
+				},
+				{
+					fullName: "Khánh Hân",
+					userID: "khanhan19999"
+				},
+				{
+					fullName: "Trang Dien",
+					userID: "khanhtranggggg"
+				},
+				{
+					fullName: "Le Bong",
+					userID: "lebong95"
+				},
+				{
+					fullName: "Linh Bẹp",
+					userID: "linhbep13"
+				},
+				{
+					fullName: "Nga Vũ",
+					userID: "ngavu160197"
+				},
+				{
+					fullName: "Ngọc Mai",
+					userID: "ngocmoai"
+				},
+				{
+					fullName: "Quỳnh Chi",
+					userID: "quynhchi"
+				},
+				{
+					fullName: "Đoàn Thị Thanh Hiền",
+					userID: "thanhhien1311"
+				},
+				{
+					fullName: "Thao Tao Tau",
+					userID: "thaotaotau"
+				},
+				{
+					fullName: "Thu Thảo Trần",
+					userID: "thu_thaotran"
+				},
+				{
+					fullName: "Trần Ánh Hoàng",
+					userID: "trananhhoang12"
+				},
+				{
+					fullName: "Trần Huyền Trang",
+					userID: "tranhuyentrangne"
+				},
+				{
+					fullName: "Xuan Anh Nguyen",
+					userID: "xanhkakao"
+				},
+				{
+					fullName: "",
+					userID: ""
+				}
+			];
+			var e = "";
+			for (var i, i = 0; i < userID.length; i++) {
+				if (!userID[i].fullName == "") {
+					e += "<div class='item'>";
+						e += "<div class='thumb'><img src='userThumbnail/" + userID[i].userID + ".jpg'></div>";
+						e += "<div class='metadata'>";
+							e += "<div class='name'>" + userID[i].fullName + "</div>";
+							// e += "<div class='uname'>" + userID[i].userID + "</div>";
+						e += "</div>";	
+					e += "</div>";
+				}
+			}
+			document.getElementById("userImage").innerHTML = e;
+		</script>
+	</body>
+</html>

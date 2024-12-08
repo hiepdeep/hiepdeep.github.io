@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="/cdn/favicon/favicon.svg">
+		<title>HiepDeep | ĐỒNG HỒ SỐ</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				cursor: none;
+			}
+			body {
+				background: #eee;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				background: #eee;
+				color: #222;
+			}
+			#txt {
+				font: bold 18vw "consolas";
+			}
+		</style>
+	</head>
+	<body>
+	<body onload="startTime()">
+		<div id="txt"></div>
+		<script>
+			function startTime() {
+				const today = new Date();
+				let h = today.getHours();
+				let m = today.getMinutes();
+				let s = today.getSeconds();
+				m = checkTime(m);
+				s = checkTime(s);
+				document.getElementById('txt').innerHTML = `${h} ${m} ${s}`;
+				setTimeout(startTime, 1000);
+			}
+			function checkTime(i) {
+				if (i < 10) {i = "0" + i};
+				return i;
+			}
+		</script>
+	</body>
+</html>
