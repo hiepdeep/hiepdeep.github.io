@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<meta name="title" content="HiepDeep">
+		<meta name="description" content="HiepDeep">
+		<base href="https://hiepdeep.netlify.app/library/" target="_blank">
+		<title>Preview CAD | HiepDeep</title>
+		<link rel="icon" href="favicon/favicon.ico">
+		<link rel='stylesheet' href='code/css/oneforall.css'>
+		<style type="text/css">
+			/* font-family: "Roboto", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+			/* font-family: "Roboto Condensed", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+			/* font-family: "Be Vietnam Pro", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+			/* font-family: "Niramit", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Niramit:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+			/* font-family: "Work Sans", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+			/* font-family: "Bai Jamjuree", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+			/* font-family: "Space Mono", monospace; */
+			@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+			/* font-family: "Google Sans"; */
+			@import url("https://hiepdeep.netlify.app/library/font-family/googleSans/font-face.css");
+			/* font-family: "Avenir Next"; */
+			@import url("https://hiepdeep.netlify.app/library/font-family/avenirNext/font-face.css");
+			/* font-family: "SVN Gilroy"; */
+			@import url("https://hiepdeep.netlify.app/library/font-family/svnGilroy/font-face.css");
+			/* font-family: "Material Icons"; */
+			@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+			/* font-family: "FontAwesome"; */
+			@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+			/* font-family: "Font Awesome 5 Brands"; */
+			@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css");
+			a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+				outline: none;
+				vertical-align: baseline;
+			}
+			:link, button {
+				text-decoration: none;
+				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			:link, :hover, :focus, :active, :visited {
+				outline: none;
+			}
+			/*::-moz-selection {color: #fff;background: #FFA07A;}::selection {color: #fff;background: #FFA07A;}*/
+			/*::-webkit-scrollbar-track {background: #FFF;}::-webkit-scrollbar {width: 2px;height: 2px;}::-webkit-scrollbar-thumb {background: #322E2F;}*/
+			* {
+				margin: 0;
+				padding: 0;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				-webkit-tap-highlight-color: transparent;
+			}
+			iframe {
+				width: 100%;
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				-o-object-fit: cover;
+				object-fit: cover;
+			}
+			ol, ul, li {
+				list-style-type: none;
+			}
+			* {
+				font: 14px "Cambria", sans-serif;
+				letter-spacing: 0.05em;
+			}
+			body {
+				background: #e9e9e9;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+				gap: 24px;
+				padding: 24px;
+				height: 100vh;
+			}
+			#addAxis {
+				flex-shrink: 0;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+				padding: 12px;
+				width: 420px;
+				height: 100%;
+			}
+			#addAxis legend {
+				margin: 0 0px;
+				padding: 0 12px;
+				font-weight: bold;
+				user-select: none;
+			}
+			#addAxis textarea {
+				font-family: "Consolas";
+				width: 100%;
+				height: 100%;
+				line-height: 20px;
+				background: 0;
+				border: 0;
+				border-radius: 0;
+				color: #212121;
+				resize: none;
+				overflow-y: scroll;
+			}
+			#addAxis textarea::placeholder {
+				color: rgba(51, 51, 51, 0.5);
+			}
+			#addAxis button {
+				border: 0;
+				border-radius: 0;
+				width: 100%;
+				height: 52px;
+				color: green;
+				background: gold;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-weight: bold;
+				padding: 0 12px;
+				transition: 0.25s;
+			}
+			#addAxis button:hover {
+				background: green;
+				color: gold;
+			}
+			#preview {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 12px;
+				user-select: none;
+			}
+			#preview legend {
+				margin: 0 0px;
+				padding: 0 12px;
+				font-weight: bold;
+				user-select: none;
+			}
+			#preview img {
+				object-fit: unset;
+				max-height: 100%;
+				height: auto;
+				border-radius: 18px;
+				box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.75);
+			}
+			#preview span {
+				font-size: 2em;
+				font-weight: bold;
+				color: rgba(0, 128, 0, 0.5);
+				text-shadow: 0 2px 4px gold;
+			}
+		</style>
+	</head>
+	<body>
+		<fieldset id="addAxis">
+			<legend>Paste Axis Position CAD</legend>
+			<textarea placeholder="X Y"></textarea>
+			<button>Get CAD</button>
+		</fieldset>
+		<fieldset id="preview">
+			<legend>Preview CAD</legend>
+			<span>Preview CAD</span>
+		</fieldset>
+		<script type="text/javascript">
+			console.clear();
+			document.getElementsByTagName("button")[0].addEventListener("click", () => {
+				console.clear();
+				let textarea = document.getElementsByTagName("textarea")[0].value;
+				textarea = textarea.replace(/\n/gi, "--n--").replace(/\t/gi, "--t--").replace(/,/g, ".");
+				let split_1 = textarea.split("--n--");
+				let axis = [[],[]];
+				for (let i in split_1) {
+					if (split_1[i].match(/\w/g) != null) {
+						axis[0].push(Number.parseFloat(split_1[i].split("--t--")[0]));
+						axis[1].push(Number.parseFloat(split_1[i].split("--t--")[1]));
+					}
+				}
+				let min_X = Math.min(...axis[0]);
+				let max_X = Math.max(...axis[0]);
+				let min_Y = Math.min(...axis[1]);
+				let max_Y = Math.max(...axis[1]);
+				let bg_color = "green";
+				let ee_color = "gold";
+				let room = 10;
+				let canvas = document.createElement("canvas");
+				canvas.setAttribute("width", (min_X + max_X) * room + "px");
+				canvas.setAttribute("height", (min_Y + max_Y) * room + "px");
+				let ctx = canvas.getContext("2d");
+				ctx.beginPath();
+				ctx.rect(0, 0, (min_X + max_X) * room, (min_Y + max_Y) * room);
+				ctx.fillStyle = bg_color;
+				ctx.fill();
+				ctx.fillStyle = ee_color;
+				let dot = 1 * room;
+				for (let i in axis[0]) {
+					ctx.fillRect((axis[0][i] * room) - (dot/2), (axis[1][i] * room) - (dot/2), dot, dot);
+				}
+				let width = canvas.getAttribute("width");
+				let height = canvas.getAttribute("height");
+				document.getElementById("preview").innerHTML = `<legend>Preview CAD</legend>`;
+				if (Number.parseFloat(width.replace(/px/gi, "")) > Number.parseFloat(height.replace(/px/gi, ""))) {
+					document.getElementById("preview").innerHTML += `<img style="width:inherit;height:auto" src="${canvas.toDataURL("image/png")}">`;
+				}
+				else {
+					document.getElementById("preview").innerHTML += `<img style="width:auto;height:inherit" src="${canvas.toDataURL("image/png")}">`;
+				}
+			});
+		</script>
+	</body>
+</html>
