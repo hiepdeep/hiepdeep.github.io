@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="/cdn/favicon/favicon.svg">
+		<title>Notepad - HiepDeep</title>
+		<link rel="stylesheet" href="/cdn/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<style type="text/css">
+			body {
+				background: var(--light);
+				font-family: "Be Vietnam Pro", sans-serif;
+				display: flex;
+				justify-content: center;
+				padding: 1rem;
+				letter-spacing: .04em;
+			}
+
+			#notepad {
+				display: grid;
+				grid-gap: 1rem;
+				max-width: 1000px;
+			}
+
+			#notepad .notepad {
+				background: #FFF;
+				display: grid;
+				grid-gap: 1rem;
+				padding: 0 1rem;
+			}
+
+			#notepad .notepad .title {
+				border-bottom: 2px solid var(--light);
+				color: var(--black-clr-54);
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 40px;
+				user-select: none;
+			}
+
+			#notepad .notepad .content {
+				display: grid;
+			}
+
+			#notepad .notepad .content h2 {
+				font-size: 12px;
+				font-weight: 500;
+				color: var(--black-clr-38);
+				margin-bottom: 1rem;
+			}
+
+			#notepad .notepad .content a {
+				display: inline-flex;
+				align-items: center;
+				margin-bottom: 1rem;
+				color: var(--black-clr-54);
+				user-select: text;
+			}
+
+			#notepad .notepad .content a:hover {
+				color: var(--black-clr-87);
+			}
+
+			#notepad .notepad .content a img {
+				width: 16px;
+				height: 16px;
+				margin-right: 6px;
+			}
+
+			#notepad .notepad .content a span {
+				font-size: 12px;
+				font-weight: 500;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="notepad"></div>
+		<script type="text/javascript">
+			var notepad = [
+				{
+					"title": "Useful Tools",
+					"content": [
+						{
+							"title": "Online JavaScript beautifier",
+							"url": "https://beautifier.io"
+						},
+						{
+							"title": "Autoprefixer CSS online",
+							"url": "https://autoprefixer.github.io"
+						},
+						{
+							"title": "Generate unique SVG design assets | Haikei",
+							"url": "https://app.haikei.app"
+						},
+						{
+							"title": "Neumorphism/Soft UI CSS shadow generator",
+							"url": "https://neumorphism.io"
+						},
+						{
+							"title": "Neumorphism CSS Generator",
+							"url": "https://hype4.academy/tools/neumorphism-generator"
+						},
+						{
+							"title": "Glassmorphism CSS Generator",
+							"url": "https://hype4.academy/tools/glassmorphism-generator"
+						},
+						{
+							"title": "Animista - CSS Animations on Demand",
+							"url": "https://animista.net"
+						},
+						{
+							"title": "WAIT! Animate",
+							"url": "https://waitanimate.wstone.io"
+						},
+						{
+							"title": "Color Hex Color Codes",
+							"url": "https://www.color-hex.com"
+						},
+						{
+							"title": "Clippy — CSS clip-path maker",
+							"url": "https://bennettfeely.com/clippy"
+						},
+						{
+							"title": "cubic-bezier",
+							"url": "https://cubic-bezier.com"
+						},
+						{
+							"title": "Shape Divider App",
+							"url": "https://www.shapedivider.app"
+						},
+						{
+							"title": "ColorSpace - Color Palettes Generator and Color Gradient Tool",
+							"url": "https://mycolor.space"
+						},
+						{
+							"title": "Fresh Background Gradients | WebGradients.com",
+							"url": "https://webgradients.com"
+						},
+						{
+							"title": "CSS Gradient — Generator, Maker, and Background",
+							"url": "https://cssgradient.io"
+						},
+						{
+							"title": "CSS GEARS - Gradients Cards",
+							"url": "https://gradients.cssgears.com"
+						},
+
+						{"title": "", "url": ""},
+
+						{
+							"title": "Free Vector Icons and Stickers - PNG, SVG, EPS, PSD and CSS",
+							"url": "https://www.flaticon.com"
+						},
+						{
+							"title": "Feather – Simply beautiful open source icons",
+							"url": "https://feathericons.com"
+						},
+
+						{"title": "", "url": ""},
+
+						{
+							"title": "SVG Artista - SVG Drawing Animation Generator",
+							"url": "https://svgartista.net"
+						},
+						{
+							"title": "Voicemaker",
+							"url": "https://voicemaker.fpt.ai"
+						},
+						{
+							"title": "CodingUI - Just a simple place to share a lot of free UIs",
+							"url": "https://codingui.dev"
+						},
+						{
+							"title": "Alpha Coders - Your Source For Wallpapers, Art, Photography, Gifs and More!",
+							"url": "https://alphacoders.com"
+						},
+						{
+							"title": "Social Colors, Facebook Color, Twitter & Instagram Color | Material UI",
+							"url": "https://materialui.co/socialcolors"
+						},
+						{
+							"title": "Online Video Maker | Video Creation Software - Flixpress",
+							"url": "https://flixpress.com"
+						},
+						{
+							"title": "Sketch2Code - Transform sketches into HTML using AI",
+							"url": "https://sketch2code.azurewebsites.net"
+						},
+						{
+							"title": "loading.io - Your SVG + GIF + PNG Ajax Loading Icons and Animation Generator",
+							"url": "https://loading.io"
+						},
+						{
+							"title": "Download free PSDs, Website template PSDs UI PSDs all free | PSD Gang Creatives",
+							"url": "https://psdgang.com"
+						},
+						{
+							"title": "Remove Background from Image – remove.bg",
+							"url": "https://www.remove.bg"
+						},
+						{
+							"title": "Công cụ miễn phí để đếm số từ và ký tự trong văn bản",
+							"url": "http://vi.wordcounter360.com"
+						},
+						{
+							"title": "LMGTFY - Let Me Google That For You",
+							"url": "https://vi.lmgtfy.app"
+						},
+						{
+							"title": "Chuyển đổi trực tuyến - chuyển đổi video, ảnh, audio, tài liệu miễn phí",
+							"url": "https://www.online-convert.com/vi"
+						},
+						{
+							"title": "YouTube, Twitch, Twitter, & Instagram Statistics - SocialBlade.com",
+							"url": "https://socialblade.com"
+						},
+						{
+							"title": "RandomAPI :: Index",
+							"url": "https://randomapi.com"
+						},
+						{
+							"title": "timeago: a jQuery plugin",
+							"url": "http://timeago.yarp.com"
+						},
+						{
+							"title": "Tomasz Ostrowski homepage",
+							"url": "https://tomeko.net"
+						},
+						{
+							"title": "Font Awesome",
+							"url": "https://fontawesome.com"
+						},
+						{
+							"title": "Panzoid",
+							"url": "https://panzoid.com"
+						},
+						{
+							"title": "Download Facebook, Youtube Videos",
+							"url": "https://www.downvids.net"
+						},
+						{
+							"title": "Live Subscriber Count - Livecounts",
+							"url": "https://livecounts.net"
+						},
+						{
+							"title": "Get more likes, shares and follows with smart website tools - AddThis",
+							"url": "https://www.addthis.com"
+						},
+						{
+							"title": "DMCA Protection & Takedown Services",
+							"url": "https://www.dmca.com"
+						},
+						{
+							"title": "1500+ Animated Icons - Lordicon",
+							"url": "https://lordicon.com"
+						},
+						{
+							"title": "Meta Tags — Preview, Edit and Generate",
+							"url": "https://metatags.io"
+						},
+						{
+							"title": "HEAD - A simple guide to HTML <head> elements",
+							"url": "https://htmlhead.dev"
+						},
+						{
+							"title": "Lorem Picsum",
+							"url": "https://picsum.photos"
+						},
+						{
+							"title": "Random User Generator | Home",
+							 "url": "https://randomuser.me"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "Kho ảnh miễn phí · Pexels",
+							"url": "https://www.pexels.com/vi-vn"
+						},
+						{
+							"title": "Tải Hình Ảnh Đẹp Từ Kho Hình Ảnh Miễn Phí - Pixabay",
+							"url": "https://pixabay.com"
+						},
+						{
+							"title": "Hàng triệu hình ảnh PNG, hình nền và Vector để tải về miễn phí | Pngtree",
+							"url": "https://vi.pngtree.com"
+						},
+						{
+							"title": "PNG images | 100 000+ Free PNG images",
+							"url": "https://pngimg.com"
+						},
+						{
+							"title": "Free Vector Art & Graphics",
+							"url": "https://www.freevector.com"
+						},
+						{
+							"title": "Download Free Vector Art, Stock Photos & Stock Video Footage",
+							"url": "https://www.vecteezy.com"
+						},
+						{
+							"title": "Free Vectors, Stock Photos & PSD Downloads | Freepik",
+							"url": "https://www.freepik.com"
+						},
+						{
+							"title": "Premium & Free Design and Web Resources | Pixeden",
+							"url": "https://www.pixeden.com"
+						},
+						{
+							"title": "Free Photoshop Brushes at Brusheezy!",
+							"url": "https://www.brusheezy.com"
+						},
+						{
+							"title": "Beautiful Free Images & Pictures | Unsplash",
+							"url": "https://unsplash.com"
+						},
+						{
+							"title": "DeviantArt - The Largest Online Art Gallery and Community",
+							"url": "https://www.deviantart.com"
+						},
+						{
+							"title": "Free Vector graphic art",
+							"url": "https://all-free-download.com"
+						},
+						
+						{"title": "", "url": ""},
+
+						{
+							"title": "Free Online Video Downloader (Ultra HD, HDR, 1080p, 4K, 8K)",
+							"url": "https://youtube4kdownloader.com"
+						},
+
+						{"title": "", "url": ""},
+
+						{
+							"title": "Xem Phim",
+							"url": ""
+						},
+						{
+							"title": "MyFlixer - Watch movies and Series online free in Full HD on MyFlixer",
+							"url": "https://myflixertv.to/home"
+						},
+						{
+							"title": "Cineb.net - Watch Full HD Movies Online and Stream Free Movies Online Now",
+							"url": "https://cineb.net"
+						},
+						{
+							"title": "Topflix - All Movies List",
+							"url": "https://topflix.se/movies"
+						},
+						{
+							"title": "Movies7 - Online Movies, TV shows and more",
+							"url": "https://movies7.sc"
+						},
+						{
+							"title": "",
+							"url": ""
+						},
+						{
+							"title": "Xem phim online chất lượng cao",
+							"url": "https://xemphim.club"
+						},
+						{
+							"title": "Phim Gì? | Xem phim mới | Xem phim nhanh | Xem phim online | Xem phim HD vietsub, thuyết minh | Xem phim không quảng cáo",
+							"url": "https://xemphimgi.net"
+						},
+
+						{"title": "", "url": ""}
+					]
+				},
+				{
+					"title": "Tutorial",
+					"content": [
+						{
+							"title": "Text to ASCII Art Generator (TAAG)",
+							"url": "https://patorjk.com/software/taag"
+						},
+						{
+							"title": "",
+							"url": "https://trandtung1209.github.io/tcc"
+						},
+						{
+							"title": "Học AngularJS",
+							"url": "https://freetuts.net/hoc-angularjs"
+						},
+						{
+							"title": "Học Laravel",
+							"url": "https://freetuts.net/hoc-laravel"
+						},
+						{
+							"title": "Tự học ReactJS căn bản đến nâng cao",
+							"url": "https://freetuts.net/reactjs/tu-hoc-reactjs"
+						},
+						{
+							"title": "Các hàm xử lý ngày tháng trong Javascript",
+							"url": "https://freetuts.net/ham-xu-ly-ngay-thang-date-trong-javascript-400.html"
+						},
+						{
+							"title": "PHP trang tin tức - Các chức năng của bài viết admin",
+							"url": "https://freetuts.net/php-trang-tin-tuc-cac-chuc-nang-cua-bai-viet-admin-787.html"
+						},
+						{
+							"title": "Làm việc với file trong PHP",
+							"url": "https://xuanthulab.net/lam-viec-voi-file-trong-php.html"
+						},
+						{
+							"title": "10 Minutes Tutorial For Server-Sent Events",
+							"url": "https://www.tutorialdocs.com/article/server-sent-events-tutorial.html"
+						},
+						{
+							"title": "Kỹ thuật Server Sent Events – truyền dữ liệu tự động từ server",
+							"url": "https://longnv.name.vn/ky-thuat-web/ky-thuat-server-sent-events-truyen-du-lieu-tu-dong-tu-server"
+						},
+						{
+							"title": "Tìm hiểu về các công nghệ real-time: Server Sent Events vs WebSockets",
+							"url": "https://techmaster.vn/posts/34415/hieu-ve-cong-nghe-real-time-server-sent-events-vs-websocket"
+						},
+						{
+							"title": "How to code calendar in PHP",
+							"url": "https://codingwithsara.com/how-to-code-calendar-in-php"
+						},
+						{
+							"title": "Building &lt;InputAccessoryView&gt; For React Native",
+							"url": "https://reactnative.dev/blog/2018/03/22/building-input-accessory-view-for-react-native"
+						},
+						{
+							"title": "JavaScript - Tạo Nhanh Unique Array với ES6",
+							"url": "https://www.codehub.com.vn/JavaScript-Tao-Nhanh-Unique-Array-voi-ES6"
+						},
+						{
+							"title": "Xử Lý Dữ Liệu JSON Đơn Giản Với Javascript",
+							"url": "https://codelearn.io/sharing/xu-ly-du-lieu-json-voi-javascript"
+						},
+						{
+							"title": "Hướng dẫn thêm bộ đếm lượt xem bài viết bằng FireBase đơn giản",
+							"url": "https://www.baotrongit.com/2020/08/huong-dan-them-bo-em-luot-xem-bai-viet.html"
+						},
+						{
+							"title": "Hướng dẫn resize image (thu nhỏ ảnh) đơn giản với PHP",
+							"url": "https://sharecode.vn/kien-thuc-lap-trinh/huong-dan-resize-image-thu-nho-anh-don-gian-voi-php-433.htm"
+						},
+						{
+							"title": "Thay đổi Kích thước Hình ảnh Dễ dàng bằng PHP",
+							"url": "https://code.tutsplus.com/vi/tutorials/image-resizing-made-easy-with-php--net-10362"
+						},
+						{
+							"title": "Cách Phân trang Dữ liệu với PHP",
+							"url": "https://code.tutsplus.com/vi/tutorials/how-to-paginate-data-with-php--net-2928"
+						},
+						{
+							"title": "PHP Comments System with Like Unlike",
+							"url": "https://phppot.com/php/php-comments-system-with-like-unlike"
+						},
+						{
+							"title": "Like unlike using AJAX, jQuery and PHP",
+							"url": "https://makitweb.com/like-unlike-using-ajax-jquery-php"
+						},
+						{
+							"title": "Like and Unlike system using PHP and MySQL database",
+							"url": "https://codewithawa.com/posts/like-and-unlike-system-using-php-and-mysql-database"
+						},
+						{
+							"title": "Like Dislike system with PHP and MySQL",
+							"url": "https://codewithawa.com/posts/like-dislike-system-with-php-and--mysql"
+						},
+						{
+							"title": "Selection and Range",
+							"url": "https://javascript.info/selection-range#selection-getting-demo"
+						},
+						{
+							"title": "ARIA: textbox role - Accessibility | MDN",
+							"url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/textbox_role"
+						},
+						{
+							"title": "CodeMirror: Theme Demo",
+							"url": "https://codemirror.net/demo/theme.html"
+						},
+						{
+							"title": "",
+							"url": "https://summernote.org/examples"
+						},
+						{
+							"title": "",
+							"url": "https://anhtuyen.wordpress.com/2015/10/28/su-dung-text-editor-cho-textarea"
+						},
+						{
+							"title": "Server-sent events and php - what triggers events on the server?",
+							"url": "https://stackoverflow.com/questions/14564903/server-sent-events-and-php-what-triggers-events-on-the-server"
+						},
+						{
+							"title": "",
+							"url": "https://longnv.name.vn/lap-trinh-php/su-dung-sse-trong-php"
+						},
+						{
+							"title": "",
+							"url": "https://vercel.com/home"
+						},
+						{
+							"title": "",
+							"url": "https://github.com/supermarin/YosemiteSanFranciscoFont"
+						},
+						{
+							"title": "",
+							"url": "https://github.com/azoff/Overscroll/blob/master/README.md"
+						},
+						{
+							"title": "",
+							"url": "https://github.com/hhxsv5/php-sse"
+						},
+						{
+							"title": "PHP-Like-Button/index.php at master · howCodeORG/PHP-Like-Button",
+							"url": "https://github.com/howCodeORG/PHP-Like-Button/blob/master/phplikes/index.php"
+						},
+						{
+							"title": "highlight.js/src/styles at main · highlightjs/highlight.js",
+							"url": "https://github.com/highlightjs/highlight.js/tree/main/src/styles"
+						},
+						{
+							"title": "",
+							"url": "https://cdnjs.com/libraries/jquery-overscroll"
+						},
+						{
+							"title": "",
+							"url": "https://www.webslesson.info/2018/07/live-chat-system-in-php-using-ajax-jquery.html"
+						},
+						{
+							"title": "",
+							"url": "https://tuandc.com/lap-trinh/chinh-sua-du-lieu-truc-tiep-tren-bang-du-lieu-bang-jquery-ajax.html"
+						},
+						{
+							"title": "",
+							"url": "http://pinlaz.com/vi/dem-so-luot-xem-trang-trong-php-laravel_59.html"
+						},
+						{
+							"title": "",
+							"url": "https://codewithawa.com/posts/like-dislike-system-with-php-and--mysql"
+						},
+						{
+							"title": "",
+							"url": "https://github.com/howCodeORG/PHP-Like-Button/blob/master/phplikes/index.php"
+						},
+						{
+							"title": "",
+							"url": "https://developers.google.com/web/updates/2018/07/css-scroll-snap?hl=vi"
+						},
+						{
+							"title": "",
+							"url": "https://stackoverflow.com/questions/53460035/firebase-observer-event-type"
+						},
+						{
+							"title": "",
+							"url": "https://viblo.asia/p/tim-hieu-ve-firebase-realtime-database-Az45bxzVZxY"
+						},
+						{
+							"title": "",
+							"url": "http://eitguide.net/firebase-bai-2-1-gioi-thieu-ve-realtime-database/amp"
+						},
+						{
+							"title": "",
+							"url": "https://eitguide.net/firebase-bai-2-3-gioi-thieu-ve-realtime-database/amp"
+						},
+						{
+							"title": "",
+							"url": "https://medium.com/@mariamaslam/using-firebaseui-auth-for-web-c4ddc51d95c5"
+						},
+						{
+							"title": "",
+							"url": "https://easings.net/#easeOutBack"
+						},
+						{
+							"title": "Học Firebase qua Project - Phần 2: Xử lí đăng nhập (Đăng nhập với Facebook)",
+							"url": "https://kipalog.com/posts/Hoc-Firebase-qua-Project---Phan-2--Xu-li-dang-nhap--Dang-nhap-voi-Facebook"
+						},
+						{
+							"title": "",
+							"url": "https://firebase.google.com/docs/auth/web/facebook-login"
+						},
+						{
+							"title": "",
+							"url": "https://github.com/gsuitedevs/apps-script-samples?files=1"
+						},
+						{
+							"title": "",
+							"url": "https://github.com/firebase/friendlychat-web/blob/master/web/public/index.html"
+						},
+						{
+							"title": "",
+							"url": "https://expressmagazine.net/development/1915/huong-dan-rewrite-url-su-dung-htaccess"
+						}
+					]
+				},
+				{
+					"title": "Example",
+					"content": [
+						{
+							"title": "Create a new Gist",
+							"url": "https://gist.github.com"
+						},
+						{
+							"title": "Javascript Obfuscator - Protects JavaScript code from stealing and shrinks size - 100% Free",
+							"url": "https://javascriptobfuscator.com"
+						},
+						{
+							"title": "URL Shortener - Short URLs & Custom Free Link Shortener | Bitly",
+							"url": "https://bitly.com"
+						},
+						{
+							"title": "Logo Intro Sound Effects - Free Sound Effects Download | Avnish Parker",
+							"url": "https://www.avnishparker.com/logo-intro-music"
+						},
+						{
+							"title": "After Effects Templates Free Download | Logo Animation After Effects Template | After Effects Template Intro",
+							"url": "https://www.avnishparker.com/AfterEffectsTemplates"
+						},
+						{
+							"title": "Hex Encode - Online Hex mã hóa",
+							"url": "https://www.convertstring.com/vi/EncodeDecode/HexEncode"
+						},
+						{
+							"title": "PageSpeed Insights",
+							"url": "https://developers.google.com/speed/pagespeed/insights"
+						},
+						{
+							"title": "Text -> C/C++ string converter",
+							"url": "https://tomeko.net/online_tools/cpp_text_escape.php"
+						},
+						{
+							"title": "Regex Hub - Useful Regex Patterns",
+							"url": "https://projects.lukehaas.me/regexhub"
+						},
+						
+						{"title": "", "url": ""},
+
+						{
+							"title": "",
+							"url": "https://highlightjs.org"
+						},
+						{
+							"title": "",
+							"url": "http://ceksite.com"
+						},
+						{
+							"title": "",
+							"url": "https://micku7zu.github.io/vanilla-tilt.js"
+						},
+						{
+							"title": "",
+							"url": "https://fengyuanchen.github.io/pickerjs"
+						},
+						{
+							"title": "",
+							"url": "https://codemirror.net/demo/theme.html#default"
+						},
+						
+						{"title": "", "url": ""},
+
+						{
+							"title": "clip-path | CSS-Tricks",
+							"url": "https://css-tricks.com/almanac/properties/c/clip-path"
+						},
+						{
+							"title": "Icons - Google Fonts",
+							"url": "https://fonts.google.com/icons?selected=Material+Icons"
+						},
+						{
+							"title": "Blog",
+							"url": ""
+						},
+						{
+							"title": "",
+							"url": "http://www.onlinetutorialsweb.com"
+						},
+						{
+							"title": "",
+							"url": "https://darkcode1.blogspot.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.arlinadzgn.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.bloggerku.com"
+						},
+						{
+							"title": "",
+							"url": "http://1bestcsharp.blogspot.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.igniel.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.msdesignbd.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.0286blog.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.siblog.net"
+						},
+						{
+							"title": "",
+							"url": "https://www.nguyenanhduy.com"
+						},
+						{
+							"title": "w3schools",
+							"url": ""
+						},
+						{
+							"title": "Canvas Clock Start",
+							"url": "https://www.w3schools.com/graphics/canvas_clock_start.asp"
+						},
+						{
+							"title": ".length",
+							"url": "https://www.w3schools.com/jquery/prop_length.asp"
+						},
+						{
+							"title": ".split()",
+							"url": "https://www.w3schools.com/jsref/jsref_split.asp"
+						},
+						{
+							"title": "goBack()",
+							"url": "https://www.w3schools.com/jsref/met_his_back.asp"
+						},
+						{
+							"title": ".each()",
+							"url": "https://www.w3schools.com/jquery/misc_each.asp"
+						},
+						{
+							"title": ".change()",
+							"url": "https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_event_change_ref"
+						},
+						{
+							"title": "PHP array_unique() Function",
+							"url": "https://www.w3schools.com/php/func_array_unique.asp"
+						},
+						{
+							"title": "jQuery - AJAX load() Method",
+							"url": "https://www.w3schools.com/jquery/jquery_ajax_load.asp"
+						},
+						{
+							"title": "HTML DOM createElement() Method",
+							"url": "https://www.w3schools.com/jsref/met_document_createelement.asp"
+						},
+						{
+							"title": "HTML tabindex Attribute",
+							"url": "https://www.w3schools.com/tags/att_global_tabindex.asp"
+						},
+						{
+							"title": "HTML DOM contentEditable Property",
+							"url": "https://www.w3schools.com/jsref/prop_html_contenteditable.asp"
+						},
+						{
+							"title": "The Caption Element",
+							"url": "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_caption_test"
+						},
+						{
+							"title": "The Details Element",
+							"url": "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_details"
+						},
+						{
+							"title": "The Fieldset Element",
+							"url": "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_fieldset"
+						},
+						{
+							"title": "The Progress Element",
+							"url": "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_progress"
+						},
+						{
+							"title": "The Bdo Element",
+							"url": "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_bdo"
+						},
+						{
+							"title": "JS Classname Toggle",
+							"url": "https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_element_classname_toggle"
+						},
+						{
+							"title": "jQuery Filters Table",
+							"url": "https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_filters_table"
+						},
+						{
+							"title": "JS Onsearch",
+							"url": "https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onsearch"
+						},
+						{
+							"title": "JS Rangeslider",
+							"url": "https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider"
+						},
+						{
+							"title": "CSS Attribute Selector",
+							"url": "https://www.w3schools.com/css/css_attribute_selectors.asp"
+						},
+						{
+							"title": "JS Array Sort",
+							"url": "https://www.w3schools.com/js/tryit.asp?filename=tryjs_array_sort2"
+						},
+						{
+							"title": "PHP Function addNumbers",
+							"url": "https://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_non-strict"
+						},
+						{
+							"title": "Pre Code Highlight",
+							"url": "https://www.w3schools.com/howto/tryit.asp?filename=tryhow_syntax_highlight"
+						},
+						{
+							"title": ":eq()",
+							"url": "https://www.w3schools.com/jquery/sel_eq.asp"
+						},
+						{
+							"title": ".width()",
+							"url": "https://www.w3schools.com/jquery/css_width.asp"
+						},
+						{
+							"title": ".addEventListener()",
+							"url": "https://www.w3schools.com/jsref/met_element_addeventlistener.asp"
+						},
+						{
+							"title": "return",
+							"url": "https://www.w3schools.com/jsref/jsref_return.asp"
+						},
+						{
+							"title": "Password Validation",
+							"url": "https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_password_val"
+						},
+						{
+							"title": "",
+							"url": "https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_special"
+						},
+						{
+							"title": "",
+							"url": "https://www.w3schools.com/php/php_ajax_poll.asp"
+						},
+						{
+							"title": "",
+							"url": "https://www.w3schools.com/php/php_form_url_email.asp"
+						},
+						{
+							"title": "",
+							"url": "https://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_misc_uniqid"
+						},
+						{
+							"title": "",
+							"url": "https://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_string_strtolower"
+						},
+						{
+							"title": "",
+							"url": "https://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_string_ucwords"
+						},
+						{
+							"title": "",
+							"url": "https://www.w3schools.com/php/phptryit.asp?filename=tryphp_switch"
+						},
+						{
+							"title": "",
+							"url": "https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_ajax_load"
+						},
+						{
+							"title": "",
+							"url": "https://www.w3schools.com/html/html5_serversentevents.asp"
+						},
+						{
+							"title": "",
+							"url": "https://www.w3schools.com/xml/tryit.asp?filename=tryajax_suggest_php"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "Font Awesome 5 Icons",
+							"url": ""
+						},
+						{
+							"title": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css",
+							"url": "https://www.w3schools.com/icons/fontawesome5_intro.asp"
+						},
+						{
+							"title": "https://use.fontawesome.com/releases/v5.5.0/css/all.css",
+							"url": "https://www.w3schools.com/icons/fontawesome5_intro.asp"
+						},
+						{
+							"title": "https://use.fontawesome.com/releases/v5.0.6/css/all.css",
+							"url": "https://www.w3schools.com/icons/fontawesome5_intro.asp"
+						},
+						{
+							"title": "Font Awesome 4 Icons",
+							"url": ""
+						},
+						{
+							"title": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+							"url": "https://www.w3schools.com/icons/fontawesome_icons_intro.asp"
+						},
+						{
+							"title": "Bootstrap Icons",
+							"url": ""
+						},
+						{
+							"title": "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
+							"url": "https://www.w3schools.com/icons/bootstrap_icons_glyphicons.asp"
+						},
+						{
+							"title": "Google Icons",
+							"url": ""
+						},
+						{
+							"title": "https://fonts.googleapis.com/icon?family=Material+Icons",
+							"url": "https://www.w3schools.com/icons/google_icons_intro.asp"
+						},
+						{
+							"title": "Unicons",
+							"url": ""
+						},
+						{
+							"title": "https://unicons.iconscout.com/release/v2.1.7/css/unicons.css",
+							"url": "https://iconscout.com/unicons/explore/line"
+						},
+						{
+							"title": "Thư viện jQuery",
+							"url": ""
+						},
+						{
+							"title": "",
+							"url": "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "W3Schools How To",
+							"url": "https://www.w3schools.com/howto/default.asp"
+						},
+						{
+							"title": "CSS filter Property",
+							"url": "https://www.w3schools.com/cssref/css3_pr_filter.asp"
+						},
+					
+						{"title": "", "url": ""},
+						
+						{
+							"title": "Đọc và ghi dữ liệu trên web | Cơ sở dữ liệu thời gian thực Firebase",
+							"url": "https://firebase.google.com/docs/database/web/read-and-write?hl=vi"
+						},
+						{
+							"title": "Kiểm tra tính thân thiện với thiết bị di động - Google Search Console",
+							"url": "https://search.google.com/test/mobile-friendly"
+						},
+						{
+							"title": "Kiểm tra dữ liệu có cấu trúc",
+							"url": "https://search.google.com/structured-data/testing-tool\#"
+						},
+						{
+							"title": "Trình gỡ lỗi chia sẻ - Facebook for Developers",
+							"url": "https://developers.facebook.com/tools/debug"
+						},
+						{
+							"title": "Keyword tool",
+							"url": "https://www.cleancss.com/keyword-tool"
+						},
+						{
+							"title": "Rút gọn CSS",
+							"url": "https://www.cleancss.com/css-minify"
+						},
+						{
+							"title": "Rút gọn JS",
+							"url": "https://www.cleancss.com/javascript-minify"
+						},
+						{
+							"title": "Font",
+							"url": ""
+						},
+						{
+							"title": "",
+							"url": "https://www.dafont.com"
+						},
+						{
+							"title": "",
+							"url": "http://font2s.com"
+						},
+						{
+							"title": "",
+							"url": "http://www.fontspace.com"
+						},
+						{
+							"title": "",
+							"url": "https://fonts2u.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.wfonts.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.urbanfonts.com"
+						},
+						{
+							"title": "",
+							"url": "http://fontchu.com"
+						},
+						{
+							"title": "",
+							"url": "http://www.1001fonts.com"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "",
+							"url": "https://undraw.co/illustrations"
+						},
+						{
+							"title": "",
+							"url": "https://delesign.com/free-designs/graphics"
+						},
+						{
+							"title": "",
+							"url": "https://micku7zu.github.io/vanilla-tilt.js"
+						},
+						{
+							"title": "",
+							"url": "https://reactjs.org/docs/react-api.html"
+						},
+						{
+							"title": "",
+							"url": "https://mattboldt.com/demos/typed-js"
+						},
+						{
+							"title": "",
+							"url": "https://devforum.info//giao-dien-admin"
+						},
+						{
+							"title": "",
+							"url": "https://w3layouts.com/admin-templates"
+						},
+						{
+							"title": "",
+							"url": "https://botayit.com/download-red-giant-trapcode-suite-15"
+						},
+						{
+							"title": "",
+							"url": "https://micku7zu.github.io/vanilla-tilt.js"
+						},
+						{
+							"title": "",
+							"url": "https://randomuser.me/documentation#format"
+						},
+						{
+							"title": "",
+							"url": "https://swiperjs.com/demos"
+						},
+						{
+							"title": "",
+							"url": "http://kenwheeler.github.io/slick"
+						},
+						{
+							"title": "",
+							"url": "https://developer.mozilla.org/vi/docs/Web/Guide/HTML/HTML5"
+						},
+						{
+							"title": "",
+							"url": "https://html.spec.whatwg.org/multipage"
+						},
+						{
+							"title": "",
+							"url": "http://talkobamato.me/synthesize.py"
+						},
+						{
+							"title": "",
+							"url": "https://www.zoho.com/mail/zohomail-pricing.html"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "Tạo phân trang bằng nút Load More sử dụng Ajax javascript cho Blogspot",
+							"url": "https://www.bacsiwindows.com/2018/07/tao-phan-trang-bang-nut-load-more-su-dung-ajax-load-more-javascript-cho-blogspot.html"
+						},
+						{
+							"title": "Hiện popup cảnh báo khi nhấn chuột phải trên Blogspot",
+							"url": "https://www.bacsiwindows.com/2018/06/hien-popup-canh-bao-khi-click-chuot-phai-tren-blogspot.html"
+						},
+						{
+							"title": "Hướng dẫn nâng cấp và tùy biến khung nhận xét của Blogspot phiên bản mới",
+							"url": "https://www.bacsiwindows.com/2018/05/huong-dan-nang-cap-va-tuy-bien-khung-nhan-xet-cua-blogspot.html"
+						},
+						{
+							"title": "Style thiết kế đẹp cho Thread Comment Blogspot phiên bản mới",
+							"url": "https://www.bacsiwindows.com/2018/07/style-thiet-ke-dep-cho-thread-comment-blogspot-phien-ban-moi.html"
+						},
+						{
+							"title": "Thêm tính năng sắp xếp bình luận mới nhất, cũ nhất cho blogspot",
+							"url": "https://www.bacsiwindows.com/2019/05/tinh-nang-sap-xep-binh-comment-blogspot.html"
+						},
+						{
+							"title": "Chèn ảnh, video từ Youtube vào phần nhận xét mặc định của Blogspot",
+							"url": "https://www.bacsiwindows.com/2018/07/chen-anh-video-tu-youtube-vao-phan-nhan-xet-mac-dinh-cua-blogspot.html"
+						},
+						{
+							"title": "Tạo khung Một số lưu ý khi bình luận giống Bác Sĩ Windows cho Blogspot",
+							"url": "https://www.bacsiwindows.com/2017/12/tao-khung-mot-so-luu-y-khi-binh-luan-giong-bac-si-windows-cho-blogspot.html"
+						},
+						{
+							"title": "Tạo widget Popular Post tuyệt đẹp cho Blogspot có số đếm",
+							"url": "https://www.bacsiwindows.com/2017/11/them-mot-style-dep-cho-widgte-popular-post-bai-dang-pho-bien.html"
+						},
+						{
+							"title": "Cách chèn quảng cáo vào bên dưới bài viết đầu tiên ngoài trang chủ cho Blogspot",
+							"url": "https://www.bacsiwindows.com/2018/09/cach-chen-quang-cao-vao-ben-duoi-bai-viet-dau-tien-ngoai-trang-chu-cho-blogspot.html"
+						},
+						{
+							"title": "Tổng hợp thẻ điều kiện cho Blogspot đầy đủ mới nhất 2018",
+							"url": "https://www.bacsiwindows.com/2018/07/tong-hop-the-dieu-kien-cho-blogspot-day-du-moi-nhat-2018.html"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "JavaScript chọn văn bản tự động",
+							"url": "https://www.dte.web.id/2013/01/javascript-seleksi-teks-otomatis.html"
+						},
+						{
+							"title": "Tạo các chế độ xem khác nhau chỉ trong bài đăng đầu tiên",
+							"url": "https://www.dte.web.id/2013/01/menciptakan-tampilan-yang-berbeda-hanya.html"
+						},
+						{
+							"title": "Blogger XHTML · Mẫu bình luận",
+							"url": "https://www.dte.web.id/2012/11/xhtml-blogger-formulir-komentar.html"
+						},
+						{
+							"title": "Thẻ bảng data Blogger",
+							"url": "https://www.dte.web.id/2012/11/tabel-tag-data-blog-terluar.html"
+						},
+						{
+							"title": "Bài đăng gần đây và Nhận xét gần đây về Menu thả xuống",
+							"url": "https://www.dte.web.id/2012/04/recent-post-dan-recent-comment-pada.html"
+						},
+						{
+							"title": "Tạo Trang chủ Blog riêng (Không có Bài đăng)",
+							"url": "https://www.dte.web.id/2012/03/tip-membuat-halaman-muka-blog.html"
+						},
+						{
+							"title": "Cách hiển thị số lượng bài đăng và số lượng bình luận trên Blogger",
+							"url": "https://www.dte.web.id/2012/01/cara-menampilkan-jumlah-posting-dan.html"
+						},
+						{
+							"title": "Tạo bài viết / Bài viết liên quan với hình ảnh / hình thu nhỏ",
+							"url": "https://www.dte.web.id/2011/06/membuat-artikelposting-terkait-dengan.html"
+						},
+						{
+							"title": "Chức năng làm tròn trong Blogger XML",
+							"url": "https://www.dte.web.id/2019/01/blogger-xml-math-floor.html"
+						},
+						{
+							"title": "Thêm tính năng phân trang trong bài viết",
+							"url": "https://www.dte.web.id/2018/09/widget-paginasi-artikel-untuk-blogger.html"
+						},
+						{
+							"title": "Loại bỏ CSS và JavaScript mặc định của Blogger",
+							"url": "https://www.dte.web.id/2018/09/menggunakan-b-css-dan-b-js.html"
+						},
+						{
+							"title": "Cuộn vô hạn đơn giản trên Blogger",
+							"url": "https://www.dte.web.id/2016/07/blogger-infinite-scroll.html"
+						},
+						{
+							"title": "Hiển thị tổng thời gian tải trang",
+							"url": "https://www.dte.web.id/2013/03/menampilkan-total-waktu-memuat-halaman.html"
+						},
+						{
+							"title": "Thanh cuộn dọc tùy chỉnh JavaScript",
+							"url": "https://www.dte.web.id/2013/03/javascript-custom-vertical-scrollbar.html"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "Cara Membuat Tulisan di Postingan Tampil di Sidebar",
+							"url": "https://www.idblanter.com/2016/01/membuat-tulisan-di-postingan-tampil-di-sidebar.html"
+						},
+						{
+							"title": "Membuat Material Design Threaded Comment di Blog",
+							"url": "https://www.idblanter.com/2016/06/membuat-material-design-threaded-comment-di-blog.html"
+						},
+						{
+							"title": "Cara Membuat Menu Navigasi Ala Jalan Tikus di Blog",
+							"url": "https://www.idblanter.com/2018/04/membuat-menu-navigasi-ala-jalan-tikus.html"
+						},
+						{
+							"title": "Script dan Template Short Url untuk Blogger",
+							"url": "https://www.idblanter.com/2015/01/script-dan-template-short-url-untuk-blog.html"
+						},
+						{
+							"title": "Membuat Gambar Pertama di Postingan Menarik dengan Share",
+							"url": "https://www.idblanter.com/2019/02/membuat-gambar-utama-postingan-menarik.html"
+						},
+						{
+							"title": "Membuat Material Design Threaded Comment di Blog",
+							"url": "https://www.idblanter.com/2016/06/membuat-material-design-threaded-comment-di-blog.html"
+						},
+						{
+							"title": "Cara Membuat Twitter Emoji di Komentar Blogger",
+							"url": "https://www.idblanter.com/2015/05/cara-membuat-twitter-emoji-di-komentar-blog.html"
+						},
+						{
+							"title": "Cara Terbaru Memasang Meta Tag SEO Friendly di Blog",
+							"url": "https://www.idblanter.com/2014/01/cara-rahasia-meningkatkan-seo-100-work.html"
+						},
+						{
+							"title": "Membuat Autoload Page Navigation on Scroll di Blog",
+							"url": "https://www.idblanter.com/2017/01/membuat-autoload-page-navigation-on-scroll.html"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "Meta Tag SEO Friendly Untuk Blogger",
+							"url": "https://www.bloggerku.com/2016/05/meta-tag-seo-friendly-untuk-blogger.html"
+						},
+						{
+							"title": "Cara Mengalihkan Blog Lama Ke Blog Baru",
+							"url": "https://www.bloggerku.com/2016/05/cara-mengalihkan-blog-lama-ke-blog-baru.html"
+						},
+						{
+							"title": "Membuat Share With Counter Pada Blogger",
+							"url": "https://www.bloggerku.com/2016/05/membuat-share-with-counter-pada-blogger.html"
+						},
+						{
+							"title": "Tombol Like Untuk Blogger",
+							"url": "https://www.bloggerku.com/2018/02/tombol-like-untuk-bloggger.html"
+						},
+						{
+							"title": "Cara Memasang Komentar Blogger Yang Baru",
+							"url": "https://www.bloggerku.com/2017/08/cara-memasang-komentar-blogger-yang-baru.html"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com/2017/03/fix-recent-random-label-post-widget-in-blogger.html"
+						},
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com/2017/01/how-to-add-sitemap-widget-in-blogspot-blogs.html"
+						},
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com/2016/11/5-advance-popular-post-widget-for-blogspot.html"
+						},
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com/2016/10/how-to-add-related-post-widget-below-every-post-in-blogger.html"
+						},
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com/2016/12/underscore-most-advanced-menu-widget-in-blogger.html"
+						},
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com/2017/07/make-your-blog-full-width-left-sidebar.html"
+						},
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com/2016/11/the-best-of-best-keyword-research-tools.html"
+						},
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com/2016/10/new-brainstorming-ideas-for-blog-post-that-attract-backlinks.html"
+						},
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com/2016/10/effective-tips-to-reduce-loading-time-of-your-blog.html"
+						},
+						{
+							"title": "",
+							"url": "https://www.sorabloggingtips.com/p/code-converter.html"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "Bài 5: Cách Tạo Hiệu Ứng Cuộn Trang One Page – Scrollspy",
+							"url": "https://goclamweb.com/bai-5-hieu-ung-cuon-trang-one-page-scrollspy"
+						},
+						{
+							"title": "Bài 13: Hiệu Ứng Lightbox – Thư Viện FancyBox – Phóng To Hình Ảnh",
+							"url": "https://goclamweb.com/bai-13-hieu-ung-lightbox-thu-vien-fancybox-phong-to-hinh-anh"
+						},
+						{
+							"title": "Bài 15: Bắt Sự Kiện Cuộn Trang Với JQuery",
+							"url": "https://goclamweb.com/bai-15-bat-su-kien-cuon-trang-voi-jquery"
+						},
+						{
+							"title": "Bài 17: Tạo Hiệu Ứng Load Phần Tử Khi Cuộn Trang Với Thư Viện Wow.Js",
+							"url": "https://goclamweb.com/bai-17-tao-hieu-ung-load-phan-tu-khi-cuon-trang-voi-thu-vien-wow-js"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "Make A Blank Template / HTML Page In Blogger - Subin's Blog",
+							"url": "https://subinsb.com/make-a-blank-blogger-template"
+						},
+						{
+							"title": "How to Style Threaded Comments with CSS on Blogspot - Blogger Guide",
+							"url": "https://www.techprevue.com/stylize-threaded-comments-system"
+						},
+						{
+							"title": "Top Commentators Widget for Blogger Blogspot with Avatars",
+							"url": "https://sneeit.com/top-commentators-widget-for-blogger-blogspot-with-avatars"
+						},
+						{
+							"title": "Thay đổi định dạng thời gian xuất bản bài viết với thư viện timeago",
+							"url": "https://jimixam.blogspot.com/2017/03/thay-doi-dinh-dang-thoi-gian-xuat-ban-bai-viet-voi-thu-vien-timeago.html"
+						},
+						{
+							"title": "Chèn Breadcrumbs theo phong cách Google vào trong Blogspot",
+							"url": "https://www.thuthuatweb.net/blogspot/chen-breadcrumbs-theo-phong-cach-google-vao-trong-blogspot.html"
+						},
+						{
+							"title": "Tạo nút Xem thêm cho tiện ích bài đăng phổ biến",
+							"url": "https://startuanit.net/tao-nut-xem-them-cho-tien-ich-bai-dang-pho-bien"
+						},
+						{
+							"title": "How to turn any GitHub repo into a CDN | Go Make Things",
+							"url": "https://gomakethings.com/how-to-turn-any-github-repo-into-a-cdn"
+						},
+						{
+							"title": "How To Add a YouTube Like Loading Bar to Your Website Using HTML,CSS and JavaScript?",
+							"url": "https://veewom.com/articles/how-to-add-youtube-like-loading-bar-to-website-using-html-css-javascript.htm"
+						},
+						{
+							"title": "Support for theme-color in Chrome 39 for Android | Web",
+							"url": "https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android"
+						},
+						{
+							"title": "Tên miền miễn phí CO.NR",
+							"url": "https://freewebs.vn/hang-free/ten-mien-mien-phi-co-nr.html"
+						},
+						{
+							"title": "Thẻ dữ liệu cho bố cục - Blogger Trợ giúp",
+							"url": "https://support.google.com/blogger/answer/47270?hl=vi"
+						},
+						{
+							"title": "Regular expressions - JavaScript | MDN",
+							"url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions?retiredLocale=vi"
+						},
+						
+						{
+							"title": "CKEditor 5 Demo - Rich Text Editor ready to use",
+							 "url": "https://ckeditor.com/ckeditor-5/demo"
+						},
+						{
+							"title": "React Top-Level API – React",
+							 "url": "https://reactjs.org/docs/react-api.html"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "",
+							"url": "https://www.soratemplates.com"
+						},
+						{
+							"title": "",
+							"url": "https://gooyaabitemplates.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.bloggertheme9.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.bthemez.com"
+						},
+						{
+							"title": "",
+							"url": "https://btemplates.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.themexpose.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.yotemplates.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.btemplates4u.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.mybloggerthemes.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.idntheme.com"
+						},
+						{
+							"title": "",
+							"url": "https://templatelib.com"
+						},
+						{
+							"title": "",
+							"url": "https://www.blogspotvn.com"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "",
+							"url": "http://jsfiddle.net/minimamente/nkhdoh40"
+						}
+					]
+				},
+				{
+					"title": "Codepen",
+					"content": [
+						{
+							"title": "React",
+							"url": ""
+						},
+						{
+							"title": "Controlled Select Example",
+							"url": "https://codepen.io/gaearon/pen/JbbEzX"
+						},
+						{
+							"title": "Controlled Text Example",
+							"url": "https://codepen.io/gaearon/pen/VmmPgp"
+						},
+						{
+							"title": "Hello World in React",
+							"url": "https://codepen.io/gaearon/pen/vXdGmd"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "Gooey",
+							"url": "https://codepen.io/aaroniker/pen/qBNQyPQ"
+						},
+						{
+							"title": "IOS Notification Fold Toggle",
+							"url": "https://codepen.io/alphardex/pen/vYGJzXY"
+						},
+						{
+							"title": "textarea auto height",
+							"url": "https://codepen.io/aaroniker/pen/KKdvGGM"
+						},
+						{
+							"title": "textarea auto height animated",
+							"url": "https://codepen.io/aaroniker/pen/qBOXLdE"
+						},
+						{
+							"title": "Lexon Tykho 3",
+							"url": "https://codepen.io/chrisota/pen/XWmQEGX"
+						},
+						{
+							"title": "Click to Copy String Interaction",
+							"url": "https://codepen.io/hexagoncircle/pen/qQawYX"
+						},
+						{
+							"title": "Chart.js Styled Charts",
+							"url": "https://codepen.io/mjyoung/pen/MmPMjw"
+						},
+						{
+							"title": "Charting with Bootstrap, Chartjs",
+							"url": "https://codepen.io/gichuwil/pen/OPBzQQ"
+						},
+						{
+							"title": "Chart JS Line Chart",
+							"url": "https://codepen.io/tejas-development/pen/RmyRWq"
+						},
+						{
+							"title": "black dashboard",
+							"url": "https://codepen.io/bigstar-tr/pen/WLJyVX"
+						},
+						{
+							"title": "Dashboard page",
+							"url": "https://codepen.io/icebob/pen/gbLXQy"
+						},
+						{
+							"title": "Scroll Animation JavaScript",
+							"url": "https://codepen.io/bradtraversy/pen/JjKxYOL"
+						},
+						{
+							"title": "Emerging Tooltip",
+							"url": "https://codepen.io/ainalem/pen/OJRLRPO"
+						},
+						{
+							"title": "CSS filter Editor",
+							"url": "https://codepen.io/stoumann/pen/MWeNmyb"
+						},
+						{
+							"title": "Hover Highlight Effect",
+							"url": "https://codepen.io/shshaw/pen/MoxrPV"
+						},
+						{
+							"title": "CSS Particles button",
+							"url": "https://codepen.io/nikhil8krishnan/pen/PRZygW"
+						},
+						{
+							"title": "Lightbox",
+							"url": "https://codepen.io/WebDevSimplified/pen/mdbwgxy"
+						},
+						{
+							"title": "CSS Range Slider",
+							"url": "https://codepen.io/seanstopnik/pen/CeLqA"
+						},
+						{
+							"title": "Range Sliders With a Rolling Counter",
+							"url": "https://codepen.io/jkantner/pen/yLYZwjY"
+						},
+						{
+							"title": "canvas text app",
+							"url": "https://codepen.io/talyYang/pen/bEKZOO"
+						},
+						{
+							"title": "Input group :focus-within",
+							"url": "https://codepen.io/Markshall/pen/qBWRVxw"
+						},
+						{
+							"title": "rgb color sliders",
+							"url": "https://codepen.io/leemark/pen/lpEHr"
+						},
+						{
+							"title": "Quick pure CSS counter",
+							"url": "https://codepen.io/thebabydino/pen/RwPNaEd"
+						},
+						{
+							"title": "Fancy multiple select",
+							"url": "https://codepen.io/aaroniker/pen/VGMwLd"
+						},
+						{
+							"title": "Click to Copy String Interaction",
+							"url": "https://codepen.io/hexagoncircle/pen/qQawYX"
+						},
+						{
+							"title": "#Codevember 02 - Time",
+							"url": "https://codepen.io/hexagoncircle/pen/BGaKRg"
+						},
+						{
+							"title": "Smooth Page Scroll",
+							"url": "https://codepen.io/supah/pen/yGJdeN"
+						},
+						{
+							"title": "Smooth Scrolling",
+							"url": "https://codepen.io/supah/pen/KqmbdP"
+						},
+						{
+							"title": "Progress. Happy New Year 2020",
+							"url": "https://codepen.io/Sphinxxxx/pen/ZEYaegQ"
+						},
+						{
+							"title": "Teach a JavaScript Concept",
+							"url": "https://codepen.io/Sphinxxxx/pen/OoMYWZ"
+						},
+						{
+							"title": "Live HTML Escape Editor",
+							"url": "https://codepen.io/marcobiedermann/pen/vmZaJM"
+						},
+						{
+							"title": "Thanos Snap Effect",
+							"url": "https://codepen.io/maheshambure21/pen/Yzyvxxa"
+						},
+						{
+							"title": "Cut/Copy/Paste",
+							"url": "https://codepen.io/maheshambure21/pen/XWJqXOo"
+						},
+						{
+							"title": "Scroll Reaction / Fixed Video Box",
+							"url": "https://codepen.io/maheshambure21/pen/EWBKBV"
+						},
+						{
+							"title": "iFrame url inject",
+							"url": "https://codepen.io/marcobiedermann/pen/bOevgX"
+						},
+						{
+							"title": "Elastic SVG Sidebar Material Design",
+							"url": "https://codepen.io/YakobchukAN/pen/JYRwPr"
+						},
+						{
+							"title": "Switch Day Night",
+							"url": "https://codepen.io/khadkamhn/pen/GpGGQe"
+						},
+						{
+							"title": "Progress indicator",
+							"url": "https://codepen.io/aurer/pen/YzzjwjE"
+						},
+						{
+							"title": "Super Clock",
+							"url": "https://codepen.io/aurer/pen/BpYyYL"
+						},
+						{
+							"title": "SVG Path Builder",
+							"url": "https://codepen.io/anthonydugois/pen/mewdyZ"
+						},
+						{
+							"title": "mgGlitch.js",
+							"url": "https://codepen.io/hmongouachon/pen/LZGwWY"
+						},
+						{
+							"title": "Convert SVG to Data URI for css background-image",
+							"url": "https://codepen.io/elliz/pen/ygvgay"
+						},
+						{
+							"title": "Scooped Selector",
+							"url": "https://codepen.io/team/keyframers/pen/djWOwz"
+						},
+						{
+							"title": "CodePen Home Image to Orange and Blue Stencil",
+							"url": "https://codepen.io/jkantner/pen/ZEEGQQg"
+						},
+						{
+							"title": "CodePen Home Neumorphism study (change color with dot, best in Chrome)",
+							"url": "https://codepen.io/argyleink/pen/VwYQKvY"
+						},
+						{
+							"title": "\"Toss\" Add to Cart Animation",
+							"url": "https://codepen.io/designcouch/pen/OJPdZxg"
+						},
+						{
+							"title": "NEON LOVE",
+							"url": "https://codepen.io/al-ro/pen/BaaBage"
+						},
+						{
+							"title": "A LONG WAY",
+							"url": "https://codepen.io/al-ro/pen/xxxxgxK"
+						},
+						{
+							"title": "Simulating Facebook basic functions | Oreo",
+							"url": "https://codepen.io/Aq_Products/pen/PRjWVX"
+						},
+						{
+							"title": "Custom code editor palette in pure CSS",
+							"url": "https://codepen.io/Aq_Products/pen/ggeRxK"
+						},
+						{
+							"title": "Sidebar template",
+							"url": "https://codepen.io/pandanzhang/pen/pooqOvE"
+						},
+						{
+							"title": "Html editor",
+							"url": "https://codepen.io/Blazephoenix_/pen/dxgOJg"
+						},
+						{
+							"title": "Snow (Pure CSS)",
+							"url": "https://codepen.io/alphardex/pen/dyPorwJ"
+						},
+						{
+							"title": "Split Text Menu",
+							"url": "https://codepen.io/alphardex/pen/wvvxVPj"
+						},
+						{
+							"title": "Paper Aesthetic",
+							"url": "https://codepen.io/oluwadareseyi/pen/bGbemep"
+						},
+						{
+							"title": "Infinite draggable webgl slider",
+							"url": "https://codepen.io/ReGGae/pen/povjKxV"
+						},
+						{
+							"title": "3D CSS Transform Rotation Builder",
+							"url": "https://codepen.io/jessejburton/pen/QWwpPeq"
+						},
+						{
+							"title": "Mobile-nav",
+							"url": "https://codepen.io/co0kie/pen/oNgjoBz"
+						},
+						{
+							"title": "Floating Balloons",
+							"url": "https://codepen.io/Jemimaabu/pen/vYEYdOy"
+						},
+						{
+							"title": "Lightbox gallery",
+							"url": "https://codepen.io/humbl3man/pen/CuqIl"
+						},
+						{
+							"title": "Full Page Parallax Scroll Effect",
+							"url": "https://codepen.io/eehayman/pen/qdGZJr"
+						},
+						{
+							"title": "Clock - #016 of #100Days100Projects",
+							"url": "https://codepen.io/FlorinPop17/pen/eYOqQLz"
+						},
+						{
+							"title": "Weekly Coding Challenge #10 - Clock built with 5pjs",
+							"url": "https://codepen.io/FlorinPop17/pen/qGPZNL"
+						},
+						{
+							"title": "#034 - Countdown with ReactJS",
+							"url": "https://codepen.io/FlorinPop17/pen/YbpwyG"
+						},
+						{
+							"title": "#031 - React Timeline",
+							"url": "https://codepen.io/FlorinPop17/pen/GLEPZy"
+						},
+						{
+							"title": "iOS 3D Touch Quick Actions",
+							"url": "https://codepen.io/joshbader/pen/gPzzOE"
+						},
+						{
+							"title": "ScrollReveal Animation Chaining",
+							"url": "https://codepen.io/ekfuhrmann/pen/XRxwjw"
+						},
+						{
+							"title": "A Pen by Ravi Dhiman",
+							"url": "https://codepen.io/ravid7000/pen/ALBQkK"
+						},
+						{
+							"title": "Button Hover Effects",
+							"url": "https://codepen.io/aaroniker/pen/bGGVMbY"
+						},
+						{
+							"title": "CSS is Awesome - Variable fonts Edition",
+							"url": "https://codepen.io/mandymichael/pen/vYYLByj"
+						},
+						{
+							"title": "Ace Editor Example",
+							"url": "https://codepen.io/aniketkudale/pen/qBdgYYP"
+						},
+						{
+							"title": "Insta-hearts",
+							"url": "https://codepen.io/chrisgannon/pen/BaNyWyd"
+						},
+						{
+							"title": "Delete Item",
+							"url": "https://codepen.io/alphardex/pen/gOpKeMN"
+						},
+						{
+							"title": "Dropdown Select",
+							"url": "https://codepen.io/alphardex/pen/ZEGLmbr"
+						},
+						{
+							"title": "JS 选中并获取多行文本框内容",
+							"url": "https://codepen.io/majiang/pen/NpKyjV"
+						},
+						
+						{"title": "", "url": ""},
+						
+						{
+							"title": "Variable Font Demo Using Amstelvar Alpha",
+							"url": "https://codepen.io/aardrian/full/yEZvpr"
+						},
+						{
+							"title": "Image Editor with CSS Filters and jQuery",
+							"url": "https://codepen.io/SitePoint/full/KwmeJZ"
+						},
+						{
+							"title": "Interactive Custom Cursor",
+							"url": "https://codepen.io/hbthen3rd/full/ywxjWx"
+						},
+						{
+							"title": "Context menu with Feather icons",
+							"url": "https://codepen.io/havardob/full/YzwzQgm"
+						},
+						{
+							"title": "Smooth Scrolling",
+							"url": "https://codepen.io/supah/full/KqmbdP"
+						},
+						{
+							"title": "App Admin Menus + Light/Dark Modes - With Tailwind CSS",
+							"url": "https://codepen.io/robstinson/full/bGwpNMV"
+						},
+						{
+							"title": "Customer Management UI",
+							"url": "https://codepen.io/TurkAysenur/full/NWRqoyL"
+						},
+						{
+							"title": "CSS conic-gradient blur",
+							"url": "https://codepen.io/hexagoncircle/full/ExyeRbQ"
+						},
+						{
+							"title": "MacOS big sur control center in React",
+							"url": "https://codepen.io/ixahmedxi/full/zYrdBKx"
+						}
+					]
+				},
+				{
+					"title": "Template Blogger",
+					"content": [
+						{
+							"title": "Mannatthemes - Premium Bootstrap HTML Templates",
+							"url": "https://mannatthemes.com"
+						},
+						{
+							"title": "",
+							"url": "https://ksioks.com/html-website-templates"
+						},
+						{
+							"title": "",
+							"url": "https://odindesignthemes.com/vikinger-landing/#demos"
+						},
+						{
+							"title": "",
+							"url": "http://netgon.net/artstyles/v-card3/resume.html"
+						},
+
+						{"title": "", "url": ""},
+						
+						{
+							"title": "MyMag Blogger Template",
+							"url": "https://www.bloggertheme9.com/2015/04/my-mag-responsive-blogger-template.html"
+						},
+						{
+							"title": "Publister",
+							"url": "https://www.soratemplates.com/2018/07/publister-blogger-templates.html"
+						},
+						{
+							"title": "New Spread",
+							"url": "https://www.soratemplates.com/2017/07/new-spread-blogger-template.html"
+						},
+						{
+							"title": "Fooddy",
+							"url": "https://www.soratemplates.com/2017/08/fooddy-blogger-templates.html"
+						},
+						{
+							"title": "Video",
+							"url": "https://www.soratemplates.com/2018/11/video-blogger-templates.html"
+						},
+						{
+							"title": "SBT Movie",
+							"url": "https://www.soratemplates.com/2018/12/sbt-movie-blogger-templates.html"
+						}
+					]
+				}
+			]
+			var note = "";
+			for (var i, i = 0; i < notepad.length; i++) {
+				note += "<div class='notepad'>";
+					note += "<div class='title'>" + notepad[i].title + "</div>";
+					note += "<div class='content'>";
+						for (var c, c = 0; c < notepad[i].content.length; c++) {
+							if (!notepad[i].content[c].title == "") {
+								if (notepad[i].content[c].url == "") {
+									note += "<h2>" + notepad[i].content[c].title + "</h2>";
+								}
+								else {
+									note += "<p>";
+										note += "<a href='" + notepad[i].content[c].url + "' target='_blank'>";
+											note += "<img src='https://www.google.com/s2/favicons?domain=" + notepad[i].content[c].url + "'>";
+											note += "<span>" + notepad[i].content[c].title + "</span>";
+										note += "</a>";
+									note += "</p>";
+								}
+							}
+							else if (notepad[i].content[c].title == "" && notepad[i].content[c].url == "") {
+								note += "<p style='height: calc(32px - 16px);'></p>";
+							}
+							else {
+								note += "<p>";
+									note += "<a href='" + notepad[i].content[c].url + "' target='_blank'>";
+										note += "<img src='https://www.google.com/s2/favicons?domain=" + notepad[i].content[c].url + "'>";
+										note += "<span>" + notepad[i].content[c].url + "</span>";
+									note += "</a>";
+								note += "</p>";
+							}
+						}
+					note += "</div>";
+				note += "</div>";
+			}
+			$("#notepad").html(note);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="/cdn/favicon/favicon.svg">
+		<title>Beautifier Code</title>
+		<link rel="stylesheet" href="../cdn/style.css">
+		<style type="text/css">
+			body {
+				background: #0a0e31;
+			}
+			#BeautifierCode {
+				background: #0a0e31;
+				max-width: 1080px;
+				margin: 0 auto;
+			}
+
+			#BeautifierCode form {
+				display: grid;
+				grid-gap: 1rem;
+				padding: 1rem;
+			}
+
+			#BeautifierCode form button[type=reset] {
+				font-family: "Be Vietnam Pro";
+				width: 100%;
+				height: 48px;
+				border: 0;
+				display: block;
+				padding: 0 1rem;
+				background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+				color: #ffffffbf;
+				font-size: 1rem;
+				font-weight: 500;
+				user-select: none;
+				outline: none;
+				cursor: pointer;
+				border-radius: 4px;
+				box-shadow: 0 6px 1rem -0.5rem #322E2F;
+				transition: 0.2s;
+			}
+
+			#BeautifierCode form button[type=reset]:hover {
+				box-shadow: 0 2px 1rem -0.5rem #322E2F;
+			}
+
+			#BeautifierCode form .textarea {
+				background: rgba(255, 255, 255, 0.08);
+				border-radius: 4px;
+				border: 1px solid transparent;
+				transition: 0.25s;
+			}
+
+			#BeautifierCode form .textarea:hover {
+				border-color: rgba(255,255,255,0.54);
+			}
+
+			#BeautifierCode form .textarea textarea {
+				font-family: "Consolas";
+				font-size: 14px;
+				font-weight: 700;
+				color: #ffffffbf;
+				display: block;
+				resize: none;
+				width: 100%;
+				background: 0;
+				border: 0;
+				border-radius: 0;
+				padding: 1rem;
+				height: calc(100vh - 48*2px - 4rem - 2px);
+			}
+
+			#BeautifierCode form .textarea textarea::placeholder {
+				color: #C9CCD1;
+			}
+
+			#BeautifierCode form .replace {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			#BeautifierCode form .replace .gr {
+				background: rgba(255, 255, 255, 0.08);
+				border-radius: 4px;
+				width: 100%;
+				border: 1px solid transparent;
+				transition: 0.25s;
+			}
+
+			#BeautifierCode form .replace .gr:hover {
+				border-color: rgba(255,255,255,0.54);
+			}
+
+			#BeautifierCode form .replace .gr input {
+				font-family: "Consolas";
+				color: #8898AA;
+				display: block;
+				resize: none;
+				font-size: 14px;
+				font-weight: 700;
+				width: 100%;
+				background: 0;
+				border: 0;
+				border-radius: 0;
+				padding: 0 1rem;
+				height: 46px;
+			}
+
+			#BeautifierCode form .replace .gr input::placeholder {
+				color: #ffffffbf;
+			}
+
+			#BeautifierCode form .replace button {
+				flex-shrink: 0;
+				background: #5d68e2;
+				color: #ffffffbf;
+				font-size: 14px;
+				font-weight: 500;
+				width: 48px;
+				height: 48px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 0 1rem;
+				user-select: none;
+				cursor: pointer;
+				border: 0;
+				border-radius: 4px;
+				box-shadow: 0 6px 1rem -0.5rem #322E2F;
+				transition: 0.2s;
+			}
+
+			#BeautifierCode form .replace button:hover {
+				box-shadow: 0 2px 1rem -0.5rem #322E2F;
+			}
+
+			@media screen and (max-width: 600px) {
+				#BeautifierCode .textarea textarea {
+					font-size: 1rem;
+				}
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			function replace() {
+				var input = $("#BeautifierCode .replace .input input").val();
+				var output = $("#BeautifierCode .replace .output input").val();
+				var replace = $(".textarea textarea").val();
+				replace = replace.replaceAll(input, output);
+				$(".textarea textarea").val(replace);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="BeautifierCode">
+			<form action="">
+				<button type="reset">RESET</button>
+				<div class="textarea">
+					<textarea rows="21" placeholder="Paste code here..."></textarea>
+				</div>
+				<div class="replace">
+					<div class="gr input"><input type="text" placeholder="Paste code here..."></div>
+					<button type="button" onclick="replace()"><i class="material-icons">arrow_forward</i></button>
+					<div class="gr output"><input type="text" placeholder="Paste code here..."></div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
