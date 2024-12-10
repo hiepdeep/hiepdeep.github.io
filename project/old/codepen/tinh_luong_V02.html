@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<meta name="title" content="HiepDeep">
+		<meta name="description" content="HiepDeep">
+		<base href="https://hiepdeep.netlify.app/library/" target="_blank">
+		<title>Tính Lương V02 | HiepDeep</title>
+		<link rel="icon" href="favicon/favicon.ico">
+		<link rel='stylesheet' href='code/css/oneforall.css'>
+		<style type="text/css">
+			/* font-family: "Roboto", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+			/* font-family: "Roboto Condensed", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+			/* font-family: "Be Vietnam Pro", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+			/* font-family: "Niramit", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Niramit:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+			/* font-family: "Work Sans", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+			/* font-family: "Bai Jamjuree", sans-serif; */
+			@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+			/* font-family: "Space Mono", monospace; */
+			@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+			/* font-family: "Google Sans"; */
+			@import url("https://hiepdeep.netlify.app/library/font-family/googleSans/font-face.css");
+			/* font-family: "Avenir Next"; */
+			@import url("https://hiepdeep.netlify.app/library/font-family/avenirNext/font-face.css");
+			/* font-family: "SVN Gilroy"; */
+			@import url("https://hiepdeep.netlify.app/library/font-family/svnGilroy/font-face.css");
+			/* font-family: "Material Icons"; */
+			@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+			/* font-family: "FontAwesome"; */
+			@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+			/* font-family: "Font Awesome 5 Brands"; */
+			@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css");
+			a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+				outline: none;
+				vertical-align: baseline;
+			}
+			:link, button {
+				text-decoration: none;
+				cursor: pointer;
+				user-select: none;
+			}
+			:link, :hover, :focus, :active, :visited {
+				outline: none;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				-webkit-tap-highlight-color: transparent;
+				font: 14px "Cambria", sans-serif;
+				letter-spacing: 0.05em;
+				color: #333;
+			}
+			body {
+				background: #e9e9e9;
+				display: flex;
+				justify-content: center;
+				padding: 24px;
+				gap: 12px;
+			}
+			.box {
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+				max-width: 512px;
+			}
+			.box .form {
+				display: flex;
+				gap: 12px;
+				flex-wrap: wrap;
+			}
+			.box fieldset {
+				flex: 1 0 40%;
+				max-height: 81px;
+				padding: 12px;
+				border: 1px solid #aaa;
+			}
+			.box fieldset legend {
+				font-weight: bold;
+				user-select: none;
+			}
+			.box fieldset input {
+				border: 0;
+				border-radius: 0;
+				background: #fff;
+				width: 100%;
+				height: 40px;
+				padding: 0 12px;
+				border: 1px solid #aaa;
+				box-shadow: 0 5px 30px -15px rgba(0, 0, 0, 0.5);
+			}
+			.box fieldset input::placeholder {
+				color: #aaa;
+				user-select: none;
+			}
+			.box fieldset input:hover {
+				border-color: SlateBlue;
+			}
+			.box fieldset input:invalid {
+				color: #ff0000;
+				border-color: #ff0000;
+				animation: 0.25s invalid 2;
+			}
+			.box fieldset span {
+				display: block;
+				background: #fff;
+				width: 100%;
+				line-height: 38px;
+				padding: 0 12px;
+				border: 1px solid #aaa;
+				user-select: none;
+				box-shadow: 0 5px 30px -15px rgba(0, 0, 0, 0.5);
+			}
+			.box #output {
+				background: #fff;
+				line-height: 60px;
+				border: 1px solid #aaa;
+				color: red;
+				font-size: 30px;
+				font-weight: bold;
+				text-align: center;
+			}
+			@keyframes invalid {
+				25% {
+					translate: 6px 0;
+				}
+				50% {
+					translate: -6px 0;
+				}
+				75% {
+					translate: 6px 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="form">
+				<fieldset>
+					<legend>Lương cơ bản (vnd)</legend>
+					<input type="text" placeholder="5.000.000">
+				</fieldset>
+				<fieldset>
+					<legend>Giờ công thực tế (h)</legend>
+					<input type="text" placeholder="208" value="208" pattern="[0-9]*">
+				</fieldset>
+				<fieldset>
+					<legend>Nghỉ hưởng lương (h)</legend>
+					<input type="text" placeholder="0" pattern="[0-9]*">
+				</fieldset>
+				<fieldset>
+					<legend>Nghỉ không lương (h)</legend>
+					<input type="text" placeholder="0" pattern="[0-9]*">
+				</fieldset>
+				<fieldset>
+					<legend>OT 150% (h)</legend>
+					<input type="text" placeholder="0" pattern="[0-9]*">
+				</fieldset>
+				<fieldset>
+					<legend>OT 200% (h)</legend>
+					<input type="text" placeholder="0" pattern="[0-9]*">
+				</fieldset>
+				<fieldset>
+					<legend>Phụ cấp nhà ở (vnd)</legend>
+					<span class="pc_nha">0</span>
+				</fieldset>
+				<fieldset>
+					<legend>Phụ cấp đi lại (vnd)</legend>
+					<span class="pc_di_lai">0</span>
+				</fieldset>
+				<fieldset>
+					<legend>Thưởng quý (vnd)</legend>
+					<input type="text" placeholder="0">
+				</fieldset>
+				<fieldset>
+					<legend>Thưởng khác (vnd)</legend>
+					<input type="text" placeholder="0" value="32.000">
+				</fieldset>
+				<fieldset>
+					<legend>Bảo hiểm (vnd)</legend>
+					<input hidden="hidden" type="text" placeholder="0">
+					<span class="baohiem">0</span>
+				</fieldset>
+				<fieldset>
+					<legend>Đoàn phí (vnd)</legend>
+					<input hidden="hidden" type="text" placeholder="0" value="47.000">
+					<span class="doanphi">47.000</span>
+				</fieldset>
+			</div>
+			<span id="output">0</span>
+		</div>
+		<script type="text/javascript">
+			console.clear();
+			let ip = document.querySelectorAll("input");
+			for (let i = 0; i < ip.length; i++) {
+				ip[i].addEventListener("input", () => {
+					console.clear();
+					math();
+				});
+			}
+			function math() {
+				let formm1 = {
+					"lcb": ip[0].value.replace(/\./gi, ""),
+					"h": ip[1].value,
+					"off_yes": ip[2].value,
+					"off_no": ip[3].value,
+					"ot_150": ip[4].value,
+					"ot_200": ip[5].value,
+					"thuong_quy": ip[6].value.replace(/\./gi, ""),
+					"thuong_khac": ip[7].value.replace(/\./gi, "")
+				};
+				let formm2 = {
+					"month": Math.round((formm1.lcb / 208) * formm1.h).toString(),
+					"off": Math.round((formm1.lcb / 208) * formm1.off_yes).toString(),
+					"ot150": Math.round(((formm1.lcb / formm1.h) * formm1.ot_150) * 1.5).toString(),
+					"ot200": Math.round(((formm1.lcb / formm1.h) * formm1.ot_200) * 2).toString(),
+					"pc_nha": Math.round(500000 / 208 * formm1.h).toString(),
+					"pc_di_lai": Math.round(300000 / 208 * formm1.h).toString(),
+					"baohiem": Math.round(formm1.lcb * 0.105).toString(),
+					"doanphi": document.getElementsByClassName("doanphi")[0].innerText.replace(/\./gi, "")
+				};
+				console.log(formm2);
+				document.getElementsByClassName("pc_nha")[0].innerText = formatNum(formm2.pc_nha);
+				document.getElementsByClassName("pc_di_lai")[0].innerText = formatNum(formm2.pc_di_lai);
+				document.getElementsByClassName("baohiem")[0].innerText = formatNum(formm2.baohiem);
+				let sum = m(formm2.month) + m(formm2.off) + m(formm2.ot150) + m(formm2.ot200) + m(formm2.pc_nha) + m(formm2.pc_di_lai) - (m(formm2.baohiem) + m(formm2.doanphi));
+				document.getElementById("output").innerText = formatNum(sum.toString());
+			}
+			math();
+			function m(e) {
+				return Math.floor(e);
+			}
+			function formatNum(e) {
+				let n = e.split("");
+				switch (n.length) {
+					case 1:
+					case 2:
+					case 3:
+						return e;
+						break;
+					case 4:
+					case 5:
+					case 6:
+						return e.replace(/(\d+)(\d{3})/, "$1.$2");
+						break;
+					case 7:
+					case 8:
+					case 9:
+						return e.replace(/(\d+)(\d{3})(\d{3})/, "$1.$2.$3");
+						break;
+				}
+			}
+		</script>
+	</body>
+</html>

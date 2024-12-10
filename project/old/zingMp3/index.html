@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="../../library/favicon/favicon.svg">
+		<title>HiepDeep | Zing MP3</title>
+		<meta name="title" content="HiepDeep | Zing MP3">
+		<meta name="description" content="HiepDeep | Zing MP3">
+		<link rel="stylesheet" href="../../library/code/css/oneforall.css">
+		<link rel="stylesheet" href="style.css">
+		<script src="tracks.js"></script>
+	</head>
+	<body>
+		<div id="preloader">
+			<svg viewbox="0 0 240 240">
+				<circle cx="120" cy="120" r="90"></circle>
+			</svg>
+		</div>
+		<div class="msPlayer">
+			<div class="msData">
+				<div class="col" id="stt">Paused...</div>
+				<div class="col" id="titling"></div>
+			</div>
+			<div class="msControl">
+				<button class="btn material-icons" id="repl">replay</button>
+				<button class="btn material-icons" id="play">play_arrow</button>
+				<div class="durationBar">
+					<input id="durationBar" type="range" min="0" max="100" value="0">
+				</div>
+				<div class="timers">
+					<span id="crtTime">00:00</span> / <span id="drnTime">88:88</span>
+				</div>
+				<div class="mute">
+					<button class="btn material-icons" id="muteIcon">volume_up</button>
+					<input id="mute" type="range" min="0" max="1" value="0.75" step="0.25">
+				</div>
+				<button class="btn material-icons" id="loop">repeat</button>
+				<div id="buffered"></div>
+			</div>
+			<div class="changeBtn">
+				<button id="prev" class="material-icons">west</button>
+				<button id="next" class="material-icons">east</button>
+			</div>
+			<div class="msPlayList"></div>
+		</div>
+		<script type="text/javascript">
+			console.clear();
+			window.addEventListener("load", (event) => {
+				preloader.classList.add("finished");
+			});
+			const replState = document.getElementById("repl"),
+				  playState = document.getElementById("play"),
+				  muteState = document.getElementById("mute"),
+				  loopState = document.getElementById("loop"),
+				  prevState = document.getElementById("prev"),
+				  nextState = document.getElementById("next");
+			let indexSong   = 0,
+				playStatus  = "play_arrow",	// play_arrow | pause
+				loopStatus  = "repeat",		// repeat | repeat_one | shuffle
+				createAudio = document.createElement("audio");
+			if (sessionStorage.getItem("indexSong")) {
+				indexSong = sessionStorage.getItem("indexSong");
+			}
+			if (sessionStorage.getItem("loopStatus")) {
+				loopState.innerHTML = loopStatus = sessionStorage.getItem("loopStatus");
+			}
+			createAudio.setAttribute("id", "myAudio");
+			createAudio.setAttribute("preload", "");
+			document.body.appendChild(createAudio);
+			document.addEventListener("keypress", function (e) {
+				if (e.which == 32) {
+					if (myAudio.paused) {
+						myAudio.play();
+						playStatus = "pause";
+						playState.textContent = playStatus;
+						stt.textContent = "Playing...";
+					}
+					else {
+						myAudio.pause();
+						playStatus = "play_arrow";
+						playState.textContent = playStatus;
+						stt.textContent = "Paused...";
+					}
+				}
+				if (e.code == "NumpadSubtract" || e.code == "Minus") {
+					if (myAudio.volume == 0) {
+						myAudio.volume = 0;
+					}
+					else {
+						myAudio.volume = myAudio.volume - 0.25;
+					}
+				}
+				if (e.code == "NumpadAdd" || e.code == "Equal") {
+					if (myAudio.volume == 1) {
+						myAudio.volume = 1;
+					}
+					else {
+						myAudio.volume = myAudio.volume + 0.25;
+					}
+				}
+				muteState.style.setProperty("--setmute", myAudio.volume * 100 + "%");
+				if (myAudio.volume <= 0.5) {
+					muteIcon.innerHTML = "volume_down";
+					if (myAudio.volume == 0) {
+						muteIcon.textContent = "volume_off";
+					}
+				}
+				else {
+					muteIcon.textContent = "volume_up";
+				}
+				if (e.key == "ArrowUp") {
+					if (myAudio.currentTime >= 60) {
+						myAudio.pause();
+						myAudio.currentTime = 0;
+						playStatus = "play_arrow";
+						playState.textContent = playStatus;
+						stt.textContent = "Paused...";
+					}
+					else {
+						changSong(-1);
+					}
+				}
+				if (e.key == "ArrowDown") {
+					changSong(1);
+				}
+			});
+			let pll = "";
+			for (let i in tracks) {
+				if (!tracks[i].url == "" && !tracks[i].key == "") {
+					pll += `
+						<div id="song" class="">
+							<div id="thumb"></div>
+							<div class="metaSong">
+								<div id="title"></div>
+								<div id="singer">
+									<a href="" target="_blank"></a>
+								</div>
+							</div>
+						</div>
+					`
+				}
+			}
+			$(".msPlayList")[0].innerHTML += pll;
+			function titlinggg(e) {
+				const apiSong = `https://mp3.zing.vn/xhr/media/get-source?type=audio&key=${tracks[e].key}`;
+				async function getapi(url) {
+					const response = await fetch(url);
+					var data = await response.json();
+					document.querySelectorAll("#titling")[0].innerHTML = `${data.data.name}`;
+					document.title += ` | ${data.data.name}`;
+				}
+				getapi(apiSong);
+			}
+			for (let i in tracks) {
+				const apiSong = `https://mp3.zing.vn/xhr/media/get-source?type=audio&key=${tracks[i].key}`;
+				async function getapi(url) {
+					const response = await fetch(url);
+					var data = await response.json();
+					thumb[i].style.setProperty("--src-thumb", "url(" + data.data.thumbnail + ")");
+					title[i].innerHTML = `${data.data.name}`;
+				}
+				getapi(apiSong);
+			}
+			for (let i in tracks) {
+				const apiSong = `https://mp3.zing.vn/xhr/media/get-info?type=audio&id=${regId(tracks[i].url)}`;
+				async function getapi(url) {
+					const response = await fetch(url);
+					var data = await response.json();
+					var sgs = "";
+					for (let i = 1; i < data.data.artists.length; i++) {
+						sgs += `, <a href='https://zingmp3.vn${data.data.artists[i].link}' target='_blank'>${data.data.artists[i].name}</a>`;
+					}
+					singer[i].innerHTML = `<a href='https://zingmp3.vn${data.data.artists[0].link}' target='_blank'>${data.data.artists[0].name}</a>` + sgs;
+				}
+				getapi(apiSong);
+			}
+			init(indexSong);
+			titlinggg(indexSong);
+			session(indexSong);
+			session(loopStatus);
+			const btnPlayList = document.querySelectorAll(".msPlayer .msPlayList #song");
+			song[indexSong].setAttribute("class", "song-playing");
+			for (let l = 0; l < btnPlayList.length; l++) {
+				btnPlayList[l].addEventListener("click", function() {
+					indexSong = l;
+					init(indexSong);
+					// scrollWin(indexSong);
+					session(indexSong);
+					titlinggg(indexSong);
+					myAudio.currentTime = 0;
+					myAudio.play();
+					playStatus = "pause";
+					playState.textContent = "pause";
+					stt.textContent = "Playing...";
+					for (let a = 0; a < btnPlayList.length; a++) {
+						song[a].classList.remove("song-playing");
+						song[l].setAttribute("class", "song-playing");
+					}
+				});
+			}
+			setInterval(realTime, 0);
+			function realTime() {
+				const {duration, currentTime} = myAudio;
+				durationBar.max = duration;
+				durationBar.value = currentTime;
+				durationBar.style.setProperty("--setduration", (currentTime / duration) * 100 + "%");
+				crtTime.textContent = formatTimer(currentTime);
+				if (!duration) {
+					drnTime.textContent = "00:00";
+				} else {
+					drnTime.textContent = formatTimer(duration);
+				}
+				if (!myAudio.buffered.length) {
+					buffered.style.width = 0;
+				}
+				else {
+					buffered.style.width = (myAudio.buffered.end(myAudio.buffered.length - 1) / duration) * 100 + "%";
+				}
+			}
+			durationBar.addEventListener("input", () => {
+				myAudio.currentTime = durationBar.value;
+			});
+			myAudio.addEventListener("ended", () => {
+				if (loopStatus === "repeat") {
+					indexSong += 1;
+					if (indexSong >= tracks.length) {
+						indexSong = 0;
+					}
+					myAudio.currentTime = 10;
+				}
+				else if (loopStatus === "shuffle") {
+					indexSong = Math.floor(Math.random() * (tracks.length));
+					myAudio.currentTime = 0;
+				}
+				else if (loopStatus === "repeat_one") {
+					myAudio.currentTime = 0;
+				}
+				init(indexSong);
+				session(indexSong);
+				titlinggg(indexSong);
+				myAudio.play();
+				myAudio.currentTime = 0;
+				for (let a = 0; a < btnPlayList.length; a++) {
+					song[a].classList.remove("song-playing");
+					song[indexSong].setAttribute("class", "song-playing");
+				}
+			});
+			replState.addEventListener("click", () => {
+				myAudio.currentTime = 0;
+			});
+			playState.addEventListener("click", () => {
+				if (playStatus === "play_arrow") {
+					myAudio.play();
+					playStatus = "pause";
+					playState.textContent = playStatus;
+					stt.textContent = "Playing...";
+				}
+				else {
+					myAudio.pause();
+					playStatus = "play_arrow";
+					playState.textContent = playStatus;
+					stt.textContent = "Paused...";
+				}
+			});
+			muteState.addEventListener("input", () => {
+				const setValue = muteState.value;
+				myAudio.volume = setValue;
+				muteState.style.setProperty("--setmute", setValue * 100 + "%");
+				if (setValue <= 0.5) {
+					muteIcon.innerHTML = "volume_down";
+					if (setValue == 0) {
+						muteIcon.textContent = "volume_off";
+					}
+				}
+				else {
+					muteIcon.textContent = "volume_up";
+				}
+			});
+			loopState.addEventListener("click", () => {
+				if (loopStatus === "repeat") {
+					loopStatus = "repeat_one";
+					loopState.textContent = loopStatus;
+				}
+				else if (loopStatus === "repeat_one") {
+					loopStatus = "shuffle";
+					loopState.textContent = loopStatus;
+				}
+				else if (loopStatus === "shuffle") {
+					loopStatus = "repeat";
+					loopState.textContent = loopStatus;
+				}
+				session(loopStatus);
+			});
+			prevState.addEventListener("click", () => {
+				if (myAudio.currentTime >= 60) {
+					myAudio.pause();
+					myAudio.currentTime = 0;
+					playStatus = "play_arrow";
+					playState.textContent = playStatus;
+					stt.textContent = "Paused...";
+				}
+				else {
+					changSong(-1);
+				}
+			});
+			nextState.addEventListener("click", () => {
+				changSong(1);
+			});
+			function changSong(e) {
+				if (e === -1) {
+					indexSong--;
+					if (indexSong < 0) {
+						indexSong = tracks.length - 1;
+					}
+				}
+				else if (e === 1) {
+					indexSong++;
+					if (indexSong >= tracks.length) {
+						indexSong = 0;
+					}
+				}
+				init(indexSong);
+				session(indexSong);
+				myAudio.play();
+				playState.textContent = "pause";
+				playStatus = "pause";
+				stt.textContent = "Playing...";
+				for (let a = 0; a < btnPlayList.length; a++) {
+					song[a].classList.remove("song-playing");
+					song[indexSong].setAttribute("class", "song-playing");
+				}
+			}
+			function init(indexSong) {
+				myAudio.setAttribute("src", "http://api.mp3.zing.vn/api/streaming/audio/" + regId(tracks[indexSong].url) + "/320");
+				myAudio.currentTime = 0;
+			}
+			function formatTimer(number) {
+				const minutes = Math.floor(number / 60);
+				const seconds = Math.floor(number - minutes * 60);
+				return `${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+			}
+			function session(e) {
+				if (e === indexSong) {
+					sessionStorage.setItem("indexSong", indexSong);
+				}
+				else if (e === loopStatus) {
+					sessionStorage.setItem("loopStatus", loopStatus);
+				}
+			}
+			function $(e) {
+				return document.querySelectorAll(e);
+			}
+			function regId(e) {
+				return e
+					.replace(/([a-zA-Z0-9-_]+)\/([a-zA-Z0-9-_]+)(.html)/g, "$2")
+					.replace(/view-source:/g, "")
+					.replace(/https:\/\/mp3.zing.vn\//g, "")
+					.replace(/bai-hat\//g, "")
+					.replace(/\//g, "")
+				;
+			}
+		</script>
+	</body>
+</html>

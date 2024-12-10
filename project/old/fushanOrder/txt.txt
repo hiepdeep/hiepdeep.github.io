@@ -1,0 +1,6 @@
+Part No 1	Part No 2	Model	Description	Picture
+183388	MSBD-0106	CH-8501	DEK Loader Sensor	pictures_order/MSBD-0106.jpeg
+157373			DEK Paper Clean Motor	pictures_order/MSBD-0033.jpeg
+215640			DEK Squeegee Head Assembly With Feedback	pictures_order/MSBD-0115.jpeg
+175288	MSBD-0181		DEK BOM CHASE CLAMP VULCANISED 175288 03128638	pictures_order/MSBD-0048.jpeg
+198042	MSBD-0160		DEK CYBEROPTICS 8012981 CBA40 GOLD CAMERA – 198042	pictures_order/MSBD-0115.jpeg
