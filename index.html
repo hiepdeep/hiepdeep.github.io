@@ -11,55 +11,153 @@
 		<meta name="description" content="HiepDeep">
 		<link rel="stylesheet" href="library/style/oneforall.css">
 		<link rel="stylesheet" href="library/style/home-page.css">
+	</head>
+	<body>
+		<div id="preloader">
+			<svg viewbox="0 0 240 240">
+				<circle cx="120" cy="120" r="90"></circle>
+			</svg>
+		</div>
+		<div class="app">
+			<div class="header">
+				<div class="magin-row">
+					<div class="aside aside-left">
+						<img src="https://hiepdeep.github.io/library/pictures/live-chat-outlined.png" alt="">
+					</div>
+					<div class="aside aside-right">
+						<a href="javascript:;">HiepDeep</a>
+						<button id="logout" class="material-icons">logout</button>
+					</div>
+				</div>
+			</div>
+			<div class="body">
+				<div class="magin-row">
+					<div class="aside aside-left">
+						<div id="user-lists">
+							<div class="user">
+								<div class="user-thumb">
+									<img src="https://hiepdeep.netlify.app/library/picture/z.png" alt="">
+								</div>
+								<div class="user-data">
+									<span class="fullname">Lê Thuỳ Linh</span>
+									<span class="lastmess">em u anh !</span>
+								</div>
+							</div>
+							<div class="user">
+								<div class="user-thumb">
+									<img src="https://hiepdeep.netlify.app/library/picture/z.png" alt="">
+								</div>
+								<div class="user-data">
+									<span class="fullname">Lê Thuỳ Linh</span>
+									<span class="lastmess">em u anh !</span>
+								</div>
+							</div>
+							<div class="user">
+								<div class="user-thumb">
+									<img src="https://hiepdeep.netlify.app/library/picture/z.png" alt="">
+								</div>
+								<div class="user-data">
+									<span class="fullname">Lê Thuỳ Linh</span>
+									<span class="lastmess">em u anh !</span>
+								</div>
+							</div>
+							<div class="user">
+								<div class="user-thumb">
+									<img src="https://hiepdeep.netlify.app/library/picture/z.png" alt="">
+								</div>
+								<div class="user-data">
+									<span class="fullname">Lê Thuỳ Linh</span>
+									<span class="lastmess">em u anh !</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="aside aside-center">
+						<div id="write-new">
+							<div class="write-new">
+								<div class="write-new-header">
+									write-new-header
+									<button id="write-new-hide" class="material-icons">close</button>
+								</div>
+								<div class="write-new-content">
+									<textarea name="" id="write-new-content" rows="3" placeholder="Aa"></textarea>
+								</div>
+								<div class="write-new-btn">
+									<button id="write-new-submit">submit</button>
+								</div>
+							</div>
+						</div>
+						<div class="new-port">
+							<div class="new-port-header">new-port-header</div>
+							<div class="new-port-content">new-port-content</div>
+							<div class="new-port-btn">new-port-btn</div>
+						</div>
+					</div>
+					<div class="aside aside-right">
+						<div class="widget">
+							<h2 class="widget-title">widget-title</h2>
+							<div class="widget-content">widget-content</div>
+						</div>
+						<div class="widget">
+							<h2 class="widget-title">widget-title</h2>
+							<div class="widget-content">widget-content</div>
+						</div>
+						<div class="widget">
+							<h2 class="widget-title">widget-title</h2>
+							<div class="widget-content">widget-content</div>
+						</div>
+						<div class="widget">
+							<h2 class="widget-title">widget-title</h2>
+							<div class="widget-content">widget-content</div>
+						</div>
+						<div class="widget">
+							<h2 class="widget-title">widget-title</h2>
+							<div class="widget-content">widget-content</div>
+						</div>
+						<div class="widget">
+							<h2 class="widget-title">widget-title</h2>
+							<div class="widget-content">widget-content</div>
+						</div>
+						<div class="widget">
+							<h2 class="widget-title">widget-title</h2>
+							<div class="widget-content">widget-content</div>
+						</div>
+						<div class="widget">
+							<h2 class="widget-title">widget-title</h2>
+							<div class="widget-content">widget-content</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script type="text/javascript">
 			if (localStorage.getItem("messages--token")) {
 				window.location.href = window.location.href;
 			} else {
 				window.location.href = "https://hiepdeep.github.io/authentication/login";
 			}
+			console.clear();
+			const wn = document.getElementById("write-new");
+			const text = document.getElementById("write-new-content");
+			const hide = document.getElementById("write-new-hide");
+			const demo = document.getElementById("demo");
+			window.addEventListener("load", (event) => {
+				preloader.classList.add("finished");
+				updateSize();
+			});
+			window.onresize = updateSize;
+			function updateSize() {
+				wn.getElementsByClassName("write-new")[0].style.left = wn.getBoundingClientRect().left + "px";
+				wn.getElementsByClassName("write-new")[0].style.top = wn.getBoundingClientRect().top + "px";
+				wn.getElementsByClassName("write-new")[0].style.width = wn.getBoundingClientRect().width + "px";
+				wn.getElementsByClassName("write-new")[0].style.height = wn.getBoundingClientRect().height + "px";
+			};
+			text.addEventListener("click", (e) => {
+				wn.getElementsByClassName("write-new")[0].classList.add("active");
+			});
+			hide.addEventListener("click", (e) => {
+				wn.getElementsByClassName("write-new")[0].classList.remove("active");
+			});
 		</script>
-	</head>
-	<body>
-		<div class="header">
-			<div class="magin-row">
-				<div class="aside aside-left">
-					<img src="https://hiepdeep.github.io/library/pictures/live-chat-outlined.png" alt="">
-				</div>
-				<div class="aside aside-right">
-					<a href="javascript:;">HiepDeep</a>
-					<button id="logout" class="material-icons">logout</button>
-				</div>
-			</div>
-		</div>
-		<div class="body">
-			<div class="magin-row">
-				<div class="aside aside-left">
-					<div class="widget">
-						<h2 class="widget-title">widget-title</h2>
-						<div class="widget-content">widget-content</div>
-					</div>
-					<div class="widget">
-						<h2 class="widget-title">widget-title</h2>
-						<div class="widget-content">widget-content</div>
-					</div>
-				</div>
-				<div class="aside aside-right">
-					<div class="write-new">
-						<div class="write-new-header">write-new-header</div>
-						<div class="write-new-content">
-							<textarea name="" id="write-new-content" rows="3" placeholder="Aa"></textarea>
-						</div>
-						<div class="write-new-btn">
-							<button id="write-new-submit">submit</button>
-						</div>
-					</div>
-					<div class="new-port">
-						<div class="new-port-header">new-port-header</div>
-						<div class="new-port-content">new-port-content</div>
-						<div class="new-port-btn">new-port-btn</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</body>
 </html>
