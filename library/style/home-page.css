@@ -8,14 +8,14 @@ body {
 	user-select: none;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
 	display: none;
 }
 
 .app .magin-row {
 	width: 100%;
 	height: 100%;
-	max-width: 1280px;
+	max-width: 1008px;
 	margin: 0 auto;
 	padding: 0 12px;
 	display: flex;
@@ -71,46 +71,8 @@ body::-webkit-scrollbar {
 
 .app .body {
 	width: 100%;
+	height: calc(100vh - 62px - 12px);
 	margin: 62px 0 12px;
-}
-
-.app .body .aside #user-lists {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-}
-
-.app .body .aside #user-lists .user {
-	display: flex;
-	gap: 12px;
-	background: white;
-	padding: 12px;
-	border-radius: 12px;
-}
-
-.app .body .aside #user-lists .user .user-thumb {
-	border-radius: 6px;
-	overflow: hidden;
-}
-
-.app .body .aside #user-lists .user .user-thumb img {
-	width: 40px;
-	aspect-ratio: 1;
-}
-
-.app .body .aside #user-lists .user .user-data {
-	display: flex;
-	flex-direction: column;
-}
-
-.app .body .aside #user-lists .user .user-data .fullname {
-	line-height: 20px;
-	font-weight: 600;
-}
-
-.app .body .aside #user-lists .user .user-data .lastmess {
-	line-height: 20px;
-	color: rgba(0, 0, 0, 0.5);
 }
 
 .app .body .aside-left {
@@ -121,199 +83,150 @@ body::-webkit-scrollbar {
 	gap: 12px;
 }
 
-.app .body .aside-left .widget {
-	color: #444;
-	background: #fff;
+.app .body .aside-left #user-lists {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.app .body .aside-left #user-lists .user {
+	display: flex;
+	gap: 12px;
+	background: white;
+	padding: 12px;
 	border-radius: 12px;
+}
+
+.app .body .aside-left #user-lists .user .user-thumb {
+	border-radius: 6px;
 	overflow: hidden;
-	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
-.app .body .aside-left .widget .widget-title {
-	padding: 12px;
-	border-bottom: 1px solid #ccc;
+.app .body .aside-left #user-lists .user .user-thumb img {
+	width: 40px;
+	aspect-ratio: 1;
 }
 
-.app .body .aside-left .widget .widget-content {
-	background: #fff;
-	height: 163px;
-	padding: 12px;
+.app .body .aside-left #user-lists .user .user-data {
+	display: flex;
+	flex-direction: column;
+}
+
+.app .body .aside-left #user-lists .user .user-data .fullname {
+	line-height: 20px;
+	font-weight: 600;
+}
+
+.app .body .aside-left #user-lists .user .user-data .lastmess {
+	line-height: 20px;
+	color: rgba(0, 0, 0, 0.5);
 }
 
 .app .body .aside-center {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.app .body .aside-center #toYour {
+	flex-shrink: 0;
+	background: white;
+	display: flex;
 	gap: 12px;
+	padding: 12px;
+	border-bottom: 1px solid #eee;
 }
 
-.app .body .aside-center #write-new {
-	width: 100%;
-	height: 222px;
+.app .body .aside-center #toYour .picture {
+	border-radius: 6px;
+	overflow: hidden;
 }
 
-.app .body .aside-center #write-new .active {
-	position: fixed !important;
-	left: 50% !important;
-	top: 62px !important;
-	transform: translatex(-50%);
-	width: calc(100% - 24px) !important;
-	max-width: 720px;
-	height: calc(100% - 50px - 24px) !important;
-	backdrop-filter: blur(3px);
-	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1), 0 0 0 100vw #eeeeee !important;
+.app .body .aside-center #toYour .picture img {
+	width: 40px;
+	aspect-ratio: 1;
+}
+
+.app .body .aside-center #toYour .data-user .fullname {
+	line-height: 20px;
+	font-weight: 600;
+}
+
+.app .body .aside-center #messages {
+	background: white;
+	padding: 12px 0;
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.app .body .aside-center #messages #chats {
 	display: flex;
 	flex-direction: column;
-}
-
-.app .body .aside-center #write-new .active .write-new-header {
-	color: #444;
-	padding: 12px;
-	border-bottom: 1px solid #ccc;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.app .body .aside-center #write-new .active .write-new-header button {
-	border: 0;
-	border-radius: 6px;
-	background: rgba(255, 99, 71, 0.2);
-	color: tomato;
-	font-size: 24px;
-	height: 38px;
-	aspect-ratio: 1;
-}
-
-.app .body .aside-center #write-new .active .write-new-header button:hover {
-	background: rgba(255, 99, 71, 0.5);
-	color: red;
-}
-
-.app .body .aside-center #write-new .active .write-new-content {
-	display: flex;
-	height: 100%;
-}
-
-.app .body .aside-center #write-new .active .write-new-content #write-new-content {
-	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-	resize: none;
-	border: 0;
-	background: 0;
-	width: 100%;
-	height: 100%;
-	line-height: 24px;
-	padding: 12px;
-	color: #444;
-}
-
-.app .body .aside-center #write-new .active .write-new-content #write-new-content::placeholder {
-	color: #aaa;
-}
-
-.app .body .aside-center #write-new .active .write-new-btn {
-	display: flex;
-	justify-content: flex-end;
-	padding: 12px;
-	border-top: 1px solid #ccc;
-}
-
-.app .body .aside-center #write-new .active .write-new-btn #write-new-submit {
-	border: 0;
-	background: mediumslateblue;
-	color: #e9ebee;
-	height: 38px;
+	gap: 6px;
 	padding: 0 12px;
-	border-radius: 6px;
 }
 
-.app .body .aside-center #write-new .write-new {
-	position: absolute;
-	background: #fff;
-	border-radius: 12px;
-	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1);
-	transition: 0.1s;
+.app .body .aside-center #messages #chats .chat {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
 }
 
-.app .body .aside-center #write-new .write-new .write-new-header {
-	color: #444;
+.app .body .aside-center #messages #chats .chat.right {
+	align-items: flex-end;
+}
+
+.app .body .aside-center #messages #chats .chat.right .content {
+	background-image: radial-gradient(circle at center 75%, #ff8c21 0%, #ff239a 100%);
+	background-attachment: fixed;
+	background-size: 100%;
+	color: #fff;
+}
+
+.app .body .aside-center #messages #chats .chat.right .content::selection {
+	background: #00bcd4;
+}
+
+.app .body .aside-center #messages #chats .chat .content {
+	background: #333537;
+	color: #fff;
+	width: max-content;
+	max-width: 444px;
 	padding: 12px;
-	border-bottom: 1px solid #ccc;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.app .body .aside-center #write-new .write-new .write-new-header button {
-	border: 0;
 	border-radius: 6px;
-	background: rgba(255, 99, 71, 0.2);
-	color: tomato;
-	font-size: 24px;
-	height: 38px;
-	aspect-ratio: 1;
 }
 
-.app .body .aside-center #write-new .write-new .write-new-header button:hover {
-	background: rgba(255, 99, 71, 0.5);
-	color: red;
+.app .body .aside-center #messages #chats .chat .timeamp {
+	text-align: center;
+	width: 100%;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 11px;
 }
 
-.app .body .aside-center #write-new .write-new .write-new-content {
-	display: flex;
+.app .body .aside-center #submitChat {
+	flex-shrink: 0;
+	background: white;
+	padding: 0 12px 12px;
+	user-select: none;
+	position: relative;
 }
 
-.app .body .aside-center #write-new .write-new .write-new-content #write-new-content {
-	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+.app .body .aside-center #submitChat .input textarea {
 	resize: none;
-	border: 0;
-	background: 0;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	background: white;
 	width: 100%;
 	line-height: 24px;
 	padding: 12px;
 	color: #444;
 }
 
-.app .body .aside-center #write-new .write-new .write-new-content #write-new-content::placeholder {
-	color: #aaa;
-}
-
-.app .body .aside-center #write-new .write-new .write-new-btn {
-	display: flex;
-	justify-content: flex-end;
-	padding: 12px;
-	border-top: 1px solid #ccc;
-}
-
-.app .body .aside-center #write-new .write-new .write-new-btn #write-new-submit {
-	border: 0;
-	background: mediumslateblue;
-	color: #e9ebee;
-	height: 38px;
-	padding: 0 12px;
-	border-radius: 6px;
-}
-
-.app .body .aside-center .new-port {
-	background: #fff;
-	color: #444;
-	border-radius: 12px;
-	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1);
-}
-
-.app .body .aside-center .new-port .new-port-header {
-	padding: 12px;
-	border-bottom: 1px solid #ccc;
-}
-
-.app .body .aside-center .new-port .new-port-content {
-	padding: 12px;
-	height: 212px;
-}
-
-.app .body .aside-center .new-port .new-port-btn {
-	padding: 12px;
-	border-top: 1px solid #ccc;
+.app .body .aside-center #submitChat .input textarea::placeholder {
+	color: #999;
 }
 
 .app .body .aside-right {
