@@ -26,7 +26,7 @@
 					<div class="aside aside-left">
 						<img src="https://hiepdeep.github.io/library/pictures/live-chat-outlined.png" alt="">
 					</div>
-					<div class="aside aside-right" id="user-loging">
+					<div class="aside aside-right" id="user-logged">
 						<a href="javascript:;"></a>
 						<button id="btn-logout" class="material-icons">logout</button>
 					</div>
@@ -69,6 +69,7 @@
 			const database = firebase.database();
 			const accounts = "authentication";
 			const messages = "messages";
+			const loggedInUsername = localStorage.getItem("hiepdeep-github-io-authentication") ? window.atob(localStorage.getItem("hiepdeep-github-io-authentication")) : null;
 			let $check_in_arr = [];
 			database.ref(accounts).on("value", (snapshot) => {
 				if (snapshot.exists()) {
@@ -77,18 +78,17 @@
 					$check_in_arr = data_keys;
 				}
 			});
-			if (localStorage.getItem("hiepdeep-github-io-authentication")) {
-				database.ref(`${accounts}/${window.atob(localStorage.getItem("hiepdeep-github-io-authentication"))}`).once("value", (snapshot) => {
+			if (loggedInUsername) {
+				database.ref(`${accounts}/${loggedInUsername}`).once("value", (snapshot) => {
 					if (snapshot.exists()) {
 						let data = snapshot.val();
-						document.getElementById("user-loging").innerHTML = `
+						document.getElementById("user-logged").innerHTML = `
 							<a href="https://hiepdeep.github.io/profile/?ref=${data.private.username}">${data.info.lastname} ${data.info.firstname}</a>
 							<button id="btn-logout" class="material-icons">logout</button>
 						`;
 						document.getElementById("btn-logout").addEventListener("click", (e) => {
 							e.preventDefault();
-							let username = window.atob(localStorage.getItem("hiepdeep-github-io-authentication"));
-							database.ref(`${accounts}/${username}/status/online`).set("0");
+							database.ref(`${accounts}/${loggedInUsername}/status/online`).set("0");
 							localStorage.removeItem("hiepdeep-github-io-authentication");
 							window.location.href = window.location.href;
 						});
@@ -99,7 +99,7 @@
 						document.getElementById("totalUser").innerText = "Total Users: " + (snapshot.numChildren() - 1);
 						let $userlists = "";
 						for (let e in $check_in_arr) {
-							if ($check_in_arr[e] != window.atob(localStorage.getItem("hiepdeep-github-io-authentication"))) {
+							if ($check_in_arr[e] != loggedInUsername) {
 								database.ref(`${accounts}/${$check_in_arr[e]}`).once("value", (snapshot) => {
 									if (snapshot.exists()) {
 										let x = snapshot.val();
@@ -161,7 +161,7 @@
 										</div>
 									`;
 								});
-								updateChat(window.atob(localStorage.getItem("hiepdeep-github-io-authentication")), sendTo);
+								updateChat(loggedInUsername, sendTo);
 								document.getElementById("toYour").style.display = "flex";
 								document.getElementById("messages").style.display = "block";
 								document.getElementById("submitChat").style.display = "block";
@@ -175,8 +175,8 @@
 						document.getElementById("sendChat").addEventListener("keydown", function(event) {
 							if (!event.shiftKey && event.key === "Enter") {
 								if (sendvalue.length > 0) {
-									sendChatssss(window.atob(localStorage.getItem("hiepdeep-github-io-authentication")), sendTo, to_slug(sendvalue));
-									updateChat(window.atob(localStorage.getItem("hiepdeep-github-io-authentication")), sendTo);
+									sendChatssss(loggedInUsername, sendTo, to_slug(sendvalue));
+									updateChat(loggedInUsername, sendTo);
 									document.getElementById("sendChat").value = sendvalue = "";
 									document.getElementById("sendChat").style.height = "48px";
 								} else {
@@ -204,7 +204,7 @@
 				document.getElementById("chats").innerHTML = "";
 				database.ref(messages).on("child_added", (snapshot) => {
 					const message = snapshot.val();
-					if (from === message.sendFrom && to === message.sendTo || from === message.sendTo && to === message.sendFrom) {
+					if ((from === message.sendFrom && to === message.sendTo) || (from === message.sendTo && to === message.sendFrom)) {
 						let displayChats = "";
 						if (from === message.sendFrom && to === message.sendTo) {
 							displayChats += `
