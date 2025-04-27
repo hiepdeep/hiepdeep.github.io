@@ -97,9 +97,22 @@ body {
 	border-radius: 12px;
 }
 
+.app .body .aside-left #user-lists .user.onl .user-thumb:before {
+	content: "";
+	position: absolute;
+	background: #4caf50;
+	width: 10px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	right: 0;
+	bottom: 0;
+	box-shadow: 0 0 0 2px white;
+}
+
 .app .body .aside-left #user-lists .user .user-thumb {
 	border-radius: 6px;
 	overflow: hidden;
+	position: relative;
 }
 
 .app .body .aside-left #user-lists .user .user-thumb img {
@@ -124,6 +137,7 @@ body {
 
 .app .body .aside-center {
 	width: 100%;
+	background: white;
 	display: flex;
 	flex-direction: column;
 	border-radius: 12px;
@@ -133,8 +147,7 @@ body {
 
 .app .body .aside-center #toYour {
 	flex-shrink: 0;
-	background: white;
-	display: flex;
+	display: none;
 	gap: 12px;
 	padding: 12px;
 	border-bottom: 1px solid #eee;
@@ -160,6 +173,7 @@ body {
 	padding: 12px 0;
 	height: 100%;
 	overflow-y: scroll;
+	display: none;
 }
 
 .app .body .aside-center #messages #chats {
@@ -191,8 +205,8 @@ body {
 }
 
 .app .body .aside-center #messages #chats .chat .content {
-	background: #333537;
-	color: #fff;
+	background: #eee;
+	color: #444;
 	width: max-content;
 	max-width: 444px;
 	padding: 12px;
@@ -212,6 +226,7 @@ body {
 	padding: 0 12px 12px;
 	user-select: none;
 	position: relative;
+	display: none;
 }
 
 .app .body .aside-center #submitChat .input textarea {
@@ -252,7 +267,8 @@ body {
 	opacity: 1;
 	z-index: 1000000000000000100000;
 	transition: 0.25s;
-	transition-delay: 0.25s;
+	transition-delay: 1s;
+	display: none;
 }
 
 #preloader.finished {
