@@ -201,11 +201,11 @@
 				});
 			}
 			function updateChat(from, to) {
+				document.getElementById("chats").innerHTML = "";
+				let displayChats = "";
 				database.ref(messages).on("child_added", (snapshot) => {
 					const message = snapshot.val();
 					if ((from === message.sendFrom && to === message.sendTo) || (from === message.sendTo && to === message.sendFrom)) {
-						document.getElementById("chats").innerHTML = "";
-						let displayChats = "";
 						if (from === message.sendFrom && to === message.sendTo) {
 							displayChats += `
 								<div class="chat right">
@@ -221,9 +221,9 @@
 								</div>
 							`;
 						}
-						document.getElementById("chats").innerHTML += displayChats;
-						document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
 					}
+					document.getElementById("chats").innerHTML += displayChats;
+					document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
 				});
 			}
 			function timesampAll() {
