@@ -1,0 +1,92 @@
+* {
+	font: 14px "Bai Jamjuree", sans-serif;
+	letter-spacing: 0.05em;
+}
+
+body {
+	background: #e9ebee;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	user-select: none;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+#login-form {
+	width: 400px;
+}
+
+#login-form>#login-form {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+#login-form>#login-form>.row {
+	display: flex;
+	gap: 6px;
+}
+
+#login-form>#login-form>.row>.input {
+	width: 100%;
+	background: white;
+	display: flex;
+	align-items: center;
+	border-radius: 6px;
+}
+
+#login-form>#login-form>.row>.input>span {
+	flex-shrink: 0;
+	width: 48px;
+	text-align: center;
+	color: #444;
+}
+
+#login-form>#login-form>.row>.input>input {
+	width: 100%;
+	border: 0;
+	background: 0;
+	height: 50px;
+	padding: 0 12px 0 0;
+}
+
+#login-form>#login-form>.row>.input>input::placeholder {
+	color: #999;
+}
+
+#login-form>#login-form>#btn-login {
+	border: 0;
+	border-radius: 6px;
+	width: 100%;
+	line-height: 48px;
+	background: #009688;
+	color: #fff;
+	font-weight: 500;
+}
+
+#login-form>#login-form>#btn-login:hover {
+	background: #004b44;
+}
+
+#login-form>.or {
+	margin-top: 12px;
+	display: block;
+	text-align: center;
+	color: #444;
+}
+
+#login-form>.or a {
+	display: inline-block;
+	color: #fff;
+	background: #ff9800;
+	padding: 6px 12px;
+	border-radius: 6px;
+}
+
+#login-form>.or a:hover {
+	background: #7d4a00;
+}
