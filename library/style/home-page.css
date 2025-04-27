@@ -216,16 +216,17 @@ body {
 .app .body .aside-center #messages #chats .chat .timeamp {
 	text-align: center;
 	width: 100%;
-	color: rgba(255, 255, 255, 0.5);
+	color: #ccc;
 	font-size: 11px;
 }
 
 .app .body .aside-center #submitChat {
 	flex-shrink: 0;
 	background: white;
-	padding: 0 12px 12px;
+	padding: 12px;
 	user-select: none;
 	position: relative;
+	border-top: 1px solid #eee;
 	display: none;
 }
 
