@@ -140,6 +140,10 @@
 								});
 							}
 						}
+
+
+
+
 						document.getElementById("user-lists").innerHTML = $userlists;
 						let sendTo = "";
 						let listitem = document.getElementById("user-lists").getElementsByClassName("user");
@@ -163,6 +167,7 @@
 										</div>
 									`;
 								});
+								document.getElementById("chats").innerHTML = "";
 								updateChat(loggedInUsername, sendTo);
 								document.getElementById("toYour").style.display = "flex";
 								document.getElementById("messages").style.display = "block";
@@ -189,6 +194,18 @@
 								event.preventDefault();
 							}
 						});
+
+
+
+
+
+
+
+
+
+
+
+
 					}
 				});
 			} else {
