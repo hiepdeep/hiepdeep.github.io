@@ -167,7 +167,6 @@
 										</div>
 									`;
 								});
-								document.getElementById("chats").innerHTML = "";
 								updateChat(loggedInUsername, sendTo);
 								document.getElementById("toYour").style.display = "flex";
 								document.getElementById("messages").style.display = "block";
@@ -184,11 +183,13 @@
 								if (sendvalue.length > 0) {
 									sendChatssss(loggedInUsername, sendTo, to_slug(sendvalue));
 									updateChat(loggedInUsername, sendTo);
-									document.getElementById("sendChat").value = sendvalue = "";
+									sendvalue = "";
+									document.getElementById("sendChat").value = "";
 									document.getElementById("sendChat").style.height = "48px";
 								} else {
 									alert("Vui lòng nhập tin nhắn.");
-									document.getElementById("sendChat").value = sendvalue = "";
+									sendvalue = "";
+									document.getElementById("sendChat").value = "";
 									document.getElementById("sendChat").style.height = "48px";
 								}
 								event.preventDefault();
@@ -220,7 +221,7 @@
 				});
 			}
 			function updateChat(from, to) {
-				// document.getElementById("chats").innerHTML = "";
+				document.getElementById("chats").innerHTML = "";
 				let displayChats = "";
 				database.ref(messages).on("child_added", (snapshot) => {
 					const message = snapshot.val();
