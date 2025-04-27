@@ -208,7 +208,7 @@ body {
 	background: #eee;
 	color: #444;
 	width: max-content;
-	max-width: 444px;
+	max-width: 80%;
 	padding: 12px;
 	border-radius: 6px;
 }
