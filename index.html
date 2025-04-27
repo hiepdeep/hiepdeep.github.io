@@ -175,7 +175,6 @@
 						document.getElementById("sendChat").addEventListener("keydown", function(event) {
 							if (!event.shiftKey && event.key === "Enter") {
 								if (sendvalue.length > 0) {
-									document.getElementById("chats").innerHTML = "";
 									sendChatssss(window.atob(localStorage.getItem("hiepdeep-github-io-authentication")), sendTo, to_slug(sendvalue));
 									updateChat(window.atob(localStorage.getItem("hiepdeep-github-io-authentication")), sendTo);
 									document.getElementById("sendChat").value = sendvalue = "";
@@ -205,8 +204,8 @@
 				document.getElementById("chats").innerHTML = "";
 				database.ref(messages).on("child_added", (snapshot) => {
 					const message = snapshot.val();
-					let displayChats = "";
 					if (from === message.sendFrom && to === message.sendTo || from === message.sendTo && to === message.sendFrom) {
+						let displayChats = "";
 						if (from === message.sendFrom && to === message.sendTo) {
 							displayChats += `
 								<div class="chat right">
@@ -222,9 +221,9 @@
 								</div>
 							`;
 						}
+						document.getElementById("chats").innerHTML += displayChats;
+						document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
 					}
-					document.getElementById("chats").innerHTML += displayChats;
-					document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
 				});
 			}
 			function timesampAll() {
