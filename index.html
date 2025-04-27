@@ -206,30 +206,58 @@
 			}
 			function updateChat(from, to) {
 				document.getElementById("chats").innerHTML = "";
-				let displayChats = "";
+				let allChatsHTML = "";
 				database.ref(messages).on("child_added", (snapshot) => {
 					const message = snapshot.val();
+					let chatHTML = "";
 					if ((from === message.sendFrom && to === message.sendTo) || (from === message.sendTo && to === message.sendFrom)) {
 						if (from === message.sendFrom && to === message.sendTo) {
-							displayChats += `
+							chatHTML += `
 								<div class="chat right">
 									<div class="timeamp">${timeampPro(message.timeamp)}</div>
 									<div class="content">${message.contents}</div>
 								</div>
 							`;
 						} else {
-							displayChats += `
+							chatHTML += `
 								<div class="chat">
 									<div class="timeamp">${timeampPro(message.timeamp)}</div>
 									<div class="content">${message.contents}</div>
 								</div>
 							`;
 						}
+						allChatsHTML += chatHTML;
 					}
-					document.getElementById("chats").innerHTML += displayChats;
+					document.getElementById("chats").innerHTML = allChatsHTML;
 					document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
 				});
 			}
+			// function updateChat(from, to) {
+			// 	document.getElementById("chats").innerHTML = "";
+			// 	let displayChats = "";
+			// 	database.ref(messages).on("child_added", (snapshot) => {
+			// 		const message = snapshot.val();
+			// 		if ((from === message.sendFrom && to === message.sendTo) || (from === message.sendTo && to === message.sendFrom)) {
+			// 			if (from === message.sendFrom && to === message.sendTo) {
+			// 				displayChats += `
+			// 					<div class="chat right">
+			// 						<div class="timeamp">${timeampPro(message.timeamp)}</div>
+			// 						<div class="content">${message.contents}</div>
+			// 					</div>
+			// 				`;
+			// 			} else {
+			// 				displayChats += `
+			// 					<div class="chat">
+			// 						<div class="timeamp">${timeampPro(message.timeamp)}</div>
+			// 						<div class="content">${message.contents}</div>
+			// 					</div>
+			// 				`;
+			// 			}
+			// 		}
+			// 		document.getElementById("chats").innerHTML += displayChats;
+			// 		document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
+			// 	});
+			// }
 			function timesampAll() {
 				let getTime = new Date();
 				let timeYear = getTime.getFullYear();
