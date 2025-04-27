@@ -90,6 +90,7 @@
 							e.preventDefault();
 							database.ref(`${accounts}/${loggedInUsername}/status/online`).set("0");
 							localStorage.removeItem("hiepdeep-github-io-authentication");
+							document.getElementById("preloader").classList.remove("finished");
 							window.location.href = window.location.href;
 						});
 					}
