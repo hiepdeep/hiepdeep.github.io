@@ -102,7 +102,7 @@
 						let $userlists = "";
 						for (let e in $check_in_arr) {
 							if ($check_in_arr[e] != loggedInUsername) {
-								database.ref(`${accounts}/${$check_in_arr[e]}`).once("value", (snapshot) => {
+								database.ref(`${accounts}/${$check_in_arr[e]}`).on("value", (snapshot) => {
 									if (snapshot.exists()) {
 										let x = snapshot.val();
 										if (x && x.info) {
