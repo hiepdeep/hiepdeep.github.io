@@ -220,7 +220,7 @@
 				});
 			}
 			function updateChat(from, to) {
-				document.getElementById("chats").innerHTML = "";
+				// document.getElementById("chats").innerHTML = "";
 				let displayChats = "";
 				database.ref(messages).on("child_added", (snapshot) => {
 					const message = snapshot.val();
