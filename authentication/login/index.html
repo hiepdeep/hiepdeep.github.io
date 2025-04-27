@@ -6,39 +6,154 @@
 		<meta content="width=device-width, initial-scale=1" name="viewport">
 		<base href="https://hiepdeep.github.io/">
 		<link rel="icon" href="favicon/hiepdeep.ico">
-		<title>HiepDeep</title>
+		<title>Messages | Signup</title>
 		<meta name="title" content="HiepDeep">
 		<meta name="description" content="HiepDeep">
-		<link rel='stylesheet' href='library/style/oneforall.css'>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<link rel="stylesheet" href="library/style/oneforall.css">
 		<style type="text/css">
 			* {
-				font: 5vw "Cambria", sans-serif;
+				font: 14px "Bai Jamjuree", sans-serif;
 				letter-spacing: 0.05em;
 			}
 			body {
-				background: #e9e9e9;
+				background: #e9ebee;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				height: 100vh;
-			}
-			.text {
 				user-select: none;
 			}
-			.text span {
-				color: tomato;
-				font-weight: bold;
-				user-select: all;
+			::-webkit-scrollbar {
+				display: none;
+			}
+			#login-form {
+				width: 400px;
+			}
+			#login-form>#login-form {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+			#login-form>#login-form>.row {
+				display: flex;
+				gap: 6px;
+			}
+			#login-form>#login-form>.row>.input {
+				width: 100%;
+				background: white;
+				display: flex;
+				align-items: center;
+				border-radius: 6px;
+			}
+			#login-form>#login-form>.row>.input>span {
+				flex-shrink: 0;
+				width: 48px;
+				text-align: center;
+				color: #444;
+			}
+			#login-form>#login-form>.row>.input>input {
+				width: 100%;
+				border: 0;
+				background: 0;
+				height: 50px;
+				padding: 0 12px 0 0;
+			}
+			#login-form>#login-form>.row>.input>input::placeholder {
+				color: #999;
+			}
+			#login-form>#login-form>#btn-login {
+				border: 0;
+				border-radius: 6px;
+				width: 100%;
+				line-height: 48px;
+				background: #009688;
+				color: #fff;
+				font-weight: 500;
+			}
+			#login-form>#login-form>#btn-login:hover {
+				background: #004b44;
+			}
+			#login-form>.or {
+				margin-top: 12px;
+				display: block;
+				text-align: center;
+				color: #444;
+			}
+			#login-form>.or a {
+				display: inline-block;
+				color: #fff;
+				background: #ff9800;
+				padding: 6px 12px;
+				border-radius: 6px;
+			}
+			#login-form>.or a:hover {
+				background: #7d4a00;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="text">Login Form !</div>
-		<button id="btn-signup">signup</button>
+		<div id="login-form">
+			<div id="login-form">
+				<div class="row">
+					<div class="input">
+						<span class="material-icons">how_to_reg</span>
+						<input tabindex="3" type="text" id="signup-username" placeholder="username">
+					</div>
+				</div>
+				<div class="row">
+					<div class="input">
+						<span class="material-icons">password</span>
+						<input tabindex="4" type="password" id="signup-password" placeholder="password">
+					</div>
+				</div>
+				<button tabindex="7" id="btn-login">Login</button>
+			</div>
+			<span class="or">or <a href="https://hiepdeep.github.io/authentication/signup">Signup</a></span>
+		</div>
 		<script type="text/javascript">
-			document.getElementById("btn-signup").addEventListener("click", (e) => {
+			console.clear();
+			const app = firebase.initializeApp({
+				databaseURL: "https://hiepdeep-default-rtdb.firebaseio.com"
+			});
+			const database = firebase.database();
+			const accounts = "authentication";
+			const login_us = document.getElementById("login-username");
+			const login_pw = document.getElementById("login-password");
+			const btnLogin = document.getElementById("btn-login");
+			let $check_in_arr = [];
+			database.ref(accounts).on("value", (snapshot) => {
+				if (snapshot.exists()) {
+					let data = snapshot.val();
+					let data_keys = Object.keys(data);
+					$check_in_arr = data_keys;
+				}
+			});
+			if (localStorage.getItem("hiepdeep-github-io-authentication")) {
+				window.location.href = "https://hiepdeep.github.io";
+			}
+			btnLogin.addEventListener("click", (e) => {
 				e.preventDefault();
-				window.location.href = "https://hiepdeep.github.io/authentication/signup";
+				if (login_us.value && login_pw.value) {
+					const us_val = login_us.value.trim();
+					if ($check_in_arr.includes(us_val)) {
+						database.ref(accounts + "/" + us_val).once("value", (snapshot) => {
+							let data = snapshot.val();
+							if (login_pw.value === data.private.password) {
+								localStorage.setItem("hiepdeep-github-io-authentication", data.userid);
+								database.ref(`accounts/${us_val}/status/online`).set("1");
+								window.location.href = window.location.href;
+							} else {
+								alert(`Sai mật khẩu.`);
+							}
+						});
+					} else {
+						alert(`Not username: {${us_val}} !`);
+					}
+				} else {
+					alert("Vui lòng cung cấp đầy đủ thông tin.");
+				}
 			});
 		</script>
 	</body>
