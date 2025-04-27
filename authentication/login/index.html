@@ -138,11 +138,11 @@
 				if (login_us.value && login_pw.value) {
 					const us_val = login_us.value.trim();
 					if ($check_in_arr.includes(us_val)) {
-						database.ref(accounts + "/" + us_val).once("value", (snapshot) => {
+						database.ref(`${accounts}/${us_val}`).once("value", (snapshot) => {
 							let data = snapshot.val();
 							if (login_pw.value === data.private.password) {
 								localStorage.setItem("hiepdeep-github-io-authentication", data.userid);
-								database.ref(`accounts/${us_val}/status/online`).set("1");
+								database.ref(`${accounts}/${us_val}/status/online`).set("1");
 								window.location.href = window.location.href;
 							} else {
 								alert(`Sai mật khẩu.`);
