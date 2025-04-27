@@ -202,8 +202,8 @@
 				});
 			}
 			function updateChat(from, to) {
-				document.getElementById("messages").innerHTML = "";
 				database.ref(messages).on("child_added", (snapshot) => {
+					document.getElementById("messages").innerHTML = "";
 					const message = snapshot.val();
 					let displayChats = "";
 					if (from === message.sendFrom && to === message.sendTo || from === message.sendTo && to === message.sendFrom) {
