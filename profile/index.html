@@ -136,7 +136,7 @@
 						profileGeneral_ln.innerText = data.info.lastname;
 						profileGeneral_fn.innerText = data.info.firstname;
 						profileGeneral_sx.innerText = data.info.sex;
-						profileGeneral_bd.innerText = data.info.birthday;
+						profileGeneral_bd.innerText = fomatBirthday(data.info.birthday);
 						profileGeneral_ph.innerText = data.private.phone;
 						profileGeneral_em.innerText = data.private.email;
 						profileGeneral_us.innerText = data.private.username;
@@ -161,6 +161,18 @@
 				}
 			} else {
 				window.location.href = "authentication/login";
+			}
+			function fomatBirthday(value) {
+				let sp = value.split("/");
+				let rep = [];
+				for (let i in sp) {
+					let n = sp[i].length;
+					if (n < 2) {
+						n = "0" + n;
+					}
+					rep.push(n);
+				}
+				return rep.join("/");
 			}
 		</script>
 	</body>
