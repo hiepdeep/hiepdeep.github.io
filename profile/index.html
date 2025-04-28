@@ -163,7 +163,7 @@
 				window.location.href = "authentication/login";
 			}
 			function fomatBirthday(value) {
-				return value.split("/").map(part => part.length < 2 ? "0" + part : part).join("/");
+				return value.split(/[\/-]/).map(part => part.length < 2 ? "0" + part : part).join("/");
 			}
 		</script>
 	</body>
