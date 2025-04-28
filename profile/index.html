@@ -67,7 +67,7 @@
 									<p>Họ: <span id="profile-general-lname"></span></p>
 									<p>Tên: <span id="profile-general-fname"></span></p>
 									<p>Giới tính: <span id="profile-general-sex"></span></p>
-									<p>Sinh nhật: <span id="profile-general-bỉrthday"></span></p>
+									<p>Sinh nhật: <span id="profile-general-birthday"></span></p>
 								</div>
 								<div class="nav-top-tab">
 									<p>Số điện thoại: <span id="profile-general-phone"></span></p>
@@ -123,7 +123,7 @@
 				const profileGeneral_ln = document.getElementById("profile-general-lname");
 				const profileGeneral_fn = document.getElementById("profile-general-fname");
 				const profileGeneral_sx = document.getElementById("profile-general-sex");
-				const profileGeneral_bd = document.getElementById("profile-general-bỉrthday");
+				const profileGeneral_bd = document.getElementById("profile-general-birthday");
 				const profileGeneral_ph = document.getElementById("profile-general-phone");
 				const profileGeneral_em = document.getElementById("profile-general-email");
 				const profileGeneral_us = document.getElementById("profile-general-username");
@@ -136,7 +136,7 @@
 						profileGeneral_ln.innerText = data.info.lastname;
 						profileGeneral_fn.innerText = data.info.firstname;
 						profileGeneral_sx.innerText = data.info.sex;
-						profileGeneral_bd.innerText = data.info.bỉrthday;
+						profileGeneral_bd.innerText = data.info.birthday;
 						profileGeneral_ph.innerText = data.private.phone;
 						profileGeneral_em.innerText = data.private.email;
 						profileGeneral_us.innerText = data.private.username;
