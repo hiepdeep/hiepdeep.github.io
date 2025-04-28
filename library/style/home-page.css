@@ -166,6 +166,7 @@ body {
 .app .body .aside-center #toYour .data-user .fullname {
 	line-height: 20px;
 	font-weight: 600;
+	color: #444;
 }
 
 .app .body .aside-center #messages {
