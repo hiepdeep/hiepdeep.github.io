@@ -95,6 +95,7 @@ body {
 	background: white;
 	padding: 12px;
 	border-radius: 12px;
+	cursor: pointer;
 }
 
 .app .body .aside-left #user-lists .user.onl .user-thumb:before {
