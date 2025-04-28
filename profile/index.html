@@ -12,7 +12,7 @@
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 		<link rel="stylesheet" href="library/style/oneforall.css">
-		<link rel="stylesheet" href="library/style/home-page.css">
+		<link rel="stylesheet" href="library/style/profile-page.css">
 	</head>
 	<body>
 		<div id="preloader">
@@ -27,218 +27,139 @@
 						<img src="https://hiepdeep.github.io/library/pictures/live-chat-outlined.png" alt="">
 					</div>
 					<div class="aside aside-right">
-						<a href="javascript:;">HiepDeep</a>
+						<a href="javascript:;"></a>
 						<button id="logout" class="material-icons">logout</button>
 					</div>
 				</div>
 			</div>
 			<div class="body">
 				<div class="magin-row">
-					<div class="aside aside-left">
-						<div id="user-lists">
-							<div class="user">
-								<div class="user-thumb">
-									<img src="https://hiepdeep.netlify.app/library/picture/z.png" alt="">
-								</div>
-								<div class="user-data">
-									<span class="fullname">Lê Thuỳ Linh</span>
-									<span class="lastmess">em u anh !</span>
-								</div>
+					<div id="profile">
+						<div class="profile-header">
+							<div class="picture-cover">
+								<img src="pictures/example/hlld.jpg" alt="" id="picture-cover">
 							</div>
-							<div class="user">
-								<div class="user-thumb">
-									<img src="https://hiepdeep.netlify.app/library/picture/z.png" alt="">
+							<div class="user-data-header">
+								<div class="picture-user">
+									<button id="btn-show-upload-picture" class="material-icons">
+										<span class="material-icons">crop_original</span>
+										<span class="text">Change Photo</span>
+									</button>
+									<img src="pictures/example/ys.png" alt="" id="picture-user">
 								</div>
-								<div class="user-data">
-									<span class="fullname">Lê Thuỳ Linh</span>
-									<span class="lastmess">em u anh !</span>
-								</div>
-							</div>
-							<div class="user">
-								<div class="user-thumb">
-									<img src="https://hiepdeep.netlify.app/library/picture/z.png" alt="">
-								</div>
-								<div class="user-data">
-									<span class="fullname">Lê Thuỳ Linh</span>
-									<span class="lastmess">em u anh !</span>
-								</div>
-							</div>
-							<div class="user">
-								<div class="user-thumb">
-									<img src="https://hiepdeep.netlify.app/library/picture/z.png" alt="">
-								</div>
-								<div class="user-data">
-									<span class="fullname">Lê Thuỳ Linh</span>
-									<span class="lastmess">em u anh !</span>
+								<div class="data-user">
+									<span id="profile-header-fullname"></span>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="aside aside-center">
-						<div id="toYour">
-							<div class="picture">
-								<img src="https://hiepdeep.netlify.app/library/picture/z.png" alt="">
+						<div class="profile-body">
+							<div class="nav-item">
+								<span class="nav-top-item" data-nav="nav-top-pictures">Pictures</span>
+								<span class="nav-top-item active" data-nav="nav-top-general">General</span>
+								<span class="nav-top-item" data-nav="nav-top-introduce">Introduce</span>
+								<span class="nav-top-item" data-nav="nav-top-security">Security</span>
 							</div>
-							<div class="data-user">
-								<div class="fullname">Thuỳ Linh</div>
-							</div>
-						</div>
-						<div id="messages">
-							<div id="chats">
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">hi e</div>
+							<div class="nav-tab">
+								<div class="nav-top-tab"></div>
+								<div class="nav-top-tab active">
+									<p>Họ: <span id="profile-general-lname"></span></p>
+									<p>Tên: <span id="profile-general-fname"></span></p>
+									<p>Giới tính: <span id="profile-general-sex"></span></p>
+									<p>Sinh nhật: <span id="profile-general-bỉrthday"></span></p>
 								</div>
-								<div class="chat">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">dạ</div>
+								<div class="nav-top-tab">
+									<p>Số điện thoại: <span id="profile-general-phone"></span></p>
+									<p>Email: <span id="profile-general-email"></span></p>
 								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">a u e &lt;3</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">nhiều vl</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">hi e</div>
-								</div>
-								<div class="chat">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">dạ</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">a u e &lt;3</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">nhiều vl</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">hi e</div>
-								</div>
-								<div class="chat">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">dạ</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">a u e &lt;3</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">nhiều vl</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">hi e</div>
-								</div>
-								<div class="chat">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">dạ</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">a u e &lt;3</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">nhiều vl</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">hi e</div>
-								</div>
-								<div class="chat">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">dạ</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">a u e &lt;3</div>
-								</div>
-								<div class="chat right">
-									<div class="timeamp">13 ngày trước</div>
-									<div class="content">nhiều vl</div>
+								<div class="nav-top-tab">
+									<p>Tên người dùng: <span id="profile-general-username"></span></p>
+									<p>Mật khẩu: <span id="profile-general-password"></span></p>
 								</div>
 							</div>
-						</div>
-						<div id="submitChat">
-							<div class="input">
-								<textarea name="" id="sendChat" rows="1" placeholder="Aa"></textarea>
-							</div>
-						</div>
-					</div>
-					<div class="aside aside-right">
-						<div class="widget">
-							<h2 class="widget-title">widget-title</h2>
-							<div class="widget-content">widget-content</div>
-						</div>
-						<div class="widget">
-							<h2 class="widget-title">widget-title</h2>
-							<div class="widget-content">widget-content</div>
-						</div>
-						<div class="widget">
-							<h2 class="widget-title">widget-title</h2>
-							<div class="widget-content">widget-content</div>
-						</div>
-						<div class="widget">
-							<h2 class="widget-title">widget-title</h2>
-							<div class="widget-content">widget-content</div>
-						</div>
-						<div class="widget">
-							<h2 class="widget-title">widget-title</h2>
-							<div class="widget-content">widget-content</div>
-						</div>
-						<div class="widget">
-							<h2 class="widget-title">widget-title</h2>
-							<div class="widget-content">widget-content</div>
-						</div>
-						<div class="widget">
-							<h2 class="widget-title">widget-title</h2>
-							<div class="widget-content">widget-content</div>
-						</div>
-						<div class="widget">
-							<h2 class="widget-title">widget-title</h2>
-							<div class="widget-content">widget-content</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
-			const path = "https://hiepdeep.github.io/profile/?ref=hiepdz"; // window.location.href
-			if (localStorage.getItem("messages--token")) {
-				// window.location.href = window.location.href;
-			} else {
-				// window.location.href = "authentication/login";
-			}
 			console.clear();
-			const wn = document.getElementById("write-new");
-			const text = document.getElementById("write-new-content");
-			const hide = document.getElementById("write-new-hide");
-			const demo = document.getElementById("demo");
 			window.addEventListener("load", (event) => {
-				preloader.classList.add("finished");
-				updateSize();
+				document.getElementById("preloader").classList.add("finished");
 			});
-			window.onresize = updateSize;
-			function updateSize() {
-				wn.getElementsByClassName("write-new")[0].style.left = wn.getBoundingClientRect().left + "px";
-				wn.getElementsByClassName("write-new")[0].style.top = wn.getBoundingClientRect().top + "px";
-				wn.getElementsByClassName("write-new")[0].style.width = wn.getBoundingClientRect().width + "px";
-				wn.getElementsByClassName("write-new")[0].style.height = wn.getBoundingClientRect().height + "px";
-			};
-			text.addEventListener("click", (e) => {
-				wn.getElementsByClassName("write-new")[0].classList.add("active");
+			const app = firebase.initializeApp({
+				databaseURL: "https://hiepdeep-default-rtdb.firebaseio.com"
 			});
-			hide.addEventListener("click", (e) => {
-				wn.getElementsByClassName("write-new")[0].classList.remove("active");
+			const database = firebase.database();
+			const accounts = "authentication";
+			const loggedInUsername = localStorage.getItem("hiepdeep-github-io-authentication") ? window.atob(localStorage.getItem("hiepdeep-github-io-authentication")) : null;
+			let $check_in_arr = [];
+			database.ref(accounts).on("value", (snapshot) => {
+				if (snapshot.exists()) {
+					let data = snapshot.val();
+					let data_keys = Object.keys(data);
+					$check_in_arr = data_keys;
+				}
 			});
+			if (loggedInUsername) {
+				database.ref(`${accounts}/${loggedInUsername}`).once("value", (snapshot) => {
+					if (snapshot.exists()) {
+						let data = snapshot.val();
+						document.getElementById("user-logged").innerHTML = `
+							<a href="profile/?ref=${data.private.username}">${data.info.lastname} ${data.info.firstname}</a>
+							<button id="btn-logout" class="material-icons">logout</button>
+						`;
+						document.getElementById("btn-logout").addEventListener("click", (e) => {
+							e.preventDefault();
+							database.ref(`${accounts}/${loggedInUsername}/status/online`).set("0");
+							localStorage.removeItem("hiepdeep-github-io-authentication");
+							window.location.href = "authentication/login";
+						});
+					}
+				});
+				const path = window.location.href;
+				const path_split = path.split("?")[1].split("=")[1];
+				const profileGeneral_ln = document.getElementById("profile-general-lname");
+				const profileGeneral_fn = document.getElementById("profile-general-fname");
+				const profileGeneral_sx = document.getElementById("profile-general-sex");
+				const profileGeneral_bd = document.getElementById("profile-general-bỉrthday");
+				const profileGeneral_ph = document.getElementById("profile-general-phone");
+				const profileGeneral_em = document.getElementById("profile-general-email");
+				const profileGeneral_us = document.getElementById("profile-general-username");
+				const profileGeneral_pw = document.getElementById("profile-general-password");
+				const profileHeader_fullname = document.getElementById("profile-header-fullname");
+				database.ref(`${accounts}/${path_split}`).once("value", (snapshot) => {
+					if (snapshot.exists()) {
+						let data = snapshot.val();
+						profileHeader_fullname.innerText = `${data.info.lastname} ${data.info.firstname}`;
+						profileGeneral_ln.innerText = data.info.lastname;
+						profileGeneral_fn.innerText = data.info.firstname;
+						profileGeneral_sx.innerText = data.info.sex;
+						profileGeneral_bd.innerText = data.info.bỉrthday;
+						profileGeneral_ph.innerText = data.private.phone;
+						profileGeneral_em.innerText = data.private.email;
+						profileGeneral_us.innerText = data.private.username;
+						profileGeneral_pw.innerText = data.private.password;
+					}
+					else {
+						document.getElementById("profile").innerText = "Null user";
+					}
+				});
+				let navtopitem = document.getElementsByClassName("nav-item")[0].getElementsByClassName("nav-top-item");
+				let navtopindex = document.getElementsByClassName("nav-tab")[0].getElementsByClassName("nav-top-tab");
+				for (let c = 0; c < navtopitem.length; c++) {
+					navtopitem[c].addEventListener("click", (e) => {
+						e.preventDefault();
+						for (let d = 0; d < navtopitem.length; d++) {
+							navtopitem[d].classList.remove("active");
+							navtopindex[d].classList.remove("active");
+						}
+						navtopitem[c].classList.add("active");
+						navtopindex[c].classList.add("active");
+					});
+				}
+			} else {
+				window.location.href = "authentication/login";
+			}
 		</script>
 	</body>
 </html>
