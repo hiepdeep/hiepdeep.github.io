@@ -163,16 +163,7 @@
 				window.location.href = "authentication/login";
 			}
 			function fomatBirthday(value) {
-				let sp = value.split("/");
-				let rep = [];
-				for (let i in sp) {
-					let n = sp[i].length;
-					if (n < 2) {
-						n = "0" + n;
-					}
-					rep.push(n);
-				}
-				return rep.join("/");
+				return value.split("/").map(part => part.length < 2 ? "0" + part : part).join("/");
 			}
 		</script>
 	</body>
