@@ -88,3 +88,9 @@ ol, ul, li {
 .elm-flex-0 {
 	flex-shrink: 0;
 }
+.bdrs-6 {
+	border-radius: 6px;
+}
+.bdrs-12 {
+	border-radius: 12px;
+}
