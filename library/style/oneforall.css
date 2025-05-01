@@ -65,3 +65,26 @@ img {
 ol, ul, li {
 	list-style-type: none;
 }
+.elm-flex {
+	display: flex;
+}
+.elm-flex-col {
+	display: flex;
+	flex-direction: column;
+}
+.elm-flex-center-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.elm-flex-center-null {
+	display: flex;
+	justify-content: center;
+}
+.elm-flex-null-center {
+	display: flex;
+	align-items: center;
+}
+.elm-flex-0 {
+	flex-shrink: 0;
+}
