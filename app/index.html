@@ -56,6 +56,12 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
+			const app = firebase.initializeApp({
+				databaseURL: "https://hiepdeep-default-rtdb.firebaseio.com"
+			});
+			const database = firebase.database();
+			const accounts = "authentication";
+			// Javascript
 			document.addEventListener("DOMContentLoaded", function() {
 				const viewOptionIndexText = document.querySelector(".view-option-index > .text");
 				const viewOptionItems = document.querySelectorAll(".view-option-items > .view-option-item");
