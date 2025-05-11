@@ -130,3 +130,7 @@ body {
 	width: 200px;
 	height: calc(100vh - 50px - 24px);
 }
+
+#preloader {
+	display: none;
+}
