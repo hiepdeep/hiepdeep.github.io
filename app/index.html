@@ -97,7 +97,6 @@
 						});
 					}
 				});
-
 				database.ref(messages).on("value", (messagesSnapshot) => {
 					const messagesData = messagesSnapshot.exists() ? messagesSnapshot.val() : {};
 					database.ref(accounts).on("value", (accountsSnapshot) => {
@@ -120,7 +119,6 @@
 													relevantMessages.sort((a, b) => new Date(b.timeamp) - new Date(a.timeamp));
 													lastMessageContent = relevantMessages[0].contents;
 												}
-
 												if (userData.status && userData.status.online === "1") {
 													$userlists += `
 														<div class="user onl" data-messages-userid="${userData.userid}">
