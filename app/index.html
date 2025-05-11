@@ -55,6 +55,17 @@
 			</div>
 		</div>
 		<script type="text/javascript">
+			console.clear();
+			document.addEventListener("DOMContentLoaded", function() {
+				const viewOptionIndexText = document.querySelector(".view-option-index > .text");
+				const viewOptionItems = document.querySelectorAll(".view-option-items > .view-option-item");
+				viewOptionItems.forEach(item => {
+					item.addEventListener("click", function() {
+						const selectedText = this.textContent;
+						viewOptionIndexText.textContent = selectedText;
+					});
+				});
+			});
 		</script>
 	</body>
 </html>
