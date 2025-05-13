@@ -100,6 +100,14 @@
 				window.location.href = "https://hiepdeep.github.io";
 			}
 			else {
+				const arrUsers = [];
+				database.ref(accounts).on("value", (snapshot) => {
+					if (snapshot.exists()) {
+						let data = snapshot.val();
+						let data_keys = Object.keys(data);
+						arrUsers = data_keys;
+					}
+				});
 				document.forms["login"].addEventListener("submit", function(event) {
 					event.preventDefault();
 					let username = document.forms["login"]["username"].value;
