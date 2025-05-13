@@ -100,6 +100,10 @@
 				window.location.href = "https://hiepdeep.github.io";
 			}
 			else {
+				const app = firebase.initializeApp({
+					databaseURL: "https://hiepdeep-default-rtdb.firebaseio.com"
+				});
+				const database = firebase.database();
 				const accounts = "authentication";
 				const arrUsers = [];
 				database.ref(accounts).once("value", (snapshot) => {
