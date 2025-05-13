@@ -95,10 +95,6 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
-			const app = firebase.initializeApp({
-				databaseURL: "https://hiepdeep-default-rtdb.firebaseio.com"
-			});
-			const database = firebase.database();
 			const accounts = "authentication";
 			let arrUsers = [];
 			database.ref(accounts).on("value", (snapshot) => {
