@@ -35,21 +35,21 @@ body {
 	height: 30px;
 }
 
-.header>div .header-right form {
+.header>div .header-right #login {
 	display: flex;
 	gap: 6px;
 }
 
-.header>div .header-right form .input {
+.header>div .header-right #login .input {
 	transition: 0.1s;
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) inset;
 }
 
-.header>div .header-right form .input:hover {
+.header>div .header-right #login .input:hover {
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5) inset;
 }
 
-.header>div .header-right form .input input {
+.header>div .header-right #login .input input {
 	width: 144px;
 	border: 0;
 	background: 0;
@@ -57,11 +57,11 @@ body {
 	padding: 0 6px;
 }
 
-.header>div .header-right form .input input::placeholder {
+.header>div .header-right #login .input input::placeholder {
 	color: #999;
 }
 
-.header>div .header-right form button[type=submit] {
+.header>div .header-right #login button[type=submit] {
 	border: 0;
 	width: 100px;
 	line-height: 30px;
@@ -71,7 +71,7 @@ body {
 	transition: 0.1s;
 }
 
-.header>div .header-right form button[type=submit]:hover {
+.header>div .header-right #login button[type=submit]:hover {
 	background: #0288d1;
 }
 
