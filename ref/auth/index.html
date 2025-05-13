@@ -109,7 +109,9 @@
 						username: username,
 						password: password
 					});
+					localStorage.setItem("social-media-auth", window.btoa(username));
 					document.forms["login"].reset();
+					window.location.href = "https://hiepdeep.github.io";
 				});
 				document.forms["signup"].addEventListener("submit", function(event) {
 					event.preventDefault();
@@ -132,7 +134,9 @@
 						phone: phone,
 						email: email,
 					});
+					localStorage.setItem("social-media-auth", window.btoa(username));
 					document.forms["signup"].reset();
+					window.location.href = "https://hiepdeep.github.io";
 				});
 			}
 		</script>
