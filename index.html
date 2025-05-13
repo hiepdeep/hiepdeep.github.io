@@ -40,7 +40,11 @@
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if (loggedInUser) {
-				window.location.href = "https://hiepdeep.github.io";
+				document.getElementById("btn-logout").addEventListener("click", (e) => {
+					e.preventDefault();
+					localStorage.removeItem("social-media-auth");
+					window.location.href = "https://hiepdeep.github.io/ref/auth";
+				});
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
