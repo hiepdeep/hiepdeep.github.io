@@ -1,0 +1,85 @@
+#preloader {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: #212121;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: visible;
+	opacity: 1;
+	z-index: 1000000000000000100000;
+	transition: 0.25s;
+	transition-delay: 1s;
+}
+
+#preloader.finished {
+	visibility: hidden;
+	opacity: 0;
+}
+
+#preloader svg {
+	border-radius: 50%;
+	width: 96px;
+	height: 96px;
+	animation: rotate 2s linear infinite;
+}
+
+#preloader svg circle {
+	fill: none;
+	stroke-width: 20px;
+	stroke-linecap: round;
+	transition: 1s linear;
+	animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes dash {
+	0% {
+		stroke-dasharray: 0, 565;
+		stroke-dashoffset: 565;
+	}
+
+	50% {
+		stroke-dasharray: 440, 250;
+		stroke-dashoffset: 565;
+	}
+
+	100% {
+		stroke-dasharray: 565, 565;
+		stroke-dashoffset: 565;
+	}
+}
+
+@keyframes color {
+	0% {
+		stroke: #ea4335;
+	}
+
+	25% {
+		stroke: #4285f4;
+	}
+
+	50% {
+		stroke: #34a853;
+	}
+
+	75% {
+		stroke: #fbbc04;
+	}
+
+	100% {
+		stroke: #7248b9;
+	}
+}
