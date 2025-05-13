@@ -106,6 +106,7 @@
 					let data = snapshot.val();
 					let object_keys = Object.keys(data);
 					arrUsers = object_keys;
+					console.log(arrUsers);
 				}
 			});
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
