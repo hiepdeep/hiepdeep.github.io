@@ -112,7 +112,7 @@
 			else {
 				document.forms["login"].addEventListener("submit", function(event) {
 					event.preventDefault();
-					let username = document.e["login"]["username"];
+					let username = document.forms["login"]["username"];
 					let password = document.forms["login"]["password"];
 					if (username.value.trim() && password.value.trim()) {
 						if (arrUsers.includes(username.value.trim())) {
