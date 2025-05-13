@@ -95,21 +95,21 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
-			const accounts = "authentication";
-			let arrUsers = [];
-			database.ref(accounts).on("value", (snapshot) => {
-				if (snapshot.exists()) {
-					let data = snapshot.val();
-					let object_keys = Object.keys(data);
-					arrUsers = object_keys;
-					console.log(arrUsers);
-				}
-			});
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if (loggedInUser) {
 				window.location.href = "https://hiepdeep.github.io";
 			}
 			else {
+				const accounts = "authentication";
+				let arrUsers = [];
+				database.ref(accounts).once("value", (snapshot) => {
+					if (snapshot.exists()) {
+						let data = snapshot.val();
+						let object_keys = Object.keys(data);
+						arrUsers = object_keys;
+						console.log(arrUsers);
+					}
+				});
 				document.forms["login"].addEventListener("submit", function(event) {
 					event.preventDefault();
 					let username = document.forms["login"]["username"];
