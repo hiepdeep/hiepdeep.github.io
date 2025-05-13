@@ -60,8 +60,8 @@
 							<span class="material-icons">cake</span>
 							<input tabindex="2" type="text" name="birthday" placeholder="dd/mm/yyyy">
 						</div>
-						<input type="radio" name="sex" id="signup-sex" value="male" checked>
-						<input type="radio" name="sex" id="signup-sex" value="female">
+						<input type="radio" name="sex" value="male" checked>
+						<input type="radio" name="sex" value="female">
 					</div>
 					<div class="row">
 						<div class="input">
@@ -98,7 +98,40 @@
 				window.location.href = "https://hiepdeep.github.io";
 			}
 			else {
-				
+				document.forms["login"].addEventListener("submit", function(event) {
+					event.preventDefault();
+					let username = document.forms["login"]["username"].value;
+					let password = document.forms["login"]["password"].value;
+					console.clear();
+					console.log({
+						username: username,
+						password: password
+					});
+					document.forms["login"].reset();
+				});
+				document.forms["signup"].addEventListener("submit", function(event) {
+					event.preventDefault();
+					let lname = document.forms["signup"]["lname"].value;
+					let fname = document.forms["signup"]["fname"].value;
+					let birthday = document.forms["signup"]["birthday"].value;
+					let sex = document.forms["signup"]["sex"].value;
+					let username = document.forms["signup"]["username"].value;
+					let password = document.forms["signup"]["password"].value;
+					let phone = document.forms["signup"]["phone"].value;
+					let email = document.forms["signup"]["email"].value;
+					console.clear();
+					console.log({
+						lname: lname,
+						fname: fname,
+						birthday: birthday,
+						sex: sex,
+						username: username,
+						password: password,
+						phone: phone,
+						email: email,
+					});
+					document.forms["signup"].reset();
+				});
 			}
 		</script>
 	</body>
