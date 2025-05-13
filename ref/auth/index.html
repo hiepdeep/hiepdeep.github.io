@@ -100,8 +100,8 @@
 			});
 			const database = firebase.database();
 			const accounts = "authentication";
-			const arrUsers = [];
-			database.ref(accounts).once("value", (snapshot) => {
+			let arrUsers = [];
+			database.ref(accounts).on("value", (snapshot) => {
 				if (snapshot.exists()) {
 					let data = snapshot.val();
 					let object_keys = Object.keys(data);
@@ -109,60 +109,60 @@
 					console.log(arrUsers);
 				}
 			});
-			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
-			if (loggedInUser) {
-				window.location.href = "https://hiepdeep.github.io";
-			}
-			else {
-				document.forms["login"].addEventListener("submit", function(event) {
-					event.preventDefault();
-					let username = document.e["login"]["username"];
-					let password = document.forms["login"]["password"];
-					if (username.value.trim() && password.value.trim()) {
-						if (arrUsers.includes(username.value.trim())) {
-							database.ref(`${accounts}/${username.value.trim()}`).once("value", (snapshot) => {
-								let data = snapshot.val();
-								if (password.value.trim() === data.private.password) {
-									localStorage.setItem("social-media-auth", data.userid);
-									document.forms["login"].reset();
-									window.location.href = "https://hiepdeep.github.io";
-								} else {
-									alert(`Sai mật khẩu.`);
-								}
-							});
-						} else {
-							alert(`Không tìm thấy {${username.value.trim()}}. Hãy tạo tài khoản mới!`);
-						}
-					} else {
-						alert("Vui lòng cung cấp đầy đủ thông tin.");
-					}
-				});
-				document.forms["signup"].addEventListener("submit", function(event) {
-					event.preventDefault();
-					let lname = document.forms["signup"]["lname"].value;
-					let fname = document.forms["signup"]["fname"].value;
-					let birthday = document.forms["signup"]["birthday"].value;
-					let sex = document.forms["signup"]["sex"].value;
-					let username = document.forms["signup"]["username"].value;
-					let password = document.forms["signup"]["password"].value;
-					let phone = document.forms["signup"]["phone"].value;
-					let email = document.forms["signup"]["email"].value;
-					console.clear();
-					console.log({
-						lname: lname,
-						fname: fname,
-						birthday: birthday,
-						sex: sex,
-						username: username,
-						password: password,
-						phone: phone,
-						email: email,
-					});
-					localStorage.setItem("social-media-auth", window.btoa(username));
-					document.forms["signup"].reset();
-					window.location.href = "https://hiepdeep.github.io";
-				});
-			}
+			// const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
+			// if (loggedInUser) {
+			// 	window.location.href = "https://hiepdeep.github.io";
+			// }
+			// else {
+			// 	document.forms["login"].addEventListener("submit", function(event) {
+			// 		event.preventDefault();
+			// 		let username = document.e["login"]["username"];
+			// 		let password = document.forms["login"]["password"];
+			// 		if (username.value.trim() && password.value.trim()) {
+			// 			if (arrUsers.includes(username.value.trim())) {
+			// 				database.ref(`${accounts}/${username.value.trim()}`).once("value", (snapshot) => {
+			// 					let data = snapshot.val();
+			// 					if (password.value.trim() === data.private.password) {
+			// 						localStorage.setItem("social-media-auth", data.userid);
+			// 						document.forms["login"].reset();
+			// 						window.location.href = "https://hiepdeep.github.io";
+			// 					} else {
+			// 						alert(`Sai mật khẩu.`);
+			// 					}
+			// 				});
+			// 			} else {
+			// 				alert(`Không tìm thấy {${username.value.trim()}}. Hãy tạo tài khoản mới!`);
+			// 			}
+			// 		} else {
+			// 			alert("Vui lòng cung cấp đầy đủ thông tin.");
+			// 		}
+			// 	});
+			// 	document.forms["signup"].addEventListener("submit", function(event) {
+			// 		event.preventDefault();
+			// 		let lname = document.forms["signup"]["lname"].value;
+			// 		let fname = document.forms["signup"]["fname"].value;
+			// 		let birthday = document.forms["signup"]["birthday"].value;
+			// 		let sex = document.forms["signup"]["sex"].value;
+			// 		let username = document.forms["signup"]["username"].value;
+			// 		let password = document.forms["signup"]["password"].value;
+			// 		let phone = document.forms["signup"]["phone"].value;
+			// 		let email = document.forms["signup"]["email"].value;
+			// 		console.clear();
+			// 		console.log({
+			// 			lname: lname,
+			// 			fname: fname,
+			// 			birthday: birthday,
+			// 			sex: sex,
+			// 			username: username,
+			// 			password: password,
+			// 			phone: phone,
+			// 			email: email,
+			// 		});
+			// 		localStorage.setItem("social-media-auth", window.btoa(username));
+			// 		document.forms["signup"].reset();
+			// 		window.location.href = "https://hiepdeep.github.io";
+			// 	});
+			// }
 		</script>
 	</body>
 </html>
