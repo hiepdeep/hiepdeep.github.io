@@ -31,7 +31,7 @@
 					</a>
 				</div>
 				<div class="header-right">
-					<a href="javascript:;"></a>
+					<a href="javascript:;" id="header-name"></a>
 					<button id="btn-logout" class="material-icons">logout</button>
 				</div>
 			</div>
@@ -40,6 +40,7 @@
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if (loggedInUser) {
+				document.getElementById("header-name").innerText = loggedInUser;
 				document.getElementById("btn-logout").addEventListener("click", (e) => {
 					e.preventDefault();
 					localStorage.removeItem("social-media-auth");
