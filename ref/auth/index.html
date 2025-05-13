@@ -101,7 +101,7 @@
 			}
 			else {
 				const arrUsers = [];
-				database.ref(accounts).on("value", (snapshot) => {
+				database.ref(accounts).once("value", (snapshot) => {
 					if (snapshot.exists()) {
 						let data = snapshot.val();
 						let data_keys = Object.keys(data);
