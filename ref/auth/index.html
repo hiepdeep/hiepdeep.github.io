@@ -93,6 +93,13 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
+			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
+			if (loggedInUser) {
+				window.location.href = "https://hiepdeep.github.io";
+			}
+			else {
+				
+			}
 		</script>
 	</body>
 </html>
