@@ -100,6 +100,7 @@
 				window.location.href = "https://hiepdeep.github.io";
 			}
 			else {
+				const accounts = "authentication";
 				const arrUsers = [];
 				database.ref(accounts).once("value", (snapshot) => {
 					if (snapshot.exists()) {
@@ -110,8 +111,28 @@
 				});
 				document.forms["login"].addEventListener("submit", function(event) {
 					event.preventDefault();
-					let username = document.forms["login"]["username"].value;
-					let password = document.forms["login"]["password"].value;
+					let username = document.forms["login"]["username"];
+					let password = document.forms["login"]["password"];
+					if (username.value.trim() && password.value.trim()) {
+						if (arrUsers.includes(username.value.trim())) {
+							database.ref(`${accounts}/${username.value.trim()}`).once("value", (snapshot) => {
+								let data = snapshot.val();
+								if (login_pw.value === data.private.password) {
+									localStorage.setItem("hiepdeep-github-io-authentication", data.userid);
+									database.ref(`${accounts}/${username.value.trim()}/status/online`).set("1");
+									window.location.href = window.location.href;
+								} else {
+									alert(`Sai mật khẩu.`);
+								}
+							});
+						} else {
+							alert(`Not username: {${username.value.trim()}} !`);
+						}
+					} else {
+						alert("Vui lòng cung cấp đầy đủ thông tin.");
+					}
+
+
 					console.clear();
 					console.log({
 						username: username,
