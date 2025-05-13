@@ -95,24 +95,24 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
+			const app = firebase.initializeApp({
+				databaseURL: "https://hiepdeep-default-rtdb.firebaseio.com"
+			});
+			const database = firebase.database();
+			const accounts = "authentication";
+			const arrUsers = [];
+			database.ref(accounts).once("value", (snapshot) => {
+				if (snapshot.exists()) {
+					let data = snapshot.val();
+					let object_keys = Object.keys(data);
+					arrUsers = object_keys;
+				}
+			});
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if (loggedInUser) {
 				window.location.href = "https://hiepdeep.github.io";
 			}
 			else {
-				const app = firebase.initializeApp({
-					databaseURL: "https://hiepdeep-default-rtdb.firebaseio.com"
-				});
-				const database = firebase.database();
-				const accounts = "authentication";
-				const arrUsers = [];
-				database.ref(accounts).once("value", (snapshot) => {
-					if (snapshot.exists()) {
-						let data = snapshot.val();
-						let object_keys = Object.keys(data);
-						arrUsers = object_keys;
-					}
-				});
 				document.forms["login"].addEventListener("submit", function(event) {
 					event.preventDefault();
 					let username = document.forms["login"]["username"];
