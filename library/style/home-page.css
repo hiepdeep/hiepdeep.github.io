@@ -12,125 +12,55 @@ body {
 	display: none;
 }
 
-.margin-- {
-	max-width: 600px;
-	width: 100%;
-	margin: auto;
-	display: flex;
-	justify-content: space-between;
-	gap: 12px;
-}
-
-.app .header {
-	background: #fff;
-	width: 100%;
-	position: fixed;
-	left: 0;
-	top: 0;
-	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1);
-	z-index: 9;
-}
-
-.app .header .margin-- {
-	padding: 12px 0;
-}
-
-.app .header .margin-- .aside.aside-left a img {
-	height: 26px;
-}
-
-.app .header .margin-- .aside.aside-right {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-}
-
-.app .header .margin-- .aside.aside-right a {
-	color: #444;
-	font-weight: 700;
-}
-
-.app .header .margin-- .aside.aside-right button {
-	border: 0;
-	background: rgba(255, 99, 71, 0.2);
-	color: tomato;
-	font-size: 26px;
-	height: 26px;
-	aspect-ratio: 1;
-}
-
-.app .header .margin-- .aside.aside-right button:hover {
-	background: rgba(255, 99, 71, 0.5);
-	color: red;
-}
-
-.app .body {
-	margin-top: 50px;
-}
-
-.app .body .margin-- {
-	padding: 12px 0;
-}
-
-.app .body .margin-- .aside.aside-left {
-	width: 100%;
+body {
+	background: #e9e9e9;
 	display: flex;
 	flex-direction: column;
+	user-select: none;
+}
+
+.margin-block {
+	width: 100%;
+	max-width: 1000px;
+	margin: auto;
+}
+
+.header {
+	background: white;
+}
+
+.header>div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 0;
+}
+
+.header>div .logo {
+	height: 30px;
+}
+
+.header>div .header-right {
+	display: flex;
+	align-items: center;
 	gap: 12px;
 }
 
-.app .body .margin-- .aside.aside-left .view-option {
-	display: flex;
-	justify-content: flex-end;
-	position: relative;
-}
-
-.app .body .margin-- .aside.aside-left .view-option:hover .view-option-items {
-	display: block;
-}
-
-.app .body .margin-- .aside.aside-left .view-option .view-option-index {
-	display: flex;
-	align-items: center;
-	gap: 6px;
-}
-
-.app .body .margin-- .aside.aside-left .view-option .view-option-index .material-icons {
-	font-size: 20px;
-}
-
-.app .body .margin-- .aside.aside-left .view-option .view-option-items {
-	position: absolute;
-	right: 0;
-	top: 100%;
-	display: none;
-	background: #B0BEC5;
-	padding: 6px;
-}
-
-.app .body .margin-- .aside.aside-left .view-option .view-option-items .view-option-item {
-	display: block;
-	width: max-content;
-	padding: 6px;
-	color: rgba(0, 0, 0, 0.5);
-}
-
-.app .body .margin-- .aside.aside-left .view-option .view-option-items .view-option-item:hover {
+.header>div .header-right a {
 	color: black;
+	font-size: 16px;
+	font-weight: 500;
 }
 
-.app .body .margin-- .aside.aside-left .content {
-	background: white;
-	height: 100px;
+.header>div .header-right button#btn-logout {
+	border: 0;
+	width: 30px;
+	line-height: 30px;
+	background: #03a9f4;
+	color: #fff;
+	transition: 0.1s;
 }
 
-.app .body .margin-- .aside.aside-right {
-	flex-shrink: 0;
-	background: white;
-	width: 200px;
-	height: calc(100vh - 50px - 24px);
-}
-
-#preloader {
-	display: none;
+.header>div .header-right button#btn-logout:hover {
+	background: #0288d1;
 }
