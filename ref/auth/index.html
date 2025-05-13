@@ -102,12 +102,11 @@
 			else {
 				const accounts = "authentication";
 				let arrUsers = [];
-				database.ref(accounts).once("value", (snapshot) => {
+				database.ref(accounts).on("value", (snapshot) => {
 					if (snapshot.exists()) {
 						let data = snapshot.val();
 						let object_keys = Object.keys(data);
 						arrUsers = object_keys;
-						console.log(arrUsers);
 					}
 				});
 				document.forms["login"].addEventListener("submit", function(event) {
