@@ -119,6 +119,8 @@
 								let data = snapshot.val();
 								if (password.value.trim() === data.private.password) {
 									localStorage.setItem("social-media-auth", data.userid);
+									username.parentNode.classList.remove("error");
+									password.parentNode.classList.remove("error");
 									document.forms["login"].reset();
 									window.location.href = "https://hiepdeep.github.io";
 								} else {
