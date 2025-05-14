@@ -61,7 +61,6 @@
 						let data = snapshot.val();
 						document.getElementById("body").innerHTML = `
 							<div class="margin-block">
-								<p>${path_split}</p>
 								<p>Fullname: ${data.info.lastname} ${data.info.firstname}</p>
 								<p>Birthday: ${fomatBirthday(data.info.birthday)}</p>
 								<p>Sex: ${data.info.sex}</p>
