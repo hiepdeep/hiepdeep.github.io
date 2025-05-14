@@ -115,7 +115,7 @@
 					let password = document.forms["login"]["password"];
 					if ( username.value.trim() && password.value.trim() ) {
 						if ( arrUsers.includes(username.value.trim()) ) {
-							database.ref(`${accounts}/${username.value.trim()}`).once("value", (snapshot) => {
+							database.ref(`${accounts}/${username.value.trim()}`).on("value", (snapshot) => {
 								let data = snapshot.val();
 								if ( password.value.trim() === data.private.password ) {
 									localStorage.setItem("social-media-auth", data.userid);
@@ -155,7 +155,7 @@
 							userid = userid.replace(/\=/gi, "");
 							database.ref(`${accounts}/${username.value.trim()}/`).set({
 								userid: userid,
-								status: {online: "0"},
+								status: {online: "1"},
 								info: {
 									picture: "",
 									firstname: fname.value.trim(),
@@ -172,9 +172,8 @@
 								regtime: timesampAll()
 							});
 							localStorage.setItem("social-media-auth", userid);
-							database.ref(`${accounts}/${username.value.trim()}/status/online`).set("1");
-							alert("Tạo tài khoản thành công.");
 							document.forms["signup"].reset();
+							alert("Tạo tài khoản thành công.");
 							window.location.href = "https://hiepdeep.github.io";
 						} else {
 							alert(`Tên người dùng {${username.value.trim()}} đã tồn tại. Vui lòng chọn tên người dùng khác!`);

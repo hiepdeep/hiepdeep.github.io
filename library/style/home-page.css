@@ -3,11 +3,6 @@
 	letter-spacing: 0.05em;
 }
 
-body {
-	background: #e9e9e9;
-	user-select: none;
-}
-
 ::-webkit-scrollbar {
 	display: none;
 }
@@ -25,34 +20,34 @@ body {
 	margin: auto;
 }
 
-.header {
+#header {
 	background: white;
 }
 
-.header>div {
+#header>div {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 12px 0;
 }
 
-.header>div .logo {
+#header>div .logo {
 	height: 30px;
 }
 
-.header>div .header-right {
+#header>div #header-right {
 	display: flex;
 	align-items: center;
 	gap: 12px;
 }
 
-.header>div .header-right a {
+#header>div #header-right a {
 	color: black;
 	font-size: 16px;
 	font-weight: 500;
 }
 
-.header>div .header-right button#btn-logout {
+#header>div #header-right button#btn-logout {
 	border: 0;
 	width: 30px;
 	line-height: 30px;
@@ -61,6 +56,6 @@ body {
 	transition: 0.1s;
 }
 
-.header>div .header-right button#btn-logout:hover {
+#header>div #header-right button#btn-logout:hover {
 	background: #0288d1;
 }

@@ -23,7 +23,7 @@
 				<circle cx="120" cy="120" r="90"></circle>
 			</svg>
 		</div>
-		<div class="header">
+		<div id="header">
 			<div class="margin-block">
 				<div class="logo">
 					<a href="">
@@ -40,11 +40,27 @@
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if (loggedInUser) {
-				document.getElementById("header-name").innerText = loggedInUser;
-				document.getElementById("btn-logout").addEventListener("click", (e) => {
-					e.preventDefault();
-					localStorage.removeItem("social-media-auth");
-					window.location.href = "https://hiepdeep.github.io/ref/auth";
+				database.ref(`${accounts}/${loggedInUser}`).on("value", (snapshot) => {
+					let data = snapshot.val();
+					document.getElementById("header").innerHTML = `
+						<div class="margin-block">
+							<div class="logo">
+								<a href="">
+									<img src="library/pictures/svg/ui-deck.svg" alt="">
+								</a>
+							</div>
+							<div class="header-right">
+								<a href="javascript:;">${data.info.firstname}</a>
+								<button id="btn-logout" class="material-icons">logout</button>
+							</div>
+						</div>
+					`;
+					document.getElementById("btn-logout").addEventListener("click", (e) => {
+						e.preventDefault();
+						database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
+						localStorage.removeItem("social-media-auth");
+						window.location.href = "https://hiepdeep.github.io/ref/auth";
+					});
 				});
 			}
 			else {
