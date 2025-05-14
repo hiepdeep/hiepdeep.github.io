@@ -24,6 +24,7 @@
 			</svg>
 		</div>
 		<div id="header"></div>
+		<div id="body"></div>
 		<script type="text/javascript">
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
@@ -53,6 +54,11 @@
 						});
 					}
 				});
+				const path = window.location.href;
+				const path_split = path.split("?")[1].split("=")[1];
+				document.getElementById("body").innerHTML = `
+					<div class="margin-block">${path_split}</div>
+				`;
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
