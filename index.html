@@ -39,28 +39,30 @@
 		<script type="text/javascript">
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
-			if (loggedInUser) {
+			if ( loggedInUser ) {
 				database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
-					let data = snapshot.val();
-					document.getElementById("header").innerHTML = `
-						<div class="margin-block">
-							<div class="logo">
-								<a href="">
-									<img src="library/pictures/svg/ui-deck.svg" alt="">
-								</a>
+					if ( snapshot.exists() ) {
+						let data = snapshot.val();
+						document.getElementById("header").innerHTML = `
+							<div class="margin-block">
+								<div class="logo">
+									<a href="">
+										<img src="library/pictures/svg/ui-deck.svg" alt="">
+									</a>
+								</div>
+								<div class="header-right">
+									<a href="javascript:;">${data.info.firstname}</a>
+									<button id="btn-logout" class="material-icons">logout</button>
+								</div>
 							</div>
-							<div class="header-right">
-								<a href="javascript:;">${data.info.firstname}</a>
-								<button id="btn-logout" class="material-icons">logout</button>
-							</div>
-						</div>
-					`;
-					document.getElementById("btn-logout").addEventListener("click", (e) => {
-						e.preventDefault();
-						database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
-						localStorage.removeItem("social-media-auth");
-						window.location.href = "https://hiepdeep.github.io/ref/auth";
-					});
+						`;
+						document.getElementById("btn-logout").addEventListener("click", (e) => {
+							e.preventDefault();
+							database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
+							localStorage.removeItem("social-media-auth");
+							window.location.href = "https://hiepdeep.github.io/ref/auth";
+						});
+					}
 				});
 			}
 			else {
