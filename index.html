@@ -28,6 +28,7 @@
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if ( loggedInUser ) {
+				const accounts = "authentication2";
 				database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
 					if ( snapshot.exists() ) {
 						let data = snapshot.val();
