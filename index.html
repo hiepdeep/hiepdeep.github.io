@@ -40,7 +40,7 @@
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if (loggedInUser) {
-				database.ref(`${accounts}/${loggedInUser}`).on("value", (snapshot) => {
+				database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
 					let data = snapshot.val();
 					document.getElementById("header").innerHTML = `
 						<div class="margin-block">
