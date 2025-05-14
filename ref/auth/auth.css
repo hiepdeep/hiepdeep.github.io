@@ -20,40 +20,40 @@ body {
 	margin: auto;
 }
 
-.header {
+#header {
 	background: white;
 }
 
-.header>div {
+#header>div {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 12px 0;
 }
 
-.header>div .logo {
+#header>div .logo {
 	height: 30px;
 }
 
-.header>div .header-right form {
+#header>div .header-right form {
 	display: flex;
 	gap: 6px;
 }
 
-.header>div .header-right form .input {
+#header>div .header-right form .input {
 	transition: 0.1s;
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) inset;
 }
 
-.header>div .header-right form .input:hover {
+#header>div .header-right form .input:hover {
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5) inset;
 }
 
-.header>div .header-right form .input.error, .header>div .header-right form .input.error:hover {
+#header>div .header-right form .input.error, #header>div .header-right form .input.error:hover {
 	box-shadow: 0 0 0 1px #f44336 inset;
 }
 
-.header>div .header-right form .input input {
+#header>div .header-right form .input input {
 	width: 144px;
 	border: 0;
 	background: 0;
@@ -61,11 +61,11 @@ body {
 	padding: 0 6px;
 }
 
-.header>div .header-right form .input input::placeholder {
+#header>div .header-right form .input input::placeholder {
 	color: #999;
 }
 
-.header>div .header-right form button[type=submit] {
+#header>div .header-right form button[type=submit] {
 	border: 0;
 	width: 100px;
 	line-height: 30px;
@@ -75,27 +75,27 @@ body {
 	transition: 0.1s;
 }
 
-.header>div .header-right form button[type=submit]:hover {
+#header>div .header-right form button[type=submit]:hover {
 	background: #0288d1;
 }
 
-.main {
+#body {
 	background: #90A4AE;
 }
 
-.main>div {
+#body>div {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	height: calc(100vh - 54px);
 }
 
-.main>div>img {
+#body>div>img {
 	width: auto;
 	height: 410px;
 }
 
-.main>div form#signup {
+#body>div form#signup {
 	flex-shrink: 0;
 	width: 400px;
 	display: flex;
@@ -105,12 +105,12 @@ body {
 	padding: 12px;
 }
 
-.main>div form#signup .row {
+#body>div form#signup .row {
 	display: flex;
 	gap: 6px;
 }
 
-.main>div form#signup .row .input {
+#body>div form#signup .row .input {
 	width: 100%;
 	background: white;
 	display: flex;
@@ -118,22 +118,22 @@ body {
 	transition: 0.1s;
 }
 
-.main>div form#signup .row .input:hover {
+#body>div form#signup .row .input:hover {
 	box-shadow: 0 0 0 2px white inset, 0 0 0 3px rgba(0, 0, 0, 0.5) inset;
 }
 
-.main>div form#signup .row .input.error, .main>div form#signup .row .input.error:hover {
+#body>div form#signup .row .input.error, #body>div form#signup .row .input.error:hover {
 	box-shadow: 0 0 0 2px white inset, 0 0 0 3px #f44336 inset;
 }
 
-.main>div form#signup .row .input .material-icons {
+#body>div form#signup .row .input .material-icons {
 	flex-shrink: 0;
 	width: 48px;
 	text-align: center;
 	color: #444;
 }
 
-.main>div form#signup .row .input input {
+#body>div form#signup .row .input input {
 	width: 100%;
 	border: 0;
 	background: 0;
@@ -141,11 +141,11 @@ body {
 	padding: 0 12px 0 0;
 }
 
-.main>div form#signup .row .input input::placeholder {
+#body>div form#signup .row .input input::placeholder {
 	color: #999;
 }
 
-.main>div form#signup .row input[name=sex] {
+#body>div form#signup .row input[name=sex] {
 	flex-shrink: 0;
 	appearance: none;
 	width: 50px;
@@ -155,37 +155,37 @@ body {
 	transition: 0.1s;
 }
 
-.main>div form#signup .row input[name=sex]:hover {
+#body>div form#signup .row input[name=sex]:hover {
 	box-shadow: 0 0 0 2px white inset, 0 0 0 3px rgba(0, 0, 0, 0.5) inset;
 }
 
-.main>div form#signup .row input[name=sex]:before {
+#body>div form#signup .row input[name=sex]:before {
 	font-family: "Material Icons";
 	font-size: 48px;
 	color: #ddd;
 }
 
-.main>div form#signup .row input[name=sex]:checked:before {
+#body>div form#signup .row input[name=sex]:checked:before {
 	text-shadow: 0px 0px 6px rgba(68, 68, 68, 0.5);
 }
 
-.main>div form#signup .row input[name=sex][value=male]:before {
+#body>div form#signup .row input[name=sex][value=male]:before {
 	content: "male";
 }
 
-.main>div form#signup .row input[name=sex][value=male]:checked:before {
+#body>div form#signup .row input[name=sex][value=male]:checked:before {
 	color: #2766d9;
 }
 
-.main>div form#signup .row input[name=sex][value=female]:before {
+#body>div form#signup .row input[name=sex][value=female]:before {
 	content: "female";
 }
 
-.main>div form#signup .row input[name=sex][value=female]:checked:before {
+#body>div form#signup .row input[name=sex][value=female]:checked:before {
 	color: #e41f5e;
 }
 
-.main>div form#signup button[type=submit] {
+#body>div form#signup button[type=submit] {
 	border: 0;
 	width: 100%;
 	line-height: 50px;
@@ -195,6 +195,6 @@ body {
 	transition: 0.1s;
 }
 
-.main>div form#signup button[type=submit]:hover {
+#body>div form#signup button[type=submit]:hover {
 	background: #0288d1;
 }
