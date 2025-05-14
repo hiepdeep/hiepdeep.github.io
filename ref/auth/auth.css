@@ -49,6 +49,10 @@ body {
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5) inset;
 }
 
+.header>div .header-right form .input.error, .header>div .header-right form .input.error:hover {
+	box-shadow: 0 0 0 1px #f44336 inset;
+}
+
 .header>div .header-right form .input input {
 	width: 144px;
 	border: 0;
@@ -115,11 +119,7 @@ body {
 }
 
 .main>div form#signup .row .input:hover {
-	box-shadow: 0 0 0 1px #ddd inset;
-}
-
-.main>div form#signup .row .input.error {
-	box-shadow: 0 0 0 1px #f44336 inset;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5) inset;
 }
 
 .main>div form#signup .row .input .material-icons {
