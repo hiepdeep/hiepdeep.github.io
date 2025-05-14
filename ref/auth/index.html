@@ -129,7 +129,18 @@
 							alert(`Không tìm thấy {${username.value.trim()}}. Hãy tạo tài khoản mới!`);
 						}
 					} else {
-						alert("Vui lòng cung cấp đầy đủ thông tin.");
+						if (!username.value.trim()) {
+							username.parentNode.classList.add("error");
+						}
+						else {
+							username.parentNode.classList.remove("error");
+						}
+						if (!password.value.trim()) {
+							password.parentNode.classList.add("error");
+						}
+						else {
+							password.parentNode.classList.remove("error");
+						}
 					}
 				});
 				// document.forms["signup"].addEventListener("submit", function(event) {

@@ -115,7 +115,11 @@ body {
 }
 
 .main>div form#signup .row .input:hover {
-	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5) inset;
+	box-shadow: 0 0 0 1px #ddd inset;
+}
+
+.main>div form#signup .row .input.error {
+	box-shadow: 0 0 0 1px #f44336 inset;
 }
 
 .main>div form#signup .row .input .material-icons {
