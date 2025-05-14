@@ -23,13 +23,7 @@
 				<circle cx="120" cy="120" r="90"></circle>
 			</svg>
 		</div>
-		<div id="preloader">
-			<svg viewbox="0 0 240 240">
-				<circle cx="120" cy="120" r="90"></circle>
-			</svg>
-		</div>
 		<div id="header"></div>
-		<div id="body"></div>
 		<script type="text/javascript">
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
@@ -62,60 +56,6 @@
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
-			}
-			// if ( loggedInUser ) {
-			// 	const accounts = "authentication2";
-			// 	database.ref(`${accounts}/${loggedInUser}`).once("value", (loggedUser) => {
-			// 		if ( loggedUser.exists() ) {
-			// 			let $loggedUser = loggedUser.val();
-			// 			document.getElementById("header").innerHTML = `
-			// 				<div class="margin-block">
-			// 					<div class="logo">
-			// 						<a href="">
-			// 							<img src="library/pictures/svg/ui-deck.svg" alt="">
-			// 						</a>
-			// 					</div>
-			// 					<div class="header-right">
-			// 						<a href="ref/profile/?ref=?${$loggedUser.private.username}">${$loggedUser.info.firstname}</a>
-			// 						<button id="btn-logout" class="material-icons">logout</button>
-			// 					</div>
-			// 				</div>
-			// 			`;
-			// 			document.getElementById("btn-logout").addEventListener("click", (e) => {
-			// 				e.preventDefault();
-			// 				database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
-			// 				localStorage.removeItem("social-media-auth");
-			// 				window.location.href = "https://hiepdeep.github.io/ref/auth";
-			// 			});
-			// 			// const path = window.location.href;
-			// 			// const path_split = path.split("?")[1].split("=")[1];
-			// 			// document.getElementById("body").innerHTML = `<div class="margin-block">${path_split}</div>`;
-			// 			// database.ref(`${accounts}/${path_split}`).once("value", (refProfile) => {
-			// 			// 	if (refProfile.exists()) {
-			// 			// 		let $refProfile = refProfile.val();
-			// 			// 		document.getElementById("body").innerHTML = `
-			// 			// 			<div class="margin-block">
-			// 			// 				<p>Fullname: ${$refProfile.info.lastname} ${$refProfile.info.firstname}</p>
-			// 			// 				<p>${$refProfile.info.sex}</p>
-			// 			// 				<p>${fomatBirthday($refProfile.info.birthday)}</p>
-			// 			// 				<p>${$refProfile.private.username | $refProfile.private.password}</p>
-			// 			// 				<p>${$refProfile.private.phone}</p>
-			// 			// 				<p>${$refProfile.private.email}</p>
-			// 			// 			</div>
-			// 			// 		`;
-			// 			// 	}
-			// 			// 	else {
-			// 			// 		document.getElementById("body").innerHTML = `<div class="margin-block">Null user {${path_split}}</div>`;
-			// 			// 	}
-			// 			// });
-			// 		}
-			// 	});
-			// }
-			// else {
-			// 	window.location.href = "https://hiepdeep.github.io/ref/auth";
-			// }
-			function fomatBirthday(value) {
-				return value.split(/[\/-]/).map(part => part.length < 2 ? "0" + part : part).join("/");
 			}
 		</script>
 	</body>
