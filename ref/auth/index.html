@@ -123,10 +123,14 @@
 									window.location.href = "https://hiepdeep.github.io";
 								} else {
 									alert(`Sai mật khẩu.`);
+									username.parentNode.classList.remove("error");
+									password.parentNode.classList.add("error");
 								}
 							});
 						} else {
 							alert(`Không tìm thấy {${username.value.trim()}}. Hãy tạo tài khoản mới!`);
+							username.parentNode.classList.add("error");
+							password.parentNode.classList.remove("error");
 						}
 					} else {
 						if (!username.value.trim()) {
