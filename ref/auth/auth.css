@@ -128,8 +128,8 @@ body {
 
 #body>div form#signup .row .input .material-icons {
 	flex-shrink: 0;
-	width: 48px;
-	text-align: center;
+	width: 36px;
+	text-align: right;
 	color: #444;
 }
 
@@ -138,7 +138,7 @@ body {
 	border: 0;
 	background: 0;
 	height: 50px;
-	padding: 0 12px 0 0;
+	padding: 0 12px;
 }
 
 #body>div form#signup .row .input input::placeholder {
