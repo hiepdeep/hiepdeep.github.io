@@ -149,31 +149,31 @@
 						}
 					}
 				});
-				// document.forms["signup"].addEventListener("submit", function(event) {
-				// 	event.preventDefault();
-				// 	let lname = document.forms["signup"]["lname"].value;
-				// 	let fname = document.forms["signup"]["fname"].value;
-				// 	let birthday = document.forms["signup"]["birthday"].value;
-				// 	let sex = document.forms["signup"]["sex"].value;
-				// 	let username = document.forms["signup"]["username"].value;
-				// 	let password = document.forms["signup"]["password"].value;
-				// 	let phone = document.forms["signup"]["phone"].value;
-				// 	let email = document.forms["signup"]["email"].value;
-				// 	console.clear();
-				// 	console.log({
-				// 		lname: lname,
-				// 		fname: fname,
-				// 		birthday: birthday,
-				// 		sex: sex,
-				// 		username: username,
-				// 		password: password,
-				// 		phone: phone,
-				// 		email: email,
-				// 	});
-				// 	localStorage.setItem("social-media-auth", window.btoa(username));
-				// 	document.forms["signup"].reset();
-				// 	window.location.href = "https://hiepdeep.github.io";
-				// });
+				document.forms["signup"].addEventListener("submit", function(event) {
+					event.preventDefault();
+					let lname = document.forms["signup"]["lname"].value;
+					let fname = document.forms["signup"]["fname"].value;
+					let birthday = document.forms["signup"]["birthday"].value;
+					let sex = document.forms["signup"]["sex"].value;
+					let username = document.forms["signup"]["username"].value;
+					let password = document.forms["signup"]["password"].value;
+					let phone = document.forms["signup"]["phone"].value;
+					let email = document.forms["signup"]["email"].value;
+					console.clear();
+					console.log({
+						lname: lname,
+						fname: fname,
+						birthday: birthday,
+						sex: sex,
+						username: username,
+						password: password,
+						phone: phone,
+						email: email,
+					});
+					localStorage.setItem("social-media-auth", window.btoa(username));
+					document.forms["signup"].reset();
+					window.location.href = "https://hiepdeep.github.io";
+				});
 			}
 		</script>
 	</body>
