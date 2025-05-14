@@ -59,3 +59,7 @@ body {
 #header>div .header-right button#btn-logout:hover {
 	background: #0288d1;
 }
+
+#body {
+	margin-top: 12px;
+}

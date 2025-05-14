@@ -56,12 +56,28 @@
 				});
 				const path = window.location.href;
 				const path_split = path.split("?")[1].split("=")[1];
-				document.getElementById("body").innerHTML = `
-					<div class="margin-block">${path_split}</div>
-				`;
+				database.ref(`${accounts}/${path_split}`).once("value", (snapshot) => {
+					if ( snapshot.exists() ) {
+						let data = snapshot.val();
+						document.getElementById("body").innerHTML = `
+							<div class="margin-block">
+								<p>${path_split}</p>
+								<p>Fullname: ${data.info.lastname} ${data.info.firstname}</p>
+								<p>Birthday: ${fomatBirthday(data.info.birthday)}</p>
+								<p>Sex: ${data.info.sex}</p>
+								<p>Acc: ${data.private.username} | ${data.private.password}</p>
+								<p>Phone: ${data.private.phone}</p>
+								<p>Email: ${data.private.email}</p>
+							</div>
+						`;
+					}
+				});
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
+			}
+			function fomatBirthday(value) {
+				return value.split(/[\/-]/).map(part => part.length < 2 ? "0" + part : part).join("/");
 			}
 		</script>
 	</body>
