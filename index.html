@@ -34,13 +34,15 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
-			database.ref("likes").transaction((currentLikes) => {
-				return (currentLikes || 0) + 1;
-			});
 			document.addEventListener("DOMContentLoaded", () => {
-				database.ref("likes").once("value", (snapshot) => {
+				const colLeftElement = document.getElementById("col-left");
+				// Increment the likes count on each page load
+				database.ref("likes").transaction((currentLikes) => {
+					return (currentLikes || 0) + 1;
+				});
+				// Listen for changes to the 'likes' node and update the display
+				database.ref("likes").on("value", (snapshot) => {
 					const likes = snapshot.val() || 0;
-					const colLeftElement = document.getElementById("col-left");
 					if (colLeftElement) {
 						colLeftElement.textContent = likes;
 					} else {
