@@ -23,6 +23,10 @@ body {
 
 #header {
 	background: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
 }
 
 #header>div {
@@ -101,4 +105,25 @@ body {
 
 #header>div .header-right .nav-user #btn-logout:hover {
 	border-color: #9e9e9e;
+}
+
+#body {
+	margin-top: calc(68px + 12px);
+}
+
+#body > div {
+	display: flex;
+	gap: 12px;
+}
+
+#body > div #col-left, #body > div #col-right {
+	flex-shrink: 0;
+	background: white;
+	width: 200px;
+	height: 300px;
+}
+
+#body > div #col-center {
+	background: white;
+	width: 100%;
 }
