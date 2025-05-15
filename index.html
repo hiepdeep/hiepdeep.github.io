@@ -29,38 +29,6 @@
 				<div id="col-left"></div>
 				<div id="col-center"></div>
 				<div id="col-right">
-					<div class="widget" id="listUsers">
-						<div class="widget-title"><h2>Người dùng:</h2></div>
-						<div class="widget-body">
-							<li>
-								<a href="javascript:;">
-									<div class="thumb">
-										<img src="library/pictures/200/1.png" alt="">
-									</div>
-									<span class="dataName">Name</span>
-								</a>
-								<button class="btn-addfr">Kết bạn</button>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="thumb">
-										<img src="library/pictures/200/2.png" alt="">
-									</div>
-									<span class="dataName">Name</span>
-								</a>
-								<button class="btn-addfr">Kết bạn</button>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="thumb">
-										<img src="library/pictures/200/3.png" alt="">
-									</div>
-									<span class="dataName">Name</span>
-								</a>
-								<button class="btn-addfr">Kết bạn</button>
-							</li>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -69,6 +37,14 @@
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if ( loggedInUser ) {
 				const accounts = "authentication2";
+				let arrUsers = [];
+				database.ref(accounts).on("value", (snapshot) => {
+					if (snapshot.exists()) {
+						let data = snapshot.val();
+						let object_keys = Object.keys(data);
+						arrUsers = object_keys;
+					}
+				});
 				database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
 					if ( snapshot.exists() ) {
 						let data = snapshot.val();
@@ -108,6 +84,56 @@
 						});
 					}
 				});
+				// widget-right
+				let userItem = "";
+				for (let e in arrUsers) {
+					if (arrUsers[e] != loggedInUser) {
+						database.ref(`${accounts}/${arrUsers[e]}`).once("value", (snapshot) => {
+							if (snapshot.exists()) {
+								let x = snapshot.val();
+								if (x && x.info) {
+									if (x.status && x.status.online === "1") {
+										userItem += `
+											<li>
+												<a href="ref/profile/?ref=${x.private.username}">
+													<div class="thumb onl">
+														<img src="${x.info.picture ? x.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
+													</div>
+													<span class="dataName">${x.info.lastname} ${x.info.firstname}</span>
+												</a>
+												<button class="btn-addfr">Kết bạn</button>
+											</li>
+										`;
+									}
+									else if (x.status && x.status.online === "0") {
+										userItem += `
+											<li>
+												<a href="ref/profile/?ref=${x.private.username}">
+													<div class="thumb">
+														<img src="${x.info.picture ? x.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
+													</div>
+													<span class="dataName">${x.info.lastname} ${x.info.firstname}</span>
+												</a>
+												<button class="btn-addfr">Kết bạn</button>
+											</li>
+										`;
+									}
+								}
+								else {
+									console.warn(`Dữ liệu người dùng ${arrUsers[e]} không có thông tin "info"`);
+								}
+							}
+						});
+					}
+				}
+				document.getElementById("col-right").innerHTML += `
+					<div class="widget" id="listUsers">
+						<div class="widget-title"><h2>Người dùng:</h2></div>
+						<div class="widget-body">
+							${userItem}
+						</div>
+					</div>
+				`;
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
