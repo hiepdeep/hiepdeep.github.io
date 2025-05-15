@@ -119,8 +119,7 @@ body {
 #body > div #col-left, #body > div #col-right {
 	flex-shrink: 0;
 	background: white;
-	width: 200px;
-	height: 300px;
+	width: 300px;
 }
 
 #body > div #col-center {
