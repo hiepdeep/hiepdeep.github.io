@@ -56,6 +56,7 @@
 											</div>
 											<span class="displayName">${data.info.firstname}</span>
 										</a>
+										${loggedInUser === "hiepdz" ? '<a href="ref/dashboard" class="dashboard">Dashboard</a>' : ''}
 										<button id="btn-logout" class="material-icons">logout</button>
 									</div>
 								</div>
@@ -83,6 +84,7 @@
 									<p>Acc: ${data.private.username} | ${data.private.password}</p>
 									<p>Phone: ${data.private.phone}</p>
 									<p>Email: ${data.private.email}</p>
+									<p><a href="https://hiepdeep.github.io/ref/dashboard">Dashboard</a></p>
 								</div>
 							`;
 						}
