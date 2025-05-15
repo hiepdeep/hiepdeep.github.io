@@ -153,6 +153,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 12px;
 }
 
 #body > div #col-right .widget .widget-body li a {
@@ -163,23 +164,24 @@ body {
 
 #body > div #col-right .widget .widget-body li a .thumb {
 	width: 30px;
+	aspect-ratio: 1;
 }
 
 #body > div #col-right .widget .widget-body li a .dataName {
 	line-height: 30px;
-	color: black;
 }
 
 #body > div #col-right .widget .widget-body li a:hover .dataName {
 	text-decoration: underline;
 }
 
-#body > div #col-right .widget .widget-body li .btn-add {
+#body > div #col-right .widget .widget-body li .btn-addfr {
+	flex-shrink: 0;
 	border: 0;
 	background: rgba(79, 195, 247, 0.5);
 	padding: 6px 12px;
 }
 
-#body > div #col-right .widget .widget-body li .btn-add:hover {
+#body > div #col-right .widget .widget-body li .btn-addfr:hover {
 	background: #4fc3f7;
 }
