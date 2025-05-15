@@ -29,7 +29,7 @@
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if ( loggedInUser ) {
-				console.log( "Welcome Dashboard !" );
+				const accounts = "authentication2";
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
