@@ -33,7 +33,7 @@ body {
 }
 
 #header>div .header-left .logo {
-	height: calc(50px - 12px*2);
+	height: 38px;
 }
 
 #header>div .header-right {
