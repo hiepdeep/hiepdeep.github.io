@@ -92,7 +92,7 @@
 						for ( let e in arrUsers ) {
 							if ( arrUsers[e] != loggedInUser ) {
 								database.ref(`${accounts}/${arrUsers[e]}`).once("value", (userItem) => {
-									if (userItem.exists()) {
+									if ( userItem.exists() ) {
 										let x = userItem.val();
 										userItems += `
 											<li>
@@ -106,7 +106,7 @@
 											</li>
 										`;
 									}
-								}
+								});
 							}
 						}
 						document.getElementById("col-right").innerHTML += `
@@ -116,7 +116,7 @@
 							</div>
 						`;
 					}
-				}
+				});
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
