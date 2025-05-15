@@ -58,7 +58,7 @@
 									<div class="nav-user">
 										<a href="ref/profile/?ref=${data.private.username}" class="logged-user">
 											<div class="thumb" id="logged-user-thumb">
-												<img src="library/pictures/no_avt.jpg" alt="">
+												<img src="${data?.info?.picture || 'library/pictures/no_avt.jpg'}" alt="">
 											</div>
 											<span class="displayName">${data.info.firstname}</span>
 										</a>
@@ -67,12 +67,12 @@
 								</div>
 							</div>
 						`;
-						if ( data.info.picture ) {
-							document.getElementById("logged-user-thumb").innerHTML = `<img src="${data.info.picture}" alt="">`;
-						}
-						else {
-							document.getElementById("logged-user-thumb").innerHTML = `<img src="library/pictures/no_avt.jpg" alt="">`;
-						}
+						// if ( data.info.picture ) {
+						// 	document.getElementById("logged-user-thumb").innerHTML = `<img src="${data.info.picture}" alt="">`;
+						// }
+						// else {
+						// 	document.getElementById("logged-user-thumb").innerHTML = `<img src="library/pictures/no_avt.jpg" alt="">`;
+						// }
 						document.getElementById("btn-logout").addEventListener("click", (e) => {
 							e.preventDefault();
 							database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
