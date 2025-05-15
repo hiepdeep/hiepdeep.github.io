@@ -34,13 +34,26 @@
 						let data = snapshot.val();
 						document.getElementById("header").innerHTML = `
 							<div class="margin-block">
-								<div class="logo">
-									<a href="">
-										<img src="library/pictures/svg/ui-deck.svg" alt="">
-									</a>
+								<div class="header-left">
+									<div class="logo">
+										<a href="">
+											<img src="library/pictures/svg/ui-deck.svg" alt="">
+										</a>
+									</div>
 								</div>
 								<div class="header-right">
-									<a href="ref/profile/?ref=${data.private.username}">${data.info.firstname}</a>
+									<div class="nav-right">
+										<a href="javascript:;">Home</a>
+										<a href="javascript:;">About</a>
+										<a href="javascript:;">Contact</a>
+										<a href="javascript:;">Support</a>
+									</div>
+									<a href="ref/profile/?ref=${data.private.username}" class="logged">
+										<div class="thumb">
+											<img src="library/pictures/200/7.png" alt="">
+										</div>
+										<span class="displayName">${data.info.firstname}</span>
+									</a>
 									<button id="btn-logout" class="material-icons">logout</button>
 								</div>
 							</div>
