@@ -24,46 +24,7 @@
 			</svg>
 		</div>
 		<div id="header"></div>
-		<div id="body">
-			<div class="margin-block">
-				<div id="col-left"></div>
-				<div id="col-center"></div>
-				<div id="col-right">
-					<div class="widget">
-						<h2 class="widget-title">Người dùng:</h2>
-						<div class="widget-body">
-							<li>
-								<a href="javascript:;">
-									<div class="thumb">
-										<img src="https://hiepdeep.github.io/library/pictures/exp/eYr4lwLK.jpg" alt="">
-									</div>
-									<span class="dataName">Name</span>
-								</a>
-								<button class="btn-addfr">Kết bạn</button>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="thumb">
-										<img src="https://hiepdeep.github.io/library/pictures/exp/vezRaYJh.jpg" alt="">
-									</div>
-									<span class="dataName">Name</span>
-								</a>
-								<button class="btn-addfr">Kết bạn</button>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="thumb">
-										<img src="https://hiepdeep.github.io/library/pictures/exp/QD1Rn6zv.jpg" alt="">
-									</div>
-									<span class="dataName">Name</span>
-								</a>
-								<button class="btn-addfr">Kết bạn</button>
-							</li>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div id="body"></div>
 		<script type="text/javascript">
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
@@ -91,7 +52,7 @@
 									<div class="nav-user">
 										<a href="ref/profile/?ref=${data.private.username}" class="logged-user">
 											<div class="thumb">
-												<img src="library/pictures/no_avt.jpg" alt="">
+												<img src="${data.info.picture ? data.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
 											</div>
 											<span class="displayName">${data.info.firstname}</span>
 										</a>
