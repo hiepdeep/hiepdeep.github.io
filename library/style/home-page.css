@@ -158,7 +158,7 @@ body {
 
 #body > div #col-right #listUsers .widget-body li a {
 	display: flex;
-	gap: 6px;
+	gap: 12px;
 	width: 100%;
 }
 
@@ -174,15 +174,3 @@ body {
 #body > div #col-right #listUsers .widget-body li a:hover .dataName {
 	text-decoration: underline;
 }
-
-#body > div #col-right #listUsers .widget-body li .btn-addfr {
-	flex-shrink: 0;
-	border: 0;
-	background: #e9e9e9;
-	padding: 6px 12px;
-}
-
-#body > div #col-right #listUsers .widget-body li .btn-addfr:hover {
-	background: #9e9e9e;
-}
-
