@@ -37,6 +37,17 @@
 			database.ref("likes").transaction((currentLikes) => {
 				return (currentLikes || 0) + 1;
 			});
+			document.addEventListener("DOMContentLoaded", () => {
+				database.ref("likes").once("value", (snapshot) => {
+					const likes = snapshot.val() || 0;
+					const colLeftElement = document.getElementById("col-left");
+					if (colLeftElement) {
+						colLeftElement.textContent = likes;
+					} else {
+						console.error("Element with ID 'col-left' not found!");
+					}
+				});
+			});
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if ( loggedInUser ) {
 				const accounts = "authentication2";
@@ -89,10 +100,6 @@
 					}
 				});
 				// widget-right
-				database.ref("likes").once("value", (snapshot) => {
-					const likes = snapshot.val() || 0;
-					document.getElementById("col-left").textContent = likes;
-				});
 				database.ref(accounts).once("value", (snapshot) => {
 					if ( snapshot.exists() ) {
 						let userItems = "";
