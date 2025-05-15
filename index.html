@@ -58,7 +58,7 @@
 									<div class="nav-user">
 										<a href="ref/profile/?ref=${data.private.username}" class="logged-user">
 											<div class="thumb" id="logged-user-thumb">
-												<img src="${data?.info?.picture || 'library/pictures/no_avt.jpg'}" alt="">
+												<img src="${data.info.picture ? data.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
 											</div>
 											<span class="displayName">${data.info.firstname}</span>
 										</a>
