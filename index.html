@@ -35,19 +35,12 @@
 		<script type="text/javascript">
 			console.clear();
 			document.addEventListener("DOMContentLoaded", () => {
-				const colLeftElement = document.getElementById("col-left");
-				// Increment the likes count on each page load
 				database.ref("likes").transaction((currentLikes) => {
 					return (currentLikes || 0) + 1;
 				});
-				// Listen for changes to the 'likes' node and update the display
 				database.ref("likes").on("value", (snapshot) => {
 					const likes = snapshot.val() || 0;
-					if (colLeftElement) {
-						colLeftElement.textContent = likes;
-					} else {
-						console.error("Element with ID 'col-left' not found!");
-					}
+					document.getElementById("col-left").textContent = likes;
 				});
 			});
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
