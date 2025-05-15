@@ -20,7 +20,8 @@
 	<body>
 		<div id="preloader">
 			<svg viewbox="0 0 240 240">
-				<circle cx="120" cy="120" r="90"></circle>
+				<circle cx="120" cy="120" r="90">
+				</circle>
 			</svg>
 		</div>
 		<div id="header"></div>
@@ -89,33 +90,30 @@
 				const promises = []; // Mảng để lưu trữ các Promises
 				for (let e in arrUsers) {
 					if (arrUsers[e] != loggedInUser) {
-						const userRef = database.ref(`${accounts}/${arrUsers[e]}`);
-						const promise = userRef.once("value").then((snapshot) => {
+						const promise = database.ref(`${accounts}/${arrUsers[e]}`).once("value").then((snapshot) => {
 							if (snapshot.exists()) {
 								let x = snapshot.val();
-								if (x && x.info) {
-									let listItem = `
-										<li>
-											<a href="ref/profile/?ref=${x.private.username}">
-												<div class="thumb ${x.status && x.status.online === "1" ? 'onl' : ''}">
-													<img src="${x.info.picture ? x.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
-												</div>
-												<span class="dataName">${x.info.lastname} ${x.info.firstname}</span>
-											</a>
-											<button class="btn-addfr">Kết bạn</button>
-										</li>
-									`;
-									return listItem; // Trả về chuỗi HTML của mỗi người dùng
-								} else {
-									console.warn(`Dữ liệu người dùng ${arrUsers[e]} không có thông tin "info"`);
-									return ""; // Trả về chuỗi rỗng nếu không có thông tin
-								}
+								let listItem = `
+									<li>
+										<a href="ref/profile/?ref=${x.private.username}">
+											<div class="thumb ${x.status.online === "1" ? 'onl' : ''}">
+												<img src="${x.info.picture ? x.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
+											</div>
+											<span class="dataName">${x.info.lastname} ${x.info.firstname}</span>
+										</a>
+										<button class="btn-addfr">Kết bạn</button>
+									</li>
+								`;
+								return listItem; // Trả về chuỗi HTML của mỗi người dùng
 							} else {
-								return ""; // Trả về chuỗi rỗng nếu snapshot không tồn tại
+								console.warn(`Không tìm thấy dữ liệu cho ${arrUsers[e]}`);
+								return null;
 							}
 						}).catch((error) => {
-							console.error("Lỗi khi lấy dữ liệu người dùng:", error);
-							return ""; // Trả về chuỗi rỗng nếu có lỗi
+							console.error("Lỗi khi đọc dữ liệu:", error);
+							// Bạn có thể trả về một giá trị mặc định hoặc re-throw lỗi tùy thuộc vào logic của bạn
+							return null; // Ví dụ: trả về null để báo hiệu việc đọc dữ liệu không thành công
+							// Hoặc throw error; để propagate lỗi lên trên: throw error;
 						});
 						promises.push(promise); // Thêm Promise vào mảng
 					}
@@ -126,9 +124,7 @@
 					document.getElementById("col-right").innerHTML += `
 						<div class="widget" id="listUsers">
 							<div class="widget-title"><h2>Người dùng:</h2></div>
-							<div class="widget-body">
-								${userItem}
-							</div>
+							<div class="widget-body">${userItem}</div>
 						</div>
 					`;
 				}).catch((error) => {
