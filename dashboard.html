@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<base href="https://hiepdeep.github.io/">
+		<link rel="icon" href="library/favicon/hiepdeep.ico">
+		<title>Social Media | V1.0.0</title>
+		<meta name="title" content="HiepDeep">
+		<meta name="description" content="HiepDeep">
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src="library/script/config-firebase.js"></script>
+		<script src="library/script/loading.js"></script>
+		<link rel="stylesheet" href="library/style/oneforall.css">
+		<link rel="stylesheet" href="library/style/loading.css">
+		<link rel="stylesheet" href="library/style/home-page.css">
+	</head>
+	<body>
+		<div id="preloader">
+			<svg viewbox="0 0 240 240">
+				<circle cx="120" cy="120" r="90">
+				</circle>
+			</svg>
+		</div>
+		<div id="dashboard"></div>
+		<script type="text/javascript">
+			console.clear();
+			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
+			if ( loggedInUser ) {
+				console.log( "Welcome Dashboard !" );
+			}
+			else {
+				window.location.href = "https://hiepdeep.github.io/ref/auth";
+			}
+		</script>
+	</body>
+</html>
