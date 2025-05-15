@@ -111,19 +111,3 @@ body {
 	margin-top: calc(68px + 12px);
 }
 
-#body > div {
-	display: flex;
-	gap: 12px;
-}
-
-#body > div #col-left, #body > div #col-right {
-	flex-shrink: 0;
-	background: white;
-	width: 200px;
-	height: 300px;
-}
-
-#body > div #col-center {
-	background: white;
-	width: 100%;
-}
