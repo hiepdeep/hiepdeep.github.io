@@ -104,23 +104,20 @@
 										<button class="btn-addfr">Kết bạn</button>
 									</li>
 								`;
-								return listItem; // Trả về chuỗi HTML của mỗi người dùng
+								return listItem;
 							} else {
-								console.warn(`Không tìm thấy dữ liệu cho ${arrUsers[e]}`);
+								console.warn(`Không tìm thấy dữ liệu cho: ${arrUsers[e]}`);
 								return null;
 							}
 						}).catch((error) => {
 							console.error("Lỗi khi đọc dữ liệu:", error);
-							// Bạn có thể trả về một giá trị mặc định hoặc re-throw lỗi tùy thuộc vào logic của bạn
-							return null; // Ví dụ: trả về null để báo hiệu việc đọc dữ liệu không thành công
-							// Hoặc throw error; để propagate lỗi lên trên: throw error;
+							return null;
 						});
 						promises.push(promise); // Thêm Promise vào mảng
 					}
 				}
-				Promise.all(promises).then((results) => {
-					// 'results' là một mảng chứa kết quả (chuỗi HTML) từ tất cả các Promises
-					userItem = results.join(''); // Nối tất cả các chuỗi HTML lại với nhau
+				Promise.all(promises).then((results) => { // "results" là một mảng chứa kết quả (chuỗi HTML) từ tất cả các Promises
+					userItem = results.join(""); // Nối tất cả các chuỗi HTML lại với nhau
 					document.getElementById("col-right").innerHTML += `
 						<div class="widget" id="listUsers">
 							<div class="widget-title"><h2>Người dùng:</h2></div>
