@@ -49,13 +49,15 @@
 										<a href="javascript:;">Contact</a>
 										<a href="javascript:;">Support</a>
 									</div>
-									<a href="ref/profile/?ref=${data.private.username}" class="logged">
-										<div class="thumb">
-											<img src="library/pictures/200/7.png" alt="">
-										</div>
-										<span class="displayName">${data.info.firstname}</span>
-									</a>
-									<button id="btn-logout" class="material-icons">logout</button>
+									<div class="nav-user">
+										<a href="ref/profile/?ref=${data.private.username}" class="logged-user">
+											<div class="thumb">
+												<img src="library/pictures/200/7.png" alt="">
+											</div>
+											<span class="displayName">${data.info.firstname}</span>
+										</a>
+										<button id="btn-logout" class="material-icons">logout</button>
+									</div>
 								</div>
 							</div>
 						`;
