@@ -40,7 +40,7 @@
 				const accounts = "authentication2";
 				let arrUsers = [];
 				database.ref(accounts).on("value", (snapshot) => {
-					if (snapshot.exists()) {
+					if ( snapshot.exists() ) {
 						let data = snapshot.val();
 						let object_keys = Object.keys(data);
 						arrUsers = object_keys;
@@ -86,47 +86,37 @@
 					}
 				});
 				// widget-right
-				let userItem = "";
-				const promises = []; // Mảng để lưu trữ các Promises
-				for (let e in arrUsers) {
-					if (arrUsers[e] != loggedInUser) {
-						const promise = database.ref(`${accounts}/${arrUsers[e]}`).once("value").then((snapshot) => {
-							if (snapshot.exists()) {
-								let x = snapshot.val();
-								let listItem = `
-									<li>
-										<a href="ref/profile/?ref=${x.private.username}">
-											<div class="thumb ${x.status.online === "1" ? 'onl' : ''}">
-												<img src="${x.info.picture ? x.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
-											</div>
-											<span class="dataName">${x.info.lastname} ${x.info.firstname}</span>
-										</a>
-										<button class="btn-addfr">Kết bạn</button>
-									</li>
-								`;
-								return listItem;
-							} else {
-								console.warn(`Không tìm thấy dữ liệu cho: ${arrUsers[e]}`);
-								return null;
+				database.ref(accounts).once("value", (snapshot) => {
+					if ( snapshot.exists() ) {
+						let userItems = "";
+						for ( let e in arrUsers ) {
+							if ( arrUsers[e] != loggedInUser ) {
+								database.ref(`${accounts}/${arrUsers[e]}`).once("value", (userItem) => {
+									if (userItem.exists()) {
+										let x = userItem.val();
+										userItems += `
+											<li>
+												<a href="ref/profile/?ref=${x.private.username}">
+													<div class="thumb ${x.status.online === "1" ? 'onl' : ''}">
+														<img src="${x.info.picture ? x.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
+													</div>
+													<span class="dataName">${x.info.lastname} ${x.info.firstname}</span>
+												</a>
+												<button class="btn-addfr">Kết bạn</button>
+											</li>
+										`;
+									}
+								}
 							}
-						}).catch((error) => {
-							console.error("Lỗi khi đọc dữ liệu:", error);
-							return null;
-						});
-						promises.push(promise); // Thêm Promise vào mảng
+						}
+						document.getElementById("col-right").innerHTML += `
+							<div class="widget" id="listUsers">
+								<div class="widget-title"><h2>Người dùng:</h2></div>
+								<div class="widget-body">${userItems}</div>
+							</div>
+						`;
 					}
 				}
-				Promise.all(promises).then((results) => { // "results" là một mảng chứa kết quả (chuỗi HTML) từ tất cả các Promises
-					userItem = results.join(""); // Nối tất cả các chuỗi HTML lại với nhau
-					document.getElementById("col-right").innerHTML += `
-						<div class="widget" id="listUsers">
-							<div class="widget-title"><h2>Người dùng:</h2></div>
-							<div class="widget-body">${userItem}</div>
-						</div>
-					`;
-				}).catch((error) => {
-					console.error("Đã xảy ra lỗi trong quá trình xử lý tất cả các Promises:", error);
-				});
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
