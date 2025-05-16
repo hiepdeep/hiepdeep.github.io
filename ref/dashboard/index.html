@@ -166,12 +166,12 @@
 						currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
 						currentPage * rowsPerPage < arrUsers.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
 					}
-					document.getElementById("checkAll").addEventListener("change", function() {
-						const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
-						checkboxes.forEach(checkbox => {
-							checkbox.checked = this.checked;
-						});
-					});
+					// document.getElementById("checkAll").addEventListener("change", function() {
+					// 	const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+					// 	checkboxes.forEach(checkbox => {
+					// 		checkbox.checked = this.checked;
+					// 	});
+					// });
 					prevButton.addEventListener("click", () => {
 						if (currentPage > 1) {
 							currentPage--;
