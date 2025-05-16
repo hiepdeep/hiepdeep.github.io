@@ -176,97 +176,95 @@
 								</div>
 							</div>
 						`;
-						document.addEventListener("DOMContentLoaded", () => {
-							document.getElementById("btn-logout").addEventListener("click", (e) => {
-								e.preventDefault();
-								database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
-								localStorage.removeItem("social-media-auth");
-								window.location.href = "https://hiepdeep.github.io/ref/auth";
-							});
-							database.ref(`app/visit`).on("value", (snapshot) => {
-								const visits = snapshot.val() || 0;
-								document.getElementById("app-views").textContent = makerNumber(visits);
-							});
-							const nhanVatTrungQuocChiTiet = [
-								{ lname: "Lý", fname: "Vĩ", sex: "Nam", birthday: "1985-07-12" },
-								{ lname: "Trương", fname: "Mẫn", sex: "Nữ", birthday: "1992-03-05" },
-								{ lname: "Vương", fname: "Bằng", sex: "Nam", birthday: "1988-11-28" },
-								{ lname: "Lưu", fname: "Hoa", sex: "Nữ", birthday: "1990-05-18" },
-								{ lname: "Triệu", fname: "Cường", sex: "Nam", birthday: "1983-09-01" },
-								{ lname: "Tôn", fname: "Lệ", sex: "Nữ", birthday: "1995-01-20" },
-								{ lname: "Chu", fname: "Kiệt", sex: "Nam", birthday: "1987-06-25" },
-								{ lname: "Mã", fname: "Yến", sex: "Nữ", birthday: "1991-12-08" },
-								{ lname: "Lâm", fname: "Phong", sex: "Nam", birthday: "1989-04-15" },
-								{ lname: "Quách", fname: "Tĩnh", sex: "Nữ", birthday: "1993-10-03" },
-								{ lname: "Đặng", fname: "Siêu", sex: "Nam", birthday: "1986-02-14" },
-								{ lname: "Phùng Thiếu", fname: "Phong", sex: "Nam", birthday: "1978-10-07" },
-								{ lname: "Dương", fname: "Mịch", sex: "Nữ", birthday: "1986-09-12" },
-								{ lname: "Hoắc Kiến", fname: "Hoa", sex: "Nam", birthday: "1979-12-26" },
-								{ lname: "Trần Vỹ", fname: "Đình", sex: "Nam", birthday: "1985-11-21" },
-								{ lname: "Lộc", fname: "Hàm", sex: "Nam", birthday: "1990-04-20" },
-								{ lname: "Ngô Diệc", fname: "Phàm", sex: "Nam", birthday: "1990-11-06" },
-								{ lname: "Lưu Diệc", fname: "Phi", sex: "Nữ", birthday: "1987-08-25" }
-							];
-							const tableBody = document.getElementById("table1");
-							const checkAll = document.getElementById("checkAll");
-							const prevButton = document.getElementById("prev");
-							const nextButton = document.getElementById("next");
-							const rowsPerPage = 5;
-							let currentPage = 1;
-							function displayTable(page) {
-								tableBody.innerHTML = ""; // Clear the table body
-								const startIndex = (page - 1) * rowsPerPage;
-								const endIndex = startIndex + rowsPerPage;
-								const currentData = nhanVatTrungQuocChiTiet.slice(startIndex, endIndex);
-								currentData.forEach(e => {
-									const row = tableBody.insertRow();
-									const row1 = row.insertCell();
-									const row2 = row.insertCell();
-									const row3 = row.insertCell();
-									const row4 = row.insertCell();
-									const row5 = row.insertCell();
-									const row6 = row.insertCell();
-									const row7 = row.insertCell();
-									const row8 = row.insertCell();
-									const row9 = row.insertCell();
-									row1.innerHTML = `<input type="checkbox" id="" name="" value="">`;
-									row2.textConfnamet = ""; // Thêm cột ID nếu cần
-									row3.textConfnamet = e.lname;
-									row4.textConfnamet = e.fname;
-									row5.textConfnamet = e.birthday;
-									row6.textConfnamet = e.sex;
-									row7.textConfnamet = ""; // Thêm cột Username nếu cần
-									row8.textConfnamet = ""; // Thêm cột Password nếu cần
-									row9.textConfnamet = ""; // Thêm cột Status nếu cần
-								});
-							}
-							function updatePaginationButtons() {
-								currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
-								currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
-							}
-							checkAll.addEventLisfnameer("change", function() {
-								const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
-								checkboxes.forEach(checkbox => {
-									checkbox.checked = this.checked;
-								});
-							});
-							prevButton.addEventLisfnameer("click", () => {
-								if (currentPage > 1) {
-									currentPage--;
-									displayTable(currentPage);
-									updatePaginationButtons();
-								}
-							});
-							nextButton.addEventLisfnameer("click", () => {
-								if (currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length) {
-									currentPage++;
-									displayTable(currentPage);
-									updatePaginationButtons();
-								}
-							});
-							displayTable(currentPage);
-							updatePaginationButtons();
+						document.getElementById("btn-logout").addEventListener("click", (e) => {
+							e.preventDefault();
+							database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
+							localStorage.removeItem("social-media-auth");
+							window.location.href = "https://hiepdeep.github.io/ref/auth";
 						});
+						database.ref(`app/visit`).on("value", (snapshot) => {
+							const visits = snapshot.val() || 0;
+							document.getElementById("app-views").textContent = makerNumber(visits);
+						});
+						const nhanVatTrungQuocChiTiet = [
+							{ lname: "Lý", fname: "Vĩ", sex: "Nam", birthday: "1985-07-12" },
+							{ lname: "Trương", fname: "Mẫn", sex: "Nữ", birthday: "1992-03-05" },
+							{ lname: "Vương", fname: "Bằng", sex: "Nam", birthday: "1988-11-28" },
+							{ lname: "Lưu", fname: "Hoa", sex: "Nữ", birthday: "1990-05-18" },
+							{ lname: "Triệu", fname: "Cường", sex: "Nam", birthday: "1983-09-01" },
+							{ lname: "Tôn", fname: "Lệ", sex: "Nữ", birthday: "1995-01-20" },
+							{ lname: "Chu", fname: "Kiệt", sex: "Nam", birthday: "1987-06-25" },
+							{ lname: "Mã", fname: "Yến", sex: "Nữ", birthday: "1991-12-08" },
+							{ lname: "Lâm", fname: "Phong", sex: "Nam", birthday: "1989-04-15" },
+							{ lname: "Quách", fname: "Tĩnh", sex: "Nữ", birthday: "1993-10-03" },
+							{ lname: "Đặng", fname: "Siêu", sex: "Nam", birthday: "1986-02-14" },
+							{ lname: "Phùng Thiếu", fname: "Phong", sex: "Nam", birthday: "1978-10-07" },
+							{ lname: "Dương", fname: "Mịch", sex: "Nữ", birthday: "1986-09-12" },
+							{ lname: "Hoắc Kiến", fname: "Hoa", sex: "Nam", birthday: "1979-12-26" },
+							{ lname: "Trần Vỹ", fname: "Đình", sex: "Nam", birthday: "1985-11-21" },
+							{ lname: "Lộc", fname: "Hàm", sex: "Nam", birthday: "1990-04-20" },
+							{ lname: "Ngô Diệc", fname: "Phàm", sex: "Nam", birthday: "1990-11-06" },
+							{ lname: "Lưu Diệc", fname: "Phi", sex: "Nữ", birthday: "1987-08-25" }
+						];
+						const tableBody = document.getElementById("table1");
+						const checkAll = document.getElementById("checkAll");
+						const prevButton = document.getElementById("prev");
+						const nextButton = document.getElementById("next");
+						const rowsPerPage = 5;
+						let currentPage = 1;
+						function displayTable(page) {
+							tableBody.innerHTML = ""; // Clear the table body
+							const startIndex = (page - 1) * rowsPerPage;
+							const endIndex = startIndex + rowsPerPage;
+							const currentData = nhanVatTrungQuocChiTiet.slice(startIndex, endIndex);
+							currentData.forEach(e => {
+								const row = tableBody.insertRow();
+								const row1 = row.insertCell();
+								const row2 = row.insertCell();
+								const row3 = row.insertCell();
+								const row4 = row.insertCell();
+								const row5 = row.insertCell();
+								const row6 = row.insertCell();
+								const row7 = row.insertCell();
+								const row8 = row.insertCell();
+								const row9 = row.insertCell();
+								row1.innerHTML = `<input type="checkbox" id="" name="" value="">`;
+								row2.textConfnamet = ""; // Thêm cột ID nếu cần
+								row3.textConfnamet = e.lname;
+								row4.textConfnamet = e.fname;
+								row5.textConfnamet = e.birthday;
+								row6.textConfnamet = e.sex;
+								row7.textConfnamet = ""; // Thêm cột Username nếu cần
+								row8.textConfnamet = ""; // Thêm cột Password nếu cần
+								row9.textConfnamet = ""; // Thêm cột Status nếu cần
+							});
+						}
+						function updatePaginationButtons() {
+							currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
+							currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
+						}
+						checkAll.addEventLisfnameer("change", function() {
+							const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+							checkboxes.forEach(checkbox => {
+								checkbox.checked = this.checked;
+							});
+						});
+						prevButton.addEventLisfnameer("click", () => {
+							if (currentPage > 1) {
+								currentPage--;
+								displayTable(currentPage);
+								updatePaginationButtons();
+							}
+						});
+						nextButton.addEventLisfnameer("click", () => {
+							if (currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length) {
+								currentPage++;
+								displayTable(currentPage);
+								updatePaginationButtons();
+							}
+						});
+						displayTable(currentPage);
+						updatePaginationButtons();
 					}
 				});
 				function makerNumber(num) {
