@@ -34,7 +34,7 @@
 		<script type="text/javascript">
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
-			if ( loggedInUser ) {
+			if ( loggedInUser === "hiepdz" ) {
 				const accounts = "app/authentication";
 				let arrUsers = [];
 				database.ref(accounts).on("value", (snapshot) => {
