@@ -182,10 +182,10 @@
 							localStorage.removeItem("social-media-auth");
 							window.location.href = "https://hiepdeep.github.io/ref/auth";
 						});
-						database.ref(`app/visit`).on("value", (snapshot) => {
-							const visits = snapshot.val() || 0;
-							document.getElementById("app-views").textContent = makerNumber(visits);
-						});
+						// database.ref(`app/visit`).on("value", (snapshot) => {
+						// 	const visits = snapshot.val() || 0;
+						// 	document.getElementById("app-views").textContent = makerNumber(visits);
+						// });
 						const nhanVatTrungQuocChiTiet = [
 							{ lname: "Lý", fname: "Vĩ", sex: "Nam", birthday: "1985-07-12" },
 							{ lname: "Trương", fname: "Mẫn", sex: "Nữ", birthday: "1992-03-05" },
