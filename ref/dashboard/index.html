@@ -188,24 +188,24 @@
 								document.getElementById("app-views").textContent = makerNumber(visits);
 							});
 							const nhanVatTrungQuocChiTiet = [
-								{ hoVaDem: "Lý", ten: "Vĩ", gioiTinh: "Nam", ngaySinh: "1985-07-12" },
-								{ hoVaDem: "Trương", ten: "Mẫn", gioiTinh: "Nữ", ngaySinh: "1992-03-05" },
-								{ hoVaDem: "Vương", ten: "Bằng", gioiTinh: "Nam", ngaySinh: "1988-11-28" },
-								{ hoVaDem: "Lưu", ten: "Hoa", gioiTinh: "Nữ", ngaySinh: "1990-05-18" },
-								{ hoVaDem: "Triệu", ten: "Cường", gioiTinh: "Nam", ngaySinh: "1983-09-01" },
-								{ hoVaDem: "Tôn", ten: "Lệ", gioiTinh: "Nữ", ngaySinh: "1995-01-20" },
-								{ hoVaDem: "Chu", ten: "Kiệt", gioiTinh: "Nam", ngaySinh: "1987-06-25" },
-								{ hoVaDem: "Mã", ten: "Yến", gioiTinh: "Nữ", ngaySinh: "1991-12-08" },
-								{ hoVaDem: "Lâm", ten: "Phong", gioiTinh: "Nam", ngaySinh: "1989-04-15" },
-								{ hoVaDem: "Quách", ten: "Tĩnh", gioiTinh: "Nữ", ngaySinh: "1993-10-03" },
-								{ hoVaDem: "Đặng", ten: "Siêu", gioiTinh: "Nam", ngaySinh: "1986-02-14" },
-								{ hoVaDem: "Phùng Thiếu", ten: "Phong", gioiTinh: "Nam", ngaySinh: "1978-10-07" },
-								{ hoVaDem: "Dương", ten: "Mịch", gioiTinh: "Nữ", ngaySinh: "1986-09-12" },
-								{ hoVaDem: "Hoắc Kiến", ten: "Hoa", gioiTinh: "Nam", ngaySinh: "1979-12-26" },
-								{ hoVaDem: "Trần Vỹ", ten: "Đình", gioiTinh: "Nam", ngaySinh: "1985-11-21" },
-								{ hoVaDem: "Lộc", ten: "Hàm", gioiTinh: "Nam", ngaySinh: "1990-04-20" },
-								{ hoVaDem: "Ngô Diệc", ten: "Phàm", gioiTinh: "Nam", ngaySinh: "1990-11-06" },
-								{ hoVaDem: "Lưu Diệc", ten: "Phi", gioiTinh: "Nữ", ngaySinh: "1987-08-25" }
+								{ lname: "Lý", fname: "Vĩ", sex: "Nam", birthday: "1985-07-12" },
+								{ lname: "Trương", fname: "Mẫn", sex: "Nữ", birthday: "1992-03-05" },
+								{ lname: "Vương", fname: "Bằng", sex: "Nam", birthday: "1988-11-28" },
+								{ lname: "Lưu", fname: "Hoa", sex: "Nữ", birthday: "1990-05-18" },
+								{ lname: "Triệu", fname: "Cường", sex: "Nam", birthday: "1983-09-01" },
+								{ lname: "Tôn", fname: "Lệ", sex: "Nữ", birthday: "1995-01-20" },
+								{ lname: "Chu", fname: "Kiệt", sex: "Nam", birthday: "1987-06-25" },
+								{ lname: "Mã", fname: "Yến", sex: "Nữ", birthday: "1991-12-08" },
+								{ lname: "Lâm", fname: "Phong", sex: "Nam", birthday: "1989-04-15" },
+								{ lname: "Quách", fname: "Tĩnh", sex: "Nữ", birthday: "1993-10-03" },
+								{ lname: "Đặng", fname: "Siêu", sex: "Nam", birthday: "1986-02-14" },
+								{ lname: "Phùng Thiếu", fname: "Phong", sex: "Nam", birthday: "1978-10-07" },
+								{ lname: "Dương", fname: "Mịch", sex: "Nữ", birthday: "1986-09-12" },
+								{ lname: "Hoắc Kiến", fname: "Hoa", sex: "Nam", birthday: "1979-12-26" },
+								{ lname: "Trần Vỹ", fname: "Đình", sex: "Nam", birthday: "1985-11-21" },
+								{ lname: "Lộc", fname: "Hàm", sex: "Nam", birthday: "1990-04-20" },
+								{ lname: "Ngô Diệc", fname: "Phàm", sex: "Nam", birthday: "1990-11-06" },
+								{ lname: "Lưu Diệc", fname: "Phi", sex: "Nữ", birthday: "1987-08-25" }
 							];
 							const tableBody = document.getElementById("table1");
 							const checkAll = document.getElementById("checkAll");
@@ -213,7 +213,6 @@
 							const nextButton = document.getElementById("next");
 							const rowsPerPage = 5;
 							let currentPage = 1;
-
 							function displayTable(page) {
 								tableBody.innerHTML = ""; // Clear the table body
 								const startIndex = (page - 1) * rowsPerPage;
@@ -231,35 +230,34 @@
 									const row8 = row.insertCell();
 									const row9 = row.insertCell();
 									row1.innerHTML = `<input type="checkbox" id="" name="" value="">`;
-									row2.textContent = ""; // Thêm cột ID nếu cần
-									row3.textContent = e.hoVaDem;
-									row4.textContent = e.ten;
-									row5.textContent = e.ngaySinh;
-									row6.textContent = e.gioiTinh;
-									row7.textContent = ""; // Thêm cột Username nếu cần
-									row8.textContent = ""; // Thêm cột Password nếu cần
-									row9.textContent = ""; // Thêm cột Status nếu cần
+									row2.textConfnamet = ""; // Thêm cột ID nếu cần
+									row3.textConfnamet = e.lname;
+									row4.textConfnamet = e.fname;
+									row5.textConfnamet = e.birthday;
+									row6.textConfnamet = e.sex;
+									row7.textConfnamet = ""; // Thêm cột Username nếu cần
+									row8.textConfnamet = ""; // Thêm cột Password nếu cần
+									row9.textConfnamet = ""; // Thêm cột Status nếu cần
 								});
 							}
-
 							function updatePaginationButtons() {
 								currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
 								currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
 							}
-							checkAll.addEventListener("change", function() {
+							checkAll.addEventLisfnameer("change", function() {
 								const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
 								checkboxes.forEach(checkbox => {
 									checkbox.checked = this.checked;
 								});
 							});
-							prevButton.addEventListener("click", () => {
+							prevButton.addEventLisfnameer("click", () => {
 								if (currentPage > 1) {
 									currentPage--;
 									displayTable(currentPage);
 									updatePaginationButtons();
 								}
 							});
-							nextButton.addEventListener("click", () => {
+							nextButton.addEventLisfnameer("click", () => {
 								if (currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length) {
 									currentPage++;
 									displayTable(currentPage);
