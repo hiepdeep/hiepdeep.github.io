@@ -37,6 +37,7 @@
 							let data = snapshot.val();
 							let object_keys = Object.keys(data);
 							arrUsers = object_keys;
+							document.getElementById("app-users").textContent = arrUsers.length;
 						}
 					});
 					database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
