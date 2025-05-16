@@ -43,8 +43,6 @@
 							let object_keys = Object.keys(data);
 							arrUsers = object_keys;
 							document.getElementById("app-users").textContent = arrUsers.length;
-							displayTable(currentPage);
-							updatePaginationButtons();
 						}
 					});
 					database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
@@ -184,6 +182,13 @@
 					nextButton.addEventListener("click", () => {
 						if (currentPage * rowsPerPage < arrUsers.length) {
 							currentPage++;
+							displayTable(currentPage);
+							updatePaginationButtons();
+						}
+					});
+					database.ref(accounts).on("value", (snapshot) => {
+						if (snapshot.exists()) {
+							let data = snapshot.val();
 							displayTable(currentPage);
 							updatePaginationButtons();
 						}
