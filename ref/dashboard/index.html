@@ -29,18 +29,26 @@
 			console.clear();
 			document.addEventListener("DOMContentLoaded", function() {
 				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
-				if ( loggedInUser === "hiepdz" ) {
+				if (loggedInUser === "hiepdz") {
 					const accounts = "app/authentication";
 					let arrUsers = [];
+					const tableBody = document.getElementById("table1");
+					const prevButton = document.getElementById("prev");
+					const nextButton = document.getElementById("next");
+					const rowsPerPage = 5;
+					let currentPage = 1;
 					database.ref(accounts).on("value", (snapshot) => {
-						if ( snapshot.exists() ) {
+						if (snapshot.exists()) {
 							let data = snapshot.val();
 							let object_keys = Object.keys(data);
 							arrUsers = object_keys;
+							document.getElementById("app-users").textContent = arrUsers.length;
+							displayTable(currentPage);
+							updatePaginationButtons();
 						}
 					});
 					database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
-						if ( snapshot.exists() ) {
+						if (snapshot.exists()) {
 							let data = snapshot.val();
 							document.getElementById("dashboard").innerHTML = `
 								<div class="aside-left">
@@ -120,80 +128,73 @@
 								let visits = snapshot.val() || 0;
 								document.getElementById("app-views").textContent = visits;
 							});
-							document.getElementById("app-users").textContent = arrUsers.length;
-							const tableBody = document.getElementById("table1");
-							const prevButton = document.getElementById("prev");
-							const nextButton = document.getElementById("next");
-							const rowsPerPage = 5;
-							let currentPage = 1;
-							function displayTable(page) {
-								tableBody.innerHTML = "";
-								const startIndex = (page - 1) * rowsPerPage;
-								const endIndex = startIndex + rowsPerPage;
-								const usersToDisplay = arrUsers.slice(startIndex, endIndex);
-								const promises = []; // Array to store promises for each user data fetch
-								usersToDisplay.forEach(userId => {
-									const userRef = database.ref(`${accounts}/${userId}`).once("value");
-									promises.push(userRef);
-									userRef.then((snapshotInfo) => {
-										if (snapshotInfo.exists()) {
-											const userInfo = snapshotInfo.val();
-											const row = tableBody.insertRow();
-											row.insertCell().innerHTML = `<input type="checkbox" id="select-${userId}" name="selectedUsers" value="${userId}">`;
-											row.insertCell().textContent = userInfo.userid;
-											row.insertCell().textContent = userInfo.info.lastname || "";
-											row.insertCell().textContent = userInfo.info.firstname || "";
-											row.insertCell().textContent = userInfo.info.birthday || "";
-											row.insertCell().textContent = userInfo.info.sex || "";
-											row.insertCell().textContent = userInfo.private.username || "";
-											row.insertCell().textContent = userInfo.private.password || "";
-											row.insertCell().textContent = userInfo.status.online === 1 ? "Online" : "Offline";
-										}
-									});
-								});
-								Promise.all(promises).then(() => {
-									updatePaginationButtons();
-								});
-								if (usersToDisplay.length === 0) {
-									updatePaginationButtons();
+						}
+					});
+					function displayTable(page) {
+						tableBody.innerHTML = "";
+						const startIndex = (page - 1) * rowsPerPage;
+						const endIndex = startIndex + rowsPerPage;
+						const usersToDisplay = arrUsers.slice(startIndex, endIndex);
+						const promises = [];
+						usersToDisplay.forEach(userId => {
+							const userRef = database.ref(`${accounts}/${userId}`).once("value");
+							promises.push(userRef);
+							userRef.then((snapshotInfo) => {
+								if (snapshotInfo.exists()) {
+									const userInfo = snapshotInfo.val();
+									const row = tableBody.insertRow();
+									row.insertCell().innerHTML = `<input type="checkbox" id="select-${userId}" name="selectedUsers" value="${userId}">`;
+									row.insertCell().textContent = userInfo.userid;
+									row.insertCell().textContent = userInfo.info.lastname || "";
+									row.insertCell().textContent = userInfo.info.firstname || "";
+									row.insertCell().textContent = userInfo.info.birthday || "";
+									row.insertCell().textContent = userInfo.info.sex || "";
+									row.insertCell().textContent = userInfo.private.username || "";
+									row.insertCell().textContent = userInfo.private.password || "";
+									row.insertCell().textContent = userInfo.status.online === 1 ? "Online" : "Offline";
 								}
-							}
-							function updatePaginationButtons() {
-								currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
-								currentPage * rowsPerPage < arrUsers.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
-							}
-							document.getElementById("checkAll").addEventListener("change", function() {
-								const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
-								checkboxes.forEach(checkbox => {
-									checkbox.checked = this.checked;
-								});
+							}).catch(error => {
+								console.error("Error fetching user data:", error);
 							});
-							prevButton.addEventListener("click", () => {
-								if (currentPage > 1) {
-									currentPage--;
-									displayTable(currentPage);
-									updatePaginationButtons();
-								}
-							});
-							nextButton.addEventListener("click", () => {
-								if (currentPage * rowsPerPage < arrUsers.length) {
-									currentPage++;
-									displayTable(currentPage);
-									updatePaginationButtons();
-								}
-							});
+						});
+						Promise.all(promises).then(() => {
+							updatePaginationButtons();
+						});
+						if (usersToDisplay.length === 0) {
+							updatePaginationButtons();
+						}
+					}
+					function updatePaginationButtons() {
+						currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
+						currentPage * rowsPerPage < arrUsers.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
+					}
+					document.getElementById("checkAll").addEventListener("change", function() {
+						const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+						checkboxes.forEach(checkbox => {
+							checkbox.checked = this.checked;
+						});
+					});
+					prevButton.addEventListener("click", () => {
+						if (currentPage > 1) {
+							currentPage--;
 							displayTable(currentPage);
 							updatePaginationButtons();
 						}
 					});
-					function makerNumber(num) {
-						return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-					}
-				}
-				else {
+					nextButton.addEventListener("click", () => {
+						if (currentPage * rowsPerPage < arrUsers.length) {
+							currentPage++;
+							displayTable(currentPage);
+							updatePaginationButtons();
+						}
+					});
+				} else {
 					window.location.href = "https://hiepdeep.github.io/ref/auth";
 				}
 			});
+			function makerNumber(num) {
+				return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			}
 		</script>
 	</body>
 </html>
