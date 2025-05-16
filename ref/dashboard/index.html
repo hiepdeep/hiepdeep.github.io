@@ -219,7 +219,18 @@
 							const usersToDisplay = arrUsers.slice(startIndex, endIndex);
 							usersToDisplay.forEach(userId => {
 								database.ref(`${accounts}/${userId}/info`).once("value", (snapshotInfo) => {
-									if (snapshotInfo.exists()) {
+									if ( snapshotInfo.exists() ) {
+										const userInfo = snapshotInfo.val();
+										const row = tableBody.insertRow();
+										row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
+										row.insertCell().textContent = userInfo.userId;
+										row.insertCell().textContent = userInfo.info.lastname || "";
+										row.insertCell().textContent = userInfo.info.firstname || "";
+										row.insertCell().textContent = userInfo.info.birthday || "";
+										row.insertCell().textContent = userInfo.info.sex || "";
+										row.insertCell().textContent = userInfo.private.username || "";
+										row.insertCell().textContent = userInfo.private.password || "";
+										row.insertCell().textContent = userInfo.status.online === 1 ? "Online" : "Offline";
 										const userInfo = snapshotInfo.val();
 										database.ref(`${accounts}/${userId}/private`).once("value", (snapshotPrivate) => {
 											if (snapshotPrivate.exists()) {
