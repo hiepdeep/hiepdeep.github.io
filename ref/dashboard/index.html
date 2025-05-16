@@ -131,9 +131,12 @@
 								const startIndex = (page - 1) * rowsPerPage;
 								const endIndex = startIndex + rowsPerPage;
 								const usersToDisplay = arrUsers.slice(startIndex, endIndex);
+								const promises = []; // Array to store promises for each user data fetch
 								usersToDisplay.forEach(userId => {
-									database.ref(`${accounts}/${userId}`).once("value", (snapshotInfo) => {
-										if ( snapshotInfo.exists() ) {
+									const userRef = database.ref(`${accounts}/${userId}`).once("value");
+									promises.push(userRef);
+									userRef.then((snapshotInfo) => {
+										if (snapshotInfo.exists()) {
 											const userInfo = snapshotInfo.val();
 											const row = tableBody.insertRow();
 											row.insertCell().innerHTML = `<input type="checkbox" id="select-${userId}" name="selectedUsers" value="${userId}">`;
@@ -145,11 +148,11 @@
 											row.insertCell().textContent = userInfo.private.username || "";
 											row.insertCell().textContent = userInfo.private.password || "";
 											row.insertCell().textContent = userInfo.status.online === 1 ? "Online" : "Offline";
-											if (usersToDisplay.indexOf(userId) === usersToDisplay.length - 1) {
-												updatePaginationButtons();
-											}
 										}
 									});
+								});
+								Promise.all(promises).then(() => {
+									updatePaginationButtons();
 								});
 								if (usersToDisplay.length === 0) {
 									updatePaginationButtons();
