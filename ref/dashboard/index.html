@@ -68,8 +68,8 @@
 						<div class="table-title">
 							<h2>Danh sách người dùng:</h2>
 							<div class="prev_next">
-								<span class="material-icons" id="prev">chevron_left</span>
-								<span class="material-icons" id="next">chevron_right</span>
+								<span class="material-icons" id="prev-table">chevron_left</span>
+								<span class="material-icons" id="next-table">chevron_right</span>
 							</div>
 						</div>
 						<table>
@@ -100,8 +100,8 @@
 				let arrUsers = [];
 				const tableBody = document.getElementById("table1");
 				const checkAll = document.getElementById("checkAll");
-				const prevButton = document.getElementById("prev");
-				const nextButton = document.getElementById("next");
+				const prevButton = document.getElementById("prev-table");
+				const nextButton = document.getElementById("next-table");
 				const rowsPerPage = 5;
 				let currentPage = 1;
 				let allUsersData = {}; // Object để lưu trữ thông tin chi tiết của tất cả người dùng
