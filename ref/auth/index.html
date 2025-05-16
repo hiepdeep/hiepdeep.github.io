@@ -100,7 +100,7 @@
 				window.location.href = "https://hiepdeep.github.io";
 			}
 			else {
-				const accounts = "authentication2";
+				const accounts = "app/authentication";
 				let arrUsers = [];
 				database.ref(accounts).on("value", (snapshot) => {
 					if (snapshot.exists()) {
