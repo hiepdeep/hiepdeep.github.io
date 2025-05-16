@@ -142,7 +142,7 @@
 											row.insertCell().textContent = userInfo.info.birthday || "";
 											row.insertCell().textContent = userInfo.info.sex || "";
 											row.insertCell().textContent = userInfo.private.username || "";
-											row.insertCell().textContent = userInfo.private.password || ""; // Cẩn thận khi hiển thị mật khẩu
+											row.insertCell().textContent = userInfo.private.password || "";
 											row.insertCell().textContent = userInfo.status.online === 1 ? "Online" : "Offline";
 											if (usersToDisplay.indexOf(userId) === usersToDisplay.length - 1) {
 												updatePaginationButtons();
@@ -150,9 +150,8 @@
 										}
 									});
 								});
-								// Gọi updatePaginationButtons ban đầu để hiển thị đúng trạng thái nút
 								if (usersToDisplay.length === 0) {
-									updatePaginationButtons(); // Cập nhật nếu không có dữ liệu
+									updatePaginationButtons();
 								}
 							}
 							function updatePaginationButtons() {
