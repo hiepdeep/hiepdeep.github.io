@@ -187,9 +187,12 @@
 					});
 					database.ref(`app/visit`).on("value", (snapshot) => {
 						const visits = snapshot.val() || 0;
-						document.getElementById("app-views").textContent = visits;
+						document.getElementById("app-views").textContent = makerNumber(visits);
 					});
 				});
+				function makerNumber(num) {
+					return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+				}
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
