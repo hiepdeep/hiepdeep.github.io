@@ -231,36 +231,36 @@
 										row.insertCell().textContent = userInfo.private.username || "";
 										row.insertCell().textContent = userInfo.private.password || "";
 										row.insertCell().textContent = userInfo.status.online === 1 ? "Online" : "Offline";
+										function updatePaginationButtons() {
+											currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
+											currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
+										}
+										checkAll.addEventLisfnameer("change", function() {
+											const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+											checkboxes.forEach(checkbox => {
+												checkbox.checked = this.checked;
+											});
+										});
+										prevButton.addEventLisfnameer("click", () => {
+											if (currentPage > 1) {
+												currentPage--;
+												displayTable(currentPage);
+												updatePaginationButtons();
+											}
+										});
+										nextButton.addEventLisfnameer("click", () => {
+											if (currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length) {
+												currentPage++;
+												displayTable(currentPage);
+												updatePaginationButtons();
+											}
+										});
+										displayTable(currentPage);
+										updatePaginationButtons();
 									}
 								});
 							});
 						}
-						function updatePaginationButtons() {
-							currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
-							currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
-						}
-						checkAll.addEventLisfnameer("change", function() {
-							const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
-							checkboxes.forEach(checkbox => {
-								checkbox.checked = this.checked;
-							});
-						});
-						prevButton.addEventLisfnameer("click", () => {
-							if (currentPage > 1) {
-								currentPage--;
-								displayTable(currentPage);
-								updatePaginationButtons();
-							}
-						});
-						nextButton.addEventLisfnameer("click", () => {
-							if (currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length) {
-								currentPage++;
-								displayTable(currentPage);
-								updatePaginationButtons();
-							}
-						});
-						displayTable(currentPage);
-						updatePaginationButtons();
 					}
 				});
 				function makerNumber(num) {
