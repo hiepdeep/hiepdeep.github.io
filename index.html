@@ -35,12 +35,12 @@
 		<script type="text/javascript">
 			console.clear();
 			document.addEventListener("DOMContentLoaded", () => {
-				database.ref("likes").transaction((currentLikes) => {
-					return (currentLikes || 0) + 1;
+				database.ref(`app/${window.location.href}/visit`).transaction((currentVisit) => {
+					return (currentVisit || 0) + 1;
 				});
-				database.ref("likes").on("value", (snapshot) => {
-					const likes = snapshot.val() || 0;
-					document.getElementById("col-left").textContent = likes;
+				database.ref(`app/${window.location.href}/visit`).on("value", (snapshot) => {
+					const visits = snapshot.val() || 0;
+					document.getElementById("col-left").textContent = visits;
 				});
 			});
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
