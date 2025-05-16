@@ -213,30 +213,36 @@
 						const rowsPerPage = 5;
 						let currentPage = 1;
 						function displayTable(page) {
-							tableBody.innerHTML = ""; // Clear the table body
+							tableBody.innerHTML = "";
 							const startIndex = (page - 1) * rowsPerPage;
 							const endIndex = startIndex + rowsPerPage;
-							const currentData = nhanVatTrungQuocChiTiet.slice(startIndex, endIndex);
-							currentData.forEach(e => {
-								const row = tableBody.insertRow();
-								const row1 = row.insertCell();
-								const row2 = row.insertCell();
-								const row3 = row.insertCell();
-								const row4 = row.insertCell();
-								const row5 = row.insertCell();
-								const row6 = row.insertCell();
-								const row7 = row.insertCell();
-								const row8 = row.insertCell();
-								const row9 = row.insertCell();
-								row1.innerHTML = `<input type="checkbox" id="" name="" value="">`;
-								row2.textContent = ""; // Thêm cột ID nếu cần
-								row3.textContent = e.lname;
-								row4.textContent = e.fname;
-								row5.textContent = e.birthday;
-								row6.textContent = e.sex;
-								row7.textContent = ""; // Thêm cột Username nếu cần
-								row8.textContent = ""; // Thêm cột Password nếu cần
-								row9.textContent = ""; // Thêm cột Status nếu cần
+							const usersToDisplay = arrUsers.slice(startIndex, endIndex);
+							usersToDisplay.forEach(userId => {
+								database.ref(`${accounts}/${userId}/info`).once("value", (snapshotInfo) => {
+									if (snapshotInfo.exists()) {
+										const userInfo = snapshotInfo.val();
+										database.ref(`${accounts}/${userId}/private`).once("value", (snapshotPrivate) => {
+											if (snapshotPrivate.exists()) {
+												const privateInfo = snapshotPrivate.val();
+												database.ref(`${accounts}/${userId}/status`).once("value", (snapshotStatus) => {
+													const statusInfo = snapshotStatus.val() || {
+														online: 0
+													};
+													const row = tableBody.insertRow();
+													row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
+													row.insertCell().textContent = userId;
+													row.insertCell().textContent = userInfo.lastname || "";
+													row.insertCell().textContent = userInfo.firstname || "";
+													row.insertCell().textContent = userInfo.birthday || "";
+													row.insertCell().textContent = userInfo.sex || "";
+													row.insertCell().textContent = privateInfo.username || "";
+													row.insertCell().textContent = privateInfo.password || "";
+													row.insertCell().textContent = statusInfo.online === 1 ? "Online" : "Offline";
+												});
+											}
+										});
+									}
+								});
 							});
 						}
 						function updatePaginationButtons() {
