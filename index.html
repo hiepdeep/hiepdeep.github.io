@@ -35,10 +35,10 @@
 		<script type="text/javascript">
 			console.clear();
 			document.addEventListener("DOMContentLoaded", () => {
-				database.ref(`app/${window.location.href}/visit`).transaction((currentVisit) => {
+				database.ref(`app/${window.location.hostname}/visit`).transaction((currentVisit) => {
 					return (currentVisit || 0) + 1;
 				});
-				database.ref(`app/${window.location.href}/visit`).on("value", (snapshot) => {
+				database.ref(`app/${window.location.hostname}/visit`).on("value", (snapshot) => {
 					const visits = snapshot.val() || 0;
 					document.getElementById("col-left").textContent = visits;
 				});
