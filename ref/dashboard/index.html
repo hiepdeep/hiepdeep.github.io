@@ -231,27 +231,6 @@
 										row.insertCell().textContent = userInfo.private.username || "";
 										row.insertCell().textContent = userInfo.private.password || "";
 										row.insertCell().textContent = userInfo.status.online === 1 ? "Online" : "Offline";
-										const userInfo = snapshotInfo.val();
-										database.ref(`${accounts}/${userId}/private`).once("value", (snapshotPrivate) => {
-											if (snapshotPrivate.exists()) {
-												const privateInfo = snapshotPrivate.val();
-												database.ref(`${accounts}/${userId}/status`).once("value", (snapshotStatus) => {
-													const statusInfo = snapshotStatus.val() || {
-														online: 0
-													};
-													const row = tableBody.insertRow();
-													row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
-													row.insertCell().textContent = userId;
-													row.insertCell().textContent = userInfo.lastname || "";
-													row.insertCell().textContent = userInfo.firstname || "";
-													row.insertCell().textContent = userInfo.birthday || "";
-													row.insertCell().textContent = userInfo.sex || "";
-													row.insertCell().textContent = privateInfo.username || "";
-													row.insertCell().textContent = privateInfo.password || "";
-													row.insertCell().textContent = statusInfo.online === 1 ? "Online" : "Offline";
-												});
-											}
-										});
 									}
 								});
 							});
