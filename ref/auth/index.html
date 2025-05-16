@@ -116,17 +116,19 @@
 					if ( username.value.trim() && password.value.trim() ) {
 						if ( arrUsers.includes(username.value.trim()) ) {
 							database.ref(`${accounts}/${username.value.trim()}`).on("value", (snapshot) => {
-								let data = snapshot.val();
-								if ( password.value.trim() === data.private.password ) {
-									localStorage.setItem("social-media-auth", data.userid);
-									username.parentNode.classList.remove("error");
-									password.parentNode.classList.remove("error");
-									document.forms["login"].reset();
-									window.location.href = "https://hiepdeep.github.io";
-								} else {
-									alert(`Sai mật khẩu.`);
-									username.parentNode.classList.remove("error");
-									password.parentNode.classList.add("error");
+								if (snapshot.exists()) {
+									let data = snapshot.val();
+									if ( password.value.trim() === data.private.password ) {
+										localStorage.setItem("social-media-auth", data.userid);
+										username.parentNode.classList.remove("error");
+										password.parentNode.classList.remove("error");
+										document.forms["login"].reset();
+										window.location.href = "https://hiepdeep.github.io";
+									} else {
+										alert(`Sai mật khẩu.`);
+										username.parentNode.classList.remove("error");
+										password.parentNode.classList.add("error");
+									}
 								}
 							});
 						} else {
