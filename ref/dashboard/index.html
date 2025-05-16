@@ -24,18 +24,66 @@
 				</circle>
 			</svg>
 		</div>
-		<div id="dashboard">
-			<p>Tổng số lượt truy cập từng ngày (10 ngày gần nhất)</p>
-			<p>Table người dùng</p>
-			<p></p>
-			<p></p>
-			<p></p>
+		<div id="header"></div>
+		<div id="body">
+			<div class="margin-block">
+				<p>Tổng số lượt truy cập từng ngày (10 ngày gần nhất)</p>
+				<p>Table người dùng</p>
+			</div>
 		</div>
 		<script type="text/javascript">
 			console.clear();
 			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 			if ( loggedInUser ) {
 				const accounts = "app/authentication";
+				let arrUsers = [];
+				database.ref(accounts).on("value", (snapshot) => {
+					if ( snapshot.exists() ) {
+						let data = snapshot.val();
+						let object_keys = Object.keys(data);
+						arrUsers = object_keys;
+					}
+				});
+				database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
+					if ( snapshot.exists() ) {
+						let data = snapshot.val();
+						document.getElementById("header").innerHTML = `
+							<div class="margin-block">
+								<div class="header-left">
+									<div class="logo">
+										<a href="">
+											<img src="library/pictures/svg/ui-deck.svg" alt="">
+										</a>
+									</div>
+								</div>
+								<div class="header-right">
+									<div class="nav-right">
+										<a href="javascript:;">Home</a>
+										<a href="javascript:;">About</a>
+										<a href="javascript:;">Contact</a>
+										<a href="javascript:;">Support</a>
+									</div>
+									<div class="nav-user">
+										<a href="ref/profile/?user=${data.private.username}" class="logged-user">
+											<div class="thumb" id="logged-user-thumb">
+												<img src="${data.info.picture ? data.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
+											</div>
+											<span class="displayName">${data.info.firstname}</span>
+										</a>
+										${loggedInUser === "hiepdz" ? '<a href="ref/dashboard" class="dashboard">Dashboard</a>' : ''}
+										<button id="btn-logout" class="material-icons">logout</button>
+									</div>
+								</div>
+							</div>
+						`;
+						document.getElementById("btn-logout").addEventListener("click", (e) => {
+							e.preventDefault();
+							database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
+							localStorage.removeItem("social-media-auth");
+							window.location.href = "https://hiepdeep.github.io/ref/auth";
+						});
+					}
+				});
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
