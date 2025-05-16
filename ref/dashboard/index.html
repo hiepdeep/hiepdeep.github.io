@@ -26,201 +26,189 @@
 		</div>
 		<div id="dashboard"></div>
 		<script type="text/javascript">
-console.clear();
-document.addEventListener("DOMContentLoaded", function() {
-    const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
-    if (loggedInUser === "hiepdz") {
-        const accounts = "app/authentication";
-        let arrUsers = [];
-        let tableBody; // Declare tableBody outside
-
-        const prevButton = document.getElementById("prev");
-        const nextButton = document.getElementById("next");
-        const rowsPerPage = 5;
-        let currentPage = 1;
-
-        database.ref(accounts).on("value", (snapshot) => {
-            if (snapshot.exists()) {
-                let data = snapshot.val();
-                let object_keys = Object.keys(data);
-                arrUsers = object_keys;
-                document.getElementById("app-users").textContent = arrUsers.length;
-            }
-             // Initialize tableBody here, inside the callback
-            tableBody = document.getElementById("table1");
-            if(tableBody){
-                displayTable(currentPage); // Call displayTable here, after arrUsers is populated and tableBody is defined
-                updatePaginationButtons();
-            }
-            else{
-                 console.error("table1 element not found");
-            }
-
-        });
-
-        database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
-            if (snapshot.exists()) {
-                let data = snapshot.val();
-                document.getElementById("dashboard").innerHTML = `
-                    <div class="aside-left">
-                        <div class="aside-left-top">
-                            <div class="logo">
-                                <a href="">
-                                    <img src="library/pictures/svg/ui-deck.svg" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="aside-left-bottom"></div>
-                    </div>
-                    <div class="aside-center">
-                        <div class="aside-center-top">
-                            <div class="nav-top">
-                                <a href="ref/dashboard">Home</a>
-                            </div>
-                            <div class="nav-user">
-                                <a href="ref/profile/?user=${data.private.username}" class="logged-user">
-                                    <div class="thumb" id="logged-user-thumb">
-                                        <img src="${data.info.picture ? data.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
-                                    </div>
-                                    <span class="displayName">${data.info.firstname}</span>
-                                </a>
-                                ${loggedInUser === "hiepdz" ? '<a href="ref/dashboard" class="dashboard">Dashboard</a>' : ''}
-                                <button id="btn-logout" class="material-icons">logout</button>
-                        </div>
-                    </div>
-                    <div class="aside-center-bottom">
-                        <div class="grid">
-                            <div class="item">
-                                <span class="num" id="app-views">10000000</span>
-                                <span class="text">Views</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 12"><path class="cls-1" d="M22,2a2,2,0,0,1-2,2,1.7,1.7,0,0,1-.51-.07L15.93,7.48A1.77,1.77,0,0,1,16,8a2,2,0,0,1-4,0,1.77,1.77,0,0,1,.07-.52L9.52,4.93a2,2,0,0,1-1,0L3.93,9.49A1.7,1.7,0,0,1,4,10,2,2,0,1,1,2,8a1.7,1.7,0,0,1,.51.07L7.07,3.52A1.77,1.77,0,0,1,7,3a2,2,0,0,1,4,0,1.77,1.77,0,0,1-.07.52l2.55,2.55a2,2,0,0,1,1,0l3.55-3.56A1.7,1.7,0,0,1,18,2a2,2,0,0,1,4,0Z"/></svg>
-                            </div>
-                            <div class="item">
-                                <span class="num" id="app-users">10000000</span>
-                                <span class="text">Users</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14"><path class="cls-1" d="M15,6a3,3,0,1,0-3-3A3,3,0,0,0,15,6ZM7,6A3,3,0,1,0,4,3,3,3,0,0,0,7,6ZM7,8C4.67,8,0,9.17,0,11.5V14H14V11.5C14,9.17,9.33,8,7,8Zm8,0c-.29,0-.62,0-1,.05a4.22,4.22,0,0,1,2,3.45V14h6V11.5C22,9.17,17.33,8,15,8Z"/></svg>
-                            </div>
-                        </div>
-                        <div class="table">
-                            <div class="table-title">
-                                <h2>Danh sách người dùng:</h2>
-                                <div class="prev_next">
-                                    <span class="material-icons" id="prev">chevron_left</span>
-                                    <span class="material-icons" id="next">chevron_right</span>
-                                </div>
-                            </div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th><input type="checkbox" id="checkAll" name="" value=""></th>
-                                        <th>ID</th>
-                                        <th>Lname</th>
-                                        <th>Fname</th>
-                                        <th>Birthday</th>
-                                        <th>Sex</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="table1"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                `;
-                document.getElementById("btn-logout").addEventListener("click", (e) => {
-                    e.preventDefault();
-                    database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
-                    localStorage.removeItem("social-media-auth");
-                    window.location.href = "https://hiepdeep.github.io/ref/auth";
-                });
-                database.ref(`app/visit`).on("value", (snapshot) => {
-                    let visits = snapshot.val() || 0;
-                    document.getElementById("app-views").textContent = visits;
-                });
-            }
-        });
-
-        function displayTable(page) {
-            if (!tableBody) {
-                  console.error("tableBody is null inside displayTable");
-                  return;
-            }
-            tableBody.innerHTML = "";
-            const startIndex = (page - 1) * rowsPerPage;
-            const endIndex = startIndex + rowsPerPage;
-            const usersToDisplay = arrUsers.slice(startIndex, endIndex);
-            const promises = [];
-
-            if (usersToDisplay.length === 0) {
-                updatePaginationButtons();
-                return;
-            }
-
-            usersToDisplay.forEach(userId => {
-                const userRef = database.ref(`${accounts}/${userId}`).once("value");
-                promises.push(userRef);
-                userRef.then((snapshotInfo) => {
-                    if (snapshotInfo.exists()) {
-                        const userInfo = snapshotInfo.val();
-                        const row = tableBody.insertRow();
-                        row.insertCell().innerHTML = `<input type="checkbox" id="select-${userId}" name="selectedUsers" value="${userId}">`;
-                        row.insertCell().textContent = userInfo.userid;
-                        row.insertCell().textContent = userInfo.info.lastname || "";
-                        row.insertCell().textContent = userInfo.info.firstname || "";
-                        row.insertCell().textContent = userInfo.info.birthday || "";
-                        row.insertCell().textContent = userInfo.info.sex || "";
-                        row.insertCell().textContent = userInfo.private.username || "";
-                        row.insertCell().textContent = userInfo.private.password || "";
-                        row.insertCell().textContent = userInfo.status.online === 1 ? "Online" : "Offline";
-                    }
-                }).catch(error => {
-                    console.error("Error fetching user data:", error);
-                });
-            });
-
-            Promise.all(promises).then(() => {
-                updatePaginationButtons();
-            });
-        }
-
-        function updatePaginationButtons() {
-            currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
-            currentPage * rowsPerPage < arrUsers.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
-        }
-
-        document.getElementById("checkAll").addEventListener("change", function() {
-            const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = this.checked;
-            });
-        });
-
-        prevButton.addEventListener("click", () => {
-            if (currentPage > 1) {
-                currentPage--;
-                displayTable(currentPage);
-                updatePaginationButtons();
-            }
-        });
-
-        nextButton.addEventListener("click", () => {
-            if (currentPage * rowsPerPage < arrUsers.length) {
-                currentPage++;
-                displayTable(currentPage);
-                updatePaginationButtons();
-            }
-        });
-    } else {
-        window.location.href = "https://hiepdeep.github.io/ref/auth";
-    }
-});
-
-function makerNumber(num) {
-    return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
-
+			console.clear();
+			document.addEventListener("DOMContentLoaded", function() {
+				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
+				if ( loggedInUser === "hiepdz" ) {
+					const accounts = "app/authentication";
+					let arrUsers = [];
+					database.ref(accounts).on("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let data = snapshot.val();
+							let object_keys = Object.keys(data);
+							arrUsers = object_keys;
+						}
+					});
+					database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let data = snapshot.val();
+							document.getElementById("dashboard").innerHTML = `
+								<div class="aside-left">
+									<div class="aside-left-top">
+										<div class="logo">
+											<a href="">
+												<img src="library/pictures/svg/ui-deck.svg" alt="">
+											</a>
+										</div>
+									</div>
+									<div class="aside-left-bottom"></div>
+								</div>
+								<div class="aside-center">
+									<div class="aside-center-top">
+										<div class="nav-top">
+											<a href="ref/dashboard">Home</a>
+										</div>
+										<div class="nav-user">
+											<a href="ref/profile/?user=${data.private.username}" class="logged-user">
+												<div class="thumb" id="logged-user-thumb">
+													<img src="${data.info.picture ? data.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
+												</div>
+												<span class="displayName">${data.info.firstname}</span>
+											</a>
+											${loggedInUser === "hiepdz" ? '<a href="ref/dashboard" class="dashboard">Dashboard</a>' : ''}
+											<button id="btn-logout" class="material-icons">logout</button>
+										</div>
+									</div>
+									<div class="aside-center-bottom">
+										<div class="grid">
+											<div class="item">
+												<span class="num" id="app-views">10000000</span>
+												<span class="text">Views</span>
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 12"><path class="cls-1" d="M22,2a2,2,0,0,1-2,2,1.7,1.7,0,0,1-.51-.07L15.93,7.48A1.77,1.77,0,0,1,16,8a2,2,0,0,1-4,0,1.77,1.77,0,0,1,.07-.52L9.52,4.93a2,2,0,0,1-1,0L3.93,9.49A1.7,1.7,0,0,1,4,10,2,2,0,1,1,2,8a1.7,1.7,0,0,1,.51.07L7.07,3.52A1.77,1.77,0,0,1,7,3a2,2,0,0,1,4,0,1.77,1.77,0,0,1-.07.52l2.55,2.55a2,2,0,0,1,1,0l3.55-3.56A1.7,1.7,0,0,1,18,2a2,2,0,0,1,4,0Z"/></svg>
+											</div>
+											<div class="item">
+												<span class="num" id="app-users">10000000</span>
+												<span class="text">Users</span>
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14"><path class="cls-1" d="M15,6a3,3,0,1,0-3-3A3,3,0,0,0,15,6ZM7,6A3,3,0,1,0,4,3,3,3,0,0,0,7,6ZM7,8C4.67,8,0,9.17,0,11.5V14H14V11.5C14,9.17,9.33,8,7,8Zm8,0c-.29,0-.62,0-1,.05a4.22,4.22,0,0,1,2,3.45V14h6V11.5C22,9.17,17.33,8,15,8Z"/></svg>
+											</div>
+										</div>
+										<div class="table">
+											<div class="table-title">
+												<h2>Danh sách người dùng:</h2>
+												<div class="prev_next">
+													<span class="material-icons" id="prev">chevron_left</span>
+													<span class="material-icons" id="next">chevron_right</span>
+												</div>
+											</div>
+											<table>
+												<thead>
+													<tr>
+														<th><input type="checkbox" id="checkAll" name="" value=""></th>
+														<th>ID</th>
+														<th>Lname</th>
+														<th>Fname</th>
+														<th>Birthday</th>
+														<th>Sex</th>
+														<th>Username</th>
+														<th>Password</th>
+														<th>Status</th>
+													</tr>
+												</thead>
+												<tbody id="table1"></tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							`;
+							document.getElementById("btn-logout").addEventListener("click", (e) => {
+								e.preventDefault();
+								database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
+								localStorage.removeItem("social-media-auth");
+								window.location.href = "https://hiepdeep.github.io/ref/auth";
+							});
+							database.ref(`app/visit`).on("value", (snapshot) => {
+								let visits = snapshot.val() || 0;
+								document.getElementById("app-views").textContent = visits;
+							});
+							const nhanVatTrungQuocChiTiet = [
+								{ hoVaDem: "Lý", ten: "Vĩ", gioiTinh: "Nam", ngaySinh: "1985-07-12" },
+								{ hoVaDem: "Trương", ten: "Mẫn", gioiTinh: "Nữ", ngaySinh: "1992-03-05" },
+								{ hoVaDem: "Vương", ten: "Bằng", gioiTinh: "Nam", ngaySinh: "1988-11-28" },
+								{ hoVaDem: "Lưu", ten: "Hoa", gioiTinh: "Nữ", ngaySinh: "1990-05-18" },
+								{ hoVaDem: "Triệu", ten: "Cường", gioiTinh: "Nam", ngaySinh: "1983-09-01" },
+								{ hoVaDem: "Tôn", ten: "Lệ", gioiTinh: "Nữ", ngaySinh: "1995-01-20" },
+								{ hoVaDem: "Chu", ten: "Kiệt", gioiTinh: "Nam", ngaySinh: "1987-06-25" },
+								{ hoVaDem: "Mã", ten: "Yến", gioiTinh: "Nữ", ngaySinh: "1991-12-08" },
+								{ hoVaDem: "Lâm", ten: "Phong", gioiTinh: "Nam", ngaySinh: "1989-04-15" },
+								{ hoVaDem: "Quách", ten: "Tĩnh", gioiTinh: "Nữ", ngaySinh: "1993-10-03" },
+								{ hoVaDem: "Đặng", ten: "Siêu", gioiTinh: "Nam", ngaySinh: "1986-02-14" },
+								{ hoVaDem: "Phùng Thiếu", ten: "Phong", gioiTinh: "Nam", ngaySinh: "1978-10-07" },
+								{ hoVaDem: "Dương", ten: "Mịch", gioiTinh: "Nữ", ngaySinh: "1986-09-12" },
+								{ hoVaDem: "Hoắc Kiến", ten: "Hoa", gioiTinh: "Nam", ngaySinh: "1979-12-26" },
+								{ hoVaDem: "Trần Vỹ", ten: "Đình", gioiTinh: "Nam", ngaySinh: "1985-11-21" },
+								{ hoVaDem: "Lộc", ten: "Hàm", gioiTinh: "Nam", ngaySinh: "1990-04-20" },
+								{ hoVaDem: "Ngô Diệc", ten: "Phàm", gioiTinh: "Nam", ngaySinh: "1990-11-06" },
+								{ hoVaDem: "Lưu Diệc", ten: "Phi", gioiTinh: "Nữ", ngaySinh: "1987-08-25" }
+							];
+							const tableBody = document.getElementById("table1");
+							const checkAll = document.getElementById("checkAll");
+							const prevButton = document.getElementById("prev");
+							const nextButton = document.getElementById("next");
+							const rowsPerPage = 5;
+							let currentPage = 1;
+							function displayTable(page) {
+								tableBody.innerHTML = "";
+								const startIndex = (page - 1) * rowsPerPage;
+								const endIndex = startIndex + rowsPerPage;
+								const currentData = nhanVatTrungQuocChiTiet.slice(startIndex, endIndex);
+								currentData.forEach(e => {
+									const row = tableBody.insertRow();
+									const row1 = row.insertCell();
+									const row2 = row.insertCell();
+									const row3 = row.insertCell();
+									const row4 = row.insertCell();
+									const row5 = row.insertCell();
+									const row6 = row.insertCell();
+									const row7 = row.insertCell();
+									const row8 = row.insertCell();
+									const row9 = row.insertCell();
+									row1.innerHTML = `<input type="checkbox" id="" name="" value="">`;
+									row2.textContent = "";
+									row3.textContent = e.hoVaDem;
+									row4.textContent = e.ten;
+									row5.textContent = e.ngaySinh;
+									row6.textContent = e.gioiTinh;
+									row7.textContent = "";
+									row8.textContent = "";
+									row9.textContent = "";
+								});
+							}
+							function updatePaginationButtons() {
+								currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
+								currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
+							}
+							checkAll.addEventListener("change", function() {
+								const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+								checkboxes.forEach(checkbox => {
+									checkbox.checked = this.checked;
+								});
+							});
+							prevButton.addEventListener("click", () => {
+								if (currentPage > 1) {
+									currentPage--;
+									displayTable(currentPage);
+									updatePaginationButtons();
+								}
+							});
+							nextButton.addEventListener("click", () => {
+								if (currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length) {
+									currentPage++;
+									displayTable(currentPage);
+									updatePaginationButtons();
+								}
+							});
+							displayTable(currentPage);
+							updatePaginationButtons();
+						}
+					});
+					function makerNumber(num) {
+						return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+					}
+				}
+				else {
+					window.location.href = "https://hiepdeep.github.io/ref/auth";
+				}
+			});
 		</script>
 	</body>
 </html>
