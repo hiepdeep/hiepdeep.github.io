@@ -172,20 +172,20 @@
 					// 		checkbox.checked = this.checked;
 					// 	});
 					// });
-					prevButton.addEventListener("click", () => {
-						if (currentPage > 1) {
-							currentPage--;
-							displayTable(currentPage);
-							updatePaginationButtons();
-						}
-					});
-					nextButton.addEventListener("click", () => {
-						if (currentPage * rowsPerPage < arrUsers.length) {
-							currentPage++;
-							displayTable(currentPage);
-							updatePaginationButtons();
-						}
-					});
+					// prevButton.addEventListener("click", () => {
+					// 	if (currentPage > 1) {
+					// 		currentPage--;
+					// 		displayTable(currentPage);
+					// 		updatePaginationButtons();
+					// 	}
+					// });
+					// nextButton.addEventListener("click", () => {
+					// 	if (currentPage * rowsPerPage < arrUsers.length) {
+					// 		currentPage++;
+					// 		displayTable(currentPage);
+					// 		updatePaginationButtons();
+					// 	}
+					// });
 					database.ref(accounts).on("value", (snapshot) => {
 						if (snapshot.exists()) {
 							let data = snapshot.val();
