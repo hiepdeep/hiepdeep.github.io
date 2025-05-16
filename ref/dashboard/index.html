@@ -176,19 +176,17 @@
 								</div>
 							</div>
 						`;
+						document.getElementById("btn-logout").addEventListener("click", (e) => {
+							e.preventDefault();
+							database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
+							localStorage.removeItem("social-media-auth");
+							window.location.href = "https://hiepdeep.github.io/ref/auth";
+						});
+						database.ref(`app/visit`).on("value", (snapshot) => {
+							const visits = snapshot.val() || 0;
+							document.getElementById("app-views").textContent = makerNumber(visits);
+						});
 					}
-				});
-				document.addEventListener("DOMContentLoaded", () => {
-					document.getElementById("btn-logout").addEventListener("click", (e) => {
-						e.preventDefault();
-						database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
-						localStorage.removeItem("social-media-auth");
-						window.location.href = "https://hiepdeep.github.io/ref/auth";
-					});
-					database.ref(`app/visit`).on("value", (snapshot) => {
-						const visits = snapshot.val() || 0;
-						document.getElementById("app-views").textContent = makerNumber(visits);
-					});
 				});
 				function makerNumber(num) {
 					return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
