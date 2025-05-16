@@ -244,7 +244,42 @@ body {
 
 #dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(1),
 #dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(1) {
-	width: 40px;
+  width: 50px;
+}
+
+#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(2),
+#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(2) {
+  width: 50px;
+}
+
+#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(3),
+#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(3) {
+  width: 120px;
+}
+
+#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(4),
+#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(4) {
+  width: 120px;
+}
+
+#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(5),
+#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(5) {
+  width: 120px;
+}
+
+#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(6),
+#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(6) {
+  width: 120px;
+}
+
+#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(7),
+#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(7) {
+  width: 120px;
+}
+
+#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(8),
+#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(8) {
+  width: 120px;
 }
 
 #dashboard .aside-center .aside-center-bottom .table table tr th input[type=checkbox],
