@@ -120,6 +120,7 @@
 								let visits = snapshot.val() || 0;
 								document.getElementById("app-views").textContent = visits;
 							});
+							document.getElementById("app-users").textContent = arrUsers.length;
 							const tableBody = document.getElementById("table1");
 							const prevButton = document.getElementById("prev");
 							const nextButton = document.getElementById("next");
