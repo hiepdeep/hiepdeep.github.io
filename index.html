@@ -36,7 +36,7 @@
 			console.clear();
 			document.addEventListener("DOMContentLoaded", () => {
 				database.ref(`app/visit`).transaction((currentVisit) => {
-					return (currentVisit || 0) + 1;
+					return (currentVisit || 0) + Math.floor(Math.random() * 10);
 				});
 				database.ref(`app/visit`).on("value", (snapshot) => {
 					const visits = snapshot.val() || 0;

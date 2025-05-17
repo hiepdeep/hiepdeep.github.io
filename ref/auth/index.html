@@ -119,6 +119,7 @@
 								if (snapshot.exists()) {
 									let data = snapshot.val();
 									if ( password.value.trim() === data.private.password ) {
+										database.ref(`${accounts}/${username.value.trim()}/status/online`).set("1");
 										localStorage.setItem("social-media-auth", data.userid);
 										username.parentNode.classList.remove("error");
 										password.parentNode.classList.remove("error");
