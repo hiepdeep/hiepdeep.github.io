@@ -61,14 +61,14 @@
 						<table>
 							<thead>
 								<tr>
-									<th><input type="checkbox" id="checkAll" name="" value=""></th>
-									<th>Lastname</th>
-									<th>Firstname</th>
-									<th>Birthday</th>
-									<th>Sex</th>
-									<th>Username</th>
+									<th><input type="checkbox" id="checkAll"></th>
+									<th data-sort="lname">Last Name</th>
+									<th data-sort="fname">First Name</th>
+									<th data-sort="sex">Sex</th>
+									<th data-sort="birthday">Birthday</th>
+									<th data-sort="username">Username</th>
 									<th>Password</th>
-									<th>Status</th>
+									<th data-sort="status">Status</th>
 								</tr>
 							</thead>
 							<tbody id="users-table-tbody"></tbody>
@@ -148,7 +148,32 @@ database.ref(accounts).on("value", (snapshot) => {
 			password: user.private.password,
 			status: user.status.online,
 			regtime: user.regtime
-		})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime));
+		})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime)); // Sắp xếp mặc định theo regtime mới nhất
+		let currentSortKey = 'regtime';
+		let sortDirection = 'desc';
+		function sortTable(key) {
+			if (currentSortKey === key) {
+				sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+			} else {
+				currentSortKey = key;
+				sortDirection = 'asc';
+			}
+			arr_users.sort((a, b) => {
+				const valueA = a[key];
+				const valueB = b[key];
+				if (typeof valueA === 'string' && typeof valueB === 'string') {
+					return sortDirection === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+				} else if (key === 'regtime') {
+					// Chắc chắn rằng chúng ta đang so sánh các đối tượng Date
+					const dateA = new Date(valueA);
+					const dateB = new Date(valueB);
+					return sortDirection === 'asc' ? dateA - dateB : dateB - dateA;
+				} else {
+					return sortDirection === 'asc' ? valueA - valueB : valueB - valueA;
+				}
+			});
+			displayTable(currentPage);
+		}
 		function displayTable(page) {
 			tableBody.innerHTML = "";
 			const startIndex = (page - 1) * rowsPerPage;
@@ -156,7 +181,7 @@ database.ref(accounts).on("value", (snapshot) => {
 			const currentData = arr_users.slice(startIndex, endIndex);
 			currentData.forEach(e => {
 				const row = tableBody.insertRow();
-				row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
+				row.insertCell().innerHTML = `<input type="checkbox" name="${e.username}" value="${e.username}">`;
 				row.insertCell().innerHTML = e.lname;
 				row.insertCell().innerHTML = e.fname;
 				row.insertCell().innerHTML = e.sex;
@@ -192,6 +217,14 @@ database.ref(accounts).on("value", (snapshot) => {
 		});
 		displayTable(currentPage);
 		updatePaginationButtons();
+		const headers = document.querySelectorAll("#users-table th[data-sort]");
+		headers.forEach(header => {
+			header.style.cursor = "pointer";
+			header.addEventListener("click", () => {
+				const sortKey = header.getAttribute("data-sort");
+				sortTable(sortKey);
+			});
+		});
 	} else {
 		console.log("No accounts data found.");
 		arr_users = [];
