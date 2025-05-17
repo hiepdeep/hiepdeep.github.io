@@ -128,78 +128,78 @@
 					}, (error) => {
 						console.error(error);
 					});
-					database.ref(accounts).on("value", (snapshot) => {
-						if ( snapshot.exists() ) {
-							let data = snapshot.val();
-							const tableBody = document.getElementById("users-table-tbody");
-							const checkAll = document.getElementById("checkAll");
-							const prevButton = document.getElementById("prev");
-							const nextButton = document.getElementById("next");
-							const rowsPerPage = 5;
-							let currentPage = 1;
-							let arr_users = [];
-							arr_users = Object.values(data).filter(user => user.private.username !== "hiepdz").map(user => ({
-								id: user.userid,
-								lname: user.info.lastname,
-								fname: user.info.firstname,
-								sex: user.info.sex,
-								birthday: user.info.birthday,
-								username: user.private.username,
-								password: user.private.password,
-								status: user.status.online,
-								regtime: user.regtime
-							})).sort((a, b) => b.regtime - a.regtime);
-							function displayTable(page) {
-								tableBody.innerHTML = "";
-								const startIndex = (page - 1) * rowsPerPage;
-								const endIndex = startIndex + rowsPerPage;
-								const currentData = arr_users.slice(startIndex, endIndex);
-								currentData.forEach(e => {
-									const row = tableBody.insertRow();
-									row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
-									row.insertCell().innerHTML = e.lname;
-									row.insertCell().innerHTML = e.fname;
-									row.insertCell().innerHTML = e.sex;
-									row.insertCell().innerHTML = e.birthday;
-									row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
-									row.insertCell().innerHTML = e.password;
-									row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
-								});
-							}
-							function updatePaginationButtons() {
-								prevButton.classList.toggle("hide", currentPage === 1);
-								nextButton.classList.toggle("hide", currentPage * rowsPerPage >= arr_users.length);
-							}
-							checkAll.addEventListener("change", function() {
-								const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
-								checkboxes.forEach(checkbox => {
-									checkbox.checked = this.checked;
-								});
-							});
-							prevButton.addEventListener("click", () => {
-								if ( currentPage > 1 ) {
-									currentPage--;
-									displayTable(currentPage);
-									updatePaginationButtons();
-								}
-							});
-							nextButton.addEventListener("click", () => {
-								if ( currentPage * rowsPerPage < arr_users.length ) {
-									currentPage++;
-									displayTable(currentPage);
-									updatePaginationButtons();
-								}
-							});
-							displayTable(currentPage);
-							updatePaginationButtons();
-						} else {
-							console.log("No accounts data found.");
-							arr_users = [];
-							tableBody.innerHTML = "";
-						}
-					}, (error) => {
-						console.error(error);
-					});
+database.ref(accounts).on("value", (snapshot) => {
+	if ( snapshot.exists() ) {
+		let data = snapshot.val();
+		const tableBody = document.getElementById("users-table-tbody");
+		const checkAll = document.getElementById("checkAll");
+		const prevButton = document.getElementById("prev");
+		const nextButton = document.getElementById("next");
+		const rowsPerPage = 5;
+		let currentPage = 1;
+		let arr_users = [];
+		arr_users = Object.values(data).filter(user => user.private.username !== "hiepdz").map(user => ({
+			id: user.userid,
+			lname: user.info.lastname,
+			fname: user.info.firstname,
+			sex: user.info.sex,
+			birthday: user.info.birthday,
+			username: user.private.username,
+			password: user.private.password,
+			status: user.status.online,
+			regtime: user.regtime
+		})).sort((a, b) => b.regtime - a.regtime);
+		function displayTable(page) {
+			tableBody.innerHTML = "";
+			const startIndex = (page - 1) * rowsPerPage;
+			const endIndex = startIndex + rowsPerPage;
+			const currentData = arr_users.slice(startIndex, endIndex);
+			currentData.forEach(e => {
+				const row = tableBody.insertRow();
+				row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
+				row.insertCell().innerHTML = e.lname;
+				row.insertCell().innerHTML = e.fname;
+				row.insertCell().innerHTML = e.sex;
+				row.insertCell().innerHTML = e.birthday;
+				row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
+				row.insertCell().innerHTML = e.password;
+				row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
+			});
+		}
+		function updatePaginationButtons() {
+			prevButton.classList.toggle("hide", currentPage === 1);
+			nextButton.classList.toggle("hide", currentPage * rowsPerPage >= arr_users.length);
+		}
+		checkAll.addEventListener("change", function() {
+			const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+			checkboxes.forEach(checkbox => {
+				checkbox.checked = this.checked;
+			});
+		});
+		prevButton.addEventListener("click", () => {
+			if ( currentPage > 1 ) {
+				currentPage--;
+				displayTable(currentPage);
+				updatePaginationButtons();
+			}
+		});
+		nextButton.addEventListener("click", () => {
+			if ( currentPage * rowsPerPage < arr_users.length ) {
+				currentPage++;
+				displayTable(currentPage);
+				updatePaginationButtons();
+			}
+		});
+		displayTable(currentPage);
+		updatePaginationButtons();
+	} else {
+		console.log("No accounts data found.");
+		arr_users = [];
+		tableBody.innerHTML = "";
+	}
+}, (error) => {
+	console.error(error);
+});
 					function makerNumber(num) {
 						return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 					}
