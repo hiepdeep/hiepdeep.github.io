@@ -104,7 +104,10 @@
 							`;
 							document.getElementById("btn-logout").addEventListener("click", (e) => {
 								e.preventDefault();
-								database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
+								database.ref(`${accounts}/${loggedInUser}/status`).set({
+									online: "0",
+									last_time: times()
+								});
 								localStorage.removeItem("social-media-auth");
 								window.location.href = "https://hiepdeep.github.io/ref/auth";
 							});
@@ -227,6 +230,17 @@
 					}, (error) => {
 						console.error(error);
 					});
+					function times() {
+						let getTime = new Date();
+						let timeYear = getTime.getFullYear();
+						let timeMonth = getTime.getMonth() + 1;
+						let timeDate = getTime.getDate();
+						let timeHours = getTime.getHours();
+						let timeMinutes = getTime.getMinutes();
+						let timeSeconds = getTime.getSeconds();
+						let timeMilliseconds = getTime.getMilliseconds();
+						return `${timeYear}-${timeMonth.padStart(2, "0")}-${timeDate.padStart(2, "0")}-${timeHours.padStart(2, "0")}-${timeMinutes.padStart(2, "0")}-${timeSeconds.padStart(2, "0")}-${timeMilliseconds.padStart(3, "0")}`;
+					}
 					function makerNumber(num) {
 						return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 					}

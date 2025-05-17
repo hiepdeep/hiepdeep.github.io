@@ -119,7 +119,10 @@
 								if (snapshot.exists()) {
 									let data = snapshot.val();
 									if ( password.value.trim() === data.private.password ) {
-										database.ref(`${accounts}/${username.value.trim()}/status/online`).set("1");
+										database.ref(`${accounts}/${loggedInUser}/status`).set({
+											online: "1",
+											last_time: "online"
+										});
 										localStorage.setItem("social-media-auth", data.userid);
 										username.parentNode.classList.remove("error");
 										password.parentNode.classList.remove("error");
@@ -158,7 +161,10 @@
 							userid = userid.replace(/\=/gi, "");
 							database.ref(`${accounts}/${username.value.trim()}/`).set({
 								userid: userid,
-								status: {online: "1"},
+								status: {
+									online: "1",
+									last_time: "online"
+								},
 								info: {
 									picture: "",
 									firstname: fname.value.trim(),
@@ -172,7 +178,7 @@
 									phone: phone.value.trim(),
 									email: email.value.trim()
 								},
-								regtime: regtime()
+								regtime: times()
 							});
 							localStorage.setItem("social-media-auth", userid);
 							document.forms["signup"].reset();
@@ -194,7 +200,7 @@
 			function formatTime1(value) {
 				return value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
 			}
-			function regtime() {
+			function times() {
 				let getTime = new Date();
 				let timeYear = getTime.getFullYear();
 				let timeMonth = getTime.getMonth() + 1;
