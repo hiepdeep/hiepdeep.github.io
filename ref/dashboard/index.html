@@ -140,7 +140,7 @@
 							let currentPage = 1;
 							let arr_users = [];
 							arr_users = Object.values(data).filter(user => user.private.username !== "hiepdz").map(user => ({
-								id = user.userid,
+								id: user.userid,
 								lname: user.info.lastname,
 								fname: user.info.firstname,
 								sex: user.info.sex,
