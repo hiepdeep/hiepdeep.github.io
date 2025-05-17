@@ -65,8 +65,7 @@ body {
 	transition: 0.1s;
 }
 
-#dashboard #aside-center #aside-center-top .nav-top a:nth-child(1),
-#dashboard #aside-center #aside-center-top .nav-top a:hover {
+#dashboard #aside-center #aside-center-top .nav-top a:nth-child(1), #dashboard #aside-center #aside-center-top .nav-top a:hover {
 	color: #444;
 }
 
@@ -239,20 +238,32 @@ body {
 	padding: 0 12px;
 }
 
-#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(1),
-#dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(1),
-#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(2),
-#dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(2) {
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(1), #dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(1) {
 	width: 50px;
 }
-
-#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(n+3),
-#dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(n+3) {
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(2), #dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(2) {
+	width: 140px;
+}
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(3), #dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(3) {
+	width: 120px;
+}
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(4), #dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(4) {
+	width: 120px;
+}
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(5), #dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(5) {
+	width: 120px;
+}
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(6), #dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(6) {
+	width: 120px;
+}
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(7), #dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(7) {
+	width: 120px;
+}
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(8), #dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(8) {
 	width: 120px;
 }
 
-#dashboard #aside-center #aside-center-bottom .table-elm table tr th input[type=checkbox],
-#dashboard #aside-center #aside-center-bottom .table-elm table tr td input[type=checkbox] {
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th input[type=checkbox], #dashboard #aside-center #aside-center-bottom .table-elm table tr td input[type=checkbox] {
 	-webkit-appearance: none;
 	background: 0;
 	border: 0;
@@ -265,8 +276,7 @@ body {
 	cursor: pointer;
 }
 
-#dashboard #aside-center #aside-center-bottom .table-elm table tr th input[type=checkbox]:before,
-#dashboard #aside-center #aside-center-bottom .table-elm table tr td input[type=checkbox]:before {
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th input[type=checkbox]:before, #dashboard #aside-center #aside-center-bottom .table-elm table tr td input[type=checkbox]:before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -276,13 +286,11 @@ body {
 	box-shadow: 0 0 0 1px #e9e9e9 inset;
 }
 
-#dashboard #aside-center #aside-center-bottom .table-elm table tr th input[type=checkbox]:hover:before,
-#dashboard #aside-center #aside-center-bottom .table-elm table tr td input[type=checkbox]:hover:before {
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th input[type=checkbox]:hover:before, #dashboard #aside-center #aside-center-bottom .table-elm table tr td input[type=checkbox]:hover:before {
 	box-shadow: 0 0 0 1px #9e9e9e inset;
 }
 
-#dashboard #aside-center #aside-center-bottom .table-elm table tr th input[type=checkbox]:checked:before,
-#dashboard #aside-center #aside-center-bottom .table-elm table tr td input[type=checkbox]:checked:before {
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th input[type=checkbox]:checked:before, #dashboard #aside-center #aside-center-bottom .table-elm table tr td input[type=checkbox]:checked:before {
 	box-shadow: 0 0 0 2px #9e9e9e inset;
 }
 
