@@ -169,7 +169,7 @@
 								currentPage * rowsPerPage < arr_users.length ? nextButton.classList.add("hide") : nextButton.classList.remove("hide");
 							}
 							checkAll.addEventListener("change", function() {
-								const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+								const checkboxes = tableBody.tBodies.querySelectorAll('input[type="checkbox"]');
 								checkboxes.forEach(checkbox => {
 									checkbox.checked = this.checked;
 								});
