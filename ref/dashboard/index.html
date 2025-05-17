@@ -151,23 +151,20 @@
 					];
 					let arr_users = [];
 					database.ref(accounts).on("value", (snapshot) => {
-						if ( snapshot.exists() ) {
+						if (snapshot.exists()) {
 							let data = snapshot.val();
-							let object_keys = Object.keys(data);
-							database.ref(`${accounts}/${object_keys}`).on("value", (user) => {
-								if ( user.exists() ) {
-									let dataUser = user.val();
-									// arr_users.push(`{
-									// 	table_lname: "${dataUser.info.lastname}",
-									// 	table_fname: "${dataUser.info.firstname}",
-									// 	table_sex: "${dataUser.info.sex}",
-									// 	table_birthday: "${dataUser.info.birthday}"
-									// }`);
-									console.log( dataUser );
-								}
-							}, (errorUser) => {
-								console.error(errorUser);
+							arr_users = Object.values(data).map(user => {
+								return `{
+									table_lname: "${user.info.lastname}",
+									table_fname: "${user.info.firstname}",
+									table_sex: "${user.info.sex}",
+									table_birthday: "${user.info.birthday}"
+								}`;
 							});
+							console.log(arr_users); // Log the array *inside* the listener
+						} else {
+							console.log("No accounts data found.");
+							arr_users = []; // Optionally clear the array if no data exists
 						}
 					}, (error) => {
 						console.error(error);
