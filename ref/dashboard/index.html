@@ -149,6 +149,29 @@
 						{ table_lname: "Ngô Diệc", table_fname: "Phàm", table_sex: "Nam", table_birthday: "1990-11-06" },
 						{ table_lname: "Lưu Diệc", table_fname: "Phi", table_sex: "Nữ", table_birthday: "1987-08-25" }
 					];
+					let arr_users = [];
+					database.ref(accounts).on("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let data = snapshot.val();
+							let object_keys = Object.keys(data);
+							database.ref(`${accounts}/${object_keys}`).on("value", (user) => {
+								if ( user.exists() ) {
+									let dataUser = user.val();
+									arr_users.push(`{
+										table_lname: "${dataUser.info.lastname}",
+										table_fname: "${dataUser.info.firstname}",
+										table_sex: "${dataUser.info.sex}",
+										table_birthday: "${dataUser.info.birthday}"
+									}`);
+								}
+							}, (errorUser) => {
+								console.error(errorUser);
+							});
+							console.log( arr_users );
+						}
+					}, (error) => {
+						console.error(error);
+					});
 					const tableBody = document.getElementById("table-users");
 					const checkAll = document.getElementById("checkAll");
 					const prevButton = document.getElementById("prev");
@@ -184,14 +207,14 @@
 						});
 					});
 					prevButton.addEventListener("click", () => {
-						if (currentPage > 1) {
+						if ( currentPage > 1 ) {
 							currentPage--;
 							displayTable(currentPage);
 							updatePaginationButtons();
 						}
 					});
 					nextButton.addEventListener("click", () => {
-						if (currentPage * rowsPerPage < table_users.length) {
+						if ( currentPage * rowsPerPage < table_users.length ) {
 							currentPage++;
 							displayTable(currentPage);
 							updatePaginationButtons();
