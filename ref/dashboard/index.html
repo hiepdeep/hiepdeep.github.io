@@ -243,7 +243,7 @@ database.ref(accounts).on("value", (snapshot) => {
 					function formatTime2(value) {
 						let fomat = value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
 						let v2 = fomat.split("-");
-						return `${v2[0]}-${v2[1]}-${v2[2]} ${v2[3]}:${v2[4]}:${v2[5]}:${v2[6]}`;
+						return `${v2[0]}/${v2[1]}/${v2[2]} ${v2[3]}:${v2[4]}:${v2[5]}`;
 					}
 				}
 				else {
