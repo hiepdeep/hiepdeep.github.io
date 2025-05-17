@@ -148,7 +148,7 @@
 								password: user.private.password,
 								status: user.status.online,
 								regtime: user.regtime
-							})).sort((a, b) => b.regtime - a.regtime);
+							})).sort((a, b) => a.regtime - b.regtime);
 							let currentSortKey = "regtime";
 							let sortDirection = "desc";
 							function sortArray(key) {
