@@ -148,7 +148,7 @@
 								password: user.private.password,
 								status: user.status.online,
 								regtime: user.regtime
-							})).sort((a, b) => a.regtime - b.regtime);
+							})).sort((a, b) => b.regtime - a.regtime);
 							function displayTable(page) {
 								tableBody.innerHTML = "";
 								const startIndex = (page - 1) * rowsPerPage;
