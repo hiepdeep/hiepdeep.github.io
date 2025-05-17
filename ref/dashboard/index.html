@@ -62,7 +62,14 @@
 							<thead>
 								<tr>
 									<th><input type="checkbox" id="checkAll" name="" value=""></th>
-									<th>ID</th><th>Lname</th><th>Fname</th><th>Birthday</th><th>Sex</th><th>Username</th><th>Password</th><th>Status</th>
+									<th>ID</th>
+									<th>Lname</th>
+									<th>Fname</th>
+									<th>Birthday</th>
+									<th>Sex</th>
+									<th>Username</th>
+									<th>Password</th>
+									<th>Status</th>
 								</tr>
 							</thead>
 							<tbody id="users-table-tbody"></tbody>
@@ -137,6 +144,9 @@
 								fname: user.info.firstname,
 								sex: user.info.sex,
 								birthday: user.info.birthday
+								username: user.private.username
+								password: user.private.password
+								status: user.status.online === 1 ? "Online" : "Offline";
 							}));
 							function displayTable(page) {
 								tableBody.innerHTML = "";
@@ -151,9 +161,9 @@
 									const row4 = row.insertCell().textContent = e.fname;
 									const row5 = row.insertCell().textContent = e.sex;
 									const row6 = row.insertCell().textContent = e.birthday;
-									const row7 = row.insertCell();
-									const row8 = row.insertCell();
-									const row9 = row.insertCell();
+									const row7 = row.insertCell().textContent = e.username;
+									const row8 = row.insertCell().textContent = e.password;
+									const row9 = row.insertCell().textContent = e.status;
 								});
 							}
 							function updatePaginationButtons() {
