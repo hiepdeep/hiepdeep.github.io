@@ -97,17 +97,7 @@
 			document.addEventListener("DOMContentLoaded", function() {
 				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 				if ( loggedInUser === "hiepdz" ) {
-					// #aside-center-top, #table-users
 					const accounts = "app/authentication";
-					database.ref(accounts).get().then((snapshot) => {
-						if (snapshot.exists()) {
-							console.log(snapshot.val());
-						} else {
-							console.log("No data available");
-						}
-					}).catch((error) => {
-						console.error(error);
-					});
 					let arrUsers = [];
 					database.ref(accounts).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
@@ -116,6 +106,8 @@
 							arrUsers = object_keys;
 							document.getElementById("app-users").textContent = arrUsers.length;
 						}
+					}, (error) => {
+						console.error(error);
 					});
 					database.ref(`${accounts}/${loggedInUser}`).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
@@ -142,30 +134,34 @@
 								window.location.href = "https://hiepdeep.github.io/ref/auth";
 							});
 						}
+					}, (error) => {
+						console.error(error);
 					});
 					database.ref(`app/visit`).once("value", (snapshot) => {
 						let visits = snapshot.val() || 0;
 						document.getElementById("app-views").textContent = visits;
+					}, (error) => {
+						console.error(error);
 					});
 					const nhanVatTrungQuocChiTiet = [
-						{ hoVaDem: "Lý", ten: "Vĩ", gioiTinh: "Nam", ngaySinh: "1985-07-12" },
-						{ hoVaDem: "Trương", ten: "Mẫn", gioiTinh: "Nữ", ngaySinh: "1992-03-05" },
-						{ hoVaDem: "Vương", ten: "Bằng", gioiTinh: "Nam", ngaySinh: "1988-11-28" },
-						{ hoVaDem: "Lưu", ten: "Hoa", gioiTinh: "Nữ", ngaySinh: "1990-05-18" },
-						{ hoVaDem: "Triệu", ten: "Cường", gioiTinh: "Nam", ngaySinh: "1983-09-01" },
-						{ hoVaDem: "Tôn", ten: "Lệ", gioiTinh: "Nữ", ngaySinh: "1995-01-20" },
-						{ hoVaDem: "Chu", ten: "Kiệt", gioiTinh: "Nam", ngaySinh: "1987-06-25" },
-						{ hoVaDem: "Mã", ten: "Yến", gioiTinh: "Nữ", ngaySinh: "1991-12-08" },
-						{ hoVaDem: "Lâm", ten: "Phong", gioiTinh: "Nam", ngaySinh: "1989-04-15" },
-						{ hoVaDem: "Quách", ten: "Tĩnh", gioiTinh: "Nữ", ngaySinh: "1993-10-03" },
-						{ hoVaDem: "Đặng", ten: "Siêu", gioiTinh: "Nam", ngaySinh: "1986-02-14" },
-						{ hoVaDem: "Phùng Thiếu", ten: "Phong", gioiTinh: "Nam", ngaySinh: "1978-10-07" },
-						{ hoVaDem: "Dương", ten: "Mịch", gioiTinh: "Nữ", ngaySinh: "1986-09-12" },
-						{ hoVaDem: "Hoắc Kiến", ten: "Hoa", gioiTinh: "Nam", ngaySinh: "1979-12-26" },
-						{ hoVaDem: "Trần Vỹ", ten: "Đình", gioiTinh: "Nam", ngaySinh: "1985-11-21" },
-						{ hoVaDem: "Lộc", ten: "Hàm", gioiTinh: "Nam", ngaySinh: "1990-04-20" },
-						{ hoVaDem: "Ngô Diệc", ten: "Phàm", gioiTinh: "Nam", ngaySinh: "1990-11-06" },
-						{ hoVaDem: "Lưu Diệc", ten: "Phi", gioiTinh: "Nữ", ngaySinh: "1987-08-25" }
+						{ arrLname: "Lý", arrFname: "Vĩ", arrSex: "Nam", arrBirthday: "1985-07-12" },
+						{ arrLname: "Trương", arrFname: "Mẫn", arrSex: "Nữ", arrBirthday: "1992-03-05" },
+						{ arrLname: "Vương", arrFname: "Bằng", arrSex: "Nam", arrBirthday: "1988-11-28" },
+						{ arrLname: "Lưu", arrFname: "Hoa", arrSex: "Nữ", arrBirthday: "1990-05-18" },
+						{ arrLname: "Triệu", arrFname: "Cường", arrSex: "Nam", arrBirthday: "1983-09-01" },
+						{ arrLname: "Tôn", arrFname: "Lệ", arrSex: "Nữ", arrBirthday: "1995-01-20" },
+						{ arrLname: "Chu", arrFname: "Kiệt", arrSex: "Nam", arrBirthday: "1987-06-25" },
+						{ arrLname: "Mã", arrFname: "Yến", arrSex: "Nữ", arrBirthday: "1991-12-08" },
+						{ arrLname: "Lâm", arrFname: "Phong", arrSex: "Nam", arrBirthday: "1989-04-15" },
+						{ arrLname: "Quách", arrFname: "Tĩnh", arrSex: "Nữ", arrBirthday: "1993-10-03" },
+						{ arrLname: "Đặng", arrFname: "Siêu", arrSex: "Nam", arrBirthday: "1986-02-14" },
+						{ arrLname: "Phùng Thiếu", arrFname: "Phong", arrSex: "Nam", arrBirthday: "1978-10-07" },
+						{ arrLname: "Dương", arrFname: "Mịch", arrSex: "Nữ", arrBirthday: "1986-09-12" },
+						{ arrLname: "Hoắc Kiến", arrFname: "Hoa", arrSex: "Nam", arrBirthday: "1979-12-26" },
+						{ arrLname: "Trần Vỹ", arrFname: "Đình", arrSex: "Nam", arrBirthday: "1985-11-21" },
+						{ arrLname: "Lộc", arrFname: "Hàm", arrSex: "Nam", arrBirthday: "1990-04-20" },
+						{ arrLname: "Ngô Diệc", arrFname: "Phàm", arrSex: "Nam", arrBirthday: "1990-11-06" },
+						{ arrLname: "Lưu Diệc", arrFname: "Phi", arrSex: "Nữ", arrBirthday: "1987-08-25" }
 					];
 					const tableBody = document.getElementById("table1");
 					const checkAll = document.getElementById("checkAll");
@@ -180,21 +176,21 @@
 						const currentData = nhanVatTrungQuocChiTiet.slice(startIndex, endIndex);
 						currentData.forEach(e => {
 							const row = tableBody.insertRow();
-							const row1 = row.insertCell();
-							const row2 = row.insertCell();
-							const row3 = row.insertCell();
-							const row4 = row.insertCell();
-							const row5 = row.insertCell();
-							const row6 = row.insertCell();
-							const row7 = row.insertCell();
-							const row8 = row.insertCell();
-							const row9 = row.insertCell();
+							const row1, row2, row3, row4, row5, row6, row7, row8, row9 = row.insertCell();
+							// const row2 = row.insertCell();
+							// const row3 = row.insertCell();
+							// const row4 = row.insertCell();
+							// const row5 = row.insertCell();
+							// const row6 = row.insertCell();
+							// const row7 = row.insertCell();
+							// const row8 = row.insertCell();
+							// const row9 = row.insertCell();
 							row1.innerHTML = `<input type="checkbox" id="" name="" value="">`;
 							row2.textContent = "";
-							row3.textContent = e.hoVaDem;
-							row4.textContent = e.ten;
-							row5.textContent = e.ngaySinh;
-							row6.textContent = e.gioiTinh;
+							row3.textContent = e.arrLname;
+							row4.textContent = e.arrFname;
+							row5.textContent = e.arrBirthday;
+							row6.textContent = e.arrSex;
 							row7.textContent = "";
 							row8.textContent = "";
 							row9.textContent = "";
