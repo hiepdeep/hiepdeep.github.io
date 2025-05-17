@@ -62,9 +62,8 @@
 							<thead>
 								<tr>
 									<th><input type="checkbox" id="checkAll" name="" value=""></th>
-									<th>ID</th>
-									<th>Lname</th>
-									<th>Fname</th>
+									<th>Lastname</th>
+									<th>Firstname</th>
 									<th>Birthday</th>
 									<th>Sex</th>
 									<th>Username</th>
@@ -157,14 +156,13 @@
 								currentData.forEach(e => {
 									const row = tableBody.insertRow();
 									const row1 = row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
-									const row2 = row.insertCell().innerHTML = e.id;
-									const row3 = row.insertCell().innerHTML = e.lname;
-									const row4 = row.insertCell().innerHTML = e.fname;
-									const row5 = row.insertCell().innerHTML = e.sex;
-									const row6 = row.insertCell().innerHTML = e.birthday;
-									const row7 = row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
-									const row8 = row.insertCell().innerHTML = e.password;
-									const row9 = row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
+									const row2 = row.insertCell().innerHTML = e.lname;
+									const row3 = row.insertCell().innerHTML = e.fname;
+									const row4 = row.insertCell().innerHTML = e.sex;
+									const row5 = row.insertCell().innerHTML = e.birthday;
+									const row6 = row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
+									const row7 = row.insertCell().innerHTML = e.password;
+									const row8 = row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
 								});
 							}
 							function updatePaginationButtons() {
