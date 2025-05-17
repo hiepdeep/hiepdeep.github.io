@@ -146,8 +146,30 @@
 								birthday: user.info.birthday,
 								username: user.private.username,
 								password: user.private.password,
-								status: user.status.online
-							}));
+								status: user.status.online,
+								regtime: user.regtime
+							})).sort((a, b) => b.regtime - a.regtime);
+							let currentSortKey = "regtime";
+							let sortDirection = "desc";
+							function sortArray(key) {
+								if (currentSortKey === key) {
+									sortDirection = sortDirection === "asc" ? "desc" : "asc";
+								} else {
+									currentSortKey = key;
+									sortDirection = "asc";
+								}
+								arr_users.sort((a, b) => {
+									const valueA = a[key];
+									const valueB = b[key];
+
+									if (typeof valueA === 'string' && typeof valueB === 'string') {
+										return sortDirection === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+									} else {
+										return sortDirection === "asc" ? valueA - valueB : valueB - valueA;
+									}
+								});
+								displayTable(currentPage);
+							}
 							function displayTable(page) {
 								tableBody.innerHTML = "";
 								const startIndex = (page - 1) * rowsPerPage;
@@ -155,19 +177,19 @@
 								const currentData = arr_users.slice(startIndex, endIndex);
 								currentData.forEach(e => {
 									const row = tableBody.insertRow();
-									const row1 = row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
-									const row2 = row.insertCell().innerHTML = e.lname;
-									const row3 = row.insertCell().innerHTML = e.fname;
-									const row4 = row.insertCell().innerHTML = e.sex;
-									const row5 = row.insertCell().innerHTML = e.birthday;
-									const row6 = row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
-									const row7 = row.insertCell().innerHTML = e.password;
-									const row8 = row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
+									row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
+									row.insertCell().innerHTML = e.lname;
+									row.insertCell().innerHTML = e.fname;
+									row.insertCell().innerHTML = e.sex;
+									row.insertCell().innerHTML = e.birthday;
+									row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
+									row.insertCell().innerHTML = e.password;
+									row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
 								});
 							}
 							function updatePaginationButtons() {
-								currentPage > 1 ? prevButton.classList.add("hide") : prevButton.classList.remove("hide");
-								currentPage * rowsPerPage < arr_users.length ? nextButton.classList.add("hide") : nextButton.classList.remove("hide");
+								prevButton.classList.toggle("hide", currentPage === 1);
+								nextButton.classList.toggle("hide", currentPage * rowsPerPage >= arr_users.length);
 							}
 							checkAll.addEventListener("change", function() {
 								const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
@@ -191,9 +213,20 @@
 							});
 							displayTable(currentPage);
 							updatePaginationButtons();
+							const headers = document.querySelectorAll("#users-table th");
+							headers.forEach(header => {
+								const key = header.getAttribute("data-sort");
+								if (key) {
+									header.style.cursor = "pointer";
+									header.addEventListener("click", () => {
+										sortArray(key);
+									});
+								}
+							});
 						} else {
 							console.log("No accounts data found.");
 							arr_users = [];
+							tableBody.innerHTML = "";
 						}
 					}, (error) => {
 						console.error(error);
