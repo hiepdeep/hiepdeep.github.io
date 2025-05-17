@@ -36,21 +36,7 @@
 				<div id="aside-left-bottom"></div>
 			</div>
 			<div id="aside-center">
-				<div id="aside-center-top">
-					<div class="nav-top">
-						<a href="javascript:;">Home</a>
-					</div>
-					<div class="nav-user">
-						<a href="javascript:;" class="logged-user">
-							<div class="thumb">
-								<img src="library/pictures/200/7.png" alt="">
-							</div>
-							<span class="displayName">Linh</span>
-						</a>
-						<a href="javascript:;" class="dashboard">Dashboard</a>
-						<button id="btn-logout" class="material-icons">logout</button>
-					</div>
-				</div>
+				<div id="aside-center-top"></div>
 				<div id="aside-center-bottom">
 					<div class="grid">
 						<div class="item">
@@ -119,7 +105,7 @@
 								<div class="nav-user">
 									<a href="ref/profile/?user=${data.private.username}" class="logged-user">
 										<div class="thumb">
-											<img src="${data.info.picture ? data.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
+											<img src="${data.info.picture ? data.info.picture : 'library/pictures/128/no_thumb.png'}" alt="">
 										</div>
 										<span class="displayName">${data.info.firstname}</span>
 									</a>
@@ -163,7 +149,7 @@
 						{ arrLname: "Ngô Diệc", arrFname: "Phàm", arrSex: "Nam", arrBirthday: "1990-11-06" },
 						{ arrLname: "Lưu Diệc", arrFname: "Phi", arrSex: "Nữ", arrBirthday: "1987-08-25" }
 					];
-					const tableBody = document.getElementById("table1");
+					const tableBody = document.getElementById("table-users");
 					const checkAll = document.getElementById("checkAll");
 					const prevButton = document.getElementById("prev");
 					const nextButton = document.getElementById("next");
@@ -188,8 +174,8 @@
 						});
 					}
 					function updatePaginationButtons() {
-						currentPage > 1 ? prevButton.classList.add("mystyle") : prevButton.classList.remove("mystyle");
-						currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length ? nextButton.classList.add("mystyle") : nextButton.classList.remove("mystyle");
+						currentPage > 1 ? prevButton.classList.add("hide") : prevButton.classList.remove("hide");
+						currentPage * rowsPerPage < nhanVatTrungQuocChiTiet.length ? nextButton.classList.add("hide") : nextButton.classList.remove("hide");
 					}
 					checkAll.addEventListener("change", function() {
 						const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
