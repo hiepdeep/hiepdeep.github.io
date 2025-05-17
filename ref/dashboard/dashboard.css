@@ -65,10 +65,6 @@ body {
 	transition: 0.1s;
 }
 
-#dashboard #aside-center #aside-center-top .nav-top a:before {
-	content: "/";
-}
-
 #dashboard #aside-center #aside-center-top .nav-top a:nth-child(1),
 #dashboard #aside-center #aside-center-top .nav-top a:hover {
 	color: #444;
