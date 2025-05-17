@@ -90,7 +90,7 @@
 							let data = snapshot.val();
 							let object_keys = Object.keys(data);
 							arrUsers = object_keys;
-							document.getElementById("app-users").textContent = arrUsers.length;
+							document.getElementById("app-users").textContent = makerNumber(arrUsers.length);
 						}
 					}, (error) => {
 						console.error(error);
@@ -125,7 +125,7 @@
 					});
 					database.ref(`app/visit`).on("value", (snapshot) => {
 						let visits = snapshot.val() || 0;
-						document.getElementById("app-views").textContent = visits;
+						document.getElementById("app-views").textContent = makerNumber(visits);
 					}, (error) => {
 						console.error(error);
 					});
