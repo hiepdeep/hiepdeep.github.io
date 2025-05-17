@@ -146,7 +146,7 @@
 								birthday: user.info.birthday,
 								username: user.private.username,
 								password: user.private.password,
-								status: user.status.online === 1 ? "Online" : "Offline";
+								status: user.status.online
 							}));
 							function displayTable(page) {
 								tableBody.innerHTML = "";
@@ -163,7 +163,7 @@
 									const row6 = row.insertCell().textContent = e.birthday;
 									const row7 = row.insertCell().textContent = e.username;
 									const row8 = row.insertCell().textContent = e.password;
-									const row9 = row.insertCell().textContent = e.status;
+									const row9 = row.insertCell().textContent = e.status === 1 ? "Online" : "Offline";
 								});
 							}
 							function updatePaginationButtons() {
