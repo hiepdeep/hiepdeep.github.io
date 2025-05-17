@@ -84,6 +84,17 @@
 				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 				if ( loggedInUser === "hiepdz" ) {
 					const accounts = "app/authentication";
+					let arrUsers = [];
+					database.ref(accounts).on("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let data = snapshot.val();
+							let object_keys = Object.keys(data);
+							arrUsers = object_keys;
+							document.getElementById("app-users").textContent = makerNumber(arrUsers.length);
+						}
+					}, (error) => {
+						console.error(error);
+					});
 					database.ref(`${accounts}/${loggedInUser}`).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
@@ -118,13 +129,8 @@
 					}, (error) => {
 						console.error(error);
 					});
-					let arrUsers = [];
 					database.ref(accounts).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
-							let data = snapshot.val();
-							let object_keys = Object.keys(data);
-							arrUsers = object_keys;
-							document.getElementById("app-users").textContent = makerNumber(arrUsers.length);
 							const tableBody = document.getElementById("users-table-tbody");
 							const checkAll = document.getElementById("checkAll");
 							const prevButton = document.getElementById("prev");
@@ -132,7 +138,7 @@
 							const rowsPerPage = 5;
 							let currentPage = 1;
 							let arr_users = [];
-							arr_users = Object.values(data).map(user => ({
+							arr_users = Object.values(data).filter(user => user.private.username !== "hiepdz").map(user => ({
 								id: user.userid,
 								lname: user.info.lastname,
 								fname: user.info.firstname,
