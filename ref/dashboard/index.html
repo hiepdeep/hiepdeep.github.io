@@ -157,13 +157,13 @@
 							database.ref(`${accounts}/${object_keys}`).on("value", (user) => {
 								if ( user.exists() ) {
 									let dataUser = user.val();
-									arr_users.push(`{
-										table_lname: "${dataUser.info.lastname}",
-										table_fname: "${dataUser.info.firstname}",
-										table_sex: "${dataUser.info.sex}",
-										table_birthday: "${dataUser.info.birthday}"
-									}`);
-									console.log( arr_users );
+									// arr_users.push(`{
+									// 	table_lname: "${dataUser.info.lastname}",
+									// 	table_fname: "${dataUser.info.firstname}",
+									// 	table_sex: "${dataUser.info.sex}",
+									// 	table_birthday: "${dataUser.info.birthday}"
+									// }`);
+									console.log( dataUser );
 								}
 							}, (errorUser) => {
 								console.error(errorUser);
