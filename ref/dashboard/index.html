@@ -176,24 +176,15 @@
 						const currentData = nhanVatTrungQuocChiTiet.slice(startIndex, endIndex);
 						currentData.forEach(e => {
 							const row = tableBody.insertRow();
-							const row1, row2, row3, row4, row5, row6, row7, row8, row9 = row.insertCell();
-							// const row2 = row.insertCell();
-							// const row3 = row.insertCell();
-							// const row4 = row.insertCell();
-							// const row5 = row.insertCell();
-							// const row6 = row.insertCell();
-							// const row7 = row.insertCell();
-							// const row8 = row.insertCell();
-							// const row9 = row.insertCell();
-							row1.innerHTML = `<input type="checkbox" id="" name="" value="">`;
-							row2.textContent = "";
-							row3.textContent = e.arrLname;
-							row4.textContent = e.arrFname;
-							row5.textContent = e.arrBirthday;
-							row6.textContent = e.arrSex;
-							row7.textContent = "";
-							row8.textContent = "";
-							row9.textContent = "";
+							const row1 = row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;;
+							const row2 = row.insertCell();
+							const row3 = row.insertCell().textContent = e.hoVaDem;
+							const row4 = row.insertCell().textContent = e.ten;
+							const row5 = row.insertCell().textContent = e.ngaySinh;
+							const row6 = row.insertCell().textContent = e.gioiTinh;
+							const row7 = row.insertCell();
+							const row8 = row.insertCell();
+							const row9 = row.insertCell();
 						});
 					}
 					function updatePaginationButtons() {
