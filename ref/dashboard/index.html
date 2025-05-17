@@ -84,17 +84,6 @@
 				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 				if ( loggedInUser === "hiepdz" ) {
 					const accounts = "app/authentication";
-					let arrUsers = [];
-					database.ref(accounts).on("value", (snapshot) => {
-						if ( snapshot.exists() ) {
-							let data = snapshot.val();
-							let object_keys = Object.keys(data);
-							arrUsers = object_keys;
-							document.getElementById("app-users").textContent = makerNumber(arrUsers.length);
-						}
-					}, (error) => {
-						console.error(error);
-					});
 					database.ref(`${accounts}/${loggedInUser}`).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
@@ -129,9 +118,13 @@
 					}, (error) => {
 						console.error(error);
 					});
+					let arrUsers = [];
 					database.ref(accounts).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
+							let object_keys = Object.keys(data);
+							arrUsers = object_keys;
+							document.getElementById("app-users").textContent = makerNumber(arrUsers.length);
 							const tableBody = document.getElementById("users-table-tbody");
 							const checkAll = document.getElementById("checkAll");
 							const prevButton = document.getElementById("prev");
@@ -150,7 +143,6 @@
 								status: user.status.online,
 								regtime: formatTime1(user.regtime)
 							})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime));
-							console.log( arr_users );
 							let currentSortKey = "regtime";
 							let sortDirection = "desc";
 							function sortTable(key) {
