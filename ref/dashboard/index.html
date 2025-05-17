@@ -239,10 +239,10 @@
 						return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 					}
 					function formatTime1(value) {
-						return value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
+						return value.split("-").map(part => part.padStart(2, "0")).join("-");
 					}
 					function formatTime2(value) {
-						let fomat = value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
+						let fomat = value.split("-").map(part => part.padStart(2, "0")).join("-");
 						let v2 = fomat.split("-");
 						return `${v2[0]}/${v2[1]}/${v2[2]} ${v2[3]}:${v2[4]}:${v2[5]}`;
 					}
