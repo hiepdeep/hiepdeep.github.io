@@ -132,9 +132,7 @@
 							const rowsPerPage = 5;
 							let currentPage = 1;
 							let arr_users = [];
-							arr_users = Object.values(data).map(user => ({
-								test: user.info
-							}));
+							arr_users = Object.values(data).map(user => (user));
 							console.log(arrUsers);
 							console.log(Object.values(data));
 							console.log(arr_users);
