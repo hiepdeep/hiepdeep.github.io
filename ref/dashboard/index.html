@@ -149,27 +149,6 @@
 								status: user.status.online,
 								regtime: user.regtime
 							})).sort((a, b) => a.regtime - b.regtime);
-							let currentSortKey = "regtime";
-							let sortDirection = "desc";
-							function sortArray(key) {
-								if (currentSortKey === key) {
-									sortDirection = sortDirection === "asc" ? "desc" : "asc";
-								} else {
-									currentSortKey = key;
-									sortDirection = "asc";
-								}
-								arr_users.sort((a, b) => {
-									const valueA = a[key];
-									const valueB = b[key];
-
-									if (typeof valueA === 'string' && typeof valueB === 'string') {
-										return sortDirection === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
-									} else {
-										return sortDirection === "asc" ? valueA - valueB : valueB - valueA;
-									}
-								});
-								displayTable(currentPage);
-							}
 							function displayTable(page) {
 								tableBody.innerHTML = "";
 								const startIndex = (page - 1) * rowsPerPage;
@@ -213,16 +192,6 @@
 							});
 							displayTable(currentPage);
 							updatePaginationButtons();
-							const headers = document.querySelectorAll("#users-table th");
-							headers.forEach(header => {
-								const key = header.getAttribute("data-sort");
-								if (key) {
-									header.style.cursor = "pointer";
-									header.addEventListener("click", () => {
-										sortArray(key);
-									});
-								}
-							});
 						} else {
 							console.log("No accounts data found.");
 							arr_users = [];
