@@ -152,7 +152,7 @@
 								const endIndex = startIndex + rowsPerPage;
 								const currentData = arr_users.slice(startIndex, endIndex);
 								currentData.forEach(e => {
-									const row = tableBody.tBodies.insertRow();
+									const row = tableBody.tBodies[0].insertRow();
 									const row1 = row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
 									const row2 = row.insertCell();
 									const row3 = row.insertCell().textContent = e.lname;
@@ -169,7 +169,7 @@
 								currentPage * rowsPerPage < arr_users.length ? nextButton.classList.add("hide") : nextButton.classList.remove("hide");
 							}
 							checkAll.addEventListener("change", function() {
-								const checkboxes = tableBody.tBodies.querySelectorAll('input[type="checkbox"]');
+								const checkboxes = tableBody.tBodies[0].querySelectorAll('input[type="checkbox"]');
 								checkboxes.forEach(checkbox => {
 									checkbox.checked = this.checked;
 								});
