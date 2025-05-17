@@ -157,14 +157,14 @@
 								currentData.forEach(e => {
 									const row = tableBody.insertRow();
 									const row1 = row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
-									const row2 = row.insertCell().textContent = e.id;
-									const row3 = row.insertCell().textContent = e.lname;
-									const row4 = row.insertCell().textContent = e.fname;
-									const row5 = row.insertCell().textContent = e.sex;
-									const row6 = row.insertCell().textContent = e.birthday;
-									const row7 = row.insertCell().textContent = e.username;
-									const row8 = row.insertCell().textContent = e.password;
-									const row9 = row.insertCell().textContent = e.status === 1 ? "Online" : "Offline";
+									const row2 = row.insertCell().innerHTML = e.id;
+									const row3 = row.insertCell().innerHTML = e.lname;
+									const row4 = row.insertCell().innerHTML = e.fname;
+									const row5 = row.insertCell().innerHTML = e.sex;
+									const row6 = row.insertCell().innerHTML = e.birthday;
+									const row7 = row.insertCell().innerHTML = e.username;
+									const row8 = row.insertCell().innerHTML = e.password;
+									const row9 = row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
 								});
 							}
 							function updatePaginationButtons() {
