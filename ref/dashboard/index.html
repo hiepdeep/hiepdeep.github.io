@@ -140,6 +140,7 @@
 							let currentPage = 1;
 							let arr_users = [];
 							arr_users = Object.values(data).filter(user => user.private.username !== "hiepdz").map(user => ({
+								id = user.userid,
 								lname: user.info.lastname,
 								fname: user.info.firstname,
 								sex: user.info.sex,
@@ -156,7 +157,7 @@
 								currentData.forEach(e => {
 									const row = tableBody.insertRow();
 									const row1 = row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
-									const row2 = row.insertCell();
+									const row2 = row.insertCell().textContent = e.id;
 									const row3 = row.insertCell().textContent = e.lname;
 									const row4 = row.insertCell().textContent = e.fname;
 									const row5 = row.insertCell().textContent = e.sex;
