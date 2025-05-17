@@ -148,7 +148,7 @@ database.ref(accounts).on("value", (snapshot) => {
 			username: user.private.username,
 			password: user.private.password,
 			status: user.status.online,
-			regtime: user.regtime
+			regtime: formatTime(user.regtime, 0)
 		})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime)); // Sắp xếp mặc định theo regtime mới nhất
 		let currentSortKey = 'regtime';
 		let sortDirection = 'desc';
@@ -190,7 +190,7 @@ database.ref(accounts).on("value", (snapshot) => {
 				row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
 				row.insertCell().innerHTML = e.password;
 				row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
-				row.insertCell().innerHTML = e.regtime;
+				row.insertCell().innerHTML = formatTime(e.regtime, 1);
 			});
 		}
 		function updatePaginationButtons() {
@@ -236,6 +236,22 @@ database.ref(accounts).on("value", (snapshot) => {
 });
 					function makerNumber(num) {
 						return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+					}
+					function formatTime(timeString, style) {
+						const parts = timeString.split("-");
+						const year = parts[0];
+						const month = parts[1].padStart(2, "0");
+						const day = parts[2].padStart(2, "0");
+						const hour = parts[3].padStart(2, "0");
+						const minute = parts[4].padStart(2, "0");
+						const second = parts[5].padStart(2, "0");
+						const millisecond = parts[6].padStart(2, "0");
+						if ( style === "0" ) {
+							return `${year}-${month}-${day}-${hour}-${minute}-${second}-${millisecond}`;
+						}
+						if ( style === "1" ) {
+							return `${year}-${month}-${day} ${hour}-${minute}-${second}-${millisecond}`;
+						}
 					}
 				}
 				else {
