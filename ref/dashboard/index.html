@@ -149,7 +149,8 @@
 								password: user.private.password,
 								status: user.status.online,
 								regtime: formatTime1(user.regtime)
-							})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime)); // Sắp xếp mặc định theo regtime mới nhất
+							})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime));
+							console.log( arr_users );
 							let currentSortKey = "regtime";
 							let sortDirection = "desc";
 							function sortTable(key) {
