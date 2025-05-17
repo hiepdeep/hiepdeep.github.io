@@ -199,7 +199,7 @@
 				let timeMinutes = getTime.getMinutes();
 				let timeSeconds = getTime.getSeconds();
 				let timeMilliseconds = getTime.getMilliseconds();
-				return `${timeYear}/${timeMonth}/${timeDate} ${timeHours}:${timeMinutes}:${timeSeconds}:${timeMilliseconds}`;
+				return `${timeYear}-${timeMonth}-${timeDate}-${timeHours}-${timeMinutes}-${timeSeconds}-${timeMilliseconds}`;
 			}
 			function fomatBirthday(value) {
 				return value.split(/[\/-]/).map(part => part.length < 2 ? "0" + part : part).join("/");

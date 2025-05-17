@@ -148,7 +148,7 @@ database.ref(accounts).on("value", (snapshot) => {
 			username: user.private.username,
 			password: user.private.password,
 			status: user.status.online,
-			regtime: formatTime(user.regtime, 0)
+			regtime: formatTime1(user.regtime)
 		})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime)); // Sắp xếp mặc định theo regtime mới nhất
 		let currentSortKey = 'regtime';
 		let sortDirection = 'desc';
@@ -190,7 +190,7 @@ database.ref(accounts).on("value", (snapshot) => {
 				row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
 				row.insertCell().innerHTML = e.password;
 				row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
-				row.insertCell().innerHTML = formatTime(e.regtime, 1);
+				row.insertCell().innerHTML = formatTime2(e.regtime);
 			});
 		}
 		function updatePaginationButtons() {
@@ -237,21 +237,13 @@ database.ref(accounts).on("value", (snapshot) => {
 					function makerNumber(num) {
 						return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 					}
-					function formatTime(timeString, style) {
-						const parts = timeString.split("-");
-						const year = parts[0];
-						const month = parts[1].padStart(2, "0");
-						const day = parts[2].padStart(2, "0");
-						const hour = parts[3].padStart(2, "0");
-						const minute = parts[4].padStart(2, "0");
-						const second = parts[5].padStart(2, "0");
-						const millisecond = parts[6].padStart(2, "0");
-						if ( style === "0" ) {
-							return `${year}-${month}-${day}-${hour}-${minute}-${second}-${millisecond}`;
-						}
-						if ( style === "1" ) {
-							return `${year}-${month}-${day} ${hour}-${minute}-${second}-${millisecond}`;
-						}
+					function formatTime1(value) {
+						return value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
+					}
+					function formatTime2(value) {
+						let fomat = value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
+						let v2 = fomat.split("-");
+						return `${v2[0]}-${v2[1]}-${v2[2]} ${v2[3]}:${v2[4]}:${v2[5]}:${v2[6]}`;
 					}
 				}
 				else {
