@@ -132,6 +132,8 @@
 							const rowsPerPage = 5;
 							let currentPage = 1;
 							let arr_users = [];
+							console.log(arrUsers);
+							console.log(Object.values(data));
 							// arr_users = Object.values(data).filter(user => user.private.username !== "hiepdz").map(user => ({
 							// 	id: user.userid,
 							// 	lname: user.info.lastname,
@@ -226,7 +228,6 @@
 					}, (error) => {
 						console.error(error);
 					});
-					console.log(arrUsers);
 					function makerNumber(num) {
 						return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 					}
