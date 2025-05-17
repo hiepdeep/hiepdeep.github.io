@@ -295,3 +295,7 @@ body {
 #dashboard #aside-center #aside-center-bottom .table-elm table tr td {
 	height: 30px;
 }
+
+#dashboard #aside-center #aside-center-bottom .table-elm table tr td a:hover {
+	color: #3182ce;
+}
