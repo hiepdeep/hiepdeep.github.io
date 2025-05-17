@@ -133,10 +133,12 @@
 							let currentPage = 1;
 							let arr_users = [];
 							arr_users = Object.values(data).map(user => ({
-								lname: user.info.lastname,
-								fname: user.info.firstname,
-								sex: user.info.sex,
-								birthday: user.info.birthday
+								if ( user.private.username != "hiepdz" ) {
+									lname: user.info.lastname,
+									fname: user.info.firstname,
+									sex: user.info.sex,
+									birthday: user.info.birthday
+								}
 							}));
 							function displayTable(page) {
 								tableBody.innerHTML = "";
