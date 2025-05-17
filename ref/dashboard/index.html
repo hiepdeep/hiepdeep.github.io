@@ -151,7 +151,7 @@
 					];
 					let arr_users = [];
 					database.ref(accounts).on("value", (snapshot) => {
-						if (snapshot.exists()) {
+						if ( snapshot.exists() ) {
 							let data = snapshot.val();
 							arr_users = Object.values(data).map(user => ({
 								table_lname: user.info.lastname,
@@ -159,10 +159,10 @@
 								table_sex: user.info.sex,
 								table_birthday: user.info.birthday
 							}));
-							console.log(arr_users); // Log the array *inside* the listener
+							console.log(arr_users);
 						} else {
 							console.log("No accounts data found.");
-							arr_users = []; // Optionally clear the array if no data exists
+							arr_users = [];
 						}
 					}, (error) => {
 						console.error(error);
