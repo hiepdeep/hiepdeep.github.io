@@ -177,7 +177,7 @@
 						tableBody.innerHTML = "";
 						const startIndex = (page - 1) * rowsPerPage;
 						const endIndex = startIndex + rowsPerPage;
-						const currentData = table_users.slice(startIndex, endIndex);
+						const currentData = arr_users.slice(startIndex, endIndex);
 						currentData.forEach(e => {
 							const row = tableBody.insertRow();
 							const row1 = row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
@@ -193,7 +193,7 @@
 					}
 					function updatePaginationButtons() {
 						currentPage > 1 ? prevButton.classList.add("hide") : prevButton.classList.remove("hide");
-						currentPage * rowsPerPage < table_users.length ? nextButton.classList.add("hide") : nextButton.classList.remove("hide");
+						currentPage * rowsPerPage < arr_users.length ? nextButton.classList.add("hide") : nextButton.classList.remove("hide");
 					}
 					checkAll.addEventListener("change", function() {
 						const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
@@ -209,7 +209,7 @@
 						}
 					});
 					nextButton.addEventListener("click", () => {
-						if ( currentPage * rowsPerPage < table_users.length ) {
+						if ( currentPage * rowsPerPage < arr_users.length ) {
 							currentPage++;
 							displayTable(currentPage);
 							updatePaginationButtons();
