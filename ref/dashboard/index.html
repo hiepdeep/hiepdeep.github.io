@@ -123,128 +123,128 @@
 					}, (error) => {
 						console.error(error);
 					});
-					database.ref(`app/visit`).once("value", (snapshot) => {
+					database.ref(`app/visit`).on("value", (snapshot) => {
 						let visits = snapshot.val() || 0;
 						document.getElementById("app-views").textContent = visits;
 					}, (error) => {
 						console.error(error);
 					});
-database.ref(accounts).on("value", (snapshot) => {
-	if ( snapshot.exists() ) {
-		let data = snapshot.val();
-		const tableBody = document.getElementById("users-table-tbody");
-		const checkAll = document.getElementById("checkAll");
-		const prevButton = document.getElementById("prev");
-		const nextButton = document.getElementById("next");
-		const rowsPerPage = 5;
-		let currentPage = 1;
-		let arr_users = [];
-		arr_users = Object.values(data).filter(user => user.private.username !== "hiepdz").map(user => ({
-			id: user.userid,
-			lname: user.info.lastname,
-			fname: user.info.firstname,
-			sex: user.info.sex,
-			birthday: user.info.birthday,
-			username: user.private.username,
-			password: user.private.password,
-			status: user.status.online,
-			regtime: formatTime1(user.regtime)
-		})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime)); // Sắp xếp mặc định theo regtime mới nhất
-		let currentSortKey = "regtime";
-		let sortDirection = "desc";
-		function sortTable(key) {
-			if (currentSortKey === key) {
-				sortDirection = sortDirection === "asc" ? "desc" : "asc";
-			} else {
-				currentSortKey = key;
-				sortDirection = "asc";
-			}
-			arr_users.sort((a, b) => {
-				const valueA = a[key];
-				const valueB = b[key];
-				if (typeof valueA === "string" && typeof valueB === "string") {
-					return sortDirection === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
-				} else if (key === "regtime") {
-					// Chắc chắn rằng chúng ta đang so sánh các đối tượng Date
-					const dateA = new Date(valueA);
-					const dateB = new Date(valueB);
-					return sortDirection === "asc" ? dateA - dateB : dateB - dateA;
-				} else {
-					return sortDirection === "asc" ? valueA - valueB : valueB - valueA;
-				}
-			});
-			displayTable(currentPage);
-		}
-		function displayTable(page) {
-			tableBody.innerHTML = "";
-			const startIndex = (page - 1) * rowsPerPage;
-			const endIndex = startIndex + rowsPerPage;
-			const currentData = arr_users.slice(startIndex, endIndex);
-			currentData.forEach(e => {
-				const row = tableBody.insertRow();
-				row.insertCell().innerHTML = `<input type="checkbox" name="${e.username}" value="${e.username}">`;
-				row.insertCell().innerHTML = e.lname;
-				row.insertCell().innerHTML = e.fname;
-				row.insertCell().innerHTML = e.sex;
-				row.insertCell().innerHTML = e.birthday;
-				row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
-				row.insertCell().innerHTML = e.password;
-				row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
-				row.insertCell().innerHTML = formatTime2(e.regtime);
-			});
-		}
-		function updatePaginationButtons() {
-			prevButton.classList.toggle("hide", currentPage === 1);
-			nextButton.classList.toggle("hide", currentPage * rowsPerPage >= arr_users.length);
-		}
-		checkAll.addEventListener("change", function() {
-			const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
-			checkboxes.forEach(checkbox => {
-				checkbox.checked = this.checked;
-			});
-		});
-		prevButton.addEventListener("click", () => {
-			if ( currentPage > 1 ) {
-				currentPage--;
-				displayTable(currentPage);
-				updatePaginationButtons();
-			}
-		});
-		nextButton.addEventListener("click", () => {
-			if ( currentPage * rowsPerPage < arr_users.length ) {
-				currentPage++;
-				displayTable(currentPage);
-				updatePaginationButtons();
-			}
-		});
-		displayTable(currentPage);
-		updatePaginationButtons();
-		const th = document.getElementsByClassName("users-table-thead-tr-th");
-		for (let x = 0; x < th.length; x++) {
-			th[x].addEventListener("click", () => {
-				const sortKey = th[x].getAttribute("data-sort");
-				sortTable(sortKey);
-			});
-		}
-	} else {
-		console.log("No accounts data found.");
-		arr_users = [];
-		tableBody.innerHTML = "";
-	}
-}, (error) => {
-	console.error(error);
-});
-					function makerNumber(num) {
-						return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-					}
-					function formatTime1(value) {
-						return value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
-					}
-					function formatTime2(value) {
-						let fomat = value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
-						let v2 = fomat.split("-");
-						return `${v2[0]}/${v2[1]}/${v2[2]} ${v2[3]}:${v2[4]}:${v2[5]}`;
-					}
+					database.ref(accounts).on("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let data = snapshot.val();
+							const tableBody = document.getElementById("users-table-tbody");
+							const checkAll = document.getElementById("checkAll");
+							const prevButton = document.getElementById("prev");
+							const nextButton = document.getElementById("next");
+							const rowsPerPage = 5;
+							let currentPage = 1;
+							let arr_users = [];
+							arr_users = Object.values(data).filter(user => user.private.username !== "hiepdz").map(user => ({
+								id: user.userid,
+								lname: user.info.lastname,
+								fname: user.info.firstname,
+								sex: user.info.sex,
+								birthday: user.info.birthday,
+								username: user.private.username,
+								password: user.private.password,
+								status: user.status.online,
+								regtime: formatTime1(user.regtime)
+							})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime)); // Sắp xếp mặc định theo regtime mới nhất
+							let currentSortKey = "regtime";
+							let sortDirection = "desc";
+							function sortTable(key) {
+								if (currentSortKey === key) {
+									sortDirection = sortDirection === "asc" ? "desc" : "asc";
+								} else {
+									currentSortKey = key;
+									sortDirection = "asc";
+								}
+								arr_users.sort((a, b) => {
+									const valueA = a[key];
+									const valueB = b[key];
+									if (typeof valueA === "string" && typeof valueB === "string") {
+										return sortDirection === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+									} else if (key === "regtime") {
+										// Chắc chắn rằng chúng ta đang so sánh các đối tượng Date
+										const dateA = new Date(valueA);
+										const dateB = new Date(valueB);
+										return sortDirection === "asc" ? dateA - dateB : dateB - dateA;
+									} else {
+										return sortDirection === "asc" ? valueA - valueB : valueB - valueA;
+									}
+								});
+								displayTable(currentPage);
+							}
+							function displayTable(page) {
+								tableBody.innerHTML = "";
+								const startIndex = (page - 1) * rowsPerPage;
+								const endIndex = startIndex + rowsPerPage;
+								const currentData = arr_users.slice(startIndex, endIndex);
+								currentData.forEach(e => {
+									const row = tableBody.insertRow();
+									row.insertCell().innerHTML = `<input type="checkbox" name="${e.username}" value="${e.username}">`;
+									row.insertCell().innerHTML = e.lname;
+									row.insertCell().innerHTML = e.fname;
+									row.insertCell().innerHTML = e.sex;
+									row.insertCell().innerHTML = e.birthday;
+									row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
+									row.insertCell().innerHTML = e.password;
+									row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
+									row.insertCell().innerHTML = formatTime2(e.regtime);
+								});
+							}
+							function updatePaginationButtons() {
+								prevButton.classList.toggle("hide", currentPage === 1);
+								nextButton.classList.toggle("hide", currentPage * rowsPerPage >= arr_users.length);
+							}
+							checkAll.addEventListener("change", function() {
+								const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+								checkboxes.forEach(checkbox => {
+									checkbox.checked = this.checked;
+								});
+							});
+							prevButton.addEventListener("click", () => {
+								if ( currentPage > 1 ) {
+									currentPage--;
+									displayTable(currentPage);
+									updatePaginationButtons();
+								}
+							});
+							nextButton.addEventListener("click", () => {
+								if ( currentPage * rowsPerPage < arr_users.length ) {
+									currentPage++;
+									displayTable(currentPage);
+									updatePaginationButtons();
+								}
+							});
+							displayTable(currentPage);
+							updatePaginationButtons();
+							const th = document.getElementsByClassName("users-table-thead-tr-th");
+							for (let x = 0; x < th.length; x++) {
+								th[x].addEventListener("click", () => {
+									const sortKey = th[x].getAttribute("data-sort");
+									sortTable(sortKey);
+								});
+							}
+							function makerNumber(num) {
+								return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+							}
+							function formatTime1(value) {
+								return value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
+							}
+							function formatTime2(value) {
+								let fomat = value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
+								let v2 = fomat.split("-");
+								return `${v2[0]}/${v2[1]}/${v2[2]} ${v2[3]}:${v2[4]}:${v2[5]}`;
+							}
+						} else {
+							console.log("No accounts data found.");
+							arr_users = [];
+							tableBody.innerHTML = "";
+						}
+					}, (error) => {
+						console.error(error);
+					});
 				}
 				else {
 					window.location.href = "https://hiepdeep.github.io/ref/auth";
