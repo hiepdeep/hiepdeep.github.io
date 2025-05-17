@@ -162,7 +162,7 @@
 									const row4 = row.insertCell().innerHTML = e.fname;
 									const row5 = row.insertCell().innerHTML = e.sex;
 									const row6 = row.insertCell().innerHTML = e.birthday;
-									const row7 = row.insertCell().innerHTML = e.username;
+									const row7 = row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
 									const row8 = row.insertCell().innerHTML = e.password;
 									const row9 = row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
 								});
