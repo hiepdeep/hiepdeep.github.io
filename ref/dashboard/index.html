@@ -166,6 +166,50 @@
 								birthday: user.info.birthday
 							}));
 							console.log(arr_users);
+							function displayTable(page) {
+								tableBody.innerHTML = "";
+								const startIndex = (page - 1) * rowsPerPage;
+								const endIndex = startIndex + rowsPerPage;
+								const currentData = arr_users.slice(startIndex, endIndex);
+								currentData.forEach(e => {
+									const row = tableBody.insertRow();
+									const row1 = row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
+									const row2 = row.insertCell();
+									const row3 = row.insertCell().textContent = e.table_lname;
+									const row4 = row.insertCell().textContent = e.table_fname;
+									const row5 = row.insertCell().textContent = e.table_birthday;
+									const row6 = row.insertCell().textContent = e.table_sex;
+									const row7 = row.insertCell();
+									const row8 = row.insertCell();
+									const row9 = row.insertCell();
+								});
+							}
+							function updatePaginationButtons() {
+								currentPage > 1 ? prevButton.classList.add("hide") : prevButton.classList.remove("hide");
+								currentPage * rowsPerPage < arr_users.length ? nextButton.classList.add("hide") : nextButton.classList.remove("hide");
+							}
+							checkAll.addEventListener("change", function() {
+								const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+								checkboxes.forEach(checkbox => {
+									checkbox.checked = this.checked;
+								});
+							});
+							prevButton.addEventListener("click", () => {
+								if ( currentPage > 1 ) {
+									currentPage--;
+									displayTable(currentPage);
+									updatePaginationButtons();
+								}
+							});
+							nextButton.addEventListener("click", () => {
+								if ( currentPage * rowsPerPage < arr_users.length ) {
+									currentPage++;
+									displayTable(currentPage);
+									updatePaginationButtons();
+								}
+							});
+							displayTable(currentPage);
+							updatePaginationButtons();
 						} else {
 							console.log("No accounts data found.");
 							arr_users = [];
@@ -173,50 +217,6 @@
 					}, (error) => {
 						console.error(error);
 					});
-					function displayTable(page) {
-						tableBody.innerHTML = "";
-						const startIndex = (page - 1) * rowsPerPage;
-						const endIndex = startIndex + rowsPerPage;
-						const currentData = arr_users.slice(startIndex, endIndex);
-						currentData.forEach(e => {
-							const row = tableBody.insertRow();
-							const row1 = row.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
-							const row2 = row.insertCell();
-							const row3 = row.insertCell().textContent = e.table_lname;
-							const row4 = row.insertCell().textContent = e.table_fname;
-							const row5 = row.insertCell().textContent = e.table_birthday;
-							const row6 = row.insertCell().textContent = e.table_sex;
-							const row7 = row.insertCell();
-							const row8 = row.insertCell();
-							const row9 = row.insertCell();
-						});
-					}
-					function updatePaginationButtons() {
-						currentPage > 1 ? prevButton.classList.add("hide") : prevButton.classList.remove("hide");
-						currentPage * rowsPerPage < arr_users.length ? nextButton.classList.add("hide") : nextButton.classList.remove("hide");
-					}
-					checkAll.addEventListener("change", function() {
-						const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
-						checkboxes.forEach(checkbox => {
-							checkbox.checked = this.checked;
-						});
-					});
-					prevButton.addEventListener("click", () => {
-						if ( currentPage > 1 ) {
-							currentPage--;
-							displayTable(currentPage);
-							updatePaginationButtons();
-						}
-					});
-					nextButton.addEventListener("click", () => {
-						if ( currentPage * rowsPerPage < arr_users.length ) {
-							currentPage++;
-							displayTable(currentPage);
-							updatePaginationButtons();
-						}
-					});
-					displayTable(currentPage);
-					updatePaginationButtons();
 					function makerNumber(num) {
 						return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 					}
