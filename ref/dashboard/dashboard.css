@@ -19,7 +19,7 @@ body {
 	display: flex;
 }
 
-#dashboard .aside-left {
+#dashboard #aside-left {
 	flex-shrink: 0;
 	background: white;
 	width: 300px;
@@ -27,7 +27,7 @@ body {
 	border-right: 1px solid #e9e9e9;
 }
 
-#dashboard .aside-left .aside-left-top {
+#dashboard #aside-left #aside-left-top {
 	height: 68px;
 	border-bottom: 1px solid #e9e9e9;
 	display: flex;
@@ -35,17 +35,17 @@ body {
 	padding: 12px;
 }
 
-#dashboard .aside-left .aside-left-top .logo {
+#dashboard #aside-left #aside-left-top .logo {
 	height: 24px;
 }
 
-#dashboard .aside-center {
+#dashboard #aside-center {
 	background: white;
 	width: 100%;
 	height: 100%;
 }
 
-#dashboard .aside-center .aside-center-top {
+#dashboard #aside-center #aside-center-top {
 	height: 68px;
 	border-bottom: 1px solid #e9e9e9;
 	display: flex;
@@ -54,33 +54,33 @@ body {
 	padding: 12px;
 }
 
-#dashboard .aside-center .aside-center-top .nav-top {
+#dashboard #aside-center #aside-center-top .nav-top {
 	display: flex;
 	gap: 12px;
 }
 
-#dashboard .aside-center .aside-center-top .nav-top a {
+#dashboard #aside-center #aside-center-top .nav-top a {
 	color: #9e9e9e;
 	line-height: 44px;
 	transition: 0.1s;
 }
 
-#dashboard .aside-center .aside-center-top .nav-top a:before {
+#dashboard #aside-center #aside-center-top .nav-top a:before {
 	content: "/";
 }
 
-#dashboard .aside-center .aside-center-top .nav-top a:nth-child(1),
-#dashboard .aside-center .aside-center-top .nav-top a:hover {
+#dashboard #aside-center #aside-center-top .nav-top a:nth-child(1),
+#dashboard #aside-center #aside-center-top .nav-top a:hover {
 	color: #444;
 }
 
-#dashboard .aside-center .aside-center-top .nav-user {
+#dashboard #aside-center #aside-center-top .nav-user {
 	display: flex;
 	align-items: center;
 	gap: 6px;
 }
 
-#dashboard .aside-center .aside-center-top .nav-user .logged-user {
+#dashboard #aside-center #aside-center-top .nav-user .logged-user {
 	display: flex;
 	align-items: center;
 	gap: 6px;
@@ -91,22 +91,22 @@ body {
 	transition: 0.1s;
 }
 
-#dashboard .aside-center .aside-center-top .nav-user .logged-user:hover {
+#dashboard #aside-center #aside-center-top .nav-user .logged-user:hover {
 	border-color: #9e9e9e;
 }
 
-#dashboard .aside-center .aside-center-top .nav-user .logged-user .displayName {
+#dashboard #aside-center #aside-center-top .nav-user .logged-user .displayName {
 	font-weight: 700;
 }
 
-#dashboard .aside-center .aside-center-top .nav-user .logged-user .thumb {
+#dashboard #aside-center #aside-center-top .nav-user .logged-user .thumb {
 	height: 24px;
 	aspect-ratio: 1;
 	border-radius: 12px;
 	overflow: hidden;
 }
 
-#dashboard .aside-center .aside-center-top .nav-user .dashboard {
+#dashboard #aside-center #aside-center-top .nav-user .dashboard {
 	border: 1px solid #e9e9e9;
 	height: 38px;
 	border-radius: 6px;
@@ -118,11 +118,11 @@ body {
 	transition: 0.1s;
 }
 
-#dashboard .aside-center .aside-center-top .nav-user .dashboard:hover {
+#dashboard #aside-center #aside-center-top .nav-user .dashboard:hover {
 	border-color: #3f51b5;
 }
 
-#dashboard .aside-center .aside-center-top .nav-user #btn-logout {
+#dashboard #aside-center #aside-center-top .nav-user #btn-logout {
 	background: 0;
 	border: 1px solid #e9e9e9;
 	height: 38px;
@@ -131,24 +131,24 @@ body {
 	transition: 0.1s;
 }
 
-#dashboard .aside-center .aside-center-top .nav-user #btn-logout:hover {
+#dashboard #aside-center #aside-center-top .nav-user #btn-logout:hover {
 	border-color: #9e9e9e;
 }
 
-#dashboard .aside-center .aside-center-bottom {
+#dashboard #aside-center #aside-center-bottom {
 	padding: 12px;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
 }
 
-#dashboard .aside-center .aside-center-bottom .grid {
+#dashboard #aside-center #aside-center-bottom .grid {
 	display: grid;
 	gap: 12px;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-#dashboard .aside-center .aside-center-bottom .grid .item {
+#dashboard #aside-center #aside-center-bottom .grid .item {
 	width: 100%;
 	height: 100px;
 	position: relative;
@@ -156,23 +156,23 @@ body {
 	overflow: hidden;
 }
 
-#dashboard .aside-center .aside-center-bottom .grid .item:nth-child(1) {
+#dashboard #aside-center #aside-center-bottom .grid .item:nth-child(1) {
 	background: linear-gradient(45deg, rgba(79, 209, 196, 0.8), rgba(72, 188, 122, 0.8));
 }
 
-#dashboard .aside-center .aside-center-bottom .grid .item:nth-child(2) {
+#dashboard #aside-center #aside-center-bottom .grid .item:nth-child(2) {
 	background: linear-gradient(45deg, rgba(99, 179, 237, 0.8), rgba(49, 130, 206, 0.8));
 }
 
-#dashboard .aside-center .aside-center-bottom .grid .item:nth-child(3) {
+#dashboard #aside-center #aside-center-bottom .grid .item:nth-child(3) {
 	background: linear-gradient(45deg, rgba(252, 128, 128, 0.8), rgba(229, 62, 62, 0.8));
 }
 
-#dashboard .aside-center .aside-center-bottom .grid .item:nth-child(4) {
+#dashboard #aside-center #aside-center-bottom .grid .item:nth-child(4) {
 	background: linear-gradient(45deg, rgba(252, 128, 128, 0.8), rgba(214, 158, 46, 0.8));
 }
 
-#dashboard .aside-center .aside-center-bottom .grid .item .num {
+#dashboard #aside-center #aside-center-bottom .grid .item .num {
 	display: block;
 	font-weight: 700;
 	font-size: 20px;
@@ -180,7 +180,7 @@ body {
 	z-index: 1;
 }
 
-#dashboard .aside-center .aside-center-bottom .grid .item svg {
+#dashboard #aside-center #aside-center-bottom .grid .item svg {
 	position: absolute;
 	right: 0;
 	bottom: 0;
@@ -188,7 +188,7 @@ body {
 	fill: rgba(255, 255, 255, 0.3);
 }
 
-#dashboard .aside-center .aside-center-bottom .table .table-title {
+#dashboard #aside-center #aside-center-bottom .table .table-title {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -196,16 +196,16 @@ body {
 	user-select: none;
 }
 
-#dashboard .aside-center .aside-center-bottom .table .table-title h2 {
+#dashboard #aside-center #aside-center-bottom .table .table-title h2 {
 	font-weight: 700;
 }
 
-#dashboard .aside-center .aside-center-bottom .table .table-title .prev_next {
+#dashboard #aside-center #aside-center-bottom .table .table-title .prev_next {
 	display: flex;
 	gap: 6px;
 }
 
-#dashboard .aside-center .aside-center-bottom .table .table-title .prev_next span {
+#dashboard #aside-center #aside-center-bottom .table .table-title .prev_next span {
 	border: 1px solid #e9e9e9;
 	display: flex;
 	width: 30px;
@@ -217,73 +217,55 @@ body {
 	opacity: 0.5;
 }
 
-#dashboard .aside-center .aside-center-bottom .table .table-title .prev_next .mystyle {
+#dashboard #aside-center #aside-center-bottom .table .table-title .prev_next .hide {
 	opacity: 1;
 }
 
-#dashboard .aside-center .aside-center-bottom .table .table-title .prev_next .mystyle:hover {
+#dashboard #aside-center #aside-center-bottom .table .table-title .prev_next .hide:hover {
 	border-color: #9e9e9e;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table {
+#dashboard #aside-center #aside-center-bottom .table table {
 	width: 100%;
 	border-collapse: collapse;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table tr:hover td {
+#dashboard #aside-center #aside-center-bottom .table table tr:hover td {
 	border-left: 1px solid #9e9e9e;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table tr th,
-#dashboard .aside-center .aside-center-bottom .table table tr td {
+#dashboard #aside-center #aside-center-bottom .table table tr th,
+#dashboard #aside-center #aside-center-bottom .table table tr td {
 	border: 1px solid #e9e9e9;
 	line-height: 30px;
 	text-align: left;
 	padding: 0 12px;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(1),
-#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(1) {
-  width: 50px;
+#dashboard #aside-center #aside-center-bottom .table table tr th:nth-child(1),
+#dashboard #aside-center #aside-center-bottom .table table tr td:nth-child(1),
+#dashboard #aside-center #aside-center-bottom .table table tr th:nth-child(2),
+#dashboard #aside-center #aside-center-bottom .table table tr td:nth-child(2) {
+	width: 50px;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(2),
-#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(2) {
-  width: 50px;
+#dashboard #aside-center #aside-center-bottom .table table tr th:nth-child(3),
+#dashboard #aside-center #aside-center-bottom .table table tr td:nth-child(3),
+#dashboard #aside-center #aside-center-bottom .table table tr th:nth-child(4),
+#dashboard #aside-center #aside-center-bottom .table table tr td:nth-child(4),
+#dashboard #aside-center #aside-center-bottom .table table tr th:nth-child(5),
+#dashboard #aside-center #aside-center-bottom .table table tr td:nth-child(5),
+#dashboard #aside-center #aside-center-bottom .table table tr th:nth-child(6),
+#dashboard #aside-center #aside-center-bottom .table table tr td:nth-child(6),
+#dashboard #aside-center #aside-center-bottom .table table tr th:nth-child(7),
+#dashboard #aside-center #aside-center-bottom .table table tr td:nth-child(7),
+#dashboard #aside-center #aside-center-bottom .table table tr th:nth-child(8),
+#dashboard #aside-center #aside-center-bottom .table table tr td:nth-child(8) {
+	width: 120px;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(3),
-#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(3) {
-  width: 120px;
-}
-
-#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(4),
-#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(4) {
-  width: 120px;
-}
-
-#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(5),
-#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(5) {
-  width: 120px;
-}
-
-#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(6),
-#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(6) {
-  width: 120px;
-}
-
-#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(7),
-#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(7) {
-  width: 120px;
-}
-
-#dashboard .aside-center .aside-center-bottom .table table tr th:nth-child(8),
-#dashboard .aside-center .aside-center-bottom .table table tr td:nth-child(8) {
-  width: 120px;
-}
-
-#dashboard .aside-center .aside-center-bottom .table table tr th input[type=checkbox],
-#dashboard .aside-center .aside-center-bottom .table table tr td input[type=checkbox] {
+#dashboard #aside-center #aside-center-bottom .table table tr th input[type=checkbox],
+#dashboard #aside-center #aside-center-bottom .table table tr td input[type=checkbox] {
 	-webkit-appearance: none;
 	background: 0;
 	border: 0;
@@ -296,8 +278,8 @@ body {
 	cursor: pointer;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table tr th input[type=checkbox]:before,
-#dashboard .aside-center .aside-center-bottom .table table tr td input[type=checkbox]:before {
+#dashboard #aside-center #aside-center-bottom .table table tr th input[type=checkbox]:before,
+#dashboard #aside-center #aside-center-bottom .table table tr td input[type=checkbox]:before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -307,21 +289,21 @@ body {
 	box-shadow: 0 0 0 1px #e9e9e9 inset;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table tr th input[type=checkbox]:hover:before,
-#dashboard .aside-center .aside-center-bottom .table table tr td input[type=checkbox]:hover:before {
+#dashboard #aside-center #aside-center-bottom .table table tr th input[type=checkbox]:hover:before,
+#dashboard #aside-center #aside-center-bottom .table table tr td input[type=checkbox]:hover:before {
 	box-shadow: 0 0 0 1px #9e9e9e inset;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table tr th input[type=checkbox]:checked:before,
-#dashboard .aside-center .aside-center-bottom .table table tr td input[type=checkbox]:checked:before {
+#dashboard #aside-center #aside-center-bottom .table table tr th input[type=checkbox]:checked:before,
+#dashboard #aside-center #aside-center-bottom .table table tr td input[type=checkbox]:checked:before {
 	box-shadow: 0 0 0 2px #9e9e9e inset;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table tr th {
+#dashboard #aside-center #aside-center-bottom .table table tr th {
 	font-weight: 600;
 	user-select: none;
 }
 
-#dashboard .aside-center .aside-center-bottom .table table tr td {
+#dashboard #aside-center #aside-center-bottom .table table tr td {
 	height: 30px;
 }
