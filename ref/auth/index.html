@@ -119,10 +119,7 @@
 								if (snapshot.exists()) {
 									let data = snapshot.val();
 									if ( password.value.trim() === data.private.password ) {
-										database.ref(`${accounts}/${username.value.trim()}/status`).set({
-											online: "1",
-											last_time: times()
-										});
+										database.ref(`${accounts}/${username.value.trim()}/status/online`).set("1");
 										localStorage.setItem("social-media-auth", data.userid);
 										username.parentNode.classList.remove("error");
 										password.parentNode.classList.remove("error");
@@ -161,10 +158,7 @@
 							userid = userid.replace(/\=/gi, "");
 							database.ref(`${accounts}/${username.value.trim()}/`).set({
 								userid: userid,
-								status: {
-									online: "1",
-									last_time: times()
-								},
+								status: {online: "1"},
 								info: {
 									picture: "",
 									firstname: fname.value.trim(),
@@ -178,7 +172,7 @@
 									phone: phone.value.trim(),
 									email: email.value.trim()
 								},
-								regtime: times()
+								regtime: regtime()
 							});
 							localStorage.setItem("social-media-auth", userid);
 							document.forms["signup"].reset();
@@ -197,22 +191,22 @@
 					}
 				});
 			}
-			function fomatBirthday(value) {
-				return value.split(/[\/-]/).map(part => part.padStart(2, "0")).join("/");
-			}
 			function formatTime1(value) {
 				return value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
 			}
-			function times() {
-				const getTime = new Date();
-				const timeYear = getTime.getFullYear();
-				const timeMonth = getTime.getMonth() + 1;
-				const timeDate = getTime.getDate();
-				const timeHours = getTime.getHours();
-				const timeMinutes = getTime.getMinutes();
-				const timeSeconds = getTime.getSeconds();
-				const timeMilliseconds = getTime.getMilliseconds();
-				return `${timeYear}-${String(timeMonth).padStart(2, "0")}-${String(timeDate).padStart(2, "0")}-${String(timeHours).padStart(2, "0")}-${String(timeMinutes).padStart(2, "0")}-${String(timeSeconds).padStart(2, "0")}-${String(timeMilliseconds).padStart(3, "0")}`;
+			function regtime() {
+				let getTime = new Date();
+				let timeYear = getTime.getFullYear();
+				let timeMonth = getTime.getMonth() + 1;
+				let timeDate = getTime.getDate();
+				let timeHours = getTime.getHours();
+				let timeMinutes = getTime.getMinutes();
+				let timeSeconds = getTime.getSeconds();
+				let timeMilliseconds = getTime.getMilliseconds();
+				return `${timeYear}-${timeMonth.padStart(2, "0")}-${timeDate.padStart(2, "0")}-${timeHours.padStart(2, "0")}-${timeMinutes.padStart(2, "0")}-${timeSeconds.padStart(2, "0")}-${timeMilliseconds.padStart(3, "0")}`;
+			}
+			function fomatBirthday(value) {
+				return value.split(/[\/-]/).map(part => part.padStart(2, "0")).join("/");
 			}
 		</script>
 	</body>

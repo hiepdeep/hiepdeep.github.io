@@ -88,10 +88,7 @@
 						`;
 						document.getElementById("btn-logout").addEventListener("click", (e) => {
 							e.preventDefault();
-							database.ref(`${accounts}/${loggedInUser}/status`).set({
-								online: "0",
-								last_time: times()
-							});
+							database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
 							localStorage.removeItem("social-media-auth");
 							window.location.href = "https://hiepdeep.github.io/ref/auth";
 						});
@@ -131,17 +128,6 @@
 			}
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
-			}
-			function times() {
-				const getTime = new Date();
-				const timeYear = getTime.getFullYear();
-				const timeMonth = getTime.getMonth() + 1;
-				const timeDate = getTime.getDate();
-				const timeHours = getTime.getHours();
-				const timeMinutes = getTime.getMinutes();
-				const timeSeconds = getTime.getSeconds();
-				const timeMilliseconds = getTime.getMilliseconds();
-				return `${timeYear}-${String(timeMonth).padStart(2, "0")}-${String(timeDate).padStart(2, "0")}-${String(timeHours).padStart(2, "0")}-${String(timeMinutes).padStart(2, "0")}-${String(timeSeconds).padStart(2, "0")}-${String(timeMilliseconds).padStart(3, "0")}`;
 			}
 		</script>
 	</body>
