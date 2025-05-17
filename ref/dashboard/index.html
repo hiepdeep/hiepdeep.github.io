@@ -69,6 +69,7 @@
 									<th class="users-table-thead-tr-th" data-sort="username">Username</th>
 									<th class="users-table-thead-tr-th">Password</th>
 									<th class="users-table-thead-tr-th" data-sort="status">Status</th>
+									<th class="users-table-thead-tr-th" data-sort="regtime">Ngày tạo tài khoản</th>
 								</tr>
 							</thead>
 							<tbody id="users-table-tbody"></tbody>
@@ -189,6 +190,7 @@ database.ref(accounts).on("value", (snapshot) => {
 				row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
 				row.insertCell().innerHTML = e.password;
 				row.insertCell().innerHTML = e.status === 1 ? "Online" : "Offline";
+				row.insertCell().innerHTML = e.regtime;
 			});
 		}
 		function updatePaginationButtons() {
