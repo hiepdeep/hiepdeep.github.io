@@ -227,17 +227,6 @@
 									sortTable(sortKey);
 								});
 							}
-							function makerNumber(num) {
-								return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-							}
-							function formatTime1(value) {
-								return value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
-							}
-							function formatTime2(value) {
-								let fomat = value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
-								let v2 = fomat.split("-");
-								return `${v2[0]}/${v2[1]}/${v2[2]} ${v2[3]}:${v2[4]}:${v2[5]}`;
-							}
 						} else {
 							console.log("No accounts data found.");
 							arr_users = [];
@@ -246,6 +235,17 @@
 					}, (error) => {
 						console.error(error);
 					});
+					function makerNumber(num) {
+						return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+					}
+					function formatTime1(value) {
+						return value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
+					}
+					function formatTime2(value) {
+						let fomat = value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
+						let v2 = fomat.split("-");
+						return `${v2[0]}/${v2[1]}/${v2[2]} ${v2[3]}:${v2[4]}:${v2[5]}`;
+					}
 				}
 				else {
 					window.location.href = "https://hiepdeep.github.io/ref/auth";
