@@ -61,14 +61,14 @@
 						<table>
 							<thead>
 								<tr>
-									<th><input type="checkbox" id="checkAll"></th>
-									<th data-sort="lname">Last Name</th>
-									<th data-sort="fname">First Name</th>
-									<th data-sort="sex">Sex</th>
-									<th data-sort="birthday">Birthday</th>
-									<th data-sort="username">Username</th>
-									<th>Password</th>
-									<th data-sort="status">Status</th>
+									<th class="users-table-thead-tr-th"><input type="checkbox" id="checkAll"></th>
+									<th class="users-table-thead-tr-th" data-sort="lname">Last Name</th>
+									<th class="users-table-thead-tr-th" data-sort="fname">First Name</th>
+									<th class="users-table-thead-tr-th" data-sort="sex">Sex</th>
+									<th class="users-table-thead-tr-th" data-sort="birthday">Birthday</th>
+									<th class="users-table-thead-tr-th" data-sort="username">Username</th>
+									<th class="users-table-thead-tr-th">Password</th>
+									<th class="users-table-thead-tr-th" data-sort="status">Status</th>
 								</tr>
 							</thead>
 							<tbody id="users-table-tbody"></tbody>
@@ -217,14 +217,13 @@ database.ref(accounts).on("value", (snapshot) => {
 		});
 		displayTable(currentPage);
 		updatePaginationButtons();
-		const headers = document.querySelectorAll("#users-table th[data-sort]");
-		headers.forEach(header => {
-			header.style.cursor = "pointer";
-			header.addEventListener("click", () => {
-				const sortKey = header.getAttribute("data-sort");
+		const th = document.getElementsByClassName("users-table-thead-tr-th");
+		for (let x = 0; x < th.length; x++) {
+			th[x].addEventListener("click", () => {
+				const sortKey = th[x].getAttribute("data-sort");
 				sortTable(sortKey);
 			});
-		});
+		}
 	} else {
 		console.log("No accounts data found.");
 		arr_users = [];
