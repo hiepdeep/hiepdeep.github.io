@@ -69,7 +69,7 @@
 									<th class="users-table-thead-tr-th" data-sort="username">Username</th>
 									<th class="users-table-thead-tr-th">Password</th>
 									<th class="users-table-thead-tr-th" data-sort="status">Status</th>
-									<th class="users-table-thead-tr-th" data-sort="regtime">Ngày tạo tài khoản</th>
+									<th class="users-table-thead-tr-th" data-sort="regtime">Ngày bắt đầu</th>
 								</tr>
 							</thead>
 							<tbody id="users-table-tbody"></tbody>
@@ -150,27 +150,27 @@ database.ref(accounts).on("value", (snapshot) => {
 			status: user.status.online,
 			regtime: formatTime1(user.regtime)
 		})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime)); // Sắp xếp mặc định theo regtime mới nhất
-		let currentSortKey = 'regtime';
-		let sortDirection = 'desc';
+		let currentSortKey = "regtime";
+		let sortDirection = "desc";
 		function sortTable(key) {
 			if (currentSortKey === key) {
-				sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+				sortDirection = sortDirection === "asc" ? "desc" : "asc";
 			} else {
 				currentSortKey = key;
-				sortDirection = 'asc';
+				sortDirection = "asc";
 			}
 			arr_users.sort((a, b) => {
 				const valueA = a[key];
 				const valueB = b[key];
-				if (typeof valueA === 'string' && typeof valueB === 'string') {
-					return sortDirection === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
-				} else if (key === 'regtime') {
+				if (typeof valueA === "string" && typeof valueB === "string") {
+					return sortDirection === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+				} else if (key === "regtime") {
 					// Chắc chắn rằng chúng ta đang so sánh các đối tượng Date
 					const dateA = new Date(valueA);
 					const dateB = new Date(valueB);
-					return sortDirection === 'asc' ? dateA - dateB : dateB - dateA;
+					return sortDirection === "asc" ? dateA - dateB : dateB - dateA;
 				} else {
-					return sortDirection === 'asc' ? valueA - valueB : valueB - valueA;
+					return sortDirection === "asc" ? valueA - valueB : valueB - valueA;
 				}
 			});
 			displayTable(currentPage);
@@ -198,7 +198,7 @@ database.ref(accounts).on("value", (snapshot) => {
 			nextButton.classList.toggle("hide", currentPage * rowsPerPage >= arr_users.length);
 		}
 		checkAll.addEventListener("change", function() {
-			const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+			const checkboxes = tableBody.querySelectorAll("input[type="checkbox"]");
 			checkboxes.forEach(checkbox => {
 				checkbox.checked = this.checked;
 			});
