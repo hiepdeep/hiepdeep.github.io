@@ -236,7 +236,7 @@
 						console.error(error);
 					});
 					function makerNumber(num) {
-						return so.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+						return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 					}
 					function formatTime1(value) {
 						return value.split("-").map(part => part.length < 2 ? "0" + part : part).join("-");
