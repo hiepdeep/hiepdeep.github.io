@@ -149,10 +149,26 @@
 						{ table_lname: "Ngô Diệc", table_fname: "Phàm", table_sex: "Nam", table_birthday: "1990-11-06" },
 						{ table_lname: "Lưu Diệc", table_fname: "Phi", table_sex: "Nữ", table_birthday: "1987-08-25" }
 					];
+					const tableBody = document.getElementById("table-users");
+					const checkAll = document.getElementById("checkAll");
+					const prevButton = document.getElementById("prev");
+					const nextButton = document.getElementById("next");
+					const rowsPerPage = 5;
+					let currentPage = 1;
 					let arr_users = [];
 					database.ref(accounts).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
+							const testRow = tableBody.insertRow();
+							const testRow1 = testRow.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
+							const testRow2 = testRow.insertCell();
+							const testRow3 = testRow.insertCell().textContent = data.info.lastname;
+							const testRow4 = testRow.insertCell().textContent = data.info.firstname;
+							const testRow5 = testRow.insertCell().textContent = data.info.birthday;
+							const testRow6 = testRow.insertCell().textContent = data.info.sex;
+							const testRow7 = testRow.insertCell();
+							const testRow8 = testRow.insertCell();
+							const testRow9 = testRow.insertCell();
 							arr_users = Object.values(data).map(user => ({
 								table_lname: user.info.lastname,
 								table_fname: user.info.firstname,
@@ -167,12 +183,6 @@
 					}, (error) => {
 						console.error(error);
 					});
-					const tableBody = document.getElementById("table-users");
-					const checkAll = document.getElementById("checkAll");
-					const prevButton = document.getElementById("prev");
-					const nextButton = document.getElementById("next");
-					const rowsPerPage = 5;
-					let currentPage = 1;
 					function displayTable(page) {
 						tableBody.innerHTML = "";
 						const startIndex = (page - 1) * rowsPerPage;
