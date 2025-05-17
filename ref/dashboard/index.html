@@ -133,7 +133,9 @@
 							let currentPage = 1;
 							let arr_users = [];
 							arr_users = Object.values(data).map(user => ({
-								test: user.info
+								id: user.userid,
+								lname: user.info.lastname,
+								fname: user.info.firstname,
 							}));
 							console.log(arrUsers);
 							console.log(Object.values(data));
