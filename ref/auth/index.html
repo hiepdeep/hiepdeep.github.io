@@ -121,7 +121,7 @@
 									if ( password.value.trim() === data.private.password ) {
 										database.ref(`${accounts}/${username.value.trim()}/status`).set({
 											online: "1",
-											last_time: "online"
+											last_time: times()
 										});
 										localStorage.setItem("social-media-auth", data.userid);
 										username.parentNode.classList.remove("error");
@@ -163,7 +163,7 @@
 								userid: userid,
 								status: {
 									online: "1",
-									last_time: "online"
+									last_time: times()
 								},
 								info: {
 									picture: "",
