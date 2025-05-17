@@ -159,16 +159,6 @@
 					database.ref(accounts).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
-							const testRow = tableBody.insertRow();
-							const testRow1 = testRow.insertCell().innerHTML = `<input type="checkbox" id="" name="" value="">`;
-							const testRow2 = testRow.insertCell();
-							const testRow3 = testRow.insertCell().textContent = data.info.lastname;
-							const testRow4 = testRow.insertCell().textContent = data.info.firstname;
-							const testRow5 = testRow.insertCell().textContent = data.info.birthday;
-							const testRow6 = testRow.insertCell().textContent = data.info.sex;
-							const testRow7 = testRow.insertCell();
-							const testRow8 = testRow.insertCell();
-							const testRow9 = testRow.insertCell();
 							arr_users = Object.values(data).map(user => ({
 								table_lname: user.info.lastname,
 								table_fname: user.info.firstname,
