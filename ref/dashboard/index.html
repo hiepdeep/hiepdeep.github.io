@@ -65,7 +65,7 @@
 									<th>ID</th><th>Lname</th><th>Fname</th><th>Birthday</th><th>Sex</th><th>Username</th><th>Password</th><th>Status</th>
 								</tr>
 							</thead>
-							<tbody id="table-users"></tbody>
+							<tbody id="users-table-tbody"></tbody>
 						</table>
 					</div>
 				</div>
@@ -125,7 +125,7 @@
 					database.ref(accounts).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
-							const tableBody = document.getElementById("table-users");
+							const tableBody = document.getElementById("users-table-tbody");
 							const checkAll = document.getElementById("checkAll");
 							const prevButton = document.getElementById("prev");
 							const nextButton = document.getElementById("next");
