@@ -119,7 +119,7 @@
 								if (snapshot.exists()) {
 									let data = snapshot.val();
 									if ( password.value.trim() === data.private.password ) {
-										database.ref(`${accounts}/${loggedInUser}/status`).set({
+										database.ref(`${accounts}/${username.value.trim()}/status`).set({
 											online: "1",
 											last_time: "online"
 										});
