@@ -211,10 +211,12 @@ body {
 	cursor: pointer;
 	transition: 0.1s;
 	opacity: 0.5;
+	cursor: not-allowed;
 }
 
 #dashboard #aside-center #aside-center-bottom .table .table-title .prev_next .hide {
 	opacity: 1;
+	cursor: pointer;
 }
 
 #dashboard #aside-center #aside-center-bottom .table .table-title .prev_next .hide:hover {
