@@ -122,8 +122,7 @@
 					database.ref(accounts).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
-							let object_keys = Object.keys(data);
-							arrUsers = object_keys;
+							arrUsers = Object.keys(data);
 							document.getElementById("app-users").textContent = makerNumber(arrUsers.length);
 							const tableBody = document.getElementById("users-table-tbody");
 							const checkAll = document.getElementById("checkAll");
