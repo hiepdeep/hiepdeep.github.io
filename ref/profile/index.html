@@ -105,6 +105,22 @@
 			else {
 				window.location.href = "https://hiepdeep.github.io/ref/auth";
 			}
+			function formatNumber(value) {
+				return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			}
+			function formatTime1(value) {
+				return value.split("-").map(part => part.padStart(2, "0")).join("-");
+			}
+			function formatTime2(value) {
+				let fomat = value.split("-").map(part => part.padStart(2, "0")).join("-");
+				let fomat = fomat.split("-");
+				return `${fomat[0]}/${fomat[1]}/${fomat[2]} ${fomat[3]}:${fomat[4]}:${fomat[5]}`;
+			}
+			function formatTime3(value) {
+				let fomat = value.split("-").map(part => part.padStart(2, "0")).join("-");
+				let fomat = fomat.split("-");
+				return `${fomat[0]}/${fomat[1]}/${fomat[2]}`;
+			}
 		</script>
 	</body>
 </html>

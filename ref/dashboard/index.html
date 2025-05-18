@@ -114,7 +114,7 @@
 					});
 					database.ref(`app/visit`).on("value", (snapshot) => {
 						let visits = snapshot.val() || 0;
-						document.getElementById("app-views").textContent = makerNumber(visits);
+						document.getElementById("app-views").textContent = formatNumber(visits);
 					}, (error) => {
 						console.error(error);
 					});
@@ -123,7 +123,7 @@
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
 							arrUsers = Object.keys(data);
-							document.getElementById("app-users").textContent = makerNumber(arrUsers.length);
+							document.getElementById("app-users").textContent = formatNumber(arrUsers.length);
 							const tableBody = document.getElementById("users-table-tbody");
 							const checkAll = document.getElementById("checkAll");
 							const prevButton = document.getElementById("prev");
@@ -181,7 +181,7 @@
 									row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
 									row.insertCell().innerHTML = e.password;
 									row.insertCell().innerHTML = e.online == "1" ? "Online" : "Offline";
-									row.insertCell().innerHTML = formatTime2(e.regtime);
+									row.insertCell().innerHTML = formatTime3(e.regtime);
 								});
 							}
 							function updatePaginationButtons() {
@@ -225,22 +225,27 @@
 					}, (error) => {
 						console.error(error);
 					});
-					function makerNumber(num) {
-						return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-					}
-					function formatTime1(value) {
-						return value.split("-").map(part => part.padStart(2, "0")).join("-");
-					}
-					function formatTime2(value) {
-						let fomat = value.split("-").map(part => part.padStart(2, "0")).join("-");
-						let v2 = fomat.split("-");
-						return `${v2[0]}/${v2[1]}/${v2[2]} ${v2[3]}:${v2[4]}:${v2[5]}`;
-					}
 				}
 				else {
 					window.location.href = "https://hiepdeep.github.io/ref/auth";
 				}
 			});
+			function formatNumber(value) {
+				return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			}
+			function formatTime1(value) {
+				return value.split("-").map(part => part.padStart(2, "0")).join("-");
+			}
+			function formatTime2(value) {
+				let fomat = value.split("-").map(part => part.padStart(2, "0")).join("-");
+				let fomat = fomat.split("-");
+				return `${fomat[0]}/${fomat[1]}/${fomat[2]} ${fomat[3]}:${fomat[4]}:${fomat[5]}`;
+			}
+			function formatTime3(value) {
+				let fomat = value.split("-").map(part => part.padStart(2, "0")).join("-");
+				let fomat = fomat.split("-");
+				return `${fomat[0]}/${fomat[1]}/${fomat[2]}`;
+			}
 		</script>
 	</body>
 </html>
