@@ -139,7 +139,7 @@
 								birthday: user.info.birthday,
 								username: user.private.username,
 								password: user.private.password,
-								status: user.status.online,
+								online: user.status.online,
 								regtime: formatTime1(user.regtime)
 							})).sort((a, b) => new Date(b.regtime) - new Date(a.regtime));
 							let currentSortKey = "regtime";
@@ -180,7 +180,7 @@
 									row.insertCell().innerHTML = e.birthday;
 									row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
 									row.insertCell().innerHTML = e.password;
-									row.insertCell().innerHTML = e.status == "1" ? "Online" : "Offline";
+									row.insertCell().innerHTML = e.online == "1" ? "Online" : "Offline";
 									row.insertCell().innerHTML = formatTime2(e.regtime);
 								});
 							}
