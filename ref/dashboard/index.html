@@ -133,7 +133,7 @@
 							let arr_users = [];
 							arr_users = Object.values(data).map(user => ({
 								id: user.userid,
-								lname: user.info.lastname
+								lname: user.info.lastname ? user.info.lastname : "no user.info.lastname"
 							}));
 							console.log("arrUsers", arrUsers);
 							console.log("Object", Object.values(data));
