@@ -27,84 +27,86 @@
 		<div id="body"></div>
 		<script type="text/javascript">
 			console.clear();
-			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
-			if ( loggedInUser ) {
-				const accounts = "app/authentication";
-				database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
-					if ( snapshot.exists() ) {
-						let data = snapshot.val();
-						document.getElementById("header").innerHTML = `
-							<div class="margin-block">
-								<div class="header-left">
-									<div class="logo">
-										<a href="https://hiepdeep.github.io">
-											<img src="library/pictures/svg/ui-deck.svg" alt="">
-										</a>
-									</div>
-								</div>
-								<div class="header-right">
-									<div class="nav-right">
-										<a href="">Home</a>
-										<a href="">About</a>
-										<a href="">Contact</a>
-										<a href="">Support</a>
-									</div>
-									<div class="nav-user">
-										<a href="ref/profile/?user=${data.private.username}" class="logged-user">
-											<div class="thumb">
-												<img src="${data.info.picture ? data.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
-											</div>
-											<span class="displayName">${data.info.firstname}</span>
-										</a>
-										${loggedInUser === "hiepdz" ? '<a href="ref/dashboard" class="dashboard">Dashboard</a>' : ''}
-										<button id="btn-logout" class="material-icons">logout</button>
-									</div>
-								</div>
-							</div>
-						`;
-						document.getElementById("btn-logout").addEventListener("click", (e) => {
-							e.preventDefault();
-							database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
-							localStorage.removeItem("social-media-auth");
-							window.location.href = "https://hiepdeep.github.io/ref/auth";
-						});
-					}
-				});
-				const path = window.location.href;
-				const path_split = path.split("?")[1].split("=")[1];
-				database.ref(`${accounts}/${path_split}`).once("value", (snapshot) => {
-					if ( snapshot.exists() ) {
-						let data = snapshot.val();
-						if ( path_split === loggedInUser ) {
-							document.getElementById("body").innerHTML = `
+			document.addEventListener("DOMContentLoaded", () => {
+				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
+				if ( loggedInUser ) {
+					const accounts = "app/authentication";
+					database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let data = snapshot.val();
+							document.getElementById("header").innerHTML = `
 								<div class="margin-block">
-									<p>Fullname: ${data.info.lastname} ${data.info.firstname}</p>
-									<p>Birthday: ${data.info.birthday}</p>
-									<p>Sex: ${data.info.sex}</p>
-									<p>Acc: ${data.private.username} | ${data.private.password}</p>
-									<p>Phone: ${data.private.phone}</p>
-									<p>Email: ${data.private.email}</p>
-									<p><a href="https://hiepdeep.github.io/ref/dashboard">Dashboard</a></p>
+									<div class="header-left">
+										<div class="logo">
+											<a href="https://hiepdeep.github.io">
+												<img src="library/pictures/svg/ui-deck.svg" alt="">
+											</a>
+										</div>
+									</div>
+									<div class="header-right">
+										<div class="nav-right">
+											<a href="">Home</a>
+											<a href="">About</a>
+											<a href="">Contact</a>
+											<a href="">Support</a>
+										</div>
+										<div class="nav-user">
+											<a href="ref/profile/?user=${data.private.username}" class="logged-user">
+												<div class="thumb">
+													<img src="${data.info.picture ? data.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
+												</div>
+												<span class="displayName">${data.info.firstname}</span>
+											</a>
+											${loggedInUser === "hiepdz" ? '<a href="ref/dashboard" class="dashboard">Dashboard</a>' : ''}
+											<button id="btn-logout" class="material-icons">logout</button>
+										</div>
+									</div>
 								</div>
 							`;
+							document.getElementById("btn-logout").addEventListener("click", (e) => {
+								e.preventDefault();
+								database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
+								localStorage.removeItem("social-media-auth");
+								window.location.href = "https://hiepdeep.github.io/ref/auth";
+							});
 						}
-						else {
-							document.getElementById("body").innerHTML = `
-								<div class="margin-block">
-									<p>Fullname: ${data.info.lastname} ${data.info.firstname}</p>
-									<p>Birthday: ${data.info.birthday}</p>
-									<p>Sex: ${data.info.sex}</p>
-									<p>Phone: ${data.private.phone}</p>
-									<p>Email: ${data.private.email}</p>
-								</div>
-							`;
+					});
+					const path = window.location.href;
+					const path_split = path.split("?")[1].split("=")[1];
+					database.ref(`${accounts}/${path_split}`).once("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let data = snapshot.val();
+							if ( path_split === loggedInUser ) {
+								document.getElementById("body").innerHTML = `
+									<div class="margin-block">
+										<p>Fullname: ${data.info.lastname} ${data.info.firstname}</p>
+										<p>Birthday: ${data.info.birthday}</p>
+										<p>Sex: ${data.info.sex}</p>
+										<p>Acc: ${data.private.username} | ${data.private.password}</p>
+										<p>Phone: ${data.private.phone}</p>
+										<p>Email: ${data.private.email}</p>
+										<p><a href="https://hiepdeep.github.io/ref/dashboard">Dashboard</a></p>
+									</div>
+								`;
+							}
+							else {
+								document.getElementById("body").innerHTML = `
+									<div class="margin-block">
+										<p>Fullname: ${data.info.lastname} ${data.info.firstname}</p>
+										<p>Birthday: ${data.info.birthday}</p>
+										<p>Sex: ${data.info.sex}</p>
+										<p>Phone: ${data.private.phone}</p>
+										<p>Email: ${data.private.email}</p>
+									</div>
+								`;
+							}
 						}
-					}
-				});
-			}
-			else {
-				window.location.href = "https://hiepdeep.github.io/ref/auth";
-			}
+					});
+				}
+				else {
+					window.location.href = "https://hiepdeep.github.io/ref/auth";
+				}
+			});
 			function formatNumber(value) {
 				return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 			}

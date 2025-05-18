@@ -84,6 +84,7 @@
 				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 				if ( loggedInUser === "hiepdz" ) {
 					const accounts = "app/authentication";
+					// header
 					database.ref(`${accounts}/${loggedInUser}`).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
@@ -112,7 +113,8 @@
 					}, (error) => {
 						console.error(error);
 					});
-					database.ref(`app/visit`).on("value", (snapshot) => {
+					// update views
+					database.ref(`app/host/visit`).on("value", (snapshot) => {
 						let visits = snapshot.val() || 0;
 						document.getElementById("app-views").textContent = formatNumber(visits);
 					}, (error) => {

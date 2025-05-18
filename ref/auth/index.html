@@ -95,101 +95,103 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
-			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
-			if (loggedInUser) {
-				window.location.href = "https://hiepdeep.github.io";
-			}
-			else {
-				const accounts = "app/authentication";
-				let arrUsers = [];
-				database.ref(accounts).on("value", (snapshot) => {
-					if ( snapshot.exists() ) {
-						let data = snapshot.val();
-						arrUsers = Object.keys(data);
-					}
-				});
-				document.forms["login"].addEventListener("submit", function(event) {
-					event.preventDefault();
-					let username = document.forms["login"]["username"];
-					let password = document.forms["login"]["password"];
-					if ( username.value.trim() && password.value.trim() ) {
-						if ( arrUsers.includes(username.value.trim()) ) {
-							database.ref(`${accounts}/${username.value.trim()}`).on("value", (snapshot) => {
-								if (snapshot.exists()) {
-									let data = snapshot.val();
-									if ( password.value.trim() === data.private.password ) {
-										database.ref(`${accounts}/${username.value.trim()}/status/online`).set("1");
-										localStorage.setItem("social-media-auth", data.userid);
-										username.parentNode.classList.remove("error");
-										password.parentNode.classList.remove("error");
-										document.forms["login"].reset();
-										window.location.href = "https://hiepdeep.github.io";
-									} else {
-										alert(`Sai mật khẩu.`);
-										username.parentNode.classList.remove("error");
-										password.parentNode.classList.add("error");
+			document.addEventListener("DOMContentLoaded", () => {
+				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
+				if (loggedInUser) {
+					window.location.href = "https://hiepdeep.github.io";
+				}
+				else {
+					const accounts = "app/authentication";
+					let arrUsers = [];
+					database.ref(accounts).on("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let data = snapshot.val();
+							arrUsers = Object.keys(data);
+						}
+					});
+					document.forms["login"].addEventListener("submit", function(event) {
+						event.preventDefault();
+						let username = document.forms["login"]["username"];
+						let password = document.forms["login"]["password"];
+						if ( username.value.trim() && password.value.trim() ) {
+							if ( arrUsers.includes(username.value.trim()) ) {
+								database.ref(`${accounts}/${username.value.trim()}`).on("value", (snapshot) => {
+									if (snapshot.exists()) {
+										let data = snapshot.val();
+										if ( password.value.trim() === data.private.password ) {
+											database.ref(`${accounts}/${username.value.trim()}/status/online`).set("1");
+											localStorage.setItem("social-media-auth", data.userid);
+											username.parentNode.classList.remove("error");
+											password.parentNode.classList.remove("error");
+											document.forms["login"].reset();
+											window.location.href = "https://hiepdeep.github.io";
+										} else {
+											alert(`Sai mật khẩu.`);
+											username.parentNode.classList.remove("error");
+											password.parentNode.classList.add("error");
+										}
 									}
-								}
-							});
+								});
+							} else {
+								alert(`Không tìm thấy {${username.value.trim()}}. Hãy tạo tài khoản mới!`);
+								username.parentNode.classList.add("error");
+								password.parentNode.classList.remove("error");
+							}
 						} else {
-							alert(`Không tìm thấy {${username.value.trim()}}. Hãy tạo tài khoản mới!`);
-							username.parentNode.classList.add("error");
-							password.parentNode.classList.remove("error");
+							username.parentNode.classList.toggle("error", !username.value.trim());
+							password.parentNode.classList.toggle("error", !password.value.trim());
 						}
-					} else {
-						username.parentNode.classList.toggle("error", !username.value.trim());
-						password.parentNode.classList.toggle("error", !password.value.trim());
-					}
-				});
-				document.forms["signup"].addEventListener("submit", function(event) {
-					event.preventDefault();
-					let lname = document.forms["signup"]["lname"];
-					let fname = document.forms["signup"]["fname"];
-					let birthday = document.forms["signup"]["birthday"];
-					let sex = document.forms["signup"]["sex"];
-					let username = document.forms["signup"]["username"];
-					let password = document.forms["signup"]["password"];
-					let phone = document.forms["signup"]["phone"];
-					let email = document.forms["signup"]["email"];
-					if ( lname.value.trim() && fname.value.trim() && birthday.value.trim() && username.value.trim() && password.value.trim() ) {
-						if ( !arrUsers.includes(username.value.trim()) ) {
-							let userid = window.btoa(username.value.trim());
-							userid = userid.replace(/\=/gi, "");
-							database.ref(`${accounts}/${username.value.trim()}/`).set({
-								userid: userid,
-								status: {online: "1"},
-								info: {
-									picture: "",
-									firstname: fname.value.trim(),
-									lastname: lname.value.trim(),
-									birthday: fomatBirthday(birthday.value.trim()),
-									sex: sex.value
-								},
-								private: {
-									username: username.value.trim(),
-									password: password.value.trim(),
-									phone: phone.value.trim(),
-									email: email.value.trim()
-								},
-								regtime: regtime()
-							});
-							localStorage.setItem("social-media-auth", userid);
-							document.forms["signup"].reset();
-							alert("Tạo tài khoản thành công.");
-							window.location.href = "https://hiepdeep.github.io";
-						} else {
-							alert(`Tên người dùng {${username.value.trim()}} đã tồn tại. Vui lòng chọn tên người dùng khác!`);
+					});
+					document.forms["signup"].addEventListener("submit", function(event) {
+						event.preventDefault();
+						let lname = document.forms["signup"]["lname"];
+						let fname = document.forms["signup"]["fname"];
+						let birthday = document.forms["signup"]["birthday"];
+						let sex = document.forms["signup"]["sex"];
+						let username = document.forms["signup"]["username"];
+						let password = document.forms["signup"]["password"];
+						let phone = document.forms["signup"]["phone"];
+						let email = document.forms["signup"]["email"];
+						if ( lname.value.trim() && fname.value.trim() && birthday.value.trim() && username.value.trim() && password.value.trim() ) {
+							if ( !arrUsers.includes(username.value.trim()) ) {
+								let userid = window.btoa(username.value.trim());
+								userid = userid.replace(/\=/gi, "");
+								database.ref(`${accounts}/${username.value.trim()}/`).set({
+									userid: userid,
+									status: {online: "1"},
+									info: {
+										picture: "",
+										firstname: fname.value.trim(),
+										lastname: lname.value.trim(),
+										birthday: fomatBirthday(birthday.value.trim()),
+										sex: sex.value
+									},
+									private: {
+										username: username.value.trim(),
+										password: password.value.trim(),
+										phone: phone.value.trim(),
+										email: email.value.trim()
+									},
+									regtime: regtime()
+								});
+								localStorage.setItem("social-media-auth", userid);
+								document.forms["signup"].reset();
+								alert("Tạo tài khoản thành công.");
+								window.location.href = "https://hiepdeep.github.io";
+							} else {
+								alert(`Tên người dùng {${username.value.trim()}} đã tồn tại. Vui lòng chọn tên người dùng khác!`);
+							}
 						}
-					}
-					else {
-						lname.parentNode.classList.toggle("error", !lname.value.trim());
-						fname.parentNode.classList.toggle("error", !fname.value.trim());
-						birthday.parentNode.classList.toggle("error", !birthday.value.trim());
-						username.parentNode.classList.toggle("error", !username.value.trim());
-						password.parentNode.classList.toggle("error", !password.value.trim());
-					}
-				});
-			}
+						else {
+							lname.parentNode.classList.toggle("error", !lname.value.trim());
+							fname.parentNode.classList.toggle("error", !fname.value.trim());
+							birthday.parentNode.classList.toggle("error", !birthday.value.trim());
+							username.parentNode.classList.toggle("error", !username.value.trim());
+							password.parentNode.classList.toggle("error", !password.value.trim());
+						}
+					});
+				}
+			});
 			function regtime() {
 				let getTime = new Date();
 				let timeYear = getTime.getFullYear();

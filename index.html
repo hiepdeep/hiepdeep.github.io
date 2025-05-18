@@ -35,99 +35,100 @@
 		<script type="text/javascript">
 			console.clear();
 			document.addEventListener("DOMContentLoaded", () => {
-				database.ref(`app/visit`).transaction((currentVisit) => {
-					return (currentVisit || 0) + Math.floor(Math.random() * 10);
+				database.ref(`app/host/visit`).transaction((currentVisit) => {
+					return (currentVisit || 0) + Math.floor(Math.random() * 100);
 				});
-				database.ref(`app/visit`).on("value", (snapshot) => {
+				database.ref(`app/host/visit`).on("value", (snapshot) => {
 					const visits = snapshot.val() || 0;
 					document.getElementById("col-left").textContent = visits;
 				});
-			});
-			const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
-			if ( loggedInUser ) {
-				const accounts = "app/authentication";
-				let arrUsers = [];
-				database.ref(accounts).on("value", (snapshot) => {
-					if ( snapshot.exists() ) {
-						let data = snapshot.val();
-						arrUsers = Object.keys(data);
-					}
-				});
-				database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
-					if ( snapshot.exists() ) {
-						let data = snapshot.val();
-						document.getElementById("header").innerHTML = `
-							<div class="margin-block">
-								<div class="header-left">
-									<div class="logo">
-										<a href="https://hiepdeep.github.io">
-											<img src="library/pictures/svg/ui-deck.svg" alt="">
-										</a>
-									</div>
-								</div>
-								<div class="header-right">
-									<div class="nav-right">
-										<a href="">Home</a>
-										<a href="">About</a>
-										<a href="">Contact</a>
-										<a href="">Support</a>
-									</div>
-									<div class="nav-user">
-										<a href="ref/profile/?user=${data.private.username}" class="logged-user">
-											<div class="thumb" id="logged-user-thumb">
-												<img src="${data.info.picture ? data.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
-											</div>
-											<span class="displayName">${data.info.firstname}</span>
-										</a>
-										${loggedInUser === "hiepdz" ? '<a href="ref/dashboard" class="dashboard">Dashboard</a>' : ''}
-										<button id="btn-logout" class="material-icons">logout</button>
-									</div>
-								</div>
-							</div>
-						`;
-						document.getElementById("btn-logout").addEventListener("click", (e) => {
-							e.preventDefault();
-							database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
-							localStorage.removeItem("social-media-auth");
-							window.location.href = "https://hiepdeep.github.io/ref/auth";
-						});
-					}
-				});
-				// widget-right
-				database.ref(accounts).once("value", (snapshot) => {
-					if ( snapshot.exists() ) {
-						let userItems = "";
-						for ( let e in arrUsers ) {
-							if ( arrUsers[e] != loggedInUser ) {
-								database.ref(`${accounts}/${arrUsers[e]}`).once("value", (userItem) => {
-									if ( userItem.exists() ) {
-										let x = userItem.val();
-										userItems += `
-											<li>
-												<a href="ref/profile/?user=${x.private.username}">
-													<div class="thumb ${x.status.online === "1" ? 'onl' : ''}">
-														<img src="${x.info.picture ? x.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
-													</div>
-													<span class="dataName">${x.info.lastname} ${x.info.firstname}</span>
-												</a>
-											</li>
-										`;
-									}
-								});
-							}
+				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
+				if ( loggedInUser ) {
+					const accounts = "app/authentication";
+					let arrUsers = [];
+					database.ref(accounts).on("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let data = snapshot.val();
+							arrUsers = Object.keys(data);
 						}
-						document.getElementById("col-right").innerHTML += `
-							<div class="widget" id="listUsers">
-								<div class="widget-title"><h2>Người dùng:</h2></div>
-								<div class="widget-body">${userItems}</div>
-							</div>
-						`;
-					}
-				});
-			}
-			else {
-				window.location.href = "https://hiepdeep.github.io/ref/auth";
-			}
+					});
+					// header
+					database.ref(`${accounts}/${loggedInUser}`).on("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let data = snapshot.val();
+							document.getElementById("header").innerHTML = `
+								<div class="margin-block">
+									<div class="header-left">
+										<div class="logo">
+											<a href="https://hiepdeep.github.io">
+												<img src="library/pictures/svg/ui-deck.svg" alt="">
+											</a>
+										</div>
+									</div>
+									<div class="header-right">
+										<div class="nav-right">
+											<a href="">Home</a>
+											<a href="">About</a>
+											<a href="">Contact</a>
+											<a href="">Support</a>
+										</div>
+										<div class="nav-user">
+											<a href="ref/profile/?user=${data.private.username}" class="logged-user">
+												<div class="thumb" id="logged-user-thumb">
+													<img src="${data.info.picture ? data.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
+												</div>
+												<span class="displayName">${data.info.firstname}</span>
+											</a>
+											${loggedInUser === "hiepdz" ? '<a href="ref/dashboard" class="dashboard">Dashboard</a>' : ''}
+											<button id="btn-logout" class="material-icons">logout</button>
+										</div>
+									</div>
+								</div>
+							`;
+							document.getElementById("btn-logout").addEventListener("click", (e) => {
+								e.preventDefault();
+								database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
+								localStorage.removeItem("social-media-auth");
+								window.location.href = "https://hiepdeep.github.io/ref/auth";
+							});
+						}
+					});
+					// widget-right
+					database.ref(accounts).once("value", (snapshot) => {
+						if ( snapshot.exists() ) {
+							let userItems = "";
+							for ( let e in arrUsers ) {
+								if ( arrUsers[e] != loggedInUser ) {
+									database.ref(`${accounts}/${arrUsers[e]}`).once("value", (userItem) => {
+										if ( userItem.exists() ) {
+											let x = userItem.val();
+											userItems += `
+												<li>
+													<a href="ref/profile/?user=${x.private.username}">
+														<div class="thumb ${x.status.online === "1" ? 'onl' : ''}">
+															<img src="${x.info.picture ? x.info.picture : 'library/pictures/no_avt.jpg'}" alt="">
+														</div>
+														<span class="dataName">${x.info.lastname} ${x.info.firstname}</span>
+													</a>
+												</li>
+											`;
+										}
+									});
+								}
+							}
+							document.getElementById("col-right").innerHTML += `
+								<div class="widget" id="listUsers">
+									<div class="widget-title"><h2>Người dùng:</h2></div>
+									<div class="widget-body">${userItems}</div>
+								</div>
+							`;
+						}
+					});
+				}
+				else {
+					window.location.href = "https://hiepdeep.github.io/ref/auth";
+				}
+			});
 			function formatNumber(value) {
 				return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 			}
