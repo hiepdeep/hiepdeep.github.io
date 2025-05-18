@@ -103,10 +103,9 @@
 				const accounts = "app/authentication";
 				let arrUsers = [];
 				database.ref(accounts).on("value", (snapshot) => {
-					if (snapshot.exists()) {
+					if ( snapshot.exists() ) {
 						let data = snapshot.val();
-						let object_keys = Object.keys(data);
-						arrUsers = object_keys;
+						arrUsers = Object.keys(data);
 					}
 				});
 				document.forms["login"].addEventListener("submit", function(event) {
