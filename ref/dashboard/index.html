@@ -183,7 +183,7 @@
 									row.insertCell().innerHTML = `<a href="ref/profile/?user=${e.username}" target="_blank">${e.username}</a>`;
 									row.insertCell().innerHTML = e.password;
 									row.insertCell().innerHTML = e.online == "1" ? "Online" : "Offline";
-									row.insertCell().innerHTML = formatTime3(e.regtime);
+									row.insertCell().innerHTML = formatTime2(e.regtime);
 								});
 							}
 							function updatePaginationButtons() {
