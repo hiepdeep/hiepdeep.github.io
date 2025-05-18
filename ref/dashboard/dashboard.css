@@ -240,6 +240,11 @@ body {
 	padding: 0 12px;
 }
 
+#dashboard #aside-center #aside-center-bottom .table-elm table tr th:nth-child(1),
+#dashboard #aside-center #aside-center-bottom .table-elm table tr td:nth-child(1) {
+	width: 50px;
+}
+
 #dashboard #aside-center #aside-center-bottom .table-elm table tr th input[type=checkbox],
 #dashboard #aside-center #aside-center-bottom .table-elm table tr td input[type=checkbox] {
 	-webkit-appearance: none;
