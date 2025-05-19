@@ -164,8 +164,6 @@ body {
 	padding: 12px;
 }
 
-/**/
-
 #body > div #col-right #list-users .widget-body {
 	display: flex;
 	flex-direction: column;
