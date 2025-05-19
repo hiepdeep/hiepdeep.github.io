@@ -147,25 +147,12 @@ body {
 
 #dashboard #aside-center #aside-center-bottom .progress .item {
 	padding: 12px;
-	height: 100%;
 	color: white;
 	font-weight: 500;
 	font-size: 20px;
-}
-
-#dashboard #aside-center #aside-center-bottom .progress .item.html {
-	width: 42.5%;
-	background: #f1672b;
-}
-
-#dashboard #aside-center #aside-center-bottom .progress .item.css {
-	width: 35.8%;
-	background: #f0be25;
-}
-
-#dashboard #aside-center #aside-center-bottom .progress .item.js {
-	width: 21.7%;
-	background: #30a9dc;
+	height: 100%;
+	width: var(--w);
+	background: var(--bg);
 }
 
 #dashboard #aside-center #aside-center-bottom .grid {
