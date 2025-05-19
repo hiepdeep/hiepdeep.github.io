@@ -132,15 +132,15 @@ body {
 	gap: 12px;
 }
 
-#body > div #col-left, #body > div #col-right {
+#body > div #col-left {
+	background: white;
+	width: 100%;
+}
+
+#body > div #col-right {
 	flex-shrink: 0;
 	background: white;
 	width: 300px;
-}
-
-#body > div #col-center {
-	background: white;
-	width: 100%;
 }
 
 #body > div #col-right .widget {
