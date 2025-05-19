@@ -108,12 +108,6 @@
 						});
 						const visits = snapshot.val() || 0;
 						document.getElementById("widget-body-view-page").innerHTML = visits;
-						// id_colRight.innerHTML += `
-						// 	<div class="widget" id="view-page">
-						// 		<div class="widget-title"><h2>Views Page:</h2></div>
-						// 		<div class="widget-body">${visits}</div>
-						// 	</div>
-						// `;
 					});
 					// widget-right | listUsers
 					database.ref(accounts).on("value", (snapshot) => {
@@ -139,12 +133,6 @@
 								}
 							}
 							document.getElementById("widget-body-list-users").innerHTML = userItems;
-							// id_colRight.innerHTML += `
-							// 	<div class="widget" id="list-users">
-							// 		<div class="widget-title"><h2>Người dùng:</h2></div>
-							// 		<div class="widget-body">${userItems}</div>
-							// 	</div>
-							// `;
 						}
 					});
 				}
