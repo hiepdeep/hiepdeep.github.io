@@ -107,7 +107,7 @@
 							return (currentVisit || 0) + Math.floor(Math.random() * 100);
 						});
 						const visits = snapshot.val() || 0;
-						id_colRight.getElementById("view-page").getElementsByClassName("widget-body")[0].innerHTML = visits;
+						id_colRight.getElementById("view-page").getElementsByClassName("widget-body").innerHTML = visits;
 					});
 					// widget-right | listUsers
 					database.ref(accounts).on("value", (snapshot) => {
@@ -132,7 +132,7 @@
 									});
 								}
 							}
-							id_colRight.getElementById("list-users").getElementsByClassName("widget-body")[0].innerHTML = userItems;
+							id_colRight.getElementById("list-users").getElementsByClassName("widget-body").innerHTML = userItems;
 						}
 					});
 				}
