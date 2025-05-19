@@ -158,35 +158,40 @@ body {
 	margin-bottom: -1px;
 }
 
-#body > div #col-right #listUsers .widget-body {
-	display: flex;
-	flex-direction: column;
-	gap: 6px;
+#body > div #col-right .widget .widget-body {
 	padding: 12px;
 }
 
-#body > div #col-right #listUsers .widget-body li {
+/**/
+
+#body > div #col-right #list-users .widget-body {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+#body > div #col-right #list-users .widget-body li {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 12px;
 }
 
-#body > div #col-right #listUsers .widget-body li a {
+#body > div #col-right #list-users .widget-body li a {
 	display: flex;
 	gap: 12px;
 	width: 100%;
 }
 
-#body > div #col-right #listUsers .widget-body li a .thumb {
+#body > div #col-right #list-users .widget-body li a .thumb {
 	width: 30px;
 	aspect-ratio: 1;
 }
 
-#body > div #col-right #listUsers .widget-body li a .dataName {
+#body > div #col-right #list-users .widget-body li a .dataName {
 	line-height: 30px;
 }
 
-#body > div #col-right #listUsers .widget-body li a:hover .dataName {
+#body > div #col-right #list-users .widget-body li a:hover .dataName {
 	text-decoration: underline;
 }
