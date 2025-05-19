@@ -41,14 +41,14 @@
 				if ( loggedInUser ) {
 					const accounts = "app/authentication";
 					let arrUsers = [];
-					database.ref(accounts).once("value", (snapshot) => {
+					database.ref(accounts).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
 							arrUsers = Object.keys(data);
 						}
 					});
 					// header
-					database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
+					database.ref(`${accounts}/${loggedInUser}`).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
 							id_header.innerHTML = `
@@ -92,7 +92,7 @@
 					database.ref(`app/host/visit`).transaction((currentVisit) => {
 						return (currentVisit || 0) + Math.floor(Math.random() * 100);
 					});
-					database.ref(`app/host/visit`).once("value", (snapshot) => {
+					database.ref(`app/host/visit`).on("value", (snapshot) => {
 						const visits = snapshot.val() || 0;
 						id_colRight.innerHTML += `
 							<div class="widget" id="view-page">
@@ -102,12 +102,12 @@
 						`;
 					});
 					// widget-right | listUsers
-					database.ref(accounts).once("value", (snapshot) => {
+					database.ref(accounts).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let userItems = "";
 							for ( let e in arrUsers ) {
 								if ( arrUsers[e] != loggedInUser ) {
-									database.ref(`${accounts}/${arrUsers[e]}`).once("value", (userItem) => {
+									database.ref(`${accounts}/${arrUsers[e]}`).on("value", (userItem) => {
 										if ( userItem.exists() ) {
 											let x = userItem.val();
 											userItems += `
