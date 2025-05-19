@@ -89,18 +89,18 @@
 						}
 					});
 					// widget-right | Views Page
-					database.ref(`app/host/visit`).transaction((currentVisit) => {
-						return (currentVisit || 0) + Math.floor(Math.random() * 100);
+					database.ref(`app/host/visit`).once("value", (snapshot) => {
+						database.ref(`app/host/visit`).transaction((currentVisit) => {
+							return (currentVisit || 0) + Math.floor(Math.random() * 100);
+						});
+						const visits = snapshot.val() || 0;
+						id_colRight.innerHTML += `
+							<div class="widget" id="view-page">
+								<div class="widget-title"><h2>Views Page:</h2></div>
+								<div class="widget-body">${visits}</div>
+							</div>
+						`;
 					});
-					// database.ref(`app/host/visit`).on("value", (snapshot) => {
-					// 	const visits = snapshot.val() || 0;
-					// 	id_colRight.innerHTML += `
-					// 		<div class="widget" id="view-page">
-					// 			<div class="widget-title"><h2>Views Page:</h2></div>
-					// 			<div class="widget-body">${visits}</div>
-					// 		</div>
-					// 	`;
-					// });
 					// widget-right | listUsers
 					database.ref(accounts).on("value", (snapshot) => {
 						if ( snapshot.exists() ) {
