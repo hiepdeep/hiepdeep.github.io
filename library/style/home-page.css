@@ -139,8 +139,10 @@ body {
 
 #body > div #col-right {
 	flex-shrink: 0;
-	background: white;
 	width: 300px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 #body > div #col-right .widget {
