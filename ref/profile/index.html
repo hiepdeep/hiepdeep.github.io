@@ -76,6 +76,7 @@
 					database.ref(`${accounts}/${path_split}`).once("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
+							document.title = `${data.info.lastname} ${data.info.firstname}`;
 							if ( path_split === loggedInUser ) {
 								document.getElementById("body").innerHTML = `
 									<div class="margin-block">
