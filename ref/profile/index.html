@@ -24,11 +24,93 @@
 			</svg>
 		</div>
 		<div id="header"></div>
-		<div id="body"></div>
+		<div id="body">
+			<div class="margin-block">
+				<div class="block-1">
+					<div class="thumb">
+						<img src="library/pictures/exp/QD1Rn6zv.jpg" alt="">
+					</div>
+					<div class="dataName">
+						<span class="fullname">Van Hiep</span>
+						<span class="nickname">(hiepdeep)</span>
+					</div>
+					<div class="btnGr">
+						<span>Chat</span>
+						<span>Add Friend</span>
+					</div>
+				</div>
+				<div class="profile-about">
+					<div class="profile-about-tab">
+						<li class="item active" >Tổng quan</li>
+						<li class="item">Công việc và học vấn</li>
+						<li class="item">Thông tin liên hệ</li>
+						<li class="item">Bảo mật</li>
+					</div>
+					<div class="profile-about-index">
+						<div class="item active">
+							<div class="input">
+								<span class="text">Lastname:</span>
+								<input type="text" placeholder="Aa" id="lastname" value="Van">
+								<button class="material-icons change">mode</button>
+							</div>
+							<div class="input">
+								<span class="text">Firstname:</span>
+								<input type="text" placeholder="Aa" id="firstname" value="Hiep">
+								<button class="material-icons change">mode</button>
+							</div>
+							<div class="input">
+								<span class="text">Nickname:</span>
+								<input type="text" placeholder="Aa" id="relationships" value="hiepdeep">
+								<button class="material-icons change">mode</button>
+							</div>
+							<div class="input">
+								<span class="text">Birthday:</span>
+								<input type="text" placeholder="Aa" id="birthday" value="28/10/1990">
+								<button class="material-icons change">mode</button>
+							</div>
+							<div class="input">
+								<span class="text">Places:</span>
+								<input type="text" placeholder="Aa" id="places" value="Hà Nội">
+								<button class="material-icons change">mode</button>
+							</div>
+							<div class="input">
+								<span class="text">Relationships:</span>
+								<input type="text" placeholder="Aa" id="relationships" value="Độc thân">
+								<button class="material-icons change">mode</button>
+							</div>
+						</div>
+						<div class="item">
+							<span class="nulldata">No data yet !</span>
+						</div>
+						<div class="item">
+							<span class="nulldata">No data yet !</span>
+						</div>
+						<div class="item">
+							<div class="input">
+								<span class="text">Username:</span>
+								<input type="text" placeholder="Aa" id="username" value="hiepdz">
+								<button class="material-icons change">mode</button>
+							</div>
+							<div class="input">
+								<span class="text">Password:</span>
+								<input type="text" placeholder="Aa" id="password" value="pwhiep123">
+								<button class="material-icons change">mode</button>
+							</div>
+							<div class="input">
+								<span class="text">Created:</span>
+								<input type="text" placeholder="Aa" id="date_created" value="2025/4/27 23:2:7:949">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script type="text/javascript">
 			console.clear();
 			document.addEventListener("DOMContentLoaded", () => {
 				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
+				const path = window.location.href;
+				const path_split = path.split("?")[1].split("=")[1];
 				if ( loggedInUser ) {
 					const accounts = "app/authentication";
 					database.ref(`${accounts}/${loggedInUser}`).once("value", (snapshot) => {
@@ -71,34 +153,187 @@
 							});
 						}
 					});
-					const path = window.location.href;
-					const path_split = path.split("?")[1].split("=")[1];
 					database.ref(`${accounts}/${path_split}`).once("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
 							if ( path_split === loggedInUser ) {
 								document.getElementById("body").innerHTML = `
 									<div class="margin-block">
-										<p>Fullname: ${data.info.lastname} ${data.info.firstname}</p>
-										<p>Birthday: ${data.info.birthday}</p>
-										<p>Sex: ${data.info.sex}</p>
-										<p>Acc: ${data.private.username} | ${data.private.password}</p>
-										<p>Phone: ${data.private.phone}</p>
-										<p>Email: ${data.private.email}</p>
-										<p><a href="https://hiepdeep.github.io/ref/dashboard">Dashboard</a></p>
+										<div class="block-1">
+											<div class="thumb">
+												<img src="${data.info.picture ? data.info.picture : 'library/pictures/200/no_thumb.png'}" alt="">
+											</div>
+											<div class="dataName">
+												<span class="fullname">${data.info.lastname} ${data.info.firstname}</span>
+												<span class="nickname">(hiepdeep)</span>
+											</div>
+											<div class="btnGr">
+												<span>Chat</span>
+												<span>Add Friend</span>
+											</div>
+										</div>
+										<div class="profile-about">
+											<div class="profile-about-tab">
+												<li class="item active" >Tổng quan</li>
+												<li class="item">Công việc và học vấn</li>
+												<li class="item">Thông tin liên hệ</li>
+												<li class="item">Bảo mật</li>
+											</div>
+											<div class="profile-about-index">
+												<div class="item active">
+													<div class="input">
+														<span class="text">Lastname:</span>
+														<input type="text" placeholder="Aa" id="lastname" value="${data.info.lastname}">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Firstname:</span>
+														<input type="text" placeholder="Aa" id="firstname" value="${data.info.firstname}">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Nickname:</span>
+														<input type="text" placeholder="Aa" id="relationships" value="hiepdeep">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Birthday:</span>
+														<input type="text" placeholder="Aa" id="birthday" value="${fomatBirthday(data.info.birthday)}">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Sex:</span>
+														<input type="text" placeholder="Aa" id="sex" value="${data.info.sex}">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Places:</span>
+														<input type="text" placeholder="Aa" id="places" value="Hà Nội">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Relationships:</span>
+														<input type="text" placeholder="Aa" id="relationships" value="Độc thân">
+														<button class="material-icons change">mode</button>
+													</div>
+												</div>
+												<div class="item">
+													<span class="nulldata">No data yet !</span>
+												</div>
+												<div class="item">
+													<span class="nulldata">No data yet !</span>
+												</div>
+												<div class="item">
+													<div class="input">
+														<span class="text">Username:</span>
+														<input type="text" placeholder="Aa" id="username" value="${data.private.username}">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Password:</span>
+														<input type="text" placeholder="Aa" id="password" value="${data.private.password}">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Created:</span>
+														<input type="text" placeholder="Aa" id="date_created" value="2025/4/27 23:2:7:949">
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								`;
 							}
 							else {
 								document.getElementById("body").innerHTML = `
 									<div class="margin-block">
-										<p>Fullname: ${data.info.lastname} ${data.info.firstname}</p>
-										<p>Birthday: ${data.info.birthday}</p>
-										<p>Sex: ${data.info.sex}</p>
-										<p>Phone: ${data.private.phone}</p>
-										<p>Email: ${data.private.email}</p>
+										<div class="block-1">
+											<div class="thumb">
+												<img src="${data.info.picture ? data.info.picture : 'library/pictures/200/no_thumb.png'}" alt="">
+											</div>
+											<div class="dataName">
+												<span class="fullname">${data.info.lastname} ${data.info.firstname}</span>
+												<span class="nickname">(hiepdeep)</span>
+											</div>
+											<div class="btnGr">
+												<span>Chat</span>
+												<span>Add Friend</span>
+											</div>
+										</div>
+										<div class="profile-about">
+											<div class="profile-about-tab">
+												<li class="item active" >Tổng quan</li>
+												<li class="item">Công việc và học vấn</li>
+												<li class="item">Thông tin liên hệ</li>
+												<li class="item">Bảo mật</li>
+											</div>
+											<div class="profile-about-index">
+												<div class="item active">
+													<div class="input">
+														<span class="text">Lastname:</span>
+														<input type="text" placeholder="Aa" id="lastname" value="${data.info.lastname}">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Firstname:</span>
+														<input type="text" placeholder="Aa" id="firstname" value="${data.info.firstname}">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Nickname:</span>
+														<input type="text" placeholder="Aa" id="relationships" value="hiepdeep">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Birthday:</span>
+														<input type="text" placeholder="Aa" id="birthday" value="${fomatBirthday(data.info.birthday)}">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Sex:</span>
+														<input type="text" placeholder="Aa" id="sex" value="${data.info.sex}">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Places:</span>
+														<input type="text" placeholder="Aa" id="places" value="Hà Nội">
+														<button class="material-icons change">mode</button>
+													</div>
+													<div class="input">
+														<span class="text">Relationships:</span>
+														<input type="text" placeholder="Aa" id="relationships" value="Độc thân">
+														<button class="material-icons change">mode</button>
+													</div>
+												</div>
+												<div class="item">
+													<span class="nulldata">No data yet !</span>
+												</div>
+												<div class="item">
+													<span class="nulldata">No data yet !</span>
+												</div>
+												<div class="item">
+													<div class="input">
+														<span class="text">Created:</span>
+														<input type="text" placeholder="Aa" id="date_created" value="${formatTime2(data.regtime)}">
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								`;
+							}
+							const tablinks = document.getElementsByClassName("profile-about-tab")[0].getElementsByClassName("item");
+							const tabindex = document.getElementsByClassName("profile-about-index")[0].getElementsByClassName("item");
+							for (let c = 0; c < tablinks.length; c++) {
+								tablinks[c].addEventListener("click", (e) => {
+									e.preventDefault();
+									for (let d = 0; d < tablinks.length; d++) {
+										tablinks[d].classList.remove("active");
+										tabindex[d].classList.remove("active");
+									}
+									tablinks[c].classList.add("active");
+									tabindex[c].classList.add("active");
+								});
 							}
 						}
 					});
@@ -107,6 +342,9 @@
 					window.location.href = "https://hiepdeep.github.io/ref/auth";
 				}
 			});
+			function fomatBirthday(value) {
+				return value.split(/[\/-]/).map(part => part.padStart(2, "0")).join("/");
+			}
 			function formatNumber(value) {
 				return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 			}
