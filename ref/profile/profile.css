@@ -145,6 +145,7 @@ body {
 #body>div .block-1 .thumb {
 	width: 96px;
 	aspect-ratio: 1;
+	position: relative;
 }
 
 #body>div .block-1 .thumb:hover #change-thumb {
@@ -153,12 +154,12 @@ body {
 
 #body>div .block-1 .thumb #change-thumb {
 	display: none;
+	position: absolute;
 	border: 0;
 	background: white;
 	height: 24px;
 	aspect-ratio: 1;
 	color: #e9e9e9;
-	position: absolute;
 	top: 0;
 	right: 0;
 }
