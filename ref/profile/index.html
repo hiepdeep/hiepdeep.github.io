@@ -76,6 +76,7 @@
 					database.ref(`${accounts}/${path_split}`).once("value", (snapshot) => {
 						if ( snapshot.exists() ) {
 							let data = snapshot.val();
+							changeURLPushState(`https://hiepdeep.github.io/${path_split}`, `${data.info.lastname} ${data.info.firstname}`);
 							document.title = `${data.info.lastname} ${data.info.firstname}`;
 							if ( path_split === loggedInUser ) {
 								document.getElementById("body").innerHTML = `
@@ -261,6 +262,10 @@
 					window.location.href = "https://hiepdeep.github.io/ref/auth";
 				}
 			});
+			function changeURLPushState(newURL, pageTitle = '') {\
+				history.pushState({}, pageTitle, newURL);
+				console.log("URL đã được thay đổi thành (pushState): " + newURL);
+			}
 			function fomatBirthday(value) {
 				return value.split(/[\/-]/).map(part => part.padStart(2, "0")).join("/");
 			}
