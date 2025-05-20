@@ -261,7 +261,7 @@
 					window.location.href = "https://hiepdeep.github.io/ref/auth";
 				}
 			});
-			function changeURLPushState(newURL, pageTitle = '') {\
+			function changeURLPushState(newURL, pageTitle = "") {
 				history.pushState({}, pageTitle, newURL);
 				console.log("URL đã được thay đổi thành (pushState): " + newURL);
 			}
