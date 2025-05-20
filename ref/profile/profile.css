@@ -147,6 +147,26 @@ body {
 	aspect-ratio: 1;
 }
 
+#body>div .block-1 .thumb:hover #change-thumb {
+	display: block;
+}
+
+#body>div .block-1 .thumb #change-thumb {
+	display: none;
+	border: 0;
+	background: white;
+	height: 24px;
+	aspect-ratio: 1;
+	color: #e9e9e9;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#body>div .block-1 .thumb #change-thumb:hover {
+	color: #9e9e9e;
+}
+
 #body>div .block-1 .dataName span {
 	display: inline-block;
 	line-height: 24px;
