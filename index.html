@@ -53,9 +53,9 @@
 		<script type="text/javascript">
 			console.clear();
 			const path = window.location.href;
-			if ( path.match(/(\?profile\=[a-zA-Z0-9-_]+)/g) ) {
-				let path_split = path.match(/(\?profile\=[a-zA-Z0-9-_]+)/g);
-				path_split = path_split[0].split("=")[1];
+			let path_profile = path.match(/(\?profile\=[a-zA-Z0-9-_]+)/g);
+			if ( path_profile ) {
+				let path_split = path_profile[0].split("=")[1];
 				window.location.href = `https://hiepdeep.github.io/ref/profile/?user=${path_split}`;
 			}
 			document.addEventListener("DOMContentLoaded", () => {
