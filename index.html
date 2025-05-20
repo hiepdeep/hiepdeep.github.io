@@ -53,8 +53,11 @@
 		<script type="text/javascript">
 			console.clear();
 			const path = window.location.href;
-			const path_split = path.split("/?profile=")[1];
-			window.location.href = `https://hiepdeep.github.io/ref/profile/?user=${path_split}`;
+			if ( path.match(/(\?profile\=[a-zA-Z0-9-_]+)/g) ) {
+				let path_split = path.match(/(\?profile\=[a-zA-Z0-9-_]+)/g);
+				path_split = path_split[0].split("=")[1];
+				window.location.href = `https://hiepdeep.github.io/ref/profile/?user=${path_split}`;
+			}
 			document.addEventListener("DOMContentLoaded", () => {
 				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 				const id_header = document.getElementById("header")
