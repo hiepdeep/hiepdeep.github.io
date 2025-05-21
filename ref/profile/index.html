@@ -102,37 +102,37 @@
 													<div class="input">
 														<span class="text">Lastname:</span>
 														<input type="text" placeholder="Aa" id="lastname" value="${data.info.lastname}">
-														<button class="material-icons change">mode</button>
+														<button class="material-icons change" data-change="lastname">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Firstname:</span>
 														<input type="text" placeholder="Aa" id="firstname" value="${data.info.firstname}">
-														<button class="material-icons change">mode</button>
+														<button class="material-icons change" data-change="firstname">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Nickname:</span>
 														<input type="text" placeholder="Aa" id="nickname" value="">
-														<button class="material-icons change">mode</button>
+														<button class="material-icons change" data-change="nickname">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Birthday:</span>
 														<input type="text" placeholder="Aa" id="birthday" value="${fomatBirthday(data.info.birthday)}">
-														<button class="material-icons change">mode</button>
+														<button class="material-icons change" data-change="birthday">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Sex:</span>
 														<input type="text" placeholder="Aa" id="sex" value="${data.info.sex}">
-														<button class="material-icons change">mode</button>
+														<button class="material-icons change" data-change="sex">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Places:</span>
 														<input type="text" placeholder="Aa" id="places" value="">
-														<button class="material-icons change">mode</button>
+														<button class="material-icons change" data-change="places">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Relationships:</span>
 														<input type="text" placeholder="Aa" id="relationships" value="">
-														<button class="material-icons change">mode</button>
+														<button class="material-icons change" data-change="relationships">mode</button>
 													</div>
 												</div>
 												<div class="item">
@@ -145,12 +145,12 @@
 													<div class="input">
 														<span class="text">Username:</span>
 														<input type="text" placeholder="Aa" id="username" value="${data.private.username}">
-														<button class="material-icons change">mode</button>
+														<button class="material-icons change" data-change="username">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Password:</span>
 														<input type="text" placeholder="Aa" id="password" value="${data.private.password}">
-														<button class="material-icons change">mode</button>
+														<button class="material-icons change" data-change="password">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Created:</span>
@@ -191,37 +191,37 @@
 													<div class="input">
 														<span class="text">Lastname:</span>
 														<input type="text" placeholder="Aa" id="lastname" value="${data.info.lastname}">
-														<button class="material-icons change" id="change-birthday">mode</button>
+														<button class="material-icons">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Firstname:</span>
 														<input type="text" placeholder="Aa" id="firstname" value="${data.info.firstname}">
-														<button class="material-icons change" id="change-birthday">mode</button>
+														<button class="material-icons">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Nickname:</span>
 														<input type="text" placeholder="Aa" id="nickname" value="">
-														<button class="material-icons change" id="change-birthday">mode</button>
+														<button class="material-icons">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Birthday:</span>
 														<input type="text" placeholder="Aa" id="birthday" value="${fomatBirthday(data.info.birthday)}">
-														<button class="material-icons change" id="change-birthday">mode</button>
+														<button class="material-icons">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Sex:</span>
 														<input type="text" placeholder="Aa" id="sex" value="${data.info.sex}">
-														<button class="material-icons change" id="change-birthday">mode</button>
+														<button class="material-icons">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Places:</span>
 														<input type="text" placeholder="Aa" id="places" value="">
-														<button class="material-icons change" id="change-birthday">mode</button>
+														<button class="material-icons">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Relationships:</span>
 														<input type="text" placeholder="Aa" id="relationships" value="">
-														<button class="material-icons change" id="change-birthday">>mode</button>
+														<button class="material-icons">mode</button>
 													</div>
 												</div>
 												<div class="item">
@@ -252,6 +252,44 @@
 									}
 									tablinks[c].classList.add("active");
 									tabindex[c].classList.add("active");
+								});
+							}
+							let clss_change = document.getElementsByClassName("change");
+							for (var i = 0; i < clss_change.length; i++) {
+								clss_change[i].addEventListener("click", (e) => {
+									let ch = clss_change[i].dataset.change;
+									if ( ch === "lastname" ) {
+										let $ch = document.getElementById(ch).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/lastname`).set($ch);
+									}
+									if ( ch === "firstname" ) {
+										let $ch = document.getElementById(ch).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/firstname`).set($ch);
+									}
+									if ( ch === "nickname" ) {
+										let $ch = document.getElementById(ch).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/nickname`).set($ch);
+									}
+									if ( ch === "birthday" ) {
+										let $ch = document.getElementById(ch).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/birthday`).set($ch);
+									}
+									if ( ch === "sex" ) {
+										let $ch = document.getElementById(ch).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/sex`).set($ch);
+									}
+									if ( ch === "places" ) {
+										let $ch = document.getElementById(ch).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/places`).set($ch);
+									}
+									if ( ch === "relationships" ) {
+										let $ch = document.getElementById(ch).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/relationships`).set($ch);
+									}
+									if ( ch === "password" ) {
+										let $ch = document.getElementById(ch).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/private/password`).set($ch);
+									}
 								});
 							}
 						}
