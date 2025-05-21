@@ -145,7 +145,7 @@
 													<div class="input">
 														<span class="text">Username:</span>
 														<input type="text" placeholder="Aa" id="username" value="${data.private.username}">
-														<button class="material-icons change" data-change="username">mode</button>
+														<button class="material-icons">mode</button>
 													</div>
 													<div class="input">
 														<span class="text">Password:</span>
@@ -247,52 +247,55 @@
 									tabindex[c].classList.add("active");
 								});
 							}
-							let clss_change = document.getElementsByClassName("change");
-							for (var i = 0; i < clss_change.length; i++) {
-								clss_change[i].addEventListener("click", (e) => {
-									let ch = clss_change[i].dataset.change;
-									if ( ch === "lastname" ) {
-										let $ch = document.getElementById(ch).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/lastname`).set($ch);
-										alert(`Đã đổi lastname thành: ${$ch}.`);
+							const changeButtons = document.querySelectorAll("button[data-change]");
+							changeButtons.forEach(button => {
+								button.addEventListener("click", (event) => {
+									const targetInputId = event.currentTarget.dataset.change;
+									const targetInput = document.getElementById(targetInputId).id;
+									console.log( targetInput );
+
+									if ( targetInput === "lastname" ) {
+										let $targetInput = document.getElementById(targetInput).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/lastname`).set($targetInput);
+										alert(`Đã đổi lastname thành: ${$targetInput}.`);
 									}
-									if ( ch === "firstname" ) {
-										let $ch = document.getElementById(ch).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/firstname`).set($ch);
-										alert(`Đã đổi firstname thành: ${$ch}.`);
+									if ( targetInput === "firstname" ) {
+										let $targetInput = document.getElementById(targetInput).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/firstname`).set($targetInput);
+										alert(`Đã đổi firstname thành: ${$targetInput}.`);
 									}
-									if ( ch === "nickname" ) {
-										let $ch = document.getElementById(ch).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/nickname`).set($ch);
-										alert(`Đã đổi nickname thành: ${$ch}.`);
+									if ( targetInput === "nickname" ) {
+										let $targetInput = document.getElementById(targetInput).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/nickname`).set($targetInput);
+										alert(`Đã đổi nickname thành: ${$targetInput}.`);
 									}
-									if ( ch === "birthday" ) {
-										let $ch = document.getElementById(ch).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/birthday`).set($ch);
-										alert(`Đã đổi birthday thành: ${$ch}.`);
+									if ( targetInput === "birthday" ) {
+										let $targetInput = document.getElementById(targetInput).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/birthday`).set($targetInput);
+										alert(`Đã đổi birthday thành: ${$targetInput}.`);
 									}
-									if ( ch === "sex" ) {
-										let $ch = document.getElementById(ch).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/sex`).set($ch);
-										alert(`Đã đổi sex thành: ${$ch}.`);
+									if ( targetInput === "sex" ) {
+										let $targetInput = document.getElementById(targetInput).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/sex`).set($targetInput);
+										alert(`Đã đổi sex thành: ${$targetInput}.`);
 									}
-									if ( ch === "places" ) {
-										let $ch = document.getElementById(ch).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/places`).set($ch);
-										alert(`Đã đổi places thành: ${$ch}.`);
+									if ( targetInput === "places" ) {
+										let $targetInput = document.getElementById(targetInput).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/places`).set($targetInput);
+										alert(`Đã đổi places thành: ${$targetInput}.`);
 									}
-									if ( ch === "relationships" ) {
-										let $ch = document.getElementById(ch).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/relationships`).set($ch);
-										alert(`Đã đổi relationships thành: ${$ch}.`);
+									if ( targetInput === "relationships" ) {
+										let $targetInput = document.getElementById(targetInput).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/info/relationships`).set($targetInput);
+										alert(`Đã đổi relationships thành: ${$targetInput}.`);
 									}
-									if ( ch === "password" ) {
-										let $ch = document.getElementById(ch).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/private/password`).set($ch);
-										alert(`Đã đổi password thành: ${$ch}.`);
+									if ( targetInput === "password" ) {
+										let $targetInput = document.getElementById(targetInput).value.trim();
+										database.ref(`${accounts}/${loggedInUser}/private/password`).set($targetInput);
+										alert(`Đã đổi password thành: ${$targetInput}.`);
 									}
 								});
-							}
+							});
 						}
 					});
 				}
