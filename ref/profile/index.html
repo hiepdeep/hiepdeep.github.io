@@ -252,48 +252,9 @@
 								button.addEventListener("click", (event) => {
 									const targetInputId = event.currentTarget.dataset.change;
 									const targetInput = document.getElementById(targetInputId).id;
-									console.log( targetInput );
-
-									if ( targetInput === "lastname" ) {
-										let $targetInput = document.getElementById(targetInput).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/lastname`).set($targetInput);
-										alert(`Đã đổi lastname thành: ${$targetInput}.`);
-									}
-									if ( targetInput === "firstname" ) {
-										let $targetInput = document.getElementById(targetInput).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/firstname`).set($targetInput);
-										alert(`Đã đổi firstname thành: ${$targetInput}.`);
-									}
-									if ( targetInput === "nickname" ) {
-										let $targetInput = document.getElementById(targetInput).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/nickname`).set($targetInput);
-										alert(`Đã đổi nickname thành: ${$targetInput}.`);
-									}
-									if ( targetInput === "birthday" ) {
-										let $targetInput = document.getElementById(targetInput).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/birthday`).set($targetInput);
-										alert(`Đã đổi birthday thành: ${$targetInput}.`);
-									}
-									if ( targetInput === "sex" ) {
-										let $targetInput = document.getElementById(targetInput).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/sex`).set($targetInput);
-										alert(`Đã đổi sex thành: ${$targetInput}.`);
-									}
-									if ( targetInput === "places" ) {
-										let $targetInput = document.getElementById(targetInput).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/places`).set($targetInput);
-										alert(`Đã đổi places thành: ${$targetInput}.`);
-									}
-									if ( targetInput === "relationships" ) {
-										let $targetInput = document.getElementById(targetInput).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/info/relationships`).set($targetInput);
-										alert(`Đã đổi relationships thành: ${$targetInput}.`);
-									}
-									if ( targetInput === "password" ) {
-										let $targetInput = document.getElementById(targetInput).value.trim();
-										database.ref(`${accounts}/${loggedInUser}/private/password`).set($targetInput);
-										alert(`Đã đổi password thành: ${$targetInput}.`);
-									}
+									let $targetInput = document.getElementById(targetInput).value.trim();
+									database.ref(`${accounts}/${loggedInUser}/info/lastname`).set($targetInput);
+									alert(`Đã đổi ${targetInput} thành: ${$targetInput}.`);
 								});
 							});
 						}
