@@ -228,12 +228,20 @@ body {
 	padding: 12px;
 }
 
+#body>div .profile-about .profile-about-index .item.active {
+	display: block;
+}
+
 #body>div .profile-about .profile-about-index .item .input {
 	display: flex;
 }
 
 #body>div .profile-about .profile-about-index .item .input:hover input {
 	border-color: #9e9e9e;
+}
+
+#body>div .profile-about .profile-about-index .item .input:hover .change {
+	display: block;
 }
 
 #body>div .profile-about .profile-about-index .item .input .text {
