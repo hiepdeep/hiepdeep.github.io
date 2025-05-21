@@ -258,3 +258,12 @@ body {
 	border-bottom: 1px solid #e9e9e9;
 	width: 100%;
 }
+
+#body>div .profile-about .btn {
+	height: 50px;
+	background: green;
+}
+
+#body>div .profile-about .btn #save-change {
+	border: 0;
+}
