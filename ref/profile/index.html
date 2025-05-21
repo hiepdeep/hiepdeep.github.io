@@ -158,6 +158,9 @@
 													</div>
 												</div>
 											</div>
+											<div class="btn">
+												<div id="save-change">Save</div>
+											</div>
 										</div>
 									</div>
 								`;
@@ -247,15 +250,30 @@
 									tabindex[c].classList.add("active");
 								});
 							}
-							const changeButtons = document.querySelectorAll("button[data-change]");
-							changeButtons.forEach(button => {
-								button.addEventListener("click", (event) => {
-									const targetInputId = event.currentTarget.dataset.change;
-									const targetInput = document.getElementById(targetInputId).id;
-									let $targetInput = document.getElementById(targetInput).value.trim();
-									database.ref(`${accounts}/${loggedInUser}/info/lastname`).set($targetInput);
-									alert(`Đã đổi ${targetInput} thành: ${$targetInput}.`);
-								});
+							const saveChange = document.getElementById("save-change");
+							saveChange.addEventListener("submit", function(event) {
+								event.preventDefault();
+								let lname = document.getElementById("lastname").value.trim();
+								let fname = document.getElementById("firstname").value.trim();
+								let nname = document.getElementById("nickname").value.trim();
+								let birthday = document.getElementById("birthday").value.trim();
+								let sex = document.getElementById("sex").value.trim();
+								let places = document.getElementById("places").value.trim();
+								let relationships = document.getElementById("relationships").value.trim();
+								let password = document.getElementById("password").value.trim();
+								if ( lname.value.trim() && fname.value.trim() && birthday.value.trim() && sex.value.trim() && username.value.trim() && password.value.trim() ) {
+									database.ref(`${accounts}/${loggedInUser}/info/lastname`).set(lname);
+									database.ref(`${accounts}/${loggedInUser}/info/firstname`).set(fname);
+									database.ref(`${accounts}/${loggedInUser}/info/nickname`).set(nname);
+									database.ref(`${accounts}/${loggedInUser}/info/birthday`).set(birthday);
+									database.ref(`${accounts}/${loggedInUser}/info/sex`).set(sex);
+									database.ref(`${accounts}/${loggedInUser}/info/lastname`).set(places);
+									database.ref(`${accounts}/${loggedInUser}/info/lastname`).set(relationships);
+									database.ref(`${accounts}/${loggedInUser}/private/password`).set(password);
+								}
+								else {
+									alert(`Vui lòng nhập đầy đủ thong tin.`);
+								}
 							});
 						}
 					});
