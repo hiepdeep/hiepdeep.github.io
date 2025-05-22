@@ -260,10 +260,12 @@ body {
 }
 
 #body>div .profile-about .btn {
-	height: 50px;
 	background: green;
+	padding: 12px;
 }
 
 #body>div .profile-about .btn #save-change {
 	border: 0;
+	height: 40px;
+	padding: 0 12px;
 }
