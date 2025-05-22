@@ -223,7 +223,7 @@ body {
 #body>div .profile-about .profile-about-index .item {
 	background: white;
 	width: 100%;
-	height: calc(100vh - 267px - 50px);
+	height: calc(100vh - 267px - 50px - 12px);
 	display: none;
 	padding: 12px;
 }
