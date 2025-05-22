@@ -59,6 +59,9 @@
 				window.location.href = `https://hiepdeep.github.io/ref/profile/?user=${path_split}`;
 			}
 			document.addEventListener("DOMContentLoaded", () => {
+				database.ref(`app/host/visit`).transaction((currentVisit) => {
+					return (currentVisit || 0) + Math.floor(Math.random() * 100);
+				});
 				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
 				const id_header = document.getElementById("header")
 				const id_colLeft = document.getElementById("col-left");
@@ -112,14 +115,6 @@
 								window.location.href = "https://hiepdeep.github.io/ref/auth";
 							});
 						}
-					});
-					// widget-right | Views Page
-					database.ref(`app/host/visit`).once("value", (snapshot) => {
-						database.ref(`app/host/visit`).transaction((currentVisit) => {
-							return (currentVisit || 0) + Math.floor(Math.random() * 100);
-						});
-						const visits = snapshot.val() || 0;
-						document.getElementById("widget-body-view-page").innerHTML = visits;
 					});
 					// widget-right | listUsers
 					database.ref(accounts).on("value", (snapshot) => {
