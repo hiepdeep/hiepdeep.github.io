@@ -15,8 +15,117 @@
 		<script src="library/script/config-firebase.js"></script>
 		<script src="library/script/loading.js"></script>
 		<link rel="stylesheet" href="library/style/oneforall.css">
-		<link rel="stylesheet" href="w3/w3.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+		<style type="text/css">
+			* {
+				font: 14px "Bai Jamjuree", sans-serif;
+				letter-spacing: 0.05em;
+				color: #444;
+			}
+			body {
+				background: #e9e9e9;
+				display: flex;
+				flex-direction: column;
+			}
+			.margin-block {
+				width: 100%;
+				max-width: 1000px;
+				margin: auto;
+				padding: 0 12px;
+			}
+			#header {
+				background: white;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+			}
+			#header>div {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 12px;
+			}
+			#header>div .header-left .logo {
+				height: 24px;
+			}
+			#header>div .header-right {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
+			#header>div .header-right .nav-right {
+				display: flex;
+				gap: 12px;
+			}
+			#header>div .header-right .nav-right a {
+				color: #9e9e9e;
+				line-height: 44px;
+				transition: 0.1s;
+			}
+			#header>div .header-right .nav-right a:nth-child(1),
+			#header>div .header-right .nav-right a:hover {
+				color: #444;
+			}
+			#body {
+				margin-top: calc(68px + 12px);
+			}
+			#body>div {
+				display: flex;
+				gap: 12px;
+			}
+			#body>div .col-left {
+				flex-shrink: 0;
+				background: white;
+				width: 300px;
+				height: calc(100vh - 68px - 12px);
+				padding: 12px;
+			}
+			#body>div .col-left a {
+				display: block;
+			}
+			#body>div .col-right {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+				height: calc(100vh - 68px - 12px);
+				overflow-y: scroll;
+			}
+			#body>div .col-right::-webkit-scrollbar {
+				display: none;
+			}
+			#body>div .col-right .block {
+				background: #fff;
+				padding: 12px;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
+			#body>div .col-right .block .line-title {
+				font-size: 24px;
+				font-weight: bold;
+			}
+			#body>div .col-right .block .line-text {
+				font-size: 14px;
+			}
+			#body>div .col-right .block .line-text code {
+				font-family: "Consolas", monospace;
+				background: #ddd;
+				padding: 0 2px;
+			}
+			#body>div .col-right .block pre {
+				width: 100%;
+			}
+			#body>div .col-right .block pre code {
+				tab-size: 4;
+				overflow-x: scroll;
+				font-family: "Consolas", monospace;
+			}
+			#body>div .col-right .block pre code * {
+				font-family: "Consolas", monospace;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="preloader">
