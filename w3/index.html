@@ -45,25 +45,35 @@
 				align-items: center;
 				padding: 12px;
 			}
+			#header>div .header-left {
+				display: flex;
+				align-items: center;
+				gap: 24px;
+			}
 			#header>div .header-left .logo {
 				height: 24px;
 			}
-			#header>div .header-right {
-				display: flex;
-				align-items: center;
-				gap: 12px;
-			}
-			#header>div .header-right .nav-right {
+			#header>div .header-left .nav-left {
 				display: flex;
 				gap: 12px;
 			}
-			#header>div .header-right .nav-right a {
+			#header>div .header-left .nav-left a {
 				color: #9e9e9e;
 				line-height: 44px;
 				transition: 0.1s;
+				position: relative;
 			}
-			#header>div .header-right .nav-right a:nth-child(4),
-			#header>div .header-right .nav-right a:hover {
+			#header>div .header-left .nav-left a:nth-child(3):before {
+				content: "";
+				position: absolute;
+				background: #444;
+				width: 100%;
+				height: 1px;
+				left: 0;
+				bottom: 0;
+			}
+			#header>div .header-left .nav-left a:nth-child(3),
+			#header>div .header-left .nav-left a:hover {
 				color: #444;
 			}
 			#body {
@@ -155,10 +165,7 @@
 							<img src="library/pictures/svg/codelo-v2.svg" alt="">
 						</a>
 					</div>
-				</div>
-				<div class="header-right">
-					<div class="nav-right">
-						<a href="w3">Home</a>
+					<div class="nav-left">
 						<a href="w3">HTML</a>
 						<a href="w3">CSS</a>
 						<a href="w3">Javascript</a>
