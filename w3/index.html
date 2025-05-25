@@ -46,8 +46,90 @@
 		</div>
 		<div id="body">
 			<div class="margin-block">
-				<div class="col-left"></div>
+				<div class="col-left">
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+					<a href=""></a>
+				</div>
 				<div class="col-right">
+					<div class="block">
+						<pre>
+							<code class="javascript">
+								document.getElementById("id");
+								document.getElementsByClassName("class");
+								// innerHTML | innerText | textContent;
+							</code>
+						</pre>
+					</div>
+					<div class="block">
+						<div class="line-title">Mảng sắp xếp JavaScript</div>
+						<div class="line-text">Bằng cách kết hợp <code>sort()</code> và <code>reverse()</code>, bạn có thể sắp xếp một mảng theo thứ tự giảm dần</div>
+						<pre>
+							<code class="javascript">
+								const fruits = ["Banana", "Orange", "Apple", "Mango"];
+								fruits.sort(); // Apple,Banana,Mango,Orange
+								fruits.reverse(); // Mango,Apple,Orange,Banana
+							</code>
+						</pre>
+						<div class="line-text">Hàm <code>sort()</code> sắp xếp các giá trị dưới dạng chuỗi</div>
+						<pre>
+							<code class="javascript">
+								const points = [40, 100, 1, 5, 25, 10];
+								points.sort(function(a, b){return a - b}); // 1,5,10,25,40,100
+								points.sort(function(a, b){return b - a}); // 100,40,25,10,5,1
+							</code>
+						</pre>
+						<div class="line-text">Sử dụng <code>Math.min.apply</code> để tìm số nhỏ nhất trong một mảng</div>
+						<div class="line-text">Hàm <code>Math.min.apply(null, [1, 2, 3])</code> tương đương với <code>Math.min(1, 2, 3)</code></div>
+						<pre>
+							<code class="javascript">
+								const points = [40, 100, 1, 5, 25, 10];
+								function myArrayMin(arr) {
+									return Math.min.apply(null, arr);
+								}
+								myArrayMin(points); // 1
+							</code>
+						</pre>
+						<div class="line-text">Sử dụng <code>Math.max.apply</code> để tìm số lớn nhất trong một mảng</div>
+						<div class="line-text">Hàm <code>Math.max.apply(null, [1, 2, 3])</code> tương đương với <code>Math.max(1, 2, 3)</code></div>
+						<pre>
+							<code class="javascript">
+								const points = [40, 100, 1, 5, 25, 10];
+								function myArrayMax(arr) {
+									return Math.max.apply(null, arr);
+								}
+								myArrayMax(points); // 100
+							</code>
+						</pre>
+					</div>
+					<div class="block">
+						<pre>
+							<code class="javascript">
+								const person = {
+									id: 5566,
+									firstName: "John",
+									lastName: "Doe",
+									fullName: function() {
+										return this.firstName + " " + this.lastName;
+									},
+									username: function() {
+										return (this.firstName + " " + this.lastName).toUpperCase();
+									}
+								};
+								const x = Object.keys(person);
+								const x = Object.values(person);
+								const x = Object.entries(person);
+								const x = JSON.stringify(person);
+							</code>
+						</pre>
+					</div>
 					<div class="block">
 						<div class="line-title" id="break-continue">JavaScript Break and Continue</div>
 						<div class="line-text">Câu lệnh <code>break</code> "nhảy ra" của một vòng lặp.</div>

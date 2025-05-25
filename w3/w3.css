@@ -75,7 +75,7 @@ body {
 	flex-shrink: 0;
 	background: white;
 	width: 240px;
-	height: calc(100vh - 68px - 24px);
+	height: calc(100vh - 68px - 12px);
 }
 
 #body>div .col-right {
@@ -83,6 +83,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+	height: calc(100vh - 68px - 12px);
+	overflow-y: scroll;
 }
 
 #body>div .col-right .block {
@@ -113,6 +115,11 @@ body {
 }
 
 #body>div .col-right .block pre code {
-	font-family: "Consolas", monospace;
 	tab-size: 4;
+	overflow-x: scroll;
+	font-family: "Consolas", monospace;
+}
+
+#body>div .col-right .block pre code * {
+	font-family: "Consolas", monospace;
 }
