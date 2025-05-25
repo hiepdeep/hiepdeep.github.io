@@ -17,6 +17,16 @@
 		<link rel="stylesheet" href="library/style/oneforall.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
 		<style type="text/css">
+			::-webkit-scrollbar {
+				width: 6px;
+				height: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: #282c34;
+			}
+			::-webkit-scrollbar-thumb {
+				background: #9E9E9E;
+			}
 			* {
 				font: 14px "Bai Jamjuree", sans-serif;
 				letter-spacing: 0.05em;
@@ -83,6 +93,7 @@
 			}
 			#body>div .col-left a {
 				display: block;
+				font-family: "Consolas", monospace;
 			}
 			#body>div .col-right {
 				width: 100%;
@@ -158,14 +169,55 @@
 				<div class="col-left"></div>
 				<div class="col-right">
 					<div class="block">
+						<div class="line-title">JavaScript HTML DOM</div>
+						<div class="line-text">Tìm kiếm các phần tử HTML</div>
 						<pre>
 							<code class="javascript">
-								document.getElementById("id");
-								document.getElementsByClassName("class");
-								// elmnt.innerHTML;
-								// elmnt.innerText;
-								// elmnt.textContent;
-								// elmnt.length;
+								document.getElementById("id"); // Tìm một phần tử theo id phần tử
+								document.getElementsByTagName("tag"); // Tìm phần tử theo tên thẻ
+								document.getElementsByClassName("class"); // Tìm các phần tử theo tên lớp
+							</code>
+						</pre>
+						<div class="line-text">Thay đổi các phần tử HTML</div>
+						<pre>
+							<code class="javascript">
+								element.innerHTML; // Thay đổi HTML bên trong của một phần tử
+								element.innerText; // Thay đổi Text bên trong của một phần tử
+								element.textContent; // Thay đổi Text bên trong của một phần tử
+								element.attribute; // Thay đổi giá trị thuộc tính của một phần tử HTML
+								element.style.property; // Thay đổi kiểu của một phần tử HTML
+								element.setAttribute(attribute, value); // Thay đổi giá trị thuộc tính của một phần tử HTML
+							</code>
+						</pre>
+						<div class="line-text">Thêm và xóa các phần tử</div>
+						<pre>
+							<code class="javascript">
+								document.createElement(element); // Tạo một phần tử HTML
+								document.removeChild(element); // Xóa một phần tử HTML
+								document.appendChild(element); // Thêm một phần tử HTML
+								document.replaceChild(new, old); // Thay thế một phần tử HTML
+								document.write(text); // Viết vào luồng đầu ra HTML
+							</code>
+						</pre>
+						<div class="line-text">Returns all <code>img</code> elements</div>
+						<pre>
+							<code class="javascript">
+								document.getElementById("demo").innerHTML = "Number of images: " + document.images.length;
+							</code>
+						</pre>
+						<div class="line-text"></div>
+						<div class="line-text"></div>
+						<div class="line-text"></div>
+						<div class="line-text"></div>
+						<div class="line-text"></div>
+						<div class="line-text"></div>
+						<div class="line-text"></div>
+						<div class="line-text"></div>
+						<div class="line-text"></div>
+						<div class="line-text"></div>
+						<div class="line-text"></div>
+						<pre>
+							<code class="javascript">
 							</code>
 						</pre>
 					</div>
@@ -453,7 +505,7 @@
 					title.id = titleId;
 					const anchor = document.createElement("a");
 					anchor.href = "#" + titleId;
-					anchor.textContent = title.textContent;
+					anchor.textContent = (index + 1) + ". " + title.textContent;
 					anchor.addEventListener("click", function(event) {
 						event.preventDefault();
 						const targetElement = document.getElementById(titleId);
