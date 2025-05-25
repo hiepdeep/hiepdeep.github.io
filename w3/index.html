@@ -69,7 +69,7 @@
 						</pre>
 					</div>
 					<div class="block">
-						<div class="line-title">Mảng sắp xếp JavaScript</div>
+						<div class="line-title" data-title="Mảng sắp xếp JavaScript">Mảng sắp xếp JavaScript</div>
 						<div class="line-text">Bằng cách kết hợp <code>sort()</code> và <code>reverse()</code>, bạn có thể sắp xếp một mảng theo thứ tự giảm dần</div>
 						<pre>
 							<code class="javascript">
@@ -124,7 +124,7 @@
 						</pre>
 					</div>
 					<div class="block">
-						<div class="line-title">Đối tượng toán học JavaScript</div>
+						<div class="line-title" data-title="Đối tượng toán học JavaScript">Đối tượng toán học JavaScript</div>
 						<div class="line-text"><code>Math.round(x)</code> trả về số nguyên gần nhất</div>
 						<pre>
 							<code class="javascript">
@@ -201,6 +201,24 @@
 								Math.floor(Math.random() * 100) + 1
 							</code>
 						</pre>
+						<div class="line-text">Hàm JavaScript này luôn trả về một số ngẫu nhiên nằm giữa min (đã bao gồm) và max (đã loại trừ)</div>
+						<pre>
+							<code class="javascript">
+								function getRndInteger(min, max) {
+									return Math.floor(Math.random() * (max - min) ) + min;
+								}
+								getRndInteger(5, 10); // ramdom 5-9
+							</code>
+						</pre>
+						<div class="line-text">Hàm JavaScript này luôn trả về một số ngẫu nhiên nằm giữa min và max (bao gồm cả hai)</div>
+						<pre>
+							<code class="javascript">
+								function getRndInteger(min, max) {
+									return Math.floor(Math.random() * (max - min + 1) ) + min;
+								}
+								getRndInteger(5, 10); // ramdom 5-10
+							</code>
+						</pre>
 					</div>
 					<div class="block">
 						<pre>
@@ -224,7 +242,7 @@
 						</pre>
 					</div>
 					<div class="block">
-						<div class="line-title" id="break-continue">JavaScript Break and Continue</div>
+						<div class="line-title" data-title="JavaScript Break and Continue">JavaScript Break and Continue</div>
 						<div class="line-text">Câu lệnh <code>break</code> "nhảy ra" của một vòng lặp.</div>
 						<div class="line-text">Trong ví dụ, câu lệnh <code>break</code> kết thúc vòng lặp ("ngắt" vòng lặp) khi bộ đếm vòng lặp (i) là 3.</div>
 						<pre>
@@ -245,6 +263,78 @@
 									text += "The number is " + i + "&lt;br&gt;";
 								}
 								// 0 1 2 4 5 6 7 8 9
+							</code>
+						</pre>
+					</div>
+					<div class="block">
+						<div class="line-title" data-title="Phân tích cấu trúc JavaScript">Phân tích cấu trúc JavaScript</div>
+						<div class="line-text">Cú pháp gán cấu trúc giải nén các thuộc tính của đối tượng thành các biến</div>
+						<pre>
+							<code class="javascript">
+								let {firstName, lastName} = person;
+							</code>
+						</pre>
+						<div class="line-text">Nó cũng có thể giải nén các mảng và bất kỳ đối tượng lặp nào khác</div>
+						<pre>
+							<code class="javascript">
+								let [firstName, lastName] = person;
+							</code>
+						</pre>
+						<div class="line-text">Nó cũng có thể giải nén các mảng và bất kỳ đối tượng lặp nào khác</div>
+						<pre>
+							<code class="javascript">
+								const person = {
+									firstName: "John",
+									lastName: "Doe",
+									age: 50
+								};
+								let {lastName, firstName} = person;
+								document.getElementById("demo").innerHTML = firstName + " " + lastName; // John Doe
+							</code>
+						</pre>
+						<div class="line-text">Đối với các thuộc tính có khả năng bị thiếu, chúng ta có thể đặt giá trị mặc định</div>
+						<pre>
+							<code class="javascript">
+								const person = {
+									firstName: "John",
+									lastName: "Doe",
+									age: 50
+								};
+								let {firstName, lastName, country = "US"} = person;
+								document.getElementById("demo").innerHTML = firstName + " " + lastName + " " + country; // John Doe US
+							</code>
+						</pre>
+						<div class="line-text">Có thể kết thúc cú pháp phân rã bằng thuộc tính rest</div>
+						<pre>
+							<code class="javascript">
+								const numbers = [10, 20, 30, 40, 50, 60, 70];
+								const [a,b, ...rest] = numbers;
+								document.getElementById("demo").innerHTML = a; // 10
+								document.getElementById("demo").innerHTML = b; // 20
+								document.getElementById("demo").innerHTML = rest; // 30,40,50,60,70
+							</code>
+						</pre>
+						<div class="line-text">Hoặc</div>
+						<pre>
+							<code class="javascript">
+								const numbers = [10, 20, 30, 40, 50, 60, 70];
+								const [...rest] = numbers;
+								document.getElementById("demo").innerHTML = rest; // 10,20,30,40,50,60,70
+							</code>
+						</pre>
+						<div class="line-text">Bản đồ phân hủy cấu trúc</div>
+						<pre>
+							<code class="javascript">
+								const fruits = new Map([
+									["apples", 500],
+									["bananas", 300],
+									["oranges", 200]
+								]);
+								let text = "";
+								for (const [key, value] of fruits) {
+									text += key + " is " + value + ", ";
+								}
+								document.getElementById("demo").innerHTML = text; // apples is 500, bananas is 300, oranges is 200
 							</code>
 						</pre>
 					</div>
