@@ -62,67 +62,6 @@ body {
 	color: #444;
 }
 
-#header>div .header-right .nav-user {
-	display: flex;
-	align-items: center;
-	gap: 6px;
-}
-
-#header>div .header-right .nav-user .logged-user {
-	display: flex;
-	align-items: center;
-	gap: 6px;
-	position: relative;
-	border: 1px solid #e9e9e9;
-	padding: 6px;
-	border-radius: 24px 6px 6px 24px;
-	transition: 0.1s;
-}
-
-#header>div .header-right .nav-user .logged-user:hover {
-	border-color: #9e9e9e;
-}
-
-#header>div .header-right .nav-user .logged-user .displayName {
-	font-weight: 700;
-}
-
-#header>div .header-right .nav-user .logged-user .thumb {
-	height: 24px;
-	aspect-ratio: 1;
-	border-radius: 12px;
-	overflow: hidden;
-}
-
-#header>div .header-right .nav-user .dashboard {
-	border: 1px solid #e9e9e9;
-	height: 38px;
-	border-radius: 6px;
-	display: flex;
-	align-items: center;
-	padding: 0 6px;
-	font-weight: 700;
-	color: #3f51b5;
-	transition: 0.1s;
-}
-
-#header>div .header-right .nav-user .dashboard:hover {
-	border-color: #3f51b5;
-}
-
-#header>div .header-right .nav-user #btn-logout {
-	background: 0;
-	border: 1px solid #e9e9e9;
-	height: 38px;
-	aspect-ratio: 1;
-	border-radius: 6px 18px 18px 6px;
-	transition: 0.1s;
-}
-
-#header>div .header-right .nav-user #btn-logout:hover {
-	border-color: #9e9e9e;
-}
-
 #body {
 	margin-top: calc(68px + 12px);
 }
@@ -146,11 +85,6 @@ body {
 	gap: 12px;
 }
 
-#body>div .col-right .titleBox {
-	font-size: 24px;
-	font-weight: bold;
-}
-
 #body>div .col-right .block {
 	background: #fff;
 	padding: 12px;
@@ -159,20 +93,26 @@ body {
 	gap: 12px;
 }
 
+#body>div .col-right .block .line-title {
+	font-size: 24px;
+	font-weight: bold;
+}
+
 #body>div .col-right .block .line-text {
 	font-size: 14px;
 }
 
 #body>div .col-right .block .line-text code {
+	font-family: "Consolas", monospace;
 	background: #ddd;
 	padding: 0 2px;
 }
 
-#body>div .col-right pre {
+#body>div .col-right .block pre {
 	width: 100%;
 }
 
-#body>div .col-right pre code {
+#body>div .col-right .block pre code {
 	font-family: "Consolas", monospace;
 	tab-size: 4;
 }

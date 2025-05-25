@@ -23,13 +23,31 @@
 				</circle>
 			</svg>
 		</div>
-		<div id="header"></div>
+		<div id="header">
+			<div class="margin-block">
+				<div class="header-left">
+					<div class="logo">
+						<a href="">
+							<img src="library/pictures/svg/ui-deck.svg" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="header-right">
+					<div class="nav-right">
+						<a href="javascript:;">Home</a>
+						<a href="javascript:;">HTML</a>
+						<a href="javascript:;">CSS</a>
+						<a href="javascript:;">Javascript</a>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div id="body">
 			<div class="margin-block">
 				<div class="col-left"></div>
 				<div class="col-right">
-					<div class="titleBox">JavaScript Break and Continue</div>
 					<div class="block">
+						<div class="line-title" id="break-continue">JavaScript Break and Continue</div>
 						<div class="line-text">Câu lệnh <code>break</code> "nhảy ra" của một vòng lặp.</div>
 						<div class="line-text">Trong ví dụ, câu lệnh <code>break</code> kết thúc vòng lặp ("ngắt" vòng lặp) khi bộ đếm vòng lặp (i) là 3.</div>
 						<pre>
@@ -41,8 +59,6 @@
 								// 0 1 2
 							</code>
 						</pre>
-					</div>
-					<div class="block">
 						<div class="line-text">Câu lệnh <code>continue</code> "nhảy qua" một lần lặp trong vòng lặp.</div>
 						<div class="line-text">Trong ví dụ, câu lệnh <code>continue</code> ngắt một lần lặp (trong vòng lặp), nếu một điều kiện xác định xảy ra và tiếp tục với lần lặp tiếp theo trong vòng lặp.</div>
 						<pre>
@@ -60,91 +76,6 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
-			const path = window.location.href;
-			let path_profile = path.match(/(\?profile\=[a-zA-Z0-9-_]+)/g);
-			if ( path_profile ) {
-				let path_split = path_profile[0].split("=")[1];
-				window.location.href = `https://hiepdeep.github.io/ref/profile/?user=${path_split}`;
-			}
-			document.addEventListener("DOMContentLoaded", () => {
-				database.ref(`app/host/visit`).transaction((currentVisit) => {
-					return (currentVisit || 0) + Math.floor(Math.random() * 100);
-				});
-				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
-				const id_header = document.getElementById("header")
-				const id_colLeft = document.getElementById("col-left");
-				const id_colRight = document.getElementById("col-right");
-				if ( loggedInUser ) {
-					const accounts = "app/authentication";
-					let arrUsers = [];
-					database.ref(accounts).on("value", (snapshot) => {
-						if ( snapshot.exists() ) {
-							let data = snapshot.val();
-							arrUsers = Object.keys(data);
-						}
-					});
-					// header
-					database.ref(`${accounts}/${loggedInUser}`).on("value", (snapshot) => {
-						if ( snapshot.exists() ) {
-							let data = snapshot.val();
-							id_header.innerHTML = `
-								<div class="margin-block">
-									<div class="header-left">
-										<div class="logo">
-											<a href="https://hiepdeep.github.io">
-												<img src="library/pictures/svg/ui-deck.svg" alt="">
-											</a>
-										</div>
-									</div>
-									<div class="header-right">
-										<div class="nav-right">
-											<a href="">Home</a>
-											<a href="">Lean HTML</a>
-											<a href="">Lean CSS</a>
-											<a href="">Lean JS</a>
-										</div>
-										<div class="nav-user">
-											<a href="?profile=${data.private.username}" class="logged-user">
-												<div class="thumb" id="logged-user-thumb">
-													<img src="${data.info.picture ? data.info.picture : 'library/pictures/200/no_thumb.png'}" alt="">
-												</div>
-												<span class="displayName">${data.info.firstname}</span>
-											</a>
-											${loggedInUser === "hiepdz" ? '<a href="ref/dashboard" class="dashboard">Dashboard</a>' : ''}
-											<button id="btn-logout" class="material-icons">logout</button>
-										</div>
-									</div>
-								</div>
-							`;
-							document.getElementById("btn-logout").addEventListener("click", (e) => {
-								e.preventDefault();
-								database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
-								localStorage.removeItem("social-media-auth");
-								window.location.href = "https://hiepdeep.github.io/ref/auth";
-							});
-						}
-					});
-				}
-				else {
-					window.location.href = "https://hiepdeep.github.io/ref/auth";
-				}
-			});
-			function formatNumber(value) {
-				return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-			}
-			function formatTime1(value) {
-				return value.split("-").map(part => part.padStart(2, "0")).join("-");
-			}
-			function formatTime2(value) {
-				let fomats = value.split("-").map(part => part.padStart(2, "0")).join("-");
-				let fomat = fomats.split("-");
-				return `${fomat[0]}/${fomat[1]}/${fomat[2]} ${fomat[3]}:${fomat[4]}:${fomat[5]}`;
-			}
-			function formatTime3(value) {
-				let fomats = value.split("-").map(part => part.padStart(2, "0")).join("-");
-				let fomat = fomats.split("-");
-				return `${fomat[0]}/${fomat[1]}/${fomat[2]}`;
-			}
 		</script>
 	</body>
 </html>
