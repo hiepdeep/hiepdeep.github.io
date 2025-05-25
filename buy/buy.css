@@ -55,6 +55,10 @@ body {
 	background: #218838;
 }
 
+.block .summary {
+	text-align: center;
+}
+
 .block .summary h2 {
 	font-size: 18px;
 	font-weight: bold;
