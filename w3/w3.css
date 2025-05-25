@@ -128,3 +128,7 @@ body {
 #body>div .col-right .block pre code * {
 	font-family: "Consolas", monospace;
 }
+
+#body>div .col-right .block pre code::-webkit-scrollbar {
+	display: block;
+}
