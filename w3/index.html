@@ -46,18 +46,7 @@
 		</div>
 		<div id="body">
 			<div class="margin-block">
-				<div class="col-left">
-					<a href=""></a>
-					<a href=""></a>
-					<a href=""></a>
-					<a href=""></a>
-					<a href=""></a>
-					<a href=""></a>
-					<a href=""></a>
-					<a href=""></a>
-					<a href=""></a>
-					<a href=""></a>
-				</div>
+				<div class="col-left"></div>
 				<div class="col-right">
 					<div class="block">
 						<pre>
@@ -346,6 +335,28 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
+			document.addEventListener("DOMContentLoaded", function() {
+				const colLeft = document.querySelector(".col-left");
+				const lineTitles = document.querySelectorAll(".line-title");
+				lineTitles.forEach(function(title, index) {
+					const titleId = title.dataset.title.replace(/\s+/g, "-") + "-" + index;
+					title.id = titleId;
+					const anchor = document.createElement("a");
+					anchor.href = "#" + titleId;
+					anchor.textContent = title.dataset.title;
+					anchor.addEventListener("click", function(event) {
+						event.preventDefault();
+						const targetElement = document.getElementById(titleId);
+						if (targetElement) {
+							targetElement.scrollIntoView({
+								behavior: "smooth",
+								block: "start"
+							});
+						}
+					});
+					colLeft.appendChild(anchor);
+				});
+			});
 			for (let i = 0; i < document.querySelectorAll("pre").length; i++) {
 				document.querySelectorAll("pre")[i].innerHTML = document.querySelectorAll("pre")[i].innerHTML.trim();
 				const preElement = document.querySelectorAll("pre")[i].getElementsByTagName("code")[0];
