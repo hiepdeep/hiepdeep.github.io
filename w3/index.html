@@ -78,6 +78,25 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
+			for (let i = 0; i < document.querySelectorAll("pre").length; i++) {
+				document.querySelectorAll("pre")[i].innerHTML = document.querySelectorAll("pre")[i].innerHTML.trim();
+				const preElement = document.querySelectorAll("pre")[i].getElementsByTagName("code")[0];
+				if (preElement) {
+					const content = preElement.textContent.trim();
+					const lines = content.split("\n");
+					let tabString = "";
+					for (let i = 0; i < lines[lines.length - 1].length; i++) {
+						if (lines[lines.length - 1][i] === "\t") {
+							tabString += "\\t";
+						} else {
+							break;
+						}
+					}
+					const regex = new RegExp(`^${tabString}`, "gm");
+					preElement.textContent = content.trim().replace(regex, "");
+				}
+			}
+			hljs.initHighlightingOnLoad();
 		</script>
 	</body>
 </html>
