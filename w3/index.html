@@ -86,6 +86,20 @@
 								points.sort(function(a, b){return b - a}); // 100,40,25,10,5,1
 							</code>
 						</pre>
+						<div class="line-text">Hàm <code>sort()</code> sắp xếp các đối tượng</div>
+						<pre>
+							<code class="javascript">
+								const cars = [
+									{type: "Volvo", year: 2016},
+									{type: "Saab", year: 2001},
+									{type: "BMW", year: 2010}
+								];
+								cars.sort(function(a, b){return a.year - b.year});
+								// Saab 2001
+								// BMW 2010
+								// Volvo 2016
+							</code>
+						</pre>
 						<div class="line-text">Sử dụng <code>Math.min.apply</code> để tìm số nhỏ nhất trong một mảng</div>
 						<div class="line-text">Hàm <code>Math.min.apply(null, [1, 2, 3])</code> tương đương với <code>Math.min(1, 2, 3)</code></div>
 						<pre>
@@ -106,6 +120,85 @@
 									return Math.max.apply(null, arr);
 								}
 								myArrayMax(points); // 100
+							</code>
+						</pre>
+					</div>
+					<div class="block">
+						<div class="line-title">Đối tượng toán học JavaScript</div>
+						<div class="line-text"><code>Math.round(x)</code> trả về số nguyên gần nhất</div>
+						<pre>
+							<code class="javascript">
+								Math.round(4.6) // 5
+								Math.round(4.5) // 5
+								Math.round(4.4) // 4
+							</code>
+						</pre>
+						<div class="line-text"><code>Math.ceil(x)</code> trả về giá trị của x được làm tròn lên số nguyên gần nhất</div>
+						<pre>
+							<code class="javascript">
+								Math.ceil(4.9); // 5
+								Math.ceil(4.7); // 5
+								Math.ceil(4.4); // 5
+								Math.ceil(4.2); // 5
+								Math.ceil(-4.2); // -4
+							</code>
+						</pre>
+						<div class="line-text"><code>Math.floor(x)</code> trả về giá trị của x được làm tròn xuống thành số nguyên gần nhất</div>
+						<pre>
+							<code class="javascript">
+								Math.floor(4.9); // 4
+								Math.floor(4.7); // 4
+								Math.floor(4.4); // 4
+								Math.floor(4.2); // 4
+								Math.floor(-4.2); // -5
+							</code>
+						</pre>
+						<div class="line-text"><code>Math.trunc(x)</code> trả về phần nguyên của x</div>
+						<pre>
+							<code class="javascript">
+								Math.trunc(4.9); // 4
+								Math.trunc(4.7); // 4
+								Math.trunc(4.4); // 4
+								Math.trunc(4.2); // 4
+								Math.trunc(-4.2); // -4
+							</code>
+						</pre>
+						<div class="line-text"><code>Math.sign(x)</code> trả về phần nguyên của x</div>
+						<pre>
+							<code class="javascript">
+								Math.sign(4); // 1
+								Math.sign(0); // 0
+								Math.sign(-4); // -1
+							</code>
+						</pre>
+						<div class="line-text"><code>Math.abs(x)</code> trả về giá trị tuyệt đối (dương) của x</div>
+						<pre>
+							<code class="javascript">
+								Math.abs(-4.7); // 4.7
+							</code>
+						</pre>
+						<div class="line-text">Chuyển đổi values thành số và trả về giá trị lớn nhất</div>
+						<pre>
+							<code class="javascript">
+								Math.max(3, -5, 24) // 24
+							</code>
+						</pre>
+						<div class="line-text">Chuyển đổi values thành số và trả về giá trị nhỏ nhất</div>
+						<pre>
+							<code class="javascript">
+								Math.min(3, -5, 24) // -5
+							</code>
+						</pre>
+						<div class="line-text">Trả về một số nguyên ngẫu nhiên trong khoảng từ 0 đến 10</div>
+						<pre>
+							<code class="javascript">
+								Math.floor(Math.random() * 11)
+							</code>
+						</pre>
+						<div class="line-text">Trả về một số nguyên ngẫu nhiên trong khoảng từ 1 đến 100</div>
+						<pre>
+							<code class="javascript">
+								Math.floor(Math.random() * 100) + 1
 							</code>
 						</pre>
 					</div>
