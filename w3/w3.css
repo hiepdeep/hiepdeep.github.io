@@ -76,6 +76,11 @@ body {
 	background: white;
 	width: 240px;
 	height: calc(100vh - 68px - 12px);
+	padding: 12px;
+}
+
+#body>div .col-left a {
+	display: block;
 }
 
 #body>div .col-right {
