@@ -14,33 +14,34 @@
 		<script src="library/script/config-firebase.js"></script>
 	</head>
 	<body>
-		<div class="container">
-			<h1>Ghi Chú Chi Tiêu Hàng Ngày</h1>
-			<div class="input-section">
-				<input type="date" id="dateInput">
-				<input type="text" id="descriptionInput" placeholder="Mô tả chi tiêu">
-				<input type="number" id="amountInput" placeholder="Số tiền">
+		<div class="block">
+			<form id="form">
 				<select id="personSelect">
 					<option value="person1">Người 1</option>
 					<option value="person2">Người 2</option>
 				</select>
-				<button id="addExpenseBtn">Thêm Chi Tiêu</button>
-			</div>
-			<div class="expense-list-container">
-				<h2>Chi Tiêu Người 1</h2>
-				<ul id="person1Expenses" class="expense-list"></ul>
-				<h3>Tổng chi tiêu Người 1: <span id="totalPerson1">0</span> VNĐ</h3>
-			</div>
-			<div class="expense-list-container">
-				<h2>Chi Tiêu Người 2</h2>
-				<ul id="person2Expenses" class="expense-list"></ul>
-				<h3>Tổng chi tiêu Người 2: <span id="totalPerson2">0</span> VNĐ</h3>
-			</div>
+				<input type="date" id="dateInput">
+				<input type="text" id="descriptionInput" placeholder="Mô tả chi tiêu">
+				<input type="number" id="amountInput" placeholder="Số tiền">
+				<button type="submit" id="addExpenseBtn">Thêm Chi Tiêu</button>
+			</form>
 			<div class="summary">
 				<h2>Tổng Cộng</h2>
 				<h3>Tổng chi tiêu chung: <span id="grandTotal">0</span> VNĐ</h3>
 				<h3>Người 1 cần trả Người 2: <span id="balancePerson1ToPerson2">0</span> VNĐ</h3>
 				<h3>Người 2 cần trả Người 1: <span id="balancePerson2ToPerson1">0</span> VNĐ</h3>
+			</div>
+			<div class="lists">
+				<div class="expense-list-container">
+					<h2>Chi Tiêu Người 1</h2>
+					<ul id="person1Expenses" class="expense-list"></ul>
+					<h3>Tổng chi tiêu Người 1: <span id="totalPerson1">0</span> VNĐ</h3>
+				</div>
+				<div class="expense-list-container">
+					<h2>Chi Tiêu Người 2</h2>
+					<ul id="person2Expenses" class="expense-list"></ul>
+					<h3>Tổng chi tiêu Người 1: <span id="totalPerson2">0</span> VNĐ</h3>
+				</div>
 			</div>
 		</div>
 		<script>
