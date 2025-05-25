@@ -61,7 +61,7 @@
 						</pre>
 					</div>
 					<div class="block">
-						<div class="line-title" data-title="Mảng sắp xếp JavaScript">Mảng sắp xếp JavaScript</div>
+						<div class="line-title">Mảng sắp xếp JavaScript</div>
 						<div class="line-text">Bằng cách kết hợp <code>sort()</code> và <code>reverse()</code>, bạn có thể sắp xếp một mảng theo thứ tự giảm dần</div>
 						<pre>
 							<code class="javascript">
@@ -116,7 +116,7 @@
 						</pre>
 					</div>
 					<div class="block">
-						<div class="line-title" data-title="Đối tượng toán học JavaScript">Đối tượng toán học JavaScript</div>
+						<div class="line-title">Đối tượng toán học JavaScript</div>
 						<div class="line-text"><code>Math.round(x)</code> trả về số nguyên gần nhất</div>
 						<pre>
 							<code class="javascript">
@@ -213,6 +213,7 @@
 						</pre>
 					</div>
 					<div class="block">
+						<div class="line-title">JavaScript Object</div>
 						<pre>
 							<code class="javascript">
 								const person = {
@@ -234,7 +235,7 @@
 						</pre>
 					</div>
 					<div class="block">
-						<div class="line-title" data-title="JavaScript Break and Continue">JavaScript Break and Continue</div>
+						<div class="line-title">JavaScript Break and Continue</div>
 						<div class="line-text">Câu lệnh <code>break</code> "nhảy ra" của một vòng lặp.</div>
 						<div class="line-text">Trong ví dụ, câu lệnh <code>break</code> kết thúc vòng lặp ("ngắt" vòng lặp) khi bộ đếm vòng lặp (i) là 3.</div>
 						<pre>
@@ -259,7 +260,7 @@
 						</pre>
 					</div>
 					<div class="block">
-						<div class="line-title" data-title="Phân tích cấu trúc JavaScript">Phân tích cấu trúc JavaScript</div>
+						<div class="line-title">Phân tích cấu trúc JavaScript</div>
 						<div class="line-text">Cú pháp gán cấu trúc giải nén các thuộc tính của đối tượng thành các biến</div>
 						<pre>
 							<code class="javascript">
@@ -339,11 +340,11 @@
 				const colLeft = document.querySelector(".col-left");
 				const lineTitles = document.querySelectorAll(".line-title");
 				lineTitles.forEach(function(title, index) {
-					const titleId = title.dataset.title.replace(/\s+/g, "-") + "-" + index;
+					const titleId = title.textContent.replace(/\s+/g, "-") + "-" + index;
 					title.id = titleId;
 					const anchor = document.createElement("a");
 					anchor.href = "#" + titleId;
-					anchor.textContent = title.dataset.title;
+					anchor.textContent = title.textContent;
 					anchor.addEventListener("click", function(event) {
 						event.preventDefault();
 						const targetElement = document.getElementById(titleId);
