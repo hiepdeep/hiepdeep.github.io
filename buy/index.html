@@ -45,77 +45,68 @@
 			</div>
 		</div>
 		<script>
-			// 2. Lấy các phần tử DOM
-			const dateInput = document.getElementById('dateInput');
-			const descriptionInput = document.getElementById('descriptionInput');
-			const amountInput = document.getElementById('amountInput');
-			const personSelect = document.getElementById('personSelect');
-			const addExpenseBtn = document.getElementById('addExpenseBtn');
-			const person1ExpensesList = document.getElementById('person1Expenses');
-			const person2ExpensesList = document.getElementById('person2Expenses');
-			const totalPerson1Span = document.getElementById('totalPerson1');
-			const totalPerson2Span = document.getElementById('totalPerson2');
-			const grandTotalSpan = document.getElementById('grandTotal');
-			const balancePerson1ToPerson2Span = document.getElementById('balancePerson1ToPerson2');
-			const balancePerson2ToPerson1Span = document.getElementById('balancePerson2ToPerson1');
-			// Khởi tạo ngày hiện tại
+			const dateInput = document.getElementById("dateInput");
+			const descriptionInput = document.getElementById("descriptionInput");
+			const amountInput = document.getElementById("amountInput");
+			const personSelect = document.getElementById("personSelect");
+			const addExpenseBtn = document.getElementById("addExpenseBtn");
+			const person1ExpensesList = document.getElementById("person1Expenses");
+			const person2ExpensesList = document.getElementById("person2Expenses");
+			const totalPerson1Span = document.getElementById("totalPerson1");
+			const totalPerson2Span = document.getElementById("totalPerson2");
+			const grandTotalSpan = document.getElementById("grandTotal");
+			const balancePerson1ToPerson2Span = document.getElementById("balancePerson1ToPerson2");
+			const balancePerson2ToPerson1Span = document.getElementById("balancePerson2ToPerson1");
 			dateInput.valueAsDate = new Date();
-			// 3. Xử lý thêm chi tiêu
-			addExpenseBtn.addEventListener('click', () => {
+			addExpenseBtn.addEventListener("click", () => {
 				const date = dateInput.value;
 				const description = descriptionInput.value.trim();
 				const amount = parseFloat(amountInput.value);
 				const person = personSelect.value;
 				if (!date || !description || isNaN(amount) || amount <= 0) {
-					alert('Vui lòng nhập đầy đủ và chính xác thông tin chi tiêu (Ngày, Mô tả, Số tiền).');
+					alert("Vui lòng nhập đầy đủ và chính xác thông tin chi tiêu (Ngày, Mô tả, Số tiền).");
 					return;
 				}
-				// Tạo một đối tượng chi tiêu
 				const newExpense = {
 					date: date,
 					description: description,
 					amount: amount,
 					person: person,
-					timestamp: Date.now() // Thêm timestamp để sắp xếp và có key duy nhất
+					timestamp: Date.now()
 				};
-				// Gửi dữ liệu lên Firebase
-				// Push() sẽ tạo một key duy nhất cho mỗi chi tiêu
-				database.ref('expenses').push(newExpense).then(() => {
-					console.log('Chi tiêu đã được thêm thành công!');
-					// Xóa trường input sau khi thêm
-					descriptionInput.value = '';
-					amountInput.value = '';
-					dateInput.valueAsDate = new Date(); // Đặt lại ngày hiện tại
+				database.ref("expenses").push(newExpense).then(() => {
+					console.log("Chi tiêu đã được thêm thành công!");
+					descriptionInput.value = "";
+					amountInput.value = "";
+					dateInput.valueAsDate = new Date();
 				}).catch(error => {
-					console.error('Lỗi khi thêm chi tiêu:', error);
-					alert('Có lỗi xảy ra khi thêm chi tiêu. Vui lòng thử lại.');
+					console.error("Lỗi khi thêm chi tiêu:", error);
+					alert("Có lỗi xảy ra khi thêm chi tiêu. Vui lòng thử lại.");
 				});
 			});
-			// 4. Lắng nghe thay đổi dữ liệu từ Firebase và hiển thị
-			database.ref('expenses').on('value', (snapshot) => {
+			database.ref("expenses").on("value", (snapshot) => {
 				const expenses = snapshot.val();
 				displayExpenses(expenses);
 			});
 			function displayExpenses(expenses) {
-				person1ExpensesList.innerHTML = '';
-				person2ExpensesList.innerHTML = '';
+				person1ExpensesList.innerHTML = "";
+				person2ExpensesList.innerHTML = "";
 				let totalPerson1 = 0;
 				let totalPerson2 = 0;
 				if (expenses) {
-					// Chuyển đối tượng expenses thành mảng và sắp xếp theo timestamp mới nhất
 					const sortedExpenses = Object.keys(expenses).map(key => ({
 						id: key,
 						...expenses[key]
-					})).sort((a, b) => b.timestamp - a.timestamp); // Sắp xếp giảm dần theo timestamp
+					})).sort((a, b) => b.timestamp - a.timestamp);
 					sortedExpenses.forEach(expense => {
-						const listItem = document.createElement('li');
+						const listItem = document.createElement("li");
 						listItem.innerHTML = `
-	                <span class="expense-info">
-	                    <strong>${expense.date}</strong>: ${expense.description} - ${expense.amount.toLocaleString('vi-VN')} VNĐ
-	                </span>
-	                <button class="delete-btn" data-id="${expense.id}">Xóa</button>
-	            `;
-						if (expense.person === 'person1') {
+							<span class="expense-info">
+								<strong>${expense.date}</strong>: ${expense.description} - ${expense.amount.toLocaleString("vi-VN")} VNĐ
+							</span>
+							<button class="delete-btn" data-id="${expense.id}">Xóa</button>
+						`;
+						if (expense.person === "person1") {
 							person1ExpensesList.appendChild(listItem);
 							totalPerson1 += expense.amount;
 						} else {
@@ -124,12 +115,10 @@
 						}
 					});
 				}
-				// Cập nhật tổng chi tiêu
-				totalPerson1Span.textContent = totalPerson1.toLocaleString('vi-VN');
-				totalPerson2Span.textContent = totalPerson2.toLocaleString('vi-VN');
+				totalPerson1Span.textContent = totalPerson1.toLocaleString("vi-VN");
+				totalPerson2Span.textContent = totalPerson2.toLocaleString("vi-VN");
 				const grandTotal = totalPerson1 + totalPerson2;
-				grandTotalSpan.textContent = grandTotal.toLocaleString('vi-VN');
-				// Tính toán số tiền cần trả lại
+				grandTotalSpan.textContent = grandTotal.toLocaleString("vi-VN");
 				const averageExpense = grandTotal / 2;
 				let balancePerson1ToPerson2 = 0;
 				let balancePerson2ToPerson1 = 0;
@@ -138,18 +127,17 @@
 				} else if (totalPerson2 > averageExpense) {
 					balancePerson2ToPerson1 = totalPerson2 - averageExpense;
 				}
-				balancePerson1ToPerson2Span.textContent = balancePerson1ToPerson2 > 0 ? balancePerson1ToPerson2.toLocaleString('vi-VN') : '0';
-				balancePerson2ToPerson1Span.textContent = balancePerson2ToPerson1 > 0 ? balancePerson2ToPerson1.toLocaleString('vi-VN') : '0';
-				// 5. Xử lý xóa chi tiêu
-				document.querySelectorAll('.delete-btn').forEach(button => {
+				balancePerson1ToPerson2Span.textContent = balancePerson1ToPerson2 > 0 ? balancePerson1ToPerson2.toLocaleString("vi-VN") : "0";
+				balancePerson2ToPerson1Span.textContent = balancePerson2ToPerson1 > 0 ? balancePerson2ToPerson1.toLocaleString("vi-VN") : "0";
+				document.querySelectorAll(".delete-btn").forEach(button => {
 					button.onclick = (e) => {
 						const expenseId = e.target.dataset.id;
-						if (confirm('Bạn có chắc chắn muốn xóa chi tiêu này không?')) {
-							database.ref('expenses/' + expenseId).remove().then(() => {
-								console.log('Chi tiêu đã được xóa!');
+						if (confirm("Bạn có chắc chắn muốn xóa chi tiêu này không?")) {
+							database.ref("expenses/" + expenseId).remove().then(() => {
+								console.log("Chi tiêu đã được xóa!");
 							}).catch(error => {
-								console.error('Lỗi khi xóa chi tiêu:', error);
-								alert('Có lỗi xảy ra khi xóa chi tiêu. Vui lòng thử lại.');
+								console.error("Lỗi khi xóa chi tiêu:", error);
+								alert("Có lỗi xảy ra khi xóa chi tiêu. Vui lòng thử lại.");
 							});
 						}
 					};
