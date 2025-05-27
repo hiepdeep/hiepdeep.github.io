@@ -68,6 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
 /**
  * Hướng dẫn sử dụng:
  *
- * Thêm ".js-animated-number" vào thẻ html.
- * Thẻ ".js-animated-number" chỉ chứa số.
+ * Thêm <script src="https://hiepdeep.github.io/library/script/function/autoAnimateNumbers.js"></script> vào thẻ <head>
+ * Thêm ".js-animated-number" vào thẻ html trong website, thẻ ".js-animated-number" chỉ chứa số.
 **/
