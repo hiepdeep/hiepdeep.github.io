@@ -5,7 +5,7 @@
  * @param {string} selector - Bộ chọn CSS để tìm các phần tử chứa số (mặc định: '.js-animated-number').
  * @param {number} duration - Thời gian hoạt ảnh tính bằng mili giây (mặc định: 2000ms).
 **/
-function autoAnimateNumbers(selector = ".js-animated-number", duration = 10000) {
+function autoAnimateNumbers(selector, duration) {
 	// Lấy tất cả các phần tử khớp với bộ chọn đã cho
 	const elements = document.querySelectorAll(selector);
 	// Lặp qua từng phần tử tìm thấy
@@ -60,14 +60,11 @@ function animateSingleNumber(element, targetNumber, duration) {
 	// Bắt đầu hoạt ảnh bằng cách yêu cầu khung hoạt ảnh đầu tiên
 	requestAnimationFrame(step);
 }
-// Chạy hàm autoAnimateNumbers khi toàn bộ DOM đã được tải.
-// Điều này đảm bảo tất cả các phần tử HTML đã sẵn sàng trước khi JavaScript cố gắng truy cập chúng.
-document.addEventListener("DOMContentLoaded", () => {
-	autoAnimateNumbers(); // Bạn có thể truyền bộ chọn hoặc thời lượng khác ở đây nếu cần
-});
+
 /**
  * Hướng dẫn sử dụng:
  *
  * Thêm <script src="https://hiepdeep.github.io/library/script/function/autoAnimateNumbers.js"></script> vào thẻ <head>
- * Thêm ".js-animated-number" vào thẻ html trong website, thẻ ".js-animated-number" chỉ chứa số.
+ * Thêm autoAnimateNumbers(".js-animated-number", 2000); vào thẻ <script>.
+ * Thêm ".js-animated-number" vào thẻ muốn sử dụng function này, thẻ ".js-animated-number" chỉ chứa số.
 **/
