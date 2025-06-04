@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132.2 24.3">
+	<defs>
+		<style>.cls-1,.cls-2{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.3px;}.cls-1{stroke:#000;}.cls-2{stroke:#00aef8;}</style>
+	</defs>
+	<title>codepen</title>
+	<g id="Layer_2" data-name="Layer 2">
+		<g id="Layer_1-2" data-name="Layer 1">
+			<polyline class="cls-1" points="120.05 19.15 120.05 5.15 131.05 19.15 131.05 5.15" />
+			<polyline class="cls-1" points="112.05 5.15 103.05 5.15 103.05 19.15 112.05 19.15" />
+			<line class="cls-1" x1="103.05" y1="12.15" x2="109.05" y2="12.15" />
+			<path class="cls-1" d="M86.05,13.15h6a4,4,0,0,0,0-8h-6v14" />
+			<polyline class="cls-1" points="78.05 5.15 69.05 5.15 69.05 19.15 78.05 19.15" />
+			<line class="cls-1" x1="69.05" y1="12.15" x2="75.05" y2="12.15" />
+			<path class="cls-1" d="M50.05,5.15h5a7,7,0,1,1,0,14h-5Z" />
+			<polygon class="cls-2" points="20.05 8.45 31.05 1.15 42.05 8.45 42.05 15.85 31.05 23.15 20.05 15.85 20.05 8.45" />
+			<polyline class="cls-2" points="20.05 8.45 31.05 15.85 42.05 8.45" />
+			<polyline class="cls-2" points="42.05 15.85 31.05 8.45 20.05 15.85" />
+			<line class="cls-2" x1="31.05" y1="1.15" x2="31.05" y2="8.45" />
+			<line class="cls-2" x1="31.05" y1="15.85" x2="31.05" y2="23.15" />
+			<path class="cls-1" d="M13.05,7.15a7,7,0,1,0,0,10" />
+		</g>
+	</g>
+</svg>
