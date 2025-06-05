@@ -81,7 +81,9 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	letter-spacing: 0.05em;
 	-webkit-tap-highlight-color: transparent;
+	-webkit-font-smoothing: antialiased;
 }
 
 iframe {
@@ -97,6 +99,44 @@ img {
 
 ol, ul, li {
 	list-style-type: none;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.flex-center-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-center-auto {
+	justify-content: center;
+}
+
+.flex-auto-center {
+	align-items: center;
+}
+
+.flex-shrink-0 {
+	flex-shrink: 0;
+}
+
+.aspect-ratio-1 {
+	aspect-ratio: 1;
+}
+
+.bdrs-6 {
+	border-radius: 6px;
+}
+
+.bdrs-12 {
+	border-radius: 12px;
 }
 
 #preloader {
@@ -125,7 +165,7 @@ ol, ul, li {
 	border-radius: 50%;
 	width: 96px;
 	height: 96px;
-	animation: rotate 2s linear infinite;
+	animation: preloader-rotate 2s linear infinite;
 }
 
 #preloader svg circle {
@@ -133,10 +173,10 @@ ol, ul, li {
 	stroke-width: 20px;
 	stroke-linecap: round;
 	transition: 1s linear;
-	animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+	animation: preloader-dash 1.5s ease-in-out infinite, preloader-color 6s ease-in-out infinite;
 }
 
-@keyframes rotate {
+@keyframes preloader-rotate {
 	0% {
 		transform: rotate(0deg);
 	}
@@ -146,7 +186,7 @@ ol, ul, li {
 	}
 }
 
-@keyframes dash {
+@keyframes preloader-dash {
 	0% {
 		stroke-dasharray: 0, 565;
 		stroke-dashoffset: 565;
@@ -163,7 +203,7 @@ ol, ul, li {
 	}
 }
 
-@keyframes color {
+@keyframes preloader-color {
 	0% {
 		stroke: #ea4335;
 	}
@@ -183,41 +223,4 @@ ol, ul, li {
 	100% {
 		stroke: #7248b9;
 	}
-}
-
-.elm-flex {
-	display: flex;
-}
-
-.elm-flex-col {
-	display: flex;
-	flex-direction: column;
-}
-
-.elm-flex-center-center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.elm-flex-center-null {
-	display: flex;
-	justify-content: center;
-}
-
-.elm-flex-null-center {
-	display: flex;
-	align-items: center;
-}
-
-.elm-flex-0 {
-	flex-shrink: 0;
-}
-
-.bdrs-6 {
-	border-radius: 6px;
-}
-
-.bdrs-12 {
-	border-radius: 12px;
 }
