@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<base href="https://hiepdeep.github.io/">
+		<link rel="icon" href="library/favicon/logo-light.ico">
+		<title>My Website</title>
+		<meta name="title" content="HiepDeep">
+		<meta name="description" content="HiepDeep">
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src="library/script/config-firebase.js"></script>
+		<script src="library/script/function/randomInt.js"></script>
+		<script src="library/script/function/formatInt.js"></script>
+		<script src="library/script/function/convertVietnamese.js"></script>
+		<script src="library/script/function/createTimes.js"></script>
+		<script src="library/script/function/base64.js"></script>
+		<link rel="stylesheet" href="library/style/oneforall.css">
+		<style>
+			* {
+				font: 14px "Courier New";
+				color: #454d54;
+			}
+			::-webkit-scrollbar {
+				display: none;
+			}
+			body {
+				background: #edf5f8;
+			}
+			pre {
+				display: none;
+			}
+			#table {
+				width: 100%;
+				table-layout: fixed;
+				border-collapse: collapse;
+			}
+			#table tr th,
+			#table tr td {
+				padding: 6px;
+				border: 1px solid #ccc;
+				text-align: left;
+			}
+			#table tr th {
+				position: sticky;
+				top: 0;
+				background: #f8f8f8;
+				padding: 6px;
+				font-weight: bold;
+				user-select: none;
+				z-index: 10;
+			}
+			#table tr td {
+				user-select: all;
+			}
+		</style>
+	</head>
+	<body>
+		<pre id="data">
+			Hoàng Văn Trung
+			Nguyễn Thành Long
+			Nguyễn Văn Nghĩa
+			Dương Văn Khánh
+			Lương Tuấn Anh
+			Dương Thị Hương
+			Bùi Thị Lý
+			Lê Văn Tuấn
+			Lê Văn Hoàng
+			Bùi Thị Lương
+			Đặng Hữu Việt
+			Phạm Văn Đông
+			Vũ Tuấn Anh
+			Hoàng Văn Hưng
+			Lê Minh Hoàng
+			Phạm Trung Hiếu
+			Nguyễn Bá Nhật
+			Phạm Văn Thắng
+			Nguyễn Thị Nhung
+			Hoàng Văn Lương
+			Bùi Minh Hiếu
+			Trần Văn Vinh
+			Bùi Văn Hoàng
+			Hà Đức Khải
+			Nguyễn Văn Thành
+			Nguyễn Khắc Khánh
+			Nguyễn Văn Trường
+			Nguyễn Văn Thái
+			Giáp Minh Hiếu
+			Dương Trường Giang
+			Nguyễn Văn Khánh
+			Nguyễn Văn Bình
+			Lê Quốc Cường
+			Nguyễn Xuân Hào
+			Phạm Quốc Hưng
+			Lê Thị Thoa
+			Vũ Đặng Hải
+			Phạm Đức Huy
+			Nguyễn Đặng Sơn
+			Phạm Thị Ngọc Anh
+			Nguyễn Văn Sang
+			Nguyễn Xuân Long
+			Nguyễn Duy Quân
+			Nguyễn Văn Hoàng
+			Bùi Văn Lộc
+			Nguyễn Khắc Việt
+			Nguyễn Văn Mạnh
+			Hà Văn Hưng
+			Vương Thị Ngọc Lan
+			Nguyễn Thái Hoà
+			Hoàng Văn Thắng
+			Nguyễn Huy Hoàng
+			Nguyễn Văn Hưng
+			Nguyễn Thị Huyền
+			Trương Thị Thu Hiền
+			Võ Văn Tâm
+			Đỗ Văn Nam
+			Vũ Đức Nam
+			Hoàng Đức Duy
+			Trần Thị Hồng Hạnh
+			Trần Thị Thu
+			Nguyễn Thị Thảo
+			Nguyễn Thị Minh Thu
+			Đặng Quý Trường
+			Đỗ Trọng Tuấn
+			Nguyễn Văn Hiếu
+			Hoàng Văn Nam
+			Hà Tiến Đạt
+			Nguyễn Đức Thắng
+			Phạm Quang Huy
+			Nguyễn Anh Tuấn
+			Nguyễn Văn Huy
+			Bùi Hồng Sơn
+			Nguyễn Thị Phương Thảo
+			Triệu Thị Hương
+			Lý Quang Hưng
+			Nguyễn Văn Hào
+			Nguyễn Minh Hiếu
+			Nguyễn Đặng Trung
+			Hoàng Thị Yến
+			Nguyễn Huy Hoàng
+			Nông Thị Thoa
+			Nguyễn Sỹ Thái
+			Nguyễn Thị Phương
+			Nguyễn Thế Anh
+			Đào Thị Quỳnh
+			Đinh Văn Thắng
+			Hoàng Thị Hiền
+			Nguyễn Tiến Thế
+			Nguyễn Thị Anh Tuyết
+		</pre>
+		<table id="table">
+			<thead id="table-thead">
+				<tr>
+					<th>userId</th>
+					<th>lname</th>
+					<th>fname</th>
+					<th>sex</th>
+					<th>birthday</th>
+					<th>username</th>
+				</tr>
+			</thead>
+			<tbody id="table-tbody"></tbody>
+		</table>
+		<script type="text/javascript">
+			console.clear();
+			const data = document.getElementById("data").innerHTML.trim().split("\n");
+			const tableBody = document.getElementById("table-tbody");
+			function generateUser(nameString) {
+				const dbb_users = [];
+				const currentDate = new Date().toISOString();
+				nameString.forEach((e, index) => {
+					const nameParts = e.split(" ");
+					let lname = "";
+					let fname = "";
+					if (nameParts.length > 1) {
+						lname = nameParts.slice(0, nameParts.length - 1).join(" ");
+						fname = nameParts[nameParts.length - 1];
+					} else {
+						lname = "";
+						fname = e;
+					}
+					let sex = "male";
+					if (lname.toLowerCase().includes("thị")) {
+						sex = "female";
+					}
+					const user = {
+						userId: `user${String(index + 1).padStart(3, "0")}`,
+						online: "0",
+						detail: {
+							displayName: {
+								lname: lname,
+								fname: fname
+							},
+							sex: sex,
+							birthday: formatInt3(`${randomInt(1, 30)}/${randomInt(1, 12)}/${randomInt(1998, 2008)}`)
+						},
+						auth: {
+							username: "",
+							password: "password@123"
+						},
+						accountupdatedate: createTimes(),
+						accountcreationdate: createTimes()
+					}
+					let $ln = user.detail.displayName.lname;
+					let $fn = user.detail.displayName.fname;
+					user.auth.username = convertVietnameseToUsn(`${$ln}${$fn}${user.detail.birthday.slice(-2)}`);
+					const row = tableBody.insertRow();
+					row.insertCell().innerHTML = user.userId;
+					row.insertCell().innerHTML = user.detail.displayName.lname;
+					row.insertCell().innerHTML = user.detail.displayName.fname;
+					row.insertCell().innerHTML = user.detail.sex;
+					row.insertCell().innerHTML = user.detail.birthday;
+					row.insertCell().innerHTML = user.auth.username;
+					dbb_users.push(user);
+				});
+				return dbb_users;
+			}
+			const dbb_user_data = generateUser(data);
+			console.log(JSON.stringify(dbb_user_data, null, 2));
+			function createTimes() {
+				let getTime = new Date();
+				let timeYear = getTime.getFullYear();
+				let timeMonth = getTime.getMonth() + 1;
+				let timeDate = getTime.getDate();
+				let timeHours = getTime.getHours();
+				let timeMinutes = getTime.getMinutes();
+				let timeSeconds = getTime.getSeconds();
+				let timeMilliseconds = getTime.getMilliseconds();
+				return `${timeYear}-${timeMonth}-${timeDate}-${timeHours}-${timeMinutes}-${timeSeconds}-${timeMilliseconds}`.split(/[\/-]/).map(i => i.padStart(2, "0")).join("-");
+			}
+		</script>
+	</body>
+</html>
