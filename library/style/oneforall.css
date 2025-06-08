@@ -77,6 +77,10 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 
 /*::-webkit-scrollbar-track {background: #FFF;}::-webkit-scrollbar {width: 2px;height: 2px;}::-webkit-scrollbar-thumb {background: #322E2F;}*/
 
+:root {
+	--maxwidth: 1000px;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -84,6 +88,7 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	letter-spacing: 0.05em;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-font-smoothing: antialiased;
+	color: #454d54; /* hsl(210deg 10% 30%) */
 }
 
 iframe {
@@ -113,17 +118,17 @@ ol, ul, li {
 	flex-direction: column;
 }
 
-.flex-center-center {
+.flex-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.flex-center-auto {
+.flex-center-0 {
 	justify-content: center;
 }
 
-.flex-auto-center {
+.flex-0-center {
 	align-items: center;
 }
 
