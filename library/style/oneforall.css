@@ -77,10 +77,6 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 
 /*::-webkit-scrollbar-track {background: #FFF;}::-webkit-scrollbar {width: 2px;height: 2px;}::-webkit-scrollbar-thumb {background: #322E2F;}*/
 
-:root {
-	--maxwidth: 1000px;
-}
-
 * {
 	margin: 0;
 	padding: 0;
@@ -88,6 +84,8 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	letter-spacing: 0.05em;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-font-smoothing: antialiased;
+	font-family: "Bai Jamjuree", sans-serif;
+	font-size: 14px;
 	color: #454d54; /* hsl(210deg 10% 30%) */
 }
 
