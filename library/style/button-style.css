@@ -1,8 +1,5 @@
 button[btn-style] {
 	border: 0;
-	height: 30px;
-	padding: 0 12px;
-	border-radius: 2px;
 }
 
 button[btn-style][red] {
