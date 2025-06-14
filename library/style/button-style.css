@@ -1,0 +1,90 @@
+button[btn-style] {
+	border: 0;
+	height: 30px;
+	padding: 0 12px;
+	border-radius: 2px;
+}
+
+button[btn-style][red] {
+	--hs: 0deg 80%;
+	color: rgba(255, 255, 255, 0.9);
+	background: hsl(var(--hs) 65%);
+}
+
+button[btn-style][red]:hover {
+	background: hsl(var(--hs) 60%);
+}
+
+button[btn-style][red]:active {
+	background: hsl(var(--hs) 55%);
+}
+
+button[btn-style][green] {
+	--hs: 150 80%;
+	color: rgba(255, 255, 255, 0.9);
+	background: hsl(var(--hs) 35%);
+}
+
+button[btn-style][green]:hover {
+	background: hsl(var(--hs) 30%);
+}
+
+button[btn-style][green]:active {
+	background: hsl(var(--hs) 25%);
+}
+
+button[btn-style][blue] {
+	--hs: 210 70%;
+	color: rgba(255, 255, 255, 0.9);
+	background: hsl(var(--hs) 40%);
+}
+
+button[btn-style][blue]:hover {
+	background: hsl(var(--hs) 35%);
+}
+
+button[btn-style][blue]:active {
+	background: hsl(var(--hs) 30%);
+}
+
+button[btn-style][orange] {
+	--hs: 40 70%;
+	color: rgba(255, 255, 255, 0.9);
+	background: hsl(var(--hs) 50%);
+}
+
+button[btn-style][orange]:hover {
+	background: hsl(var(--hs) 45%);
+}
+
+button[btn-style][orange]:active {
+	background: hsl(var(--hs) 40%);
+}
+
+button[btn-style][gray] {
+	--hs: 210 10%;
+	color: rgba(255, 255, 255, 0.9);
+	background: hsl(var(--hs) 50%);
+}
+
+button[btn-style][gray]:hover {
+	background: hsl(var(--hs) 40%);
+}
+
+button[btn-style][gray]:active {
+	background: hsl(var(--hs) 30%);
+}
+
+button[btn-style][lightgray] {
+	--hs: 210 10%;
+	color: rgba(0, 0, 0, 0.6);
+	background: hsl(var(--hs) 90%);
+}
+
+button[btn-style][lightgray]:hover {
+	background: hsl(var(--hs) 80%);
+}
+
+button[btn-style][lightgray]:active {
+	background: hsl(var(--hs) 70%);
+}
