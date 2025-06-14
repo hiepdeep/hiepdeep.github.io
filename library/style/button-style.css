@@ -1,87 +1,53 @@
 button[btn-style] {
 	border: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+button[btn-style]:before {
+	content: "";
+	position: absolute;
+	background: rgba(0, 0, 0, 0);
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+button[btn-style]:hover:before {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+button[btn-style]:active:before {
+	background: rgba(0, 0, 0, 0.2);
 }
 
 button[btn-style][red] {
-	--hs: 0deg 80%;
 	color: rgba(255, 255, 255, 0.9);
-	background: hsl(var(--hs) 65%);
-}
-
-button[btn-style][red]:hover {
-	background: hsl(var(--hs) 60%);
-}
-
-button[btn-style][red]:active {
-	background: hsl(var(--hs) 55%);
+	background: #e64d4d;
 }
 
 button[btn-style][green] {
-	--hs: 150 80%;
 	color: rgba(255, 255, 255, 0.9);
-	background: hsl(var(--hs) 35%);
-}
-
-button[btn-style][green]:hover {
-	background: hsl(var(--hs) 30%);
-}
-
-button[btn-style][green]:active {
-	background: hsl(var(--hs) 25%);
+	background: #12a159;
 }
 
 button[btn-style][blue] {
-	--hs: 210 70%;
 	color: rgba(255, 255, 255, 0.9);
-	background: hsl(var(--hs) 40%);
-}
-
-button[btn-style][blue]:hover {
-	background: hsl(var(--hs) 35%);
-}
-
-button[btn-style][blue]:active {
-	background: hsl(var(--hs) 30%);
+	background: #2873bd;
 }
 
 button[btn-style][orange] {
-	--hs: 40 70%;
 	color: rgba(255, 255, 255, 0.9);
-	background: hsl(var(--hs) 50%);
-}
-
-button[btn-style][orange]:hover {
-	background: hsl(var(--hs) 45%);
-}
-
-button[btn-style][orange]:active {
-	background: hsl(var(--hs) 40%);
+	background: #d99d26;
 }
 
 button[btn-style][gray] {
-	--hs: 210 10%;
 	color: rgba(255, 255, 255, 0.9);
-	background: hsl(var(--hs) 50%);
-}
-
-button[btn-style][gray]:hover {
-	background: hsl(var(--hs) 40%);
-}
-
-button[btn-style][gray]:active {
-	background: hsl(var(--hs) 30%);
+	background: #73808c;
 }
 
 button[btn-style][lightgray] {
-	--hs: 210 10%;
 	color: rgba(0, 0, 0, 0.6);
-	background: hsl(var(--hs) 90%);
-}
-
-button[btn-style][lightgray]:hover {
-	background: hsl(var(--hs) 80%);
-}
-
-button[btn-style][lightgray]:active {
-	background: hsl(var(--hs) 70%);
+	background: #e3e6e8;
 }
