@@ -77,6 +77,11 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 
 /*::-webkit-scrollbar-track {background: #FFF;}::-webkit-scrollbar {width: 2px;height: 2px;}::-webkit-scrollbar-thumb {background: #322E2F;}*/
 
+:root {
+	--sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 * {
 	margin: 0;
 	padding: 0;
