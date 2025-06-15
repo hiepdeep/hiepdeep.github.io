@@ -169,9 +169,6 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	letter-spacing: 0.05em;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-font-smoothing: antialiased;
-	font-family: "Bai Jamjuree", sans-serif;
-	font-size: 14px;
-	color: #454d54; /* hsl(210deg 10% 30%) */
 }
 
 iframe {
