@@ -9,11 +9,11 @@ button[btn-style][red] {
 }
 
 button[btn-style][red]:hover {
-	background: #b83e3e;
+	background: #cf4545;
 }
 
 button[btn-style][red]:active {
-	background: #8a2e2e;
+	background: #b83e3e;
 }
 
 button[btn-style][green] {
@@ -22,11 +22,11 @@ button[btn-style][green] {
 }
 
 button[btn-style][green]:hover {
-	background: #0e8147;
+	background: #109150;
 }
 
 button[btn-style][green]:active {
-	background: #0b6135;
+	background: #0e8147;
 }
 
 button[btn-style][blue] {
@@ -35,11 +35,11 @@ button[btn-style][blue] {
 }
 
 button[btn-style][blue]:hover {
-	background: #205c97;
+	background: #2467aa;
 }
 
 button[btn-style][blue]:active {
-	background: #184571;
+	background: #205c97;
 }
 
 button[btn-style][orange] {
@@ -48,11 +48,11 @@ button[btn-style][orange] {
 }
 
 button[btn-style][orange]:hover {
-	background: #ae7e1e;
+	background: #c38d22;
 }
 
 button[btn-style][orange]:active {
-	background: #825e17;
+	background: #ae7e1e;
 }
 
 button[btn-style][gray] {
@@ -61,11 +61,11 @@ button[btn-style][gray] {
 }
 
 button[btn-style][gray]:hover {
-	background: #5c6670;
+	background: #67737e;
 }
 
 button[btn-style][gray]:active {
-	background: #454d54;
+	background: #5c6670;
 }
 
 button[btn-style][lightgray] {
@@ -74,9 +74,9 @@ button[btn-style][lightgray] {
 }
 
 button[btn-style][lightgray]:hover {
-	background: #b6b8ba;
+	background: #cccfd0;
 }
 
 button[btn-style][lightgray]:active {
-	background: #888a8b;
+	background: #b6b8ba;
 }
