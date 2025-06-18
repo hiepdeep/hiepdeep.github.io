@@ -19,12 +19,12 @@ function createTimes() {
 	let timeMinutes = getTime.getMinutes();
 	let timeSeconds = getTime.getSeconds();
 	let timeMilliseconds = getTime.getMilliseconds();
-	timeYear = timeYear.padStart(2, "0");
-	timeMonth = timeMonth.padStart(2, "0");
-	timeDate = timeDate.padStart(2, "0");
-	timeHours = timeHours.padStart(2, "0");
-	timeMinutes = timeMinutes.padStart(2, "0");
-	timeMilliseconds = timeMilliseconds.padStart(3, "0");
+	timeYear = timeYear.toString().padStart(2, "0");
+	timeMonth = timeMonth.toString().padStart(2, "0");
+	timeDate = timeDate.toString().padStart(2, "0");
+	timeHours = timeHours.toString().padStart(2, "0");
+	timeMinutes = timeMinutes.toString().padStart(2, "0");
+	timeMilliseconds = timeMilliseconds.toString().padStart(3, "0");
 	return `${timeYear}/${timeMonth}/${timeDate} ${timeHours}:${timeMinutes}:${timeSeconds}:${timeMilliseconds}`;
 }
 
