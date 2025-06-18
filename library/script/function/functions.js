@@ -24,6 +24,7 @@ function createTimes() {
 	timeDate = timeDate.toString().padStart(2, "0");
 	timeHours = timeHours.toString().padStart(2, "0");
 	timeMinutes = timeMinutes.toString().padStart(2, "0");
+	timeSeconds = timeSeconds.toString().padStart(2, "0");
 	timeMilliseconds = timeMilliseconds.toString().padStart(3, "0");
 	return `${timeYear}/${timeMonth}/${timeDate} ${timeHours}:${timeMinutes}:${timeSeconds}:${timeMilliseconds}`;
 }
