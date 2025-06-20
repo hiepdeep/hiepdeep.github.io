@@ -240,7 +240,7 @@ button[btn-style] {
 }
 
 button[btn-style][small] {
-	width: max-content;
+	width: max-content !important;
 }
 
 button[btn-style][red] {
