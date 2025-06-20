@@ -1,3 +1,6 @@
 window.addEventListener("load", (event) => {
-	document.getElementById("preloader").classList.add("finished");
+	const preloader = document.getElementById("preloader");
+	if (preloader) {
+		document.getElementById("preloader").classList.add("finished");
+	}
 });
