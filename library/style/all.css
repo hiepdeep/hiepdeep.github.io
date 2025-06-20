@@ -239,6 +239,10 @@ button[btn-style] {
 	overflow: hidden;
 }
 
+button[btn-style][small] {
+	width: max-content;
+}
+
 button[btn-style][red] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #e64d4d;
