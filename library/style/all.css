@@ -240,6 +240,7 @@ button[btn-style] {
 }
 
 button[btn-style][small] {
+	flex-shrink: 0;
 	width: max-content !important;
 }
 
