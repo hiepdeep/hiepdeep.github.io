@@ -30,6 +30,34 @@ function createTimes() {
 }
 
 function timeampPro(timeString) {
+    let now = new Date();
+    let cleanTimeString = timeString.includes(".") ? timeString.split(".")[0].replace(/-/g, "/") : timeString.replace(/-/g, "/");
+    let past = new Date(cleanTimeString);
+    let seconds = Math.floor((now - past) / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+    let months = (years * 12) + now.getMonth() - past.getMonth();
+    let years = now.getFullYear() - past.getFullYear();
+    if (now.getDate() < past.getDate()) {
+        months--;
+    }
+    if (years > 0) {
+        return `${years} năm trước`;
+    } else if (months > 0) {
+        return `${months} tháng trước`;
+    } else if (days > 0) {
+        return `${days} ngày trước`;
+    } else if (hours > 0) {
+        return `${hours} giờ trước`;
+    } else if (minutes > 0) {
+        return `${minutes} phút trước`;
+    } else {
+        return "vài giây trước";
+    }
+}
+
+function $timeampPro(timeString) {
 	const now = new Date();
 	const timeWithoutMilliseconds = timeString.replace(/:(\d+)$/, '.$1');
 	const past = new Date(timeWithoutMilliseconds.replace(/-/g, '/'));
