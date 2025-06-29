@@ -1,9 +1,19 @@
-function utf8ToBase64(str) {
-	return btoa(unescape(encodeURIComponent(str)));
+function entities(value) {
+	return value
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#039;")
+		.replace(/\n/g, "<br>");
 }
 
-function base64ToUtf8(str) {
-	return decodeURIComponent(escape(atob(str)));
+function utf8ToBase64(value) {
+	return btoa(unescape(encodeURIComponent(value)));
+}
+
+function base64ToUtf8(value) {
+	return decodeURIComponent(escape(atob(value)));
 }
 
 function randomInt(min, max) {
@@ -29,9 +39,9 @@ function createTimes() {
 	return `${timeYear}/${timeMonth}/${timeDate} ${timeHours}:${timeMinutes}:${timeSeconds}:${timeMilliseconds}`;
 }
 
-function timeampPro(timeString) {
+function timeampPro(value) {
 	let now = new Date();
-	let cleanTimeString = timeString.includes(".") ? timeString.split(".")[0].replace(/-/g, "/") : timeString.replace(/-/g, "/");
+	let cleanTimeString = value.includes(".") ? value.split(".")[0].replace(/-/g, "/") : value.replace(/-/g, "/");
 	let past = new Date(cleanTimeString);
 	let seconds = Math.floor((now - past) / 1000);
 	let minutes = Math.floor(seconds / 60);
@@ -57,9 +67,9 @@ function timeampPro(timeString) {
 	}
 }
 
-function $timeampPro(timeString) {
+function $timeampPro(value) {
 	const now = new Date();
-	const timeWithoutMilliseconds = timeString.replace(/:(\d+)$/, '.$1');
+	const timeWithoutMilliseconds = value.replace(/:(\d+)$/, '.$1');
 	const past = new Date(timeWithoutMilliseconds.replace(/-/g, '/'));
 	const seconds = Math.floor((now - past) / 1000);
 	const minutes = Math.floor(seconds / 60);
@@ -94,33 +104,33 @@ function formatInt4(value) {
 	return `${fomat[0]}/${fomat[1]}/${fomat[2]} ${fomat[3]}:${fomat[4]}:${fomat[5]}`;
 }
 
-function convertVietnameseToUrl(str) {
-	str = str.toLowerCase();
-	str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
-	str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
-	str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
-	str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
-	str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
-	str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
-	str = str.replace(/đ/g, "d");
-	str = str.replace(/[^a-z0-9]/g, " ");
-	str = str.replace(/\s+/g, " ");
-	str = str.trim().replace(/\s/g, "-");
-	return str;
+function convertVietnameseToUrl(value) {
+	return value
+		.toLowerCase()
+		.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a")
+		.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a")
+		.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e")
+		.replace(/ì|í|ị|ỉ|ĩ/g, "i")
+		.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o")
+		.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u")
+		.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y")
+		.replace(/đ/g, "d")
+		.replace(/[^a-z0-9]/g, " ")
+		.replace(/\s+/g, " ")
+		.trim().replace(/\s/g, "-");
 }
 
-function convertVietnameseToUsn(str) {
-	str = str.toLowerCase();
-	str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
-	str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
-	str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
-	str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
-	str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
-	str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
-	str = str.replace(/đ/g, "d");
-	str = str.replace(/[^a-z0-9]/g, "");
-	str = str.replace(/\s+/g, "");
-	str = str.trim().replace(/\s/g, "");
-	return str;
+function convertVietnameseToUsn(value) {
+	return value
+		.toLowerCase()
+		.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a")
+		.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e")
+		.replace(/ì|í|ị|ỉ|ĩ/g, "i")
+		.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o")
+		.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u")
+		.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y")
+		.replace(/đ/g, "d")
+		.replace(/[^a-z0-9]/g, "")
+		.replace(/\s+/g, "")
+		.trim().replace(/\s/g, "");
 }
-
