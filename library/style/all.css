@@ -196,129 +196,129 @@ ol, ul, li {
 	font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 24;
 }
 
-.flex {
+[flex] {
 	display: flex;
 }
 
-.flex-col {
+[flex-column] {
 	flex-direction: column;
 }
 
-.flex-center {
+[flex-center] {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.flex-center-0 {
+[flex-center-0] {
 	justify-content: center;
 }
 
-.flex-0-center {
+[flex-0-center] {
 	align-items: center;
 }
 
-.flex-shrink-0 {
+[flex-shrink-0] {
 	flex-shrink: 0;
 }
 
-.aspect-ratio-1 {
+[square] {
 	aspect-ratio: 1;
 }
 
-.bdrs-6 {
+[bdrs-6] {
 	border-radius: 6px;
 }
 
-.bdrs-12 {
+[bdrs-12] {
 	border-radius: 12px;
 }
 
-button[btn-style] {
+[btn-style] {
 	border: 0;
 	overflow: hidden;
 }
 
-button[btn-style][small] {
+[btn-style][small] {
 	flex-shrink: 0;
 	width: max-content !important;
 }
 
-button[btn-style][red] {
+[btn-style][red] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #e64d4d;
 }
 
-button[btn-style][red]:hover {
+[btn-style][red]:hover {
 	background: #cf4545;
 }
 
-button[btn-style][red]:active {
+[btn-style][red]:active {
 	background: #b83e3e;
 }
 
-button[btn-style][green] {
+[btn-style][green] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #12a159;
 }
 
-button[btn-style][green]:hover {
+[btn-style][green]:hover {
 	background: #109150;
 }
 
-button[btn-style][green]:active {
+[btn-style][green]:active {
 	background: #0e8147;
 }
 
-button[btn-style][blue] {
+[btn-style][blue] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #2873bd;
 }
 
-button[btn-style][blue]:hover {
+[btn-style][blue]:hover {
 	background: #2467aa;
 }
 
-button[btn-style][blue]:active {
+[btn-style][blue]:active {
 	background: #205c97;
 }
 
-button[btn-style][orange] {
+[btn-style][orange] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #d99d26;
 }
 
-button[btn-style][orange]:hover {
+[btn-style][orange]:hover {
 	background: #c38d22;
 }
 
-button[btn-style][orange]:active {
+[btn-style][orange]:active {
 	background: #ae7e1e;
 }
 
-button[btn-style][gray] {
+[btn-style][gray] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #73808c;
 }
 
-button[btn-style][gray]:hover {
+[btn-style][gray]:hover {
 	background: #67737e;
 }
 
-button[btn-style][gray]:active {
+[btn-style][gray]:active {
 	background: #5c6670;
 }
 
-button[btn-style][lightgray] {
+[btn-style][lightgray] {
 	color: rgba(0, 0, 0, 0.6);
 	background: #e3e6e8;
 }
 
-button[btn-style][lightgray]:hover {
+[btn-style][lightgray]:hover {
 	background: #cccfd0;
 }
 
-button[btn-style][lightgray]:active {
+[btn-style][lightgray]:active {
 	background: #b6b8ba;
 }
 
