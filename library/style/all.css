@@ -201,6 +201,7 @@ ol, ul, li {
 }
 
 [flex-column] {
+	display: flex;
 	flex-direction: column;
 }
 
@@ -211,10 +212,12 @@ ol, ul, li {
 }
 
 [flex-center-0] {
+	display: flex;
 	justify-content: center;
 }
 
 [flex-0-center] {
+	display: flex;
 	align-items: center;
 }
 
