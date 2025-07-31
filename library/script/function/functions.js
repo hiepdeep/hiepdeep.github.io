@@ -39,6 +39,24 @@ function createTimes() {
 	return `${timeYear}/${timeMonth}/${timeDate} ${timeHours}:${timeMinutes}:${timeSeconds}:${timeMilliseconds}`;
 }
 
+function formatTimeAgo(timestamp) {
+	const messageDate = new Date(timestamp.replace(/:(\d{3})$/, '.$1')); // Chuyển đổi định dạng để Date hiểu
+	const now = new Date();
+	const diffMs = now - messageDate;
+	const diffMins = Math.round(diffMs / (1000 * 60));
+	const diffHours = Math.round(diffMs / (1000 * 60 * 60));
+	const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+	if (diffMins < 60) {
+		return diffMins <= 1 ? "Vừa xong" : `${diffMins} phút trước`;
+	} else if (diffHours < 24) {
+		return `${diffHours} giờ trước`;
+	} else if (diffDays < 7) {
+		return `${diffDays} ngày trước`;
+	} else {
+		return messageDate.toLocaleDateString('vi-VN'); // Hoặc định dạng khác nếu muốn
+	}
+}
+
 function timeampPro(value) {
 	let now = new Date();
 	let cleanTimeString = value.includes(".") ? value.split(".")[0].replace(/-/g, "/") : value.replace(/-/g, "/");
