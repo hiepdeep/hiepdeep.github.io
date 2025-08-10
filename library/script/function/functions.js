@@ -20,6 +20,21 @@ function randomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
+function createDate() {
+	let getTime = new Date();
+	let timeYear = getTime.getFullYear();
+	let timeMonth = getTime.getMonth() + 1;
+	let timeDate = getTime.getDate();
+	let timeHours = getTime.getHours();
+	let timeMinutes = getTime.getMinutes();
+	timeYear = timeYear.toString().padStart(2, "0");
+	timeMonth = timeMonth.toString().padStart(2, "0");
+	timeDate = timeDate.toString().padStart(2, "0");
+	timeHours = timeHours.toString().padStart(2, "0");
+	timeMinutes = timeMinutes.toString().padStart(2, "0");
+	return `${timeYear}-${timeMonth}-${timeDate}-${timeHours}-${timeMinutes}`;
+}
+
 function createTimes() {
 	let getTime = new Date();
 	let timeYear = getTime.getFullYear();
@@ -40,7 +55,7 @@ function createTimes() {
 }
 
 function formatTimeAgo(timestamp) {
-	const messageDate = new Date(timestamp.replace(/:(\d{3})$/, '.$1')); // Chuyển đổi định dạng để Date hiểu
+	const messageDate = new Date(timestamp.replace(/:(\d{3})$/, '.$1'));
 	const now = new Date();
 	const diffMs = now - messageDate;
 	const diffMins = Math.round(diffMs / (1000 * 60));
@@ -53,7 +68,7 @@ function formatTimeAgo(timestamp) {
 	} else if (diffDays < 7) {
 		return `${diffDays} ngày trước`;
 	} else {
-		return messageDate.toLocaleDateString('vi-VN'); // Hoặc định dạng khác nếu muốn
+		return messageDate.toLocaleDateString('vi-VN');
 	}
 }
 
