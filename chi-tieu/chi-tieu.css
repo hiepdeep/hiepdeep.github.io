@@ -154,9 +154,15 @@ form button:active {
 
 #list .list .returnList li .text .description {
 	font-weight: 700;
+	width: 100%;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
 }
 
 #list .list .returnList li .text .amount {
+	flex-shrink: 0;
 	font-weight: 700;
 	color: tomato;
 }
