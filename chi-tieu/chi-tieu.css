@@ -165,6 +165,7 @@ form button:active {
 	flex-shrink: 0;
 	font-weight: 700;
 	color: tomato;
+	
 }
 
 #list .list .returnList li .text .amount:before {
