@@ -66,5 +66,5 @@ function animateSingleNumber(element, targetNumber, duration) {
  *
  * Thêm <script src="https://hiepdeep.github.io/library/script/function/autoAnimateNumbers.js"></script> vào thẻ <head>
  * Thêm autoAnimateNumbers(".js-animated-number", 2000); vào thẻ <script>.
- * Thêm ".js-animated-number" vào thẻ muốn sử dụng function này, thẻ ".js-animated-number" chỉ chứa số.
+ * Thêm class="js-animated-number" vào thẻ muốn sử dụng function này, ".js-animated-number" chỉ chứa số.
 **/
