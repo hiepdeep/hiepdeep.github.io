@@ -180,7 +180,7 @@ body {
 	padding: 12px;
 }
 
-#list .list .returnList li:hover, #list .list .returnList li:active {
+#list .list .returnList li:hover, #list .list .returnList li:focus, #list .list .returnList li:active {
 	cursor: pointer;
 	text-decoration: line-through;
 	opacity: 0.5;
