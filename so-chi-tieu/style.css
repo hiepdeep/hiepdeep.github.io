@@ -4,6 +4,7 @@
 	font-family: "Playpen Sans", cursive;
 	font-size: 12px;
 	color: #171a1c;
+	user-select: none;
 }
 
 :root {
