@@ -3,6 +3,7 @@ const app = firebase.initializeApp({
 	databaseURL: "https://eimi-fukada-default-rtdb.firebaseio.com"
 });
 const database = firebase.database();
+const db = "so-chi-tieu";
 document.addEventListener("DOMContentLoaded", () => {
 	renderChitieu();
 	document.forms["form"]["amount"].addEventListener("input", function(e) {
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			amount: amount,
 			creationDate: createTimes()
 		}
-		database.ref("chi-tieu").push(data).then(() => {
+		database.ref(db).push(data).then(() => {
 			document.forms["form"].reset();
 			renderChitieu();
 		}).catch((error) => {
@@ -41,7 +42,7 @@ function formatAmount(amount) {
 	return new Intl.NumberFormat("vi-VN").format(amount);
 }
 async function renderChitieu() {
-	const snapshot = await database.ref("chi-tieu").once("value");
+	const snapshot = await database.ref(db).once("value");
 	const data = snapshot.val() || {};
 	let totalSum = 0;
 	let totalSum1 = 0;
@@ -68,7 +69,7 @@ async function renderChitieu() {
         `;
 		listItem.addEventListener("click", () => {
 			if (confirm("Bạn có chắc chắn muốn xóa chi tiêu này?")) {
-				database.ref("chi-tieu").child(key).remove().then(() => {
+				database.ref(db).child(key).remove().then(() => {
 					alert("Xóa thành công!");
 					renderChitieu();
 				}).catch((error) => {
