@@ -180,6 +180,12 @@ body {
 	padding: 12px;
 }
 
+#list .list .returnList li:hover {
+	cursor: pointer;
+	text-decoration: line-through;
+	opacity: 0.5;
+}
+
 #list .list .returnList li:nth-child(n+2) {
 	padding-top: 12px;
 	border-top: 1px solid #e3e6e8;
