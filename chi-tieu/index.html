@@ -5,91 +5,64 @@
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 		<meta content="width=device-width, initial-scale=1" name="viewport">
 		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
-		<title>Ghi Chú Chi Tiêu</title>
+		<title>Sổ Chi Tiêu</title>
 		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
-		<link rel="stylesheet" href="chi-tieu.css">
-		<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
-		<script src="library/script/config-firebase.js"></script>
+		<link rel='stylesheet' href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&amp;display=swap">
+		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
-		<div class="label-user">
-			<label for="person-1">
-				<input type="radio" name="person" id="person-1" value="Hiếu" checked>
-				<span class="displayName">Hiếu</span>
-			</label>
-			<label for="person-2">
-				<input type="radio" name="person" id="person-2" value="Hiệp">
-				<span class="displayName">Hiệp</span>
-			</label>
-		</div>
 		<form action="" id="form">
-			<input type="text" name="descriptionInput" placeholder="Mô tả chi tiêu">
-			<input type="text" name="amountInput" placeholder="Số tiền">
+			<div class="person">
+				<label for="person-1">
+					<input type="radio" name="person" id="person-1" value="person-1" checked>
+					<span class="displayName">Hiếu</span>
+				</label>
+				<label for="person-2">
+					<input type="radio" name="person" id="person-2" value="person-2">
+					<span class="displayName">Hiệp</span>
+				</label>
+			</div>
+			<input type="text" name="description" placeholder="Mô tả chi tiêu">
+			<input type="tel" name="amount" placeholder="Số tiền" pattern="[0-9.]*">
 			<button id="addExpenseBtn" type="submit">Thêm chi tiêu</button>
 		</form>
-		<div id="totalSum">
-			<div class="total">
+		<div id="sumData">
+			<div class="row">
 				<h3>Tổng chi tiêu chung:</h3>
-				<span class="returnSum" id="returnSum">0</span>
+				<span class="return_sumData" id="return_sumData">0</span>
 			</div>
-			<div class="total">
+			<div class="row">
 				<h3><b>Hiếu</b> cần trả <b>Hiệp</b>:</h3>
-				<span class="returnSum" id="returnSum-1">0</span>
+				<span class="return_sumData" id="person1-to-person2">0</span>
 			</div>
-			<div class="total">
+			<div class="row">
 				<h3><b>Hiệp</b> cần trả <b>Hiếu</b>:</h3>
-				<span class="returnSum" id="returnSum-2">0</span>
+				<span class="return_sumData" id="person2-to-person1">0</span>
 			</div>
 		</div>
 		<div id="list">
 			<div class="list">
-				<h3>Chi tiêu của <b>Hiếu</b>:</h3>
+				<div class="totalSum">
+					<h3>Tổng chi tiêu của <b>Hiếu</b>:</h3>
+					<span class="return_totalSum" id="return_totalSum1">0</span>
+				</div>
 				<div class="returnList" id="returnList-1">
-					<li>
-						<div class="timeamp">2025-08-16</div>
-						<div class="text">
-							<div class="description">Tiền trọ T7</div>
-							<div class="amount">2.605.000</div>
-						</div>
-					</li>
-					<li>
-						<div class="timeamp">2025-08-16</div>
-						<div class="text">
-							<div class="description">Tiền trọ T7</div>
-							<div class="amount">2.605.000</div>
-						</div>
-					</li>
-					<li>
-						<div class="timeamp">2025-08-16</div>
-						<div class="text">
-							<div class="description">Tiền trọ T7</div>
-							<div class="amount">2.605.000</div>
-						</div>
-					</li>
-					<li>
-						<div class="timeamp">2025-08-16</div>
-						<div class="text">
-							<div class="description">Tiền trọ T7</div>
-							<div class="amount">2.605.000</div>
-						</div>
-					</li>
-					<li>
-						<div class="timeamp">2025-08-16</div>
-						<div class="text">
-							<div class="description">Tiền trọ T7</div>
-							<div class="amount">2.605.000</div>
-						</div>
-					</li>
+					<div class="loading"></div>
 				</div>
 			</div>
 			<div class="list">
-				<h3>Chi tiêu của <b>Hiệp</b>:</h3>
-				<div class="returnList" id="returnList-2"></div>
+				<div class="totalSum">
+					<h3>Tổng chi tiêu của <b>Hiệp</b>:</h3>
+					<span class="return_totalSum" id="return_totalSum2">0</span>
+				</div>
+				<div class="returnList" id="returnList-2">
+					<div class="loading"></div>
+				</div>
 			</div>
 		</div>
-		<script>
-			console.clear();
-		</script>
+		<script src='https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js'></script>
+		<script src='https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js'></script>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="./script.js"></script>
 	</body>
 </html>
