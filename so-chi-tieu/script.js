@@ -56,16 +56,26 @@ async function renderChitieu() {
 		const person = item.person;
 		const creationDate = item.creationDate;
 		const datePart = creationDate.split(" ")[0].replace(/\//g, "-");
-		const description = item.description;
 		totalSum += amount;
 		const listItem = document.createElement("li");
+		listItem.setAttribute("data-key", key);
 		listItem.innerHTML = `
-			<div class="data">
-				<div class="timeamp">${datePart}</div>
-				<div class="amount">${formatAmount(amount)}</div>
-			</div>
-			<div class="description">${item.description}</div>
-		`;
+            <div class="data">
+                <div class="timeamp">${datePart}</div>
+                <div class="amount">${formatAmount(amount)}</div>
+            </div>
+            <div class="description">${item.description}</div>
+        `;
+		listItem.addEventListener("click", () => {
+			if (confirm("Bạn có chắc chắn muốn xóa chi tiêu này?")) {
+				database.ref("chi-tieu").child(key).remove().then(() => {
+					alert("Xóa thành công!");
+					renderChitieu();
+				}).catch((error) => {
+					console.error("Lỗi khi xóa:", error);
+				});
+			}
+		});
 		if (person === "person-1") {
 			totalSum1 += amount;
 			list1.appendChild(listItem);
