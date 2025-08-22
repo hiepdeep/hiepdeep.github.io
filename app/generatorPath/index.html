@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
+		<title>Generator Path</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="box">
+			<div class="col paint">
+				<svg id="svgElement">
+					<g id="background-grid"></g>
+					<g id="dashed-line"></g>
+					<path id="generator-path" d=""></path>
+					<g id="draggable-dot"></g>
+				</svg>
+			</div>
+			<div class="col settings">
+				<div class="settingsGr">
+					<div class="item size">
+						<fieldset>
+							<legend>Width:</legend>
+							<input type="number" id="svg-width" value="7" min="1">
+						</fieldset>
+						<fieldset>
+							<legend>Height:</legend>
+							<input type="number" id="svg-height" value="6" min="1">
+						</fieldset>
+						<fieldset>
+							<legend>Gap:</legend>
+							<input type="number" id="grid-spacing" value="1" min="0.1" step="0.1">
+						</fieldset>
+					</div>
+					<div class="item checkboxGr">
+						<label for="show-grid">
+							<span class="text">Hiển thị lưới:</span>
+							<input type="checkbox" id="show-grid" checked>
+						</label>
+						<label for="show-points">
+							<span class="text">Hiển thị điểm & nét đứt:</span>
+							<input type="checkbox" id="show-points" checked>
+						</label>
+						<label for="close-path">
+							<span class="text">Kết thúc bằng Z:</span>
+							<input type="checkbox" id="close-path">
+						</label>
+					</div>
+					<div class="item optionsGr">
+						<label for="option-line">
+							<input type="radio" name="btn-option" id="option-line" value="option-line" checked>
+							<span class="text">L</span>
+						</label>
+						<label for="option-quadratic">
+							<input type="radio" name="btn-option" id="option-quadratic" value="option-quadratic">
+							<span class="text">Q</span>
+						</label>
+						<label for="option-cubic">
+							<input type="radio" name="btn-option" id="option-cubic" value="option-cubic">
+							<span class="text">C</span>
+						</label>
+					</div>
+					<div class="item btnGr">
+						<button btn-style blue id="add-point">Thêm điểm mới</button>
+						<button btn-style orange id="remove-point">Xóa điểm cuối</button>
+						<button btn-style red id="reset-path">Xoá tất cả</button>
+					</div>
+				</div>
+				<div class="textarea">
+					<div id="textarea-path"></div>
+				</div>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
