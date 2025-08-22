@@ -205,6 +205,7 @@ input[type=checkbox]:checked:before, input[type=radio]:checked:before {
 	border-radius: var(--bdrs);
 	padding: 12px;
 	text-align: justify;
+	user-select: text;
 }
 
 .box .col.settings .textarea #textarea-path span {
