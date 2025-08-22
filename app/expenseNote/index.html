@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="library/favicon/logo-light.ico">
+		<title>Sổ Chi Tiêu</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<link rel='stylesheet' href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&amp;display=swap">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<form action="" id="form">
+			<div class="person">
+				<label for="person-1">
+					<input type="radio" name="person" id="person-1" value="person-1" checked>
+					<span class="displayName">Hiếu</span>
+				</label>
+				<label for="person-2">
+					<input type="radio" name="person" id="person-2" value="person-2">
+					<span class="displayName">Hiệp</span>
+				</label>
+			</div>
+			<input type="text" name="description" placeholder="Mô tả chi tiêu">
+			<input type="tel" name="amount" placeholder="Số tiền" pattern="[0-9.]*">
+			<button id="addExpenseBtn" type="submit">Thêm chi tiêu</button>
+		</form>
+		<div id="sumData">
+			<div class="row">
+				<h3>Tổng chi tiêu chung:</h3>
+				<span class="return_sumData" id="return_sumData">0</span>
+			</div>
+			<div class="row">
+				<h3><b>Hiếu</b> cần trả <b>Hiệp</b>:</h3>
+				<span class="return_sumData" id="person1-to-person2">0</span>
+			</div>
+			<div class="row">
+				<h3><b>Hiệp</b> cần trả <b>Hiếu</b>:</h3>
+				<span class="return_sumData" id="person2-to-person1">0</span>
+			</div>
+		</div>
+		<div id="list">
+			<div class="list">
+				<div class="totalSum">
+					<h3>Tổng chi tiêu của <b>Hiếu</b>:</h3>
+					<span class="return_totalSum" id="return_totalSum1">0</span>
+				</div>
+				<div class="returnList" id="returnList-1">
+					<div class="loading"></div>
+				</div>
+			</div>
+			<div class="list">
+				<div class="totalSum">
+					<h3>Tổng chi tiêu của <b>Hiệp</b>:</h3>
+					<span class="return_totalSum" id="return_totalSum2">0</span>
+				</div>
+				<div class="returnList" id="returnList-2">
+					<div class="loading"></div>
+				</div>
+			</div>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="script.js"></script>
+	</body>
+</html>
