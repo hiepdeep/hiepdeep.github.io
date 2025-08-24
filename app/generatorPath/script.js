@@ -1,6 +1,9 @@
 console.clear();
 document.addEventListener("DOMContentLoaded", () => {
 	const svgElement = document.getElementById("svgElement");
+	const sizeCircle = document.getElementById("size-circle");
+	const sizePath = document.getElementById("size-path");
+	const sizeGrid = document.getElementById("size-grid");
 	const svg_width_input = document.getElementById("svg-width");
 	const svg_height_input = document.getElementById("svg-height");
 	const gridSpacingInput = document.getElementById("grid-spacing");
@@ -72,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const width = parseFloat(svg_width_input.value);
 		const height = parseFloat(svg_height_input.value);
 		const spacing = parseFloat(gridSpacingInput.value);
+		const gridStrokeWidth = parseFloat(sizeGrid.value);
 		svgElement.setAttribute("viewBox", `0 0 ${width} ${height}`);
 		backgroundGrid.innerHTML = "";
 		if (spacing > 0) {
@@ -82,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				line.setAttribute("x2", x);
 				line.setAttribute("y2", height);
 				line.setAttribute("stroke", "hsl(210deg 10% 95%)");
-				line.setAttribute("stroke-width", "0.05");
+				line.setAttribute("stroke-width", gridStrokeWidth);
 				backgroundGrid.appendChild(line);
 			}
 			for (let y = spacing; y < height; y += spacing) {
@@ -92,12 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
 				line.setAttribute("x2", width);
 				line.setAttribute("y2", y);
 				line.setAttribute("stroke", "hsl(210deg 10% 95%)");
-				line.setAttribute("stroke-width", "0.05");
+				line.setAttribute("stroke-width", gridStrokeWidth);
 				backgroundGrid.appendChild(line);
 			}
 		}
 	};
 	const updateDraggableDots = () => {
+		const circleRadius = parseFloat(sizeCircle.value);
 		draggableDotGroup.innerHTML = "";
 		let pointIndex = 0;
 		axis.forEach((segment, segmentIndex) => {
@@ -108,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 				circle.setAttribute("cx", point.x);
 				circle.setAttribute("cy", point.y);
-				circle.setAttribute("r", 0.1);
+				circle.setAttribute("r", circleRadius);
 				circle.setAttribute("fill", "#263238");
 				circle.setAttribute("stroke", "white");
 				circle.setAttribute("stroke-width", "0.05");
@@ -191,6 +196,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		updateDraggableDots();
 		updateDashedLines();
 		updateTextareaPath();
+		const pathStrokeWidth = parseFloat(sizePath.value);
+		generatorPath.setAttribute("stroke-width", pathStrokeWidth);
 	};
 	const getPointFromEvent = (e) => {
 		const CTM = svgElement.getScreenCTM();
@@ -229,6 +236,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	const handleMouseUp = () => {
 		currentDrag = null;
 	};
+	sizeGrid.addEventListener("change", () => {
+		updateGrid();
+	});
+	sizeCircle.addEventListener("change", () => {
+		updateDraggableDots();
+	});
+	sizePath.addEventListener("change", () => {
+		const pathStrokeWidth = parseFloat(sizePath.value);
+		generatorPath.setAttribute("stroke-width", pathStrokeWidth);
+	});
 	svg_width_input.addEventListener("change", () => {
 		updateGrid();
 	});

@@ -71,34 +71,15 @@ input[type=checkbox]:checked:before, input[type=radio]:checked:before {
 .box .col.paint svg #generator-path {
 	fill: none;
 	stroke: #607d8b;
-	stroke-width: 0.05;
 	stroke-linecap: round;
-}
-
-.box .col.paint svg #draggable-dot circle {
-	transition: 0.1s cubic-bezier(0.5, 0, 0.5, 1);
 }
 
 .box .col.paint svg #draggable-dot circle:hover {
 	cursor: grab;
-	r: 0.2;
 }
 
 .box .col.paint svg #draggable-dot circle:active {
 	cursor: grabbing;
-}
-
-.box .col.data {
-	width: 100%;
-	height: 100%;
-	padding: 12px;
-}
-
-.box .col.data .row {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .box .col.settings {
