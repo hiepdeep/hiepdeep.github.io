@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const generatePathString = () => {
 		let pathString = "";
 		axis.forEach(segment => {
-			const points = segment.points.map(p => `${p.x} ${p.y}`).join(", ");
+			const points = segment.points.map(p => `${p.x} ${p.y}`).join(" ");
 			pathString += `${segment.type} ${points} `;
 		});
 		if (closePathCheckbox.checked) {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		axis.forEach(segment => {
 			const span = document.createElement("span");
 			span.className = segment.type;
-			const points = segment.points.map(p => `${p.x} ${p.y}`).join(", ");
+			const points = segment.points.map(p => `${p.x} ${p.y}`).join(" ");
 			span.textContent = `${segment.type} ${points}`;
 			textareaPathDiv.appendChild(span);
 			textareaPathDiv.appendChild(document.createTextNode(" "));
