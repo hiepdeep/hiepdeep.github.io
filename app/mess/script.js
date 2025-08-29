@@ -117,6 +117,16 @@ async function renderCol_2() {
 				e.preventDefault();
 				userBlock.querySelector(".lastMess .text").classList.remove("unread");
 				// database.ref("abc-messages").orderByChild("sendFrom").equalTo(senderKey).once("value")
+				database.ref("abc-messages").once("value", (snapshot) => {
+					snapshot.forEach(childSnapshot => {
+						const message = childSnapshot.val();
+						if (message.sendFrom === lastMessage.sendFrom && message.sendTo === loggedToken && message.readed === 0) {
+							database.ref("abc-messages").child(childSnapshot.key).update({
+								readed: 1
+							});
+						}
+					})
+				})
 				renderCol_3(otherUserKey);
 			});
 		}
