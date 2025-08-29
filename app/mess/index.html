@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/ico/note.ico">
+		<title>Mess</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="app">
+			<div class="header">
+				<div class="header-left">
+					<div class="logo">
+						<a href="">
+							<img src="https://hiepdeep.github.io/library/pictures/svg/logo-1.svg" alt="">
+						</a>
+					</div>
+					<div class="form">
+						<form action="" id="login-form">
+							<input type="text" name="login-key" placeholder="Enter your Username">
+							<button class="material-symbols-rounded" type="submit">arrow_drop_down</button>
+						</form>
+						<div id="login-list"></div>
+					</div>
+				</div>
+				<div class="header-right">
+					<div class="logged-user" id="logged-user">
+						<div class="loading"></div>
+					</div>
+				</div>
+			</div>
+			<div class="main">
+				<div class="col" id="col-1">
+					<h2 class="col-title">Tất cả</h2>
+					<ul>
+						<div class="loading"></div>
+					</ul>
+				</div>
+				<div class="col" id="col-2">
+					<h2 class="col-title">Gần đây</h2>
+					<ul>
+						<div class="loading"></div>
+					</ul>
+				</div>
+				<div class="col" id="col-3">
+					<div class="thongbao">Bắt đầu cuộc trò chuyện của bạn.</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="functions.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>

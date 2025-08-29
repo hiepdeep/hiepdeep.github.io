@@ -1,0 +1,421 @@
+* {
+	font-family: "Bai Jamjuree", sans-serif;
+	font-size: 12px;
+	color: #171a1c;
+}
+
+::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
+:root {
+	--maxwidth: 1280px;
+	--bdrs: 3px;
+	--bd-color: hsl(210deg 10% 90%);
+}
+
+body {
+	background: #edf5f8;
+	display: grid;
+	place-items: center;
+	height: 100vh;
+}
+
+.app {
+	width: 100vw;
+	height: 100vh;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.app .header {
+	flex-shrink: 0;
+	background: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 6px;
+	padding: 12px;
+	border-bottom: 1px solid var(--bd-color);
+}
+
+.app .header .header-left {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.app .header .header-left .logo {
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+}
+
+.app .header .header-left .form {
+	position: relative;
+}
+
+.app .header .header-left .form:hover #login-list {
+	display: block;
+}
+
+.app .header .header-left .form #login-form {
+	display: flex;
+	border: 1px solid var(--bd-color);
+	width: calc(300px - 40px - 24px);
+}
+
+.app .header .header-left .form #login-form input {
+	border: 0;
+	width: 100%;
+	height: 30px;
+	padding: 0 6px;
+}
+
+.app .header .header-left .form #login-form input::placeholder {
+	color: #c7ccd1;
+}
+
+.app .header .header-left .form #login-form button {
+	flex-shrink: 0;
+	background: var(--bd-color);
+	border: 0;
+	color: #73808c;
+	width: 30px;
+}
+
+.app .header .header-left .form #login-list {
+	display: none;
+	position: absolute;
+	background: white;
+	width: 100%;
+	padding: 6px;
+	border: 1px solid var(--bd-color);
+	border-top: 0;
+	z-index: 9999;
+}
+
+.app .header .header-left .form #login-list li {
+	user-select: none;
+	cursor: pointer;
+}
+
+.app .header .header-left .form #login-list li:hover {
+	text-decoration: underline;
+}
+
+.app .header .header-right {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.app .header .header-right .logged-user .displayName {
+	display: block;
+	line-height: 40px;
+	color: #454d54;
+}
+
+.app .header .header-right .logged-user .displayName b {
+	font-weight: 600;
+	text-decoration: underline;
+}
+
+.app .main {
+	display: flex;
+	height: 100%;
+}
+
+.app .main .col {
+	background: white;
+}
+
+.app .main .col .col-title {
+	flex-shrink: 0;
+	margin-bottom: 12px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.app .main .col#col-1,
+.app .main .col#col-2 {
+	flex-shrink: 0;
+	width: 300px;
+	border-right: 1px solid var(--bd-color);
+	padding: 12px;
+	display: flex;
+	flex-direction: column;
+}
+
+.app .main .col#col-1 ul,
+.app .main .col#col-2 ul {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.app .main .col#col-1 ul li,
+.app .main .col#col-2 ul li {
+	cursor: pointer;
+	user-select: none;
+}
+
+.app .main .col#col-1 ul li:hover .item .dataUser .displayName,
+.app .main .col#col-2 ul li:hover .item .dataUser .displayName {
+	text-decoration: underline;
+}
+
+.app .main .col#col-1 ul li .item,
+.app .main .col#col-2 ul li .item {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.app .main .col#col-1 ul li .item .thumb,
+.app .main .col#col-2 ul li .item .thumb {
+	flex-shrink: 0;
+	width: 30px;
+	height: 30px;
+	border-radius: var(--bdrs);
+	overflow: hidden;
+	position: relative;
+}
+
+.app .main .col#col-1 ul li .item .thumb:before,
+.app .main .col#col-2 ul li .item .thumb:before {
+	content: "";
+	position: absolute;
+	background: #abb3ba;
+	width: calc(var(--bdrs) * 2);
+	height: calc(var(--bdrs) * 2);
+	right: 0;
+	bottom: 0;
+	border-radius: 50%;
+	box-shadow: 0 0 0 2px white;
+}
+
+.app .main .col#col-1 ul li .item .thumb.online:before,
+.app .main .col#col-2 ul li .item .thumb.online:before {
+	background: #4CAF50;
+}
+
+.app .main .col#col-1 ul li .item .dataUser,
+.app .main .col#col-2 ul li .item .dataUser {
+	width: 100%;
+}
+
+.app .main .col#col-1 ul li .item .dataUser .displayName,
+.app .main .col#col-2 ul li .item .dataUser .displayName {
+	font-weight: 600;
+}
+
+.app .main .col#col-1 ul li .item .dataUser .lastMess,
+.app .main .col#col-2 ul li .item .dataUser .lastMess {
+	display: flex;
+	gap: 12px;
+}
+
+.app .main .col#col-1 ul li .item .dataUser .lastMess .text,
+.app .main .col#col-2 ul li .item .dataUser .lastMess .text {
+	color: #73808c;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	word-break: break-all;
+}
+
+.app .main .col#col-1 ul li .item .dataUser .lastMess .text.unread,
+.app .main .col#col-2 ul li .item .dataUser .lastMess .text.unread {
+	font-weight: 700;
+}
+
+.app .main .col#col-1 ul li .item .dataUser .lastMess .timeamp,
+.app .main .col#col-2 ul li .item .dataUser .lastMess .timeamp {
+	flex-shrink: 0;
+	color: #abb3ba;
+	position: relative;
+}
+
+.app .main .col#col-1 ul li .item .dataUser .lastMess .timeamp:before,
+.app .main .col#col-2 ul li .item .dataUser .lastMess .timeamp:before {
+	content: "";
+	position: absolute;
+	background: #abb3ba;
+	width: 2px;
+	height: 2px;
+	left: -7px;
+	border-radius: 50%;
+	top: 50%;
+	transform: translatey(-50%);
+}
+
+.app .main .col#col-3 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.app .main .col#col-3 .thongbao {
+	display: grid;
+	place-items: center;
+	height: 100%;
+	text-align: center;
+	color: #73808c;
+	user-select: none;
+}
+
+.app .main .col#col-3 #col-3-row-1 {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 12px;
+	height: 54px;
+}
+
+.app .main .col#col-3 #col-3-row-1 .thumb {
+	flex-shrink: 0;
+	width: 30px;
+	height: 30px;
+	border-radius: var(--bdrs);
+	overflow: hidden;
+	position: relative;
+}
+
+.app .main .col#col-3 #col-3-row-1 .thumb:before {
+	content: "";
+	position: absolute;
+	background: #abb3ba;
+	width: calc(var(--bdrs) * 2);
+	height: calc(var(--bdrs) * 2);
+	right: 0;
+	bottom: 0;
+	border-radius: 50%;
+	box-shadow: 0 0 0 2px white;
+}
+
+.app .main .col#col-3 #col-3-row-1 .thumb.online:before {
+	background: #4CAF50;
+}
+
+.app .main .col#col-3 #col-3-row-1 .displayName a {
+	font-weight: 600;
+}
+
+.app .main .col#col-3 #col-3-row-1 .displayName .timeStatus {
+	display: block;
+	color: #73808c;
+}
+
+.app .main .col#col-3 #col-3-row-2 {
+	height: 100%;
+	border-top: 1px solid var(--bd-color);
+	border-bottom: 1px solid var(--bd-color);
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	gap: 12px;
+	padding: 12px;
+}
+
+.app .main .col#col-3 #col-3-row-2::-webkit-scrollbar {
+	display: none;
+}
+
+.app .main .col#col-3 #col-3-row-2 .null-messages {
+	text-align: center;
+	color: #73808c;
+	user-select: none;
+}
+
+.app .main .col#col-3 #col-3-row-2 .item {
+	flex-shrink: 0;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.app .main .col#col-3 #col-3-row-2 .item .itemm {
+	background: var(--bd-color);
+	width: fit-content;
+	max-width: 60%;
+	min-height: 27px;
+	padding: 6px;
+	border-radius: 2px;
+}
+
+.app .main .col#col-3 #col-3-row-2 .item .timeamp {
+	display: none;
+	color: #73808c;
+}
+
+.app .main .col#col-3 #col-3-row-2 .item:hover .timeamp {
+	display: block;
+}
+
+.app .main .col#col-3 #col-3-row-2 .item.r {
+	justify-content: flex-end;
+}
+
+.app .main .col#col-3 #col-3-row-2 .item.r .itemm {
+	order: 2;
+	background-image: radial-gradient(circle at center 75%, #2931b3 0%, #3ca8e8 100%);
+	background-attachment: fixed;
+	background-size: 100%;
+	color: #fff;
+}
+
+.app .main .col#col-3 #col-3-row-3 {
+	flex-shrink: 0;
+}
+
+.app .main .col#col-3 #col-3-row-3 form {
+	display: flex;
+	gap: 12px;
+	padding: 12px;
+}
+
+.app .main .col#col-3 #col-3-row-3 form input {
+	border: 1px solid var(--bd-color);
+	border-radius: 2px;
+	width: 100%;
+	padding: 0 6px;
+	height: 30px;
+}
+
+.app .main .col#col-3 #col-3-row-3 form input::placeholder {
+	color: #abb3ba;
+}
+
+.app .main .col#col-3 #col-3-row-3 form button {
+	flex-shrink: 0;
+	width: 30px;
+	border-radius: 2px;
+}
+
+.loading {
+	width: 30px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	border: 1px solid;
+	border-color: #73808c transparent;
+	animation: loading-block 0.5s linear infinite;
+}
+
+@keyframes loading-block {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
