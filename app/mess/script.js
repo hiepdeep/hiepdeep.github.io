@@ -50,7 +50,7 @@ async function renderCol_1() {
 		if (loggedToken != userKey) {
 			const userBlock = document.createElement("li");
 			userBlock.innerHTML = `
-				<div class="item" data-userkey="${userKey}">
+				<div class="item">
 					<div class="${userData.online == '1' ? 'thumb online' : 'thumb'}">
 						<img src="https://hiepdeep.github.io/library/pictures/200/${randomInt(1, 18)}.png">
 					</div>
@@ -80,6 +80,7 @@ async function renderCol_2() {
 			if (!recentChats[otherUserKey] || new Date(recentChats[otherUserKey].timeamp) < new Date(message.timeamp)) {
 				recentChats[otherUserKey] = {
 					...message,
+					unread: message.readed === 0 && message.sendTo === loggedToken,
 					isSentByMe: message.sendFrom === loggedToken
 				};
 			}
@@ -98,14 +99,14 @@ async function renderCol_2() {
 			const messageText = lastMessage.isSentByMe ? `Bạn: ${lastMessage.contents}` : lastMessage.contents;
 			const userBlock = document.createElement("li");
 			userBlock.innerHTML = `
-				<div class="item" data-userkey="${otherUserKey}">
+				<div class="item">
 					<div class="${userData.online == '1' ? 'thumb online' : 'thumb'}">
 						<img src="https://hiepdeep.github.io/library/pictures/200/${randomInt(1, 18)}.png">
 					</div>
 					<div class="dataUser">
 						<a href="javascript:;" class="displayName">${userData.displayName}</a>
 						<div class="lastMess">
-							<span class="text">${entities(messageText)}</span>
+							<span class="${lastMessage.unread ? 'text unread' : 'text'}">${entities(messageText)}</span>
 							<span class="timeamp">${formatTimeAgo(lastMessage.timeamp)}</span>
 						</div>
 					</div>
@@ -114,6 +115,7 @@ async function renderCol_2() {
 			userLists.appendChild(userBlock);
 			userBlock.addEventListener("click", (e) => {
 				e.preventDefault();
+				userBlock.querySelector(".lastMess .text").classList.remove("unread");
 				renderCol_3(otherUserKey);
 			});
 		}
@@ -124,22 +126,21 @@ async function renderCol_3(k) {
 	const dataUser = await database.ref("abc").child(k).once("value");
 	const dataMess = await database.ref("abc-messages").orderByChild("timeamp").once("value");
 	let messageList = "";
-	let messageTotal = false;
+	let messageStatus = false;
 	dataMess.forEach((childSnapshot) => {
-		const messageKey = childSnapshot.key;
 		const message = childSnapshot.val();
 		if ((message.sendFrom === loggedToken && message.sendTo === k) || (message.sendFrom === k && message.sendTo === loggedToken)) {
-			messageTotal = true;
+			messageStatus = true;
 			const messageClass = message.sendFrom === loggedToken ? "item r" : "item";
 			messageList += `
-				<div class="${messageClass}" data-message="${messageKey}">
-					<div class="itemm">${message.contents}</div>
+				<div class="${messageClass}" data-message="${childSnapshot.key}">
+					<div class="itemm">${entities(message.contents)}</div>
 					<span class="timeamp">${formatTimeAgo(message.timeamp)}</span>
 				</div>
 			`;
 		}
 	});
-	if (!messageTotal) {
+	if (!messageStatus) {
 		messageList = `<span class="null-messages">Chưa có tin nhắn nào.</span>`;
 	}
 	document.getElementById("col-3").innerHTML = `
@@ -148,7 +149,7 @@ async function renderCol_3(k) {
 				<img src="https://hiepdeep.github.io/library/pictures/512/${randomInt(1, 32)}.png">
 			</div>
 			<div class="displayName">
-				<a href="javascript:;" data-userkey="${k}">${dataUser.val().displayName}</a>
+				<a href="javascript:;">${dataUser.val().displayName}</a>
 				<span class="timeStatus">${dataUser.val().online == "1" ? "Online" : "Offline"}</span>
 			</div>
 		</div>
@@ -174,7 +175,7 @@ async function renderCol_3(k) {
 				database.ref(`abc-messages`).push({
 					sendFrom: loggedToken,
 					sendTo: k,
-					contents: sendValue,
+					contents: entities(sendValue),
 					readed: 0,
 					timeamp: createTimes()
 				}).then(() => {
@@ -194,18 +195,17 @@ async function renderCol_3(k) {
 
 database.ref("abc-messages").on("child_added", (snapshot) => {
 	const message = snapshot.val();
-	const messageList = document.querySelector('#col-3-row-2');
+	const messageList = document.querySelector("#col-3-row-2");
 	if (!messageList) {
 		return;
 	}
 	if (message.sendFrom === loggedToken || message.sendTo === loggedToken) {
-		const nullMessage = messageList.querySelector('.null-messages');
+		const nullMessage = messageList.querySelector(".null-messages");
 		if (nullMessage) {
 			nullMessage.remove();
 		}
 		const messageBlock = document.createElement("div");
-		const sentByUser = message.sendFrom === loggedToken;
-		messageBlock.className = `item ${sentByUser ? 'r' : ''}`;
+		messageBlock.className = message.sendFrom === loggedToken ? "item r" : "item";
 		messageBlock.innerHTML = `
 			<div class="itemm">${entities(message.contents)}</div>
 			<span class="timeamp">${formatTimeAgo(message.timeamp)}</span>
