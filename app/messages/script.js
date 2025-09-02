@@ -259,21 +259,6 @@ database.ref("abc-messages").on("child_added", async (snapshot) => {
 				</div>
 			</div>
 		`;
-		userBlock.addEventListener("click", (e) => {
-			e.preventDefault();
-			userBlock.querySelector(".lastMess .text").classList.remove("unread");
-			database.ref("abc-messages").once("value", (snapshot) => {
-				snapshot.forEach(childSnapshot => {
-					const msg = childSnapshot.val();
-					if (msg.sendFrom === message.sendFrom && msg.sendTo === loggedToken && msg.readed === 0) {
-						database.ref("abc-messages").child(childSnapshot.key).update({
-							readed: 1
-						});
-					}
-				})
-			})
-			renderCol_3(otherUserKey);
-		});
 		userLists.insertBefore(userBlock, userLists.firstChild);
 	}
 });
