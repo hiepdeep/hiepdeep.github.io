@@ -200,10 +200,11 @@ async function renderCol_3(k) {
 database.ref("abc-messages").on("child_added", async (snapshot) => {
 	const message = snapshot.val();
 	const messageList = document.querySelector("#col-3-row-2");
+	const activeChatUser = document.querySelector("#col-3-row-1")?.getAttribute("data-user");
 	if (!messageList) {
 		return;
 	}
-	if (message.sendFrom === loggedToken || message.sendTo === loggedToken) {
+	if ((message.sendFrom === loggedToken && message.sendTo === activeChatUser) || (message.sendFrom === activeChatUser && message.sendTo === loggedToken)) {
 		const nullMessage = messageList.querySelector(".null-messages");
 		if (nullMessage) {
 			nullMessage.remove();
