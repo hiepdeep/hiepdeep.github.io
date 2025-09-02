@@ -116,7 +116,6 @@ async function renderCol_2() {
 			userBlock.addEventListener("click", (e) => {
 				e.preventDefault();
 				userBlock.querySelector(".lastMess .text").classList.remove("unread");
-				// database.ref("abc-messages").orderByChild("sendFrom").equalTo(senderKey).once("value")
 				database.ref("abc-messages").once("value", (snapshot) => {
 					snapshot.forEach(childSnapshot => {
 						const message = childSnapshot.val();
