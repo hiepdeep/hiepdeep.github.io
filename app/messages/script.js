@@ -119,16 +119,7 @@ async function renderCol_2() {
 			userBlock.addEventListener("click", (e) => {
 				e.preventDefault();
 				userBlock.querySelector(".lastMess .text").classList.remove("unread");
-				database.ref("abc-messages").once("value", (snapshot) => {
-					snapshot.forEach(childSnapshot => {
-						const message = childSnapshot.val();
-						if (message.sendFrom === lastMessage.sendFrom && message.sendTo === loggedToken && message.readed === 0) {
-							database.ref("abc-messages").child(childSnapshot.key).update({
-								readed: 1
-							});
-						}
-					})
-				})
+				database.ref("abc-messages").child(otherUserKey).update({readed: 1});
 				renderCol_3(otherUserKey);
 			});
 		}
@@ -260,6 +251,11 @@ database.ref("abc-messages").on("child_added", async (snapshot) => {
 			</div>
 		`;
 		userLists.insertBefore(userBlock, userLists.firstChild);
+		userBlock.addEventListener("click", (e) => {
+			e.preventDefault();
+			userBlock.querySelector(".lastMess .text").classList.remove("unread");
+			database.ref("abc-messages").child(otherUserKey).update({readed: 1});
+			renderCol_3(otherUserKey);
+		});
 	}
 });
-
