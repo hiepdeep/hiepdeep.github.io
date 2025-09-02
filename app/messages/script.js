@@ -206,7 +206,7 @@ async function renderCol_3(k) {
 	document.getElementById("col-3-row-2").scrollTop = document.getElementById("col-3-row-2").scrollHeight;
 }
 
-database.ref("abc-messages").on("child_added", (snapshot) => {
+database.ref("abc-messages").on("child_added", async (snapshot) => {
 	const message = snapshot.val();
 	const messageList = document.querySelector("#col-3-row-2");
 	if (!messageList) {
@@ -225,7 +225,56 @@ database.ref("abc-messages").on("child_added", (snapshot) => {
 		`;
 		messageList.appendChild(messageBlock);
 		messageList.scrollTop = messageList.scrollHeight;
-		renderCol_2();
+	}
+	const otherUserKey = message.sendFrom === loggedToken ? message.sendTo : message.sendFrom;
+	const recentChatUser = document.querySelector(`#col-2 ul li[data-messageuser="${otherUserKey}"]`);
+	const userLists = document.getElementById("col-2").getElementsByTagName("ul")[0];
+	if (recentChatUser) {
+		const messageText = message.sendFrom === loggedToken ? `Bạn: ${message.contents}` : message.contents;
+		const lastMessText = recentChatUser.querySelector(".lastMess .text");
+		const lastMessTime = recentChatUser.querySelector(".lastMess .timeamp");
+		lastMessText.innerHTML = entities(messageText);
+		lastMessTime.innerHTML = formatTimeAgo(message.timeamp);
+		if (message.sendTo === loggedToken && message.readed === 0) {
+			lastMessText.classList.add("unread");
+			userLists.insertBefore(recentChatUser, userLists.firstChild);
+		}
+	} else {
+		const userDataSnapshot = await database.ref("abc").child(otherUserKey).once('value');
+		const userData = userDataSnapshot.val();
+		const messageText = message.sendFrom === loggedToken ? `Bạn: ${message.contents}` : message.contents;
+		const userBlock = document.createElement("li");
+		userBlock.setAttribute("data-messageuser", otherUserKey);
+		userBlock.innerHTML = `
+			<div class="item">
+				<div class="${userData.online == '1' ? 'thumb online' : 'thumb'}">
+					<img src="https://hiepdeep.github.io/library/pictures/200/${randomInt(1, 18)}.png">
+				</div>
+				<div class="dataUser">
+					<a href="javascript:;" class="displayName">${userData.displayName}</a>
+					<div class="lastMess">
+						<span class="${message.unread ? 'text unread' : 'text'}" data-messagekey="${snapshot.key}">${entities(messageText)}</span>
+						<span class="timeamp">${formatTimeAgo(message.timeamp)}</span>
+					</div>
+				</div>
+			</div>
+		`;
+		userBlock.addEventListener("click", (e) => {
+			e.preventDefault();
+			userBlock.querySelector(".lastMess .text").classList.remove("unread");
+			database.ref("abc-messages").once("value", (snapshot) => {
+				snapshot.forEach(childSnapshot => {
+					const msg = childSnapshot.val();
+					if (msg.sendFrom === message.sendFrom && msg.sendTo === loggedToken && msg.readed === 0) {
+						database.ref("abc-messages").child(childSnapshot.key).update({
+							readed: 1
+						});
+					}
+				})
+			})
+			renderCol_3(otherUserKey);
+		});
+		userLists.insertBefore(userBlock, userLists.firstChild);
 	}
 });
 
