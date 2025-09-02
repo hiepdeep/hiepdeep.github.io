@@ -75,7 +75,7 @@ body {
 }
 
 .app .header .header-left .form #login-form input::placeholder {
-	color: #c7ccd1;
+	color: #abb3ba;
 }
 
 .app .header .header-left .form #login-form button {
@@ -132,13 +132,6 @@ body {
 	background: white;
 }
 
-.app .main .col .col-title {
-	flex-shrink: 0;
-	margin-bottom: 12px;
-	font-size: 14px;
-	font-weight: 500;
-}
-
 .app .main .col#col-1,
 .app .main .col#col-2 {
 	flex-shrink: 0;
@@ -147,6 +140,33 @@ body {
 	padding: 12px;
 	display: flex;
 	flex-direction: column;
+}
+
+.app .main .col#col-1 .search,
+.app .main .col#col-2 .search {
+	border-bottom: 1px solid var(--bd-color);
+	padding-bottom: 12px;
+}
+
+.app .main .col#col-1 .search input[type=search],
+.app .main .col#col-2 .search input[type=search] {
+	width: 100%;
+	border: 1px solid var(--bd-color);
+	height: 30px;
+	padding: 0 6px;
+}
+
+.app .main .col#col-1 .search input[type=search]::placeholder,
+.app .main .col#col-2 .search input[type=search]::placeholder {
+	color: #abb3ba;
+}
+
+.app .main .col#col-1 .col-title,
+.app .main .col#col-2 .col-title {
+	flex-shrink: 0;
+	padding: 12px 0;
+	font-size: 14px;
+	font-weight: 500;
 }
 
 .app .main .col#col-1 ul,
