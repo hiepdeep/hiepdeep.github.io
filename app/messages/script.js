@@ -148,7 +148,7 @@ async function renderCol_3(k) {
 		messageList = `<span class="null-messages">Chưa có tin nhắn nào.</span>`;
 	}
 	document.getElementById("col-3").innerHTML = `
-		<div id="col-3-row-1">
+		<div id="col-3-row-1" data-user="${dataUser.key}">
 			<div class="${dataUser.val().online == '1' ? 'thumb online' : 'thumb'}">
 				<img src="https://hiepdeep.github.io/library/pictures/512/${randomInt(1, 32)}.png">
 			</div>
