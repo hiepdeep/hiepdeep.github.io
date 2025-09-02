@@ -236,8 +236,10 @@ database.ref("abc-messages").on("child_added", async (snapshot) => {
 		const lastMessTime = recentChatUser.querySelector(".lastMess .timeamp");
 		lastMessText.innerHTML = entities(messageText);
 		lastMessTime.innerHTML = formatTimeAgo(message.timeamp);
-		if (message.sendTo === loggedToken && message.readed === 0) {
-			lastMessText.classList.add("unread");
+		if (message.sendTo === loggedToken) {
+			if (message.readed === 0) {
+				lastMessText.classList.add("unread");
+			}
 			userLists.insertBefore(recentChatUser, userLists.firstChild);
 		}
 	} else {
@@ -254,7 +256,7 @@ database.ref("abc-messages").on("child_added", async (snapshot) => {
 				<div class="dataUser">
 					<a href="javascript:;" class="displayName">${userData.displayName}</a>
 					<div class="lastMess">
-						<span class="${message.unread ? 'text unread' : 'text'}" data-messagekey="${snapshot.key}">${entities(messageText)}</span>
+						<span class="${message.readed == 0 ? 'text unread' : 'text'}" data-messagekey="${snapshot.key}">${entities(messageText)}</span>
 						<span class="timeamp">${formatTimeAgo(message.timeamp)}</span>
 					</div>
 				</div>
