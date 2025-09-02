@@ -74,12 +74,14 @@ async function renderCol_2() {
 	const recentChats = {};
 	const messagesSnapshot = await database.ref("abc-messages").orderByChild("timeamp").once("value");
 	messagesSnapshot.forEach((childSnapshot) => {
+		const messageKey = childSnapshot.key;
 		const message = childSnapshot.val();
 		if (message.sendFrom === loggedToken || message.sendTo === loggedToken) {
 			const otherUserKey = message.sendFrom === loggedToken ? message.sendTo : message.sendFrom;
 			if (!recentChats[otherUserKey] || new Date(recentChats[otherUserKey].timeamp) < new Date(message.timeamp)) {
 				recentChats[otherUserKey] = {
 					...message,
+					key: messageKey,
 					unread: message.readed === 0 && message.sendTo === loggedToken,
 					isSentByMe: message.sendFrom === loggedToken
 				};
@@ -98,6 +100,7 @@ async function renderCol_2() {
 			const userData = userDataSnapshot.val();
 			const messageText = lastMessage.isSentByMe ? `Bạn: ${lastMessage.contents}` : lastMessage.contents;
 			const userBlock = document.createElement("li");
+			userBlock.setAttribute("data-messageuser", otherUserKey);
 			userBlock.innerHTML = `
 				<div class="item">
 					<div class="${userData.online == '1' ? 'thumb online' : 'thumb'}">
@@ -106,7 +109,7 @@ async function renderCol_2() {
 					<div class="dataUser">
 						<a href="javascript:;" class="displayName">${userData.displayName}</a>
 						<div class="lastMess">
-							<span class="${lastMessage.unread ? 'text unread' : 'text'}">${entities(messageText)}</span>
+							<span class="${lastMessage.unread ? 'text unread' : 'text'}" data-messagekey="${lastMessage.key}">${entities(messageText)}</span>
 							<span class="timeamp">${formatTimeAgo(lastMessage.timeamp)}</span>
 						</div>
 					</div>
@@ -225,3 +228,4 @@ database.ref("abc-messages").on("child_added", (snapshot) => {
 		renderCol_2();
 	}
 });
+
