@@ -145,6 +145,7 @@ body {
 
 .app .main .col#col-1 .search,
 .app .main .col#col-2 .search {
+	flex-shrink: 0;
 	border-bottom: 1px solid var(--bd-color);
 	padding-bottom: 12px;
 }
