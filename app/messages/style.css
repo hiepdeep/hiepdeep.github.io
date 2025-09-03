@@ -126,6 +126,7 @@ body {
 .app .main {
 	display: flex;
 	height: 100%;
+	height: calc(100vh - 65px);
 }
 
 .app .main .col {
