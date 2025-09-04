@@ -66,12 +66,10 @@ body {
 }
 
 #form .person label .displayName {
-	font-size: 16px;
 	font-weight: 600;
 }
 
 #form input {
-	font-size: 16px;
 	border: 1px solid #e3e6e8;
 	border-radius: var(--bdrs);
 	padding: 12px;
@@ -82,7 +80,6 @@ body {
 }
 
 #form button {
-	font-size: 16px;
 	border: 0;
 	border-radius: var(--bdrs);
 	padding: 12px;
@@ -218,4 +215,10 @@ body {
 
 #list .list .returnList li .description {
 	font-weight: 600;
+}
+
+@media only screen and (max-width: 1280px) {
+	#form .person label .displayName, #form input, #form button {
+		font-size: 16px;
+	}
 }
