@@ -64,7 +64,7 @@ body {
 .app .header .header-left .form #login-form {
 	display: flex;
 	border: 1px solid var(--bd-color);
-	width: calc(300px - 40px - 24px);
+	width: 200px;
 }
 
 .app .header .header-left .form #login-form input {
