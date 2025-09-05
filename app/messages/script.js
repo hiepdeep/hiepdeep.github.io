@@ -52,7 +52,7 @@ async function renderCol_1() {
 			userBlock.innerHTML = `
 				<div class="item">
 					<div class="${userData.online == '1' ? 'thumb online' : 'thumb'}">
-						<img src="https://hiepdeep.github.io/library/pictures/200/${randomInt(1, 18)}.png">
+						<img src="https://hiepdeep.github.io/library/pictures/${userData.sex == 'male' ? 'man' : 'woman'}.png">
 					</div>
 					<div class="dataUser">
 						<a href="javascript:;" class="displayName">${userData.displayName}</a>
