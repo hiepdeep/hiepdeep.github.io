@@ -41,6 +41,7 @@ async function renderLogin() {
 }
 
 async function renderCol_1() {
+	const searchInput = document.getElementById("search-all");
 	const userLists = document.getElementById("col-1").getElementsByTagName("ul")[0];
 	userLists.innerHTML = "";
 	const snapshot = await database.ref(`abc`).orderByChild("online").once("value");
@@ -66,9 +67,24 @@ async function renderCol_1() {
 			});
 		}
 	});
+	searchInput.addEventListener("input", (e) => {
+		e.preventDefault();
+		let filter = searchInput.value.toLowerCase();
+		let li = userLists.getElementsByTagName("li");
+		for (let i = 0; i < li.length; i++) {
+			const displayName = li[i].querySelector(".item .dataUser .displayName");
+			const txtValue = displayName.textContent || displayName.innerText;
+			if (txtValue.toLowerCase().indexOf(filter) > -1) {
+				li[i].style.display = "";
+			} else {
+				li[i].style.display = "none";
+			}
+		}
+	});
 }
 
 async function renderCol_2() {
+	const searchInput = document.getElementById("search-recent");
 	const userLists = document.getElementById("col-2").getElementsByTagName("ul")[0];
 	userLists.innerHTML = "";
 	const recentChats = {};
@@ -104,7 +120,7 @@ async function renderCol_2() {
 			userBlock.innerHTML = `
 				<div class="item">
 					<div class="${userData.online == '1' ? 'thumb online' : 'thumb'}">
-						<img src="https://hiepdeep.github.io/library/pictures/200/${randomInt(1, 18)}.png">
+						<img src="https://hiepdeep.github.io/library/pictures/${userData.sex == 'male' ? 'man' : 'woman'}.png">
 					</div>
 					<div class="dataUser">
 						<a href="javascript:;" class="displayName">${userData.displayName}</a>
@@ -133,6 +149,20 @@ async function renderCol_2() {
 			});
 		}
 	}
+	searchInput.addEventListener("input", (e) => {
+		e.preventDefault();
+		let filter = searchInput.value.toLowerCase();
+		let li = userLists.getElementsByTagName("li");
+		for (let i = 0; i < li.length; i++) {
+			const displayName = li[i].querySelector(".item .dataUser .displayName");
+			const txtValue = displayName.textContent || displayName.innerText;
+			if (txtValue.toLowerCase().indexOf(filter) > -1) {
+				li[i].style.display = "";
+			} else {
+				li[i].style.display = "none";
+			}
+		}
+	});
 }
 
 async function renderCol_3(k) {
@@ -159,7 +189,7 @@ async function renderCol_3(k) {
 	document.getElementById("col-3").innerHTML = `
 		<div id="col-3-row-1" data-user="${dataUser.key}">
 			<div class="${dataUser.val().online == '1' ? 'thumb online' : 'thumb'}">
-				<img src="https://hiepdeep.github.io/library/pictures/512/${randomInt(1, 32)}.png">
+				<img src="https://hiepdeep.github.io/library/pictures/${dataUser.val().sex == 'male' ? 'man' : 'woman'}.png">
 			</div>
 			<div class="displayName">
 				<a href="javascript:;">${dataUser.val().displayName}</a>
