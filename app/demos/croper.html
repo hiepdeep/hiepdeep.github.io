@@ -12,13 +12,11 @@
 				font-size: 12px;
 				color: #171a1c;
 			}
-
 			:root {
 				--maxwidth: 1280px;
 				--bdrs: 2px;
 				--bd-color: hsl(210deg 10% 90%);
 			}
-
 			body {
 				background: #edf5f8;
 				display: flex;
@@ -27,20 +25,32 @@
 				gap: 12px;
 				padding: 12px;
 			}
-
-			.avatar-picture {
-				width: 100px;
-				height: 100px;
-				border-radius: 2px;
+			#avatar-picture {
+				width: 200px;
+				height: 200px;
+				border-radius: 4px;
 				overflow: hidden;
+				cursor: pointer;
 			}
-
-			.crop-picture {
+			#crop-picture {
 				background: white;
 				border: 1px solid var(--bd-color);
 				width: max-content;
+				position: fixed;
+				left: 50%;
+				top: 60%;
+				transform: translate(-50%, -50%);
+				opacity: 0;
+				visibility: hidden;
+				transition: all 0.3s ease-in-out;
+				transition: 0.5s;
 			}
-			.crop-picture .row-1 {
+			#crop-picture.active {
+				top: 50%;
+				opacity: 1;
+				visibility: visible;
+			}
+			#crop-picture .row-1 {
 				flex-shrink: 0;
 				border-bottom: 1px solid var(--bd-color);
 				display: flex;
@@ -48,13 +58,13 @@
 				padding: 12px;
 				position: relative;
 			}
-			.crop-picture .row-1 label[for=btn-upload-picture] {
+			#crop-picture .row-1 label[for=btn-upload-picture] {
 				display: flex;
 				align-items: center;
 				gap: 12px;
 				user-select: none;
 			}
-			.crop-picture .row-1 label[for=btn-upload-picture] .text {
+			#crop-picture .row-1 label[for=btn-upload-picture] .text {
 				padding: 0 12px;
 				border-radius: var(--bdrs);
 				line-height: 30px;
@@ -63,16 +73,16 @@
 				color: rgba(255, 255, 255, 0.9);
 				background: hsl(210deg, 20%, var(--hls));
 			}
-			.crop-picture .row-1 label[for=btn-upload-picture] .text:hover {
+			#crop-picture .row-1 label[for=btn-upload-picture] .text:hover {
 				--hls: 40%;
 			}
-			.crop-picture .row-1 label[for=btn-upload-picture] .text:active {
+			#crop-picture .row-1 label[for=btn-upload-picture] .text:active {
 				--hls: 35%;
 			}
-			.crop-picture .row-1 label[for=btn-upload-picture] #upload-picture-error {
+			#crop-picture .row-1 label[for=btn-upload-picture] #upload-picture-error {
 				color: #F44336;
 			}
-			.crop-picture .row-1 #btn-save-picture {
+			#crop-picture .row-1 #btn-save-picture {
 				border: 0;
 				padding: 0 12px;
 				height: 30px;
@@ -81,13 +91,13 @@
 				color: rgba(255, 255, 255, 0.9);
 				background: hsl(210deg, 65%, var(--hls));
 			}
-			.crop-picture .row-1 #btn-save-picture:hover {
+			#crop-picture .row-1 #btn-save-picture:hover {
 				--hls: 40%;
 			}
-			.crop-picture .row-1 #btn-save-picture:active {
+			#crop-picture .row-1 #btn-save-picture:active {
 				--hls: 35%;
 			}
-			.crop-picture .row-2 {
+			#crop-picture .row-2 {
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -98,11 +108,11 @@
 				height: 424px;
 				overflow: hidden;
 			}
-			.crop-picture .row-2 canvas {
+			#crop-picture .row-2 canvas {
 				max-width: 600px;
 				max-height: 400px;
 			}
-			.crop-picture .row-2 #dragg-area {
+			#crop-picture .row-2 #dragg-area {
 				position: absolute;
 				width: 600px;
 				height: 400px;
@@ -111,7 +121,7 @@
 				transform: translate(-50%, -50%);
 				overflow: hidden;
 			}
-			.crop-picture .row-2 #dragg-area #dragg {
+			#crop-picture .row-2 #dragg-area #dragg {
 				display: none;
 				position: inherit;
 				width: 200px;
@@ -119,7 +129,7 @@
 				cursor: grab;
 				box-shadow: 0 0 0 600px rgba(0, 0, 0, 0.3);
 			}
-			.crop-picture .row-2 #dragg-area #dragg .resizer {
+			#crop-picture .row-2 #dragg-area #dragg .resizer {
 				position: inherit;
 				background: #555;
 				width: 10px;
@@ -129,25 +139,25 @@
 				transition: 0.05s;
 				box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
 			}
-			.crop-picture .row-2 #dragg-area #dragg .resizer:hover {
+			#crop-picture .row-2 #dragg-area #dragg .resizer:hover {
 				background: #607d8b;
 			}
-			.crop-picture .row-2 #dragg-area #dragg .resizer.top-left {
+			#crop-picture .row-2 #dragg-area #dragg .resizer.top-left {
 				top: -5px;
 				left: -5px;
 				cursor: nw-resize;
 			}
-			.crop-picture .row-2 #dragg-area #dragg .resizer.top-right {
+			#crop-picture .row-2 #dragg-area #dragg .resizer.top-right {
 				top: -5px;
 				right: -5px;
 				cursor: ne-resize;
 			}
-			.crop-picture .row-2 #dragg-area #dragg .resizer.bottom-left {
+			#crop-picture .row-2 #dragg-area #dragg .resizer.bottom-left {
 				bottom: -5px;
 				left: -5px;
 				cursor: sw-resize;
 			}
-			.crop-picture .row-2 #dragg-area #dragg .resizer.bottom-right {
+			#crop-picture .row-2 #dragg-area #dragg .resizer.bottom-right {
 				bottom: -5px;
 				right: -5px;
 				cursor: se-resize;
@@ -155,10 +165,10 @@
 		</style>
 	</head>
 	<body>
-		<div class="avatar-picture">
+		<div id="avatar-picture">
 			<img id="profile-picture" src="https://hiepdeep.netlify.app/library/picture/z.png">
 		</div>
-		<div class="crop-picture">
+		<div id="crop-picture">
 			<div class="row-1">
 				<label for="btn-upload-picture">
 					<input type="file" id="btn-upload-picture" accept="image/*" style="display:none">
@@ -189,10 +199,12 @@
 			const defaultPicture = document.getElementById("canvas1");
 			const ctxPicture = defaultPicture.getContext("2d");
 			const profilePicture = document.getElementById("profile-picture");
+			const resizers = document.querySelectorAll(".resizer");
 			let isDragging = false;
 			let isResizing = false;
 			let currentResizer = null;
 			let uploadedImage = null;
+			let dataImage = null;
 			let size = 512;
 			let offsetX, offsetY, startX, startY, initialWidth, initialHeight, initialLeft, initialTop, $scale;
 			uploadPicture.addEventListener("change", (e) => {
@@ -255,9 +267,130 @@
 					tempCtx.fillStyle = "#fff";
 					tempCtx.fillRect(0, 0, size, size);
 					tempCtx.drawImage(uploadedImage, drg_left, drg_top, cropWidth, cropHeight, 0, 0, size, size);
-					profilePicture.src = tempCanvas.toDataURL();
+					dataImage = tempCanvas.toDataURL();
 				}
 			}
+			dragg.addEventListener("mousedown", (e) => {
+				if (e.target.classList.contains('resizer')) {
+					return;
+				}
+				isDragging = true;
+				offsetX = e.clientX - dragg.getBoundingClientRect().left;
+				offsetY = e.clientY - dragg.getBoundingClientRect().top;
+				dragg.style.cursor = "grabbing";
+			});
+			resizers.forEach((resizer) => {
+				resizer.addEventListener("mousedown", (e) => {
+					isResizing = true;
+					currentResizer = e.target;
+					startX = e.clientX;
+					startY = e.clientY;
+					initialWidth = dragg.offsetWidth;
+					initialHeight = dragg.offsetHeight;
+					initialLeft = dragg.offsetLeft;
+					initialTop = dragg.offsetTop;
+					e.preventDefault();
+				});
+			});
+			document.addEventListener("mousemove", (e) => {
+				if (!isDragging && !isResizing) return;
+				e.preventDefault();
+				const draggAreaRect = draggArea.getBoundingClientRect();
+				if (isDragging) {
+					let newLeft = e.clientX - draggAreaRect.left - offsetX;
+					let newTop = e.clientY - draggAreaRect.top - offsetY;
+					newLeft = Math.max(0, Math.min(newLeft, draggAreaRect.width - dragg.offsetWidth));
+					newTop = Math.max(0, Math.min(newTop, draggAreaRect.height - dragg.offsetHeight));
+					dragg.style.left = newLeft + "px";
+					dragg.style.top = newTop + "px";
+				} else if (isResizing) {
+					let newWidth, newHeight, newLeft, newTop;
+					const dx = e.clientX - startX;
+					const dy = e.clientY - startY;
+					const minSize = 50;
+					switch (currentResizer.classList[1]) {
+						case "top-left":
+							newWidth = initialWidth - dx;
+							newHeight = initialHeight - dy;
+							newLeft = initialLeft + dx;
+							newTop = initialTop + dy;
+							break;
+						case "top-right":
+							newWidth = initialWidth + dx;
+							newHeight = initialHeight - dy;
+							newLeft = initialLeft;
+							newTop = initialTop + dy;
+							break;
+						case "bottom-left":
+							newWidth = initialWidth - dx;
+							newHeight = initialHeight + dy;
+							newLeft = initialLeft + dx;
+							newTop = initialTop;
+							break;
+						case "bottom-right":
+							newWidth = initialWidth + dx;
+							newHeight = initialHeight + dy;
+							newLeft = initialLeft;
+							newTop = initialTop;
+							break;
+					}
+					const sizeChange = Math.max(newWidth, newHeight);
+					if (sizeChange < minSize) {
+						return;
+					}
+					let finalWidth = sizeChange;
+					let finalHeight = sizeChange;
+					let finalLeft = newLeft;
+					let finalTop = newTop;
+					if (currentResizer.classList.contains("top-left")) {
+						finalLeft = Math.min(initialLeft + initialWidth - minSize, Math.max(0, newLeft));
+						finalTop = Math.min(initialTop + initialHeight - minSize, Math.max(0, newTop));
+						finalWidth = initialWidth + initialLeft - finalLeft;
+						finalHeight = initialHeight + initialTop - finalTop;
+						finalWidth = finalHeight = Math.min(finalWidth, finalHeight);
+						finalLeft = initialLeft + initialWidth - finalWidth;
+						finalTop = initialTop + initialHeight - finalHeight;
+					} else if (currentResizer.classList.contains("top-right")) {
+						finalWidth = Math.min(draggAreaRect.width - initialLeft, newWidth);
+						finalTop = Math.min(initialTop + initialHeight - minSize, Math.max(0, newTop));
+						finalHeight = initialHeight + initialTop - finalTop;
+						finalWidth = finalHeight = Math.min(finalWidth, finalHeight);
+						finalTop = initialTop + initialHeight - finalHeight;
+					} else if (currentResizer.classList.contains("bottom-left")) {
+						finalWidth = Math.min(initialLeft + initialWidth - minSize, newWidth);
+						finalLeft = Math.min(initialLeft + initialWidth - minSize, Math.max(0, newLeft));
+						finalHeight = Math.min(draggAreaRect.height - initialTop, newHeight);
+						finalWidth = finalHeight = Math.min(finalWidth, finalHeight);
+						finalLeft = initialLeft + initialWidth - finalWidth;
+					} else if (currentResizer.classList.contains("bottom-right")) {
+						finalWidth = Math.min(draggAreaRect.width - initialLeft, newWidth);
+						finalHeight = Math.min(draggAreaRect.height - initialTop, newHeight);
+						finalWidth = finalHeight = Math.min(finalWidth, finalHeight);
+					}
+					dragg.style.width = finalWidth + "px";
+					dragg.style.height = finalHeight + "px";
+					dragg.style.left = finalLeft + "px";
+					dragg.style.top = finalTop + "px";
+				}
+				updateCroppedImage();
+			});
+			document.addEventListener("mouseup", () => {
+				isDragging = false;
+				isResizing = false;
+				currentResizer = null;
+				dragg.style.cursor = "grab";
+			});
+			document.getElementById("avatar-picture").addEventListener("click", function() {
+				document.getElementById("crop-picture").classList.add("active");
+			});
+			savePicture.addEventListener("click", () => {
+				if (dataImage) {
+					profilePicture.src = dataImage;
+					document.getElementById("crop-picture").classList.remove("active");
+				} else {
+					alert("Chưa có ảnh nào được crop.");
+				}
+			});
 		</script>
 	</body>
 </html>
