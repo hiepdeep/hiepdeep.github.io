@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<title>Croper</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<style>
+			* {
+				font-family: "Bai Jamjuree", sans-serif;
+				font-size: 12px;
+				color: #171a1c;
+			}
+
+			:root {
+				--maxwidth: 1280px;
+				--bdrs: 2px;
+				--bd-color: hsl(210deg 10% 90%);
+			}
+
+			body {
+				background: #edf5f8;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 12px;
+				padding: 12px;
+			}
+
+			.avatar-picture {
+				width: 100px;
+				height: 100px;
+				border-radius: 2px;
+				overflow: hidden;
+			}
+
+			.crop-picture {
+				background: white;
+				border: 1px solid var(--bd-color);
+				width: max-content;
+			}
+			.crop-picture .row-1 {
+				flex-shrink: 0;
+				border-bottom: 1px solid var(--bd-color);
+				display: flex;
+				justify-content: space-between;
+				padding: 12px;
+				position: relative;
+			}
+			.crop-picture .row-1 label[for=btn-upload-picture] {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				user-select: none;
+			}
+			.crop-picture .row-1 label[for=btn-upload-picture] .text {
+				padding: 0 12px;
+				border-radius: var(--bdrs);
+				line-height: 30px;
+				cursor: pointer;
+				--hls: 45%;
+				color: rgba(255, 255, 255, 0.9);
+				background: hsl(210deg, 20%, var(--hls));
+			}
+			.crop-picture .row-1 label[for=btn-upload-picture] .text:hover {
+				--hls: 40%;
+			}
+			.crop-picture .row-1 label[for=btn-upload-picture] .text:active {
+				--hls: 35%;
+			}
+			.crop-picture .row-1 label[for=btn-upload-picture] #upload-picture-error {
+				color: #F44336;
+			}
+			.crop-picture .row-1 #btn-save-picture {
+				border: 0;
+				padding: 0 12px;
+				height: 30px;
+				border-radius: var(--bdrs);
+				--hls: 45%;
+				color: rgba(255, 255, 255, 0.9);
+				background: hsl(210deg, 65%, var(--hls));
+			}
+			.crop-picture .row-1 #btn-save-picture:hover {
+				--hls: 40%;
+			}
+			.crop-picture .row-1 #btn-save-picture:active {
+				--hls: 35%;
+			}
+			.crop-picture .row-2 {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				padding: 12px;
+				position: relative;
+				width: 624px;
+				height: 424px;
+				overflow: hidden;
+			}
+			.crop-picture .row-2 canvas {
+				max-width: 600px;
+				max-height: 400px;
+			}
+			.crop-picture .row-2 #dragg-area {
+				position: absolute;
+				width: 600px;
+				height: 400px;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				overflow: hidden;
+			}
+			.crop-picture .row-2 #dragg-area #dragg {
+				display: none;
+				position: inherit;
+				width: 200px;
+				height: 200px;
+				cursor: grab;
+				box-shadow: 0 0 0 600px rgba(0, 0, 0, 0.3);
+			}
+			.crop-picture .row-2 #dragg-area #dragg .resizer {
+				position: inherit;
+				background: #555;
+				width: 10px;
+				height: 10px;
+				border-radius: 2px;
+				z-index: 10;
+				transition: 0.05s;
+				box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
+			}
+			.crop-picture .row-2 #dragg-area #dragg .resizer:hover {
+				background: #607d8b;
+			}
+			.crop-picture .row-2 #dragg-area #dragg .resizer.top-left {
+				top: -5px;
+				left: -5px;
+				cursor: nw-resize;
+			}
+			.crop-picture .row-2 #dragg-area #dragg .resizer.top-right {
+				top: -5px;
+				right: -5px;
+				cursor: ne-resize;
+			}
+			.crop-picture .row-2 #dragg-area #dragg .resizer.bottom-left {
+				bottom: -5px;
+				left: -5px;
+				cursor: sw-resize;
+			}
+			.crop-picture .row-2 #dragg-area #dragg .resizer.bottom-right {
+				bottom: -5px;
+				right: -5px;
+				cursor: se-resize;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="avatar-picture">
+			<img id="profile-picture" src="https://hiepdeep.netlify.app/library/picture/z.png">
+		</div>
+		<div class="crop-picture">
+			<div class="row-1">
+				<label for="btn-upload-picture">
+					<input type="file" id="btn-upload-picture" accept="image/*" style="display:none">
+					<span class="text">Upload Picture</span>
+					<span id="upload-picture-error"></span>
+				</label>
+				<button id="btn-save-picture">Save</button>
+			</div>
+			<div class="row-2">
+				<canvas id="canvas1" width="600" height="400"></canvas>
+				<div id="dragg-area">
+					<div id="dragg">
+						<div class="resizer top-left"></div>
+						<div class="resizer top-right"></div>
+						<div class="resizer bottom-left"></div>
+						<div class="resizer bottom-right"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			console.clear();
+			const uploadPicture = document.getElementById("btn-upload-picture");
+			const uploadError = document.getElementById("upload-picture-error");
+			const savePicture = document.getElementById("btn-save-picture");
+			const draggArea = document.getElementById("dragg-area");
+			const dragg = document.getElementById("dragg");
+			const defaultPicture = document.getElementById("canvas1");
+			const ctxPicture = defaultPicture.getContext("2d");
+			const profilePicture = document.getElementById("profile-picture");
+			let isDragging = false;
+			let isResizing = false;
+			let currentResizer = null;
+			let uploadedImage = null;
+			let size = 512;
+			let offsetX, offsetY, startX, startY, initialWidth, initialHeight, initialLeft, initialTop, $scale;
+			uploadPicture.addEventListener("change", (e) => {
+				const file = e.target.files[0];
+				if (file) {
+					const reader = new FileReader();
+					reader.onload = function(event) {
+						const img = new Image();
+						img.onload = function() {
+							if (img.width < 200 || img.height < 200) {
+								uploadError.innerText = "Ảnh phải có kích thước tối thiểu 200x200";
+								uploadPicture.value = "";
+								return;
+							}
+							uploadedImage = new Image();
+							uploadedImage.onload = function() {
+								uploadError.innerText = "";
+								const maxWidth = 600;
+								const maxHeight = 400;
+								const ratioWidth = maxWidth / uploadedImage.width;
+								const ratioHeight = maxHeight / uploadedImage.height;
+								const ratio = Math.min(ratioWidth, ratioHeight);
+								const newWidth = uploadedImage.width * ratio;
+								const newHeight = uploadedImage.height * ratio;
+								draggArea.style.width = newWidth + "px";
+								draggArea.style.height = newHeight + "px";
+								const draggSize = Math.min(newWidth, newHeight);
+								dragg.style.width = draggSize + "px";
+								dragg.style.height = draggSize + "px";
+								defaultPicture.width = draggArea.getBoundingClientRect().width;
+								defaultPicture.height = draggArea.getBoundingClientRect().height;
+								ctxPicture.fillStyle = "white";
+								ctxPicture.fillRect(0, 0, defaultPicture.width, defaultPicture.height);
+								ctxPicture.drawImage(uploadedImage, 0, 0, defaultPicture.width, defaultPicture.height);
+								dragg.style.display = "block";
+								dragg.style.left = (defaultPicture.width - dragg.getBoundingClientRect().width) / 2 + "px";
+								dragg.style.top = (defaultPicture.height - dragg.getBoundingClientRect().height) / 2 + "px";
+								$scale = (uploadedImage.width / defaultPicture.width);
+								updateCroppedImage();
+							}
+							uploadedImage.src = event.target.result;
+						};
+						img.src = event.target.result;
+					}
+					reader.readAsDataURL(file);
+				}
+			});
+			function updateCroppedImage() {
+				if (uploadedImage) {
+					const blockRect = defaultPicture.getBoundingClientRect();
+					const draggRect = dragg.getBoundingClientRect();
+					let drg_left = (draggRect.left - blockRect.left) * $scale;
+					let drg_top = (draggRect.top - blockRect.top) * $scale;
+					const cropWidth = draggRect.width * $scale;
+					const cropHeight = draggRect.height * $scale;
+					const tempCanvas = document.createElement("canvas");
+					tempCanvas.width = size;
+					tempCanvas.height = size;
+					const tempCtx = tempCanvas.getContext("2d");
+					tempCtx.fillStyle = "#fff";
+					tempCtx.fillRect(0, 0, size, size);
+					tempCtx.drawImage(uploadedImage, drg_left, drg_top, cropWidth, cropHeight, 0, 0, size, size);
+					profilePicture.src = tempCanvas.toDataURL();
+				}
+			}
+		</script>
+	</body>
+</html>
