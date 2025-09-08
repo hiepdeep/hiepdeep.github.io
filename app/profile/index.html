@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
+		<title>Generator Path</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="app">
+			<div class="header">
+				<div class="max-width">
+					<div class="header-left">
+						<div class="logo">
+							<a href="">
+								<img src="https://hiepdeep.github.io/library/pictures/svg/kong.svg" alt="">
+							</a>
+						</div>
+						<div class="form">
+							<form action="" id="login-form">
+								<input type="text" name="login-key" placeholder="Enter your Username">
+								<button class="material-symbols-rounded" type="submit">arrow_drop_down</button>
+							</form>
+							<div id="login-list"></div>
+						</div>
+					</div>
+					<div class="header-right">
+						<div class="logged-user" id="logged-user">
+							<div class="loading"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="profile">
+				<div class="max-width">
+					<div class="col">
+						<div id="avatar-image">
+							<img id="profile-image" src="https://hiepdeep.github.io/library/pictures/200/no_thumb.png">
+						</div>
+					</div>
+					<div class="col">
+						<div class="gr">
+							<div class="row">
+								<label for="profile-name">
+									<span class="label-name">Your Name</span>
+									<input id="profile-name" type="text" placeholder="Your Name" required>
+								</label>
+								<input type="radio" name="profile-sex" id="profile-sex" value="male" checked>
+								<input type="radio" name="profile-sex" id="profile-sex" value="female">
+							</div>
+							<div class="row">
+								<label for="profile-birthday">
+									<span class="label-name">Birthday</span>
+									<input id="profile-birthday" type="text" placeholder="dd/mm/yyyy" required>
+								</label>
+							</div>
+							<div class="row">
+								<label for="profile-username">
+									<span class="label-name">Username</span>
+									<input id="profile-username" type="text" placeholder="Your Username" required>
+								</label>
+							</div>
+							<div class="row">
+								<label for="profile-password">
+									<span class="label-name">Password</span>
+									<input id="profile-password" type="text" placeholder="Your Password" required>
+								</label>
+							</div>
+						</div>
+						<div class="btn-gr">
+							<button btn-style blue id="btn-save-profile">Save</button>
+							<button btn-style red id="btn-remove-profile">Remove Account</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="crop-image">
+			<div class="row-1">
+				<label for="btn-upload-image">
+					<input type="file" id="btn-upload-image" accept="image/*" style="display:none">
+					<span class="text">Upload Image</span>
+					<span id="upload-image-error"></span>
+				</label>
+				<div class="btn-gr">
+					<button btn-style blue id="btn-save-image">Save</button>
+					<button btn-style red id="btn-close-box">Close</button>
+				</div>
+			</div>
+			<div class="row-2">
+				<canvas id="canvas1" width="600" height="400"></canvas>
+				<div id="dragg-area">
+					<div id="dragg">
+						<div id="resizer"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="snackbar">
+			<span class="material-symbols-rounded">check_circle</span>
+			<div class="text">
+				<span class="txt txt-1">Success !</span>
+				<span class="txt txt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
