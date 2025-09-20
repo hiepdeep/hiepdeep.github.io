@@ -3,7 +3,6 @@ const app = firebase.initializeApp({
 	databaseURL: "https://eimi-fukada-default-rtdb.firebaseio.com"
 });
 const database = firebase.database();
-
 const db = "so-ghi-no";
 document.addEventListener("DOMContentLoaded", () => {
 	renderChitieu();
@@ -42,6 +41,46 @@ async function renderChitieu() {
 	const data = snapshot.val() || {};
 	const lists = document.getElementById("lists");
 	lists.innerHTML = "";
+	const groupedData = {};
+	for (const key in data) {
+		const item = data[key];
+		const personName = item.person;
+		if (!groupedData[personName]) {
+			groupedData[personName] = [];
+		}
+		groupedData[personName].push({
+			...item,
+			key
+		});
+	}
+	for (const personName in groupedData) {
+		const listItems = groupedData[personName];
+		const personLi = document.createElement("li");
+		const personNameDiv = document.createElement("div");
+		personNameDiv.className = "personName";
+		personNameDiv.textContent = personName;
+		personLi.appendChild(personNameDiv);
+		personNameDiv.addEventListener("click", () => {
+			document.forms["form"]["person-name"].value = personName;
+		});
+		const dataUl = document.createElement("ul");
+		dataUl.className = "data";
+		for (const item of listItems) {
+			const itemLi = document.createElement("li");
+			itemLi.className = "item";
+			itemLi.setAttribute("data-key", item.key);
+			const creationDate = item.creationDate;
+			const datePart = creationDate.split(" ")[0].replace(/\//g, "-");
+			itemLi.innerHTML = `
+				<div class="amount">${formatAmount(item.amount)}</div>
+				<div class="timeamp">${datePart}</div>
+				<button btn-style red class="btn-remove">Remove</button>
+			`;
+			dataUl.appendChild(itemLi);
+		}
+		personLi.appendChild(dataUl);
+		lists.appendChild(personLi);
+	}
 }
 function formatAmount(amount) {
 	return new Intl.NumberFormat("vi-VN").format(amount);
