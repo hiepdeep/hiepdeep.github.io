@@ -38,9 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 });
-function formatAmount(amount) {
-	return new Intl.NumberFormat("vi-VN").format(amount);
-}
 async function renderChitieu() {
 	const snapshot = await database.ref(db).once("value");
 	const data = snapshot.val() || {};
@@ -103,4 +100,7 @@ async function renderChitieu() {
 		person1ToPerson2.textContent = "0";
 		person2ToPerson1.textContent = "0";
 	}
+}
+function formatAmount(amount) {
+	return new Intl.NumberFormat("vi-VN").format(amount);
 }
