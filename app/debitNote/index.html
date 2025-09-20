@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/ico/note.ico">
+		<title>Sổ Ghi Nợ</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<link rel='stylesheet' href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&amp;display=swap">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<form action="" id="form">
+			<input type="text" name="person-name" placeholder="Tên">
+			<input type="tel" name="amount" placeholder="Số tiền" pattern="[0-9.]*">
+			<button id="addExpenseBtn" type="submit">Submit</button>
+		</form>
+		<div id="lists">
+			<li>
+				<div class="personName">User 1</div>
+				<ul class="data">
+					<li class="item" data-key="-OZsN0cx6sV7jyjr97MY">
+						<div class="amount">400.000</div>
+						<div class="timeamp">2025-09-11</div>
+						<button btn-style red class="btn-remove">Remove</button>
+					</li>
+					<li class="item" data-key="-OZsN0dvsvVvzser97MY">
+						<div class="amount">400.000</div>
+						<div class="timeamp">2025-09-11</div>
+						<button btn-style red class="btn-remove">Remove</button>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<div class="personName">User 2</div>
+				<ul class="data">
+					<li class="item" data-key="-OZsN0dvsvdzvj7er97MY">
+						<div class="amount">400.000</div>
+						<div class="timeamp">2025-09-11</div>
+						<button btn-style red class="btn-remove">Remove</button>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<div class="personName">User 3</div>
+				<ul class="data">
+					<li class="item" data-key="-OZvzsdvsvV7j7er97MY">
+						<div class="amount">400.000</div>
+						<div class="timeamp">2025-09-11</div>
+						<button btn-style red class="btn-remove">Remove</button>
+					</li>
+				</ul>
+			</li>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="script.js"></script>
+	</body>
+</html>
