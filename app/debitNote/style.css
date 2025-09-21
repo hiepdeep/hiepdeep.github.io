@@ -1,18 +1,15 @@
 @charset "UTF-8";
-
 * {
 	font-family: "Playpen Sans", cursive;
 	font-size: 12px;
 	color: #171a1c;
 	user-select: none;
 }
-
 :root {
 	--maxwidth: 1280px;
 	--bdrs: 2px;
 	--bd-color: hsl(210deg 10% 90%);
 }
-
 body {
 	background: #edf5f8;
 	display: flex;
@@ -20,7 +17,6 @@ body {
 	gap: 12px;
 	padding: 12px;
 }
-
 #form {
 	width: 100%;
 	background: white;
@@ -31,17 +27,14 @@ body {
 	border-radius: var(--bdrs);
 	padding: 12px;
 }
-
 #form input {
 	border: 1px solid #e3e6e8;
 	border-radius: var(--bdrs);
 	padding: 12px;
 }
-
 #form input::placeholder {
 	color: #73808c;
 }
-
 #form button {
 	border: 0;
 	border-radius: var(--bdrs);
@@ -49,72 +42,67 @@ body {
 	color: white;
 	background: #406abf;
 }
-
 #form button:hover {
 	background: #3960ac;
 }
-
 #form button:active {
 	background: #335599;
 }
-
 #lists {
+	width: clamp(400px, 100%, 50%);
+	margin: auto;
+	background: white;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	width: 500px;
-	margin: auto;
+	border: 1px solid #e3e6e8;
+	border-radius: var(--bdrs);
+	padding: 12px;
 }
-
 #lists>li {
 	display: flex;
 	justify-content: space-between;
 	gap: 12px;
 }
-
 #lists>li:nth-child(n+2) {
 	padding-top: 12px;
 	border-top: 1px solid #e3e6e8;
 }
-
 #lists>li .personName {
 	padding: 6px 0;
 }
-
+#lists>li .personName:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
 #lists>li .data {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
 	gap: 12px;
 }
-
 #lists>li .data .item {
 	display: flex;
 	align-items: center;
 	gap: 12px;
 }
-
 #lists>li .data .item .amount {
 	padding-right: 12px;
 	border-right: 1px solid #e3e6e8;
 	font-weight: 600;
 	color: #ff5722;
 }
-
 #lists>li .data .item .amount:before {
 	content: "-";
 }
-
 #lists>li .data .item .amount:after {
 	content: "đ";
 	font-weight: 400;
 	color: #abb3ba;
 }
-
 #lists>li .data .item .timeamp {
 	color: #abb3ba;
 }
-
 #lists>li .data .item .btn-remove {
 	border-radius: var(--bdrs);
 	padding: 6px;
