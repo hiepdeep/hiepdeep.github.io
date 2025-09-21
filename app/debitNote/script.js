@@ -62,6 +62,7 @@ async function renderChitieu() {
 		personLi.appendChild(personNameDiv);
 		personNameDiv.addEventListener("click", () => {
 			document.forms["form"]["person-name"].value = personName;
+			document.forms["form"]["amount"].focus();
 		});
 		const dataUl = document.createElement("ul");
 		dataUl.className = "data";
@@ -74,9 +75,24 @@ async function renderChitieu() {
 			itemLi.innerHTML = `
 				<div class="amount">${formatAmount(item.amount)}</div>
 				<div class="timeamp">${datePart}</div>
-				<button btn-style red class="btn-remove">Remove</button>
 			`;
+			const btnDelete = document.createElement("button");
+			btnDelete.className = "btn-remove";
+			btnDelete.setAttribute("btn-style", "");
+			btnDelete.setAttribute("red", "");
+			btnDelete.innerText = "Remove";
+			itemLi.appendChild(btnDelete);
 			dataUl.appendChild(itemLi);
+			btnDelete.addEventListener("click", () => {
+				if (confirm("Bạn có chắc chắn muốn xóa?")) {
+					database.ref(db).child(item.key).remove().then(() => {
+						alert("Xóa thành công!");
+						renderChitieu();
+					}).catch((error) => {
+						console.error("Lỗi khi xóa:", error);
+					});
+				}
+			});
 		}
 		personLi.appendChild(dataUl);
 		lists.appendChild(personLi);
