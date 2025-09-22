@@ -15,10 +15,18 @@ async function loadImagesFromFirebase() {
 	boxImages.innerHTML = "";
 	let totalImages = 0;
 	const fragment = document.createDocumentFragment();
+	const imagesData = [];
 	snapshot.forEach((childSnapshot) => {
+		imagesData.push({
+			key: childSnapshot.key,
+			data: childSnapshot.val()
+		});
+	});
+	imagesData.reverse();
+	imagesData.forEach((image) => {
 		totalImages++;
-		const userData = childSnapshot.val();
-		const userKey = childSnapshot.key;
+		const userKey = image.key;
+		const userData = image.data;
 		const container = document.createElement("div");
 		container.className = "image-container";
 		const img = document.createElement("img");
@@ -135,18 +143,16 @@ function cropperImage() {
 						minSize = 50;
 						draggArea.style.width = newWidth + "px";
 						draggArea.style.height = newHeight + "px";
-						const defaultCropWidth = Math.min(newWidth, 250);
-						const defaultCropHeight = Math.min(newHeight, 150);
-						dragg.style.width = defaultCropWidth + "px";
-						dragg.style.height = defaultCropHeight + "px";
+						dragg.style.width = newWidth + "px";
+						dragg.style.height = newHeight + "px";
 						defaultPicture.width = draggArea.getBoundingClientRect().width;
 						defaultPicture.height = draggArea.getBoundingClientRect().height;
 						ctxPicture.fillStyle = "white";
 						ctxPicture.fillRect(0, 0, defaultPicture.width, defaultPicture.height);
 						ctxPicture.drawImage(uploadedImage, 0, 0, defaultPicture.width, defaultPicture.height);
 						dragg.style.display = "block";
-						dragg.style.left = (defaultPicture.width - dragg.getBoundingClientRect().width) / 2 + "px";
-						dragg.style.top = (defaultPicture.height - dragg.getBoundingClientRect().height) / 2 + "px";
+						dragg.style.left = "0px";
+						dragg.style.top = "0px";
 						$scale = (uploadedImage.width / defaultPicture.width);
 						updateCroppedImage();
 					}
