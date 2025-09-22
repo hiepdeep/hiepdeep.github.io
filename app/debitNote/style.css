@@ -49,7 +49,7 @@ body {
 	background: #335599;
 }
 #lists {
-	width: min(100%, 500px);
+	width: min(100%, 600px);
 	margin: auto;
 	background: white;
 	display: flex;
