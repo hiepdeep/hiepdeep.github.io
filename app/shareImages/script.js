@@ -4,13 +4,13 @@ const app = firebase.initializeApp({
 });
 const database = firebase.database();
 const db = "db_images";
+const boxImages = document.getElementById("box-images");
+const totalImageSpan = document.getElementById("total-image");
 document.addEventListener("DOMContentLoaded", function() {
 	loadImagesFromFirebase();
 	cropperImage();
 });
 async function loadImagesFromFirebase() {
-	const boxImages = document.getElementById("box-images");
-    const totalImageSpan = document.getElementById("total-image");
 	const snapshot = await database.ref(db).orderByChild("timestamp").once("value");
 	boxImages.innerHTML = "";
 	let totalImages = 0;
@@ -19,7 +19,6 @@ async function loadImagesFromFirebase() {
 		totalImages++;
 		const userData = childSnapshot.val();
 		const userKey = childSnapshot.key;
-		console.log(userData.timestamp);
 		const container = document.createElement("div");
 		container.className = "image-container";
 		const img = document.createElement("img");
@@ -28,11 +27,11 @@ async function loadImagesFromFirebase() {
 		const btnGr = document.createElement("div");
 		btnGr.className = "btn-gr";
 		const addSpan = document.createElement("span");
-		addSpan.className = "add material-symbols-rounded";
+		addSpan.className = "material-symbols-rounded";
 		addSpan.textContent = "add";
 		const delSpan = document.createElement("span");
-		delSpan.className = "del material-symbols-rounded";
-		delSpan.textContent = "close";
+		delSpan.className = "material-symbols-rounded";
+		delSpan.textContent = "delete";
 		btnGr.appendChild(addSpan);
 		btnGr.appendChild(delSpan);
 		container.appendChild(img);
@@ -50,6 +49,49 @@ async function loadImagesFromFirebase() {
 		});
 	});
 	totalImageSpan.textContent = totalImages;
+	const imageContainer = document.querySelectorAll(".image-container");
+	console.log(imageContainer.length);
+	imageContainer.forEach((child) => {
+		child.addEventListener("click", () => {
+			console.log(child.getElementsByTagName("img")[0].src);
+			const preview = document.getElementById("preview-image");
+			preview.innerHTML = "";
+			const imgPreview = document.createElement("img");
+			imgPreview.src = child.getElementsByTagName("img")[0].src;
+			imgPreview.alt = child.getElementsByTagName("img")[0].alt;
+			const btnGr = document.createElement("div");
+			btnGr.className = "btn-gr";
+			const addSpan = document.createElement("span");
+			addSpan.className = "material-symbols-rounded";
+			addSpan.textContent = "add";
+			const delSpan = document.createElement("span");
+			delSpan.className = "material-symbols-rounded";
+			delSpan.textContent = "delete";
+			const clsSpan = document.createElement("span");
+			clsSpan.className = "material-symbols-rounded";
+			clsSpan.textContent = "close";
+			btnGr.appendChild(addSpan);
+			btnGr.appendChild(delSpan);
+			btnGr.appendChild(clsSpan);
+			preview.appendChild(imgPreview);
+			preview.appendChild(btnGr);
+			preview.classList.add("active");
+			clsSpan.addEventListener("click", () => {
+				preview.classList.remove("active");
+			});
+			delSpan.addEventListener("click", () => {
+				if (confirm("Bạn có chắc chắn muốn xóa?")) {
+					database.ref(db).child(imgPreview.alt).remove().then(() => {
+						alert("Xóa thành công!");
+						preview.classList.remove("active");
+						loadImagesFromFirebase();
+					}).catch((error) => {
+						console.error("Lỗi khi xóa:", error);
+					});
+				}
+			});
+		});
+	});
 }
 function cropperImage() {
 	const boxCtrl = document.getElementById("crop-image");
