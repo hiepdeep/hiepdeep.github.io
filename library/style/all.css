@@ -1,91 +1,64 @@
 /* font-family: "Noto Serif SC", serif; */
 /* font-family: "Noto Sans SC", serif; */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Serif+SC:wght@200..900&display=swap");
-
 /* font-family: "Roboto", sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
 /* font-family: "Roboto Condensed", sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
-
 /* font-family: "Be Vietnam Pro", sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 /* font-family: "Niramit", sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Niramit:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
-
 /* font-family: "Work Sans", sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 /* font-family: "Bai Jamjuree", sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
-
 /* font-family: "Space Mono", monospace; */
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-
 /* font-family: "Itim", cursive; */
 @import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
-
 /* font-family: "Inter", sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&display=swap");
-
 /* font-family: "Quicksand", sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-
 /* font-family: "National Park", sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&display=swap");
-
 /* font-family: "Comfortaa", serif; */
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
-
 /* font-family: "Google Sans"; */
 /* font-family: "Google Sans Display"; */
 /* font-family: "Google Sans Text"; */
 /* font-family: "Product Sans"; */
 @import url("https://fonts.googleapis.com/css2?family=Product+Sans&family=Google+Sans+Display:ital@0;1&family=Google+Sans_old:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&display=swap");
-
 /* font-family: "Playpen Sans", cursive; */
 @import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&amp;display=swap");
-
 /* font-family: "Avenir Next"; */
 @import url("https://hiepdeep.netlify.app/library/font-family/avenirNext/font-face.css");
-
 /* font-family: "SVN Gilroy"; */
 @import url("https://hiepdeep.netlify.app/library/font-family/svnGilroy/font-face.css");
-
 /* font-family: "Material Icons"; */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
 /*font-family: 'Material Icons Outlined';*/
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
-
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
-
 /* font-family: "FontAwesome"; */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-
 /* font-family: "Font Awesome 5 Brands"; */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css");
-
 a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
 	outline: none;
 	vertical-align: baseline;
 }
-
 :link, button {
 	text-decoration: none;
 	cursor: pointer;
 	user-select: none;
 }
-
 :link, :hover, :focus, :active, :visited {
 	outline: none;
 }
-
 /*::-moz-selection {color: #fff;background: #FFA07A;}::selection {color: #fff;background: #FFA07A;}*/
-
 /*::-webkit-scrollbar-track {background: #FFF;}::-webkit-scrollbar {width: 2px;height: 2px;}::-webkit-scrollbar-thumb {background: #322E2F;}*/
-
 :root {
 	--sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -170,7 +143,6 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	--hex-light-8: #2d2e2e;
 	--hex-light-9: #161717;
 }
-
 * {
 	margin: 0;
 	padding: 0;
@@ -179,155 +151,121 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	-webkit-tap-highlight-color: transparent;
 	-webkit-font-smoothing: antialiased;
 }
-
 iframe {
 	width: 100%;
 }
-
 img {
 	width: 100%;
 	height: 100%;
 	display: block;
 	object-fit: cover;
 }
-
 ol, ul, li {
 	list-style-type: none;
 }
-
 .material-symbols-rounded {
 	font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 24;
 }
-
 [flex] {
 	display: flex;
 }
-
 [flex-column] {
 	display: flex;
 	flex-direction: column;
 }
-
 [flex-center] {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
 [flex-center-0] {
 	display: flex;
 	justify-content: center;
 }
-
 [flex-0-center] {
 	display: flex;
 	align-items: center;
 }
-
 [flex-shrink-0] {
 	flex-shrink: 0;
 }
-
 [square] {
 	aspect-ratio: 1;
 }
-
 [bdrs-6] {
 	border-radius: 6px;
 }
-
 [bdrs-12] {
 	border-radius: 12px;
 }
-
 [btn-style] {
 	border: 0;
 	overflow: hidden;
 }
-
 [btn-style][small] {
 	flex-shrink: 0;
 	width: max-content !important;
 }
-
 [btn-style][red] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #e64d4d;
 }
-
 [btn-style][red]:hover {
 	background: #cf4545;
 }
-
 [btn-style][red]:active {
 	background: #b83e3e;
 }
-
 [btn-style][green] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #12a159;
 }
-
 [btn-style][green]:hover {
 	background: #109150;
 }
-
 [btn-style][green]:active {
 	background: #0e8147;
 }
-
 [btn-style][blue] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #2873bd;
 }
-
 [btn-style][blue]:hover {
 	background: #2467aa;
 }
-
 [btn-style][blue]:active {
 	background: #205c97;
 }
-
 [btn-style][orange] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #d99d26;
 }
-
 [btn-style][orange]:hover {
 	background: #c38d22;
 }
-
 [btn-style][orange]:active {
 	background: #ae7e1e;
 }
-
 [btn-style][gray] {
 	color: rgba(255, 255, 255, 0.9);
 	background: #73808c;
 }
-
 [btn-style][gray]:hover {
 	background: #67737e;
 }
-
 [btn-style][gray]:active {
 	background: #5c6670;
 }
-
 [btn-style][lightgray] {
 	color: rgba(0, 0, 0, 0.6);
 	background: #e3e6e8;
 }
-
 [btn-style][lightgray]:hover {
 	background: #cccfd0;
 }
-
 [btn-style][lightgray]:active {
 	background: #b6b8ba;
 }
-
 #preloader {
 	position: fixed;
 	width: 100%;
@@ -340,23 +278,20 @@ ol, ul, li {
 	align-items: center;
 	visibility: visible;
 	opacity: 1;
-	z-index: 1000000000000000100000;
+	z-index: 999999999;
 	transition: 0.25s;
 	transition-delay: 1s;
 }
-
 #preloader.finished {
 	visibility: hidden;
 	opacity: 0;
 }
-
 #preloader svg {
 	border-radius: 50%;
 	width: 96px;
 	height: 96px;
 	animation: preloader-rotate 2s linear infinite;
 }
-
 #preloader svg circle {
 	fill: none;
 	stroke-width: 20px;
@@ -364,52 +299,19 @@ ol, ul, li {
 	transition: 1s linear;
 	animation: preloader-dash 1.5s ease-in-out infinite, preloader-color 6s ease-in-out infinite;
 }
-
 @keyframes preloader-rotate {
-	0% {
-		transform: rotate(0deg);
-	}
-
-	100% {
-		transform: rotate(360deg);
-	}
+	000% { transform: rotate(000deg); }
+	100% { transform: rotate(360deg); }
 }
-
 @keyframes preloader-dash {
-	0% {
-		stroke-dasharray: 0, 565;
-		stroke-dashoffset: 565;
-	}
-
-	50% {
-		stroke-dasharray: 440, 250;
-		stroke-dashoffset: 565;
-	}
-
-	100% {
-		stroke-dasharray: 565, 565;
-		stroke-dashoffset: 565;
-	}
+	000% { stroke-dasharray: 000, 565; stroke-dashoffset: 565; }
+	050% { stroke-dasharray: 440, 250; stroke-dashoffset: 565; }
+	100% { stroke-dasharray: 565, 565; stroke-dashoffset: 565; }
 }
-
 @keyframes preloader-color {
-	0% {
-		stroke: #ea4335;
-	}
-
-	25% {
-		stroke: #4285f4;
-	}
-
-	50% {
-		stroke: #34a853;
-	}
-
-	75% {
-		stroke: #fbbc04;
-	}
-
-	100% {
-		stroke: #7248b9;
-	}
+	000% { stroke: #ea4335; }
+	025% { stroke: #4285f4; }
+	050% { stroke: #34a853; }
+	075% { stroke: #fbbc04; }
+	100% { stroke: #7248b9; }
 }
