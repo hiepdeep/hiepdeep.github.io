@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/ico/note.ico">
+		<title>Share Images</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="app">
+			<div class="row form-active">
+				<button btn-style blue id="btn-open-form">Upload Image</button>
+				<span id="total-image">0</span>
+			</div>
+			<div class="row data">
+				<div class="image-container">
+					<img src="" data-src="https://hiepdeep.github.io/library/pictures/demo/grid_1.png" alt="">
+					<div class="btn-gr">
+						<span class="add material-symbols-rounded">add</span>
+						<span class="del material-symbols-rounded">close</span>
+					</div>
+				</div>
+				<div class="image-container">
+					<img src="" data-src="https://hiepdeep.github.io/library/pictures/demo/grid_2.png" alt="">
+					<div class="btn-gr">
+						<span class="add material-symbols-rounded">add</span>
+						<span class="del material-symbols-rounded">close</span>
+					</div>
+				</div>
+				<div class="image-container">
+					<img src="" data-src="https://hiepdeep.github.io/library/pictures/demo/grid_3.png" alt="">
+					<div class="btn-gr">
+						<span class="add material-symbols-rounded">add</span>
+						<span class="del material-symbols-rounded">close</span>
+					</div>
+				</div>
+				<div class="image-container">
+					<img src="" data-src="https://hiepdeep.github.io/library/pictures/demo/grid_4.png" alt="">
+					<div class="btn-gr">
+						<span class="add material-symbols-rounded">add</span>
+						<span class="del material-symbols-rounded">close</span>
+					</div>
+				</div>
+				<div class="image-container">
+					<img src="" data-src="https://hiepdeep.github.io/library/pictures/demo/grid_5.png" alt="">
+					<div class="btn-gr">
+						<span class="add material-symbols-rounded">add</span>
+						<span class="del material-symbols-rounded">close</span>
+					</div>
+				</div>
+				<div class="image-container">
+					<img src="" data-src="https://hiepdeep.github.io/library/pictures/demo/grid_6.png" alt="">
+					<div class="btn-gr">
+						<span class="add material-symbols-rounded">add</span>
+						<span class="del material-symbols-rounded">close</span>
+					</div>
+				</div>
+				<div class="image-container">
+					<img src="" data-src="https://hiepdeep.github.io/library/pictures/demo/grid_7.png" alt="">
+					<div class="btn-gr">
+						<span class="add material-symbols-rounded">add</span>
+						<span class="del material-symbols-rounded">close</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="crop-image">
+			<div class="row-1">
+				<label for="btn-upload-image">
+					<input type="file" id="btn-upload-image" accept="image/*" style="display:none">
+					<span class="text">Upload Image</span>
+					<span id="upload-image-error"></span>
+				</label>
+				<div class="btn-gr">
+					<button btn-style blue id="btn-save-image">Save</button>
+					<button btn-style red id="btn-close-box">Close</button>
+				</div>
+			</div>
+			<div class="row-2">
+				<canvas id="canvas1" width="600" height="400"></canvas>
+				<div id="dragg-area">
+					<div id="dragg">
+						<div id="resizer"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="script.js"></script>
+	</body>
+</html>
