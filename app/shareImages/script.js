@@ -60,7 +60,6 @@ function cropperImage() {
 	let isResizing = false;
 	let uploadedImage = null;
 	let dataImage = null;
-	let size = 200;
 	let offsetX, offsetY, startX, startY, initialWidth, initialHeight, initialLeft, initialTop, $scale, minSize;
 	uploadPicture.addEventListener("change", (e) => {
 		const file = e.target.files[0];
@@ -84,12 +83,13 @@ function cropperImage() {
 						const ratio = Math.min(ratioWidth, ratioHeight);
 						const newWidth = uploadedImage.width * ratio;
 						const newHeight = uploadedImage.height * ratio;
-						minSize = size * ratio;
+						minSize = 50;
 						draggArea.style.width = newWidth + "px";
 						draggArea.style.height = newHeight + "px";
-						const draggSize = Math.min(newWidth, newHeight);
-						dragg.style.width = draggSize + "px";
-						dragg.style.height = draggSize + "px";
+						const defaultCropWidth = Math.min(newWidth, 250);
+						const defaultCropHeight = Math.min(newHeight, 150);
+						dragg.style.width = defaultCropWidth + "px";
+						dragg.style.height = defaultCropHeight + "px";
 						defaultPicture.width = draggArea.getBoundingClientRect().width;
 						defaultPicture.height = draggArea.getBoundingClientRect().height;
 						ctxPicture.fillStyle = "white";
@@ -117,12 +117,12 @@ function cropperImage() {
 			const cropWidth = draggRect.width * $scale;
 			const cropHeight = draggRect.height * $scale;
 			const tempCanvas = document.createElement("canvas");
-			tempCanvas.width = size;
-			tempCanvas.height = size;
+			tempCanvas.width = cropWidth;
+			tempCanvas.height = cropHeight;
 			const tempCtx = tempCanvas.getContext("2d");
 			tempCtx.fillStyle = "#fff";
-			tempCtx.fillRect(0, 0, size, size);
-			tempCtx.drawImage(uploadedImage, drg_left, drg_top, cropWidth, cropHeight, 0, 0, size, size);
+			tempCtx.fillRect(0, 0, cropWidth, cropHeight);
+			tempCtx.drawImage(uploadedImage, drg_left, drg_top, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
 			dataImage = tempCanvas.toDataURL();
 		}
 	}
@@ -157,30 +157,14 @@ function cropperImage() {
 			dragg.style.left = newLeft + "px";
 			dragg.style.top = newTop + "px";
 		} else if (isResizing) {
-			let newWidth, newHeight;
-			const dx = e.clientX - startX;
-			const dy = e.clientY - startY;
-			newWidth = initialWidth + dx;
-			newHeight = initialHeight + dy;
-			const sizeChange = Math.min(newWidth, newHeight);
-			if (sizeChange < minSize) {
-				return;
-			}
-			let finalWidth = sizeChange;
-			let finalHeight = sizeChange;
-			let finalLeft = initialLeft;
-			let finalTop = initialTop;
-			if (initialLeft + finalWidth > draggAreaRect.width) {
-				finalWidth = draggAreaRect.width - initialLeft;
-			}
-			if (initialTop + finalHeight > draggAreaRect.height) {
-				finalHeight = draggAreaRect.height - initialTop;
-			}
-			finalWidth = finalHeight = Math.min(finalWidth, finalHeight);
-			dragg.style.width = finalWidth + "px";
-			dragg.style.height = finalHeight + "px";
-			dragg.style.left = finalLeft + "px";
-			dragg.style.top = finalTop + "px";
+			let newWidth = initialWidth + (e.clientX - startX);
+			let newHeight = initialHeight + (e.clientY - startY);
+			newWidth = Math.max(newWidth, minSize);
+			newHeight = Math.max(newHeight, minSize);
+			newWidth = Math.min(newWidth, draggAreaRect.width - initialLeft);
+			newHeight = Math.min(newHeight, draggAreaRect.height - initialTop);
+			dragg.style.width = newWidth + "px";
+			dragg.style.height = newHeight + "px";
 		}
 		updateCroppedImage();
 	});
