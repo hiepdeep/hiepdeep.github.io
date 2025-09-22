@@ -25,13 +25,13 @@ async function loadImagesFromFirebase() {
 	imagesData.reverse();
 	imagesData.forEach((image) => {
 		totalImages++;
-		const userKey = image.key;
-		const userData = image.data;
+		const k = image.key;
+		const d = image.data;
 		const container = document.createElement("div");
 		container.className = "image-container";
 		const img = document.createElement("img");
-		img.src = userData.url;
-		img.alt = userKey;
+		img.src = d.url;
+		img.alt = k;
 		const btnGr = document.createElement("div");
 		btnGr.className = "btn-gr";
 		const addSpan = document.createElement("span");
@@ -47,7 +47,7 @@ async function loadImagesFromFirebase() {
 		boxImages.appendChild(container);
 		delSpan.addEventListener("click", () => {
 			if (confirm("Bạn có chắc chắn muốn xóa?")) {
-				database.ref(db).child(userKey).remove().then(() => {
+				database.ref(db).child(k).remove().then(() => {
 					alert("Xóa thành công!");
 					loadImagesFromFirebase();
 				}).catch((error) => {
@@ -61,7 +61,6 @@ async function loadImagesFromFirebase() {
 	console.log(imageContainer.length);
 	imageContainer.forEach((child) => {
 		child.addEventListener("click", () => {
-			console.log(child.getElementsByTagName("img")[0].src);
 			const preview = document.getElementById("preview-image");
 			preview.innerHTML = "";
 			const imgPreview = document.createElement("img");
