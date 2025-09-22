@@ -4,46 +4,53 @@ const app = firebase.initializeApp({
 });
 const database = firebase.database();
 const db = "db_images";
-
 document.addEventListener("DOMContentLoaded", function() {
 	loadImagesFromFirebase();
 	cropperImage();
-	const imageContainers = document.querySelectorAll(".image-container");
-	const observer = new IntersectionObserver((entries, observer) => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				const imgContainer = entry.target;
-				const img = imgContainer.querySelector("img");
-				const dataSrc = img.getAttribute("data-src");
-				if (dataSrc) {
-					img.src = dataSrc;
-					imgContainer.classList.add("lazy-loaded");
-					observer.unobserve(imgContainer);
-				}
+});
+async function loadImagesFromFirebase() {
+	const boxImages = document.getElementById("box-images");
+    const totalImageSpan = document.getElementById("total-image");
+	const snapshot = await database.ref(db).orderByChild("timestamp").once("value");
+	boxImages.innerHTML = "";
+	let totalImages = 0;
+	const fragment = document.createDocumentFragment();
+	snapshot.forEach((childSnapshot) => {
+		totalImages++;
+		const userData = childSnapshot.val();
+		const userKey = childSnapshot.key;
+		console.log(userData.timestamp);
+		const container = document.createElement("div");
+		container.className = "image-container";
+		const img = document.createElement("img");
+		img.src = userData.url;
+		img.alt = userKey;
+		const btnGr = document.createElement("div");
+		btnGr.className = "btn-gr";
+		const addSpan = document.createElement("span");
+		addSpan.className = "add material-symbols-rounded";
+		addSpan.textContent = "add";
+		const delSpan = document.createElement("span");
+		delSpan.className = "del material-symbols-rounded";
+		delSpan.textContent = "close";
+		btnGr.appendChild(addSpan);
+		btnGr.appendChild(delSpan);
+		container.appendChild(img);
+		container.appendChild(btnGr);
+		boxImages.appendChild(container);
+		delSpan.addEventListener("click", () => {
+			if (confirm("Bạn có chắc chắn muốn xóa?")) {
+				database.ref(db).child(userKey).remove().then(() => {
+					alert("Xóa thành công!");
+					loadImagesFromFirebase();
+				}).catch((error) => {
+					console.error("Lỗi khi xóa:", error);
+				});
 			}
 		});
-	}, {
-		rootMargin: "0px 0px 0px 0px"
 	});
-	imageContainers.forEach(container => {
-		observer.observe(container);
-	});
-});
-
-async function uploadImageToFirebase(dataUrl) {
-	database.ref(db).push({
-		url: dataUrl,
-		timestamp: createTimes()
-	}).then(() => {
-		loadImagesFromFirebase();
-		console.log("Ảnh đã được tải lên và lưu vào database!");
-	}).catch((error) => {
-		console.error("Lỗi khi tải ảnh:", error);
-	});
+	totalImageSpan.textContent = totalImages;
 }
-
-function loadImagesFromFirebase() {}
-
 function cropperImage() {
 	const boxCtrl = document.getElementById("crop-image");
 	const uploadPicture = document.getElementById("btn-upload-image");
@@ -178,8 +185,16 @@ function cropperImage() {
 	});
 	savePicture.addEventListener("click", () => {
 		if (dataImage) {
+			database.ref(db).push({
+				url: dataImage,
+				timestamp: createTimes()
+			}).then(() => {
+				loadImagesFromFirebase();
+				console.log("Ảnh đã được tải lên và lưu vào database!");
+			}).catch((error) => {
+				console.error("Lỗi khi tải ảnh:", error);
+			});
 			console.log(dataImage);
-			uploadImageToFirebase(dataImage);
 			boxCtrl.classList.remove("active");
 		} else {
 			alert("Chưa có ảnh nào được tải.");

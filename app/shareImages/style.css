@@ -46,12 +46,7 @@ body {
 	font-weight: 400;
 	color: #171a1c;
 }
-.app .options {
-	width: 100%;
-	border-bottom: 1px solid var(--bd-color);
-	padding-bottom: 12px;
-}
-.app .data {
+.app #box-images {
 	width: 100%;
 	display: grid;
 	grid-gap: 12px;
@@ -59,29 +54,22 @@ body {
 	grid-auto-rows: 200px;
 	grid-auto-flow: dense;
 }
-.app .data .image-container {
-	opacity: 0;
-	transition: opacity 1s ease-in-out, transform 0.6s ease-out;
-	transform: translateY(20px);
+.app #box-images .image-container {
 	position: relative;
 }
-.app .data .image-container:nth-child(8n+3) {
+.app #box-images .image-container:nth-child(8n+3) {
 	grid-row: span 2;
 }
-.app .data .image-container:nth-child(8n+4) {
+.app #box-images .image-container:nth-child(8n+4) {
 	grid-column: span 2;
 }
-.app .data .image-container:nth-child(8n+5) {
+.app #box-images .image-container:nth-child(8n+5) {
 	grid-row: span 2;
 }
-.app .data .image-container:nth-child(8n+8) {
+.app #box-images .image-container:nth-child(8n+8) {
 	grid-column: span 2;
 }
-.app .data .image-container.lazy-loaded {
-	opacity: 1;
-	transform: translateY(0);
-}
-.app .data .image-container .btn-gr {
+.app #box-images .image-container .btn-gr {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -89,18 +77,17 @@ body {
 	gap: 6px;
 	padding: 6px;
 }
-.app .data .image-container .btn-gr span {
+.app #box-images .image-container .btn-gr span {
 	background: rgba(0, 0, 0, 0.4);
 	color: rgba(255, 255, 255, 0.5);
-	padding: 6px;
 	border-radius: var(--bdrs);
 }
-.app .data .image-container .btn-gr span:hover {
+.app #box-images .image-container .btn-gr span:hover {
 	background: rgba(0, 0, 0, 0.5);
 	color: rgba(255, 255, 255, 0.6);
 	cursor: pointer;
 }
-.app .data .image-container:hover .btn-gr {
+.app #box-images .image-container:hover .btn-gr {
 	display: flex;
 }
 #crop-image {
@@ -208,4 +195,20 @@ body {
 }
 #crop-image .row-2 #dragg-area #dragg #resizer:hover {
 	background: gray;
+}
+.loading {
+	width: 30px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	border: 1px solid;
+	border-color: #73808c transparent;
+	animation: loading-block 0.5s linear infinite;
+}
+@keyframes loading-block {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
