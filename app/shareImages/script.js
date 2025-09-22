@@ -33,30 +33,8 @@ async function loadImagesFromFirebase() {
 		const img = document.createElement("img");
 		img.src = d.url;
 		img.alt = k;
-		const btnGr = document.createElement("div");
-		btnGr.className = "btn-gr";
-		const addSpan = document.createElement("span");
-		addSpan.className = "material-symbols-rounded";
-		addSpan.textContent = "add";
-		const delSpan = document.createElement("span");
-		delSpan.className = "material-symbols-rounded";
-		delSpan.textContent = "delete";
-		btnGr.appendChild(addSpan);
-		btnGr.appendChild(delSpan);
 		container.appendChild(img);
-		container.appendChild(btnGr);
 		boxImages.appendChild(container);
-		delSpan.addEventListener("click", () => {
-			preview.classList.remove("active");
-			if (confirm("Bạn có chắc chắn muốn xóa?")) {
-				database.ref(db).child(k).remove().then(() => {
-					alert("Xóa thành công!");
-					loadImagesFromFirebase();
-				}).catch((error) => {
-					console.error("Lỗi khi xóa:", error);
-				});
-			}
-		});
 	});
 	totalImageSpan.textContent = totalImages;
 	const imageContainer = document.querySelectorAll(".image-container");
@@ -89,7 +67,6 @@ async function loadImagesFromFirebase() {
 			delSpan.addEventListener("click", () => {
 				if (confirm("Bạn có chắc chắn muốn xóa?")) {
 					database.ref(db).child(imgPreview.alt).remove().then(() => {
-						alert("Xóa thành công!");
 						preview.classList.remove("active");
 						loadImagesFromFirebase();
 					}).catch((error) => {
