@@ -4,7 +4,10 @@ const app = firebase.initializeApp({
 });
 const database = firebase.database();
 const db = "db_images";
+
 document.addEventListener("DOMContentLoaded", function() {
+	loadImagesFromFirebase();
+	cropperImage();
 	const imageContainers = document.querySelectorAll(".image-container");
 	const observer = new IntersectionObserver((entries, observer) => {
 		entries.forEach(entry => {
@@ -26,7 +29,22 @@ document.addEventListener("DOMContentLoaded", function() {
 		observer.observe(container);
 	});
 });
-const cropperImage = function() {
+
+async function uploadImageToFirebase(dataUrl) {
+	database.ref(db).push({
+		url: dataUrl,
+		timestamp: createTimes()
+	}).then(() => {
+		loadImagesFromFirebase();
+		console.log("Ảnh đã được tải lên và lưu vào database!");
+	}).catch((error) => {
+		console.error("Lỗi khi tải ảnh:", error);
+	});
+}
+
+function loadImagesFromFirebase() {}
+
+function cropperImage() {
 	const boxCtrl = document.getElementById("crop-image");
 	const uploadPicture = document.getElementById("btn-upload-image");
 	const uploadError = document.getElementById("upload-image-error");
@@ -176,7 +194,8 @@ const cropperImage = function() {
 	});
 	savePicture.addEventListener("click", () => {
 		if (dataImage) {
-			profilePicture.src = dataImage;
+			console.log(dataImage);
+			uploadImageToFirebase(dataImage);
 			boxCtrl.classList.remove("active");
 		} else {
 			alert("Chưa có ảnh nào được tải.");
@@ -186,4 +205,3 @@ const cropperImage = function() {
 		boxCtrl.classList.remove("active");
 	});
 }
-cropperImage();
