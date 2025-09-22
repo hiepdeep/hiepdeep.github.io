@@ -6,6 +6,7 @@ const database = firebase.database();
 const db = "db_images";
 const boxImages = document.getElementById("box-images");
 const totalImageSpan = document.getElementById("total-image");
+const preview = document.getElementById("preview-image");
 document.addEventListener("DOMContentLoaded", function() {
 	loadImagesFromFirebase();
 	cropperImage();
@@ -46,6 +47,7 @@ async function loadImagesFromFirebase() {
 		container.appendChild(btnGr);
 		boxImages.appendChild(container);
 		delSpan.addEventListener("click", () => {
+			preview.classList.remove("active");
 			if (confirm("Bạn có chắc chắn muốn xóa?")) {
 				database.ref(db).child(k).remove().then(() => {
 					alert("Xóa thành công!");
@@ -58,10 +60,8 @@ async function loadImagesFromFirebase() {
 	});
 	totalImageSpan.textContent = totalImages;
 	const imageContainer = document.querySelectorAll(".image-container");
-	console.log(imageContainer.length);
 	imageContainer.forEach((child) => {
 		child.addEventListener("click", () => {
-			const preview = document.getElementById("preview-image");
 			preview.innerHTML = "";
 			const imgPreview = document.createElement("img");
 			imgPreview.src = child.getElementsByTagName("img")[0].src;
