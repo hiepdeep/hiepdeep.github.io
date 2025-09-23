@@ -94,6 +94,8 @@ function cropperImage() {
 	let uploadedImage = null;
 	let dataImage = null;
 	let offsetX, offsetY, startX, startY, initialWidth, initialHeight, initialLeft, initialTop, $scale, minSize;
+	defaultPicture.width = document.body.getBoundingClientRect().width;
+	defaultPicture.height = document.body.getBoundingClientRect().height;
 	uploadPicture.addEventListener("change", (e) => {
 		const file = e.target.files[0];
 		if (file) {
@@ -109,8 +111,8 @@ function cropperImage() {
 					uploadedImage = new Image();
 					uploadedImage.onload = function() {
 						uploadError.innerText = "";
-						const maxWidth = 600;
-						const maxHeight = 400;
+						const maxWidth = document.body.getBoundingClientRect().width;
+						const maxHeight = document.body.getBoundingClientRect().height;
 						const ratioWidth = maxWidth / uploadedImage.width;
 						const ratioHeight = maxHeight / uploadedImage.height;
 						const ratio = Math.min(ratioWidth, ratioHeight);
