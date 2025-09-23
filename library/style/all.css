@@ -315,3 +315,15 @@ ol, ul, li {
 	075% { stroke: #fbbc04; }
 	100% { stroke: #7248b9; }
 }
+.loading {
+	width: 30px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	border: 1px solid;
+	border-color: #73808c transparent;
+	animation: loading-block 0.5s linear infinite;
+}
+@keyframes loading-block {
+	000% { transform: rotate(000deg); }
+	100% { transform: rotate(360deg); }
+}
