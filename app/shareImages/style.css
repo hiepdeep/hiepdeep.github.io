@@ -243,19 +243,3 @@ body {
 #crop-image .row-2 #dragg-area #dragg #resizer:hover {
 	background: gray;
 }
-.loading {
-	width: 30px;
-	aspect-ratio: 1;
-	border-radius: 50%;
-	border: 1px solid;
-	border-color: #73808c transparent;
-	animation: loading-block 0.5s linear infinite;
-}
-@keyframes loading-block {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
