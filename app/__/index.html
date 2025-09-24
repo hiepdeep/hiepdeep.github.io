@@ -11,15 +11,14 @@
 	</head>
 	<body>
 		<div class="app">
-			<div class="row form-active">
+			<div class="form-active">
 				<label for="btn-upload-image">
 					<input type="file" id="btn-upload-image" accept="image/*" style="display:none">
 					<span class="text" btn-style blue>Upload Image</span>
-					<span id="upload-image-error"></span>
 				</label>
 				<span id="total-image">0</span>
 			</div>
-			<div class="row data" id="box-images">
+			<div class="data" id="box-images">
 				<div class="loading"></div>
 			</div>
 		</div>
@@ -30,17 +29,17 @@
 			<div class="row-1">
 				<span class="material-symbols-rounded">crop</span>
 				<div class="btn-gr">
-					<button btn-style blue id="croper-box-save-image">Save</button>
+					<button btn-style blue id="croper-box-save">Save</button>
 					<button btn-style red id="croper-box-close">Close</button>
 				</div>
 			</div>
-			<div class="row-2">
+			<div class="row-2" id="canvas-area">
 				<div id="croper-box-dragg-area">
 					<div id="croper-box-dragg">
-						<div id="croper-box-dragg-resizer"></div>
+						<div id="croper-box-dragg-resizer" class="material-symbols-rounded">open_in_full</div>
 					</div>
 				</div>
-				<canvas id="croper-box-canvas-image"></canvas>
+				<canvas id="croper-box-canvas-image" width="0" height="0"></canvas>
 			</div>
 		</div>
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>

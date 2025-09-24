@@ -150,7 +150,7 @@ body {
 
 #croper-box {
   background: white;
-  border: 6px solid var(--bd-color);
+  border: 12px solid white;
   width: calc(100% - 12px);
   height: calc(100% - 12px);
   max-width: 800px;
@@ -172,11 +172,10 @@ body {
   visibility: visible;
 }
 #croper-box .row-1 {
-  border-bottom: 1px solid var(--bd-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
+  padding-bottom: 12px;
 }
 #croper-box .row-1 span {
   color: #abb3ba;
@@ -192,159 +191,47 @@ body {
 }
 #croper-box .row-2 {
   position: relative;
+  background: lightgray;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px;
   overflow: hidden;
 }
 #croper-box .row-2 #croper-box-dragg-area {
   position: absolute;
-  width: 100%;
-  height: 100%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   overflow: hidden;
+  display: none;
 }
 #croper-box .row-2 #croper-box-dragg-area #croper-box-dragg {
-  display: none;
   position: inherit;
   width: 0;
   height: 0;
   cursor: grab;
-  box-shadow: 0 0 0 600px rgba(0, 0, 0, 0.5);
 }
 #croper-box .row-2 #croper-box-dragg-area #croper-box-dragg #croper-box-dragg-resizer {
   position: inherit;
-  background: gray;
-  width: 10px;
-  height: 10px;
-  border-radius: 100% 0 0 0;
-  bottom: 0;
-  right: 0;
+  width: 24px;
+  height: 24px;
+  font-size: 20px;
+  bottom: 6px;
+  right: 6px;
   cursor: se-resize;
   z-index: 10;
-  transition: 0.05s;
-  box-shadow: 0 0 0 1px white;
-}
-#croper-box .row-2 #croper-box-dragg-area #croper-box-dragg #croper-box-dragg-resizer:hover {
-  background: gray;
-}
-#croper-box .row-2 #croper-box-canvas-image {
-  background: green;
-}
-
-#crop-image {
-  background: white;
-  border: 1px solid var(--bd-color);
-  width: max-content;
-  position: fixed;
-  left: 50%;
-  top: 60%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease-in-out;
-  z-index: 999;
-}
-#crop-image.active {
-  top: 50%;
-  opacity: 1;
-  visibility: visible;
-}
-#crop-image .row-1 {
-  flex-shrink: 0;
-  border-bottom: 1px solid var(--bd-color);
-  display: flex;
-  justify-content: space-between;
-  padding: 12px;
-  position: relative;
-}
-#crop-image .row-1 label[for=btn-upload-image] {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  user-select: none;
-}
-#crop-image .row-1 label[for=btn-upload-image] .text {
-  padding: 0 12px;
-  border-radius: var(--bdrs);
-  line-height: 30px;
-  cursor: pointer;
-  --hls: 45%;
-  color: rgba(255, 255, 255, 0.9);
-  background: hsl(210deg, 20%, var(--hls));
-}
-#crop-image .row-1 label[for=btn-upload-image] .text:hover {
-  --hls: 40%;
-}
-#crop-image .row-1 label[for=btn-upload-image] .text:active {
-  --hls: 35%;
-}
-#crop-image .row-1 label[for=btn-upload-image] #upload-image-error {
-  color: #F44336;
-}
-#crop-image .row-1 .btn-gr {
-  display: flex;
-  gap: 12px;
-}
-#crop-image .row-1 .btn-gr button {
-  padding: 0 12px;
-  height: 30px;
-  border-radius: var(--bdrs);
-}
-#crop-image .row-2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  padding: 12px;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  max-width: 624px;
-  max-height: 424px;
-  overflow: hidden;
+  transform: rotate(-90deg);
+  color: white;
+  text-shadow: 0 0 6px black;
 }
-#crop-image .row-2 canvas {
-  max-width: 600px;
-  max-height: 400px;
+#croper-box .row-2 #croper-box-dragg-area #croper-box-dragg #croper-box-dragg-resizer:hover {
+  background: rgba(0, 0, 0, 0.3);
 }
-#crop-image .row-2 #dragg-area {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  max-width: 600px;
-  max-height: 400px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
-}
-#crop-image .row-2 #dragg-area #dragg {
-  display: none;
-  position: inherit;
-  width: 0;
-  height: 0;
-  cursor: grab;
-  box-shadow: 0 0 0 600px rgba(0, 0, 0, 0.5);
-}
-#crop-image .row-2 #dragg-area #dragg #resizer {
-  position: inherit;
-  background: gray;
-  width: 10px;
-  height: 10px;
-  border-radius: 100% 0 0 0;
-  bottom: 0;
-  right: 0;
-  cursor: se-resize;
-  z-index: 10;
-  transition: 0.05s;
-  box-shadow: 0 0 0 1px white;
-}
-#crop-image .row-2 #dragg-area #dragg #resizer:hover {
-  background: gray;
+#croper-box .row-2 #croper-box-canvas-image {
+  background: green;
 }
