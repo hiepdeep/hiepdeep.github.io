@@ -139,11 +139,9 @@ function cropImage() {
 			e.target.value = null;
 		}
 	});
-	// Sử dụng pointerdown cho khả năng tương thích với cảm ứng
 	resizer.addEventListener("pointerdown", (e) => {
 		e.preventDefault();
 		isResizing = true;
-		// Sử dụng clientX/clientY để lấy tọa độ chuột/ngón tay
 		startX = e.clientX;
 		startY = e.clientY;
 		startWidth = parseFloat(getComputedStyle(dragg).width);
@@ -153,7 +151,6 @@ function cropImage() {
 		document.addEventListener("pointerup", stopResize);
 		dragg.style.cursor = "grabbing";
 	});
-	// Hàm resize sử dụng clientX/clientY từ sự kiện pointermove
 	function resize(e) {
 		if (!isResizing) return;
 		const dx = e.clientX - startX;
@@ -175,13 +172,10 @@ function cropImage() {
 	}
 	let isDragging = false;
 	let dragOffsetX, dragOffsetY;
-	// Sử dụng pointerdown cho khả năng tương thích với cảm ứng
 	dragg.addEventListener("pointerdown", (e) => {
-		// Chỉ kích hoạt kéo nếu không phải là phần tử resizer
 		if (e.target !== resizer) {
 			e.preventDefault();
 			isDragging = true;
-			// Sử dụng clientX/clientY để lấy tọa độ chuột/ngón tay
 			dragOffsetX = e.clientX - parseFloat(dragg.style.left);
 			dragOffsetY = e.clientY - parseFloat(dragg.style.top);
 			// Sử dụng pointermove và pointerup
@@ -190,7 +184,6 @@ function cropImage() {
 			dragg.style.cursor = "grabbing";
 		}
 	});
-	// Hàm drag sử dụng clientX/clientY từ sự kiện pointermove
 	function drag(e) {
 		if (!isDragging) return;
 		let newLeft = e.clientX - dragOffsetX;

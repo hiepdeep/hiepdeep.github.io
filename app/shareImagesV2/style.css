@@ -209,7 +209,6 @@ body {
 	width: 0;
 	height: 0;
 	cursor: grab;
-	/* Thêm thuộc tính này để ngăn cuộn khi chạm */
 	touch-action: none;
 }
 #croper-box .row-2 #croper-box-dragg-area #croper-box-dragg #croper-box-dragg-resizer {
