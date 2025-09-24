@@ -185,10 +185,10 @@ body {
 	align-items: center;
 	gap: 12px;
 }
-#croper-box .row-1 .croper-ratio-options #croper-rotate_90_degrees {
+#croper-box .row-1 .croper-ratio-options #croper-rotate {
 	cursor: pointer;
 }
-#croper-box .row-1 .croper-ratio-options #croper-rotate_90_degrees:hover {
+#croper-box .row-1 .croper-ratio-options #croper-rotate:hover {
 	color: #73808c;
 }
 #croper-box .row-1 .croper-ratio-options .croper-ratio-lists {
