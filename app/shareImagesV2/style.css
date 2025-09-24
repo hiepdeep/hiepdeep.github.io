@@ -185,10 +185,10 @@ body {
 	align-items: center;
 	gap: 12px;
 }
-#croper-box .row-1 .croper-ratio-options #croper-rotate {
+#croper-box .row-1 .croper-ratio-options .icon {
 	cursor: pointer;
 }
-#croper-box .row-1 .croper-ratio-options #croper-rotate:hover {
+#croper-box .row-1 .croper-ratio-options .icon:hover {
 	color: #73808c;
 }
 #croper-box .row-1 .croper-ratio-options .croper-ratio-lists {
@@ -198,10 +198,6 @@ body {
 }
 #croper-box .row-1 .croper-ratio-options .croper-ratio-lists .croper-ratio {
 	font-weight: 500;
-	cursor: pointer;
-}
-#croper-box .row-1 .croper-ratio-options .croper-ratio-lists .croper-ratio:hover {
-	color: #73808c;
 }
 #croper-box .row-1 .btn-gr {
 	display: flex;
