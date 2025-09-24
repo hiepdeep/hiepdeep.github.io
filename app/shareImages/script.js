@@ -4,14 +4,14 @@ const app = firebase.initializeApp({
 });
 const database = firebase.database();
 const db = "db_images";
-const boxImages = document.getElementById("box-images");
-const totalImageSpan = document.getElementById("total-image");
-const preview = document.getElementById("preview-image");
 document.addEventListener("DOMContentLoaded", function() {
 	loadImagesFromFirebase();
-	cropperImage();
+	cropImage();
 });
 async function loadImagesFromFirebase() {
+	const boxImages = document.getElementById("box-images");
+	const totalImageSpan = document.getElementById("total-image");
+	const preview = document.getElementById("preview-image");
 	const snapshot = await database.ref(db).orderByChild("timestamp").once("value");
 	boxImages.innerHTML = "";
 	let totalImages = 0;
@@ -77,142 +77,153 @@ async function loadImagesFromFirebase() {
 		});
 	});
 }
-function cropperImage() {
-	const boxCtrl = document.getElementById("crop-image");
-	const uploadPicture = document.getElementById("btn-upload-image");
-	const uploadError = document.getElementById("upload-image-error");
-	const savePicture = document.getElementById("btn-save-image");
-	const closeBox = document.getElementById("btn-close-box");
-	const draggArea = document.getElementById("dragg-area");
-	const dragg = document.getElementById("dragg");
-	const defaultPicture = document.getElementById("canvas1");
-	const ctxPicture = defaultPicture.getContext("2d");
-	const profilePicture = document.getElementById("profile-image");
-	const resizer = document.getElementById("resizer");
-	let isDragging = false;
-	let isResizing = false;
+function cropImage() {
+	const btn_uploadImage = document.getElementById("btn-upload-image");
+	const croperBox = document.getElementById("croper-box");
+	const btnSave = document.getElementById("croper-box-save");
+	const btnClose = document.getElementById("croper-box-close");
+	const canvasArea = document.getElementById("canvas-area");
+	const draggArea = document.getElementById("croper-box-dragg-area");
+	const dragg = document.getElementById("croper-box-dragg");
+	const resizer = document.getElementById("croper-box-dragg-resizer");
+	const canvasImage = document.getElementById("croper-box-canvas-image");
+	const ctxImage = canvasImage.getContext("2d");
 	let uploadedImage = null;
-	let dataImage = null;
-	let offsetX, offsetY, startX, startY, initialWidth, initialHeight, initialLeft, initialTop, $scale, minSize;
-	defaultPicture.width = document.body.getBoundingClientRect().width;
-	defaultPicture.height = document.body.getBoundingClientRect().height;
-	uploadPicture.addEventListener("change", (e) => {
+	let originalImage = null;
+	let isResizing = false;
+	let startX, startY, startWidth, startHeight;
+	const PADDING = 0;
+	const MIN = 36;
+	btn_uploadImage.addEventListener("change", (e) => {
 		const file = e.target.files[0];
 		if (file) {
 			const reader = new FileReader();
 			reader.onload = function(event) {
-				const img = new Image();
-				img.onload = function() {
-					if (img.width < 200 || img.height < 200) {
-						uploadError.innerText = "Ảnh phải có kích thước tối thiểu 200x200";
-						uploadPicture.value = "";
-						return;
-					}
+				originalImage = new Image();
+				originalImage.onload = function() {
 					uploadedImage = new Image();
 					uploadedImage.onload = function() {
-						uploadError.innerText = "";
-						const maxWidth = document.body.getBoundingClientRect().width;
-						const maxHeight = document.body.getBoundingClientRect().height;
-						const ratioWidth = maxWidth / uploadedImage.width;
-						const ratioHeight = maxHeight / uploadedImage.height;
-						const ratio = Math.min(ratioWidth, ratioHeight);
-						const newWidth = uploadedImage.width * ratio;
-						const newHeight = uploadedImage.height * ratio;
-						minSize = 50;
+						const containerWidth = canvasArea.clientWidth;
+						const containerHeight = canvasArea.clientHeight;
+						const imgRatio = uploadedImage.width / uploadedImage.height;
+						const containerRatio = containerWidth / containerHeight;
+						let newWidth, newHeight;
+						if (imgRatio > containerRatio) {
+							newWidth = containerWidth;
+							newHeight = Math.floor(containerWidth / imgRatio);
+						} else {
+							newHeight = containerHeight;
+							newWidth = Math.floor(containerHeight * imgRatio);
+						}
+						const boxShadow = Math.max(newWidth, newHeight);
+						canvasImage.width = newWidth;
+						canvasImage.height = newHeight;
+						ctxImage.fillStyle = "white";
+						ctxImage.fillRect(0, 0, canvasImage.width, canvasImage.height);
+						ctxImage.drawImage(uploadedImage, 0, 0, canvasImage.width, canvasImage.height);
 						draggArea.style.width = newWidth + "px";
 						draggArea.style.height = newHeight + "px";
-						dragg.style.width = newWidth + "px";
-						dragg.style.height = newHeight + "px";
-						defaultPicture.width = draggArea.getBoundingClientRect().width;
-						defaultPicture.height = draggArea.getBoundingClientRect().height;
-						ctxPicture.fillStyle = "white";
-						ctxPicture.fillRect(0, 0, defaultPicture.width, defaultPicture.height);
-						ctxPicture.drawImage(uploadedImage, 0, 0, defaultPicture.width, defaultPicture.height);
-						dragg.style.display = "block";
-						dragg.style.left = "0px";
-						dragg.style.top = "0px";
-						$scale = (uploadedImage.width / defaultPicture.width);
-						updateCroppedImage();
+						draggArea.style.display = "block";
+						dragg.style.width = newWidth - PADDING + "px";
+						dragg.style.height = newHeight - PADDING + "px";
+						dragg.style.left = PADDING / 2 + "px";
+						dragg.style.top = PADDING / 2 + "px";
+						dragg.style.boxShadow = `0 0 0 ${boxShadow}px rgba(87, 87, 87, 0.5)`;
+						croperBox.classList.add("active");
 					}
 					uploadedImage.src = event.target.result;
 				};
-				img.src = event.target.result;
+				originalImage.src = event.target.result;
 			}
 			reader.readAsDataURL(file);
+			e.target.value = null;
 		}
-	});
-	function updateCroppedImage() {
-		if (uploadedImage) {
-			const blockRect = defaultPicture.getBoundingClientRect();
-			const draggRect = dragg.getBoundingClientRect();
-			let drg_left = (draggRect.left - blockRect.left) * $scale;
-			let drg_top = (draggRect.top - blockRect.top) * $scale;
-			const cropWidth = draggRect.width * $scale;
-			const cropHeight = draggRect.height * $scale;
-			const tempCanvas = document.createElement("canvas");
-			tempCanvas.width = cropWidth;
-			tempCanvas.height = cropHeight;
-			const tempCtx = tempCanvas.getContext("2d");
-			tempCtx.fillStyle = "#fff";
-			tempCtx.fillRect(0, 0, cropWidth, cropHeight);
-			tempCtx.drawImage(uploadedImage, drg_left, drg_top, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
-			dataImage = tempCanvas.toDataURL();
-		}
-	}
-	dragg.addEventListener("mousedown", (e) => {
-		if (e.target === resizer) {
-			return;
-		}
-		isDragging = true;
-		offsetX = e.clientX - dragg.getBoundingClientRect().left;
-		offsetY = e.clientY - dragg.getBoundingClientRect().top;
-		dragg.style.cursor = "grabbing";
 	});
 	resizer.addEventListener("mousedown", (e) => {
+		e.preventDefault();
 		isResizing = true;
 		startX = e.clientX;
 		startY = e.clientY;
-		initialWidth = dragg.offsetWidth;
-		initialHeight = dragg.offsetHeight;
-		initialLeft = dragg.offsetLeft;
-		initialTop = dragg.offsetTop;
-		e.preventDefault();
+		startWidth = parseFloat(getComputedStyle(dragg).width);
+		startHeight = parseFloat(getComputedStyle(dragg).height);
+		document.addEventListener("mousemove", resize);
+		document.addEventListener("mouseup", stopResize);
+		dragg.style.cursor = "grabbing";
 	});
-	document.addEventListener("mousemove", (e) => {
-		if (!isDragging && !isResizing) return;
-		e.preventDefault();
-		const draggAreaRect = draggArea.getBoundingClientRect();
-		if (isDragging) {
-			let newLeft = e.clientX - draggAreaRect.left - offsetX;
-			let newTop = e.clientY - draggAreaRect.top - offsetY;
-			newLeft = Math.max(0, Math.min(newLeft, draggAreaRect.width - dragg.offsetWidth));
-			newTop = Math.max(0, Math.min(newTop, draggAreaRect.height - dragg.offsetHeight));
-			dragg.style.left = newLeft + "px";
-			dragg.style.top = newTop + "px";
-		} else if (isResizing) {
-			let newWidth = initialWidth + (e.clientX - startX);
-			let newHeight = initialHeight + (e.clientY - startY);
-			newWidth = Math.max(newWidth, minSize);
-			newHeight = Math.max(newHeight, minSize);
-			newWidth = Math.min(newWidth, draggAreaRect.width - initialLeft);
-			newHeight = Math.min(newHeight, draggAreaRect.height - initialTop);
-			dragg.style.width = newWidth + "px";
-			dragg.style.height = newHeight + "px";
-		}
-		updateCroppedImage();
-	});
-	document.addEventListener("mouseup", () => {
-		isDragging = false;
+	function resize(e) {
+		if (!isResizing) return;
+		const dx = e.clientX - startX;
+		const dy = e.clientY - startY;
+		let newWidth = startWidth + dx;
+		let newHeight = startHeight + dy;
+		const maxW = parseFloat(getComputedStyle(draggArea).width) - parseFloat(dragg.style.left) - PADDING / 2;
+		const maxH = parseFloat(getComputedStyle(draggArea).height) - parseFloat(dragg.style.top) - PADDING / 2;
+		newWidth = Math.max(MIN, Math.min(newWidth, maxW));
+		newHeight = Math.max(MIN, Math.min(newHeight, maxH));
+		dragg.style.width = newWidth + "px";
+		dragg.style.height = newHeight + "px";
+	}
+	function stopResize() {
 		isResizing = false;
+		document.removeEventListener("mousemove", resize);
+		document.removeEventListener("mouseup", stopResize);
 		dragg.style.cursor = "grab";
+	}
+	let isDragging = false;
+	let dragOffsetX, dragOffsetY;
+	dragg.addEventListener("mousedown", (e) => {
+		if (e.target !== resizer) {
+			e.preventDefault();
+			isDragging = true;
+			dragOffsetX = e.clientX - parseFloat(dragg.style.left);
+			dragOffsetY = e.clientY - parseFloat(dragg.style.top);
+			document.addEventListener("mousemove", drag);
+			document.addEventListener("mouseup", stopDrag);
+			dragg.style.cursor = "grabbing";
+		}
 	});
-	document.getElementById("btn-open-form").addEventListener("click", function() {
-		boxCtrl.classList.add("active");
-	});
-	savePicture.addEventListener("click", () => {
-		if (dataImage) {
+	function drag(e) {
+		if (!isDragging) return;
+		let newLeft = e.clientX - dragOffsetX;
+		let newTop = e.clientY - dragOffsetY;
+		const maxLeft = parseFloat(getComputedStyle(draggArea).width) - parseFloat(getComputedStyle(dragg).width) - PADDING / 2;
+		const maxTop = parseFloat(getComputedStyle(draggArea).height) - parseFloat(getComputedStyle(dragg).height) - PADDING / 2;
+		newLeft = Math.max(PADDING / 2, Math.min(newLeft, maxLeft));
+		newTop = Math.max(PADDING / 2, Math.min(newTop, maxTop));
+		dragg.style.left = newLeft + "px";
+		dragg.style.top = newTop + "px";
+	}
+	function stopDrag() {
+		isDragging = false;
+		document.removeEventListener("mousemove", drag);
+		document.removeEventListener("mouseup", stopDrag);
+		dragg.style.cursor = "grab";
+	}
+	if (btnSave && btnClose) {
+		btnSave.addEventListener("click", () => {
+			if (!originalImage) return;
+			const cropDisplayX = parseFloat(dragg.style.left) - PADDING / 2;
+			const cropDisplayY = parseFloat(dragg.style.top) - PADDING / 2;
+			const cropDisplayWidth = parseFloat(getComputedStyle(dragg).width) + PADDING;
+			const cropDisplayHeight = parseFloat(getComputedStyle(dragg).height) + PADDING;
+			const scaleX = originalImage.width / canvasImage.width;
+			const scaleY = originalImage.height / canvasImage.height;
+			const cropOriginalX = Math.round(cropDisplayX * scaleX);
+			const cropOriginalY = Math.round(cropDisplayY * scaleY);
+			const cropOriginalWidth = Math.round(cropDisplayWidth * scaleX);
+			const cropOriginalHeight = Math.round(cropDisplayHeight * scaleY);
+			const croppedCanvas = document.createElement('canvas');
+			croppedCanvas.width = cropOriginalWidth;
+			croppedCanvas.height = cropOriginalHeight;
+			const croppedCtx = croppedCanvas.getContext('2d');
+			croppedCtx.drawImage(originalImage, cropOriginalX, cropOriginalY, cropOriginalWidth, cropOriginalHeight, 0, 0, cropOriginalWidth, cropOriginalHeight);
+			const croppedImageUrl = croppedCanvas.toDataURL("image/png");
 			database.ref(db).push({
-				url: dataImage,
+				url: croppedImageUrl,
+				info: {
+					width: croppedCanvas.width,
+					height: croppedCanvas.height,
+				},
 				timestamp: createTimes()
 			}).then(() => {
 				loadImagesFromFirebase();
@@ -220,13 +231,10 @@ function cropperImage() {
 			}).catch((error) => {
 				console.error("Lỗi khi tải ảnh:", error);
 			});
-			console.log(dataImage);
-			boxCtrl.classList.remove("active");
-		} else {
-			alert("Chưa có ảnh nào được tải.");
-		}
-	});
-	closeBox.addEventListener("click", function() {
-		boxCtrl.classList.remove("active");
-	});
+			croperBox.classList.remove("active");
+		});
+		btnClose.addEventListener("click", () => {
+			croperBox.classList.remove("active");
+		});
+	}
 }
