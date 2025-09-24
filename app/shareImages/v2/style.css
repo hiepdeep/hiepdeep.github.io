@@ -57,17 +57,18 @@ body {
 }
 .app #box-images {
 	width: 100%;
-	display: grid;
-	grid-gap: 12px;
-	grid-template-columns: auto auto auto auto auto;
-	grid-auto-flow: dense;
-	cursor: pointer;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	padding-bottom: 12px;
 }
 .app #box-images .image-container {
+	flex: 1 1 180px;
 	position: relative;
 	background: #607D8B;
 	border-radius: var(--bdrs);
 	overflow: hidden;
+	cursor: pointer;
 }
 .app #box-images .image-container:before {
 	content: "\f655";
@@ -162,9 +163,6 @@ body {
 	visibility: hidden;
 	transition: all 0.3s ease-in-out;
 	z-index: 999;
-	top: 50%;
-	opacity: 1;
-	visibility: visible;
 }
 #croper-box.active {
 	top: 50%;
