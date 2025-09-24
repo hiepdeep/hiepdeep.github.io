@@ -70,7 +70,7 @@ body {
 	overflow: hidden;
 }
 .app #box-images .image-container:before {
-	content: "";
+	content: "\f655";
 	font-family: "Material Symbols Rounded";
 	position: absolute;
 	background: rgba(0, 0, 0, 0.5);
@@ -162,6 +162,9 @@ body {
 	visibility: hidden;
 	transition: all 0.3s ease-in-out;
 	z-index: 999;
+	top: 50%;
+	opacity: 1;
+	visibility: visible;
 }
 #croper-box.active {
 	top: 50%;
@@ -174,8 +177,31 @@ body {
 	align-items: center;
 	padding-bottom: 12px;
 }
-#croper-box .row-1 span {
+#croper-box .row-1 .icon {
 	color: #abb3ba;
+}
+#croper-box .row-1 .croper-ratio-options {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+#croper-box .row-1 .croper-ratio-options #croper-rotate_90_degrees {
+	cursor: pointer;
+}
+#croper-box .row-1 .croper-ratio-options #croper-rotate_90_degrees:hover {
+	color: #73808c;
+}
+#croper-box .row-1 .croper-ratio-options .croper-ratio-lists {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+#croper-box .row-1 .croper-ratio-options .croper-ratio-lists .croper-ratio {
+	font-weight: 500;
+	cursor: pointer;
+}
+#croper-box .row-1 .croper-ratio-options .croper-ratio-lists .croper-ratio:hover {
+	color: #73808c;
 }
 #croper-box .row-1 .btn-gr {
 	display: flex;
@@ -209,7 +235,6 @@ body {
 	width: 0;
 	height: 0;
 	cursor: grab;
-	touch-action: none;
 }
 #croper-box .row-2 #croper-box-dragg-area #croper-box-dragg #croper-box-dragg-resizer {
 	position: inherit;
