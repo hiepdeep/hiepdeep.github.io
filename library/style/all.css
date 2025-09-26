@@ -266,6 +266,13 @@ ol, ul, li {
 [btn-style][lightgray]:active {
 	background: #b6b8ba;
 }
+img[data-src] {
+	opacity: 0;
+	transition: opacity 0.5s ease-in;
+}
+img[data-src].fade-in {
+	opacity: 1;
+}
 #preloader {
 	position: fixed;
 	width: 100%;

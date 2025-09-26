@@ -167,3 +167,30 @@ function convertVietnameseToUsn(value) {
 		.replace(/\s+/g, "")
 		.trim().replace(/\s/g, "");
 }
+
+// window.addEventListener("scroll", lazyloadImage);
+// window.addEventListener("resize", lazyloadImage);
+// window.addEventListener("load", lazyloadImage);
+function lazyloadImage() {
+	const imgElement = document.querySelectorAll("img[data-src]");
+	const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+	imgElement.forEach((img) => {
+		const imageUrl = img.dataset.src;
+		const tempImage = new Image();
+		tempImage.onload = function() {
+			const width = tempImage.naturalWidth;
+			const height = tempImage.naturalHeight;
+			img.style.width = width + "px";
+			img.style.height = height + "px";
+			const imgTop = img.getBoundingClientRect().top;
+			if (imgTop - 100 < viewportHeight) {
+				img.src = imageUrl;
+				img.classList.add("fade-in");
+			} else {
+				img.classList.remove("fade-in");
+				img.removeAttribute("src");
+			}
+		};
+		tempImage.src = imageUrl;
+	});
+}
