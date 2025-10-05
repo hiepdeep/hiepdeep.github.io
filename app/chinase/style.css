@@ -1,5 +1,5 @@
 * {
-	font-family: "Consolas";
+	font-family: "Itim", cursive;
 	font-size: 12px;
 	color: #171a1c;
 }
@@ -46,6 +46,7 @@ body {
 	border-radius: var(--bdrs);
 	padding: 0 12px;
 	height: 40px;
+	font-size: 16px;
 }
 
 .form form label input::placeholder {
@@ -54,6 +55,11 @@ body {
 
 .form form label input:hover {
 	border-color: #c7ccd1;
+}
+
+.form form label input[name=input_chinase],
+.form form label input[name=input_pinyin] {
+	font-family: "Noto Serif SC", serif;
 }
 
 .form form button {
