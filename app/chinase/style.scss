@@ -1,5 +1,5 @@
 * {
-	font-family: "Consolas";
+	font-family: "Itim", cursive;
 	font-size: 12px;
 	color: hsl(210deg 10% 10%);
 }
@@ -38,11 +38,15 @@ body {
 				border-radius: var(--bdrs);
 				padding: 0 12px;
 				height: 40px;
+				font-size: 16px;
 				&::placeholder {
 					color: hsl(210deg 10% 70%);
 				}
 				&:hover {
 					border-color: hsl(210deg 10% 80%);
+				}
+				&[name="input_chinase"], &[name="input_pinyin"] {
+					font-family: "Noto Serif SC", serif;
 				}
 			}
 		}
@@ -74,13 +78,16 @@ body {
 			border-radius: var(--bdrs);
 			background: white;
 			padding: 0 12px;
-			height: 30px;
-			user-select: all;
+			height: 40px;
+			font-size: 16px;
 			&::placeholder {
 				color: hsl(210deg 10% 70%);
 			}
 			&:hover {
 				border-color: hsl(210deg 10% 80%);
+			}
+			&[name="chinase"], &[name="pinyin"] {
+				font-family: "Noto Serif SC", serif;
 			}
 		}
 		button {
