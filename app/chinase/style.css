@@ -93,8 +93,8 @@ body {
 	border-radius: var(--bdrs);
 	background: white;
 	padding: 0 12px;
-	height: 30px;
-	user-select: all;
+	height: 40px;
+	font-size: 16px;
 }
 
 .list .item input::placeholder {
@@ -103,6 +103,11 @@ body {
 
 .list .item input:hover {
 	border-color: #c7ccd1;
+}
+
+.list .item input[name=chinase],
+.list .item input[name=pinyin] {
+	font-family: "Noto Serif SC", serif;
 }
 
 .list .item button {
