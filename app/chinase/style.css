@@ -59,7 +59,7 @@ body {
 
 .form form label input[name=input_chinase],
 .form form label input[name=input_pinyin] {
-	font-family: "Noto Serif SC", serif;
+	font-family: "Noto Sans SC", serif;
 }
 
 .form form button {
@@ -107,7 +107,7 @@ body {
 
 .list .item input[name=chinase],
 .list .item input[name=pinyin] {
-	font-family: "Noto Serif SC", serif;
+	font-family: "Noto Sans SC", serif;
 }
 
 .list .item button {
