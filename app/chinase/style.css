@@ -1,45 +1,37 @@
 * {
-	font-family: "Itim", cursive;
+	font-family: "Bai Jamjuree", sans-serif;
 	font-size: 12px;
 	color: #171a1c;
 }
-
 :root {
 	--maxwidth: 1280px;
 	--bdrs: 4px;
 	--bd-color: hsl(210deg 10% 90%);
 }
-
 body {
 	background: #edf5f8;
 }
-
 .form {
 	background: white;
 	padding: 12px;
 	width: 100%;
 	border-bottom: 1px solid var(--bd-color);
 }
-
 .form form {
 	display: flex;
 	align-items: flex-end;
 	gap: 12px;
 }
-
 .form form label {
 	width: 100%;
 }
-
 .form form label h3 {
 	margin-bottom: 6px;
 	font-weight: 500;
 }
-
 .form form label h3:after {
 	content: ":";
 }
-
 .form form label input {
 	width: 100%;
 	border: 1px solid var(--bd-color);
@@ -48,20 +40,16 @@ body {
 	height: 40px;
 	font-size: 16px;
 }
-
 .form form label input::placeholder {
 	color: #abb3ba;
 }
-
 .form form label input:hover {
 	border-color: #c7ccd1;
 }
-
 .form form label input[name=input_chinase],
 .form form label input[name=input_pinyin] {
 	font-family: "Noto Sans SC", serif;
 }
-
 .form form button {
 	flex-shrink: 0;
 	padding: 0 12px;
@@ -69,24 +57,20 @@ body {
 	border: 0;
 	border-radius: var(--bdrs);
 }
-
 .list {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
 	padding: 12px;
 }
-
 .list .item {
 	display: flex;
 	align-items: center;
 	gap: 12px;
 }
-
 .list .item .stt {
 	color: #abb3ba;
 }
-
 .list .item input {
 	width: 100%;
 	border: 1px solid var(--bd-color);
@@ -96,20 +80,16 @@ body {
 	height: 40px;
 	font-size: 16px;
 }
-
 .list .item input::placeholder {
 	color: #abb3ba;
 }
-
 .list .item input:hover {
 	border-color: #c7ccd1;
 }
-
 .list .item input[name=chinase],
 .list .item input[name=pinyin] {
 	font-family: "Noto Sans SC", serif;
 }
-
 .list .item button {
 	flex-shrink: 0;
 	border: 0;
@@ -119,19 +99,15 @@ body {
 	color: #edf5f8;
 	--hls: 50%;
 }
-
 .list .item button:hover {
 	--hls: 45%;
 }
-
 .list .item button:active {
 	--hls: 40%;
 }
-
 .list .item button.change {
 	background: hsl(230deg, 50%, var(--hls));
 }
-
 .list .item button.delete {
 	background: hsl(10deg, 60%, var(--hls));
 }
