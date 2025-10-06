@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		});
 	});
-	navbars[1].click();
+	navbars[0].click();
 });
 async function renderIntroduce() {
 	const widget = document.querySelector("#profile .row .widget-for-navbar[data-widget='introduce'] .widget-content");
