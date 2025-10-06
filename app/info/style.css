@@ -3,6 +3,10 @@
 	font-size: 12px;
 	color: #171a1c;
 }
+::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
 :root {
 	--maxwidth: 800px;
 	--bdrs: 2px;
@@ -12,7 +16,7 @@ body {
 	background: #edf5f8;
 }
 .max-width {
-	width: clamp(510px, 100%, var(--maxwidth));
+	width: clamp(410px, 100%, var(--maxwidth));
 	margin: auto;
 }
 #profile {
@@ -54,6 +58,7 @@ body {
 #profile .row:nth-child(1) .dataUser .displayname #total-friends .total {
 	font-weight: 500;
 	color: #73808c;
+	width: max-content;
 }
 #profile .row:nth-child(1) .dataUser .displayname #total-friends .total span {
 	font-weight: inherit;
@@ -69,6 +74,7 @@ body {
 	gap: 12px;
 }
 #profile .row:nth-child(1) .btn-gr button {
+	flex-shrink: 0;
 	padding: 0 12px;
 	height: 30px;
 	border-radius: var(--bdrs);
@@ -267,4 +273,10 @@ body {
 	height: 30px;
 	padding: 0 12px;
 	border-radius: var(--bdrs);
+}
+@media only screen and (max-width: 510px) {
+	#profile .row:nth-child(1) .dataUser .displayname #total-friends {
+		flex-direction: column;
+		row-gap: 6px;
+	}
 }
