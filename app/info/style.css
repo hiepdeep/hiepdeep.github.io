@@ -280,6 +280,6 @@ body {
 		row-gap: 6px;
 	}
 	#profile .row:nth-child(2) .widget-for-navbar {
-		height: calc(50svh - 12px - 197px);
+		height: calc(40svh - 12px - 197px);
 	}
 }
