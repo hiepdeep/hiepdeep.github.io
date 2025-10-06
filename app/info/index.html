@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
+		<title>Profile</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="max-width" id="profile">
+			<div class="row">
+				<div class="dataUser">
+					<div id="avatar-image">
+						<img id="profile-image" src="https://hiepdeep.github.io/library/pictures/200/0.png">
+					</div>
+					<div class="displayname">
+						<a href="javascript:;" id="profile-name">Văn Hiệp</a>
+						<div id="total-friends">
+							<div class="total"><span class="views-friends">1.696</span> người bạn</div>
+							<div class="total"><span class="views-mutualfriends">34</span> bạn chung</div>
+						</div>
+					</div>
+				</div>
+				<div class="btn-gr">
+					<button btn-style blue class="btn-edit-profile" id="edit-profile">Chỉnh sửa thông tin</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="navbar">
+					<li class="navbar-item" data-navbar="posts">Bài viết</li>
+					<li class="navbar-item active" data-navbar="introduce">Giới thiệu</li>
+					<li class="navbar-item" data-navbar="friends">Bạn bè</li>
+					<li class="navbar-item" data-navbar="activitylog">Nhật ký hoạt động</li>
+				</div>
+				<div class="widget-for-navbar" data-widget="posts">
+					<div class="widget-content">posts</div>
+				</div>
+				<div class="widget-for-navbar" data-widget="introduce">
+					<div class="widget-content">
+						<div class="loading"></div>
+					</div>
+				</div>
+				<div class="widget-for-navbar" data-widget="friends">
+					<div class="widget-content">
+						<div class="item">
+							<div class="thumb">
+								<img src="https://hiepdeep.github.io/library/pictures/200/EcO21OPY.png">
+							</div>
+							<div class="data">
+								<a href="javascript:;" class="displayname">Trương Quỳnh Anh</a>
+								<div class="mutual-friend"><span class="total">99</span> bạn chung</div>
+								<div class="btn-gr">
+									<button btn-style green class="btn-chat" data-action="aGllcGRlZXA">Nhắn tin</button>
+									<button btn-style lightgray small class="btn-chat" data-action="aGllcGRlZXA">Huỷ kết bạn</button>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="thumb">
+								<img src="https://hiepdeep.github.io/library/pictures/200/4YO9t3gP.png">
+							</div>
+							<div class="data">
+								<a href="javascript:;" class="displayname">Hồng Nhung</a>
+								<div class="mutual-friend"><span class="total">99</span> bạn chung</div>
+								<div class="btn-gr">
+									<button btn-style green class="btn-chat" data-action="aGllcGRlZXA">Nhắn tin</button>
+									<button btn-style lightgray small class="btn-chat" data-action="aGllcGRlZXA">Huỷ kết bạn</button>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="thumb">
+								<img src="https://hiepdeep.github.io/library/pictures/200/o6SHuMj2.png">
+							</div>
+							<div class="data">
+								<a href="javascript:;" class="displayname">Nguyễn Thị Thuỳ Oanh</a>
+								<div class="mutual-friend"><span class="total">99</span> bạn chung</div>
+								<div class="btn-gr">
+									<button btn-style green class="btn-chat" data-action="aGllcGRlZXA">Nhắn tin</button>
+									<button btn-style lightgray small class="btn-chat" data-action="aGllcGRlZXA">Huỷ kết bạn</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="widget-for-navbar" data-widget="activitylog">
+					<div class="widget-content">activitylog</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="script.js"></script>
+	</body>
+</html>

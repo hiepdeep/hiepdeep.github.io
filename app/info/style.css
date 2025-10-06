@@ -1,0 +1,270 @@
+* {
+	font-family: "Bai Jamjuree", sans-serif;
+	font-size: 12px;
+	color: #171a1c;
+}
+:root {
+	--maxwidth: 800px;
+	--bdrs: 2px;
+	--bd-color: hsl(210deg 10% 90%);
+}
+body {
+	background: #edf5f8;
+}
+.max-width {
+	width: clamp(510px, 100%, var(--maxwidth));
+	margin: auto;
+}
+#profile {
+	height: 100vh;
+	padding: 12px;
+}
+#profile .row {
+	width: 100%;
+	display: flex;
+}
+#profile .row:nth-child(1) {
+	justify-content: space-between;
+	align-items: flex-end;
+	border-bottom: 1px solid var(--bd-color);
+	padding-bottom: 12px;
+}
+#profile .row:nth-child(1) .dataUser {
+	display: flex;
+	align-items: flex-end;
+	gap: 12px;
+}
+#profile .row:nth-child(1) .dataUser #avatar-image {
+	width: 120px;
+	height: 120px;
+	border-radius: var(--bdrs);
+	overflow: hidden;
+	cursor: pointer;
+}
+#profile .row:nth-child(1) .dataUser .displayname #profile-name {
+	display: inline-block;
+	margin-bottom: 6px;
+	font-size: 16px;
+	font-weight: 600;
+}
+#profile .row:nth-child(1) .dataUser .displayname #total-friends {
+	display: flex;
+	gap: 12px;
+}
+#profile .row:nth-child(1) .dataUser .displayname #total-friends .total {
+	font-weight: 500;
+	color: #73808c;
+}
+#profile .row:nth-child(1) .dataUser .displayname #total-friends .total span {
+	font-weight: inherit;
+	color: #454d54;
+	cursor: pointer;
+	user-select: none;
+}
+#profile .row:nth-child(1) .dataUser .displayname #total-friends .total span:hover {
+	text-decoration: underline;
+}
+#profile .row:nth-child(1) .btn-gr {
+	display: flex;
+	gap: 12px;
+}
+#profile .row:nth-child(1) .btn-gr button {
+	padding: 0 12px;
+	height: 30px;
+	border-radius: var(--bdrs);
+}
+#profile .row:nth-child(2) {
+	margin-top: 12px;
+	flex-direction: column;
+}
+#profile .row:nth-child(2) .navbar {
+	width: 100%;
+	background: white;
+	display: flex;
+	border-bottom: 1px solid var(--bd-color);
+}
+#profile .row:nth-child(2) .navbar .navbar-item {
+	padding: 12px;
+	margin-bottom: -1px;
+	color: #8f99a3;
+	cursor: pointer;
+	user-select: none;
+	font-weight: 500;
+}
+#profile .row:nth-child(2) .navbar .navbar-item.active,
+#profile .row:nth-child(2) .navbar .navbar-item:hover {
+	color: #454d54;
+	border-bottom: 1px solid #73808c;
+}
+#profile .row:nth-child(2) .widget-for-navbar {
+	background: white;
+	padding: 12px;
+	height: calc(100vh - 12px - 197px);
+	display: none;
+}
+#profile .row:nth-child(2) .widget-for-navbar.active {
+	display: block;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item {
+	flex: 1 1 300px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	border-radius: 30px;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item:hover .icon,
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item:hover .data {
+	border: 1px solid #c7ccd1;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item .icon {
+	flex-shrink: 0;
+	font-variation-settings: "FILL" 1, "wght" 100, "GRAD" 200, "opsz" 0;
+	width: 40px;
+	height: 40px;
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	border: 1px solid var(--bd-color);
+	color: #8f99a3;
+	font-size: 24px;
+	background: white;
+	position: relative;
+	z-index: 9;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item .data {
+	width: 100%;
+	line-height: 30px;
+	border-radius: 30px;
+	margin-left: -40px;
+	padding: 0 12px 0 40px;
+	border: 1px solid var(--bd-color);
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item label {
+	background: white;
+	border: 1px solid var(--bd-color);
+	border-radius: var(--bdrs);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	margin-top: 11px;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item label:hover {
+	border-color: #c7ccd1;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item label:hover .label-name {
+	border-color: inherit;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item label .label-name {
+	background: white;
+	text-align: center;
+	line-height: 24px;
+	margin: -12px 6px 0;
+	padding: 0 6px;
+	border: 1px solid var(--bd-color);
+	border-radius: var(--bdrs);
+	color: #454d54;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item label input {
+	background: 0;
+	border: 0;
+	border-radius: 0;
+	padding: 0 12px;
+	height: 30px;
+	width: 100%;
+	font-weight: 500;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item label input::placeholder {
+	color: #abb3ba;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item input[name=profile-sex] {
+	flex-shrink: 0;
+	appearance: none;
+	width: 46px;
+	height: 46px;
+	color: rgba(68, 68, 68, 0.3);
+	cursor: pointer;
+	background: white;
+	border: 1px solid var(--bd-color);
+	border-radius: var(--bdrs);
+	position: relative;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item input[name=profile-sex]:hover {
+	border-color: #c7ccd1;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item input[name=profile-sex]:before {
+	font-family: "Material Icons";
+	font-size: 30px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item input[name=profile-sex][value=male]:before {
+	content: "male";
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item input[name=profile-sex][value=male]:checked:before {
+	color: #2766d9;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item input[name=profile-sex][value=female]:before {
+	content: "female";
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=introduce] .widget-content .item input[name=profile-sex][value=female]:checked:before {
+	color: #e41f5e;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=friends] .widget-content {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 12px;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=friends] .widget-content .item {
+	display: flex;
+	gap: 6px;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=friends] .widget-content .item .thumb {
+	flex-shrink: 0;
+	width: 72px;
+	height: 72px;
+	border-radius: var(--bdrs);
+	overflow: hidden;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=friends] .widget-content .item .data {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=friends] .widget-content .item .data .displayname {
+	display: block;
+	font-weight: 600;
+	color: #454d54;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=friends] .widget-content .item .data .mutual-friend {
+	font-weight: 500;
+	color: #73808c;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=friends] .widget-content .item .data .mutual-friend .total {
+	font-weight: inherit;
+	color: #454d54;
+	cursor: pointer;
+	user-select: none;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=friends] .widget-content .item .data .mutual-friend .total:hover {
+	text-decoration: underline;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=friends] .widget-content .item .data .btn-gr {
+	display: flex;
+	gap: 6px;
+}
+#profile .row:nth-child(2) .widget-for-navbar[data-widget=friends] .widget-content .item .data .btn-gr button {
+	width: 100%;
+	height: 30px;
+	padding: 0 12px;
+	border-radius: var(--bdrs);
+}
