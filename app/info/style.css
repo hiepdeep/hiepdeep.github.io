@@ -279,4 +279,7 @@ body {
 		flex-direction: column;
 		row-gap: 6px;
 	}
+	#profile .row:nth-child(2) .widget-for-navbar {
+		height: calc(50svh - 12px - 197px);
+	}
 }
