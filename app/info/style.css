@@ -20,7 +20,7 @@ body {
 	margin: auto;
 }
 #profile {
-	height: 100vh;
+	height: 100dvh;
 	padding: 12px;
 }
 #profile .row {
@@ -105,7 +105,7 @@ body {
 #profile .row:nth-child(2) .widget-for-navbar {
 	background: white;
 	padding: 12px;
-	height: calc(100vh - 12px - 197px);
+	height: calc(100dvh - 12px - 197px);
 	display: none;
 }
 #profile .row:nth-child(2) .widget-for-navbar.active {
