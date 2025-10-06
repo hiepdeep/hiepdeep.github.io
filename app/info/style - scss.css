@@ -1,0 +1,306 @@
+* {
+	font-family: "Bai Jamjuree", sans-serif;
+	font-size: 12px;
+	color: hsl(210deg 10% 10%);
+}
+
+::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
+:root {
+	--maxwidth: 800px;
+	--bdrs: 2px;
+	--bd-color: hsl(210deg 10% 90%);
+}
+
+body {
+	background: #edf5f8;
+}
+
+.max-width {
+	width: clamp(410px, 100%, var(--maxwidth));
+	margin: auto;
+}
+
+#profile {
+	height: 100svh;
+	padding: 12px;
+	display: flex;
+	flex-direction: column;
+	.row {
+		width: 100%;
+		display: flex;
+		&:nth-child(1) {
+			flex-shrink: 0;
+			justify-content: space-between;
+			align-items: flex-end;
+			border-bottom: 1px solid var(--bd-color);
+			padding-bottom: 12px;
+			.dataUser {
+				display: flex;
+				align-items: flex-end;
+				gap: 12px;
+				#avatar-image {
+					width: 120px;
+					height: 120px;
+					border-radius: var(--bdrs);
+					overflow: hidden;
+					cursor: pointer;
+				}
+				.displayname {
+					#profile-name {
+						display: inline-block;
+						margin-bottom: 6px;
+						font-size: 16px;
+						font-weight: 600;
+					}
+					#total-friends {
+						display: flex;
+						gap: 12px;
+						.total {
+							font-weight: 500;
+							color: hsl(210deg 10% 50%);
+							width: max-content;
+							span {
+								font-weight: inherit;
+								color: hsl(210deg 10% 30%);
+								cursor: pointer;
+								user-select: none;
+								&:hover {
+									text-decoration: underline;
+								}
+							}
+						}
+					}
+				}
+			}
+			.btn-gr {
+				display: flex;
+				gap: 12px;
+				button {
+					flex-shrink: 0;
+					padding: 0 12px;
+					height: 30px;
+					border-radius: var(--bdrs);
+				}
+			}
+		}
+		&:nth-child(2) {
+			margin-top: 12px;
+			flex-direction: column;
+			background: white;
+			height: 100%;
+			.navbar {
+				width: 100%;
+				display: flex;
+				border-bottom: 1px solid var(--bd-color);
+				.navbar-item {
+					padding: 12px;
+					margin-bottom: -1px;
+					color: hsl(210deg 10% 60%);
+					cursor: pointer;
+					user-select: none;
+					font-weight: 500;
+					&.active, &:hover {
+						color: hsl(210deg 10% 30%);
+						border-bottom: 1px solid hsl(210deg 10% 50%);
+					}
+				}
+			}
+			.widget-for-navbar {
+				padding: 12px;
+				display: none;
+				&.active {
+					display: block;
+				}
+				&[data-widget="posts"] {
+					.widget-content {}
+				}
+				&[data-widget="introduce"] {
+					.widget-content {
+						width: 100%;
+						display: flex;
+						flex-wrap: wrap;
+						gap: 12px;
+						.item {
+							flex: 1 1 300px;
+							display: flex;
+							align-items: center;
+							gap: 6px;
+							border-radius: 30px;
+							&:hover {
+								.icon, .data {
+									border: 1px solid hsl(210deg 10% 80%);
+								}
+							}
+							.icon {
+								flex-shrink: 0;
+								font-variation-settings: "FILL" 1, "wght" 100, "GRAD" 200, "opsz" 0;
+								width: 40px;
+								height: 40px;
+								display: grid;
+								place-items: center;
+								border-radius: 50%;
+								border: 1px solid var(--bd-color);
+								color: hsl(210deg 10% 60%);
+								font-size: 24px;
+								background: white;
+								position: relative;
+								z-index: 9;
+							}
+							.data {
+								width: 100%;
+								line-height: 30px;
+								border-radius: 30px;
+								margin-left: -40px;
+								padding: 0 12px 0 40px;
+								border: 1px solid var(--bd-color);
+							}
+							label {
+								background: white;
+								border: 1px solid var(--bd-color);
+								border-radius: var(--bdrs);
+								display: flex;
+								flex-direction: column;
+								align-items: flex-start;
+								width: 100%;
+								margin-top: 11px;
+								&:hover {
+									border-color: hsl(210deg 10% 80%);
+									.label-name {
+										border-color: inherit;
+									}
+								}
+								.label-name {
+									background: white;
+									text-align: center;
+									line-height: 24px;
+									margin: -12px 6px 0;
+									padding: 0 6px;
+									border: 1px solid var(--bd-color);
+									border-radius: var(--bdrs);
+									color: hsl(210deg 10% 30%);
+								}
+								input {
+									background: 0;
+									border: 0;
+									border-radius: 0;
+									padding: 0 12px;
+									height: 30px;
+									width: 100%;
+									font-weight: 500;
+									&::placeholder {
+										color: hsl(210deg 10% 70%);
+									}
+								}
+							}
+							input[name="profile-sex"] {
+								flex-shrink: 0;
+								appearance: none;
+								width: 46px;
+								height: 46px;
+								color: rgba(#444, 0.3);
+								cursor: pointer;
+								background: white;
+								border: 1px solid var(--bd-color);
+								border-radius: var(--bdrs);
+								position: relative;
+								&:hover {
+									border-color: hsl(210deg 10% 80%);
+								}
+								&:before {
+									font-family: "Material Icons";
+									font-size: 30px;
+									position: absolute;
+									left: 50%;
+									top: 50%;
+									transform: translate(-50%, -50%);
+								}
+								&[value="male"] {
+									&:before {
+										content: "male";
+									}
+									&:checked:before {
+										color: #2766d9;
+									}
+								}
+								&[value="female"] {
+									&:before {
+										content: "female";
+									}
+									&:checked:before {
+										color: #e41f5e;
+									}
+								}
+							}
+						}
+					}
+				}
+				&[data-widget="friends"] {
+					.widget-content {
+						display: grid;
+						grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+						gap: 12px;
+						.item {
+							display: flex;
+							gap: 6px;
+							.thumb {
+								flex-shrink: 0;
+								width: 72px;
+								height: 72px;
+								border-radius: var(--bdrs);
+								overflow: hidden;
+							}
+							.data {
+								width: 100%;
+								display: flex;
+								flex-direction: column;
+								gap: 6px;
+								.displayname {
+									display: block;
+									font-weight: 600;
+									color: hsl(210deg 10% 30%);
+								}
+								.mutual-friend {
+									font-weight: 500;
+									color: hsl(210deg 10% 50%);
+									.total {
+										font-weight: inherit;
+										color: hsl(210deg 10% 30%);
+										cursor: pointer;
+										user-select: none;
+										&:hover {
+											text-decoration: underline;
+										}
+									}
+								}
+								.btn-gr {
+									display: flex;
+									gap: 6px;
+									button {
+										width: 100%;
+										height: 30px;
+										padding: 0 12px;
+										border-radius: var(--bdrs);
+									}
+								}
+							}
+						}
+					}
+				}
+				&[data-widget="activitylog"] {
+					.widget-content {}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 510px) {
+	#profile .row:nth-child(1) .dataUser .displayname #total-friends {
+		flex-direction: column;
+		row-gap: 6px;
+	}
+}
