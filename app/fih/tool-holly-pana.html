@@ -320,16 +320,16 @@
 	</head>
 	<body>
 		<div id="btnTabs">
-			<button class="btnImport">Điền <b>Mark</b> vào ô tương ứng</button>
+			<button class="btnImport active">Điền <b>Mark</b> vào ô tương ứng</button>
 			<span class="btnNext">></span>
-			<button class="btnImport active">Chọn file <b>Place (.csv)</b> đã lưu</button>
+			<button class="btnImport">Chọn file <b>Place (.csv)</b> đã lưu</button>
 			<span class="btnNext">></span>
 			<button id="btnExport">Generator</button>
 			<span class="btnNext">></span>
 			<button id="btnDownload">Download</button>
 		</div>
 		<div id="ctnTabs">
-			<div class="txtImport">
+			<div class="txtImport active">
 				<table id="importMark">
 					<tr>
 						<th></th>
@@ -348,7 +348,7 @@
 					</tr>
 				</table>
 			</div>
-			<div class="txtImport active">
+			<div class="txtImport">
 				<label class="addPlace" for="addPlace">Chọn file Place đã lưu</label>
 				<input type="file" id="addPlace" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
 				<div class="importPlace">
