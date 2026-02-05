@@ -614,7 +614,7 @@
 			});
 			btnDownload.addEventListener("click", function() {
 				var exportData = document.getElementById("export").innerText.trim();
-				var filenameInput = prompt("Nhập tên file để lưu lại:", "Cad-AOI-Holly-HiepDz");
+				var filenameInput = prompt("Nhập tên file để lưu lại:", "Cad-AOI-Holly-HieNva");
 				if (filenameInput !== null && filenameInput.trim() !== "") {
 					var filename = filenameInput.trim() + ".txt";
 					var blob = new Blob([exportData], {type: "text/plain;charset=utf-8"});
