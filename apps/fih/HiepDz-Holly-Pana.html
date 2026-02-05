@@ -206,7 +206,7 @@
 				</table>
 			</div>
 			<div class="txtImport">
-				<label class="addPlace" for="addPlace">Chọn file Place đã lưu</label>
+				<label class="addPlace" for="addPlace">Chọn file CSV đã lưu</label>
 				<input type="file" id="addPlace" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
 				<div class="importPlace">
 					<table id="importPlace"></table>
@@ -301,9 +301,42 @@
 				var markX2 = document.getElementById("mark-X2").value.trim();
 				var markY2 = document.getElementById("mark-Y2").value.trim();
 				var push_table = "";
-				push_table += "<tr>" + "<th>Block</th>" + "<th>Location Name</th>" + "<th>X</th>" + "<th>Y</th>" + "<th>Angle</th>" + "<th>Part Number</th>" + "<th>Mounter</th>" + "<th>Feeder</th>" + "<th>Nozzle</th>" + "</tr>";
-				push_table += "<tr>" + "<td>0</td>" + "<td>MARK1</td>" + "<td>" + markX1 + "</td>" + "<td>" + markY1 + "</td>" + "<td>0</td>" + "<td>Mark</td>" + "<td>0</td>" + "<td>0</td>" + "<td>0</td>" + "</tr>";
-				push_table += "<tr>" + "<td>0</td>" + "<td>MARK1</td>" + "<td>" + markX2 + "</td>" + "<td>" + markY2 + "</td>" + "<td>0</td>" + "<td>Mark</td>" + "<td>0</td>" + "<td>0</td>" + "<td>0</td>" + "</tr>";
+				push_table += "<tr>"
+					+ "<th>Block</th>"
+					+ "<th>Location Name</th>"
+					+ "<th>X</th>"
+					+ "<th>Y</th>"
+					+ "<th>Angle</th>"
+					+ "<th>Part Number</th>"
+					+ "<th>Mounter</th>"
+					+ "<th>Feeder</th>"
+					+ "<th>Holder</th>"
+					+ "<th>Nozzle</th>"
+				+ "</tr>";
+				push_table += "<tr>"
+					+ "<td>0</td>"
+					+ "<td>MARK1</td>"
+					+ "<td>" + markX1 + "</td>"
+					+ "<td>" + markY1 + "</td>"
+					+ "<td>0</td>"
+					+ "<td>Mark</td>"
+					+ "<td>0</td>"
+					+ "<td>0</td>"
+					+ "<td>0</td>"
+					+ "<td>0</td>"
+				+ "</tr>";
+				push_table += "<tr>"
+					+ "<td>0</td>"
+					+ "<td>MARK1</td>"
+					+ "<td>" + markX2 + "</td>"
+					+ "<td>" + markY2 + "</td>"
+					+ "<td>0</td>"
+					+ "<td>Mark</td>"
+					+ "<td>0</td>"
+					+ "<td>0</td>"
+					+ "<td>0</td>"
+					+ "<td>0</td>"
+				+ "</tr>";
 				var headerRow = arrPlace[0];
 				var dataRow;
 				var i,
@@ -315,12 +348,41 @@
 					idx_PartName = headerRow.indexOf("Part Name"),
 					idx_Head = headerRow.indexOf("Head"),
 					idx_Slot = headerRow.indexOf("Slot"),
-					idx_NHP = headerRow.indexOf("NHP");
+					idx_NHP = headerRow.indexOf("NHP"),
+					idx_Nz = headerRow.indexOf("Nozzle");
 				for (i = 1; i < arrPlace.length; i++) {
 					dataRow = arrPlace[i];
-					push_table += "<tr>" + "<td>" + dataRow[idx_Pattern] + "</td>" + "<td>" + dataRow[idx_Designator] + "</td>" + "<td>" + dataRow[idx_X] + "</td>" + "<td>" + dataRow[idx_Y] + "</td>" + "<td>" + dataRow[idx_Rotation] + "</td>" + "<td>" + dataRow[idx_PartName] + "</td>" + "<td>" + dataRow[idx_Head] + "</td>" + "<td>" + dataRow[idx_Slot] + "</td>" + "<td>" + dataRow[idx_NHP] + "</td>" + "</tr>";
+					let machine = dataRow[idx_Head] - Math.floor(dataRow[idx_Head] / 2);
+					let fd = dataRow[idx_Slot].substring(dataRow[idx_Slot].length - 3);
+					push_table += "<tr>"
+						+ "<td>" + dataRow[idx_Pattern] + "</td>"
+						+ "<td>" + dataRow[idx_Designator] + "</td>"
+						+ "<td>" + dataRow[idx_X] + "</td>"
+						+ "<td>" + dataRow[idx_Y] + "</td>"
+						+ "<td>" + dataRow[idx_Rotation] + "</td>"
+						+ "<td>" + dataRow[idx_PartName] + "</td>"
+						+ "<td>M" + machine + "T" + dataRow[idx_Head] + "</td>"
+						+ "<td>F" + fd + "</td>"
+						+ "<td>H" + dataRow[idx_NHP] + "</td>"
+						+ "<td>N" + dataRow[idx_Nz] + "</td>"
+					+ "</tr>";
 				}
 				document.getElementById("export").innerHTML = push_table;
+			});
+			btnDownload.addEventListener("click", function() {
+				var exportData = document.getElementById("export").innerText.trim();
+				var filenameInput = prompt("Nhập tên file để lưu lại:", "Cad-AOI-Holly-HiepDz");
+				if (filenameInput !== null && filenameInput.trim() !== "") {
+					var filename = filenameInput.trim() + ".txt";
+					var blob = new Blob([exportData], {type: "text/plain;charset=utf-8"});
+					var a = document.createElement("a");
+					a.href = URL.createObjectURL(blob);
+					a.download = filename;
+					document.body.appendChild(a);
+					a.click();
+					document.body.removeChild(a);
+				}
+				toggleClass(btnDownload, "active", false);
 			});
 		</script>
 	</body>
