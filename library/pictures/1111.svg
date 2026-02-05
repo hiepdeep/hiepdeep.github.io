@@ -1,0 +1,56 @@
+<svg height="200" width="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .mix { mix-blend-mode: screen; }
+    </style>
+    <defs>
+        <linearGradient 
+          id="Y" 
+          x1="0" 
+          x2="0" 
+          y1="4%" 
+          y2="96%">
+            <stop offset="0%" stop-color="#0F0" />
+            <stop offset="100%" stop-color="#000" />
+        </linearGradient>
+        <linearGradient 
+          id="X" 
+          x1="4%" 
+          x2="96%"
+          y1="0" 
+          y2="0">
+            <stop offset="0%" stop-color="#F00" />
+            <stop offset="100%" stop-color="#000" />
+        </linearGradient>
+    </defs>
+
+    <rect x="0" y="0" height="200" width="200" fill="#808080" />
+    <g filter="blur(2px)">
+      <rect x="0" y="0" height="200" width="200" fill="#000080" />
+      <rect
+          x="0"
+          y="0"
+          height="200"
+          width="200"
+          fill="url(#Y)"
+          class="mix"
+      />
+      <rect
+          x="0"
+          y="0"
+          height="200"
+          width="200"
+          fill="url(#X)"
+          class="mix"
+      />
+      <rect
+          x="10"
+          y="10"
+          height="180"
+          width="180"
+          fill="#808080"
+          rx="50"
+          ry="50"
+          filter="blur(10px)"
+      />
+    </g>
+</svg>

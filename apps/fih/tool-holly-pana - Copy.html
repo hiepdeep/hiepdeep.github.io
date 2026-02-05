@@ -173,6 +173,149 @@
 				font-weight: bold;
 				user-select: none;
 			}
+/*			#btnTabs {
+				flex-shrink: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 12px;
+				button {
+					border: 0;
+					background: 0;
+					b {
+						font-weight: bold;
+					}
+					&.btnImport, &#btnDownload {
+						color: #2873bd;
+						&:hover {
+							text-decoration: underline;
+						}
+						&.active {
+							color: #2873bd;
+							text-decoration: underline;
+						}
+					}
+					&#btnExport {
+						color: #2873bd;
+						padding: 6px 12px;
+						border: 1px solid #2873bd;
+						&:hover {
+							color: rgba(255, 255, 255, 0.9);
+							background: #2467aa;
+						}
+						&.active {
+							color: rgba(255, 255, 255, 0.9);
+							background: #205c97;
+						}
+					}
+				}
+				.btnNext {
+					opacity: 0.5;
+				}
+			}
+			#ctnTabs {
+				height: calc(100% - 30px - 12px);
+				.txtImport {
+					display: none;
+					height: 100%;
+					&.active {
+						display: flex;
+						flex-direction: column;
+					}
+					table#importMark {
+						border-collapse: collapse;
+						width: 100%;
+						tr {
+							th, td {
+								border: 1px solid #c7cdd1;
+							}
+							th {
+								text-align: left;
+								line-height: 40px;
+								padding: 0 12px;
+							}
+							td {
+								input {
+									border: 0;
+									background: white;
+									width: 100%;
+									height: 40px;
+									padding: 0 12px;
+								}
+							}
+						}
+					}
+					.importPlace {
+						background: white;
+						height: 100%;
+						padding: 12px;
+						overflow: scroll;
+						border: 1px solid #c7cdd1;
+						table {
+							color: #757575;
+							width: 100%;
+							tr {
+								td {
+									font-size: 12px;
+								}
+							}
+						}
+					}
+					label[for="addPlace"] {
+						margin-bottom: 12px;
+						color: rgba(255, 255, 255, 0.9);
+						background: #2873bd;
+						padding: 12px;
+						text-align: center;
+						cursor: pointer;
+						&:hover {
+							background: #2467aa;
+						}
+						&:active {
+							background: #205c97;
+						}
+					}
+				}
+			}
+			#txtExport {
+				display: none;
+				height: 100%;
+				overflow: scroll;
+				border: 1px solid #c7cdd1;
+				&.active {
+					display: block;
+				}
+				table {
+					table-layout: auto;
+					width: 100%;
+					border-collapse: collapse;
+					user-select: all;
+					background: white;
+					overflow: scroll;
+					tr {
+						&:nth-child(1):hover {
+							background: #ddd;
+						}
+						&:hover {
+							background: #f1f1f1;
+							cursor: pointer;
+						}
+						th, td {
+							font: 11px "Consolas", sans-serif;
+							padding: 12px;
+							color: #444;
+							vertical-align: middle;
+							text-align: left;
+						}
+						th {
+							background: #ddd;
+							font-weight: bold;
+							user-select: none;
+						}
+					}
+				}
+			}*/
 		</style>
 	</head>
 	<body>
@@ -269,7 +412,7 @@
 					}
 					if (arr0.length > 0) {
 						var header = arr0[0];
-						var cols = ["Designator", "Part Name", "X", "Y", "Rotation", "Pattern", "Head", "Slot", "NHP", "Nozzle"];
+						var cols = ["Designator", "Part Name", "X", "Y", "Rotation", "Pattern", "Head", "Slot", "NHP"];
 						for (var i = 0; i < arr0.length; i++) {
 							arrPlace.push([]);
 							for (var k = 0; k < cols.length; k++) {
@@ -322,6 +465,129 @@
 				}
 				document.getElementById("export").innerHTML = push_table;
 			});
+			// let arrPlace = [];
+			// for (let i = 0; i < document.getElementsByClassName("btnImport").length; i++) {
+			// 	document.getElementsByClassName("btnImport")[i].addEventListener("click", () => {
+			// 		for (let j = 0; j < document.getElementsByClassName("btnImport").length; j++) {
+			// 			document.getElementsByClassName("btnImport")[j].classList.remove("active");
+			// 			document.getElementsByClassName("txtImport")[j].classList.remove("active");
+			// 		}
+			// 		document.getElementById("ctnTabs").style.display = "block";
+			// 		document.getElementById("btnExport").classList.remove("active");
+			// 		document.getElementById("txtExport").classList.remove("active");
+			// 		document.getElementsByClassName("btnImport")[i].classList.add("active");
+			// 		document.getElementsByClassName("txtImport")[i].classList.add("active");
+			// 	});
+			// }
+			// document.getElementById("addPlace").addEventListener("change", () => {
+			// 	const fileInput = document.getElementById("addPlace");
+			// 	const file = fileInput.files[0];
+			// 	if (!file) return;
+			// 	const read_PlaceCSV = new FileReader();
+			// 	read_PlaceCSV.readAsText(file);
+			// 	read_PlaceCSV.onload = function () {
+			// 		let result = read_PlaceCSV.result;
+			// 		let load_PlaceCSV = document.getElementById("importPlace");
+			// 		let arr0 = [];
+			// 		let tb = "";
+			// 		arrPlace = [];
+			// 		let split_row_Place = result.split("\n");
+			// 		for (tr in split_row_Place) {
+			// 			if (split_row_Place[tr].match(/\w/g) != null) {
+			// 				arr0.push([]);
+			// 				let split_td_Place = split_row_Place[tr].split(",");
+			// 				for (td in split_td_Place) {
+			// 					arr0[tr].push(split_td_Place[td].trim());
+			// 				}
+			// 			}
+			// 		}
+			// 		for (tr in arr0) {
+			// 			arrPlace.push([]);
+			// 			arrPlace[tr].push(arr0[tr][arr0[0].indexOf("Designator")]);
+			// 			arrPlace[tr].push(arr0[tr][arr0[0].indexOf("Part Name")]);
+			// 			arrPlace[tr].push(arr0[tr][arr0[0].indexOf("X")]);
+			// 			arrPlace[tr].push(arr0[tr][arr0[0].indexOf("Y")]);
+			// 			arrPlace[tr].push(arr0[tr][arr0[0].indexOf("Rotation")]);
+			// 			arrPlace[tr].push(arr0[tr][arr0[0].indexOf("Pattern")]);
+			// 			arrPlace[tr].push(arr0[tr][arr0[0].indexOf("Head")]);
+			// 			arrPlace[tr].push(arr0[tr][arr0[0].indexOf("Slot")]);
+			// 			arrPlace[tr].push(arr0[tr][arr0[0].indexOf("NHP")]);
+			// 		}
+			// 		for (tr in arrPlace) {
+			// 			tb += "<tr>";
+			// 			for (td in arrPlace[tr]) {
+			// 				tb += `<td>${arrPlace[tr][td]}</td>`;
+			// 			}
+			// 			tb += "</tr>";
+			// 		}
+			// 		load_PlaceCSV.innerHTML = tb;
+			// 	};
+			// });
+			// document.getElementById("btnExport").addEventListener("click", () => {
+			// 	document.getElementById("export").innerHTML = "";
+			// 	for (let j = 0; j < document.getElementsByClassName("btnImport").length; j++) {
+			// 		document.getElementsByClassName("btnImport")[j].classList.remove("active");
+			// 		document.getElementsByClassName("txtImport")[j].classList.remove("active");
+			// 	}
+			// 	document.getElementById("ctnTabs").style.display = "none";
+			// 	document.getElementById("txtExport").classList.add("active");
+			// 	const markX1 = document.getElementById("mark-X1").value.trim();
+			// 	const markY1 = document.getElementById("mark-Y1").value.trim();
+			// 	const markX2 = document.getElementById("mark-X2").value.trim();
+			// 	const markY2 = document.getElementById("mark-Y2").value.trim();
+			// 	let push_table = "";
+			// 	push_table += `
+			// 		<tr>
+			// 			<th>Block</th>
+			// 			<th>Location Name</th>
+			// 			<th>X</th>
+			// 			<th>Y</th>
+			// 			<th>Angle</th>
+			// 			<th>Part Number</th>
+			// 			<th>Mounter</th>
+			// 			<th>Feeder</th>
+			// 			<th>Nozzle</th>
+			// 		</tr>
+			// 		<tr>
+			// 			<td>0</td>
+			// 			<td>MARK1</td>
+			// 			<td>${markX1}</td>
+			// 			<td>${markY1}</td>
+			// 			<td>0</td>
+			// 			<td>Mark</td>
+			// 			<td>0</td>
+			// 			<td>0</td>
+			// 			<td>0</td>
+			// 		</tr>
+			// 		<tr>
+			// 			<td>0</td>
+			// 			<td>MARK1</td>
+			// 			<td>${markX2}</td>
+			// 			<td>${markY2}</td>
+			// 			<td>0</td>
+			// 			<td>Mark</td>
+			// 			<td>0</td>
+			// 			<td>0</td>
+			// 			<td>0</td>
+			// 		</tr>
+			// 	`;
+			// 	for (let data = 1; data < arrPlace.length; data++) {
+			// 		push_table += `
+			// 			<tr>
+			// 				<td>${arrPlace[data][arrPlace[0].indexOf("Pattern")]}</td>
+			// 				<td>${arrPlace[data][arrPlace[0].indexOf("Designator")]}</td>
+			// 				<td>${arrPlace[data][arrPlace[0].indexOf("X")]}</td>
+			// 				<td>${arrPlace[data][arrPlace[0].indexOf("Y")]}</td>
+			// 				<td>${arrPlace[data][arrPlace[0].indexOf("Rotation")]}</td>
+			// 				<td>${arrPlace[data][arrPlace[0].indexOf("Part Name")]}</td>
+			// 				<td>${arrPlace[data][arrPlace[0].indexOf("Head")]}</td>
+			// 				<td>${arrPlace[data][arrPlace[0].indexOf("Slot")]}</td>
+			// 				<td>${arrPlace[data][arrPlace[0].indexOf("NHP")]}</td>
+			// 			</tr>
+			// 		`
+			// 	}
+			// 	document.getElementById("export").innerHTML = push_table;
+			// });
 		</script>
 	</body>
 </html>
