@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAMDAAAAEAIACoJQAAFgAAACgAAAAwAAAAYAAAAAEAIAAAAAAAACQAAL6mAAC+pgAAAAAAAAAAAADy8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Pz8//19fX/9fX1//X19f/09PT/8vLy//Ly8v/y8vL/8vLy//Ly8v/09PT/9fX1//X19f/19fX/9fX1//T09P/y8vL/9PT0//X19f/19fX/9fX1//X19f/19fX/9fX1//X19f/z8/P/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly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8v/09PT/xMLB/1ZNTP8xJyX/LyUj/ywiIP+KhIP/9PT0//Ly8v/y8vL/8/Pz/+jo6P9bU1H/LCIg/y8lI/8vJSP/LyUj/y8lI/8vJSP/LyUj/y8lI/8vJSP/LyUj/y8lI/8vJSP/LyUj/zEnJf9WTUz/xMLB//T09P/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/9PT0/+Xk5P/Mysr/yMbG/8fFxf/c2tr/8vLy//Ly8v/y8vL/8vLy//Dw8P/R0ND/x8XF/8jGxv/Ixsb/yMbG/8jGxv/Ixsb/yMbG/8jGxv/Ixsb/yMbG/8jGxv/Ixsb/yMbG/8zKyv/l5OT/9PT0//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Pz8//19fX/9fX1//X19f/09PT/8vLy//Ly8v/y8vL/8vLy//Ly8v/09PT/9fX1//X19f/19fX/9fX1//X19f/19fX/9fX1//X19f/19fX/9fX1//X19f/19fX/9fX1//X19f/z8/P/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v/y8vL/8vLy//Ly8v8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=">
+		<title>Tool AOI Holly V2 | FUJI</title>
+		<style type="text/css">
+			body, div, font, html, label, span, table, tbody, td, tfoot, th, thead, tr {
+				outline: none;
+				vertical-align: baseline;
+				border: 0;
+			}
+			:link, button {
+				text-decoration: none;
+				cursor: pointer;
+				user-select: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+			}
+			:link, :hover, :focus, :active, :visited {
+				outline: none;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				font: 14px "Cambria", sans-serif;
+				letter-spacing: 0.05em;
+			}
+			body {
+				background: #edf5f8;
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				padding: 12px;
+				height: 100vh;
+			}
+			#btnTabs {
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				flex-shrink: 0;
+				-ms-flex-negative: 0;
+				margin-bottom: 12px;
+				gap: 12px;
+				user-select: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+			}
+			#btnTabs button {
+				all: unset;
+				cursor: pointer;
+				background: none;
+				border: none;
+				padding: 0;
+			}
+			#btnTabs button b {
+				font-weight: bold;
+			}
+			#btnTabs .btnNext {
+				user-select: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				opacity: 0.5;
+			}
+			#btnTabs .btnImport, #btnTabs #btnDownload {
+				color: #2873bd;
+			}
+			#btnTabs .btnImport:hover, #btnTabs #btnDownload:hover {
+				text-decoration: underline;
+			}
+			#btnTabs .btnImport.active, #btnTabs #btnDownload:active {
+				color: #2873bd;
+				text-decoration: underline;
+			}
+			#btnTabs #btnExport {
+				color: #2873bd;
+				padding: 6px 12px;
+				border: 1px solid #2873bd;
+			}
+			#btnTabs #btnExport:hover {
+				color: rgba(255, 255, 255, 0.9);
+				background: #2467aa;
+			}
+			#btnTabs #btnExport.active {
+				color: rgba(255, 255, 255, 0.9);
+				background: #205c97;
+			}
+			#ctnTabs {
+				height: calc(100% - 30px - 12px);
+			}
+			#ctnTabs .txtImport {
+				display: none;
+				height: 100%;
+			}
+			#ctnTabs .txtImport.active {
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+			}
+			#ctnTabs .txtImport label[for=addPartUnit] {
+				margin-bottom: 12px;
+				color: rgba(255, 255, 255, 0.9);
+				background: #2873bd;
+				padding: 12px;
+				text-align: center;
+				cursor: pointer;
+			}
+			#ctnTabs .txtImport label[for=addPartUnit]:hover {
+				background: #2467aa;
+			}
+			#ctnTabs .txtImport label[for=addPartUnit]:active {
+				background: #205c97;
+			}
+			#ctnTabs .txtImport textarea {
+				font: 11px "Consolas", sans-serif;
+				width: 100%;
+				height: 100%;
+				border: 1px solid #c7cdd1;
+				border-radius: 0;
+				padding: 12px;
+				resize: none;
+				overflow: scroll;
+			}
+			#ctnTabs .txtImport #importPartUnit {
+				background: white;
+				color: #757575;
+				font: 11px "Consolas", sans-serif;
+				width: 100%;
+				height: 100%;
+				border: 1px solid #c7cdd1;
+				border-radius: 0;
+				padding: 12px;
+				resize: none;
+				overflow: scroll;
+				user-select: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+			}
+			.txtExport {
+				display: none;
+			}
+			.txtExport.active {
+				display: block;
+			}
+			.txtExport #export {
+				background: white;
+				position: absolute;
+				top: calc(30px + 12px * 2);
+				left: 12px;
+				width: calc(100% - 12px * 2);
+				height: calc(100% - 30px - 12px * 3);
+				overflow: scroll;
+				border: 1px solid #c7cdd1;
+			}
+			.txtExport #export table {
+				table-layout: auto;
+				width: 100%;
+				border-collapse: collapse;
+				user-select: all;
+				-webkit-user-select: all;
+				-moz-user-select: all;
+				-ms-user-select: all;
+			}
+			.txtExport #export table tr th, .txtExport #export table tr td {
+				font: 11px "Consolas", sans-serif;
+				padding: 12px;
+				color: #444;
+				vertical-align: middle;
+				text-align: left;
+			}
+			.txtExport #export table tr th {
+				background: #ddd;
+				font-weight: bold;
+				user-select: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+			}
+			.txtExport #export table tr:nth-child(1):hover {
+				background: #ddd;
+			}
+			.txtExport #export table tr:hover {
+				background: #f1f1f1;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="btnTabs">
+			<button class="btnImport active">Paste bảng <b>Mark</b></button>
+			<span class="btnNext">></span>
+			<button class="btnImport">Chọn file <b>PartReportUnit</b> đã lưu</button>
+			<span class="btnNext">></span>
+			<button class="btnImport">Paste bảng <b>Place</b></button>
+			<span class="btnNext">></span>
+			<button class="btnImport">Paste bảng <b>Insert Order</b> (Tuỳ ý)</button>
+			<span class="btnNext">></span>
+			<button id="btnExport">Generator</button>
+			<span class="btnNext">></span>
+			<button id="btnDownload">Download</button>
+		</div>
+		<input type="file" id="addPartUnit" accept="text/xml" data-title="Drag and drop a file" hidden="hidden" multiple>
+		<div id="ctnTabs">
+			<div class="txtImport active">
+				<textarea id="importMark" placeholder="Pls add Mark !"></textarea>
+			</div>
+			<div class="txtImport">
+				<label class="addPartUnit" for="addPartUnit">Chọn file PartReportUnit đã lưu</label>
+				<div id="importPartUnit">Pls add PartReportUnit !</div>
+			</div>
+			<div class="txtImport">
+				<textarea id="importPlace" placeholder="Pls add Place !"></textarea>
+			</div>
+			<div class="txtImport">
+				<textarea id="importInsertOrder" placeholder="Pls add Insert Order !"></textarea>
+			</div>
+		</div>
+		<div class="txtExport" id="txtExport">
+			<div id="export"></div>
+		</div>
+		<script type="text/javascript">
+			console.clear();
+			console.log("Welcome to Tool Make CAD AOI Holly by HiepDz");
+			if (typeof String.prototype.trim !== "function") {
+				String.prototype.trim = function() {
+					return this.replace(/^\s+|\s+$/g, "");
+				};
+			}
+			function vlookup(key, range, col) {
+				for (var i = 0; i < range.length; i++) {
+					if (range[i].length > 6 && range[i][6] == key) {
+						return range[i][col];
+					}
+				}
+				return "";
+			}
+			function getHolder(searchOrderKey, arr_InsertOrder) {
+				for (var i = 1; i < arr_InsertOrder.length; i++) {
+					if (arr_InsertOrder[i].length >= 2) {
+						var reference = arr_InsertOrder[i][0];
+						var holder = arr_InsertOrder[i][1];
+						if (reference === searchOrderKey) {
+							return holder;
+						}
+					}
+				}
+				return "";
+			}
+			var btnImports = document.getElementsByClassName("btnImport");
+			var txtImports = document.getElementsByClassName("txtImport");
+			var btnExport = document.getElementById("btnExport");
+			var txtExport = document.getElementById("txtExport");
+			var btnDownload = document.getElementById("btnDownload");
+			for (var i = 0; i < btnImports.length; i++) {
+				(function(index) {
+					btnImports[index].addEventListener("click", function() {
+						for (var j = 0; j < btnImports.length; j++) {
+							toggleClass(btnImports[j], "active", false);
+							toggleClass(txtImports[j], "active", false);
+						}
+						toggleClass(btnExport, "active", false);
+						toggleClass(txtExport, "active", false);
+						toggleClass(btnImports[index], "active", true);
+						toggleClass(txtImports[index], "active", true);
+					});
+				})(i);
+			}
+			function toggleClass(element, className, add) {
+				var currentClass = element.className;
+				var hasClass = currentClass.indexOf(className) > -1;
+				var regex = new RegExp("(\\s|^)" + className + "(\\s|$)");
+				if (add === true && !hasClass) {
+					element.className = (currentClass + " " + className).trim();
+				} else if (add === false && hasClass) {
+					element.className = currentClass.replace(regex, " ").trim();
+				}
+			}
+			function formatInput(elementId) {
+				console.clear();
+				var arr0 = [];
+				var arr1 = [];
+				var arr2 = [];
+				var arr3 = [];
+				var inputElement = document.getElementById(elementId);
+				var txtInput = inputElement.value.trim().split("\n");
+				for (var x = 0; x < txtInput.length; x++) {
+					arr0.push([]);
+					var cells = txtInput[x].split("\t");
+					for (var xx = 0; xx < cells.length; xx++) {
+						arr0[x].push(cells[xx].trim());
+					}
+				}
+				if (arr0.length > 0 && arr0[0].length > 0) {
+					for (var x = 0; x < arr0[0].length; x++) {
+						arr1.push([]);
+						arr2.push([]);
+						arr3.push([]);
+						for (var xx = 0; xx < arr0.length; xx++) {
+							var cellValue = arr0[xx][x] || "";
+							arr1[x].push(cellValue);
+							arr2[x].push(cellValue.length);
+						}
+						arr3[x].push(Math.max.apply(null, arr2[x]));
+						for (var u = 0; u < arr1[x].length; u++) {
+							var uLength = arr1[x][u].length;
+							var maxLength = arr3[x][0];
+							if (uLength < maxLength) {
+								for (var k = 0; k < (maxLength - uLength); k++) {
+									arr1[x][u] += " ";
+								}
+							}
+						}
+					}
+					var ee = "";
+					for (var x = 0; x < arr1[0].length; x++) {
+						for (var xx = 0; xx < arr1.length; xx++) {
+							ee += arr1[xx][x];
+							if (xx < arr1.length - 1) {
+								ee += " | ";
+							}
+						}
+						if (x < arr1[0].length - 1) {
+							ee += "\n";
+						}
+					}
+					inputElement.value = ee;
+				}
+			}
+			document.getElementById("importMark").addEventListener("input", function() {
+				formatInput("importMark");
+			});
+			document.getElementById("importPlace").addEventListener("input", function() {
+				formatInput("importPlace");
+			});
+			document.getElementById("addPartUnit").addEventListener("change", function() {
+				var files = document.getElementById("addPartUnit").files;
+				if (files.length === 0) return;
+				var importPartUnit = document.getElementById("importPartUnit");
+				importPartUnit.style.color = "black";
+				var allDataRows = [];
+				var filesRead = 0;
+				var globalCounter = 1;
+				function readIndividualFile(index) {
+					if (index >= files.length) {
+						processAndDisplay(allDataRows);
+						return;
+					}
+					var reader = new FileReader();
+					reader.onload = function(e) {
+						var result = e.target.result.replace(/(\<\?)(.+)(\?\>)/gi, "").trim();
+						var tempDiv = document.createElement("div");
+						tempDiv.innerHTML = result;
+						var xml_partreportunit = tempDiv.getElementsByTagName("partreportunit");
+						var xml_unit = xml_partreportunit.length > 0 ? xml_partreportunit[0].getElementsByTagName("unit") : [];
+						for (var i = 0; i < xml_unit.length; i++) {
+							// Chỉ lấy tiêu đề ở file đầu tiên, các file sau bỏ qua dòng i=0
+							if (index > 0 && i === 0) continue;
+							var rowData = [];
+							var children = xml_unit[i].children;
+							for (var j = 0; j < children.length; j++) {
+								var cellText = children[j].innerText.trim();
+								if (j === 0 && cellText !== "seqInsOrder") {
+									rowData.push(globalCounter.toString());
+								} else {
+									rowData.push(cellText);
+								}
+							}
+							if (rowData[0] !== "seqInsOrder") {
+								globalCounter++;
+							}
+							allDataRows.push(rowData);
+						}
+						readIndividualFile(index + 1);
+					};
+					reader.readAsText(files[index]);
+				}
+				function processAndDisplay(arr0) {
+					var arr1 = [];
+					var arr2 = [];
+					var arr3 = [];
+					if (arr0.length > 0 && arr0[0].length > 0) {
+						for (var x = 0; x < arr0[0].length; x++) {
+							arr1.push([]);
+							arr2.push([]);
+							arr3.push([]);
+							for (var xx = 0; xx < arr0.length; xx++) {
+								var cellValue = arr0[xx][x] || "";
+								arr1[x].push(cellValue);
+								arr2[x].push(cellValue.length);
+							}
+							arr3[x].push(Math.max.apply(null, arr2[x]));
+							for (var u = 0; u < arr1[x].length; u++) {
+								var uLength = arr1[x][u].length;
+								var maxLength = arr3[x][0];
+								if (uLength < maxLength) {
+									for (var k = 0; k < (maxLength - uLength); k++) {
+										arr1[x][u] += "&nbsp;";
+									}
+								}
+							}
+						}
+						var ee = "";
+						for (var x = 0; x < arr1[0].length; x++) {
+							for (var xx = 0; xx < arr1.length; xx++) {
+								ee += arr1[xx][x];
+								if (xx < arr1.length - 1) {
+									ee += " | ";
+								}
+							}
+							if (x < arr1[0].length - 1) {
+								ee += "<br>";
+							}
+						}
+						importPartUnit.innerHTML = ee.trim();
+					} else {
+						importPartUnit.innerHTML = "Lỗi: Không tìm thấy dữ liệu!";
+					}
+				}
+				readIndividualFile(0);
+			});
+			document.getElementById("importInsertOrder").addEventListener("input", function() {
+				formatInput("importInsertOrder");
+			});
+			btnExport.addEventListener("click", function() {
+				for (var i = 0; i < btnImports.length; i++) {
+					toggleClass(btnImports[i], "active", false);
+					toggleClass(txtImports[i], "active", false);
+				}
+				toggleClass(btnExport, "active", true);
+				toggleClass(txtExport, "active", true);
+				var paste_Mark = document.getElementById("importMark").value.trim();
+				var paste_PartUnit = document.getElementById("importPartUnit").innerHTML.trim();
+				var paste_Place = document.getElementById("importPlace").value.trim();
+				var paste_InsertOrder = document.getElementById("importInsertOrder").value.trim();
+				var hasInsertOrderData = paste_InsertOrder.length > 0;
+				var arr_Mark = [];
+				var arr_PartUnit = [];
+				var arr_Place = [];
+				var arr_InsertOrder = [];
+				var row_Mark = [];
+				var tempMarkRows = paste_Mark.split("\n");
+				for (var x = 0; x < tempMarkRows.length; x++) {
+					row_Mark.push([]);
+					var cells = tempMarkRows[x].split(" | ");
+					for (var xx = 0; xx < cells.length; xx++) {
+						row_Mark[x].push(cells[xx].trim());
+					}
+				}
+				var mark_Block = row_Mark[0].indexOf("Board");
+				var mark_LocationName = row_Mark[0].indexOf("Ref.");
+				var mark_X = row_Mark[0].indexOf("Pos X");
+				var mark_Y = row_Mark[0].indexOf("Pos Y");
+				arr_Mark.push(["Board", "Location Name", "X", "Y"]);
+				for (var row = 1; row < row_Mark.length; row++) {
+					arr_Mark.push([]);
+					var newRowIndex = arr_Mark.length - 1;
+					arr_Mark[newRowIndex].push(row_Mark[row][mark_Block].trim());
+					arr_Mark[newRowIndex].push(row_Mark[row][mark_LocationName].trim());
+					arr_Mark[newRowIndex].push(row_Mark[row][mark_X].trim());
+					arr_Mark[newRowIndex].push(row_Mark[row][mark_Y].trim());
+				}
+				var row_PartUnit = paste_PartUnit.split("<br>");
+				var header_PartUnit = row_PartUnit[0].replace(/(&nbsp;)/g, "").split(" | ");
+				var partunit_seqBrdNum = header_PartUnit.indexOf("seqBrdNum");
+				var partunit_seqRef = header_PartUnit.indexOf("seqRef");
+				var partunit_seqPartNum = header_PartUnit.indexOf("seqPartNum");
+				var partunit_fsSetPos = header_PartUnit.indexOf("fsSetPos");
+				arr_PartUnit.push(["Board", "Ref.", "Part Number", "Mounter", "Feeder", "BoardRef"]);
+				for (var row = 1; row < row_PartUnit.length; row++) {
+					if (row_PartUnit[row].search(/\w/g) !== -1) {
+						var col_PartUnit = row_PartUnit[row].replace(/(&nbsp;)/g, "").split(" | ");
+						if (col_PartUnit.length > partunit_fsSetPos && partunit_fsSetPos !== -1) {
+							var fsSetPos_split = col_PartUnit[partunit_fsSetPos].split("-");
+							arr_PartUnit.push([]);
+							var newRowIndex = arr_PartUnit.length - 1;
+							var brdNum = col_PartUnit[partunit_seqBrdNum].trim();
+							var ref = col_PartUnit[partunit_seqRef].trim();
+							arr_PartUnit[newRowIndex].push(brdNum);
+							arr_PartUnit[newRowIndex].push(ref);
+							arr_PartUnit[newRowIndex].push(col_PartUnit[partunit_seqPartNum].trim());
+							arr_PartUnit[newRowIndex].push(fsSetPos_split[0].trim());
+							arr_PartUnit[newRowIndex].push(fsSetPos_split[1].trim());
+							arr_PartUnit[newRowIndex].push(brdNum + ref);
+						}
+					}
+				}
+				var row_Place = [];
+				var tempPlaceRows = paste_Place.split("\n");
+				for (var x = 0; x < tempPlaceRows.length; x++) {
+					row_Place.push([]);
+					var cells = tempPlaceRows[x].split(" | ");
+					for (var xx = 0; xx < cells.length; xx++) {
+						row_Place[x].push(cells[xx].trim());
+					}
+				}
+				var place_Board = row_Place[0].indexOf("Board");
+				var place_Ref = row_Place[0].indexOf("Ref.");
+				var place_PosX = row_Place[0].indexOf("Pos X");
+				var place_PosY = row_Place[0].indexOf("Pos Y");
+				var place_Rotation = row_Place[0].indexOf("Rotation");
+				var place_PartNumber = row_Place[0].indexOf("Part Number");
+				arr_Place.push(["Board", "Ref.", "Pos X", "Pos Y", "Rotation", "Part Number", "BoardRef"]);
+				for (var row = 1; row < row_Place.length; row++) {
+					arr_Place.push([]);
+					var newRowIndex = arr_Place.length - 1;
+					var brd = row_Place[row][place_Board].trim();
+					var ref = row_Place[row][place_Ref].trim();
+					arr_Place[newRowIndex].push(brd);
+					arr_Place[newRowIndex].push(ref);
+					arr_Place[newRowIndex].push(row_Place[row][place_PosX].trim());
+					arr_Place[newRowIndex].push(row_Place[row][place_PosY].trim());
+					arr_Place[newRowIndex].push(row_Place[row][place_Rotation].trim());
+					arr_Place[newRowIndex].push(row_Place[row][place_PartNumber].trim());
+					arr_Place[newRowIndex].push(brd + ref);
+				}
+				if (hasInsertOrderData) {
+					var row_InsertOrder = [];
+					var tempInsertOrderRows = paste_InsertOrder.split("\n");
+					for (var x = 0; x < tempInsertOrderRows.length; x++) {
+						row_InsertOrder.push([]);
+						var cells = tempInsertOrderRows[x].split(" | ");
+						for (var xx = 0; xx < cells.length; xx++) {
+							row_InsertOrder[x].push(cells[xx].trim());
+						}
+					}
+					if (row_InsertOrder.length > 0 && row_InsertOrder[0].length > 0) {
+						var order_Reference = row_InsertOrder[0].indexOf("Reference");
+						var order_Holder = row_InsertOrder[0].indexOf("Holder Number");
+					} else {
+						var order_Reference = -1;
+						var order_Holder = -1;
+					}
+					arr_InsertOrder.push(["Reference", "Holder"]);
+					for (var row = 1; row < row_InsertOrder.length; row++) {
+						if (row_InsertOrder[row].length > order_Reference && row_InsertOrder[row].length > order_Holder && order_Reference !== -1 && order_Holder !== -1) {
+							arr_InsertOrder.push([]);
+							var newRowIndex = arr_InsertOrder.length - 1;
+							arr_InsertOrder[newRowIndex].push(row_InsertOrder[row][order_Reference].trim());
+							arr_InsertOrder[newRowIndex].push(row_InsertOrder[row][order_Holder].trim());
+						}
+					}
+				}
+				var generator = "";
+				generator += "<tr>";
+				generator += "<th>Board</th>";
+				generator += "<th>Location Name</th>";
+				generator += "<th>X</th>";
+				generator += "<th>Y</th>";
+				generator += "<th>Angle</th>";
+				generator += "<th>Part Number</th>";
+				generator += "<th>Mouter</th>";
+				generator += "<th>Feeder</th>";
+				if (hasInsertOrderData) {
+					generator += "<th>Holder</th>";
+				}
+				generator += "</tr>";
+				for (var tr_Mark = 1; tr_Mark < arr_Mark.length; tr_Mark++) {
+					if (arr_Mark[tr_Mark][0] == "0") {
+						var locationName = arr_Mark[tr_Mark][1];
+						var lastChar = locationName.charAt(locationName.length - 1);
+						generator += "<tr>";
+						generator += "<td>" + arr_Mark[tr_Mark][0] + "</td>";
+						generator += "<td>MARK</td>";
+						generator += "<td>" + arr_Mark[tr_Mark][2] + "</td>";
+						generator += "<td>" + arr_Mark[tr_Mark][3] + "</td>";
+						generator += "<td>0</td>";
+						generator += "<td>Mark</td>";
+						generator += "<td>0</td>";
+						generator += "<td>0</td>";
+						if (hasInsertOrderData) {
+							generator += "<td>0</td>";
+						}
+						generator += "</tr>";
+					}
+				}
+				var ref_PartUnit = 5;
+				for (var tr_PartUnit = 1; tr_PartUnit < arr_PartUnit.length; tr_PartUnit++) {
+					var boardRefKey = arr_PartUnit[tr_PartUnit][ref_PartUnit];
+					var board = vlookup(boardRefKey, arr_Place, 0);
+					var ref = vlookup(boardRefKey, arr_Place, 1);
+					var posX = vlookup(boardRefKey, arr_Place, 2);
+					var posY = vlookup(boardRefKey, arr_Place, 3);
+					var rotation = vlookup(boardRefKey, arr_Place, 4);
+					var partNumber = vlookup(boardRefKey, arr_Place, 5);
+					var mounter = arr_PartUnit[tr_PartUnit][3];
+					var feeder = arr_PartUnit[tr_PartUnit][4];
+					if (board && ref) {
+						generator += "<tr>";
+						generator += "<td>" + board.trim() + "</td>";
+						generator += "<td>" + ref.trim() + "</td>";
+						generator += "<td>" + posX.trim() + "</td>";
+						generator += "<td>" + posY.trim() + "</td>";
+						generator += "<td>" + rotation.trim() + "</td>";
+						generator += "<td>" + partNumber.trim() + "</td>";
+						generator += "<td>M" + mounter.trim() + "</td>";
+						generator += "<td>F" + feeder.trim() + "</td>";
+						if (hasInsertOrderData) {
+							var searchOrder = board.trim() + ":" + ref.trim();
+							var holderValue = getHolder(searchOrder, arr_InsertOrder);
+							var holderCell = holderValue ? "H" + holderValue.trim() : "";
+							generator += "<td>" + holderCell + "</td>";
+						}
+						generator += "</tr>";
+					}
+				}
+				document.getElementById("export").innerHTML = "<table>" + generator + "</table>";
+			});
+			btnDownload.addEventListener("click", function() {
+				var exportData = document.getElementById("export").innerText.trim();
+				var filenameInput = prompt("Nhập tên file để lưu lại:", "Cad-AOI-Holly-HieNva");
+				if (filenameInput !== null && filenameInput.trim() !== "") {
+					var filename = filenameInput.trim() + ".txt";
+					var blob = new Blob([exportData], {type: "text/plain;charset=utf-8"});
+					var a = document.createElement("a");
+					a.href = URL.createObjectURL(blob);
+					a.download = filename;
+					document.body.appendChild(a);
+					a.click();
+					document.body.removeChild(a);
+				}
+				toggleClass(btnDownload, "active", false);
+			});
+		</script>
+	</body>
+</html>
