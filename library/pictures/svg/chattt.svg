@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.67 13">
+	<defs>
+		<style>
+			.cls-1 {
+				fill: #b6c2d9;
+			}
+			.cls-1, .cls-2 {
+				opacity: 0.8;
+			}
+			.cls-2 {
+				fill: #25f;
+			}
+		</style>
+	</defs>
+	<title>chattt</title>
+	<g id="Layer_2" data-name="Layer 2">
+		<g id="Layer_6" data-name="Layer 6">
+			<path class="cls-1" d="M5.39,13h6.5a.62.62,0,0,0,.59-.5L13.62,6a2.44,2.44,0,0,0-2.47-3h-4A3.75,3.75,0,0,0,3.62,6l-.7,4A2.45,2.45,0,0,0,5.39,13Z" />
+			<path class="cls-2" d="M6.92,10H.42A.4.4,0,0,1,0,9.5L1.15,3A3.75,3.75,0,0,1,4.68,0h4a2.44,2.44,0,0,1,2.47,3l-.7,4A3.73,3.73,0,0,1,6.92,10Z" />
+		</g>
+	</g>
+</svg>
