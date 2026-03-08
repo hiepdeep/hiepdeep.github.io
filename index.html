@@ -6,157 +6,149 @@
 		<meta content="width=device-width, initial-scale=1" name="viewport">
 		<base href="https://hiepdeep.github.io/">
 		<link rel="icon" href="library/favicon/logo-light.ico">
-		<title>My Website | V1.0.0</title>
-		<meta name="title" content="HiepDeep">
+		<title>Hie N'Va | V1.0.0</title>
+		<meta name="title" content="HiepDeep, Hie N'Va">
 		<meta name="description" content="HiepDeep">
-		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-		<script src="library/script/config-firebase.js"></script>
-		<script src="library/script/loading.js"></script>
-		<link rel="stylesheet" href="library/style/oneforall.css">
-		<link rel="stylesheet" href="library/style/home-page.css">
+		<link rel="stylesheet" href="library/style/all.css">
+		<style>
+			body {
+				background: #edf5f8;
+				display: grid;
+				place-items: center;
+				height: 100vh;
+				overflow: hidden;
+			}
+			.clock {
+				width: 240px;
+				height: 240px;
+				justify-self: center;
+				border-radius: 24px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				transform: scale(3);
+			}
+			.clock .hand {
+				position: absolute;
+				transform-origin: bottom;
+				bottom: 120px;
+				border-radius: 24px;
+				z-index: 8;
+			}
+			.clock .hand.hours {
+				width: 6px;
+				height: 40px;
+				background: #6f7d88;
+			}
+			.clock .hand.minutes {
+				width: 6px;
+				height: 65px;
+				background: #aebac3;
+			}
+			.clock .hand.seconds {
+				width: 4px;
+				height: 80px;
+				background: #6d5dfc;
+			}
+			.clock .point {
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: #6d5dfc;
+				z-index: 9;
+				box-shadow: 0 0 0 2px #edf5f8;
+			}
+			.clock .marker {
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			.clock .marker .mr {
+				position: absolute;
+				width: 4px;
+				height: 100%;
+				left: calc(50% - 3px);
+			}
+			.clock .marker .mr:before,
+			.clock .marker .mr:after {
+				content: "";
+				position: absolute;
+				background: #aaa;
+				width: 4px;
+				height: 4px;
+				border-radius: 4px;
+			}
+			.clock .marker .mr:after {
+				bottom: 0;
+			}
+			.clock .marker .mr:nth-child(1) {
+				transform: rotate(0deg);
+			}
+			.clock .marker .mr:nth-child(1):before,
+			.clock .marker .mr:nth-child(1):after {
+				height: 8px;
+			}
+			.clock .marker .mr:nth-child(2) {
+				transform: rotate(30deg);
+			}
+			.clock .marker .mr:nth-child(3) {
+				transform: rotate(60deg);
+			}
+			.clock .marker .mr:nth-child(4) {
+				transform: rotate(90deg);
+			}
+			.clock .marker .mr:nth-child(4):before,
+			.clock .marker .mr:nth-child(4):after {
+				height: 8px;
+			}
+			.clock .marker .mr:nth-child(5) {
+				transform: rotate(120deg);
+			}
+			.clock .marker .mr:nth-child(6) {
+				transform: rotate(150deg);
+			}
+		</style>
 	</head>
 	<body>
-		<div id="preloader">
-			<svg viewbox="0 0 240 240">
-				<circle cx="120" cy="120" r="90">
-				</circle>
-			</svg>
-		</div>
-		<div id="header"></div>
-		<div id="body">
-			<div class="margin-block">
-				<div id="col-left">
-					<div class="grid-1">
-						<div class="block"></div>
-						<div class="block"></div>
-						<div class="block"></div>
-						<div class="block"></div>
-					</div>
-				</div>
-				<div id="col-right">
-					<div class="widget" id="list-users">
-						<div class="widget-title">
-							<h2>Người dùng:</h2>
-						</div>
-						<div class="widget-body" id="widget-body-list-users"></div>
-					</div>
-				</div>
+		<div class="clock">
+			<div class="hand minutes"></div>
+			<div class="hand hours"></div>
+			<div class="hand seconds"></div>
+			<div class="point"></div>
+			<div class="marker">
+				<span class="mr"></span>
+				<span class="mr"></span>
+				<span class="mr"></span>
+				<span class="mr"></span>
+				<span class="mr"></span>
+				<span class="mr"></span>
 			</div>
 		</div>
 		<script type="text/javascript">
 			console.clear();
-			const path = window.location.href;
-			let path_profile = path.match(/(\?profile\=[a-zA-Z0-9-_]+)/g);
-			if ( path_profile ) {
-				let path_split = path_profile[0].split("=")[1];
-				window.location.href = `https://hiepdeep.github.io/ref/profile/?user=${path_split}`;
+			const hours = document.querySelector('.hours');
+			const minutes = document.querySelector('.minutes');
+			const seconds = document.querySelector('.seconds');
+			clock = () => {
+				let today = new Date();
+				let h = (today.getHours() % 12) + today.getMinutes() / 59; // 22 % 12 = 10pm
+				let m = today.getMinutes(); // 0 - 59
+				let s = today.getSeconds(); // 0 - 59
+				h *= 30; // 12 * 30 = 360deg
+				m *= 6;
+				s *= 6;  // 60 *  6 = 360deg
+				rotation(hours, h);
+				rotation(minutes, m);
+				rotation(seconds, s);
+				// call every second
+				setTimeout(clock, 0);
 			}
-			document.addEventListener("DOMContentLoaded", () => {
-				database.ref(`app/host/visit`).transaction((currentVisit) => {
-					return (currentVisit || 0) + Math.floor(Math.random() * 100);
-				});
-				const loggedInUser = localStorage.getItem("social-media-auth") ? window.atob(localStorage.getItem("social-media-auth")) : null;
-				const id_header = document.getElementById("header")
-				const id_colLeft = document.getElementById("col-left");
-				const id_colRight = document.getElementById("col-right");
-				if ( loggedInUser ) {
-					const accounts = "app/authentication";
-					let arrUsers = [];
-					database.ref(accounts).on("value", (snapshot) => {
-						if ( snapshot.exists() ) {
-							let data = snapshot.val();
-							arrUsers = Object.keys(data);
-						}
-					});
-					// header
-					database.ref(`${accounts}/${loggedInUser}`).on("value", (snapshot) => {
-						if ( snapshot.exists() ) {
-							let data = snapshot.val();
-							id_header.innerHTML = `
-								<div class="margin-block">
-									<div class="header-left">
-										<div class="logo">
-											<a href="https://hiepdeep.github.io">
-												<img src="library/pictures/svg/ui-deck.svg" alt="">
-											</a>
-										</div>
-									</div>
-									<div class="header-right">
-										<div class="nav-right">
-											<a href="">Home</a>
-											<a href="">About</a>
-											<a href="">Contact</a>
-											<a href="">Support</a>
-										</div>
-										<div class="nav-user">
-											<a href="?profile=${data.private.username}" class="logged-user">
-												<div class="thumb" id="logged-user-thumb">
-													<img src="${data.info.picture ? data.info.picture : 'library/pictures/200/no_thumb.png'}" alt="">
-												</div>
-												<span class="displayName">${data.info.firstname}</span>
-											</a>
-											${loggedInUser === "hiepdz" ? '<a href="ref/dashboard" class="dashboard">Dashboard</a>' : ''}
-											<button id="btn-logout" class="material-icons">logout</button>
-										</div>
-									</div>
-								</div>
-							`;
-							document.getElementById("btn-logout").addEventListener("click", (e) => {
-								e.preventDefault();
-								database.ref(`${accounts}/${loggedInUser}/status/online`).set("0");
-								localStorage.removeItem("social-media-auth");
-								window.location.href = "https://hiepdeep.github.io/ref/auth";
-							});
-						}
-					});
-					// widget-right | listUsers
-					database.ref(accounts).on("value", (snapshot) => {
-						if ( snapshot.exists() ) {
-							let userItems = "";
-							for ( let e in arrUsers ) {
-								if ( arrUsers[e] != loggedInUser ) {
-									database.ref(`${accounts}/${arrUsers[e]}`).on("value", (userItem) => {
-										if ( userItem.exists() ) {
-											let x = userItem.val();
-											userItems += `
-												<li>
-													<a href="/?profile=${x.private.username}">
-														<div class="thumb ${x.status.online === "1" ? 'onl' : ''}">
-															<img src="${x.info.picture ? x.info.picture : 'library/pictures/200/no_thumb.png'}" alt="">
-														</div>
-														<span class="dataName">${x.info.lastname} ${x.info.firstname}</span>
-													</a>
-												</li>
-											`;
-										}
-									});
-								}
-							}
-							document.getElementById("widget-body-list-users").innerHTML = userItems;
-						}
-					});
-				}
-				else {
-					window.location.href = "https://hiepdeep.github.io/ref/auth";
-				}
-			});
-			function formatNumber(value) {
-				return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			rotation = (target, val) => {
+				target.style.transform =  `rotate(${val}deg)`;
 			}
-			function formatTime1(value) {
-				return value.split("-").map(part => part.padStart(2, "0")).join("-");
-			}
-			function formatTime2(value) {
-				let fomats = value.split("-").map(part => part.padStart(2, "0")).join("-");
-				let fomat = fomats.split("-");
-				return `${fomat[0]}/${fomat[1]}/${fomat[2]} ${fomat[3]}:${fomat[4]}:${fomat[5]}`;
-			}
-			function formatTime3(value) {
-				let fomats = value.split("-").map(part => part.padStart(2, "0")).join("-");
-				let fomat = fomats.split("-");
-				return `${fomat[0]}/${fomat[1]}/${fomat[2]}`;
-			}
+			window.onload = clock();
 		</script>
 	</body>
 </html>
