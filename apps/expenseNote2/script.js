@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", () => {
 	renderChitieu();
+	renderViewsChart("chart-view");
 	document.forms["form-data"]["amount"].addEventListener("input", function(e) {
 		let value = this.value.replace(/\D/g, "");
 		const formattedValue = new Intl.NumberFormat("vi-VN").format(value);
@@ -158,4 +159,68 @@ async function renderChitieu() {
 	list_borrow_hiep.innerHTML = h_bor_hiep || "<li>Chưa có dữ liệu</li>";
 	hieu_tra_hiep.innerText = final_hieu_tra.toLocaleString('vi-VN');
 	hiep_tra_hieu.innerText = final_hiep_tra.toLocaleString('vi-VN');
+}
+
+async function renderViewsChart(ctxId) {
+	const chartView = document.getElementById("chart-view-box");
+	const myCanvas = document.getElementById(ctxId);
+	const ctx = myCanvas.getContext("2d");
+	myCanvas.width = chartView.getBoundingClientRect().width;
+	myCanvas.height = chartView.getBoundingClientRect().height;
+	const dataa = {
+		tong_chi_thang_01: "0",
+		tong_chi_thang_02: "90000",
+		tong_chi_thang_03: "130000",
+		tong_chi_thang_04: "0",
+		tong_chi_thang_05: "0",
+		tong_chi_thang_06: "0",
+		tong_chi_thang_07: "0",
+		tong_chi_thang_08: "0",
+		tong_chi_thang_09: "0",
+		tong_chi_thang_10: "0",
+		tong_chi_thang_11: "0",
+		tong_chi_thang_12: "0",
+	}
+	const values = Object.values(dataa).map(Number);
+	const maxVal = Math.max(...values) || 1;
+	const total_month = values.length;
+	const gap = 12;
+	const paddingTop = 20 + gap;
+	const paddingBottom = 30;
+	const slot_width = (myCanvas.width - (gap * (total_month + 1))) / total_month;
+	const borderRadius = [6, 6, 6, 6];
+	let progress = 0;
+	function animate() {
+		progress += 0.02;
+		ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+		values.forEach((val, index) => {
+			const availableHeight = myCanvas.height - paddingTop - paddingBottom;
+			const targetBarHeight = (val / maxVal) * availableHeight;
+			const currentBarHeight = targetBarHeight * progress;
+			const x = gap + (slot_width + gap) * index;
+			const baseY = myCanvas.height - paddingBottom;
+			const y = baseY - currentBarHeight;
+			ctx.fillStyle = val === maxVal ? "#4CAF50" : "#2196F3";
+			ctx.beginPath();
+			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
+			ctx.fill();
+			ctx.fillStyle = val === maxVal ? "#4CAF50" : "#2196F3";
+			ctx.shadowBlur = 10;
+			ctx.shadowOffsetX = 6;
+			ctx.shadowOffsetY = 6;
+			ctx.shadowColor = "#ccc";
+			ctx.font = "500 12px Playpen Sans";
+			ctx.textAlign = 'center';
+			ctx.fillText(`T${index + 1}`, x + slot_width / 2, baseY + 30 - gap);
+			if (progress >= 1) {
+				ctx.fillStyle = val === maxVal ? "#4CAF50" : "#2196F3";
+				ctx.font = "500 12px Playpen Sans";
+				ctx.fillText(val.toLocaleString(), x + slot_width / 2, y - 12);
+			}
+		});
+		if (progress < 1) {
+			requestAnimationFrame(animate);
+		}
+	}
+	animate();
 }
