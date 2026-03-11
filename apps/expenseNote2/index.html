@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/ico/note.ico">
+		<title>Sổ Chi Tiêu</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="expense-note">
+			<div class="top">
+				<div class="logo">
+					<img src="https://hiepdeep.github.io/library/pictures/svg/expense-book.svg" alt="">
+				</div>
+				<div class="navbar">
+					<ul>
+						<li class="focus" data-page="home">Trang chủ</li>
+						<li data-page="history">Tra cứu lịch sử</li>
+					</ul>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="side sideLeft">
+					<form action="" id="form-person">
+						<label for="hieu">
+							<input type="radio" name="person" id="hieu" value="hieu" checked="">
+							<span class="name">Hiếu</span>
+						</label>
+						<label for="hiep">
+							<input type="radio" name="person" id="hiep" value="hiep">
+							<span class="name">Hiệp</span>
+						</label>
+					</form>
+					<form action="" id="form-data">
+						<input type="text" name="description" placeholder="Mô tả">
+						<input type="tel" name="amount" placeholder="Số tiền" pattern="[0-9.]*">
+						<div class="type">
+							<label for="form-expense">
+								<input type="radio" name="form-type" id="form-expense" value="expense" checked="">
+								<span class="name">chi tiêu</span>
+							</label>
+							<label for="form-borrow">
+								<input type="radio" name="form-type" id="form-borrow" value="borrow">
+								<span class="name">cho vay</span>
+							</label>
+						</div>
+						<button btn-style blue type="submit">Tạo mới</button>
+					</form>
+				</div>
+				<div class="side sideRight">
+					<div class="row">
+						<div class="col">
+							<div class="chart-view"></div>
+						</div>
+					</div>
+					<div class="row row-data">
+						<div class="col">
+							<div class="title total-expense">
+								<h3>Tổng chi tiêu của <b>Hiếu</b>:</h3>
+								<span id="total-expense-hieu">0</span>
+							</div>
+							<div class="return-list" id="list-expense-hieu">
+								<div class="loading"></div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="title total-expense">
+								<h3>Tổng chi tiêu của <b>Hiệp</b>:</h3>
+								<span id="total-expense-hiep">0</span>
+							</div>
+							<div class="return-list" id="list-expense-hiep">
+								<div class="loading"></div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="title total-borrow">
+								<h3><b>Hiệp</b> vay mượn của <b>Hiếu</b>:</h3>
+								<span id="total-borrow-hieu">0</span>
+							</div>
+							<div class="return-list" id="list-borrow-hieu">
+								<div class="loading"></div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="title total-borrow">
+								<h3><b>Hiếu</b> vay mượn của <b>Hiệp</b>:</h3>
+								<span id="total-borrow-hiep">0</span>
+							</div>
+							<div class="return-list" id="list-borrow-hiep">
+								<div class="loading"></div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="title sum-total">
+								<h3><b>Hiếu</b> cần trả <b>Hiệp</b>:</h3>
+								<span id="hieu-tra-hiep">0</span>
+							</div>
+						</div>
+						<div class="col">
+							<div class="title sum-total">
+								<h3><b>Hiệp</b> cần trả <b>Hiếu</b>:</h3>
+								<span id="hiep-tra-hieu">0</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="script.js"></script>
+	</body>
+</html>
