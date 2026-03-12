@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		database.ref(`${db}/${date_YM()}`).push(data).then(() => {
 			document.forms["form-data"].reset();
-			alert("Thành công.");
 			renderChitieu();
+			renderViewsChart("chart-view");
 		}).catch((error) => {
 			console.error("Lỗi khi tạo chi tiêu mới:", error);
 		});
@@ -84,81 +84,86 @@ document.addEventListener("DOMContentLoaded", () => {
 async function renderChitieu() {
 	const snapshot = await database.ref(db).once("value");
 	const data = snapshot.val() || {};
-	const total_expense_hieu = document.getElementById("total-expense-hieu");
-	const list_expense_hieu = document.getElementById("list-expense-hieu");
-	const total_expense_hiep = document.getElementById("total-expense-hiep");
-	const list_expense_hiep = document.getElementById("list-expense-hiep");
-	const total_borrow_hieu = document.getElementById("total-borrow-hieu");
-	const list_borrow_hieu = document.getElementById("list-borrow-hieu");
-	const total_borrow_hiep = document.getElementById("total-borrow-hiep");
-	const list_borrow_hiep = document.getElementById("list-borrow-hiep");
-	const hieu_tra_hiep = document.getElementById("hieu-tra-hiep");
-	const hiep_tra_hieu = document.getElementById("hiep-tra-hieu");
+	const lists = {
+		hieu_expense: document.getElementById("list-expense-hieu"),
+		hiep_expense: document.getElementById("list-expense-hiep"),
+		hieu_borrow: document.getElementById("list-borrow-hieu"),
+		hiep_borrow: document.getElementById("list-borrow-hiep")
+	};
+	Object.values(lists).forEach(list => list.innerHTML = "");
 	let s_exp_hieu = 0,
 		s_exp_hiep = 0,
 		s_bor_hieu = 0,
 		s_bor_hiep = 0;
-	let h_exp_hieu = "",
-		h_exp_hiep = "",
-		h_bor_hieu = "",
-		h_bor_hiep = "";
 	for (let year in data) {
 		for (let month in data[year]) {
 			const entries = data[year][month];
 			for (let id in entries) {
 				const item = entries[id];
+				if (item.status === "offline") continue;
 				const amountNum = parseInt(item.amount) || 0;
-				const formattedAmount = amountNum.toLocaleString('vi-VN');
+				const path = `${db}/${year}/${month}/${id}`;
+				const li = document.createElement("li");
+				li.setAttribute("data-key", id);
+				li.setAttribute("data-type", item.type);
 				const formattedDate = item.creationDate.split(' ')[0].replace(/\//g, '-');
-				const htmlTemplate = `
-					<li data-key="${id}" data-type="${item.type}">
-						<div class="data">
-							<div class="timeamp">${formattedDate}</div>
-							<div class="amount">${formattedAmount}</div>
-						</div>
-						<div class="description">${item.description}</div>
-					</li>`;
+				const formattedAmount = amountNum.toLocaleString('vi-VN');
+				li.innerHTML = `
+					<div class="data">
+						<div class="timeamp">${formattedDate}</div>
+						<div class="amount">${formattedAmount}</div>
+					</div>
+					<div class="description">${item.description}</div>
+				`;
+				li.addEventListener("click", async () => {
+					const confirmDelete = confirm(`Bạn có chắc muốn xóa: "${item.description}"?`);
+					if (confirmDelete) {
+						try {
+							await database.ref(path).update({
+								status: "offline"
+							});
+							renderChitieu();
+							renderViewsChart("chart-view");
+						} catch (error) {
+							console.error("Lỗi khi xóa:", error);
+						}
+					}
+				});
 				if (item.person === "hieu") {
 					if (item.type === "expense") {
 						s_exp_hieu += amountNum;
-						h_exp_hieu += htmlTemplate;
-					} else if (item.type === "borrow") {
+						lists.hieu_expense.appendChild(li);
+					} else {
 						s_bor_hieu += amountNum;
-						h_bor_hieu += htmlTemplate;
+						lists.hieu_borrow.appendChild(li);
 					}
 				} else if (item.person === "hiep") {
 					if (item.type === "expense") {
 						s_exp_hiep += amountNum;
-						h_exp_hiep += htmlTemplate;
-					} else if (item.type === "borrow") {
+						lists.hiep_expense.appendChild(li);
+					} else {
 						s_bor_hiep += amountNum;
-						h_bor_hiep += htmlTemplate;
+						lists.hiep_borrow.appendChild(li);
 					}
 				}
 			}
 		}
 	}
+	Object.values(lists).forEach(list => {
+		if (list.children.length === 0) {
+			list.innerHTML = "<li>Chưa có dữ liệu</li>";
+		}
+	});
 	const hieu_dang_no = (s_exp_hiep / 2) + s_bor_hiep;
 	const hiep_dang_no = (s_exp_hieu / 2) + s_bor_hieu;
-	let final_hieu_tra = 0;
-	let final_hiep_tra = 0;
-	if (hieu_dang_no > hiep_dang_no) {
-		final_hieu_tra = hieu_dang_no - hiep_dang_no;
-		final_hiep_tra = 0;
-	} else if (hiep_dang_no > hieu_dang_no) {
-		final_hiep_tra = hiep_dang_no - hieu_dang_no;
-		final_hieu_tra = 0;
-	}
-	total_expense_hieu.innerText = s_exp_hieu.toLocaleString('vi-VN');
-	list_expense_hieu.innerHTML = h_exp_hieu || "<li>Chưa có dữ liệu</li>";
-	total_expense_hiep.innerText = s_exp_hiep.toLocaleString('vi-VN');
-	list_expense_hiep.innerHTML = h_exp_hiep || "<li>Chưa có dữ liệu</li>";
-	total_borrow_hieu.innerText = s_bor_hieu.toLocaleString('vi-VN');
-	list_borrow_hieu.innerHTML = h_bor_hieu || "<li>Chưa có dữ liệu</li>";
-	total_borrow_hiep.innerText = s_bor_hiep.toLocaleString('vi-VN');
-	list_borrow_hiep.innerHTML = h_bor_hiep || "<li>Chưa có dữ liệu</li>";
-	hieu_tra_hiep.innerText = final_hieu_tra.toLocaleString('vi-VN');
-	hiep_tra_hieu.innerText = final_hiep_tra.toLocaleString('vi-VN');
+	let final_hieu_tra = Math.max(0, hieu_dang_no - hiep_dang_no);
+	let final_hiep_tra = Math.max(0, hiep_dang_no - hieu_dang_no);
+	document.getElementById("total-expense-hieu").innerText = s_exp_hieu.toLocaleString('vi-VN');
+	document.getElementById("total-expense-hiep").innerText = s_exp_hiep.toLocaleString('vi-VN');
+	document.getElementById("total-borrow-hieu").innerText = s_bor_hieu.toLocaleString('vi-VN');
+	document.getElementById("total-borrow-hiep").innerText = s_bor_hiep.toLocaleString('vi-VN');
+	document.getElementById("hieu-tra-hiep").innerText = final_hieu_tra.toLocaleString('vi-VN');
+	document.getElementById("hiep-tra-hieu").innerText = final_hiep_tra.toLocaleString('vi-VN');
 }
 
 async function renderViewsChart(ctxId) {
@@ -167,21 +172,24 @@ async function renderViewsChart(ctxId) {
 	const ctx = myCanvas.getContext("2d");
 	myCanvas.width = chartView.getBoundingClientRect().width;
 	myCanvas.height = chartView.getBoundingClientRect().height;
-	const dataa = {
-		tong_chi_thang_01: "0",
-		tong_chi_thang_02: "90000",
-		tong_chi_thang_03: "130000",
-		tong_chi_thang_04: "0",
-		tong_chi_thang_05: "0",
-		tong_chi_thang_06: "0",
-		tong_chi_thang_07: "0",
-		tong_chi_thang_08: "0",
-		tong_chi_thang_09: "0",
-		tong_chi_thang_10: "0",
-		tong_chi_thang_11: "0",
-		tong_chi_thang_12: "0",
+	const currentYear = new Date().getFullYear().toString();
+	const snapshot = await database.ref(`${db}/${currentYear}`).once("value");
+	const yearData = snapshot.val() || {};
+	const monthlyExpenses = new Array(12).fill(0);
+	for (let month in yearData) {
+		const monthIndex = parseInt(month) - 1;
+		if (monthIndex >= 0 && monthIndex < 12) {
+			const entries = yearData[month];
+			for (let id in entries) {
+				const item = entries[id];
+				if (item.status === "offline") continue;
+				if (item.type === "expense") {
+					monthlyExpenses[monthIndex] += parseInt(item.amount) || 0;
+				}
+			}
+		}
 	}
-	const values = Object.values(dataa).map(Number);
+	const values = monthlyExpenses;
 	const maxVal = Math.max(...values) || 1;
 	const total_month = values.length;
 	const gap = 12;
@@ -193,6 +201,12 @@ async function renderViewsChart(ctxId) {
 	function animate() {
 		progress += 0.02;
 		ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+		const my_gradient = ctx.createLinearGradient(0, myCanvas.height, myCanvas.width, 0);
+		my_gradient.addColorStop(0, `rgba(207, 217, 223, ${progress})`);
+		my_gradient.addColorStop(0.5, `rgba(226, 235, 240, ${progress})`);
+		my_gradient.addColorStop(1, `rgba(207, 217, 223, ${progress})`);
+		ctx.fillStyle = my_gradient;
+		ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
 		values.forEach((val, index) => {
 			const availableHeight = myCanvas.height - paddingTop - paddingBottom;
 			const targetBarHeight = (val / maxVal) * availableHeight;
@@ -201,20 +215,21 @@ async function renderViewsChart(ctxId) {
 			const baseY = myCanvas.height - paddingBottom;
 			const y = baseY - currentBarHeight;
 			ctx.fillStyle = val === maxVal ? "#4CAF50" : "#2196F3";
+			ctx.shadowBlur = 10;
+			ctx.shadowOffsetX = 6;
+			ctx.shadowOffsetY = 6;
+			ctx.shadowColor = "rgba(0, 0, 0, 0.2)";
 			ctx.beginPath();
 			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
 			ctx.fill();
 			ctx.fillStyle = val === maxVal ? "#4CAF50" : "#2196F3";
-			ctx.shadowBlur = 10;
-			ctx.shadowOffsetX = 6;
-			ctx.shadowOffsetY = 6;
-			ctx.shadowColor = "#ccc";
+			ctx.shadowBlur = 0;
+			ctx.shadowOffsetX = 0;
+			ctx.shadowOffsetY = 0;
 			ctx.font = "500 12px Playpen Sans";
 			ctx.textAlign = 'center';
 			ctx.fillText(`T${index + 1}`, x + slot_width / 2, baseY + 30 - gap);
-			if (progress >= 1) {
-				ctx.fillStyle = val === maxVal ? "#4CAF50" : "#2196F3";
-				ctx.font = "500 12px Playpen Sans";
+			if (progress >= 1 && val > 0) {
 				ctx.fillText(val.toLocaleString(), x + slot_width / 2, y - 12);
 			}
 		});

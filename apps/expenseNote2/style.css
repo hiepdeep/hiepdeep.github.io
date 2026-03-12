@@ -14,6 +14,7 @@
 
 body {
 	background: #edf5f8;
+	overflow-y: scroll;
 }
 
 .expense-note {
@@ -133,17 +134,17 @@ body {
 
 .expense-note .bottom .side.sideRight .row.row-data .col {
 	background: white;
+	border: 1px solid var(--bd-color);
 }
 
 .expense-note .bottom .side.sideRight .row .col {
 	width: 100%;
-	border: 1px solid var(--bd-color);
 }
 
 .expense-note .bottom .side.sideRight .row .col #chart-view-box {
 	width: 100%;
 	height: 260px;
-	background: #fff;
+	background: #edf5f8;
 }
 
 .expense-note .bottom .side.sideRight .row .col .title {
