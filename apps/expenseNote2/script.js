@@ -239,3 +239,11 @@ async function renderViewsChart(ctxId) {
 	}
 	animate();
 }
+
+function aaa() {
+	const history_page = document.getElementsByClassName("history-page")[0];
+
+	history_page.style.width = document.getElementsByClassName("sideRight")[0].getBoundingClientRect().width - 24 + "px";
+	history_page.style.height = document.getElementsByClassName("sideRight")[0].getBoundingClientRect().height - 24 + "px";
+}
+aaa();
