@@ -201,12 +201,12 @@ async function renderViewsChart(ctxId) {
 	function animate() {
 		progress += 0.02;
 		ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
-		const my_gradient = ctx.createLinearGradient(0, myCanvas.height, myCanvas.width, 0);
-		my_gradient.addColorStop(0, `rgba(207, 217, 223, ${progress})`);
-		my_gradient.addColorStop(0.5, `rgba(226, 235, 240, ${progress})`);
-		my_gradient.addColorStop(1, `rgba(207, 217, 223, ${progress})`);
-		ctx.fillStyle = my_gradient;
-		ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
+		// const my_gradient = ctx.createLinearGradient(0, myCanvas.height, myCanvas.width, 0);
+		// my_gradient.addColorStop(0, `rgba(207, 217, 223, ${progress})`);
+		// my_gradient.addColorStop(0.5, `rgba(226, 235, 240, ${progress})`);
+		// my_gradient.addColorStop(1, `rgba(207, 217, 223, ${progress})`);
+		// ctx.fillStyle = my_gradient;
+		// ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
 		values.forEach((val, index) => {
 			const availableHeight = myCanvas.height - paddingTop - paddingBottom;
 			const targetBarHeight = (val / maxVal) * availableHeight;

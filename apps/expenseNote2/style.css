@@ -108,12 +108,12 @@ body {
 					&.row-data {
 						grid-template-columns: repeat(2, 1fr);
 						.col {
+							border: 1px solid var(--bd-color);
 							background: white;
 						}
 					}
 					.col {
 						width: 100%;
-						border: 1px solid var(--bd-color);
 						#chart-view-box {
 							width: 100%;
 							height: 260px;
@@ -186,22 +186,52 @@ body {
 				}
 				.history-page {
 					position: absolute;
-					background: white;
+					width: 100%;
+					height: 100%;
 					top: 12px;
 					left: 12px;
 					padding: 12px;
-					border: 1px solid var(--bd-color);
-					clip-path: shape(
-						from bottom left,
-						vline to 0px,
-						hline to 88%,
-						curve to 100% 14% with calc(90% - 52px) 22%,
-						vline to 100%
-					);
+					filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+					--radius: 12px;
+					--padding: 6px;
+					--width: 24px;
+					--height: 24px;
+					visibility: hidden;
+					opacity: 0;
+					&:before {
+						content: "";
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						top: 0;
+						left: 0;
+						background: #237197;
+						border-radius: var(--radius);
+						clip-path: shape(
+							from bottom left,
+							vline to 0,
+							hline to calc(100% - var(--radius) - var(--width) - var(--padding)),
+							arc to calc(100% - var(--width) - var(--padding)) var(--radius) of var(--radius) CW,
+							vline to calc(var(--height) - var(--radius)),
+							arc to calc(100% - var(--width) + var(--radius)) calc(var(--height) + var(--padding)) of calc(var(--radius) + var(--padding)) CCW,
+							hline to calc(100% - var(--radius)),
+							arc to 100% calc(var(--height) + var(--padding) + var(--radius)) of var(--radius) CW,
+							vline to 100%,
+							hline to 0
+						);
+					}
+					button#close-history {
+						position: absolute;
+						width: var(--width);
+						height: var(--height);
+						background: #d7443a;
+						border: 0;
+						right: 0;
+						top: 0;
+						border-radius: var(--radius);
+					}
 				}
 			}
 		}
 	}
 }
-
-/*https://frontendmasters.com/blog/modern-css-round-out-tabs/*/
