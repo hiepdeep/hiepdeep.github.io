@@ -1,5 +1,5 @@
 * {
-	font-family: "Playpen Sans", cursive;
+	font-family: "Bai Jamjuree", sans-serif;
 	font-size: 12px;
 	color: hsl(210deg 10% 10%);
 }
@@ -16,14 +16,14 @@
 
 body {
 	background: #edf5f8;
-	overflow-y: scroll;
 }
 
 .expense-note {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
-	.top {
+	my-header {
+		flex-shrink: 0;
 		background: white;
 		padding: 12px;
 		border-bottom: 1px solid var(--bd-color);
@@ -43,19 +43,24 @@ body {
 			}
 		}
 	}
-	.bottom {
-		display: flex;
+	my-main {
+		width: 100%;
 		height: 100%;
+		display: flex;
+		justify-content: space-between;
+		overflow: hidden;
 		.side {
-			padding: 12px;
 			display: flex;
 			flex-direction: column;
 			gap: 12px;
-			&.sideLeft {
+			padding: 12px;
+			&.side-left {
 				flex-shrink: 0;
 				background: white;
 				width: 300px;
+				height: 100%;
 				border-right: 1px solid var(--bd-color);
+				padding: 12px;
 				#form-person, .type {
 					display: flex;
 					gap: 12px;
@@ -103,14 +108,19 @@ body {
 					}
 				}
 			}
-			&.sideRight {
+			&.side-right {
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
 				width: 100%;
+				height: 100%;
+				overflow-y: scroll;
 				position: relative;
 				.row {
-					display: grid;
-					grid-gap: 12px;
 					&.row-data {
+						display: grid;
 						grid-template-columns: repeat(2, 1fr);
+						grid-gap: 12px;
 						.col {
 							border: 1px solid var(--bd-color);
 							background: white;
@@ -122,6 +132,7 @@ body {
 							width: 100%;
 							height: 260px;
 							background: #fff;
+							border: 1px solid var(--bd-color);
 						}
 						.title {
 							display: flex;
@@ -190,8 +201,8 @@ body {
 				}
 				.history-page {
 					position: absolute;
-					width: 100%;
-					height: 100%;
+					width: calc(100% - 12px * 2);
+					height: calc(100% - 12px * 2);
 					top: 12px;
 					left: 12px;
 					padding: 12px;
@@ -202,6 +213,7 @@ body {
 					--height: 24px;
 					visibility: hidden;
 					opacity: 0;
+					display: none;
 					&:before {
 						content: "";
 						position: absolute;

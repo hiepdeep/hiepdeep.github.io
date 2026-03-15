@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<div class="expense-note">
-			<div class="top">
+			<my-header>
 				<div class="logo">
 					<a href=""><img src="https://hiepdeep.github.io/library/pictures/svg/expense-book.svg" alt=""></a>
 				</div>
@@ -20,9 +20,9 @@
 						<li data-page="history">Tra cứu lịch sử</li>
 					</ul>
 				</div>
-			</div>
-			<div class="bottom">
-				<div class="side sideLeft">
+			</my-header>
+			<my-main>
+				<div class="side side-left">
 					<form action="" id="form-person">
 						<label for="hieu">
 							<input type="radio" name="person" id="hieu" value="hieu" checked="">
@@ -49,7 +49,7 @@
 						<button btn-style blue type="submit">Tạo mới</button>
 					</form>
 				</div>
-				<div class="side sideRight">
+				<div class="side side-right">
 					<div class="row">
 						<div class="col">
 							<div id="chart-view-box">
@@ -112,7 +112,7 @@
 						<button class="material-symbols-rounded" id="close-history">close</button>
 					</div>
 				</div>
-			</div>
+			</my-main>
 		</div>
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
