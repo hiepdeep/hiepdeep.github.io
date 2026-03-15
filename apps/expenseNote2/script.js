@@ -29,16 +29,6 @@ document.addEventListener("DOMContentLoaded", function() {
 			localStorage.setItem('selectedPerson', e.target.value);
 		});
 	});
-	const savedType = localStorage.getItem('selectedType');
-	if (savedType) {
-		const inputToCheck = document.querySelector(`input[name="form-type"][value="${savedType}"]`);
-		if (inputToCheck) inputToCheck.checked = true;
-	}
-	typeInputs.forEach(input => {
-		input.addEventListener('change', (e) => {
-			localStorage.setItem('selectedType', e.target.value);
-		});
-	});
 });
 
 document.addEventListener("DOMContentLoaded", () => {
