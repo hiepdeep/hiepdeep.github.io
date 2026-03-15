@@ -189,7 +189,7 @@ async function renderViewsChart(ctxId) {
 	const borderRadius = [6, 6, 6, 6];
 	let progress = 0;
 	function animate() {
-		progress += 0.02;
+		progress += 0.01;
 		ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
 		// const my_gradient = ctx.createLinearGradient(0, myCanvas.height, myCanvas.width, 0);
 		// my_gradient.addColorStop(0, `rgba(207, 217, 223, ${progress})`);
@@ -216,11 +216,11 @@ async function renderViewsChart(ctxId) {
 			ctx.shadowBlur = 0;
 			ctx.shadowOffsetX = 0;
 			ctx.shadowOffsetY = 0;
-			ctx.font = "500 12px Playpen Sans";
+			ctx.font = "500 12px Bai Jamjuree";
 			ctx.textAlign = 'center';
 			ctx.fillText(`T${index + 1}`, x + slot_width / 2, baseY + 30 - gap);
 			if (progress >= 1 && val > 0) {
-				ctx.fillText(val.toLocaleString(), x + slot_width / 2, y - 12);
+				ctx.fillText(val.toLocaleString() + "đ", x + slot_width / 2, y - 12);
 			}
 		});
 		if (progress < 1) {

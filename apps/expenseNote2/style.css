@@ -112,10 +112,11 @@ body {
 				display: flex;
 				flex-direction: column;
 				gap: 12px;
-				width: 100%;
+				width: 720px;
 				height: 100%;
 				overflow-y: scroll;
 				position: relative;
+				margin: 0 auto;
 				.row {
 					&.row-data {
 						display: grid;
