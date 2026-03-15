@@ -4,8 +4,12 @@
 	color: hsl(210deg 10% 10%);
 }
 
+::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+
 :root {
-	--maxwidth: 1280px;
 	--bdrs: 2px;
 	--bd-color: hsl(210deg 10% 90%);
 }
