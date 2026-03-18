@@ -141,7 +141,7 @@ async function renderChitieu() {
 	}
 	Object.values(lists).forEach(list => {
 		if (list.children.length === 0) {
-			list.innerHTML = "<li>Chưa có dữ liệu</li>";
+			list.innerHTML = "<li>Chưa chi tiêu</li>";
 		}
 	});
 	const hieu_dang_no = (s_exp_hiep / 2) + s_bor_hiep;
@@ -204,7 +204,7 @@ async function renderViewsChart(ctxId) {
 			const x = gap + (slot_width + gap) * index;
 			const baseY = myCanvas.height - paddingBottom;
 			const y = baseY - currentBarHeight;
-			ctx.fillStyle = val === maxVal ? "#4CAF50" : "#2196F3";
+			ctx.fillStyle = val === maxVal ? "#eb435f" : "#6fa371";
 			ctx.shadowBlur = 10;
 			ctx.shadowOffsetX = 6;
 			ctx.shadowOffsetY = 6;
@@ -212,7 +212,7 @@ async function renderViewsChart(ctxId) {
 			ctx.beginPath();
 			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
 			ctx.fill();
-			ctx.fillStyle = val === maxVal ? "#4CAF50" : "#2196F3";
+			ctx.fillStyle = val === maxVal ? "#eb435f" : "#6fa371";
 			ctx.shadowBlur = 0;
 			ctx.shadowOffsetX = 0;
 			ctx.shadowOffsetY = 0;
@@ -230,10 +230,8 @@ async function renderViewsChart(ctxId) {
 	animate();
 }
 
-function aaa() {
+function history() {
 	const history_page = document.getElementsByClassName("history-page")[0];
-
 	history_page.style.width = document.getElementsByClassName("side-right")[0].getBoundingClientRect().width - 24 + "px";
 	history_page.style.height = document.getElementsByClassName("side-right")[0].getBoundingClientRect().height - 24 + "px";
 }
-aaa();

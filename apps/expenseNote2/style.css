@@ -37,9 +37,7 @@ body {
 			ul {
 				display: flex;
 				gap: 12px;
-				li {
-					
-				}
+				li {}
 			}
 		}
 	}
@@ -85,9 +83,7 @@ body {
 				#form-data {
 					display: flex;
 					flex-direction: column;
-					gap: 6px;
-					background: var(--bd-color);
-					padding: 12px;
+					gap: 12px;
 					input {
 						padding: 0 12px;
 						height: 40px;
@@ -95,7 +91,7 @@ body {
 						font-weight: 500;
 					}
 					.type {
-						gap: 6px;
+						gap: 12px;
 						label {
 							background: white;
 							padding: 0 12px;
@@ -132,7 +128,7 @@ body {
 						#chart-view-box {
 							width: 100%;
 							height: 260px;
-							background: #fff;
+							background: white;
 							border: 1px solid var(--bd-color);
 						}
 						.title {
@@ -151,9 +147,6 @@ body {
 							span {
 								color: #406abf;
 								font-weight: 500;
-								&:before {
-									content: "-";
-								}
 								&:after {
 									content: "đ";
 									font-weight: 400;
@@ -183,9 +176,6 @@ body {
 										flex-shrink: 0;
 										font-weight: 600;
 										color: #ff5722;
-										&:before {
-											content: "-";
-										}
 										&:after {
 											content: "đ";
 											font-weight: 400;
