@@ -89,12 +89,13 @@ async function renderChitieu() {
 			const entries = data[year][month];
 			for (let id in entries) {
 				const item = entries[id];
-				if (item.status === "offline") continue;
+				// if (item.status === "offline") continue;
 				const amountNum = parseInt(item.amount) || 0;
 				const path = `${db}/${year}/${month}/${id}`;
 				const li = document.createElement("li");
 				li.setAttribute("data-key", id);
 				li.setAttribute("data-type", item.type);
+				li.setAttribute("data-status", item.status);
 				const formattedDate = item.creationDate.split(" ")[0].replace(/\//g, "-");
 				const formattedAmount = amountNum.toLocaleString("vi-VN");
 				li.innerHTML = `
@@ -105,7 +106,7 @@ async function renderChitieu() {
 					<div class="description">${item.description}</div>
 				`;
 				li.addEventListener("click", async () => {
-					const confirmDelete = confirm(`Bạn có chắc muốn xóa: "${item.description}"?`);
+					const confirmDelete = confirm(`Xác nhận đã thanh toán: "${item.description}"?`);
 					if (confirmDelete) {
 						try {
 							await database.ref(path).update({
@@ -114,7 +115,7 @@ async function renderChitieu() {
 							renderChitieu();
 							renderViewsChart("chart-view");
 						} catch (error) {
-							console.error("Lỗi khi xóa:", error);
+							console.error("Lỗi khi xác nhận:", error);
 						}
 					}
 				});
@@ -140,7 +141,7 @@ async function renderChitieu() {
 	}
 	Object.values(lists).forEach(list => {
 		if (list.children.length === 0) {
-			list.innerHTML = "<li>Chưa chi tiêu</li>";
+			list.innerHTML = "<li>Chưa có chi tiêu</li>";
 		}
 	});
 	const hieu_dang_no = (s_exp_hiep / 2) + s_bor_hiep;
@@ -188,7 +189,7 @@ async function renderViewsChart(ctxId) {
 	const borderRadius = [6, 6, 6, 6];
 	let progress = 0;
 	function animate() {
-		progress += 0.01;
+		progress += 0.02;
 		ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
 		// const my_gradient = ctx.createLinearGradient(0, myCanvas.height, myCanvas.width, 0);
 		// my_gradient.addColorStop(0, `rgba(207, 217, 223, ${progress})`);
@@ -234,3 +235,5 @@ function history() {
 	history_page.style.width = document.getElementsByClassName("side-right")[0].getBoundingClientRect().width - 24 + "px";
 	history_page.style.height = document.getElementsByClassName("side-right")[0].getBoundingClientRect().height - 24 + "px";
 }
+
+// https://codepen.io/themustafaomar/full/jLMPKm
