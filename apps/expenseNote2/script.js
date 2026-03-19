@@ -1,6 +1,5 @@
 console.clear();
 
-console.clear();
 const app = firebase.initializeApp({
 	databaseURL: "https://eimi-fukada-default-rtdb.firebaseio.com"
 });
@@ -17,16 +16,16 @@ function date_YM() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-	const personInputs = document.querySelectorAll('input[name="person"]');
+	const personInputs = document.querySelectorAll('input[name="form-person"]');
 	const typeInputs = document.querySelectorAll('input[name="form-type"]');
-	const savedPerson = localStorage.getItem('selectedPerson');
+	const savedPerson = localStorage.getItem("selectedPerson");
 	if (savedPerson) {
-		const inputToCheck = document.querySelector(`input[name="person"][value="${savedPerson}"]`);
+		const inputToCheck = document.querySelector(`input[name="form-person"][value="${savedPerson}"]`);
 		if (inputToCheck) inputToCheck.checked = true;
 	}
 	personInputs.forEach(input => {
-		input.addEventListener('change', (e) => {
-			localStorage.setItem('selectedPerson', e.target.value);
+		input.addEventListener("change", (e) => {
+			localStorage.setItem("selectedPerson", e.target.value);
 		});
 	});
 });
@@ -34,17 +33,17 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", () => {
 	renderChitieu();
 	renderViewsChart("chart-view");
-	document.forms["form-data"]["amount"].addEventListener("input", function(e) {
+	document.forms["form"]["form-amount"].addEventListener("input", function(e) {
 		let value = this.value.replace(/\D/g, "");
 		const formattedValue = new Intl.NumberFormat("vi-VN").format(value);
 		this.value = formattedValue;
 	});
-	document.forms["form-data"].addEventListener("submit", async function(event) {
+	document.forms["form"].addEventListener("submit", async function(event) {
 		event.preventDefault();
-		const $personSelect = document.forms["form-person"]["person"].value;
-		const $description = document.forms["form-data"]["description"].value.trim();
-		const $amount = document.forms["form-data"]["amount"].value.trim().replace(/\./g, "").trim();
-		const $type = document.forms["form-data"]["form-type"].value;
+		const $personSelect = document.forms["form"]["form-person"].value;
+		const $description = document.forms["form"]["form-description"].value.trim();
+		const $amount = document.forms["form"]["form-amount"].value.trim().replace(/\./g, "").trim();
+		const $type = document.forms["form"]["form-type"].value;
 		if (!$description) {
 			alert("Vui lòng nhập mô tả chi tiêu.");
 			return;
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			creationDate: createTimes()
 		}
 		database.ref(`${db}/${date_YM()}`).push(data).then(() => {
-			document.forms["form-data"].reset();
+			document.forms["form"].reset();
 			renderChitieu();
 			renderViewsChart("chart-view");
 		}).catch((error) => {
@@ -96,8 +95,8 @@ async function renderChitieu() {
 				const li = document.createElement("li");
 				li.setAttribute("data-key", id);
 				li.setAttribute("data-type", item.type);
-				const formattedDate = item.creationDate.split(' ')[0].replace(/\//g, '-');
-				const formattedAmount = amountNum.toLocaleString('vi-VN');
+				const formattedDate = item.creationDate.split(" ")[0].replace(/\//g, "-");
+				const formattedAmount = amountNum.toLocaleString("vi-VN");
 				li.innerHTML = `
 					<div class="data">
 						<div class="timeamp">${formattedDate}</div>
@@ -148,12 +147,12 @@ async function renderChitieu() {
 	const hiep_dang_no = (s_exp_hieu / 2) + s_bor_hieu;
 	let final_hieu_tra = Math.max(0, hieu_dang_no - hiep_dang_no);
 	let final_hiep_tra = Math.max(0, hiep_dang_no - hieu_dang_no);
-	document.getElementById("total-expense-hieu").innerText = s_exp_hieu.toLocaleString('vi-VN');
-	document.getElementById("total-expense-hiep").innerText = s_exp_hiep.toLocaleString('vi-VN');
-	document.getElementById("total-borrow-hieu").innerText = s_bor_hieu.toLocaleString('vi-VN');
-	document.getElementById("total-borrow-hiep").innerText = s_bor_hiep.toLocaleString('vi-VN');
-	document.getElementById("hieu-tra-hiep").innerText = final_hieu_tra.toLocaleString('vi-VN');
-	document.getElementById("hiep-tra-hieu").innerText = final_hiep_tra.toLocaleString('vi-VN');
+	document.getElementById("total-expense-hieu").innerText = s_exp_hieu.toLocaleString("vi-VN");
+	document.getElementById("total-expense-hiep").innerText = s_exp_hiep.toLocaleString("vi-VN");
+	document.getElementById("total-borrow-hieu").innerText = s_bor_hieu.toLocaleString("vi-VN");
+	document.getElementById("total-borrow-hiep").innerText = s_bor_hiep.toLocaleString("vi-VN");
+	document.getElementById("hieu-tra-hiep").innerText = final_hieu_tra.toLocaleString("vi-VN");
+	document.getElementById("hiep-tra-hieu").innerText = final_hiep_tra.toLocaleString("vi-VN");
 }
 
 async function renderViewsChart(ctxId) {
@@ -217,7 +216,7 @@ async function renderViewsChart(ctxId) {
 			ctx.shadowOffsetX = 0;
 			ctx.shadowOffsetY = 0;
 			ctx.font = "500 12px Bai Jamjuree";
-			ctx.textAlign = 'center';
+			ctx.textAlign = "center";
 			ctx.fillText(`T${index + 1}`, x + slot_width / 2, baseY + 30 - gap);
 			if (progress >= 1 && val > 0) {
 				ctx.fillText(val.toLocaleString() + "đ", x + slot_width / 2, y - 12);

@@ -23,20 +23,20 @@
 			</my-header>
 			<my-main>
 				<div class="side side-left">
-					<form action="" id="form-person">
-						<label for="hieu">
-							<input type="radio" name="person" id="hieu" value="hieu" checked="">
-							<span class="name">Hiếu</span>
-						</label>
-						<label for="hiep">
-							<input type="radio" name="person" id="hiep" value="hiep">
-							<span class="name">Hiệp</span>
-						</label>
-					</form>
-					<form action="" id="form-data">
-						<input type="text" name="description" placeholder="Mô tả">
-						<input type="tel" name="amount" placeholder="Số tiền" pattern="[0-9.]*">
-						<div class="type">
+					<form action="" id="form">
+						<div class="gr-label">
+							<label for="hieu">
+								<input type="radio" name="form-person" id="hieu" value="hieu" checked="">
+								<span class="name">Hiếu</span>
+							</label>
+							<label for="hiep">
+								<input type="radio" name="form-person" id="hiep" value="hiep">
+								<span class="name">Hiệp</span>
+							</label>
+						</div>
+						<input type="text" name="form-description" placeholder="Mô tả">
+						<input type="tel" name="form-amount" placeholder="Số tiền" pattern="[0-9.]*">
+						<div class="gr-label">
 							<label for="form-expense">
 								<input type="radio" name="form-type" id="form-expense" value="expense" checked="">
 								<span class="name">chi tiêu</span>
