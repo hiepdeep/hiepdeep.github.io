@@ -139,7 +139,7 @@ async function renderChitieu() {
 	});
 	Object.values(lists).forEach(list => {
 		if (list.children.length === 0) {
-			list.innerHTML = "<li>Chưa có chi tiêu</li>";
+			list.innerHTML = "";
 		}
 	});
 	const hieu_dang_no = (s_exp_hiep / 2) + s_bor_hiep;
