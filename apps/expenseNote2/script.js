@@ -15,21 +15,6 @@ function date_YM() {
 	return `${timeYear}/${timeMonth}`;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-	const personInputs = document.querySelectorAll('input[name="form-person"]');
-	const typeInputs = document.querySelectorAll('input[name="form-type"]');
-	const savedPerson = localStorage.getItem("selectedPerson");
-	if (savedPerson) {
-		const inputToCheck = document.querySelector(`input[name="form-person"][value="${savedPerson}"]`);
-		if (inputToCheck) inputToCheck.checked = true;
-	}
-	personInputs.forEach(input => {
-		input.addEventListener("change", (e) => {
-			localStorage.setItem("selectedPerson", e.target.value);
-		});
-	});
-});
-
 document.addEventListener("DOMContentLoaded", () => {
 	renderChitieu();
 	renderViewsChart("chart-view");
@@ -74,71 +59,84 @@ async function renderChitieu() {
 	const snapshot = await database.ref(db).once("value");
 	const data = snapshot.val() || {};
 	const lists = {
-		hieu_expense: document.getElementById("list-expense-hieu"),
-		hiep_expense: document.getElementById("list-expense-hiep"),
-		hieu_borrow: document.getElementById("list-borrow-hieu"),
-		hiep_borrow: document.getElementById("list-borrow-hiep")
+		hieu_expense: document.getElementById("lists-expense-hieu"),
+		hiep_expense: document.getElementById("lists-expense-hiep"),
+		hieu_borrow: document.getElementById("lists-borrow-hieu"),
+		hiep_borrow: document.getElementById("lists-borrow-hiep")
 	};
 	Object.values(lists).forEach(list => list.innerHTML = "");
 	let s_exp_hieu = 0,
 		s_exp_hiep = 0,
 		s_bor_hieu = 0,
 		s_bor_hiep = 0;
+	const allItems = [];
 	for (let year in data) {
 		for (let month in data[year]) {
 			const entries = data[year][month];
 			for (let id in entries) {
-				const item = entries[id];
-				// if (item.status === "offline") continue;
-				const amountNum = parseInt(item.amount) || 0;
-				const path = `${db}/${year}/${month}/${id}`;
-				const li = document.createElement("li");
-				li.setAttribute("data-key", id);
-				li.setAttribute("data-type", item.type);
-				li.setAttribute("data-status", item.status);
-				const formattedDate = item.creationDate.split(" ")[0].replace(/\//g, "-");
-				const formattedAmount = amountNum.toLocaleString("vi-VN");
-				li.innerHTML = `
-					<div class="data">
-						<div class="timeamp">${formattedDate}</div>
-						<div class="amount">${formattedAmount}</div>
-					</div>
-					<div class="description">${item.description}</div>
-				`;
-				li.addEventListener("click", async () => {
-					const confirmDelete = confirm(`Xác nhận đã thanh toán: "${item.description}"?`);
-					if (confirmDelete) {
-						try {
-							await database.ref(path).update({
-								status: "offline"
-							});
-							renderChitieu();
-							renderViewsChart("chart-view");
-						} catch (error) {
-							console.error("Lỗi khi xác nhận:", error);
-						}
-					}
+				allItems.push({
+					id: id,
+					path: `${db}/${year}/${month}/${id}`,
+					...entries[id]
 				});
-				if (item.person === "hieu") {
-					if (item.type === "expense") {
-						s_exp_hieu += amountNum;
-						lists.hieu_expense.appendChild(li);
-					} else {
-						s_bor_hieu += amountNum;
-						lists.hieu_borrow.appendChild(li);
-					}
-				} else if (item.person === "hiep") {
-					if (item.type === "expense") {
-						s_exp_hiep += amountNum;
-						lists.hiep_expense.appendChild(li);
-					} else {
-						s_bor_hiep += amountNum;
-						lists.hiep_borrow.appendChild(li);
-					}
-				}
 			}
 		}
 	}
+	allItems.sort((a, b) => {
+		const formatDate = (str) => {
+			if (!str) return 0;
+			const lastColon = str.lastIndexOf(":");
+			const standardStr = str.substring(0, lastColon) + "." + str.substring(lastColon + 1);
+			return new Date(standardStr).getTime();
+		};
+		return formatDate(b.creationDate) - formatDate(a.creationDate);
+	});
+	allItems.forEach(item => {
+		const amountNum = parseInt(item.amount) || 0;
+		const li = document.createElement("li");
+		li.setAttribute("data-key", item.id);
+		li.setAttribute("data-type", item.type);
+		li.setAttribute("data-status", item.status);
+		const status = item.status === "online" ? "Chưa thanh toán" : "Đã thanh toán";
+		const formattedDate = item.creationDate.split(" ")[0].replace(/\//g, "-");
+		const formattedAmount = amountNum.toLocaleString("vi-VN");
+		li.innerHTML = `
+			<span class="timeamp">${formattedDate}</span>
+			<span class="amount">${formattedAmount}</span>
+			<span class="description">${item.description}</span>
+			<span class="status">${status}</span>
+		`;
+		if (item.status === "online") {
+			li.addEventListener("click", async () => {
+				const confirmDelete = confirm(`Xác nhận thanh toán ${formattedAmount}đ cho "${item.description}"?`);
+				if (confirmDelete) {
+					try {
+						await database.ref(item.path).update({
+							status: "offline"
+						});
+						renderChitieu();
+						renderViewsChart("chart-view");
+					} catch (error) {
+						console.error("Lỗi khi xác nhận:", error);
+					}
+				}
+			});
+			if (item.person === "hieu") {
+				if (item.type === "expense") s_exp_hieu += amountNum;
+				else s_bor_hieu += amountNum;
+			} else if (item.person === "hiep") {
+				if (item.type === "expense") s_exp_hiep += amountNum;
+				else s_bor_hiep += amountNum;
+			}
+		}
+		if (item.person === "hieu") {
+			if (item.type === "expense") lists.hieu_expense.appendChild(li);
+			else lists.hieu_borrow.appendChild(li);
+		} else if (item.person === "hiep") {
+			if (item.type === "expense") lists.hiep_expense.appendChild(li);
+			else lists.hiep_borrow.appendChild(li);
+		}
+	});
 	Object.values(lists).forEach(list => {
 		if (list.children.length === 0) {
 			list.innerHTML = "<li>Chưa có chi tiêu</li>";
@@ -157,7 +155,7 @@ async function renderChitieu() {
 }
 
 async function renderViewsChart(ctxId) {
-	const chartView = document.getElementById("chart-view-box");
+	const chartView = document.getElementById("return-chart");
 	const myCanvas = document.getElementById(ctxId);
 	const ctx = myCanvas.getContext("2d");
 	myCanvas.width = chartView.getBoundingClientRect().width;
@@ -191,12 +189,6 @@ async function renderViewsChart(ctxId) {
 	function animate() {
 		progress += 0.02;
 		ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
-		// const my_gradient = ctx.createLinearGradient(0, myCanvas.height, myCanvas.width, 0);
-		// my_gradient.addColorStop(0, `rgba(207, 217, 223, ${progress})`);
-		// my_gradient.addColorStop(0.5, `rgba(226, 235, 240, ${progress})`);
-		// my_gradient.addColorStop(1, `rgba(207, 217, 223, ${progress})`);
-		// ctx.fillStyle = my_gradient;
-		// ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
 		values.forEach((val, index) => {
 			const availableHeight = myCanvas.height - paddingTop - paddingBottom;
 			const targetBarHeight = (val / maxVal) * availableHeight;
@@ -204,7 +196,7 @@ async function renderViewsChart(ctxId) {
 			const x = gap + (slot_width + gap) * index;
 			const baseY = myCanvas.height - paddingBottom;
 			const y = baseY - currentBarHeight;
-			ctx.fillStyle = val === maxVal ? "#eb435f" : "#6fa371";
+			ctx.fillStyle = val === maxVal ? "hsl(215deg 70% 45%)" : "hsl(215deg 70% 75%)";
 			ctx.shadowBlur = 10;
 			ctx.shadowOffsetX = 6;
 			ctx.shadowOffsetY = 6;
@@ -212,7 +204,7 @@ async function renderViewsChart(ctxId) {
 			ctx.beginPath();
 			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
 			ctx.fill();
-			ctx.fillStyle = val === maxVal ? "#eb435f" : "#6fa371";
+			ctx.fillStyle = "hsl(215deg 70% 5%)";
 			ctx.shadowBlur = 0;
 			ctx.shadowOffsetX = 0;
 			ctx.shadowOffsetY = 0;
@@ -220,6 +212,7 @@ async function renderViewsChart(ctxId) {
 			ctx.textAlign = "center";
 			ctx.fillText(`T${index + 1}`, x + slot_width / 2, baseY + 30 - gap);
 			if (progress >= 1 && val > 0) {
+				ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
 				ctx.fillText(val.toLocaleString() + "đ", x + slot_width / 2, y - 12);
 			}
 		});
@@ -228,12 +221,6 @@ async function renderViewsChart(ctxId) {
 		}
 	}
 	animate();
-}
-
-function history() {
-	const history_page = document.getElementsByClassName("history-page")[0];
-	history_page.style.width = document.getElementsByClassName("side-right")[0].getBoundingClientRect().width - 24 + "px";
-	history_page.style.height = document.getElementsByClassName("side-right")[0].getBoundingClientRect().height - 24 + "px";
 }
 
 // https://codepen.io/themustafaomar/full/jLMPKm

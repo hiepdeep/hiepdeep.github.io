@@ -10,19 +10,17 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div class="expense-note">
-			<my-header>
-				<div class="logo">
-					<a href=""><img src="https://hiepdeep.github.io/library/pictures/svg/expense-book.svg" alt=""></a>
+		<div class="box">
+			<div class="side sideleft">
+				<div class="a">
+					<div class="logo">
+						<a href="">
+							<img src="https://hiepdeep.github.io/library/pictures/svg/expense-book.svg" alt="">
+							<span class="text">Sổ Chi Tiêu Cá Nhân</span>
+						</a>
+					</div>
 				</div>
-				<div class="navbar">
-					<ul>
-						<li data-page="history">Tra cứu lịch sử</li>
-					</ul>
-				</div>
-			</my-header>
-			<my-main>
-				<div class="side side-left">
+				<div class="b">
 					<form action="" id="form">
 						<div class="gr-label">
 							<label for="hieu">
@@ -46,77 +44,63 @@
 								<span class="name">cho vay</span>
 							</label>
 						</div>
-						<button btn-style blue type="submit">Tạo mới</button>
+						<button type="submit">Tạo mới</button>
 					</form>
 				</div>
-				<div class="side side-right">
-					<div class="row">
-						<div class="col">
-							<div id="chart-view-box">
-								<canvas id="chart-view"></canvas>
-							</div>
-						</div>
+			</div>
+			<div class="side sideright">
+				<div class="item return-chart" id="return-chart">
+					<canvas id="chart-view"></canvas>
+				</div>
+				<div class="item return-data">
+					<div class="title">
+						<h3>Tổng chi của <b>Hiếu</b>:</h3>
+						<span id="total-expense-hieu">0</span>
 					</div>
-					<div class="row preview-status">
-						<div class="col stt-online">Chưa thanh toán</div>
-						<div class="col stt-offline">Đã thanh toán</div>
-					</div>
-					<div class="row row-data">
-						<div class="col">
-							<div class="title total-expense">
-								<h3>Tổng chi tiêu của <b>Hiếu</b>:</h3>
-								<span id="total-expense-hieu">0</span>
-							</div>
-							<div class="return-list" id="list-expense-hieu">
-								<div class="loading"></div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="title total-expense">
-								<h3>Tổng chi tiêu của <b>Hiệp</b>:</h3>
-								<span id="total-expense-hiep">0</span>
-							</div>
-							<div class="return-list" id="list-expense-hiep">
-								<div class="loading"></div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="title total-borrow">
-								<h3><b>Hiệp</b> vay mượn của <b>Hiếu</b>:</h3>
-								<span id="total-borrow-hieu">0</span>
-							</div>
-							<div class="return-list" id="list-borrow-hieu">
-								<div class="loading"></div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="title total-borrow">
-								<h3><b>Hiếu</b> vay mượn của <b>Hiệp</b>:</h3>
-								<span id="total-borrow-hiep">0</span>
-							</div>
-							<div class="return-list" id="list-borrow-hiep">
-								<div class="loading"></div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="title sum-total">
-								<h3><b>Hiếu</b> cần trả <b>Hiệp</b>:</h3>
-								<span id="hieu-tra-hiep">0</span>
-							</div>
-						</div>
-						<div class="col">
-							<div class="title sum-total">
-								<h3><b>Hiệp</b> cần trả <b>Hiếu</b>:</h3>
-								<span id="hiep-tra-hieu">0</span>
-							</div>
-						</div>
-					</div>
-					<div class="history-page" id="history-page">
-						history-page
-						<button class="material-symbols-rounded" id="close-history">close</button>
+					<div class="lists-data" id="lists-expense-hieu">
+						<div class="loading"></div>
 					</div>
 				</div>
-			</my-main>
+				<div class="item return-data">
+					<div class="title">
+						<h3>Tổng chi của <b>Hiệp</b>:</h3>
+						<span id="total-expense-hiep">0</span>
+					</div>
+					<div class="lists-data" id="lists-expense-hiep">
+						<div class="loading"></div>
+					</div>
+				</div>
+				<div class="item return-data">
+					<div class="title">
+						<h3><b>Hiệp</b> vay mượn của <b>Hiếu</b>:</h3>
+						<span id="total-borrow-hieu">0</span>
+					</div>
+					<div class="lists-data" id="lists-borrow-hieu">
+						<div class="loading"></div>
+					</div>
+				</div>
+				<div class="item return-data">
+					<div class="title">
+						<h3><b>Hiếu</b> vay mượn của <b>Hiệp</b>:</h3>
+						<span id="total-borrow-hiep">0</span>
+					</div>
+					<div class="lists-data" id="lists-borrow-hiep">
+						<div class="loading"></div>
+					</div>
+				</div>
+				<div class="item return-data">
+					<div class="title">
+						<h3><b>Hiếu</b> cần trả <b>Hiệp</b>:</h3>
+						<span id="hieu-tra-hiep">0</span>
+					</div>
+				</div>
+				<div class="item return-data">
+					<div class="title">
+						<h3><b>Hiệp</b> cần trả <b>Hiếu</b>:</h3>
+						<span id="hiep-tra-hieu">0</span>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>

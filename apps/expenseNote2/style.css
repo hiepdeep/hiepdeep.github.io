@@ -5,55 +5,64 @@
 }
 
 :root {
+	--maxwidth: 1280px;
 	--bdrs: 2px;
 	--bd-color: hsl(210deg 10% 90%);
 }
 
 body {
-	background: #edf5f8;
+	background: #161823;
 }
 
-.expense-note {
+.box {
+	width: 100%;
+	height: 100dvh;
+	background: #edf5f8;
 	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	my-header {
-		flex-shrink: 0;
-		background: white;
-		padding: 12px;
-		border-bottom: 1px solid var(--bd-color);
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		.logo {
-			height: 40px;
-		}
-		.navbar {
-			ul {
-				display: flex;
-				gap: 12px;
-				li {}
-			}
-		}
-	}
-	my-main {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: space-between;
-		overflow: hidden;
-		.side {
+	.side {
+		&.sideleft {
+			flex-shrink: 0;
 			display: flex;
 			flex-direction: column;
-			gap: 12px;
-			padding: 12px;
-			&.side-left {
-				flex-shrink: 0;
-				background: white;
-				width: 300px;
-				height: 100%;
-				border-right: 1px solid var(--bd-color);
+			width: 300px;
+			box-shadow: 0 0 12px -6px rgba(0, 0, 0, 0.1);
+			.a {
+				position: relative;
 				padding: 12px;
+				&:before {
+					content: "";
+					position: absolute;
+					width: 100%;
+					height: calc(100% + 12px);
+					background: linear-gradient(135deg, hsl(215deg 70% 45%) 0%, hsl(215deg 70% 65%) 100%);
+					z-index: 0;
+					left: 0;
+					top: 0;
+				}
+				.logo {
+					position: relative;
+					a {
+						display: flex;
+						align-items: center;
+						gap: 12px;
+						img {
+							width: auto;
+							height: 40px;
+						}
+						span {
+							color: white;
+							font-size: 14px;
+							font-weight: 500;
+						}
+					}
+				}
+			}
+			.b {
+				padding: 12px;
+				background: white;
+				height: 100%;
+				border-radius: 12px 12px 0 0;
+				position: relative;
 				#form {
 					display: flex;
 					flex-direction: column;
@@ -68,199 +77,186 @@ body {
 							gap: 12px;
 							width: 100%;
 							border: 1px solid var(--bd-color);
+							border-radius: 6px;
 							padding: 12px;
 							cursor: pointer;
 						}
 					}
 					input[type="text"], input[type="tel"] {
 						padding: 0 12px;
-						height: 40px;
+						height: 46px;
 						border: 1px solid var(--bd-color);
+						border-radius: 6px;
 						font-weight: 500;
 					}
+					input[type="radio"] {
+						-webkit-appearance: none;
+						background: #edf5f8;
+						border: 0;
+						border-radius: 4px;
+						width: 20px;
+						height: 20px;
+						position: relative;
+						overflow: hidden;
+						cursor: pointer;
+						&:checked {
+							border: 0;
+							&:before {
+								content: "\e155";
+								font-family: "Material Symbols Rounded";
+								background: hsl(215deg 70% 45%);
+								color: white;
+								position: absolute;
+								width: 100%;
+								height: 100%;
+								text-align: center;
+								line-height: 20px;
+							}
+						}
+					}
 					button {
-						height: 40px;
-						border: 1px solid var(--bd-color);
+						height: 46px;
+						border: 0;
+						border-radius: 6px;
 						font-weight: 500;
+						color: rgba(255, 255, 255, 0.9);
+						background: hsl(215deg 70% 45%);
+						box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.6);
+						transition: 0.1s;
+						&:hover {
+							background: hsl(215deg 70% 40%);
+							box-shadow: 0 0 12px -6px rgba(0, 0, 0, 0.6);
+						}
+						&:active {
+							background: hsl(215deg 70% 35%);
+						}
 					}
 				}
 			}
-			&.side-right {
-				display: flex;
-				flex-direction: column;
-				gap: 12px;
-				width: 100%;
-				max-width: 720px;
-				height: 100%;
-				position: relative;
-				margin: 0 auto;
-				.row {
-					&.preview-status {
-						width: 100%;
-						margin: 0 auto;
+		}
+		&.sideright {
+			width: 100%;
+			max-width: 800px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 12px;
+			align-content: start;
+			padding: 12px;
+			.item {
+				background: white;
+				border-radius: 6px;
+				box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.1);
+				&.return-chart {
+					width: 100%;
+					height: 250px;
+					grid-column: span 2;
+				}
+				&.return-data {
+					.title {
 						display: flex;
-						justify-content: center;
+						justify-content: space-between;
+						align-items: center;
+						padding: 0 12px;
+						height: 46px;
+						border-bottom: 1px solid var(--bd-color);
+						h3 {
+							font-weight: 400;
+							color: rgba(black, 0.6);
+							b {
+								font-weight: 500;
+							}
+						}
+						span {
+							color: hsl(215deg 70% 45%);
+							font-weight: 500;
+							&:after {
+								content: "đ";
+								font-weight: 400;
+								color: #abb3ba;
+							}
+						}
+					}
+					.lists-data {
+						display: flex;
+						flex-direction: column;
 						gap: 12px;
-						.col {
-							width: 200px;
-							padding: 0 12px 0 calc(12px + 16px + 12px);
-							line-height: 40px;
+						padding: 12px;
+						overflow-y: scroll;
+						height: 156px;
+						li {
+							display: grid;
+							grid-template-columns: repeat(2, 1fr);
+							grid-gap: 6px;
+							padding-left: 14px;
 							position: relative;
 							&:before {
 								content: "";
 								position: absolute;
-								background: lightgray;
-								width: 16px;
-								height: 16px;
-								border-radius: 4px;
-								left: 12px;
+								background: var(--bd-color);
+								width: 2px;
+								height: 100%;
+								border-radius: 2px;
+								left: 0;
 								top: 50%;
 								transform: translatey(-50%);
 							}
-							&.stt-online:before {
-								background: lightgreen;
+							&[data-status="online"] {
+								cursor: pointer;
+								&:hover {
+									&:before {
+										background: hsl(215deg 70% 55%);
+									}
+								}
+								&:before {
+									background: hsl(215deg 70% 75%);
+								}
+								.status {
+									color: hsl(10deg 70% 55%);
+								}
 							}
-						}
-					}
-					&.row-data {
-						display: grid;
-						grid-template-columns: repeat(2, 1fr);
-						grid-gap: 12px;
-					}
-					.col {
-						width: 100%;
-						background: white;
-						border: 1px solid var(--bd-color);
-						#chart-view-box {
-							width: 100%;
-							height: 250px;
-						}
-						.title {
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-							background: var(--bd-color);
-							padding: 12px;
-							h3 {
-								font-weight: 400;
-								color: rgba(black, 0.6);
-								b {
-									font-weight: 500;
+							&[data-status="offline"] {
+								transform: scale(0.9);
+								user-select: none;
+								&:after {
+									content: "Đã thanh toán";
+									position: absolute;
+									background: rgba(0, 0, 0, 0.05);
+									text-align: center;
+									line-height: 40px;
+									padding: 0 12px;
+									border: 2px solid var(--bd-color);
+									left: 50%;
+									top: 50%;
+									transform: translate(-50%, -50%) rotate(-5deg) scale(0.8);
+								}
+								* {
+									text-decoration: line-through;
+									opacity: 0.6;
 								}
 							}
 							span {
-								color: #406abf;
-								font-weight: 500;
-								&:after {
-									content: "đ";
-									font-weight: 400;
-									color: #abb3ba;
+								&.amount, &.status {
+									text-align: right;
 								}
-							}
-						}
-						.return-list {
-							display: flex;
-							flex-direction: column;
-							gap: 12px;
-							padding: 12px;
-							overflow-y: scroll;
-							height: 180px;
-							li {
-								cursor: pointer;
-								position: relative;
-								padding-left: 14px;
-								&:before {
-									content: "";
-									position: absolute;
-									background: lightgray;
-									width: 2px;
-									height: 100%;
-									border-radius: 9999px;
-									left: 0;
-									top: 50%;
-									transform: translatey(-50%);
+								&.timeamp {
+									color: rgba(0, 0, 0, 0.6);
 								}
-								&[data-status="online"]:before {
-									background: lightgreen;
-								}
-								&[data-status="offline"] {
-									transform: scale(0.9);
-									* {
-										text-decoration: line-through;
-										opacity: 0.6;
-									}
-								}
-								.data {
-									display: flex;
-									justify-content: space-between;
-									align-items: center;
-									.timeamp {
+								&.amount {
+									flex-shrink: 0;
+									font-weight: 500;
+									color: hsl(215deg 70% 55%);
+									&:after {
+										content: "đ";
+										font-weight: 400;
 										color: #abb3ba;
 									}
-									.amount {
-										flex-shrink: 0;
-										font-weight: 600;
-										color: #ff5722;
-										&:after {
-											content: "đ";
-											font-weight: 400;
-											color: #abb3ba;
-										}
-									}
 								}
-								.description {
-									font-weight: 600;
+								&.description {
+									font-weight: 500;
 								}
 							}
 						}
-					}
-				}
-				.history-page {
-					position: absolute;
-					width: calc(100% - 12px * 2);
-					height: calc(100% - 12px * 2);
-					top: 12px;
-					left: 12px;
-					padding: 12px;
-					filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
-					--radius: 12px;
-					--padding: 6px;
-					--width: 24px;
-					--height: 24px;
-					visibility: hidden;
-					opacity: 0;
-					display: none;
-					&:before {
-						content: "";
-						position: absolute;
-						width: 100%;
-						height: 100%;
-						top: 0;
-						left: 0;
-						background: #237197;
-						border-radius: var(--radius);
-						clip-path: shape(
-							from bottom left,
-							vline to 0,
-							hline to calc(100% - var(--radius) - var(--width) - var(--padding)),
-							arc to calc(100% - var(--width) - var(--padding)) var(--radius) of var(--radius) CW,
-							vline to calc(var(--height) - var(--radius)),
-							arc to calc(100% - var(--width) + var(--radius)) calc(var(--height) + var(--padding)) of calc(var(--radius) + var(--padding)) CCW,
-							hline to calc(100% - var(--radius)),
-							arc to 100% calc(var(--height) + var(--padding) + var(--radius)) of var(--radius) CW,
-							vline to 100%,
-							hline to 0
-						);
-					}
-					button#close-history {
-						position: absolute;
-						width: var(--width);
-						height: var(--height);
-						background: #d7443a;
-						border: 0;
-						right: 0;
-						top: 0;
-						border-radius: var(--radius);
 					}
 				}
 			}
