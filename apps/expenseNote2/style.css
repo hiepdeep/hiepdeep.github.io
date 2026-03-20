@@ -247,7 +247,6 @@ body {
 									transform: translate(-50%, -50%) rotate(-5deg) scale(0.8);
 								}
 								* {
-									text-decoration: line-through;
 									opacity: 0.6;
 								}
 							}
