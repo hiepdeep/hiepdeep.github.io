@@ -170,7 +170,6 @@ async function renderViewsChart(ctxId) {
 			const entries = yearData[month];
 			for (let id in entries) {
 				const item = entries[id];
-				if (item.status === "offline") continue;
 				if (item.type === "expense") {
 					monthlyExpenses[monthIndex] += parseInt(item.amount) || 0;
 				}
