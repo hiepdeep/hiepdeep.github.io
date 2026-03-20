@@ -221,11 +221,12 @@ body {
 								&:after {
 									content: "Đã thanh toán";
 									position: absolute;
-									background: rgba(0, 0, 0, 0.05);
+									background: rgba(255, 255, 255, 0.8);
 									text-align: center;
-									line-height: 40px;
+									line-height: 30px;
 									padding: 0 12px;
 									border: 2px solid var(--bd-color);
+									font-size: 14px;
 									left: 50%;
 									top: 50%;
 									transform: translate(-50%, -50%) rotate(-5deg) scale(0.8);
@@ -236,6 +237,7 @@ body {
 								}
 							}
 							span {
+								filter: grayscale(50%) blur(1px);
 								&.amount, &.status {
 									text-align: right;
 								}
