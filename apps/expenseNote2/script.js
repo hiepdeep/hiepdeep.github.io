@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			description: $description,
 			amount: $amount,
 			type: $type,
-			status: "online",
+			status: "unpaid",
 			creationDate: createTimes()
 		}
 		database.ref(`${db}/${date_YM()}`).push(data).then(() => {
@@ -97,7 +97,7 @@ async function renderChitieu() {
 		li.setAttribute("data-key", item.id);
 		li.setAttribute("data-type", item.type);
 		li.setAttribute("data-status", item.status);
-		const status = item.status === "online" ? "Chưa thanh toán" : "Đã thanh toán";
+		const status = item.status === "unpaid" ? "Chưa thanh toán" : "Đã thanh toán";
 		const formattedDate = item.creationDate.split(" ")[0].replace(/\//g, "-");
 		const formattedAmount = amountNum.toLocaleString("vi-VN");
 		li.innerHTML = `
@@ -106,13 +106,13 @@ async function renderChitieu() {
 			<span class="description">${item.description}</span>
 			<span class="status">${status}</span>
 		`;
-		if (item.status === "online") {
+		if (item.status === "unpaid") {
 			li.addEventListener("click", async () => {
-				const confirmDelete = confirm(`Xác nhận thanh toán ${formattedAmount}đ cho "${item.description}"?`);
-				if (confirmDelete) {
+				const confirmDel = confirm(`Xác nhận thanh toán ${formattedAmount}đ cho "${item.description}"?`);
+				if (confirmDel) {
 					try {
 						await database.ref(item.path).update({
-							status: "offline"
+							status: "paid"
 						});
 						renderChitieu();
 						renderViewsChart("chart-view");
@@ -180,7 +180,7 @@ async function renderViewsChart(ctxId) {
 	const maxVal = Math.max(...values) || 1;
 	const total_month = values.length;
 	const gap = 12;
-	const paddingTop = 20 + gap;
+	const paddingTop = gap;
 	const paddingBottom = 30;
 	const slot_width = (myCanvas.width - (gap * (total_month + 1))) / total_month;
 	const borderRadius = [6, 6, 6, 6];
@@ -195,7 +195,7 @@ async function renderViewsChart(ctxId) {
 			const x = gap + (slot_width + gap) * index;
 			const baseY = myCanvas.height - paddingBottom;
 			const y = baseY - currentBarHeight;
-			ctx.fillStyle = val === maxVal ? "hsl(215deg 70% 45%)" : "hsl(215deg 70% 75%)";
+			ctx.fillStyle = val === maxVal ? "hsl(215deg 70% 45%)" : "hsl(215deg 70% 55%)";
 			ctx.shadowBlur = 10;
 			ctx.shadowOffsetX = 6;
 			ctx.shadowOffsetY = 6;
@@ -209,11 +209,11 @@ async function renderViewsChart(ctxId) {
 			ctx.shadowOffsetY = 0;
 			ctx.font = "500 12px Bai Jamjuree";
 			ctx.textAlign = "center";
-			ctx.fillText(`T${index + 1}`, x + slot_width / 2, baseY + 30 - gap);
-			if (progress >= 1 && val > 0) {
-				ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
-				ctx.fillText(val.toLocaleString() + "đ", x + slot_width / 2, y - 12);
-			}
+			ctx.fillText(`T${(index + 1).toString().padStart(2, '0')}`, x + slot_width / 2, baseY + 30 - gap);
+			// if (progress >= 1 && val > 0) {
+			// 	ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+			// 	ctx.fillText(val.toLocaleString() + "đ", x + slot_width / 2, y - 12);
+			// }
 		});
 		if (progress < 1) {
 			requestAnimationFrame(animate);
