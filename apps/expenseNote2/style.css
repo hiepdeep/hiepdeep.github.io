@@ -151,7 +151,7 @@ body {
 		}
 		&.sideright {
 			width: 100%;
-			max-width: 800px;
+			max-width: 780px;
 			margin: 0 auto;
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
@@ -216,7 +216,7 @@ body {
 								top: 50%;
 								transform: translatey(-50%);
 							}
-							&[data-status="online"] {
+							&[data-status="unpaid"] {
 								cursor: pointer;
 								&:hover {
 									&:before {
@@ -230,7 +230,7 @@ body {
 									color: hsl(10deg 70% 55%);
 								}
 							}
-							&[data-status="offline"] {
+							&[data-status="paid"] {
 								transform: scale(0.9);
 								user-select: none;
 								&:after {
@@ -248,10 +248,10 @@ body {
 								}
 								* {
 									opacity: 0.6;
+									filter: grayscale(50%) blur(1px);
 								}
 							}
 							span {
-								filter: grayscale(50%) blur(1px);
 								&.amount, &.status {
 									text-align: right;
 								}
