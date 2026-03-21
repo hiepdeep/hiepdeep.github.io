@@ -236,7 +236,6 @@ function animateNumber(element, target, duration = 1000) {
 }
 
 document.getElementById("close-sideleft").addEventListener("click", function() {
-	document.getElementById("close-sideleft").classList.toggle("active");
 	document.getElementById("sideleft").classList.toggle("active");
 });
 
