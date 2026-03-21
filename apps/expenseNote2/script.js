@@ -183,11 +183,13 @@ async function renderViewsChart(ctxId) {
 	const paddingTop = gap;
 	const paddingBottom = 30;
 	const slot_width = (myCanvas.width - (gap * (total_month + 1))) / total_month;
-	const borderRadius = [6, 6, 6, 6];
+	const borderRadius = [6, 6, 2, 2];
 	let progress = 0;
 	function animate() {
 		progress += 0.02;
 		ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+		ctx.fillStyle = "white";
+		ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
 		values.forEach((val, index) => {
 			const availableHeight = myCanvas.height - paddingTop - paddingBottom;
 			const targetBarHeight = (val / maxVal) * availableHeight;
@@ -196,10 +198,6 @@ async function renderViewsChart(ctxId) {
 			const baseY = myCanvas.height - paddingBottom;
 			const y = baseY - currentBarHeight;
 			ctx.fillStyle = val === maxVal ? "hsl(215deg 70% 45%)" : "hsl(215deg 70% 55%)";
-			ctx.shadowBlur = 10;
-			ctx.shadowOffsetX = 6;
-			ctx.shadowOffsetY = 6;
-			ctx.shadowColor = "rgba(0, 0, 0, 0.2)";
 			ctx.beginPath();
 			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
 			ctx.fill();
