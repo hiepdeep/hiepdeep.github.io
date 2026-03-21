@@ -146,12 +146,12 @@ async function renderChitieu() {
 	const hiep_dang_no = (s_exp_hieu / 2) + s_bor_hieu;
 	let final_hieu_tra = Math.max(0, hieu_dang_no - hiep_dang_no);
 	let final_hiep_tra = Math.max(0, hiep_dang_no - hieu_dang_no);
-	document.getElementById("total-expense-hieu").innerText = s_exp_hieu.toLocaleString("vi-VN");
-	document.getElementById("total-expense-hiep").innerText = s_exp_hiep.toLocaleString("vi-VN");
-	document.getElementById("total-borrow-hieu").innerText = s_bor_hieu.toLocaleString("vi-VN");
-	document.getElementById("total-borrow-hiep").innerText = s_bor_hiep.toLocaleString("vi-VN");
-	document.getElementById("hieu-tra-hiep").innerText = final_hieu_tra.toLocaleString("vi-VN");
-	document.getElementById("hiep-tra-hieu").innerText = final_hiep_tra.toLocaleString("vi-VN");
+	animateNumber(document.getElementById("total-expense-hieu"), s_exp_hieu);
+	animateNumber(document.getElementById("total-expense-hiep"), s_exp_hiep);
+	animateNumber(document.getElementById("total-borrow-hieu"), s_bor_hieu);
+	animateNumber(document.getElementById("total-borrow-hiep"), s_bor_hiep);
+	animateNumber(document.getElementById("hieu-tra-hiep"), final_hieu_tra);
+	animateNumber(document.getElementById("hiep-tra-hieu"), final_hiep_tra);
 }
 
 async function renderViewsChart(ctxId) {
@@ -220,6 +220,21 @@ async function renderViewsChart(ctxId) {
 		}
 	}
 	animate();
+}
+
+function animateNumber(element, target, duration = 1000) {
+	let startTimestamp = null;
+	const startValue = parseInt(element.innerText.replace(/\./g, "")) || 0;
+	const step = (timestamp) => {
+		if (!startTimestamp) startTimestamp = timestamp;
+		const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+		const currentValue = Math.floor(progress * (target - startValue) + startValue);
+		element.innerText = currentValue.toLocaleString("vi-VN");
+		if (progress < 1) {
+			window.requestAnimationFrame(step);
+		}
+	};
+	window.requestAnimationFrame(step);
 }
 
 // https://codepen.io/themustafaomar/full/jLMPKm
