@@ -222,6 +222,4 @@ async function renderViewsChart(ctxId) {
 	animate();
 }
 
-autoAnimateNumbers(".js-animated-number", 2000);
-
 // https://codepen.io/themustafaomar/full/jLMPKm
