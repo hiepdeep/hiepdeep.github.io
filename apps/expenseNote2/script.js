@@ -240,4 +240,13 @@ document.getElementById("close-sideleft").addEventListener("click", function() {
 	document.getElementById("sideright").classList.toggle("active");
 });
 
+window.addEventListener("resize", function() {
+	if (window.innerWidth <= 1080) {
+		renderViewsChart("chart-view");
+		if (window.innerWidth <= 500) {
+			renderViewsChart("chart-view");
+		}
+	}
+});
+
 // https://codepen.io/themustafaomar/full/jLMPKm
