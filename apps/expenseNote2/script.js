@@ -237,6 +237,7 @@ function animateNumber(element, target, duration = 1000) {
 
 document.getElementById("close-sideleft").addEventListener("click", function() {
 	document.getElementById("sideleft").classList.toggle("active");
+	document.getElementById("sideright").classList.toggle("active");
 });
 
 // https://codepen.io/themustafaomar/full/jLMPKm
