@@ -428,3 +428,33 @@ body {
 		}
 	}
 }
+
+@media (max-width: 500px) {
+	.box {
+		flex-direction: column;
+		.side {
+			&.sideleft {
+				.b {
+					border-bottom: 1px solid var(--bd-color);
+					#form {
+						display: flex;
+						flex-direction: column;
+						height: 278px;
+						* {
+							font-size: 16px;
+						}
+						input[name="form-amount"] {
+							order: 3;
+						}
+						.gr-type {
+							order: 4;
+						}
+					}
+				}
+			}
+			&.sideright {
+				margin-top: 372px;
+			}
+		}
+	}
+}
