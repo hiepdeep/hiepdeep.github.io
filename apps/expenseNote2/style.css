@@ -19,6 +19,11 @@ body {
 	height: 100dvh;
 	background: #edf5f8;
 	display: flex;
+	overflow-y: scroll;
+	&::-webkit-scrollbar {
+		width: 2px;
+		height: 2px;
+	}
 	.side {
 		&.sideleft {
 			flex-shrink: 0;
@@ -76,6 +81,7 @@ body {
 				height: 100%;
 				border-radius: 12px 0 0 0;
 				position: relative;
+				transition: 1s cubic-bezier(0.4, 0, 0, 1);
 				&:before {
 					content: "";
 					position: absolute;
@@ -176,7 +182,6 @@ body {
 				border-radius: 9999px;
 				color: rgba(255, 255, 255, 0.9);
 				background: hsl(215deg 70% 45%);
-				transition: 0.1s;
 				transition: transform 1s cubic-bezier(0.4, 0, 0, 1);
 				&:hover {
 					background: hsl(215deg 70% 40%);
@@ -221,6 +226,7 @@ body {
 			grid-gap: 12px;
 			align-content: start;
 			padding: 12px;
+			transition: 0.5s cubic-bezier(0.4, 0, 0, 1);
 			.item {
 				background: white;
 				border-radius: 6px;
@@ -338,6 +344,85 @@ body {
 							}
 						}
 					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1079px) {
+	.box {
+		flex-direction: column;
+		.side {
+			&.sideleft {
+				width: 100%;
+				position: fixed;
+				z-index: 9999;
+				.b {
+					#form {
+						display: grid;
+						grid-template-columns: repeat(2, 1fr);
+						width: 100%;
+						max-width: calc(780px - 12px * 2);
+						height: 162px;
+						margin: 0 auto;
+						transition-delay: 0s;
+						.gr-person {
+							order: 1;
+						}
+						input[name="form-description"] {
+							order: 2;
+						}
+						input[name="form-amount"] {
+							order: 4;
+						}
+						.gr-type {
+							order: 3;
+						}
+						button {
+							order: 5;
+							grid-column: span 2;
+						}
+					}
+				}
+				#close-sideleft {
+					left: unset;
+					right: 12px;
+					top: 12px;
+					transform: rotate(90deg);
+					transition: transform 0.5s cubic-bezier(0.4, 0, 0, 1);
+				}
+				&.active {
+					width: 100%;
+					.a {
+						.logo {
+							a {
+								span {
+									visibility: unset;
+									opacity: 1;
+								}
+							}
+						}
+					}
+					.b {
+						#form {
+							visibility: hidden;
+							opacity: 0;
+							height: 0;
+						}
+					}
+					#close-sideleft {
+						transform: rotate(270deg);
+					}
+				}
+			}
+			&.sideright {
+				margin-top: 256px;
+				.item {
+					grid-column: span 2;
+				}
+				&.active {
+					margin-top: 94px;
 				}
 			}
 		}
