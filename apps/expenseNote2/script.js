@@ -243,9 +243,8 @@ document.getElementById("close-sideleft").addEventListener("click", function() {
 window.addEventListener("resize", function() {
 	if (window.innerWidth <= 1080) {
 		renderViewsChart("chart-view");
-		if (window.innerWidth <= 500) {
-			renderViewsChart("chart-view");
-		}
+		document.getElementById("sideleft").classList.add("active");
+		document.getElementById("sideright").classList.add("active");
 	}
 });
 
