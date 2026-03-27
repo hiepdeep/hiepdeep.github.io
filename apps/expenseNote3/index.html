@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/report.ico">
+		<title>Sổ Chi Tiêu</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="box">
+			<div class="side side-l"></div>
+			<div class="side side-r">
+				<div class="side-r-top"></div>
+				<div class="side-r-bot">
+					<div class="row" id="return-chart">
+						<canvas id="chart-view"></canvas>
+					</div>
+					<div class="row">
+						<div class="title">
+							<h3>Chi trả của Hiếu:</h3>
+							<button class="material-symbols-rounded" id="openbox-expense-hieu">pan_zoom</button>
+						</div>
+						<div class="row-data">
+							<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hieu-totals-expense">99</strong></span>
+							<span class="txt">Tổng cộng (đ): <strong class="sums" id="hieu-sums-expense">99.000.000</strong></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="title">
+							<h3>Chi trả của Hiệp:</h3>
+							<button class="material-symbols-rounded" id="openbox-expense-hiep">pan_zoom</button>
+						</div>
+						<div class="row-data">
+							<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hiep-totals-expense">99</strong></span>
+							<span class="txt">Tổng cộng (đ): <strong class="sums" id="hiep-sums-expense">99.000.000</strong></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="title">
+							<h3>Hiệp vay mượn của Hiếu:</h3>
+							<button class="material-symbols-rounded" id="openbox-borrow-hieu">pan_zoom</button>
+						</div>
+						<div class="row-data">
+							<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hieu-totals-borrow">99</strong></span>
+							<span class="txt">Tổng cộng (đ): <strong class="sums" id="hieu-sums-borrow">400.000</strong></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="title">
+							<h3>Hiếu vay mượn của Hiệp:</h3>
+							<button class="material-symbols-rounded" id="openbox-borrow-hiep">pan_zoom</button>
+						</div>
+						<div class="row-data">
+							<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hiep-totals-borrow">99</strong></span>
+							<span class="txt">Tổng cộng (đ): <strong class="sums" id="hiep-sums-borrow">400.000</strong></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="title">
+							<h3>Hiếu cần trả Hiệp:</h3>
+						</div>
+						<div class="row-data">
+							<span class="txt">Tổng cộng (đ): <strong class="sums-totals" id="hieu-sums">0</strong></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="title">
+							<h3>Hiệp cần trả Hiếu:</h3>
+						</div>
+						<div class="row-data">
+							<span class="txt">Tổng cộng (đ): <strong class="sums-totals" id="hiep-sums">400.000</strong></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="script.js"></script>
+	</body>
+</html>
