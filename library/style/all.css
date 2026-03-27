@@ -152,6 +152,10 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	--hsl-gray-15: hsl(210deg, 10%, 15%);
 	--hsl-gray-10: hsl(210deg, 10%, 10%);
 	--bg-light: white;
+	--bdrs-1: 16px;
+	--bdrs-2: 8px;
+	--bdrs-3: 4px;
+	--bdrs-4: 2px;
 }
 * {
 	margin: 0;
