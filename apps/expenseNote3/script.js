@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		database.ref(`${db}/${createTimes().split(" ")[0]}`).push(data).then(() => {
 			document.forms["form"].reset();
-			renderChitieu();
 			renderViewsChart("chart-view");
+			renderChitieu();
 		}).catch((error) => {
 			console.error("Lỗi khi tạo chi tiêu mới:", error);
 		});
