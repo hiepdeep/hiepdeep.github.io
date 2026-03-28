@@ -276,6 +276,11 @@ document.getElementById("openbox-expense-hiep").addEventListener("click", () => 
 document.getElementById("openbox-borrow-hieu").addEventListener("click", () => openDetailBox("hieu", "borrow"));
 document.getElementById("openbox-borrow-hiep").addEventListener("click", () => openDetailBox("hiep", "borrow"));
 
+document.getElementById("light-dark-more").addEventListener("click", function() {
+	event.preventDefault();
+	document.getElementById("light-dark-more").innerText = "dark_mode";
+});
+
 document.getElementById("add-new").addEventListener("click", function() {
 	event.preventDefault();
 	document.getElementById("side-l").classList.add("open-form");
