@@ -155,8 +155,47 @@ async function renderChitieu() {
 		num_hieu_pay_hiep = 0,
 		num_hiep_pay_hieu = 0;
 	allItems.forEach(item => {
-		// ...
+		if (item.status === "unpaid") {
+			const amount = parseInt(item.amount) || 0;
+			if (item.person === "hieu") {
+				if (item.type === "expense") {
+					num_hieu_totals_expense++;
+					num_hieu_sums_expense += amount;
+				} else if (item.type === "borrow") {
+					num_hieu_totals_borrow++;
+					num_hieu_sums_borrow += amount;
+				}
+			} else if (item.person === "hiep") {
+				if (item.type === "expense") {
+					num_hiep_totals_expense++;
+					num_hiep_sums_expense += amount;
+				} else if (item.type === "borrow") {
+					num_hiep_totals_borrow++;
+					num_hiep_sums_borrow += amount;
+				}
+			}
+		}
 	});
+	let hieu_owes_hiep = (num_hiep_sums_expense / 2) + num_hiep_sums_borrow;
+	let hiep_owes_hieu = (num_hieu_sums_expense / 2) + num_hieu_sums_borrow;
+	if (hieu_owes_hiep > hiep_owes_hieu) {
+		num_hieu_pay_hiep = hieu_owes_hiep - hiep_owes_hieu;
+		num_hiep_pay_hieu = 0;
+	} else {
+		num_hiep_pay_hieu = hiep_owes_hieu - hieu_owes_hiep;
+		num_hieu_pay_hiep = 0;
+	}
+	const formatMoney = (amount) => new Intl.NumberFormat("vi-VN").format(amount);
+	id_tag.hieu_totals_expense.textContent = num_hieu_totals_expense;
+	id_tag.hiep_totals_expense.textContent = num_hiep_totals_expense;
+	id_tag.hieu_totals_borrow.textContent = num_hieu_totals_borrow;
+	id_tag.hiep_totals_borrow.textContent = num_hiep_totals_borrow;
+	id_tag.hieu_sums_expense.textContent = formatMoney(num_hieu_sums_expense);
+	id_tag.hiep_sums_expense.textContent = formatMoney(num_hiep_sums_expense);
+	id_tag.hieu_sums_borrow.textContent = formatMoney(num_hieu_sums_borrow);
+	id_tag.hiep_sums_borrow.textContent = formatMoney(num_hiep_sums_borrow);
+	id_tag.hieu_pay_hiep.textContent = formatMoney(num_hieu_pay_hiep);
+	id_tag.hiep_pay_hieu.textContent = formatMoney(num_hiep_pay_hieu);
 }
 
 document.getElementById("add-new").addEventListener("click", function() {
