@@ -312,7 +312,6 @@ body {
 
 @media (max-width: 650px) {
 	.box {
-		padding: 12px 24px;
 		.side {
 			&.side-l {
 				display: none;
@@ -370,6 +369,9 @@ body {
 							}
 						}
 					}
+				}
+				.side-r-bot {
+					overflow-y: auto;
 				}
 			}
 		}
