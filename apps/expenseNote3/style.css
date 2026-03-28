@@ -32,7 +32,7 @@ body {
 			border-radius: var(--bdrs-2);
 			border: 1px solid var(--hsl-gray-90);
 			background: var(--bg-light);
-			box-shadow: 0 6px 12px -6px var(--hsl-gray-85);
+			box-shadow: 0 6px 12px -6px color-mix(in srgb, var(--hsl-gray-50), transparent 80%);
 			#form {
 				width: 100%;
 				display: flex;
@@ -99,7 +99,7 @@ body {
 					background: var(--hsl-blue-50);
 					border-radius: var(--bdrs-3);
 					border: 1px solid var(--hsl-blue-45);
-					box-shadow: 0 6px 12px -6px var(--hsl-gray-50);
+					box-shadow: 0 6px 12px -6px color-mix(in srgb, var(--hsl-gray-50), transparent 30%);
 					&:hover {
 						background: var(--hsl-blue-45);
 						border: 1px solid var(--hsl-blue-40);
@@ -129,7 +129,7 @@ body {
 				border-radius: var(--bdrs-2);
 				border: 1px solid var(--hsl-gray-90);
 				background: var(--bg-light);
-				box-shadow: 0 6px 12px -6px var(--hsl-gray-85);
+				box-shadow: 0 6px 12px -6px color-mix(in srgb, var(--hsl-gray-50), transparent 80%);
 				.logo {
 					display: flex;
 					align-items: center;
@@ -199,7 +199,7 @@ body {
 					border-radius: var(--bdrs-2);
 					border: 1px solid var(--hsl-gray-90);
 					background: var(--bg-light);
-					box-shadow: 0 6px 12px -6px var(--hsl-gray-85);
+					box-shadow: 0 6px 12px -6px color-mix(in srgb, var(--hsl-gray-50), transparent 80%);
 					position: relative;
 					&:nth-child(1) {
 						height: 270px;
