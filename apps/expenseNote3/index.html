@@ -11,9 +11,45 @@
 	</head>
 	<body>
 		<div class="box">
-			<div class="side side-l"></div>
-			<div class="side side-r">
-				<div class="side-r-top"></div>
+			<div class="side side-l" id="side-l">
+				<form action="" id="form">
+					<div class="gr-label gr-person">
+						<label for="hieu">
+							<input type="radio" name="form-person" id="hieu" value="hieu">
+							<span class="name">Hiếu</span>
+						</label>
+						<label for="hiep">
+							<input type="radio" name="form-person" id="hiep" value="hiep" checked="">
+							<span class="name">Hiệp</span>
+						</label>
+					</div>
+					<input type="text" name="form-description" placeholder="Mô tả">
+					<input type="tel" name="form-amount" placeholder="Số tiền" pattern="[0-9.]*">
+					<div class="gr-label gr-type">
+						<label for="form-expense">
+							<input type="radio" name="form-type" id="form-expense" value="expense" checked="">
+							<span class="name">chi tiêu</span>
+						</label>
+						<label for="form-borrow">
+							<input type="radio" name="form-type" id="form-borrow" value="borrow">
+							<span class="name">cho vay</span>
+						</label>
+					</div>
+					<button type="submit">Tạo mới</button>
+					<button id="close-form" class="material-symbols-rounded">close</button>
+				</form>
+			</div>
+			<div class="side side-r" id="side-r">
+				<div class="side-r-top">
+					<a href="" class="logo">
+						<img src="https://hiepdeep.github.io/library/pictures/svg/expense-book.svg" alt="">
+						<span class="text">Sổ Chi Tiêu Cá Nhân</span>
+					</a>
+					<div class="btn-gr">
+						<button class="material-symbols-rounded" id="light-dark-more">clear_day</button>
+						<button class="" id="add-new">Tạo mới</button>
+					</div>
+				</div>
 				<div class="side-r-bot">
 					<div class="row" id="return-chart">
 						<canvas id="chart-view"></canvas>
@@ -63,7 +99,7 @@
 							<h3>Hiếu cần trả Hiệp:</h3>
 						</div>
 						<div class="row-data">
-							<span class="txt">Tổng cộng (đ): <strong class="sums-totals" id="hieu-sums">0</strong></span>
+							<span class="txt">Tổng cộng (đ): <strong class="sums-totals" id="hieu-pay-hiep">0</strong></span>
 						</div>
 					</div>
 					<div class="row">
@@ -71,7 +107,7 @@
 							<h3>Hiệp cần trả Hiếu:</h3>
 						</div>
 						<div class="row-data">
-							<span class="txt">Tổng cộng (đ): <strong class="sums-totals" id="hiep-sums">400.000</strong></span>
+							<span class="txt">Tổng cộng (đ): <strong class="sums-totals" id="hiep-pay-hieu">400.000</strong></span>
 						</div>
 					</div>
 				</div>

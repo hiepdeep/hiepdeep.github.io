@@ -6,7 +6,9 @@ const app = firebase.initializeApp({
 const database = firebase.database();
 const db = "so-chi-tieu-v2";
 
-renderViewsChart("chart-view");
+document.addEventListener("DOMContentLoaded", () => {
+	renderViewsChart("chart-view");
+});
 
 async function renderViewsChart(ctxId) {
 	const chartView = document.getElementById("return-chart");
@@ -67,3 +69,13 @@ async function renderViewsChart(ctxId) {
 	}
 	animate();
 }
+
+document.getElementById("add-new").addEventListener("click", function() {
+	event.preventDefault();
+	document.getElementById("side-l").classList.add("open-form");
+});
+
+document.getElementById("close-form").addEventListener("click", function() {
+	event.preventDefault();
+	document.getElementById("side-l").classList.remove("open-form");
+});
