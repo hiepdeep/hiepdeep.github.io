@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			alert("Vui lòng chỉ nhập số vào ô số tiền.");
 			return;
 		}
+		let getTime = new Date();
+		let timeYear = getTime.getFullYear();
+		let timeMonth = getTime.getMonth() + 1;
+		timeYear = timeYear.toString();
+		timeMonth = timeMonth.toString().padStart(2, "0");
+		let returnTime = `${timeYear}/${timeMonth}`;
 		const data = {
 			person: $personSelect,
 			description: $description,
@@ -38,10 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			status: "unpaid",
 			creationDate: createTimes()
 		}
-		database.ref(`${db}/${createTimes().split(" ")[0]}`).push(data).then(() => {
+		database.ref(`${db}/${returnTime}`).push(data).then(() => {
 			document.forms["form"].reset();
-			renderViewsChart("chart-view");
 			renderChitieu();
+			renderViewsChart("chart-view");
 		}).catch((error) => {
 			console.error("Lỗi khi tạo chi tiêu mới:", error);
 		});
