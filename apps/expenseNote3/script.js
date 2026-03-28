@@ -132,6 +132,31 @@ async function renderChitieu() {
 		return formatDate(b.creationDate) - formatDate(a.creationDate);
 	});
 	console.log(  allItems  );
+	const id_tag = {
+		hieu_totals_expense: document.getElementById("hieu-totals-expense"),
+		hiep_totals_expense: document.getElementById("hiep-totals-expense"),
+		hieu_totals_borrow: document.getElementById("hieu-totals-borrow"),
+		hiep_totals_borrow: document.getElementById("hiep-totals-borrow"),
+		hieu_sums_expense: document.getElementById("hieu-sums-expense"),
+		hiep_sums_expense: document.getElementById("hiep-sums-expense"),
+		hieu_sums_borrow: document.getElementById("hieu-sums-borrow"),
+		hiep_sums_borrow: document.getElementById("hiep-sums-borrow"),
+		hieu_pay_hiep: document.getElementById("hieu-pay-hiep"),
+		hiep_pay_hieu: document.getElementById("hiep-pay-hieu")
+	};
+	let num_hieu_totals_expense = 0,
+		num_hiep_totals_expense = 0,
+		num_hieu_totals_borrow = 0,
+		num_hiep_totals_borrow = 0,
+		num_hieu_sums_expense = 0,
+		num_hiep_sums_expense = 0,
+		num_hieu_sums_borrow = 0,
+		num_hiep_sums_borrow = 0,
+		num_hieu_pay_hiep = 0,
+		num_hiep_pay_hieu = 0;
+	allItems.forEach(item => {
+		// ...
+	});
 }
 
 document.getElementById("add-new").addEventListener("click", function() {
