@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			status: "unpaid",
 			creationDate: createTimes()
 		}
-		database.ref(`${db}/${createTimes().split(' ')[0]}`).push(data).then(() => {
+		database.ref(`${db}/${createTimes().split(" ")[0]}`).push(data).then(() => {
 			document.forms["form"].reset();
 			renderChitieu();
 			renderViewsChart("chart-view");
