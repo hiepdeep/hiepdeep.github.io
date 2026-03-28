@@ -351,6 +351,8 @@ body {
 							border-radius: var(--bdrs-3);
 							border: 1px solid var(--hsl-gray-90);
 							background: var(--hsl-gray-95);
+							user-select: none;
+							cursor: pointer;
 							.item-row {
 								display: flex;
 								justify-content: space-between;
@@ -380,9 +382,6 @@ body {
 										font-weight: 500;
 										color: var(--hsl-gray-20);
 										text-transform: lowercase;
-										&::first-letter {
-											text-transform: uppercase;
-										}
 									}
 									&.amount {
 										&:after {
