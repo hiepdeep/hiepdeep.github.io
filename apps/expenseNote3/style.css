@@ -334,6 +334,9 @@ body {
 						border: 1px solid var(--hsl-gray-90);
 						background: var(--bg-light);
 						box-shadow: 0 6px 12px -6px var(--hsl-gray-85);
+						input[type="text"], input[type="tel"] {
+							font-size: 16px;
+						}
 						button#close-form {
 							position: absolute;
 							top: calc(0px - 30px - 12px);
