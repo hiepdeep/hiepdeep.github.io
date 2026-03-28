@@ -490,6 +490,7 @@ body {
 				}
 				.side-r-bot {
 					overflow-y: unset;
+					height: auto;
 				}
 			}
 		}
