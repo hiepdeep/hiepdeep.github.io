@@ -8,6 +8,42 @@ const db = "so-chi-tieu-v2";
 
 document.addEventListener("DOMContentLoaded", () => {
 	renderViewsChart("chart-view");
+	renderChitieu();
+	document.forms["form"]["form-amount"].addEventListener("input", function(e) {
+		let value = this.value.replace(/\D/g, "");
+		const formattedValue = new Intl.NumberFormat("vi-VN").format(value);
+		this.value = formattedValue;
+	});
+	document.forms["form"].addEventListener("submit", async function(event) {
+		event.preventDefault();
+		const $personSelect = document.forms["form"]["form-person"].value;
+		const $description = document.forms["form"]["form-description"].value.trim();
+		const $amount = document.forms["form"]["form-amount"].value.trim().replace(/\./g, "").trim();
+		const $type = document.forms["form"]["form-type"].value;
+		if (!$description) {
+			alert("Vui lòng nhập mô tả chi tiêu.");
+			return;
+		}
+		if (!/^\d+$/.test($amount)) {
+			alert("Vui lòng chỉ nhập số vào ô số tiền.");
+			return;
+		}
+		const data = {
+			person: $personSelect,
+			description: $description,
+			amount: $amount,
+			type: $type,
+			status: "unpaid",
+			creationDate: createTimes()
+		}
+		database.ref(`${db}/${date_YM()}`).push(data).then(() => {
+			document.forms["form"].reset();
+			renderChitieu();
+			renderViewsChart("chart-view");
+		}).catch((error) => {
+			console.error("Lỗi khi tạo chi tiêu mới:", error);
+		});
+	});
 });
 
 async function renderViewsChart(ctxId) {
@@ -68,6 +104,34 @@ async function renderViewsChart(ctxId) {
 		}
 	}
 	animate();
+}
+
+async function renderChitieu() {
+	const snapshot = await database.ref(db).once("value");
+	const data = snapshot.val() || {};
+	const allItems = [];
+	for (let year in data) {
+		for (let month in data[year]) {
+			const entries = data[year][month];
+			for (let id in entries) {
+				allItems.push({
+					id: id,
+					path: `${db}/${year}/${month}/${id}`,
+					...entries[id]
+				});
+			}
+		}
+	}
+	allItems.sort((a, b) => {
+		const formatDate = (str) => {
+			if (!str) return 0;
+			const lastColon = str.lastIndexOf(":");
+			const standardStr = str.substring(0, lastColon) + "." + str.substring(lastColon + 1);
+			return new Date(standardStr).getTime();
+		};
+		return formatDate(b.creationDate) - formatDate(a.creationDate);
+	});
+	console.log(  allItems  );
 }
 
 document.getElementById("add-new").addEventListener("click", function() {
