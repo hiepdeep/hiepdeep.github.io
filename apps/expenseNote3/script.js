@@ -5,6 +5,8 @@ const app = firebase.initializeApp({
 });
 const database = firebase.database();
 const db = "so-chi-tieu-v2";
+let allItems = [];
+let currentView = { person: null, type: null };
 
 document.addEventListener("DOMContentLoaded", () => {
 	renderViewsChart("chart-view");
@@ -109,7 +111,7 @@ async function renderViewsChart(ctxId) {
 async function renderChitieu() {
 	const snapshot = await database.ref(db).once("value");
 	const data = snapshot.val() || {};
-	const allItems = [];
+	allItems = [];
 	for (let year in data) {
 		for (let month in data[year]) {
 			const entries = data[year][month];
@@ -131,7 +133,6 @@ async function renderChitieu() {
 		};
 		return formatDate(b.creationDate) - formatDate(a.creationDate);
 	});
-	console.log(  allItems  );
 	const id_tag = {
 		hieu_totals_expense: document.getElementById("hieu-totals-expense"),
 		hiep_totals_expense: document.getElementById("hiep-totals-expense"),
@@ -197,6 +198,77 @@ async function renderChitieu() {
 	id_tag.hieu_pay_hiep.textContent = formatMoney(num_hieu_pay_hiep);
 	id_tag.hiep_pay_hieu.textContent = formatMoney(num_hiep_pay_hieu);
 }
+
+function renderDetailBox(person, type) {
+	document.getElementById("close-return-lists-box").addEventListener("click", function() {
+		event.preventDefault();
+		document.getElementById("return-lists-box").classList.remove("open-box");
+	});
+	currentView.person = person;
+    currentView.type = type;
+	const titleBox = document.getElementById("title-box");
+	const listContainer = document.getElementById("return-lists");
+	const personName = person === "hieu" ? "Hiếu" : "Hiệp";
+    const typeName = type === "expense" ? "chi trả" : "cho vay";
+	titleBox.getElementsByTagName("h3")[0].innerText = `Lịch sử ${typeName} của ${personName}:`;
+	const filteredItems = allItems.filter(item => item.person === person && item.type === type);
+	if (filteredItems.length === 0) {
+		listContainer.innerHTML = `<div style="text-align: center; color: var(--hsl-gray-70);">Không có dữ liệu</div>`;
+		return;
+	}
+	listContainer.innerHTML = "";
+	filteredItems.forEach(item => {
+		const li = document.createElement("li");
+		li.setAttribute("data-key", item.id);
+		li.setAttribute("data-type", item.type);
+		li.setAttribute("data-status", item.status);
+		const statusText = item.status === "paid" ? "Đã thanh toán" : "Chưa thanh toán";
+		const dateDisplay = item.creationDate ? item.creationDate.split(' ')[0] : "N/A";
+		const amountDisplay = new Intl.NumberFormat("vi-VN").format(item.amount);
+		li.innerHTML = `
+			<div class="item-row">
+				<div class="item-col time">
+					<i class="material-symbols-rounded">calendar_today</i>
+					<span class="text">${dateDisplay}</span>
+				</div>
+				<span class="item-col status">${statusText}</span>
+			</div>
+			<div class="item-row">
+				<div class="item-col description">${item.description}</div>
+				<div class="item-col amount">${amountDisplay}</div>
+			</div>
+		`;
+		listContainer.appendChild(li);
+		if (item.status === "unpaid") {
+			li.addEventListener("click", async () => {
+				const confirmDel = confirm(`Xác nhận thanh toán ${amountDisplay}đ cho "${item.description}"?`);
+				if (confirmDel) {
+					try {
+						await database.ref(item.path).update({
+							status: "paid"
+						});
+						renderViewsChart("chart-view");
+						await renderChitieu();
+						renderDetailBox(currentView.person, currentView.type);
+					} catch (error) {
+						console.error("Lỗi khi xác nhận:", error);
+					}
+				}
+			});
+		}
+	});
+}
+
+function openDetailBox(person, type) {
+	renderDetailBox(person, type);
+	const box = document.getElementById("return-lists-box");
+	box.classList.add("open-box");
+}
+
+document.getElementById("openbox-expense-hieu").addEventListener("click", () => openDetailBox("hieu", "expense"));
+document.getElementById("openbox-expense-hiep").addEventListener("click", () => openDetailBox("hiep", "expense"));
+document.getElementById("openbox-borrow-hieu").addEventListener("click", () => openDetailBox("hieu", "borrow"));
+document.getElementById("openbox-borrow-hiep").addEventListener("click", () => openDetailBox("hiep", "borrow"));
 
 document.getElementById("add-new").addEventListener("click", function() {
 	event.preventDefault();
