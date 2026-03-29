@@ -491,6 +491,11 @@ body {
 				.side-r-bot {
 					overflow-y: unset;
 					height: auto;
+					.row {
+						&:nth-child(1) {
+							display: none;
+						}
+					}
 				}
 			}
 		}
