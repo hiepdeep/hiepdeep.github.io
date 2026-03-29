@@ -278,7 +278,13 @@ document.getElementById("openbox-borrow-hiep").addEventListener("click", () => o
 
 document.getElementById("light-dark-more").addEventListener("click", function() {
 	event.preventDefault();
-	document.getElementById("light-dark-more").innerText = "dark_mode";
+	if (this.textContent === "clear_day") {
+		this.textContent = "dark_mode";
+		document.body.setAttribute("dark-mode", "true");
+	} else {
+		this.textContent = "clear_day";
+		document.body.removeAttribute("dark-mode");
+	}
 });
 
 document.getElementById("add-new").addEventListener("click", function() {
