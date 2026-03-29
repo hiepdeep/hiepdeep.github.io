@@ -350,7 +350,7 @@ body {
 							gap: 6px;
 							border-radius: var(--bdrs-3);
 							border: 1px solid var(--hsl-gray-90);
-							background: var(--hsl-gray-95);
+							background: color-mix(in srgb, var(--hsl-gray-95), transparent 50%);
 							user-select: none;
 							cursor: pointer;
 							.item-row {
@@ -395,8 +395,8 @@ body {
 									.item-col {
 										&.status {
 											color: var(--hsl-gray-25);
-											border: 1px solid var(--hsl-gray-75);
-											background: var(--hsl-gray-80);
+											border: 1px solid var(--hsl-gray-80);
+											background: var(--hsl-gray-85);
 										}
 									}
 								}
