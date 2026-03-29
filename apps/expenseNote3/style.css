@@ -264,7 +264,7 @@ body {
 									top: 0;
 									left: 0;
 									background: var(--hsl-gray-80);
-									border-radius: 2px;
+									border-radius: var(--bdrs-4);
 								}
 								display: flex;
 								justify-content: space-between;
