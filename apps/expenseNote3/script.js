@@ -1,5 +1,7 @@
 console.clear();
 
+document.body.setAttribute("dark-mode", "true");
+
 const app = firebase.initializeApp({
 	databaseURL: "https://eimi-fukada-default-rtdb.firebaseio.com"
 });
@@ -99,7 +101,7 @@ async function renderViewsChart(ctxId) {
 			ctx.beginPath();
 			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
 			ctx.fill();
-			ctx.fillStyle = "hsl(215deg 70% 5%)";
+			ctx.fillStyle = "hsl(210deg, 10%, 50%)";
 			ctx.shadowBlur = 0;
 			ctx.shadowOffsetX = 0;
 			ctx.shadowOffsetY = 0;
