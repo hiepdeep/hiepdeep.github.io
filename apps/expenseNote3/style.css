@@ -10,8 +10,31 @@
 	height: 0;
 }
 
+:root {
+	--hiepdeep-bg-body: hsl(210deg, 10%, 95%);
+	--hiepdeep-bg-item: hsl(0deg, 0%, 100%);
+	--hiepdeep-bd-item: hsl(210deg, 10%, 90%);
+	--hiepdeep-bg-btn: hsl(210deg, 10%, 95%);
+	--hiepdeep-bd-btn: hsl(210deg, 10%, 90%);
+	--hiepdeep-bg-btn-hover: hsl(210deg, 10%, 90%);
+	--hiepdeep-bd-btn-hover: hsl(210deg, 10%, 85%);
+	--hiepdeep-bg-btn-active: hsl(210deg, 10%, 85%);
+	--hiepdeep-bd-btn-active: hsl(210deg, 10%, 80%);
+	--hiepdeep-text-level-1: hsl(210deg, 10%, 10%);
+	--hiepdeep-text-level-2: hsl(210deg, 10%, 20%);
+	--hiepdeep-text-level-3: hsl(210deg, 10%, 30%);
+	--hiepdeep-text-level-4: hsl(210deg, 10%, 40%);
+	--hiepdeep-fz-level-1: 16px;
+	--hiepdeep-fz-level-2: 14px;
+	--hiepdeep-fz-level-3: 12px;
+	--hiepdeep-bdrs-level-1: 16px;
+	--hiepdeep-bdrs-level-2: 8px;
+	--hiepdeep-bdrs-level-3: 4px;
+	--hiepdeep-bdrs-level-4: 2px;
+}
+
 body {
-	background: var(--hsl-gray-95);
+	background: var(--hiepdeep-bg-body);
 	display: grid;
 	place-items: center;
 	height: 100dvh;
@@ -233,10 +256,9 @@ body {
 			width: 300px;
 			height: 100%;
 			padding: 12px;
-			border-radius: var(--bdrs-2);
-			border: 1px solid var(--hsl-gray-90);
-			background: var(--bg-light);
-			box-shadow: 0 6px 12px -6px color-mix(in srgb, var(--hsl-gray-50), transparent 80%);
+			border-radius: var(--bdrs-level-2);
+			border: 1px solid var(--bd-item);
+			background: var(--bg-item);
 			#form {
 				width: 100%;
 				display: flex;
@@ -303,7 +325,6 @@ body {
 					background: var(--hsl-blue-50);
 					border-radius: var(--bdrs-3);
 					border: 1px solid var(--hsl-blue-45);
-					box-shadow: 0 6px 12px -6px color-mix(in srgb, var(--hsl-gray-50), transparent 30%);
 					&:hover {
 						background: var(--hsl-blue-45);
 						border: 1px solid var(--hsl-blue-40);
@@ -333,7 +354,6 @@ body {
 				border-radius: var(--bdrs-2);
 				border: 1px solid var(--hsl-gray-90);
 				background: var(--bg-light);
-				box-shadow: 0 6px 12px -6px color-mix(in srgb, var(--hsl-gray-50), transparent 80%);
 				.logo {
 					display: flex;
 					align-items: center;
@@ -404,7 +424,6 @@ body {
 					border-radius: var(--bdrs-2);
 					border: 1px solid var(--hsl-gray-90);
 					background: var(--bg-light);
-					box-shadow: 0 6px 12px -6px color-mix(in srgb, var(--hsl-gray-50), transparent 80%);
 					position: relative;
 					&:nth-child(1) {
 						height: 270px;
@@ -503,7 +522,6 @@ body {
 					border-radius: var(--bdrs-2);
 					border: 1px solid var(--hsl-gray-90);
 					background: var(--bg-light);
-					box-shadow: 0 6px 12px -6px color-mix(in srgb, var(--hsl-gray-50), transparent 80%);
 					&.open-box {
 						display: block;
 					}
