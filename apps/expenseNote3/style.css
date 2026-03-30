@@ -20,15 +20,15 @@
 	--hiepdeep-border-button-hover: hsl(200deg, 10%, 85%);
 	--hiepdeep-background-button-active: hsl(200deg, 10%, 85%);
 	--hiepdeep-border-button-active: hsl(200deg, 10%, 80%);
-	--hiepdeep-gray-level-1: hsl(200deg, 10%, 10%);
-	--hiepdeep-gray-level-2: hsl(200deg, 10%, 20%);
-	--hiepdeep-gray-level-3: hsl(200deg, 10%, 30%);
-	--hiepdeep-gray-level-4: hsl(200deg, 10%, 40%);
-	--hiepdeep-gray-level-5: hsl(200deg, 10%, 50%);
-	--hiepdeep-gray-level-6: hsl(200deg, 10%, 60%);
-	--hiepdeep-gray-level-7: hsl(200deg, 10%, 70%);
-	--hiepdeep-gray-level-8: hsl(200deg, 10%, 80%);
-	--hiepdeep-gray-level-9: hsl(200deg, 10%, 90%);
+	--hiepdeep-gray-1: hsl(200deg, 10%, 10%);
+	--hiepdeep-gray-2: hsl(200deg, 10%, 20%);
+	--hiepdeep-gray-3: hsl(200deg, 10%, 30%);
+	--hiepdeep-gray-4: hsl(200deg, 10%, 40%);
+	--hiepdeep-gray-5: hsl(200deg, 10%, 50%);
+	--hiepdeep-gray-6: hsl(200deg, 10%, 60%);
+	--hiepdeep-gray-7: hsl(200deg, 10%, 70%);
+	--hiepdeep-gray-8: hsl(200deg, 10%, 80%);
+	--hiepdeep-gray-9: hsl(200deg, 10%, 90%);
 	--hiepdeep-red-1: hsl(10deg, 60%, 10%);
 	--hiepdeep-red-2: hsl(10deg, 60%, 20%);
 	--hiepdeep-red-3: hsl(10deg, 60%, 30%);
@@ -65,13 +65,13 @@
 	--hiepdeep-yellow-7: hsl(50deg, 80%, 70%);
 	--hiepdeep-yellow-8: hsl(50deg, 80%, 80%);
 	--hiepdeep-yellow-9: hsl(50deg, 80%, 90%);
-	--hiepdeep-fontsize-level-1: 16px;
-	--hiepdeep-fontsize-level-2: 14px;
-	--hiepdeep-fontsize-level-3: 12px;
-	--hiepdeep-radius-level-1: 16px;
-	--hiepdeep-radius-level-2: 8px;
-	--hiepdeep-radius-level-3: 4px;
-	--hiepdeep-radius-level-4: 2px;
+	--hiepdeep-fontsize-1: 16px;
+	--hiepdeep-fontsize-2: 14px;
+	--hiepdeep-fontsize-3: 12px;
+	--hiepdeep-radius-1: 16px;
+	--hiepdeep-radius-2: 8px;
+	--hiepdeep-radius-3: 4px;
+	--hiepdeep-radius-4: 2px;
 }
 
 body {
@@ -299,7 +299,7 @@ body {
 			padding: 12px;
 			background: var(--hiepdeep-background-item);
 			border: 1px solid var(--hiepdeep-border-item);
-			border-radius: var(--hiepdeep-radius-level-2);
+			border-radius: var(--hiepdeep-radius-2);
 			#form {
 				width: 100%;
 				display: flex;
@@ -316,30 +316,30 @@ body {
 						gap: 12px;
 						width: 100%;
 						border: 1px solid var(--hiepdeep-border-item);
-						border-radius: var(--hiepdeep-radius-level-3);
+						border-radius: var(--hiepdeep-radius-3);
 						padding: 12px;
 						cursor: pointer;
 						span {
-							color: var(--hiepdeep-gray-level-1);
+							color: var(--hiepdeep-gray-1);
 						}
 					}
 				}
 				input[type="text"], input[type="tel"] {
 					padding: 0 12px;
 					height: 46px;
-					color: var(--hiepdeep-gray-level-1);
+					color: var(--hiepdeep-gray-1);
 					background: transparent;
 					border: 1px solid var(--hiepdeep-border-item);
-					border-radius: var(--hiepdeep-radius-level-3);
+					border-radius: var(--hiepdeep-radius-3);
 					&::placeholder {
-						color: var(--hiepdeep-gray-level-7);
+						color: var(--hiepdeep-gray-7);
 					}
 				}
 				input[type="radio"] {
 					-webkit-appearance: none;
 					background: var(--hiepdeep-background-button);
 					border: 0;
-					border-radius: var(--hiepdeep-radius-level-3);
+					border-radius: var(--hiepdeep-radius-3);
 					width: 24px;
 					height: 24px;
 					position: relative;
@@ -349,7 +349,7 @@ body {
 						&:before {
 							content: "\e155";
 							font-family: "Material Symbols Rounded";
-							color: var(--hiepdeep-gray-level-9);
+							color: var(--hiepdeep-gray-9);
 							background: var(--hsl-blue-50);
 							position: absolute;
 							width: 100%;
@@ -362,9 +362,9 @@ body {
 				button[type="submit"] {
 					height: 46px;
 					font-weight: 500;
-					color: var(--hiepdeep-gray-level-9);
+					color: var(--hiepdeep-gray-9);
 					background: var(--hsl-blue-50);
-					border-radius: var(--hiepdeep-radius-level-3);
+					border-radius: var(--hiepdeep-radius-3);
 					border: 1px solid var(--hsl-blue-45);
 					&:hover {
 						background: var(--hsl-blue-45);
@@ -394,7 +394,7 @@ body {
 				padding: 0 12px;
 				background: var(--hiepdeep-background-item);
 				border: 1px solid var(--hiepdeep-border-item);
-				border-radius: var(--hiepdeep-radius-level-2);
+				border-radius: var(--hiepdeep-radius-2);
 				.logo {
 					display: flex;
 					align-items: center;
@@ -404,7 +404,7 @@ body {
 						height: calc(63px - 24px);
 					}
 					span {
-						color: var(--hiepdeep-gray-level-1);
+						color: var(--hiepdeep-gray-1);
 						font-size: 14px;
 						font-weight: 600;
 					}
@@ -414,9 +414,9 @@ body {
 					gap: 12px;
 					button {
 						height: 30px;
-						border-radius: var(--hiepdeep-radius-level-3);
+						border-radius: var(--hiepdeep-radius-3);
 						&#light-dark-more {
-							color: var(--hiepdeep-gray-level-1);
+							color: var(--hiepdeep-gray-1);
 							background: var(--hiepdeep-background-button);
 							border: 1px solid var(--hiepdeep-border-button);
 							aspect-ratio: 1;
@@ -437,7 +437,7 @@ body {
 							display: none;
 							padding: 0 12px;
 							font-weight: 500;
-							color: var(--hiepdeep-gray-level-9);
+							color: var(--hiepdeep-gray-9);
 							background: var(--hsl-blue-50);
 							border: 1px solid var(--hsl-blue-45);
 							&:hover {
@@ -464,7 +464,7 @@ body {
 					width: 100%;
 					background: var(--hiepdeep-background-item);
 					border: 1px solid var(--hiepdeep-border-item);
-					border-radius: var(--hiepdeep-radius-level-2);
+					border-radius: var(--hiepdeep-radius-2);
 					position: relative;
 					&:nth-child(1) {
 						height: 270px;
@@ -483,18 +483,18 @@ body {
 							padding-bottom: 12px;
 							border-bottom: 1px solid var(--hiepdeep-border-item);
 							h3 {
-								color: var(--hiepdeep-gray-level-1);
-								font-size: var(--hiepdeep-fontsize-level-2);
+								color: var(--hiepdeep-gray-1);
+								font-size: var(--hiepdeep-fontsize-2);
 								font-weight: 500;
 							}
 							button {
 								position: absolute;
 								top: 6px;
 								right: 12px;
-								color: var(--hiepdeep-gray-level-1);
+								color: var(--hiepdeep-gray-1);
 								background: var(--hiepdeep-background-button);
 								border: 1px solid var(--hiepdeep-border-button);
-								border-radius: var(--hiepdeep-radius-level-3);
+								border-radius: var(--hiepdeep-radius-3);
 								width: 30px;
 								aspect-ratio: 1;
 								display: grid;
@@ -519,7 +519,7 @@ body {
 								position: relative;
 								padding-left: calc(12px + 2px);
 								line-height: 24px;
-								color: var(--hiepdeep-gray-level-2);
+								color: var(--hiepdeep-gray-2);
 								&:before {
 									content: "";
 									position: absolute;
@@ -527,8 +527,8 @@ body {
 									height: 100%;
 									top: 0;
 									left: 0;
-									background: var(--hiepdeep-gray-level-9);
-									border-radius: var(--hiepdeep-radius-level-4);
+									background: var(--hiepdeep-gray-9);
+									border-radius: var(--hiepdeep-radius-4);
 								}
 								display: flex;
 								justify-content: space-between;
@@ -536,7 +536,7 @@ body {
 								strong {
 									font-weight: 500;
 									padding: 0 6px;
-									border-radius: var(--hiepdeep-radius-level-3);
+									border-radius: var(--hiepdeep-radius-3);
 									&.totals {
 										color: var(--hsl-blue-25);
 										background: var(--hsl-blue-85);
@@ -562,7 +562,7 @@ body {
 					padding: 12px;
 					background: var(--hiepdeep-background-item);
 					border: 1px solid var(--hiepdeep-border-item);
-					border-radius: var(--hiepdeep-radius-level-2);
+					border-radius: var(--hiepdeep-radius-2);
 					&.open-box {
 						display: block;
 					}
@@ -573,18 +573,18 @@ body {
 						padding-bottom: 12px;
 						border-bottom: 1px solid var(--hiepdeep-border-item);
 						h3 {
-							color: var(--hiepdeep-gray-level-1);
-							font-size: var(--hiepdeep-fontsize-level-2);
+							color: var(--hiepdeep-gray-1);
+							font-size: var(--hiepdeep-fontsize-2);
 							font-weight: 500;
 						}
 						button {
 							position: absolute;
 							top: 6px;
 							right: 12px;
-							color: var(--hiepdeep-gray-level-1);
+							color: var(--hiepdeep-gray-1);
 							background: var(--hiepdeep-background-button);
 							border: 1px solid var(--hiepdeep-border-button);
-							border-radius: var(--hiepdeep-radius-level-3);
+							border-radius: var(--hiepdeep-radius-3);
 							width: 30px;
 							aspect-ratio: 1;
 							display: grid;
@@ -613,7 +613,7 @@ body {
 							gap: 6px;
 							background: color-mix(in srgb, var(--hsl-gray-95), transparent 50%);
 							border: 1px solid var(--hiepdeep-border-item);
-							border-radius: var(--hiepdeep-radius-level-3);
+							border-radius: var(--hiepdeep-radius-3);
 							user-select: none;
 							cursor: pointer;
 							.item-row {
@@ -629,7 +629,7 @@ body {
 											font-size: 20px;
 										}
 										* {
-											color: var(--hiepdeep-gray-level-3);
+											color: var(--hiepdeep-gray-3);
 										}
 									}
 									&.status {
@@ -638,12 +638,12 @@ body {
 										color: var(--hsl-green-25);
 										background: var(--hsl-green-85);
 										border: 1px solid var(--hsl-green-75);
-										border-radius: var(--hiepdeep-radius-level-3);
+										border-radius: var(--hiepdeep-radius-3);
 									}
 									&.description, &.amount {
 										font-size: 13px;
 										font-weight: 500;
-										color: var(--hiepdeep-gray-level-2);
+										color: var(--hiepdeep-gray-2);
 										text-transform: lowercase;
 									}
 									&.amount {
@@ -657,9 +657,9 @@ body {
 								.item-row {
 									.item-col {
 										&.status {
-											color: var(--hiepdeep-gray-level-2);
-											border: 1px solid var(--hiepdeep-gray-level-7);
-											background: var(--hiepdeep-gray-level-9);
+											color: var(--hiepdeep-gray-2);
+											border: 1px solid var(--hiepdeep-gray-7);
+											background: var(--hiepdeep-gray-9);
 										}
 									}
 								}
