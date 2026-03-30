@@ -11,30 +11,35 @@
 }
 
 :root {
-	--hiepdeep-bg-body: hsl(210deg, 10%, 95%);
-	--hiepdeep-bg-item: hsl(0deg, 0%, 100%);
-	--hiepdeep-bd-item: hsl(210deg, 10%, 90%);
-	--hiepdeep-bg-btn: hsl(210deg, 10%, 95%);
-	--hiepdeep-bd-btn: hsl(210deg, 10%, 90%);
-	--hiepdeep-bg-btn-hover: hsl(210deg, 10%, 90%);
-	--hiepdeep-bd-btn-hover: hsl(210deg, 10%, 85%);
-	--hiepdeep-bg-btn-active: hsl(210deg, 10%, 85%);
-	--hiepdeep-bd-btn-active: hsl(210deg, 10%, 80%);
+	--hiepdeep-background-body: hsl(210deg, 10%, 95%);
+	--hiepdeep-background-item: hsl(0deg, 0%, 100%);
+	--hiepdeep-border-item: hsl(210deg, 10%, 90%);
+	--hiepdeep-background-button: hsl(210deg, 10%, 95%);
+	--hiepdeep-border-button: hsl(210deg, 10%, 90%);
+	--hiepdeep-background-button-hover: hsl(210deg, 10%, 90%);
+	--hiepdeep-border-button-hover: hsl(210deg, 10%, 85%);
+	--hiepdeep-background-button-active: hsl(210deg, 10%, 85%);
+	--hiepdeep-border-button-active: hsl(210deg, 10%, 80%);
 	--hiepdeep-text-level-1: hsl(210deg, 10%, 10%);
 	--hiepdeep-text-level-2: hsl(210deg, 10%, 20%);
 	--hiepdeep-text-level-3: hsl(210deg, 10%, 30%);
 	--hiepdeep-text-level-4: hsl(210deg, 10%, 40%);
-	--hiepdeep-fz-level-1: 16px;
-	--hiepdeep-fz-level-2: 14px;
-	--hiepdeep-fz-level-3: 12px;
-	--hiepdeep-bdrs-level-1: 16px;
-	--hiepdeep-bdrs-level-2: 8px;
-	--hiepdeep-bdrs-level-3: 4px;
-	--hiepdeep-bdrs-level-4: 2px;
+	--hiepdeep-text-level-5: hsl(210deg, 10%, 50%);
+	--hiepdeep-text-level-6: hsl(210deg, 10%, 60%);
+	--hiepdeep-text-level-7: hsl(210deg, 10%, 70%);
+	--hiepdeep-text-level-8: hsl(210deg, 10%, 80%);
+	--hiepdeep-text-level-9: hsl(210deg, 10%, 90%);
+	--hiepdeep-fontsize-level-1: 16px;
+	--hiepdeep-fontsize-level-2: 14px;
+	--hiepdeep-fontsize-level-3: 12px;
+	--hiepdeep-radius-level-1: 16px;
+	--hiepdeep-radius-level-2: 8px;
+	--hiepdeep-radius-level-3: 4px;
+	--hiepdeep-radius-level-4: 2px;
 }
 
 body {
-	background: var(--hiepdeep-bg-body);
+	background: var(--hiepdeep-background-body);
 	display: grid;
 	place-items: center;
 	height: 100dvh;
@@ -256,9 +261,9 @@ body {
 			width: 300px;
 			height: 100%;
 			padding: 12px;
-			border-radius: var(--bdrs-level-2);
-			border: 1px solid var(--bd-item);
-			background: var(--bg-item);
+			background: var(--hiepdeep-background-item);
+			border: 1px solid var(--hiepdeep-border-item);
+			border-radius: var(--hiepdeep-radius-level-2);
 			#form {
 				width: 100%;
 				display: flex;
@@ -274,31 +279,31 @@ body {
 						align-items: center;
 						gap: 12px;
 						width: 100%;
-						border: 1px solid var(--hsl-gray-90);
-						border-radius: var(--bdrs-3);
+						border: 1px solid var(--hiepdeep-border-item);
+						border-radius: var(--hiepdeep-radius-level-3);
 						padding: 12px;
 						cursor: pointer;
 						span {
-							color: var(--hsl-gray-10);
+							color: var(--hiepdeep-text-level-1);
 						}
 					}
 				}
 				input[type="text"], input[type="tel"] {
 					padding: 0 12px;
 					height: 46px;
+					color: var(--hiepdeep-text-level-1);
 					background: transparent;
-					color: var(--hsl-gray-10);
-					border: 1px solid var(--hsl-gray-90);
-					border-radius: var(--bdrs-3);
+					border: 1px solid var(--hiepdeep-border-item);
+					border-radius: var(--hiepdeep-radius-level-3);
 					&::placeholder {
-						color: var(--hsl-gray-70);
+						color: var(--hiepdeep-text-level-7);
 					}
 				}
 				input[type="radio"] {
 					-webkit-appearance: none;
-					background: var(--hsl-gray-95);
+					background: var(--hiepdeep-background-button);
 					border: 0;
-					border-radius: var(--bdrs-3);
+					border-radius: var(--hiepdeep-radius-level-3);
 					width: 24px;
 					height: 24px;
 					position: relative;
@@ -308,7 +313,7 @@ body {
 						&:before {
 							content: "\e155";
 							font-family: "Material Symbols Rounded";
-							color: var(--hsl-gray-95);
+							color: var(--hiepdeep-text-level-9);
 							background: var(--hsl-blue-50);
 							position: absolute;
 							width: 100%;
@@ -321,9 +326,9 @@ body {
 				button[type="submit"] {
 					height: 46px;
 					font-weight: 500;
-					color: var(--hsl-gray-95);
+					color: var(--hiepdeep-text-level-9);
 					background: var(--hsl-blue-50);
-					border-radius: var(--bdrs-3);
+					border-radius: var(--hiepdeep-radius-level-3);
 					border: 1px solid var(--hsl-blue-45);
 					&:hover {
 						background: var(--hsl-blue-45);
@@ -351,9 +356,9 @@ body {
 				align-items: center;
 				height: 63px;
 				padding: 0 12px;
-				border-radius: var(--bdrs-2);
-				border: 1px solid var(--hsl-gray-90);
-				background: var(--bg-light);
+				background: var(--hiepdeep-background-item);
+				border: 1px solid var(--hiepdeep-border-item);
+				border-radius: var(--hiepdeep-radius-level-2);
 				.logo {
 					display: flex;
 					align-items: center;
@@ -363,7 +368,7 @@ body {
 						height: calc(63px - 24px);
 					}
 					span {
-						color: var(--hsl-gray-10);
+						color: var(--hiepdeep-text-level-1);
 						font-size: 14px;
 						font-weight: 600;
 					}
@@ -373,30 +378,30 @@ body {
 					gap: 12px;
 					button {
 						height: 30px;
-						border-radius: var(--bdrs-3);
+						border-radius: var(--hiepdeep-radius-level-3);
 						&#light-dark-more {
-							color: var(--hsl-gray-10);
-							background: var(--hsl-gray-95);
-							border: 1px solid var(--hsl-gray-90);
+							color: var(--hiepdeep-text-level-1);
+							background: var(--hiepdeep-background-button);
+							border: 1px solid var(--hiepdeep-border-button);
 							aspect-ratio: 1;
 							display: grid;
 							place-items: center;
 							font-size: 24px;
 							font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 20;
 							&:hover {
-								background: var(--hsl-gray-90);
-								border: 1px solid var(--hsl-gray-85);
+								background: var(--hiepdeep-background-button-hover);
+								border: 1px solid var(--hiepdeep-border-button-hover);
 							}
 							&:active {
-								background: var(--hsl-gray-85);
-								border: 1px solid var(--hsl-gray-80);
+								background: var(--hiepdeep-background-button-active);
+								border: 1px solid var(--hiepdeep-border-button-active);
 							}
 						}
 						&#add-new {
 							display: none;
 							padding: 0 12px;
 							font-weight: 500;
-							color: var(--hsl-gray-95);
+							color: var(--hiepdeep-text-level-9);
 							background: var(--hsl-blue-50);
 							border: 1px solid var(--hsl-blue-45);
 							&:hover {
@@ -421,9 +426,9 @@ body {
 				position: relative;
 				.row {
 					width: 100%;
-					border-radius: var(--bdrs-2);
-					border: 1px solid var(--hsl-gray-90);
-					background: var(--bg-light);
+					background: var(--hiepdeep-background-item);
+					border: 1px solid var(--hiepdeep-border-item);
+					border-radius: var(--hiepdeep-radius-level-2);
 					position: relative;
 					&:nth-child(1) {
 						height: 270px;
@@ -440,20 +445,20 @@ body {
 							justify-content: space-between;
 							align-items: center;
 							padding-bottom: 12px;
-							border-bottom: 1px solid var(--hsl-gray-90);
+							border-bottom: 1px solid var(--hiepdeep-border-item);
 							h3 {
-								color: var(--hsl-gray-10);
-								font-size: 14px;
+								color: var(--hiepdeep-text-level-1);
+								font-size: var(--hiepdeep-fontsize-level-2);
 								font-weight: 500;
 							}
 							button {
 								position: absolute;
 								top: 6px;
 								right: 12px;
-								color: var(--hsl-gray-10);
-								background: var(--hsl-gray-95);
-								border-radius: var(--bdrs-3);
-								border: 1px solid var(--hsl-gray-90);
+								color: var(--hiepdeep-text-level-1);
+								background: var(--hiepdeep-background-button);
+								border: 1px solid var(--hiepdeep-border-button);
+								border-radius: var(--hiepdeep-radius-level-3);
 								width: 30px;
 								aspect-ratio: 1;
 								display: grid;
@@ -461,12 +466,12 @@ body {
 								font-size: 24px;
 								font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 48;
 								&:hover {
-									background: var(--hsl-gray-90);
-									border: 1px solid var(--hsl-gray-85);
+									background: var(--hiepdeep-background-button-hover);
+									border: 1px solid var(--hiepdeep-border-button-hover);
 								}
 								&:active {
-									background: var(--hsl-gray-85);
-									border: 1px solid var(--hsl-gray-80);
+									background: var(--hiepdeep-background-button-active);
+									border: 1px solid var(--hiepdeep-border-button-active);
 								}
 							}
 						}
@@ -478,7 +483,7 @@ body {
 								position: relative;
 								padding-left: calc(12px + 2px);
 								line-height: 24px;
-								color: var(--hsl-gray-20);
+								color: var(--hiepdeep-text-level-2);
 								&:before {
 									content: "";
 									position: absolute;
@@ -486,8 +491,8 @@ body {
 									height: 100%;
 									top: 0;
 									left: 0;
-									background: var(--hsl-gray-80);
-									border-radius: var(--bdrs-4);
+									background: var(--hiepdeep-text-level-9);
+									border-radius: var(--hiepdeep-radius-level-4);
 								}
 								display: flex;
 								justify-content: space-between;
@@ -495,7 +500,7 @@ body {
 								strong {
 									font-weight: 500;
 									padding: 0 6px;
-									border-radius: var(--bdrs-3);
+									border-radius: var(--hiepdeep-radius-level-3);
 									&.totals {
 										color: var(--hsl-blue-25);
 										background: var(--hsl-blue-85);
@@ -519,9 +524,9 @@ body {
 					width: 100%;
 					height: calc(100dvh - 63px - 12px * 3);
 					padding: 12px;
-					border-radius: var(--bdrs-2);
-					border: 1px solid var(--hsl-gray-90);
-					background: var(--bg-light);
+					background: var(--hiepdeep-background-item);
+					border: 1px solid var(--hiepdeep-border-item);
+					border-radius: var(--hiepdeep-radius-level-2);
 					&.open-box {
 						display: block;
 					}
@@ -530,20 +535,20 @@ body {
 						justify-content: space-between;
 						align-items: center;
 						padding-bottom: 12px;
-						border-bottom: 1px solid var(--hsl-gray-90);
+						border-bottom: 1px solid var(--hiepdeep-border-item);
 						h3 {
-							color: var(--hsl-gray-10);
-							font-size: 14px;
+							color: var(--hiepdeep-text-level-1);
+							font-size: var(--hiepdeep-fontsize-level-2);
 							font-weight: 500;
 						}
 						button {
 							position: absolute;
 							top: 6px;
 							right: 12px;
-							color: var(--hsl-gray-10);
-							background: var(--hsl-gray-95);
-							border-radius: var(--bdrs-3);
-							border: 1px solid var(--hsl-gray-90);
+							color: var(--hiepdeep-text-level-1);
+							background: var(--hiepdeep-background-button);
+							border: 1px solid var(--hiepdeep-border-button);
+							border-radius: var(--hiepdeep-radius-level-3);
 							width: 30px;
 							aspect-ratio: 1;
 							display: grid;
@@ -551,12 +556,12 @@ body {
 							font-size: 24px;
 							font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 48;
 							&:hover {
-								background: var(--hsl-gray-90);
-								border: 1px solid var(--hsl-gray-85);
+								background: var(--hiepdeep-background-button-hover);
+								border: 1px solid var(--hiepdeep-border-button-hover);
 							}
 							&:active {
-								background: var(--hsl-gray-85);
-								border: 1px solid var(--hsl-gray-80);
+								background: var(--hiepdeep-background-button-active);
+								border: 1px solid var(--hiepdeep-border-button-active);
 							}
 						}
 					}
@@ -570,9 +575,9 @@ body {
 							display: flex;
 							flex-direction: column;
 							gap: 6px;
-							border-radius: var(--bdrs-3);
-							border: 1px solid var(--hsl-gray-90);
 							background: color-mix(in srgb, var(--hsl-gray-95), transparent 50%);
+							border: 1px solid var(--hiepdeep-border-item);
+							border-radius: var(--hiepdeep-radius-level-3);
 							user-select: none;
 							cursor: pointer;
 							.item-row {
@@ -588,21 +593,21 @@ body {
 											font-size: 20px;
 										}
 										* {
-											color: var(--hsl-gray-30);
+											color: var(--hiepdeep-text-level-3);
 										}
 									}
 									&.status {
 										padding: 0 6px;
 										line-height: 24px;
 										color: var(--hsl-green-25);
-										border-radius: var(--bdrs-3);
-										border: 1px solid var(--hsl-green-75);
 										background: var(--hsl-green-85);
+										border: 1px solid var(--hsl-green-75);
+										border-radius: var(--hiepdeep-radius-level-3);
 									}
 									&.description, &.amount {
 										font-size: 13px;
 										font-weight: 500;
-										color: var(--hsl-gray-20);
+										color: var(--hiepdeep-text-level-2);
 										text-transform: lowercase;
 									}
 									&.amount {
@@ -616,9 +621,9 @@ body {
 								.item-row {
 									.item-col {
 										&.status {
-											color: var(--hsl-gray-25);
-											border: 1px solid var(--hsl-gray-80);
-											background: var(--hsl-gray-85);
+											color: var(--hiepdeep-text-level-2);
+											border: 1px solid var(--hiepdeep-text-level-7);
+											background: var(--hiepdeep-text-level-9);
 										}
 									}
 								}
