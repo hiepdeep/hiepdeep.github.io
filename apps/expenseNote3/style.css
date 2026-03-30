@@ -29,7 +29,6 @@
 	--hiepdeep-gray-level-7: hsl(200deg, 10%, 70%);
 	--hiepdeep-gray-level-8: hsl(200deg, 10%, 80%);
 	--hiepdeep-gray-level-9: hsl(200deg, 10%, 90%);
-	
 	--hiepdeep-red-1: hsl(10deg, 60%, 10%);
 	--hiepdeep-red-2: hsl(10deg, 60%, 20%);
 	--hiepdeep-red-3: hsl(10deg, 60%, 30%);
@@ -39,7 +38,6 @@
 	--hiepdeep-red-7: hsl(10deg, 60%, 70%);
 	--hiepdeep-red-8: hsl(10deg, 60%, 80%);
 	--hiepdeep-red-9: hsl(10deg, 60%, 90%);
-
 	--hiepdeep-green-1: hsl(150deg, 50%, 10%);
 	--hiepdeep-green-2: hsl(150deg, 50%, 20%);
 	--hiepdeep-green-3: hsl(150deg, 50%, 30%);
@@ -49,7 +47,6 @@
 	--hiepdeep-green-7: hsl(150deg, 50%, 70%);
 	--hiepdeep-green-8: hsl(150deg, 50%, 80%);
 	--hiepdeep-green-9: hsl(150deg, 50%, 90%);
-
 	--hiepdeep-blue-1: hsl(200deg, 50%, 10%);
 	--hiepdeep-blue-2: hsl(200deg, 50%, 20%);
 	--hiepdeep-blue-3: hsl(200deg, 50%, 30%);
@@ -59,7 +56,6 @@
 	--hiepdeep-blue-7: hsl(200deg, 50%, 70%);
 	--hiepdeep-blue-8: hsl(200deg, 50%, 80%);
 	--hiepdeep-blue-9: hsl(200deg, 50%, 90%);
-
 	--hiepdeep-yellow-1: hsl(50deg, 80%, 10%);
 	--hiepdeep-yellow-2: hsl(50deg, 80%, 20%);
 	--hiepdeep-yellow-3: hsl(50deg, 80%, 30%);
@@ -69,7 +65,6 @@
 	--hiepdeep-yellow-7: hsl(50deg, 80%, 70%);
 	--hiepdeep-yellow-8: hsl(50deg, 80%, 80%);
 	--hiepdeep-yellow-9: hsl(50deg, 80%, 90%);
-	
 	--hiepdeep-fontsize-level-1: 16px;
 	--hiepdeep-fontsize-level-2: 14px;
 	--hiepdeep-fontsize-level-3: 12px;
