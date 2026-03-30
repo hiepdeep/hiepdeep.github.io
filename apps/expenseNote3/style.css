@@ -20,56 +20,55 @@
 	--hiepdeep-border-button-hover: hsl(200deg, 10%, 85%);
 	--hiepdeep-background-button-active: hsl(200deg, 10%, 85%);
 	--hiepdeep-border-button-active: hsl(200deg, 10%, 80%);
-	--hiepdeep-text-gray-level-1: hsl(200deg, 10%, 10%);
-	--hiepdeep-text-gray-level-2: hsl(200deg, 10%, 20%);
-	--hiepdeep-text-gray-level-3: hsl(200deg, 10%, 30%);
-	--hiepdeep-text-gray-level-4: hsl(200deg, 10%, 40%);
-	--hiepdeep-text-gray-level-5: hsl(200deg, 10%, 50%);
-	--hiepdeep-text-gray-level-6: hsl(200deg, 10%, 60%);
-	--hiepdeep-text-gray-level-7: hsl(200deg, 10%, 70%);
-	--hiepdeep-text-gray-level-8: hsl(200deg, 10%, 80%);
-	--hiepdeep-text-gray-level-9: hsl(200deg, 10%, 90%);
+	--hiepdeep-gray-level-1: hsl(200deg, 10%, 10%);
+	--hiepdeep-gray-level-2: hsl(200deg, 10%, 20%);
+	--hiepdeep-gray-level-3: hsl(200deg, 10%, 30%);
+	--hiepdeep-gray-level-4: hsl(200deg, 10%, 40%);
+	--hiepdeep-gray-level-5: hsl(200deg, 10%, 50%);
+	--hiepdeep-gray-level-6: hsl(200deg, 10%, 60%);
+	--hiepdeep-gray-level-7: hsl(200deg, 10%, 70%);
+	--hiepdeep-gray-level-8: hsl(200deg, 10%, 80%);
+	--hiepdeep-gray-level-9: hsl(200deg, 10%, 90%);
 	
+	--hiepdeep-red-1: hsl(10deg, 60%, 10%);
+	--hiepdeep-red-2: hsl(10deg, 60%, 20%);
+	--hiepdeep-red-3: hsl(10deg, 60%, 30%);
+	--hiepdeep-red-4: hsl(10deg, 60%, 40%);
+	--hiepdeep-red-5: hsl(10deg, 60%, 50%);
+	--hiepdeep-red-6: hsl(10deg, 60%, 60%);
+	--hiepdeep-red-7: hsl(10deg, 60%, 70%);
+	--hiepdeep-red-8: hsl(10deg, 60%, 80%);
+	--hiepdeep-red-9: hsl(10deg, 60%, 90%);
 
-	--hiepdeep-text-red-1: hsl(10deg, 60%, 10%);
-	--hiepdeep-text-red-2: hsl(10deg, 60%, 20%);
-	--hiepdeep-text-red-3: hsl(10deg, 60%, 30%);
-	--hiepdeep-text-red-4: hsl(10deg, 60%, 40%);
-	--hiepdeep-text-red-5: hsl(10deg, 60%, 50%);
-	--hiepdeep-text-red-6: hsl(10deg, 60%, 60%);
-	--hiepdeep-text-red-7: hsl(10deg, 60%, 70%);
-	--hiepdeep-text-red-8: hsl(10deg, 60%, 80%);
-	--hiepdeep-text-red-9: hsl(10deg, 60%, 90%);
+	--hiepdeep-green-1: hsl(150deg, 50%, 10%);
+	--hiepdeep-green-2: hsl(150deg, 50%, 20%);
+	--hiepdeep-green-3: hsl(150deg, 50%, 30%);
+	--hiepdeep-green-4: hsl(150deg, 50%, 40%);
+	--hiepdeep-green-5: hsl(150deg, 50%, 50%);
+	--hiepdeep-green-6: hsl(150deg, 50%, 60%);
+	--hiepdeep-green-7: hsl(150deg, 50%, 70%);
+	--hiepdeep-green-8: hsl(150deg, 50%, 80%);
+	--hiepdeep-green-9: hsl(150deg, 50%, 90%);
 
-	--hiepdeep-text-green-1: hsl(150deg, 50%, 10%);
-	--hiepdeep-text-green-2: hsl(150deg, 50%, 20%);
-	--hiepdeep-text-green-3: hsl(150deg, 50%, 30%);
-	--hiepdeep-text-green-4: hsl(150deg, 50%, 40%);
-	--hiepdeep-text-green-5: hsl(150deg, 50%, 50%);
-	--hiepdeep-text-green-6: hsl(150deg, 50%, 60%);
-	--hiepdeep-text-green-7: hsl(150deg, 50%, 70%);
-	--hiepdeep-text-green-8: hsl(150deg, 50%, 80%);
-	--hiepdeep-text-green-9: hsl(150deg, 50%, 90%);
-	
-	--hiepdeep-text-blue-1: hsl(200deg, 50%, 10%);
-	--hiepdeep-text-blue-2: hsl(200deg, 50%, 20%);
-	--hiepdeep-text-blue-3: hsl(200deg, 50%, 30%);
-	--hiepdeep-text-blue-4: hsl(200deg, 50%, 40%);
-	--hiepdeep-text-blue-5: hsl(200deg, 50%, 50%);
-	--hiepdeep-text-blue-6: hsl(200deg, 50%, 60%);
-	--hiepdeep-text-blue-7: hsl(200deg, 50%, 70%);
-	--hiepdeep-text-blue-8: hsl(200deg, 50%, 80%);
-	--hiepdeep-text-blue-9: hsl(200deg, 50%, 90%);
+	--hiepdeep-blue-1: hsl(200deg, 50%, 10%);
+	--hiepdeep-blue-2: hsl(200deg, 50%, 20%);
+	--hiepdeep-blue-3: hsl(200deg, 50%, 30%);
+	--hiepdeep-blue-4: hsl(200deg, 50%, 40%);
+	--hiepdeep-blue-5: hsl(200deg, 50%, 50%);
+	--hiepdeep-blue-6: hsl(200deg, 50%, 60%);
+	--hiepdeep-blue-7: hsl(200deg, 50%, 70%);
+	--hiepdeep-blue-8: hsl(200deg, 50%, 80%);
+	--hiepdeep-blue-9: hsl(200deg, 50%, 90%);
 
-	--hiepdeep-text-yellow-1: hsl(50deg, 80%, 10%);
-	--hiepdeep-text-yellow-2: hsl(50deg, 80%, 20%);
-	--hiepdeep-text-yellow-3: hsl(50deg, 80%, 30%);
-	--hiepdeep-text-yellow-4: hsl(50deg, 80%, 40%);
-	--hiepdeep-text-yellow-5: hsl(50deg, 80%, 50%);
-	--hiepdeep-text-yellow-6: hsl(50deg, 80%, 60%);
-	--hiepdeep-text-yellow-7: hsl(50deg, 80%, 70%);
-	--hiepdeep-text-yellow-8: hsl(50deg, 80%, 80%);
-	--hiepdeep-text-yellow-9: hsl(50deg, 80%, 90%);
+	--hiepdeep-yellow-1: hsl(50deg, 80%, 10%);
+	--hiepdeep-yellow-2: hsl(50deg, 80%, 20%);
+	--hiepdeep-yellow-3: hsl(50deg, 80%, 30%);
+	--hiepdeep-yellow-4: hsl(50deg, 80%, 40%);
+	--hiepdeep-yellow-5: hsl(50deg, 80%, 50%);
+	--hiepdeep-yellow-6: hsl(50deg, 80%, 60%);
+	--hiepdeep-yellow-7: hsl(50deg, 80%, 70%);
+	--hiepdeep-yellow-8: hsl(50deg, 80%, 80%);
+	--hiepdeep-yellow-9: hsl(50deg, 80%, 90%);
 	
 	--hiepdeep-fontsize-level-1: 16px;
 	--hiepdeep-fontsize-level-2: 14px;
@@ -326,19 +325,19 @@ body {
 						padding: 12px;
 						cursor: pointer;
 						span {
-							color: var(--hiepdeep-text-gray-level-1);
+							color: var(--hiepdeep-gray-level-1);
 						}
 					}
 				}
 				input[type="text"], input[type="tel"] {
 					padding: 0 12px;
 					height: 46px;
-					color: var(--hiepdeep-text-gray-level-1);
+					color: var(--hiepdeep-gray-level-1);
 					background: transparent;
 					border: 1px solid var(--hiepdeep-border-item);
 					border-radius: var(--hiepdeep-radius-level-3);
 					&::placeholder {
-						color: var(--hiepdeep-text-gray-level-7);
+						color: var(--hiepdeep-gray-level-7);
 					}
 				}
 				input[type="radio"] {
@@ -355,7 +354,7 @@ body {
 						&:before {
 							content: "\e155";
 							font-family: "Material Symbols Rounded";
-							color: var(--hiepdeep-text-gray-level-9);
+							color: var(--hiepdeep-gray-level-9);
 							background: var(--hsl-blue-50);
 							position: absolute;
 							width: 100%;
@@ -368,7 +367,7 @@ body {
 				button[type="submit"] {
 					height: 46px;
 					font-weight: 500;
-					color: var(--hiepdeep-text-gray-level-9);
+					color: var(--hiepdeep-gray-level-9);
 					background: var(--hsl-blue-50);
 					border-radius: var(--hiepdeep-radius-level-3);
 					border: 1px solid var(--hsl-blue-45);
@@ -410,7 +409,7 @@ body {
 						height: calc(63px - 24px);
 					}
 					span {
-						color: var(--hiepdeep-text-gray-level-1);
+						color: var(--hiepdeep-gray-level-1);
 						font-size: 14px;
 						font-weight: 600;
 					}
@@ -422,7 +421,7 @@ body {
 						height: 30px;
 						border-radius: var(--hiepdeep-radius-level-3);
 						&#light-dark-more {
-							color: var(--hiepdeep-text-gray-level-1);
+							color: var(--hiepdeep-gray-level-1);
 							background: var(--hiepdeep-background-button);
 							border: 1px solid var(--hiepdeep-border-button);
 							aspect-ratio: 1;
@@ -443,7 +442,7 @@ body {
 							display: none;
 							padding: 0 12px;
 							font-weight: 500;
-							color: var(--hiepdeep-text-gray-level-9);
+							color: var(--hiepdeep-gray-level-9);
 							background: var(--hsl-blue-50);
 							border: 1px solid var(--hsl-blue-45);
 							&:hover {
@@ -489,7 +488,7 @@ body {
 							padding-bottom: 12px;
 							border-bottom: 1px solid var(--hiepdeep-border-item);
 							h3 {
-								color: var(--hiepdeep-text-gray-level-1);
+								color: var(--hiepdeep-gray-level-1);
 								font-size: var(--hiepdeep-fontsize-level-2);
 								font-weight: 500;
 							}
@@ -497,7 +496,7 @@ body {
 								position: absolute;
 								top: 6px;
 								right: 12px;
-								color: var(--hiepdeep-text-gray-level-1);
+								color: var(--hiepdeep-gray-level-1);
 								background: var(--hiepdeep-background-button);
 								border: 1px solid var(--hiepdeep-border-button);
 								border-radius: var(--hiepdeep-radius-level-3);
@@ -525,7 +524,7 @@ body {
 								position: relative;
 								padding-left: calc(12px + 2px);
 								line-height: 24px;
-								color: var(--hiepdeep-text-gray-level-2);
+								color: var(--hiepdeep-gray-level-2);
 								&:before {
 									content: "";
 									position: absolute;
@@ -533,7 +532,7 @@ body {
 									height: 100%;
 									top: 0;
 									left: 0;
-									background: var(--hiepdeep-text-gray-level-9);
+									background: var(--hiepdeep-gray-level-9);
 									border-radius: var(--hiepdeep-radius-level-4);
 								}
 								display: flex;
@@ -579,7 +578,7 @@ body {
 						padding-bottom: 12px;
 						border-bottom: 1px solid var(--hiepdeep-border-item);
 						h3 {
-							color: var(--hiepdeep-text-gray-level-1);
+							color: var(--hiepdeep-gray-level-1);
 							font-size: var(--hiepdeep-fontsize-level-2);
 							font-weight: 500;
 						}
@@ -587,7 +586,7 @@ body {
 							position: absolute;
 							top: 6px;
 							right: 12px;
-							color: var(--hiepdeep-text-gray-level-1);
+							color: var(--hiepdeep-gray-level-1);
 							background: var(--hiepdeep-background-button);
 							border: 1px solid var(--hiepdeep-border-button);
 							border-radius: var(--hiepdeep-radius-level-3);
@@ -635,7 +634,7 @@ body {
 											font-size: 20px;
 										}
 										* {
-											color: var(--hiepdeep-text-gray-level-3);
+											color: var(--hiepdeep-gray-level-3);
 										}
 									}
 									&.status {
@@ -649,7 +648,7 @@ body {
 									&.description, &.amount {
 										font-size: 13px;
 										font-weight: 500;
-										color: var(--hiepdeep-text-gray-level-2);
+										color: var(--hiepdeep-gray-level-2);
 										text-transform: lowercase;
 									}
 									&.amount {
@@ -663,9 +662,9 @@ body {
 								.item-row {
 									.item-col {
 										&.status {
-											color: var(--hiepdeep-text-gray-level-2);
-											border: 1px solid var(--hiepdeep-text-gray-level-7);
-											background: var(--hiepdeep-text-gray-level-9);
+											color: var(--hiepdeep-gray-level-2);
+											border: 1px solid var(--hiepdeep-gray-level-7);
+											background: var(--hiepdeep-gray-level-9);
 										}
 									}
 								}
