@@ -29,6 +29,17 @@
 	--hiepdeep-text-level-7: hsl(200deg, 10%, 70%);
 	--hiepdeep-text-level-8: hsl(200deg, 10%, 80%);
 	--hiepdeep-text-level-9: hsl(200deg, 10%, 90%);
+	
+	--hiepdeep-text-blue-1: hsl(200deg, 50%, 10%);
+	--hiepdeep-text-blue-2: hsl(200deg, 50%, 20%);
+	--hiepdeep-text-blue-3: hsl(200deg, 50%, 30%);
+	--hiepdeep-text-blue-4: hsl(200deg, 50%, 40%);
+	--hiepdeep-text-blue-5: hsl(200deg, 50%, 50%);
+	--hiepdeep-text-blue-6: hsl(200deg, 50%, 60%);
+	--hiepdeep-text-blue-7: hsl(200deg, 50%, 70%);
+	--hiepdeep-text-blue-8: hsl(200deg, 50%, 80%);
+	--hiepdeep-text-blue-9: hsl(200deg, 50%, 90%);
+	
 	--hiepdeep-fontsize-level-1: 16px;
 	--hiepdeep-fontsize-level-2: 14px;
 	--hiepdeep-fontsize-level-3: 12px;
