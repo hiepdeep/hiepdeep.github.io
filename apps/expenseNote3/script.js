@@ -1,12 +1,12 @@
 console.clear();
 
-document.body.setAttribute("dark-mode", "true");
+// document.body.setAttribute("dark-mode", "true");
 
 const app = firebase.initializeApp({
 	databaseURL: "https://eimi-fukada-default-rtdb.firebaseio.com"
 });
 const database = firebase.database();
-const db = "so-chi-tieu-v2";
+const db = "so-chi-tieu";
 let allItems = [];
 let currentView = { person: null, type: null };
 
