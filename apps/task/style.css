@@ -232,13 +232,13 @@ body {
 					}
 					&.today {
 						font-weight: 700;
-						background: var(--hiepdeep-blue-8);
-						border-color: var(--hiepdeep-blue-7);
+						border-color: var(--hiepdeep-blue-6);
 						&:hover {
-							border-color: var(--hiepdeep-blue-5);
+							border-color: var(--hiepdeep-blue-4);
 						}
 						span {
 							color: var(--hiepdeep-blue-3);
+							text-decoration-line: underline;
 						}
 					}
 					.day {
