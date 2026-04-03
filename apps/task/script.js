@@ -6,63 +6,6 @@ const app = firebase.initializeApp({
 const database = firebase.database();
 const db = "task";
 
-const fbData = {
-	"2026": {
-		"04": {
-			"01": {
-				"task": {
-					"morning": 4,
-					"afternoon": 4
-				},
-				"overtime": {
-					"o150": 3,
-					"o200": 0
-				}
-			},
-			"02": {
-				"task": {
-					"morning": 4,
-					"afternoon": 4
-				},
-				"overtime": {
-					"o150": 3,
-					"o200": 0
-				}
-			},
-			"03": {
-				"task": {
-					"morning": 4,
-					"afternoon": 4
-				},
-				"overtime": {
-					"o150": 3,
-					"o200": 0
-				}
-			},
-			"04": {
-				"task": {
-					"morning": 4,
-					"afternoon": 4
-				},
-				"overtime": {
-					"o150": 0,
-					"o200": 0
-				}
-			},
-			"05": {
-				"task": {
-					"morning": 4,
-					"afternoon": 4
-				},
-				"overtime": {
-					"o150": 0,
-					"o200": 11
-				}
-			}
-		}
-	}
-};
-
 const dates = document.querySelector(".dates");
 const header = document.querySelector(".title");
 const nav = document.querySelectorAll("#prev, #next");
@@ -72,7 +15,9 @@ let date = new Date();
 let month = date.getMonth(); 
 let year = date.getFullYear();
 
-function renderCalendar() {
+async function renderCalendar() {
+	const snapshot = await database.ref(db).once("value");
+	const task_data = snapshot.val() || {};
     const start = new Date(year, month, 1).getDay();
     const endDate = new Date(year, month + 1, 0).getDate();
     const end = new Date(year, month, endDate).getDay();
@@ -85,7 +30,7 @@ function renderCalendar() {
     }
     for (let i = 1; i <= endDate; i++) {
         const dayKey = String(i).padStart(2, "0");
-        const dayData = fbData[yearKey] && fbData[yearKey][monthKey] ? fbData[yearKey][monthKey][dayKey] : null;
+        const dayData = task_data[yearKey] && task_data[yearKey][monthKey] ? task_data[yearKey][monthKey][dayKey] : null;
         let morningClass = "";
         let afternoonClass = "";
         let overtimeClass = "";
