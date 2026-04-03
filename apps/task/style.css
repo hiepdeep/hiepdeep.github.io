@@ -150,17 +150,17 @@ body {
 					border: 1px solid var(--hiepdeep-gray-8);
 					border-radius: var(--hiepdeep-radius-3);
 					&:hover {
-						border-color: var(--hiepdeep-gray-7);
+						border-color: var(--hiepdeep-gray-6);
 					}
 					&.old {
-						opacity: 0.1;
+						opacity: 0.3;
 					}
 					&.today {
 						font-weight: 700;
-						background: var(--hiepdeep-blue-9);
-						border: 1px solid var(--hiepdeep-blue-8);
+						background: var(--hiepdeep-blue-8);
+						border: 1px solid var(--hiepdeep-blue-7);
 						&:hover {
-							border-color: var(--hiepdeep-blue-7);
+							border-color: var(--hiepdeep-blue-5);
 						}
 					}
 					.day {
