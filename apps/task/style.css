@@ -162,6 +162,9 @@ body {
 						&:hover {
 							border-color: var(--hiepdeep-blue-5);
 						}
+						span {
+							color: var(--hiepdeep-blue-3);
+						}
 					}
 					.day {
 						font-size: var(--hiepdeep-fontsize-3);
