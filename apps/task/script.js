@@ -31,6 +31,7 @@ async function renderCalendar() {
     for (let i = 1; i <= endDate; i++) {
         const dayKey = String(i).padStart(2, "0");
         const dayData = task_data[yearKey] && task_data[yearKey][monthKey] ? task_data[yearKey][monthKey][dayKey] : null;
+		const isSunday = new Date(year, month, i).getDay() === 0 ? " sunday" : "";
         let morningClass = "";
         let afternoonClass = "";
         let overtimeClass = "";
@@ -43,7 +44,7 @@ async function renderCalendar() {
         }
         let isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? ' class="today"' : "";
         datesHtml += `
-            <li${isToday} ${overtime200Class}>
+            <li${isToday} ${isSunday} ${overtime200Class}>
                 <span class="day">${i}</span>
                 <div class="data-task">
                     <div class="process">
