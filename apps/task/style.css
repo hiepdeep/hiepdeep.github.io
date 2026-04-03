@@ -158,7 +158,7 @@ body {
 					&.today {
 						font-weight: 700;
 						background: var(--hiepdeep-blue-8);
-						border: 1px solid var(--hiepdeep-blue-7);
+						border-color: var(--hiepdeep-blue-7);
 						&:hover {
 							border-color: var(--hiepdeep-blue-5);
 						}
@@ -178,7 +178,6 @@ body {
 						grid-template-columns: repeat(11, 1fr);
 						grid-gap: 2px;
 						border-radius: var(--hiepdeep-radius-4);
-						overflow: hidden;
 						.process {
 							grid-column: span 8;
 							display: grid;
@@ -192,8 +191,8 @@ body {
 							}
 						}
 						.overtime {
-							background: var(--hiepdeep-gray-8);
 							grid-column: span 3;
+							background: var(--hiepdeep-gray-8);
 							&.attendance {
 								background: var(--hiepdeep-blue-4);
 							}
