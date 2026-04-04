@@ -342,9 +342,9 @@ body {
 				font-weight: 500;
 				padding: 0 6px;
 				font-family: "Space Mono", monospace;
-				color: var(--hiepdeep-red-3);
+				color: var(--hiepdeep-gray-3);
 				border-radius: var(--hiepdeep-radius-3);
-				background: var(--hiepdeep-red-9);
+				background: var(--hiepdeep-gray-9);
 			}
 		}
 	}
