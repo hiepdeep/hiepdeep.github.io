@@ -334,7 +334,7 @@ body {
 			&:before {
 				content: "";
 				position: absolute;
-				width: 2px;
+				width: 1px;
 				height: 100%;
 				bottom: 0;
 				left: 0;
