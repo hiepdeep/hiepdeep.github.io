@@ -1,5 +1,4 @@
 console.clear();
-
 const app = firebase.initializeApp({
 	databaseURL: "https://eimi-fukada-default-rtdb.firebaseio.com"
 });
@@ -10,9 +9,8 @@ const dates = document.querySelector(".dates");
 const header = document.querySelector(".title");
 const nav = document.querySelectorAll("#prev, #next");
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 let date = new Date();
-let month = date.getMonth(); 
+let month = date.getMonth();
 let year = date.getFullYear();
 
 async function renderCalendar() {
@@ -24,10 +22,13 @@ async function renderCalendar() {
 	const endDatePrev = new Date(year, month, 0).getDate();
 	const monthKey = String(month + 1).padStart(2, "0");
 	const yearKey = String(year);
-	let totalWorkHours = 0;
+	let totalDayShiftHours = 0;
+	let totalNightShiftHours = 0;
 	let totalLeaveHours = 0;
 	let totalO150 = 0;
 	let totalO200 = 0;
+	let totalO210 = 0;
+	let totalO270 = 0;
 	let countSunday = 0;
 	let datesHtml = "";
 	for (let i = start; i > 0; i--) {
@@ -45,13 +46,20 @@ async function renderCalendar() {
 		if (dayData) {
 			if (dayData.task.morning > 0) morningClass = "attendance";
 			if (dayData.task.afternoon > 0) afternoonClass = "attendance";
-			if (dayData.overtime.o150 > 0) overtimeClass = "attendance";
-			if (dayData.overtime.o200 > 0) overtime200Class = "o200";
-			totalWorkHours += (dayData.task.morning + dayData.task.afternoon);
+			if (dayData.overtime.o150 > 0 || dayData.overtime.o210 > 0) overtimeClass = "attendance";
+			if (dayData.overtime.o200 > 0 || dayData.overtime.o270 > 0) overtime200Class = "o200";
+			let dailyHours = dayData.task.morning + dayData.task.afternoon;
+			if (dayData.shift === "nightshift") {
+				totalNightShiftHours += dailyHours;
+			} else {
+				totalDayShiftHours += dailyHours;
+			}
 			if (dayData.task.morning === 0) totalLeaveHours += 4;
 			if (dayData.task.afternoon === 0) totalLeaveHours += 4;
-			totalO150 += dayData.overtime.o150;
-			totalO200 += dayData.overtime.o200;
+			totalO150 += dayData.overtime.o150 || 0;
+			totalO200 += dayData.overtime.o200 || 0;
+			totalO210 += dayData.overtime.o210 || 0;
+			totalO270 += dayData.overtime.o270 || 0;
 		}
 		let isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? ' class="today"' : "";
 		datesHtml += `
@@ -72,10 +80,13 @@ async function renderCalendar() {
 	}
 	dates.innerHTML = datesHtml;
 	header.textContent = `${months[month]} ${year}`;
-	document.getElementById("hours_in_dayshift").textContent = String(totalWorkHours).padStart(2, "0") + "/" + ((endDate - countSunday) * 8);
+	document.getElementById("hours_in_dayshift").textContent = String(totalDayShiftHours).padStart(2, "0") + "/" + ((endDate - countSunday) * 8);
+	document.getElementById("hours_in_nightshift").textContent = String(totalNightShiftHours).padStart(2, "0");
 	document.getElementById("half_in_month").textContent = String(totalLeaveHours).padStart(2, "0");
 	document.getElementById("hours_150").textContent = String(totalO150).padStart(2, "0");
 	document.getElementById("hours_200").textContent = String(totalO200).padStart(2, "0");
+	document.getElementById("hours_210").textContent = String(totalO210).padStart(2, "0");
+	document.getElementById("hours_270").textContent = String(totalO270).padStart(2, "0");
 }
 
 nav.forEach(btn => {
@@ -108,32 +119,39 @@ document.addEventListener("DOMContentLoaded", () => {
 		let timeMonth = String(getTime.getMonth() + 1).padStart(2, "0");
 		let timeDate = String(getTime.getDate()).padStart(2, "0");
 		let returnTime = `${timeYear}/${timeMonth}/${timeDate}`;
+		let dayOfWeek = getTime.getDay();
 		const data = {
 			task: {
 				morning: 4,
 				afternoon: 4
 			},
 			overtime: {
-				o150: 0, // +2
-				o200: 0, // +0.75
-				o210: 0, // +2
-				o270: 0  // +0.75
+				o150: 0,
+				o200: 0,
+				o210: 0,
+				o270: 0
 			},
 			shift: "dayshift"
 		};
 		if ($half_morning) data.task.morning = 0;
 		if ($half_afternoon) data.task.afternoon = 0;
-		if ($o150) data.overtime.o150 = 3;
-		if ($o200) {
-			data.task.morning = 0;
-			data.task.afternoon = 0;
-			data.overtime.o200 = 11;
-		}
 		if ($nightshift) {
 			data.shift = "nightshift";
 			if ($o150) {
-				data.overtime.o150 = 2;
-				data.overtime.o200 = 0.75;
+				if (dayOfWeek === 6) {
+					data.overtime.o210 = 2;
+					data.overtime.o270 = 0.75;
+				} else {
+					data.overtime.o150 = 2;
+					data.overtime.o200 = 0.75;
+				}
+			}
+		} else {
+			if ($o150) data.overtime.o150 = 3;
+			if ($o200) {
+				data.task.morning = 0;
+				data.task.afternoon = 0;
+				data.overtime.o200 = 11;
 			}
 		}
 		database.ref(`${db}/${returnTime}`).set(data).then(() => {
