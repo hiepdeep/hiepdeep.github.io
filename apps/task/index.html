@@ -29,6 +29,10 @@
 						<input type="checkbox" name="overtime200" id="overtime200" value="11">
 						<span class="name">Tăng ca Chủ nhật</span>
 					</label>
+					<label for="night-shift">
+						<input type="checkbox" name="night-shift" id="night-shift" value="true">
+						<span class="name">Ca đêm</span>
+					</label>
 				</div>
 				<button type="submit">Chấm công hôm nay</button>
 			</form>
@@ -54,7 +58,8 @@
 		</div>
 		<div class="return-data">
 			<div class="row">
-				<span class="txt">Số giờ làm việc (h): <strong id="hours_in_month"></strong></span>
+				<span class="txt">Số giờ làm việc ca ngày (h): <strong id="hours_in_dayshift"></strong></span>
+				<span class="txt">Số giờ làm việc ca đêm (h): <strong id="hours_in_nightshift"></strong></span>
 				<span class="txt">Số giờ nghỉ phép (h): <strong id="half_in_month"></strong></span>
 				<span class="txt">Tăng ca 150% (h): <strong id="hours_150"></strong></span>
 				<span class="txt">Tăng ca 200% (h): <strong id="hours_200"></strong></span>
