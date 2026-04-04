@@ -202,9 +202,6 @@ body {
 			display: grid;
 			grid-template-columns: repeat(7, 1fr);
 			grid-gap: 6px;
-			* {
-				color: var(--hiepdeep-gray-1);
-			}
 			&.days {
 				li {
 					font-size: var(--hiepdeep-fontsize-2);
@@ -230,22 +227,12 @@ body {
 					&.old {
 						opacity: 0.3;
 					}
-					&.today {
-						font-weight: 700;
-						border-color: var(--hiepdeep-blue-6);
-						&:hover {
-							border-color: var(--hiepdeep-blue-4);
-						}
-						span {
-							color: var(--hiepdeep-blue-3);
-							text-decoration-line: underline;
-						}
-					}
 					.day {
 						font-size: var(--hiepdeep-fontsize-3);
+						color: var(--hiepdeep-gray-2);
 						display: block;
 						text-align: right;
-						font-family: "Space Mono", monospace;
+						font-family: "IBM Plex Mono", monospace;
 					}
 					.data-task {
 						width: 100%;
@@ -270,13 +257,11 @@ body {
 						.overtime {
 							grid-column: span 3;
 							background: var(--hiepdeep-gray-9);
-							&.attendance {
+							&.overtime1 {
 								background: var(--hiepdeep-blue-4);
 							}
 						}
-					}
-					&[o200] {
-						.data-task {
+						&[overtime2] {
 							.process {
 								.half-day {
 									background: var(--hiepdeep-yellow-4);
@@ -287,17 +272,35 @@ body {
 							}
 						}
 					}
+					&[today] {
+						border-color: var(--hiepdeep-blue-6);
+						&:hover {
+							border-color: var(--hiepdeep-blue-4);
+						}
+						span {
+							color: var(--hiepdeep-blue-3);
+							text-decoration-line: underline;
+						}
+					}
 					&[sunday] {
+						span {
+							font-weight: 600;
+						}
+					}
+					&[ns] {
 						position: relative;
 						&:before {
-							content: "";
+							content: "\f174";
+							font-family: "Material Symbols Rounded";
+							font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 48;
+							color: var(--hiepdeep-gray-8);
 							position: absolute;
-							background: var(--hiepdeep-gray-8);
-							width: 4px;
-							height: 4px;
-							border-radius: 50%;
-							top: 6px;
 							left: 6px;
+							top: 0;
+							height: calc(100% - 6px * 3);
+							font-size: 24px;
+							display: grid;
+							place-items: center;
 						}
 					}
 				}
@@ -342,7 +345,7 @@ body {
 			strong {
 				font-weight: 500;
 				padding: 0 6px;
-				font-family: "Space Mono", monospace;
+				font-family: "IBM Plex Mono", monospace;
 				color: var(--hiepdeep-gray-3);
 				background: var(--hiepdeep-gray-9);
 				border: 1px solid var(--hiepdeep-gray-8);
