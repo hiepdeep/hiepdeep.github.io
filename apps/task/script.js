@@ -56,8 +56,8 @@ async function renderCalendar() {
 			} else {
 				totalDayShiftHours += dailyHours;
 			}
-			if (dayData.task.morning === 0) totalLeaveHours += 4;
-			if (dayData.task.afternoon === 0) totalLeaveHours += 4;
+			if (!isSunday && dayData.task.morning === 0) totalLeaveHours += 4;
+			if (!isSunday && dayData.task.afternoon === 0) totalLeaveHours += 4;
 			totalO150 += dayData.overtime.o150 || 0;
 			totalO200 += dayData.overtime.o200 || 0;
 			totalO210 += dayData.overtime.o210 || 0;
@@ -82,7 +82,7 @@ async function renderCalendar() {
 	}
 	dates.innerHTML = datesHtml;
 	header.textContent = `${months[month]} ${year}`;
-	document.getElementById("hours_in_dayshift").textContent = totalDayShiftHours + "/" + ((endDate - countSunday) * 8);
+	document.getElementById("hours_in_dayshift").textContent = totalDayShiftHours;
 	document.getElementById("hours_in_nightshift").textContent = totalNightShiftHours;
 	document.getElementById("half_in_month").textContent = totalLeaveHours;
 	document.getElementById("hours_150").textContent = totalO150;
