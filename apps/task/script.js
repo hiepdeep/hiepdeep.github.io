@@ -72,7 +72,7 @@ async function renderCalendar() {
 	}
 	dates.innerHTML = datesHtml;
 	header.textContent = `${months[month]} ${year}`;
-	document.getElementById("hours_in_month").textContent = String(totalWorkHours).padStart(2, "0") + "/" + ((endDate - countSunday) * 8);
+	document.getElementById("hours_in_dayshift").textContent = String(totalWorkHours).padStart(2, "0") + "/" + ((endDate - countSunday) * 8);
 	document.getElementById("half_in_month").textContent = String(totalLeaveHours).padStart(2, "0");
 	document.getElementById("hours_150").textContent = String(totalO150).padStart(2, "0");
 	document.getElementById("hours_200").textContent = String(totalO200).padStart(2, "0");
@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const $half_afternoon = document.forms["form"]["half-afternoon"].checked;
 		const $o150 = document.forms["form"]["overtime150"].checked;
 		const $o200 = document.forms["form"]["overtime200"].checked;
+		const $nightshift = document.forms["form"]["night-shift"].checked;
 		let getTime = new Date();
 		let timeYear = String(getTime.getFullYear());
 		let timeMonth = String(getTime.getMonth() + 1).padStart(2, "0");
@@ -113,9 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
 				afternoon: 4
 			},
 			overtime: {
-				o150: 0,
-				o200: 0
-			}
+				o150: 0, // +2
+				o200: 0, // +0.75
+				o210: 0, // +2
+				o270: 0  // +0.75
+			},
+			shift: "dayshift"
 		};
 		if ($half_morning) data.task.morning = 0;
 		if ($half_afternoon) data.task.afternoon = 0;
@@ -124,6 +128,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			data.task.morning = 0;
 			data.task.afternoon = 0;
 			data.overtime.o200 = 11;
+		}
+		if ($nightshift) {
+			data.shift = "nightshift";
+			if ($o150) {
+				data.overtime.o150 = 2;
+				data.overtime.o200 = 0.75;
+			}
 		}
 		database.ref(`${db}/${returnTime}`).set(data).then(() => {
 			alert("Đã chấm công ngày hôm nay.");
