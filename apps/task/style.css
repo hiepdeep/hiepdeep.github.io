@@ -355,6 +355,7 @@ body {
 				strong {
 					font-weight: 500;
 					padding: 0 6px;
+					font-family: "Space Mono", monospace;
 					color: var(--hiepdeep-red-3);
 					border-radius: var(--hiepdeep-radius-3);
 					background: var(--hiepdeep-red-9);
