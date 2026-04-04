@@ -148,7 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		} else {
 			if ($overtime_weekdays) data.overtime.o150 = 3;
-			if ($overtime_sunday) data.overtime.o200 = 11;
+			if ($overtime_sunday) {
+				data.task.morning = 0;
+				data.task.afternoon = 0;
+				data.overtime.o200 = 11;
+			}
 		}
 		database.ref(`${db}/${returnTime}`).set(data).then(() => {
 			alert("Đã chấm công ngày hôm nay.");
