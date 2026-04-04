@@ -111,8 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		event.preventDefault();
 		const $half_morning = document.forms["form"]["half-morning"].checked;
 		const $half_afternoon = document.forms["form"]["half-afternoon"].checked;
-		const $o150 = document.forms["form"]["overtime150"].checked;
-		const $o200 = document.forms["form"]["overtime200"].checked;
+		const $overtime_weekdays = document.forms["form"]["overtime_weekdays"].checked;
+		const $overtime_sunday = document.forms["form"]["overtime_sunday"].checked;
 		const $nightshift = document.forms["form"]["night-shift"].checked;
 		let getTime = new Date();
 		let timeYear = String(getTime.getFullYear());
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if ($half_afternoon) data.task.afternoon = 0;
 		if ($nightshift) {
 			data.shift = "nightshift";
-			if ($o150) {
+			if ($overtime_weekdays) {
 				if (dayOfWeek === 6) {
 					data.overtime.o210 = 2;
 					data.overtime.o270 = 0.75;
@@ -147,12 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 			}
 		} else {
-			if ($o150) data.overtime.o150 = 3;
-			if ($o200) {
-				data.task.morning = 0;
-				data.task.afternoon = 0;
-				data.overtime.o200 = 11;
-			}
+			if ($overtime_weekdays) data.overtime.o150 = 3;
+			if ($overtime_sunday) data.overtime.o200 = 11;
 		}
 		database.ref(`${db}/${returnTime}`).set(data).then(() => {
 			alert("Đã chấm công ngày hôm nay.");
