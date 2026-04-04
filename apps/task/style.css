@@ -157,6 +157,7 @@ body {
 .calendar {
 	width: 100%;
 	max-width: 800px;
+	height: 372px;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
@@ -344,6 +345,7 @@ body {
 			align-items: center;
 			strong {
 				font-weight: 500;
+				height: 26px;
 				padding: 0 6px;
 				font-family: "IBM Plex Mono", monospace;
 				color: var(--hiepdeep-gray-3);
