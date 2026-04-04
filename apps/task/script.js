@@ -41,16 +41,18 @@ async function renderCalendar() {
 		if (isSunday) countSunday++;
 		let morningClass = "";
 		let afternoonClass = "";
-		let overtimeClass = "";
-		let overtime200Class = "";
+		let overtime1 = "";
+		let overtime2 = "";
+		let nightshiftClass = "";
 		if (dayData) {
 			if (dayData.task.morning > 0) morningClass = "attendance";
 			if (dayData.task.afternoon > 0) afternoonClass = "attendance";
-			if (dayData.overtime.o150 > 0 || dayData.overtime.o210 > 0) overtimeClass = "attendance";
-			if (dayData.overtime.o200 > 0 || dayData.overtime.o270 > 0) overtime200Class = "o200";
+			if (dayData.overtime.o150 > 0 || dayData.overtime.o210 > 0) overtime1 = "overtime1";
+			if (dayData.overtime.o200 > 0 || dayData.overtime.o270 > 0) overtime2 = "overtime2";
 			let dailyHours = dayData.task.morning + dayData.task.afternoon;
 			if (dayData.shift === "nightshift") {
 				totalNightShiftHours += dailyHours;
+				nightshiftClass = "ns";
 			} else {
 				totalDayShiftHours += dailyHours;
 			}
@@ -61,16 +63,16 @@ async function renderCalendar() {
 			totalO210 += dayData.overtime.o210 || 0;
 			totalO270 += dayData.overtime.o270 || 0;
 		}
-		let isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? ' class="today"' : "";
+		let isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? "today" : "";
 		datesHtml += `
-			<li${isToday} ${isSunday} ${overtime200Class}>
+			<li ${isToday} ${isSunday} ${nightshiftClass}>
 				<span class="day">${String(i).padStart(2, "0")}</span>
-				<div class="data-task">
+				<div class="data-task" ${overtime2}>
 					<div class="process">
 						<span class="half-day off-half-morning ${morningClass}"></span>
 						<span class="half-day off-half-afternoon ${afternoonClass}"></span>
 					</div>
-					<span class="overtime ${overtimeClass}"></span>
+					<span class="overtime ${overtime1}"></span>
 				</div>
 			</li>
 		`;
@@ -80,13 +82,13 @@ async function renderCalendar() {
 	}
 	dates.innerHTML = datesHtml;
 	header.textContent = `${months[month]} ${year}`;
-	document.getElementById("hours_in_dayshift").textContent = String(totalDayShiftHours).padStart(2, "0") + "/" + ((endDate - countSunday) * 8);
-	document.getElementById("hours_in_nightshift").textContent = String(totalNightShiftHours).padStart(2, "0");
-	document.getElementById("half_in_month").textContent = String(totalLeaveHours).padStart(2, "0");
-	document.getElementById("hours_150").textContent = String(totalO150).padStart(2, "0");
-	document.getElementById("hours_200").textContent = String(totalO200).padStart(2, "0");
-	document.getElementById("hours_210").textContent = String(totalO210).padStart(2, "0");
-	document.getElementById("hours_270").textContent = String(totalO270).padStart(2, "0");
+	document.getElementById("hours_in_dayshift").textContent = totalDayShiftHours + "/" + ((endDate - countSunday) * 8);
+	document.getElementById("hours_in_nightshift").textContent = totalNightShiftHours;
+	document.getElementById("half_in_month").textContent = totalLeaveHours;
+	document.getElementById("hours_150").textContent = totalO150;
+	document.getElementById("hours_200").textContent = totalO200;
+	document.getElementById("hours_210").textContent = totalO210;
+	document.getElementById("hours_270").textContent = totalO270;
 }
 
 nav.forEach(btn => {
@@ -102,8 +104,6 @@ nav.forEach(btn => {
 		renderCalendar();
 	});
 });
-
-renderCalendar();
 
 document.addEventListener("DOMContentLoaded", () => {
 	renderCalendar();
