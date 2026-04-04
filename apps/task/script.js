@@ -24,6 +24,11 @@ async function renderCalendar() {
 	const endDatePrev = new Date(year, month, 0).getDate();
 	const monthKey = String(month + 1).padStart(2, "0");
 	const yearKey = String(year);
+	let totalWorkHours = 0;
+	let totalLeaveHours = 0;
+	let totalO150 = 0;
+	let totalO200 = 0;
+	let countSunday = 0;
 	let datesHtml = "";
 	for (let i = start; i > 0; i--) {
 		datesHtml += `<li class="old"><span class="day">${endDatePrev - i + 1}</span></li>`;
@@ -32,6 +37,7 @@ async function renderCalendar() {
 		const dayKey = String(i).padStart(2, "0");
 		const dayData = task_data[yearKey] && task_data[yearKey][monthKey] ? task_data[yearKey][monthKey][dayKey] : null;
 		const isSunday = new Date(year, month, i).getDay() === 0 ? " sunday" : "";
+		if (isSunday) countSunday++;
 		let morningClass = "";
 		let afternoonClass = "";
 		let overtimeClass = "";
@@ -41,6 +47,11 @@ async function renderCalendar() {
 			if (dayData.task.afternoon > 0) afternoonClass = "attendance";
 			if (dayData.overtime.o150 > 0) overtimeClass = "attendance";
 			if (dayData.overtime.o200 > 0) overtime200Class = "o200";
+			totalWorkHours += (dayData.task.morning + dayData.task.afternoon);
+			if (dayData.task.morning === 0) totalLeaveHours += 4;
+			if (dayData.task.afternoon === 0) totalLeaveHours += 4;
+			totalO150 += dayData.overtime.o150;
+			totalO200 += dayData.overtime.o200;
 		}
 		let isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? ' class="today"' : "";
 		datesHtml += `
@@ -61,6 +72,10 @@ async function renderCalendar() {
 	}
 	dates.innerHTML = datesHtml;
 	header.textContent = `${months[month]} ${year}`;
+	document.getElementById("hours_in_month").textContent = String(totalWorkHours).padStart(2, "0") + "/" + ((endDate - countSunday) * 8);
+	document.getElementById("half_in_month").textContent = String(totalLeaveHours).padStart(2, "0");
+	document.getElementById("hours_150").textContent = String(totalO150).padStart(2, "0");
+	document.getElementById("hours_200").textContent = String(totalO200).padStart(2, "0");
 }
 
 nav.forEach(btn => {
@@ -105,7 +120,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		if ($half_morning) data.task.morning = 0;
 		if ($half_afternoon) data.task.afternoon = 0;
 		if ($o150) data.overtime.o150 = 3;
-		if ($o200) data.overtime.o200 = 11;
+		if ($o200) {
+			data.task.morning = 0;
+			data.task.afternoon = 0;
+			data.overtime.o200 = 11;
+		}
 		database.ref(`${db}/${returnTime}`).set(data).then(() => {
 			alert("Đã chấm công ngày hôm nay.");
 			document.forms["form"].reset();
