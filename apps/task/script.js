@@ -111,8 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		event.preventDefault();
 		const $half_morning = document.forms["form"]["half-morning"].checked;
 		const $half_afternoon = document.forms["form"]["half-afternoon"].checked;
-		const $overtime_weekdays = document.forms["form"]["overtime_weekdays"].checked;
-		const $overtime_sunday = document.forms["form"]["overtime_sunday"].checked;
+		const $overtime = document.forms["form"]["overtime"].checked;
 		const $nightshift = document.forms["form"]["night-shift"].checked;
 		let getTime = new Date();
 		let timeYear = String(getTime.getFullYear());
@@ -137,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if ($half_afternoon) data.task.afternoon = 0;
 		if ($nightshift) {
 			data.shift = "nightshift";
-			if ($overtime_weekdays) {
+			if ($overtime) {
 				if (dayOfWeek === 6) {
 					data.overtime.o210 = 2;
 					data.overtime.o270 = 0.75;
@@ -147,11 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 			}
 		} else {
-			if ($overtime_weekdays) data.overtime.o150 = 3;
-			if ($overtime_sunday) {
-				data.task.morning = 0;
-				data.task.afternoon = 0;
-				data.overtime.o200 = 11;
+			if ($overtime) {
+				if (dayOfWeek === 0) {
+					data.task.morning = 0;
+					data.task.afternoon = 0;
+					data.overtime.o200 = 11;
+				} else {
+					data.overtime.o150 = 3;
+				}
 			}
 		}
 		database.ref(`${db}/${returnTime}`).set(data).then(() => {
