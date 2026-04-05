@@ -99,7 +99,7 @@ body {
 			position: relative;
 			.gr-checkbox {
 				display: grid;
-				grid-template-columns: repeat(5, 1fr);
+				grid-template-columns: repeat(4, 1fr);
 				grid-gap: 12px;
 				label {
 					display: flex;
