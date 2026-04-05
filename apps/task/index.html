@@ -10,61 +10,63 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div class="form">
-			<form action="" id="form">
-				<div class="gr-checkbox">
-					<label for="half-morning">
-						<input type="checkbox" name="half-morning" id="half-morning" value="4">
-						<span class="name">Nghỉ buổi sáng</span>
-					</label>
-					<label for="half-afternoon">
-						<input type="checkbox" name="half-afternoon" id="half-afternoon" value="4">
-						<span class="name">Nghỉ buổi chiều</span>
-					</label>
-					<label for="overtime_weekdays">
-						<input type="checkbox" name="overtime_weekdays" id="overtime_weekdays" value="3">
-						<span class="name">Tăng ca thường</span>
-					</label>
-					<label for="overtime_sunday">
-						<input type="checkbox" name="overtime_sunday" id="overtime_sunday" value="11">
-						<span class="name">Tăng ca Chủ nhật</span>
-					</label>
-					<label for="night-shift">
-						<input type="checkbox" name="night-shift" id="night-shift" value="true">
-						<span class="name">Ca đêm</span>
-					</label>
+		<div class="box">
+			<div class="form">
+				<form action="" id="form">
+					<div class="gr-checkbox">
+						<label for="half-morning">
+							<input type="checkbox" name="half-morning" id="half-morning" value="4">
+							<span class="name">Nghỉ buổi sáng</span>
+						</label>
+						<label for="half-afternoon">
+							<input type="checkbox" name="half-afternoon" id="half-afternoon" value="4">
+							<span class="name">Nghỉ buổi chiều</span>
+						</label>
+						<label for="overtime_weekdays">
+							<input type="checkbox" name="overtime_weekdays" id="overtime_weekdays" value="3">
+							<span class="name">Tăng ca thường</span>
+						</label>
+						<label for="overtime_sunday">
+							<input type="checkbox" name="overtime_sunday" id="overtime_sunday" value="11">
+							<span class="name">Tăng ca Chủ nhật</span>
+						</label>
+						<label for="night-shift">
+							<input type="checkbox" name="night-shift" id="night-shift" value="true">
+							<span class="name">Ca đêm</span>
+						</label>
+					</div>
+					<button type="submit">Chấm công hôm nay</button>
+				</form>
+			</div>
+			<div class="calendar">
+				<div class="cal-head">
+					<button id="prev" class="material-symbols-rounded">chevron_backward</button>
+					<h3 class="title"></h3>
+					<button id="next" class="material-symbols-rounded">chevron_forward</button>
 				</div>
-				<button type="submit">Chấm công hôm nay</button>
-			</form>
-		</div>
-		<div class="calendar">
-			<div class="cal-head">
-				<button id="prev" class="material-symbols-rounded">chevron_backward</button>
-				<h3 class="title"></h3>
-				<button id="next" class="material-symbols-rounded">chevron_forward</button>
+				<div class="cal-body">
+					<ul class="days">
+						<li>Sun</li>
+						<li>Mon</li>
+						<li>Tue</li>
+						<li>Wed</li>
+						<li>Thu</li>
+						<li>Fri</li>
+						<li>Sat</li>
+					</ul>
+					<ul class="dates"></ul>
+				</div>
 			</div>
-			<div class="cal-body">
-				<ul class="days">
-					<li>Sun</li>
-					<li>Mon</li>
-					<li>Tue</li>
-					<li>Wed</li>
-					<li>Thu</li>
-					<li>Fri</li>
-					<li>Sat</li>
-				</ul>
-				<ul class="dates"></ul>
-			</div>
-		</div>
-		<div class="return-data">
-			<div class="row">
-				<span class="txt">Số giờ làm việc ca ngày (h): <strong id="hours_in_dayshift"></strong></span>
-				<span class="txt">Số giờ làm việc ca đêm (h): <strong id="hours_in_nightshift"></strong></span>
-				<span class="txt">Số giờ nghỉ phép (h): <strong id="half_in_month"></strong></span>
-				<span class="txt">Tăng ca 150% (h): <strong id="hours_150"></strong></span>
-				<span class="txt">Tăng ca 200% (h): <strong id="hours_200"></strong></span>
-				<span class="txt">Tăng ca 210% (h): <strong id="hours_210"></strong></span>
-				<span class="txt">Tăng ca 270% (h): <strong id="hours_270"></strong></span>
+			<div class="return-data">
+				<div class="row">
+					<span class="txt">Số giờ làm việc ca ngày (h): <strong id="hours_in_dayshift"></strong></span>
+					<span class="txt">Số giờ làm việc ca đêm (h): <strong id="hours_in_nightshift"></strong></span>
+					<span class="txt">Số giờ nghỉ phép (h): <strong id="half_in_month"></strong></span>
+					<span class="txt">Tăng ca 150% (h): <strong id="hours_150"></strong></span>
+					<span class="txt">Tăng ca 200% (h): <strong id="hours_200"></strong></span>
+					<span class="txt">Tăng ca 210% (h): <strong id="hours_210"></strong></span>
+					<span class="txt">Tăng ca 270% (h): <strong id="hours_270"></strong></span>
+				</div>
 			</div>
 		</div>
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
