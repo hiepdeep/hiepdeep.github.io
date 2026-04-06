@@ -71,20 +71,19 @@
 
 body {
 	background: var(--hiepdeep-background-body);
-	display: grid;
-	place-items: center;
-	gap: 12px;
 	padding: 12px;
 }
 
 .box {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
 	user-select: none;
 	.form {
 		width: 100%;
-		max-width: 800px;
 		padding: 12px;
 		background: var(--hiepdeep-background-item);
 		border: 1px solid var(--hiepdeep-border-item);
@@ -159,7 +158,6 @@ body {
 	}
 	.calendar {
 		width: 100%;
-		max-width: 800px;
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
@@ -331,7 +329,6 @@ body {
 	}
 	.return-data {
 		width: 100%;
-		max-width: 800px;
 		.row {
 			width: 100%;
 			background: var(--hiepdeep-background-item);
@@ -385,7 +382,7 @@ body {
 	}
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
 	.box {
 		.form {
 			form {
