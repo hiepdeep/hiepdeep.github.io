@@ -159,7 +159,6 @@ body {
 	.calendar {
 		width: 100%;
 		max-width: 800px;
-		min-height: 372px;
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
