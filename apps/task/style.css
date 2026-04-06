@@ -83,6 +83,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+	user-select: none;
 	.form {
 		width: 100%;
 		max-width: 800px;
@@ -226,9 +227,6 @@ body {
 						background: var(--hiepdeep-background-body);
 						border: 1px solid var(--hiepdeep-gray-9);
 						border-radius: var(--hiepdeep-radius-3);
-						&:hover {
-							border-color: var(--hiepdeep-gray-8);
-						}
 						&.old {
 							opacity: 0.3;
 						}
@@ -240,9 +238,7 @@ body {
 							font-family: "IBM Plex Mono", monospace;
 						}
 						&[sunday] {
-							span {
-								font-weight: 600;
-							}
+							border-color: var(--hiepdeep-gray-8);
 						}
 						&[today] {
 							border-color: var(--hiepdeep-blue-6);
@@ -250,6 +246,7 @@ body {
 								border-color: var(--hiepdeep-blue-4);
 							}
 							span {
+								font-weight: 600;
 								color: var(--hiepdeep-blue-3);
 								text-decoration-line: underline;
 							}
