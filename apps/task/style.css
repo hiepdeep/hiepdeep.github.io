@@ -386,10 +386,12 @@ body {
 }
 
 @media (max-width: 800px) {
-	.form {
-		form {
-			.gr-checkbox {
-				grid-template-columns: repeat(2, 1fr);
+	.box {
+		.form {
+			form {
+				.gr-checkbox {
+					grid-template-columns: repeat(2, 1fr);
+				}
 			}
 		}
 	}
