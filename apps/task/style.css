@@ -234,7 +234,7 @@ body {
 						}
 						.day {
 							font-size: var(--hiepdeep-fontsize-3);
-							color: var(--hiepdeep-gray-2);
+							color: var(--hiepdeep-gray-3);
 							display: block;
 							text-align: right;
 							font-family: "IBM Plex Mono", monospace;
