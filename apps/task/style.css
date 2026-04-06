@@ -263,6 +263,15 @@ body {
 								display: grid;
 								place-items: center;
 							}
+							.data-task {
+								.process {
+									.half-day {
+										&[work] {
+											background: var(--hiepdeep-green-4);
+										}
+									}
+								}
+							}
 						}
 						.data-task {
 							width: 100%;
@@ -307,11 +316,11 @@ body {
 							&[overtime_sunday_nightshift] {
 								.process {
 									.half-day {
-										background: var(--hiepdeep-yellow-2);
+										background: var(--hiepdeep-yellow-3);
 									}
 								}
 								.overtime {
-									background: var(--hiepdeep-yellow-2);
+									background: var(--hiepdeep-yellow-3);
 								}
 							}
 						}
