@@ -1,7 +1,5 @@
 * {
 	font-family: "Bai Jamjuree", sans-serif;
-	// font-size: 12px;
-	color: red;
 }
 
 :root {
@@ -143,8 +141,7 @@ body {
 			}
 			button[type="submit"] {
 				height: 38px;
-				font-weight: 500;
-				color: var(--hiepdeep-gray-9);
+				color: var(--hiepdeep-background-body);
 				background: var(--hsl-blue-50);
 				border-radius: var(--hiepdeep-radius-3);
 				border: 1px solid var(--hsl-blue-45);
