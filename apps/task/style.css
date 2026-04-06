@@ -108,7 +108,7 @@ body {
 					width: 100%;
 					border: 1px solid var(--hiepdeep-border-item);
 					border-radius: var(--hiepdeep-radius-3);
-					padding: 12px;
+					padding: 6px;
 					cursor: pointer;
 					input {
 						-webkit-appearance: none;
