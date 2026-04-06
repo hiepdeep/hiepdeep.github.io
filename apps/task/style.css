@@ -237,9 +237,6 @@ body {
 						}
 						&[today] {
 							border-color: var(--hiepdeep-blue-6);
-							&:hover {
-								border-color: var(--hiepdeep-blue-4);
-							}
 							span {
 								font-weight: 600;
 								color: var(--hiepdeep-blue-3);
