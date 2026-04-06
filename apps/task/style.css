@@ -110,6 +110,7 @@ body {
 					padding: 6px;
 					cursor: pointer;
 					input {
+						flex-shrink: 0;
 						-webkit-appearance: none;
 						background: var(--hiepdeep-background-button);
 						border: 0;
