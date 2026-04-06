@@ -95,18 +95,31 @@ async function renderCalendar() {
 	document.getElementById("hours_270").textContent = totalO270;
 }
 
+function updateMonth(delta) {
+	month += delta;
+	if (month < 0) {
+		month = 11;
+		year--;
+	} else if (month > 11) {
+		month = 0;
+		year++;
+	}
+	renderCalendar();
+}
+
 nav.forEach(btn => {
-	btn.addEventListener("click", e => {
-		month = (e.target.id === "next") ? month + 1 : month - 1;
-		if (month < 0) {
-			month = 11;
-			year--;
-		} else if (month > 11) {
-			month = 0;
-			year++;
-		}
-		renderCalendar();
-	});
+    btn.addEventListener("click", e => {
+        const delta = (btn.id === "next") ? 1 : -1;
+        updateMonth(delta);
+    });
+});
+
+window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+        updateMonth(-1);
+    } else if (e.key === "ArrowRight") {
+        updateMonth(1);
+    }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
