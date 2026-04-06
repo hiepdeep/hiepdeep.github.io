@@ -37,22 +37,26 @@ async function renderCalendar() {
 	for (let i = 1; i <= endDate; i++) {
 		const dayKey = String(i).padStart(2, "0");
 		const dayData = task_data[yearKey] && task_data[yearKey][monthKey] ? task_data[yearKey][monthKey][dayKey] : null;
-		const isSunday = new Date(year, month, i).getDay() === 0 ? " sunday" : "";
+		const isSunday = new Date(year, month, i).getDay() === 0 ? "sunday" : "";
 		if (isSunday) countSunday++;
-		let morningClass = "";
-		let afternoonClass = "";
-		let overtime1 = "";
-		let overtime2 = "";
-		let nightshiftClass = "";
+		let attr_morning = "";
+		let attr_afternoon = "";
+		let attr_nightshift = "";
+		let attr_overtime_dayshift = "";
+		let attr_overtime_nightshift = "";
+		let attr_overtime_sunday_dayshift = "";
+		let attr_overtime_sunday_nightshift = "";
 		if (dayData) {
-			if (dayData.task.morning > 0) morningClass = "attendance";
-			if (dayData.task.afternoon > 0) afternoonClass = "attendance";
-			if (dayData.overtime.o150 > 0 || dayData.overtime.o210 > 0) overtime1 = "overtime1";
-			if (dayData.overtime.o200 > 0 || dayData.overtime.o270 > 0) overtime2 = "overtime2";
+			if (dayData.task.morning > 0) attr_morning = "work";
+			if (dayData.task.afternoon > 0) attr_afternoon = "work";
+			if (!isSunday && dayData.shift === "dayshift" && dayData.overtime.o150 > 0) attr_overtime_dayshift = "overtime_dayshift";
+			if (isSunday && dayData.shift === "dayshift" && dayData.overtime.o200 > 0) attr_overtime_sunday_dayshift = "overtime_sunday_dayshift";
+			if (!isSunday && dayData.shift === "nightshift" && dayData.overtime.o150 > 0) attr_overtime_nightshift = "overtime_nightshift";
+			if (isSunday && dayData.shift === "nightshift" && dayData.overtime.o210 > 0) attr_overtime_sunday_nightshift = "overtime_sunday_nightshift";
 			let dailyHours = dayData.task.morning + dayData.task.afternoon;
 			if (dayData.shift === "nightshift") {
 				totalNightShiftHours += dailyHours;
-				nightshiftClass = "ns";
+				attr_nightshift = "ns";
 			} else {
 				totalDayShiftHours += dailyHours;
 			}
@@ -65,14 +69,14 @@ async function renderCalendar() {
 		}
 		let isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? "today" : "";
 		datesHtml += `
-			<li ${isToday} ${isSunday} ${nightshiftClass}>
+			<li ${isSunday} ${isToday} ${attr_nightshift}>
 				<span class="day">${String(i).padStart(2, "0")}</span>
-				<div class="data-task" ${overtime2}>
+				<div class="data-task" ${attr_overtime_sunday_dayshift} ${attr_overtime_sunday_nightshift}>
 					<div class="process">
-						<span class="half-day off-half-morning ${morningClass}"></span>
-						<span class="half-day off-half-afternoon ${afternoonClass}"></span>
+						<span class="half-day" ${attr_morning}></span>
+						<span class="half-day" ${attr_afternoon}></span>
 					</div>
-					<span class="overtime ${overtime1}"></span>
+					<span class="overtime" ${attr_overtime_dayshift} ${attr_overtime_nightshift}></span>
 				</div>
 			</li>
 		`;
@@ -109,19 +113,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	renderCalendar();
 	document.forms["form"].addEventListener("submit", async function(event) {
 		event.preventDefault();
-		// 1. Lấy giá trị từ Form
 		const isHalfMorning = document.forms["form"]["half-morning"].checked;
 		const isHalfAfternoon = document.forms["form"]["half-afternoon"].checked;
 		const isOvertime = document.forms["form"]["overtime"].checked;
 		const isNightShift = document.forms["form"]["night-shift"].checked;
-		// 2. Xử lý thời gian
 		let now = new Date();
 		let timeYear = now.getFullYear();
 		let timeMonth = String(now.getMonth() + 1).padStart(2, "0");
 		let timeDate = String(now.getDate()).padStart(2, "0");
 		let returnTime = `${timeYear}/${timeMonth}/${timeDate}`;
 		let dayOfWeek = now.getDay(); // 0: Chủ Nhật, 6: Thứ 7
-		// 3. Khởi tạo cấu trúc dữ liệu mặc định
 		const data = {
 			task: {
 				morning: 4,
@@ -166,7 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 			}
 		}
-		// 6. Đẩy dữ liệu lên Firebase
 		database.ref(`${db}/${returnTime}`).set(data).then(() => {
 			alert("Đã chấm công ngày hôm nay.");
 			document.forms["form"].reset();
