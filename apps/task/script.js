@@ -109,16 +109,19 @@ document.addEventListener("DOMContentLoaded", () => {
 	renderCalendar();
 	document.forms["form"].addEventListener("submit", async function(event) {
 		event.preventDefault();
-		const $half_morning = document.forms["form"]["half-morning"].checked;
-		const $half_afternoon = document.forms["form"]["half-afternoon"].checked;
-		const $overtime = document.forms["form"]["overtime"].checked;
-		const $nightshift = document.forms["form"]["night-shift"].checked;
-		let getTime = new Date();
-		let timeYear = String(getTime.getFullYear());
-		let timeMonth = String(getTime.getMonth() + 1).padStart(2, "0");
-		let timeDate = String(getTime.getDate()).padStart(2, "0");
+		// 1. Lấy giá trị từ Form
+		const isHalfMorning = document.forms["form"]["half-morning"].checked;
+		const isHalfAfternoon = document.forms["form"]["half-afternoon"].checked;
+		const isOvertime = document.forms["form"]["overtime"].checked;
+		const isNightShift = document.forms["form"]["night-shift"].checked;
+		// 2. Xử lý thời gian
+		let now = new Date();
+		let timeYear = now.getFullYear();
+		let timeMonth = String(now.getMonth() + 1).padStart(2, "0");
+		let timeDate = String(now.getDate()).padStart(2, "0");
 		let returnTime = `${timeYear}/${timeMonth}/${timeDate}`;
-		let dayOfWeek = getTime.getDay();
+		let dayOfWeek = now.getDay(); // 0: Chủ Nhật, 6: Thứ 7
+		// 3. Khởi tạo cấu trúc dữ liệu mặc định
 		const data = {
 			task: {
 				morning: 4,
@@ -130,39 +133,47 @@ document.addEventListener("DOMContentLoaded", () => {
 				o210: 0,
 				o270: 0
 			},
-			shift: "dayshift"
+			shift: isNightShift ? "nightshift" : "dayshift"
 		};
-		if ($half_morning) data.task.morning = 0;
-		if ($half_afternoon) data.task.afternoon = 0;
-		if ($nightshift) {
-			data.shift = "nightshift";
-			if ($overtime) {
+		// 4. Xử lý nghỉ nửa buổi (Chỉ áp dụng nếu không phải Chủ Nhật)
+		if (dayOfWeek !== 0) {
+			if (isHalfMorning) data.task.morning = 0;
+			if (isHalfAfternoon) data.task.afternoon = 0;
+		} else {
+			// Nếu là Chủ Nhật, mặc định giờ hành chính bằng 0
+			data.task.morning = 0;
+			data.task.afternoon = 0;
+		}
+		// 5. Logic tính toán Tăng ca (Overtime)
+		if (isOvertime) {
+			if (!isNightShift) {
+				// Ca ngày
+				if (dayOfWeek === 0) {
+					data.overtime.o200 = 11; // Tăng ca Chủ Nhật
+				} else {
+					data.overtime.o150 = 3; // Tăng ca ngày thường
+				}
+			} else {
+				// Ca đêm
 				if (dayOfWeek === 6) {
+					// Tăng ca đêm Thứ 7 (sang rạng sáng CN)
 					data.overtime.o210 = 2;
 					data.overtime.o270 = 0.75;
 				} else {
+					// Tăng ca đêm ngày thường
 					data.overtime.o150 = 2;
 					data.overtime.o200 = 0.75;
 				}
 			}
-		} else {
-			if ($overtime) {
-				if (dayOfWeek === 0) {
-					data.task.morning = 0;
-					data.task.afternoon = 0;
-					data.overtime.o200 = 11;
-				} else {
-					data.overtime.o150 = 3;
-				}
-			}
 		}
+		// 6. Đẩy dữ liệu lên Firebase
 		database.ref(`${db}/${returnTime}`).set(data).then(() => {
 			alert("Đã chấm công ngày hôm nay.");
 			document.forms["form"].reset();
 			renderCalendar();
 		}).catch((error) => {
 			alert("Lỗi khi gửi yêu cầu.");
-			console.error("Lỗi khi gửi yêu cầu:", error);
+			console.error("Chi tiết lỗi:", error);
 		});
 	});
 });
