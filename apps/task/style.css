@@ -395,3 +395,15 @@ body {
 		}
 	}
 }
+
+@media (max-width: 380px) {
+	.box {
+		.form {
+			form {
+				.gr-checkbox {
+					grid-template-columns: repeat(1, 1fr);
+				}
+			}
+		}
+	}
+}
