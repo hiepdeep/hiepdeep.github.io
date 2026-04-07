@@ -355,6 +355,11 @@ body {
 					background: var(--hiepdeep-gray-9);
 					border-radius: var(--hiepdeep-radius-4);
 				}
+				&:hover {
+					&:before {
+						background: var(--hiepdeep-gray-7);
+					}
+				}
 				&:nth-child(n+2) {
 					padding-top: 6px;
 					border-top: 1px solid var(--hiepdeep-border-item);
