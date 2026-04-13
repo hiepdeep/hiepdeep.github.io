@@ -30,6 +30,7 @@ async function renderCalendar() {
 	let totalO210 = 0;
 	let totalO270 = 0;
 	let countSunday = 0;
+	let countDaymonth = 0;
 	let datesHtml = "";
 	for (let i = start; i > 0; i--) {
 		datesHtml += `<li class="old"><span class="day">${endDatePrev - i + 1}</span></li>`;
@@ -39,6 +40,7 @@ async function renderCalendar() {
 		const dayData = task_data[yearKey] && task_data[yearKey][monthKey] ? task_data[yearKey][monthKey][dayKey] : null;
 		const isSunday = new Date(year, month, i).getDay() === 0 ? "sunday" : "";
 		if (isSunday) countSunday++;
+		if (!isSunday) countDaymonth++;
 		let attr_morning = "";
 		let attr_afternoon = "";
 		let attr_nightshift = "";
@@ -84,10 +86,10 @@ async function renderCalendar() {
 	for (let i = end; i < 6; i++) {
 		datesHtml += `<li class="old"><span class="day">${i - end + 1}</span></li>`;
 	}
-	dates.innerHTML = datesHtml;
 	header.textContent = `${months[month]} ${year}`;
-	document.getElementById("hours_in_dayshift").textContent = totalDayShiftHours;
-	document.getElementById("hours_in_nightshift").textContent = totalNightShiftHours;
+	dates.innerHTML = datesHtml;
+	document.getElementById("hours_in_dayshift").textContent = totalDayShiftHours + "/" + countDaymonth * 8;
+	document.getElementById("hours_in_nightshift").textContent = totalNightShiftHours + "/" + countDaymonth * 8;
 	document.getElementById("half_in_month").textContent = totalLeaveHours;
 	document.getElementById("hours_150").textContent = totalO150;
 	document.getElementById("hours_200").textContent = totalO200;
