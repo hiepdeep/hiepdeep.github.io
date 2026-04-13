@@ -1,0 +1,357 @@
+/* font-family: "Momo Trust Sans", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap");
+/* font-family: "Roboto", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* font-family: "Roboto Condensed", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+/* font-family: "Be Vietnam Pro", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* font-family: "Niramit", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Niramit:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+/* font-family: "Work Sans", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* font-family: "Bai Jamjuree", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+/* font-family: "Space Mono", monospace; */
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/* font-family: "JetBrains Mono", monospace; */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+/* font-family: "IBM Plex Mono", monospace; */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+/* font-family: "Itim", cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+/* font-family: "Inter", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&display=swap");
+/* font-family: "Quicksand", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+/* font-family: "National Park", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&display=swap");
+/* font-family: "Comfortaa", serif; */
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
+/* font-family: "Google Sans"; font-family: "Google Sans Display"; font-family: "Google Sans Text"; font-family: "Product Sans"; */
+@import url("https://fonts.googleapis.com/css2?family=Product+Sans&family=Google+Sans+Display:ital@0;1&family=Google+Sans_old:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&display=swap");
+/* font-family: "Playpen Sans", cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&amp;display=swap");
+/* font-family: "Noto Sans SC", serif; font-family: "Noto Serif SC", serif; */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Serif+SC:wght@200..900&display=swap");
+/* font-family: "Avenir Next"; */
+@import url("https://hiepdeep.netlify.app/library/font-family/avenirNext/font-face.css");
+/* font-family: "SVN Gilroy"; */
+@import url("https://hiepdeep.netlify.app/library/font-family/svnGilroy/font-face.css");
+/* font-family: "Material Icons"; */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+/*font-family: 'Material Icons Outlined';*/
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
+/*font-family: 'Material Icons Rounded';*/
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+/* font-family: "FontAwesome"; */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+/* font-family: "Font Awesome 5 Brands"; */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css");
+
+a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+	outline: none;
+	vertical-align: baseline;
+}
+
+:link, button {
+	text-decoration: none;
+	cursor: pointer;
+	user-select: none;
+}
+
+:link, :hover, :focus, :active, :visited {
+	outline: none;
+}
+
+/*::-moz-selection {color: #fff;background: #FFA07A;}::selection {color: #fff;background: #FFA07A;}*/
+/*::-webkit-scrollbar-track {background: #FFF;}::-webkit-scrollbar {width: 2px;height: 2px;}::-webkit-scrollbar-thumb {background: #322E2F;}*/
+
+:root {
+	--sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	--hue-saturation-gray: 200deg, 10%;
+	--hue-saturation-red: 10deg, 65%;
+	--hue-saturation-green: 150deg, 50%;
+	--hue-saturation-blue: 200deg, 70%;
+	--hue-saturation-yellow: 50deg, 75%;
+	--color-lv-1: hsl(200deg, 10%, 10%);
+	--color-lv-2: hsl(200deg, 10%, 20%);
+	--color-lv-3: hsl(200deg, 10%, 30%);
+	--color-lv-4: hsl(200deg, 10%, 40%);
+	--color-white: hsl(200deg, 10%, 95%);
+	--color-placeholder: hsl(200deg, 10%, 70%);
+	--fz-lv-1: 18px;
+	--fz-lv-2: 16px;
+	--fz-lv-3: 14px;
+	--fz-lv-4: 12px;
+	--bdrs-lv-1: 16px;
+	--bdrs-lv-2: 12px;
+	--bdrs-lv-3: 8px;
+	--bdrs-lv-4: 4px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	letter-spacing: 0.05em;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-font-smoothing: antialiased;
+}
+
+iframe {
+	width: 100%;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+}
+
+ol, ul, li {
+	list-style-type: none;
+}
+
+.material-symbols-rounded {
+	font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 24;
+}
+
+[btn-gray] {
+	color: hsl(var(--hue-saturation-gray), 90%);
+	background: hsl(var(--hue-saturation-gray), 50%);
+	border: 1px solid hsl(var(--hue-saturation-gray), 45%);
+	&:hover {
+		background: hsl(var(--hue-saturation-gray), 45%);
+		border-color: hsl(var(--hue-saturation-gray), 40%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-gray), 40%);
+		border-color: hsl(var(--hue-saturation-gray), 35%);
+	}
+}
+
+[btn-red] {
+	color: hsl(var(--hue-saturation-red), 90%);
+	background: hsl(var(--hue-saturation-red), 50%);
+	border: 1px solid hsl(var(--hue-saturation-red), 45%);
+	&:hover {
+		background: hsl(var(--hue-saturation-red), 45%);
+		border-color: hsl(var(--hue-saturation-red), 40%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-red), 40%);
+		border-color: hsl(var(--hue-saturation-red), 35%);
+	}
+}
+
+[btn-green] {
+	color: hsl(var(--hue-saturation-green), 90%);
+	background: hsl(var(--hue-saturation-green), 50%);
+	border: 1px solid hsl(var(--hue-saturation-green), 45%);
+	&:hover {
+		background: hsl(var(--hue-saturation-green), 45%);
+		border-color: hsl(var(--hue-saturation-green), 40%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-green), 40%);
+		border-color: hsl(var(--hue-saturation-green), 35%);
+	}
+}
+
+[btn-blue] {
+	color: hsl(var(--hue-saturation-blue), 90%);
+	background: hsl(var(--hue-saturation-blue), 50%);
+	border: 1px solid hsl(var(--hue-saturation-blue), 45%);
+	&:hover {
+		background: hsl(var(--hue-saturation-blue), 45%);
+		border-color: hsl(var(--hue-saturation-blue), 40%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-blue), 40%);
+		border-color: hsl(var(--hue-saturation-blue), 35%);
+	}
+}
+
+[btn-yellow] {
+	color: hsl(var(--hue-saturation-yellow), 90%);
+	background: hsl(var(--hue-saturation-yellow), 50%);
+	border: 1px solid hsl(var(--hue-saturation-yellow), 45%);
+	&:hover {
+		background: hsl(var(--hue-saturation-yellow), 45%);
+		border-color: hsl(var(--hue-saturation-yellow), 40%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-yellow), 40%);
+		border-color: hsl(var(--hue-saturation-yellow), 35%);
+	}
+}
+
+[btn-lightgray] {
+	color: hsl(var(--hue-saturation-gray), 40%);
+	background: hsl(var(--hue-saturation-gray), 95%);
+	border: 1px solid hsl(var(--hue-saturation-gray), 90%);
+	&:hover {
+		background: hsl(var(--hue-saturation-gray), 90%);
+		border-color: hsl(var(--hue-saturation-gray), 85%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-gray), 85%);
+		border-color: hsl(var(--hue-saturation-gray), 80%);
+	}
+}
+
+[btn-lightred] {
+	color: hsl(var(--hue-saturation-red), 40%);
+	background: hsl(var(--hue-saturation-red), 95%);
+	border: 1px solid hsl(var(--hue-saturation-red), 90%);
+	&:hover {
+		background: hsl(var(--hue-saturation-red), 90%);
+		border-color: hsl(var(--hue-saturation-red), 85%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-red), 85%);
+		border-color: hsl(var(--hue-saturation-red), 80%);
+	}
+}
+
+[btn-lightgreen] {
+	color: hsl(var(--hue-saturation-green), 40%);
+	background: hsl(var(--hue-saturation-green), 95%);
+	border: 1px solid hsl(var(--hue-saturation-green), 90%);
+	&:hover {
+		background: hsl(var(--hue-saturation-green), 90%);
+		border-color: hsl(var(--hue-saturation-green), 85%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-green), 85%);
+		border-color: hsl(var(--hue-saturation-green), 80%);
+	}
+}
+
+[btn-lightblue] {
+	color: hsl(var(--hue-saturation-blue), 40%);
+	background: hsl(var(--hue-saturation-blue), 95%);
+	border: 1px solid hsl(var(--hue-saturation-blue), 90%);
+	&:hover {
+		background: hsl(var(--hue-saturation-blue), 90%);
+		border-color: hsl(var(--hue-saturation-blue), 85%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-blue), 85%);
+		border-color: hsl(var(--hue-saturation-blue), 80%);
+	}
+}
+
+[btn-lightyellow] {
+	color: hsl(var(--hue-saturation-yellow), 40%);
+	background: hsl(var(--hue-saturation-yellow), 95%);
+	border: 1px solid hsl(var(--hue-saturation-yellow), 90%);
+	&:hover {
+		background: hsl(var(--hue-saturation-yellow), 90%);
+		border-color: hsl(var(--hue-saturation-yellow), 85%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-yellow), 85%);
+		border-color: hsl(var(--hue-saturation-yellow), 80%);
+	}
+}
+
+[txt-lightgray] {
+	color: hsl(var(--hue-saturation-gray), 30%);
+	background: hsl(var(--hue-saturation-gray), 90%);
+	border: 1px solid hsl(var(--hue-saturation-gray), 85%);
+}
+
+[txt-lightred] {
+	color: hsl(var(--hue-saturation-red), 30%);
+	background: hsl(var(--hue-saturation-red), 90%);
+	border: 1px solid hsl(var(--hue-saturation-red), 85%);
+}
+
+[txt-lightgreen] {
+	color: hsl(var(--hue-saturation-green), 30%);
+	background: hsl(var(--hue-saturation-green), 90%);
+	border: 1px solid hsl(var(--hue-saturation-green), 85%);
+}
+
+[txt-lightblue] {
+	color: hsl(var(--hue-saturation-blue), 30%);
+	background: hsl(var(--hue-saturation-blue), 90%);
+	border: 1px solid hsl(var(--hue-saturation-blue), 85%);
+}
+
+[txt-lightyellow] {
+	color: hsl(var(--hue-saturation-yellow), 30%);
+	background: hsl(var(--hue-saturation-yellow), 90%);
+	border: 1px solid hsl(var(--hue-saturation-yellow), 85%);
+}
+
+#preloader {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: #edf5f8;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: visible;
+	opacity: 1;
+	z-index: 999999999;
+	transition: 0.25s;
+	transition-delay: 1s;
+	.finished {
+		visibility: hidden;
+		opacity: 0;
+	}
+	svg {
+		border-radius: 50%;
+		width: 96px;
+		height: 96px;
+		animation: preloader-rotate 2s linear infinite;
+		circle {
+			fill: none;
+			stroke-width: 20px;
+			stroke-linecap: round;
+			transition: 1s linear;
+			animation: preloader-dash 1.5s ease-in-out infinite, preloader-color 6s ease-in-out infinite;
+		}
+	}
+}
+
+@keyframes preloader-rotate {
+	000% { transform: rotate(000deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@keyframes preloader-dash {
+	000% { stroke-dasharray: 000, 565; stroke-dashoffset: 565; }
+	050% { stroke-dasharray: 440, 250; stroke-dashoffset: 565; }
+	100% { stroke-dasharray: 565, 565; stroke-dashoffset: 565; }
+}
+
+@keyframes preloader-color {
+	000% { stroke: #ea4335; }
+	025% { stroke: #4285f4; }
+	050% { stroke: #34a853; }
+	075% { stroke: #fbbc04; }
+	100% { stroke: #7248b9; }
+}
+
+.loading {
+	width: 30px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	border: 1px solid;
+	border-color: #73808c transparent;
+	animation: loading-block 0.5s linear infinite;
+}
+
+@keyframes loading-block {
+	000% { transform: rotate(000deg); }
+	100% { transform: rotate(360deg); }
+}
