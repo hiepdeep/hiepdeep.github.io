@@ -1,7 +1,5 @@
 console.clear();
 
-// document.body.setAttribute("dark-mode", "true");
-
 const app = firebase.initializeApp({
 	databaseURL: "https://eimi-fukada-default-rtdb.firebaseio.com"
 });
@@ -45,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			type: $type,
 			status: "unpaid",
 			creationDate: createTimes()
-		}
+		};
 		database.ref(`${db}/${returnTime}`).push(data).then(() => {
 			document.forms["form"].reset();
 			renderChitieu();
@@ -60,8 +58,8 @@ async function renderViewsChart(ctxId) {
 	const chartView = document.getElementById("return-chart");
 	const myCanvas = document.getElementById(ctxId);
 	const ctx = myCanvas.getContext("2d");
-	myCanvas.width = chartView.getBoundingClientRect().width;
-	myCanvas.height = chartView.getBoundingClientRect().height;
+	myCanvas.width = chartView.getBoundingClientRect().width - 2;
+	myCanvas.height = chartView.getBoundingClientRect().height - 2;
 	const currentYear = new Date().getFullYear().toString();
 	const snapshot = await database.ref(`${db}/${currentYear}`).once("value");
 	const yearData = snapshot.val() || {};
@@ -97,11 +95,11 @@ async function renderViewsChart(ctxId) {
 			const x = gap + (slot_width + gap) * index;
 			const baseY = myCanvas.height - paddingBottom;
 			const y = baseY - currentBarHeight;
-			ctx.fillStyle = val === maxVal ? "hsl(205deg, 70%, 50%)" : "hsl(205deg, 70%, 70%)";
+			ctx.fillStyle = val === maxVal ? "hsl(200deg, 50%, 50%)" : "hsl(200deg, 50%, 60%)";
 			ctx.beginPath();
 			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
 			ctx.fill();
-			ctx.fillStyle = "hsl(210deg, 10%, 50%)";
+			ctx.fillStyle = "hsl(200deg, 10%, 40%)";
 			ctx.shadowBlur = 0;
 			ctx.shadowOffsetX = 0;
 			ctx.shadowOffsetY = 0;
@@ -221,16 +219,17 @@ function renderDetailBox(person, type) {
 	titleBox.getElementsByTagName("h3")[0].innerText = `Lịch sử ${typeName} của ${personName}:`;
 	const filteredItems = allItems.filter(item => item.person === person && item.type === type);
 	if (filteredItems.length === 0) {
-		listContainer.innerHTML = `<div style="text-align: center; color: var(--hsl-gray-70);">Không có dữ liệu</div>`;
+		listContainer.innerHTML = `<div style="text-align: center; color: var(--color-placeholder);">Không có dữ liệu</div>`;
 		return;
 	}
 	listContainer.innerHTML = "";
 	filteredItems.forEach(item => {
 		const li = document.createElement("li");
+		const statusAttr = item.status === "paid" ? "txt-lightgray" : "txt-lightgreen";
+		const statusText = item.status === "paid" ? "Đã thanh toán" : "Chưa thanh toán";
 		li.setAttribute("data-key", item.id);
 		li.setAttribute("data-type", item.type);
-		li.setAttribute("data-status", item.status);
-		const statusText = item.status === "paid" ? "Đã thanh toán" : "Chưa thanh toán";
+		li.setAttribute(statusAttr, "");
 		const dateDisplay = item.creationDate ? item.creationDate.split(' ')[0] : "N/A";
 		const amountDisplay = new Intl.NumberFormat("vi-VN").format(item.amount);
 		li.innerHTML = `
@@ -239,7 +238,7 @@ function renderDetailBox(person, type) {
 					<i class="material-symbols-rounded">calendar_today</i>
 					<span class="text">${dateDisplay}</span>
 				</div>
-				<span class="item-col status">${statusText}</span>
+				<span class="item-col status" ${statusAttr}>${statusText}</span>
 			</div>
 			<div class="item-row">
 				<div class="item-col description">${item.description}</div>
@@ -278,23 +277,12 @@ document.getElementById("openbox-expense-hiep").addEventListener("click", () => 
 document.getElementById("openbox-borrow-hieu").addEventListener("click", () => openDetailBox("hieu", "borrow"));
 document.getElementById("openbox-borrow-hiep").addEventListener("click", () => openDetailBox("hiep", "borrow"));
 
-document.getElementById("light-dark-more").addEventListener("click", function() {
+document.getElementById("btn-create-new").addEventListener("click", function() {
 	event.preventDefault();
-	if (this.textContent === "clear_day") {
-		this.textContent = "dark_mode";
-		document.body.setAttribute("dark-mode", "true");
-	} else {
-		this.textContent = "clear_day";
-		document.body.removeAttribute("dark-mode");
-	}
-});
-
-document.getElementById("add-new").addEventListener("click", function() {
-	event.preventDefault();
-	document.getElementById("side-l").classList.add("open-form");
+	document.getElementById("sidebar").classList.add("open-form");
 });
 
 document.getElementById("close-form").addEventListener("click", function() {
 	event.preventDefault();
-	document.getElementById("side-l").classList.remove("open-form");
+	document.getElementById("sidebar").classList.remove("open-form");
 });

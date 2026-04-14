@@ -6,114 +6,116 @@
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
 		<title>Sổ Chi Tiêu</title>
-		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<div class="box">
-			<div class="side side-l" id="side-l">
-				<form action="" id="form">
-					<div class="gr-label gr-person">
-						<label for="hieu">
-							<input type="radio" name="form-person" id="hieu" value="hieu">
-							<span class="name">Hiếu</span>
-						</label>
-						<label for="hiep">
-							<input type="radio" name="form-person" id="hiep" value="hiep" checked="">
-							<span class="name">Hiệp</span>
-						</label>
-					</div>
-					<input type="text" name="form-description" placeholder="Mô tả">
-					<input type="tel" name="form-amount" placeholder="Số tiền" pattern="[0-9.]*">
-					<div class="gr-label gr-type">
-						<label for="form-expense">
-							<input type="radio" name="form-type" id="form-expense" value="expense" checked="">
-							<span class="name">chi tiêu</span>
-						</label>
-						<label for="form-borrow">
-							<input type="radio" name="form-type" id="form-borrow" value="borrow">
-							<span class="name">cho vay</span>
-						</label>
-					</div>
-					<button type="submit">Tạo mới</button>
-					<button id="close-form" class="material-symbols-rounded">close</button>
-				</form>
-			</div>
-			<div class="side side-r" id="side-r">
-				<div class="side-r-top">
-					<a href="" class="logo">
-						<img src="https://hiepdeep.github.io/library/pictures/svg/expense-book.svg" alt="">
-						<span class="text">Sổ Chi Tiêu Cá Nhân</span>
-					</a>
-					<div class="btn-gr">
-						<button class="material-symbols-rounded" id="light-dark-more">clear_day</button>
-						<button class="" id="add-new">Tạo mới</button>
-					</div>
+			<div class="row" id="header-top">
+				<a href="" class="logo">
+					<img src="https://hiepdeep.github.io/library/pictures/svg/expense-book.svg" alt="">
+					<span class="text">Sổ Chi Tiêu Cá Nhân</span>
+				</a>
+				<div class="btn-gr">
+					<button class="material-symbols-rounded" id="btn-dark-more" btn-lightgray>clear_day</button>
+					<button class="" id="btn-create-new" btn-blue>Create new</button>
 				</div>
-				<div class="side-r-bot">
+			</div>
+			<div class="main">
+				<div class="row" id="sidebar">
+					<form action="" id="form">
+						<div class="gr-label">
+							<label for="hieu">
+								<input type="radio" name="form-person" id="hieu" value="hieu">
+								<span class="name">Hiếu</span>
+							</label>
+							<label for="hiep">
+								<input type="radio" name="form-person" id="hiep" value="hiep" checked="">
+								<span class="name">Hiệp</span>
+							</label>
+						</div>
+						<input type="text" name="form-description" placeholder="Mô tả">
+						<input type="tel" name="form-amount" placeholder="Số tiền" pattern="[0-9.]*">
+						<div class="gr-label">
+							<label for="form-expense">
+								<input type="radio" name="form-type" id="form-expense" value="expense" checked="">
+								<span class="name">Chi tiêu</span>
+							</label>
+							<label for="form-borrow">
+								<input type="radio" name="form-type" id="form-borrow" value="borrow">
+								<span class="name">Cho vay</span>
+							</label>
+						</div>
+						<button type="submit" btn-blue>Tạo mới</button>
+						<button id="close-form" btn-lightgray>Đóng</button>
+					</form>
+				</div>
+				<div class="return">
 					<div class="row" id="return-chart">
 						<canvas id="chart-view"></canvas>
 					</div>
-					<div class="row">
-						<div class="title">
-							<h3>Chi trả của Hiếu:</h3>
-							<button class="material-symbols-rounded" id="openbox-expense-hieu">pan_zoom</button>
+					<div class="row" id="return-data">
+						<div class="item-data">
+							<div class="title">
+								<h3>Chi trả của Hiếu:</h3>
+								<button class="material-symbols-rounded" id="openbox-expense-hieu" btn-lightgray>pan_zoom</button>
+							</div>
+							<div class="row-data">
+								<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hieu-totals-expense" txt-lightblue>0</strong></span>
+								<span class="txt">Tổng cộng (đ): <strong class="sums" id="hieu-sums-expense" txt-lightgreen>0</strong></span>
+							</div>
 						</div>
-						<div class="row-data">
-							<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hieu-totals-expense">0</strong></span>
-							<span class="txt">Tổng cộng (đ): <strong class="sums" id="hieu-sums-expense">0</strong></span>
+						<div class="item-data">
+							<div class="title">
+								<h3>Chi trả của Hiệp:</h3>
+								<button class="material-symbols-rounded" id="openbox-expense-hiep" btn-lightgray>pan_zoom</button>
+							</div>
+							<div class="row-data">
+								<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hiep-totals-expense" txt-lightblue>0</strong></span>
+								<span class="txt">Tổng cộng (đ): <strong class="sums" id="hiep-sums-expense" txt-lightgreen>0</strong></span>
+							</div>
+						</div>
+						<div class="item-data">
+							<div class="title">
+								<h3>Hiệp vay mượn của Hiếu:</h3>
+								<button class="material-symbols-rounded" id="openbox-borrow-hieu" btn-lightgray>pan_zoom</button>
+							</div>
+							<div class="row-data">
+								<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hieu-totals-borrow" txt-lightblue>0</strong></span>
+								<span class="txt">Tổng cộng (đ): <strong class="sums" id="hieu-sums-borrow" txt-lightgreen>0</strong></span>
+							</div>
+						</div>
+						<div class="item-data">
+							<div class="title">
+								<h3>Hiếu vay mượn của Hiệp:</h3>
+								<button class="material-symbols-rounded" id="openbox-borrow-hiep" btn-lightgray>pan_zoom</button>
+							</div>
+							<div class="row-data">
+								<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hiep-totals-borrow" txt-lightblue>0</strong></span>
+								<span class="txt">Tổng cộng (đ): <strong class="sums" id="hiep-sums-borrow" txt-lightgreen>0</strong></span>
+							</div>
+						</div>
+						<div class="item-data">
+							<div class="title">
+								<h3>Hiếu cần trả Hiệp:</h3>
+							</div>
+							<div class="row-data">
+								<span class="txt">Tổng cộng (đ): <strong class="sums-totals" id="hieu-pay-hiep" txt-lightred>0</strong></span>
+							</div>
+						</div>
+						<div class="item-data">
+							<div class="title">
+								<h3>Hiệp cần trả Hiếu:</h3>
+							</div>
+							<div class="row-data">
+								<span class="txt">Tổng cộng (đ): <strong class="sums-totals" id="hiep-pay-hieu" txt-lightred>0</strong></span>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="title">
-							<h3>Chi trả của Hiệp:</h3>
-							<button class="material-symbols-rounded" id="openbox-expense-hiep">pan_zoom</button>
-						</div>
-						<div class="row-data">
-							<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hiep-totals-expense">0</strong></span>
-							<span class="txt">Tổng cộng (đ): <strong class="sums" id="hiep-sums-expense">0</strong></span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="title">
-							<h3>Hiệp vay mượn của Hiếu:</h3>
-							<button class="material-symbols-rounded" id="openbox-borrow-hieu">pan_zoom</button>
-						</div>
-						<div class="row-data">
-							<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hieu-totals-borrow">0</strong></span>
-							<span class="txt">Tổng cộng (đ): <strong class="sums" id="hieu-sums-borrow">0</strong></span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="title">
-							<h3>Hiếu vay mượn của Hiệp:</h3>
-							<button class="material-symbols-rounded" id="openbox-borrow-hiep">pan_zoom</button>
-						</div>
-						<div class="row-data">
-							<span class="txt">Mục chưa thanh toán: <strong class="totals" id="hiep-totals-borrow">0</strong></span>
-							<span class="txt">Tổng cộng (đ): <strong class="sums" id="hiep-sums-borrow">0</strong></span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="title">
-							<h3>Hiếu cần trả Hiệp:</h3>
-						</div>
-						<div class="row-data">
-							<span class="txt">Tổng cộng (đ): <strong class="sums-totals" id="hieu-pay-hiep">0</strong></span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="title">
-							<h3>Hiệp cần trả Hiếu:</h3>
-						</div>
-						<div class="row-data">
-							<span class="txt">Tổng cộng (đ): <strong class="sums-totals" id="hiep-pay-hieu">0</strong></span>
-						</div>
-					</div>
-					<div class="return-lists-box" id="return-lists-box">
+					<div class="row" id="return-lists-box">
 						<div class="title" id="title-box">
-							<h3>Lịch sử ...</h3>
-							<button class="material-symbols-rounded" id="close-return-lists-box">hide</button>
+							<h3>Lịch sử</h3>
+							<button class="material-symbols-rounded" id="close-return-lists-box" btn-lightgray>hide</button>
 						</div>
 						<div class="return-lists" id="return-lists"></div>
 					</div>
