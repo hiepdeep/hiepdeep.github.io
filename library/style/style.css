@@ -75,12 +75,12 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	--hue-saturation-green: 150deg, 50%;
 	--hue-saturation-blue: 200deg, 70%;
 	--hue-saturation-yellow: 50deg, 75%;
-	--color-lv-1: hsl(200deg, 10%, 10%);
-	--color-lv-2: hsl(200deg, 10%, 20%);
-	--color-lv-3: hsl(200deg, 10%, 30%);
-	--color-lv-4: hsl(200deg, 10%, 40%);
-	--color-white: hsl(200deg, 10%, 95%);
-	--color-placeholder: hsl(200deg, 10%, 70%);
+	--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
+	--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
+	--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
+	--color-lv-4: hsl(var(--hue-saturation-gray), 40%);
+	--color-white: hsl(var(--hue-saturation-gray), 95%);
+	--color-placeholder: hsl(var(--hue-saturation-gray), 70%);
 	--fz-lv-1: 18px;
 	--fz-lv-2: 16px;
 	--fz-lv-3: 14px;
@@ -116,7 +116,33 @@ ol, ul, li {
 }
 
 .material-symbols-rounded {
-	font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 24;
+	font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 48;
+}
+
+:root {
+	--hue-saturation-gray: 200deg, 10%;
+	--hue-saturation-red: 10deg, 65%;
+	--hue-saturation-green: 150deg, 50%;
+	--hue-saturation-blue: 200deg, 50%;
+	--hue-saturation-yellow: 50deg, 75%;
+	--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
+	--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
+	--bg-box: hsl(var(--hue-saturation-gray), 100%);
+	--bd-box: hsl(var(--hue-saturation-gray), 90%);
+	--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
+	--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
+	--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
+	--color-lv-4: hsl(var(--hue-saturation-gray), 40%);
+	--color-white: hsl(var(--hue-saturation-gray), 95%);
+	--color-placeholder: hsl(var(--hue-saturation-gray), 70%);
+	--fz-lv-1: 18px;
+	--fz-lv-2: 16px;
+	--fz-lv-3: 14px;
+	--fz-lv-4: 12px;
+	--bdrs-lv-1: 16px;
+	--bdrs-lv-2: 12px;
+	--bdrs-lv-3: 8px;
+	--bdrs-lv-4: 4px;
 }
 
 [btn-gray] {
@@ -288,6 +314,30 @@ ol, ul, li {
 	background: hsl(var(--hue-saturation-yellow), 90%);
 	border: 1px solid hsl(var(--hue-saturation-yellow), 85%);
 }
+
+[color-lv-1] { color: var(--color-lv-1); }
+
+[color-lv-2] { color: var(--color-lv-2); }
+
+[color-lv-3] { color: var(--color-lv-3); }
+
+[color-lv-4] { color: var(--color-lv-4); }
+
+[fz-lv-1] { font-size: var(--fz-lv-1); }
+
+[fz-lv-2] { font-size: var(--fz-lv-2); }
+
+[fz-lv-3] { font-size: var(--fz-lv-3); }
+
+[fz-lv-4] { font-size: var(--fz-lv-4); }
+
+[bdrs-lv-1] { border-radius: var(--bdrs-lv-1); }
+
+[bdrs-lv-2] { border-radius: var(--bdrs-lv-2); }
+
+[bdrs-lv-3] { border-radius: var(--bdrs-lv-3); }
+
+[bdrs-lv-4] { border-radius: var(--bdrs-lv-4); }
 
 #preloader {
 	position: fixed;
