@@ -6,9 +6,6 @@
 
 body {
 	background: var(--bg-body-blue);
-	display: grid;
-	place-items: center;
-	height: 100vh;
 }
 
 .box {
