@@ -95,7 +95,7 @@ async function renderViewsChart(ctxId) {
 			const x = gap + (slot_width + gap) * index;
 			const baseY = myCanvas.height - paddingBottom;
 			const y = baseY - currentBarHeight;
-			ctx.fillStyle = val === maxVal ? "hsl(200deg, 50%, 50%)" : "hsl(200deg, 50%, 60%)";
+			ctx.fillStyle = val === maxVal ? "hsl(200deg, 70%, 50%)" : "hsl(200deg, 70%, 60%)";
 			ctx.beginPath();
 			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
 			ctx.fill();
@@ -225,7 +225,7 @@ function renderDetailBox(person, type) {
 	listContainer.innerHTML = "";
 	filteredItems.forEach(item => {
 		const li = document.createElement("li");
-		const statusAttr = item.status === "paid" ? "txt-lightgray" : "txt-lightgreen";
+		const statusAttr = item.status === "paid" ? "txt-light-gray" : "txt-light-green";
 		const statusText = item.status === "paid" ? "Đã thanh toán" : "Chưa thanh toán";
 		li.setAttribute("data-key", item.id);
 		li.setAttribute("data-type", item.type);
