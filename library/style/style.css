@@ -66,11 +66,19 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 :root {
 	--sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-	--hue-saturation-gray: 200deg, 10%;
-	--hue-saturation-red: 10deg, 65%;
-	--hue-saturation-green: 150deg, 50%;
+	--hue-saturation-purple: 280deg, 40%;
+	--hue-saturation-pink: 330deg, 60%;
+	--hue-saturation-orange: 25deg, 80%;
+	--hue-saturation-teal: 170deg, 50%;
+	--hue-saturation-yellow: 50deg, 80%;
+	--hue-saturation-red: 10deg, 70%;
+	--hue-saturation-green: 140deg, 50%;
 	--hue-saturation-blue: 200deg, 70%;
-	--hue-saturation-yellow: 50deg, 75%;
+	--hue-saturation-gray: 200deg, 10%;
+	--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
+	--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
+	--bg-box: hsl(var(--hue-saturation-gray), 100%);
+	--bd-box: hsl(var(--hue-saturation-gray), 90%);
 	--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
 	--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
 	--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
@@ -116,45 +124,73 @@ ol, ul, li {
 	font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 48;
 }
 
-:root {
-	--hue-saturation-purple: 280deg, 40%;
-	--hue-saturation-yellow: 50deg, 80%;
-	--hue-saturation-red: 10deg, 65%;
-	--hue-saturation-green: 150deg, 50%;
-	--hue-saturation-blue: 200deg, 70%;
-	--hue-saturation-gray: 200deg, 10%;
-	--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
-	--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
-	--bg-box: hsl(var(--hue-saturation-gray), 100%);
-	--bd-box: hsl(var(--hue-saturation-gray), 90%);
-	--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
-	--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
-	--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
-	--color-lv-4: hsl(var(--hue-saturation-gray), 40%);
-	--color-white: hsl(var(--hue-saturation-gray), 95%);
-	--color-placeholder: hsl(var(--hue-saturation-gray), 70%);
-	--fz-lv-1: 18px;
-	--fz-lv-2: 16px;
-	--fz-lv-3: 14px;
-	--fz-lv-4: 12px;
-	--bdrs-lv-1: 16px;
-	--bdrs-lv-2: 12px;
-	--bdrs-lv-3: 8px;
-	--bdrs-lv-4: 4px;
-	--bdrs-lv-5: 2px;
-}
-
-[btn-gray] {
-	color: hsl(var(--hue-saturation-gray), 95%);
-	background: hsl(var(--hue-saturation-gray), 50%);
-	border: 1px solid hsl(var(--hue-saturation-gray), 45%);
+[btn-purple] {
+	color: hsl(var(--hue-saturation-purple), 95%);
+	background: hsl(var(--hue-saturation-purple), 50%);
+	border: 1px solid hsl(var(--hue-saturation-purple), 45%);
 	&:hover {
-		background: hsl(var(--hue-saturation-gray), 45%);
-		border-color: hsl(var(--hue-saturation-gray), 40%);
+		background: hsl(var(--hue-saturation-purple), 45%);
+		border-color: hsl(var(--hue-saturation-purple), 40%);
 	}
 	&:active {
-		background: hsl(var(--hue-saturation-gray), 40%);
-		border-color: hsl(var(--hue-saturation-gray), 35%);
+		background: hsl(var(--hue-saturation-purple), 40%);
+		border-color: hsl(var(--hue-saturation-purple), 35%);
+	}
+}
+
+[btn-pink] {
+	color: hsl(var(--hue-saturation-pink), 95%);
+	background: hsl(var(--hue-saturation-pink), 50%);
+	border: 1px solid hsl(var(--hue-saturation-pink), 45%);
+	&:hover {
+		background: hsl(var(--hue-saturation-pink), 45%);
+		border-color: hsl(var(--hue-saturation-pink), 40%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-pink), 40%);
+		border-color: hsl(var(--hue-saturation-pink), 35%);
+	}
+}
+
+[btn-orange] {
+	color: hsl(var(--hue-saturation-orange), 95%);
+	background: hsl(var(--hue-saturation-orange), 50%);
+	border: 1px solid hsl(var(--hue-saturation-orange), 45%);
+	&:hover {
+		background: hsl(var(--hue-saturation-orange), 45%);
+		border-color: hsl(var(--hue-saturation-orange), 40%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-orange), 40%);
+		border-color: hsl(var(--hue-saturation-orange), 35%);
+	}
+}
+
+[btn-teal] {
+	color: hsl(var(--hue-saturation-teal), 95%);
+	background: hsl(var(--hue-saturation-teal), 50%);
+	border: 1px solid hsl(var(--hue-saturation-teal), 45%);
+	&:hover {
+		background: hsl(var(--hue-saturation-teal), 45%);
+		border-color: hsl(var(--hue-saturation-teal), 40%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-teal), 40%);
+		border-color: hsl(var(--hue-saturation-teal), 35%);
+	}
+}
+
+[btn-yellow] {
+	color: hsl(var(--hue-saturation-yellow), 95%);
+	background: hsl(var(--hue-saturation-yellow), 50%);
+	border: 1px solid hsl(var(--hue-saturation-yellow), 45%);
+	&:hover {
+		background: hsl(var(--hue-saturation-yellow), 45%);
+		border-color: hsl(var(--hue-saturation-yellow), 40%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-yellow), 40%);
+		border-color: hsl(var(--hue-saturation-yellow), 35%);
 	}
 }
 
@@ -200,77 +236,77 @@ ol, ul, li {
 	}
 }
 
-[btn-yellow] {
-	color: hsl(var(--hue-saturation-yellow), 95%);
-	background: hsl(var(--hue-saturation-yellow), 50%);
-	border: 1px solid hsl(var(--hue-saturation-yellow), 45%);
+[btn-gray] {
+	color: hsl(var(--hue-saturation-gray), 95%);
+	background: hsl(var(--hue-saturation-gray), 50%);
+	border: 1px solid hsl(var(--hue-saturation-gray), 45%);
 	&:hover {
-		background: hsl(var(--hue-saturation-yellow), 45%);
-		border-color: hsl(var(--hue-saturation-yellow), 40%);
+		background: hsl(var(--hue-saturation-gray), 45%);
+		border-color: hsl(var(--hue-saturation-gray), 40%);
 	}
 	&:active {
-		background: hsl(var(--hue-saturation-yellow), 40%);
-		border-color: hsl(var(--hue-saturation-yellow), 35%);
+		background: hsl(var(--hue-saturation-gray), 40%);
+		border-color: hsl(var(--hue-saturation-gray), 35%);
 	}
 }
 
-[btn-lightgray] {
-	color: hsl(var(--hue-saturation-gray), 40%);
-	background: hsl(var(--hue-saturation-gray), 95%);
-	border: 1px solid hsl(var(--hue-saturation-gray), 90%);
+[btn-light-purple] {
+	color: hsl(var(--hue-saturation-purple), 40%);
+	background: hsl(var(--hue-saturation-purple), 95%);
+	border: 1px solid hsl(var(--hue-saturation-purple), 90%);
 	&:hover {
-		background: hsl(var(--hue-saturation-gray), 90%);
-		border-color: hsl(var(--hue-saturation-gray), 85%);
+		background: hsl(var(--hue-saturation-purple), 90%);
+		border-color: hsl(var(--hue-saturation-purple), 85%);
 	}
 	&:active {
-		background: hsl(var(--hue-saturation-gray), 85%);
-		border-color: hsl(var(--hue-saturation-gray), 80%);
+		background: hsl(var(--hue-saturation-purple), 85%);
+		border-color: hsl(var(--hue-saturation-purple), 80%);
 	}
 }
 
-[btn-lightred] {
-	color: hsl(var(--hue-saturation-red), 40%);
-	background: hsl(var(--hue-saturation-red), 95%);
-	border: 1px solid hsl(var(--hue-saturation-red), 90%);
+[btn-light-pink] {
+	color: hsl(var(--hue-saturation-pink), 40%);
+	background: hsl(var(--hue-saturation-pink), 95%);
+	border: 1px solid hsl(var(--hue-saturation-pink), 90%);
 	&:hover {
-		background: hsl(var(--hue-saturation-red), 90%);
-		border-color: hsl(var(--hue-saturation-red), 85%);
+		background: hsl(var(--hue-saturation-pink), 90%);
+		border-color: hsl(var(--hue-saturation-pink), 85%);
 	}
 	&:active {
-		background: hsl(var(--hue-saturation-red), 85%);
-		border-color: hsl(var(--hue-saturation-red), 80%);
+		background: hsl(var(--hue-saturation-pink), 85%);
+		border-color: hsl(var(--hue-saturation-pink), 80%);
 	}
 }
 
-[btn-lightgreen] {
-	color: hsl(var(--hue-saturation-green), 40%);
-	background: hsl(var(--hue-saturation-green), 95%);
-	border: 1px solid hsl(var(--hue-saturation-green), 90%);
+[btn-light-orange] {
+	color: hsl(var(--hue-saturation-orange), 40%);
+	background: hsl(var(--hue-saturation-orange), 95%);
+	border: 1px solid hsl(var(--hue-saturation-orange), 90%);
 	&:hover {
-		background: hsl(var(--hue-saturation-green), 90%);
-		border-color: hsl(var(--hue-saturation-green), 85%);
+		background: hsl(var(--hue-saturation-orange), 90%);
+		border-color: hsl(var(--hue-saturation-orange), 85%);
 	}
 	&:active {
-		background: hsl(var(--hue-saturation-green), 85%);
-		border-color: hsl(var(--hue-saturation-green), 80%);
+		background: hsl(var(--hue-saturation-orange), 85%);
+		border-color: hsl(var(--hue-saturation-orange), 80%);
 	}
 }
 
-[btn-lightblue] {
-	color: hsl(var(--hue-saturation-blue), 40%);
-	background: hsl(var(--hue-saturation-blue), 95%);
-	border: 1px solid hsl(var(--hue-saturation-blue), 90%);
+[btn-light-teal] {
+	color: hsl(var(--hue-saturation-teal), 40%);
+	background: hsl(var(--hue-saturation-teal), 95%);
+	border: 1px solid hsl(var(--hue-saturation-teal), 90%);
 	&:hover {
-		background: hsl(var(--hue-saturation-blue), 90%);
-		border-color: hsl(var(--hue-saturation-blue), 85%);
+		background: hsl(var(--hue-saturation-teal), 90%);
+		border-color: hsl(var(--hue-saturation-teal), 85%);
 	}
 	&:active {
-		background: hsl(var(--hue-saturation-blue), 85%);
-		border-color: hsl(var(--hue-saturation-blue), 80%);
+		background: hsl(var(--hue-saturation-teal), 85%);
+		border-color: hsl(var(--hue-saturation-teal), 80%);
 	}
 }
 
-[btn-lightyellow] {
+[btn-light-yellow] {
 	color: hsl(var(--hue-saturation-yellow), 40%);
 	background: hsl(var(--hue-saturation-yellow), 95%);
 	border: 1px solid hsl(var(--hue-saturation-yellow), 90%);
@@ -284,10 +320,90 @@ ol, ul, li {
 	}
 }
 
-[txt-lightgray] {
-	color: hsl(var(--hue-saturation-gray), 30%);
-	background: hsl(var(--hue-saturation-gray), 90%);
-	border: 1px solid hsl(var(--hue-saturation-gray), 85%);
+[btn-light-red] {
+	color: hsl(var(--hue-saturation-red), 40%);
+	background: hsl(var(--hue-saturation-red), 95%);
+	border: 1px solid hsl(var(--hue-saturation-red), 90%);
+	&:hover {
+		background: hsl(var(--hue-saturation-red), 90%);
+		border-color: hsl(var(--hue-saturation-red), 85%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-red), 85%);
+		border-color: hsl(var(--hue-saturation-red), 80%);
+	}
+}
+
+[btn-light-green] {
+	color: hsl(var(--hue-saturation-green), 40%);
+	background: hsl(var(--hue-saturation-green), 95%);
+	border: 1px solid hsl(var(--hue-saturation-green), 90%);
+	&:hover {
+		background: hsl(var(--hue-saturation-green), 90%);
+		border-color: hsl(var(--hue-saturation-green), 85%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-green), 85%);
+		border-color: hsl(var(--hue-saturation-green), 80%);
+	}
+}
+
+[btn-light-blue] {
+	color: hsl(var(--hue-saturation-blue), 40%);
+	background: hsl(var(--hue-saturation-blue), 95%);
+	border: 1px solid hsl(var(--hue-saturation-blue), 90%);
+	&:hover {
+		background: hsl(var(--hue-saturation-blue), 90%);
+		border-color: hsl(var(--hue-saturation-blue), 85%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-blue), 85%);
+		border-color: hsl(var(--hue-saturation-blue), 80%);
+	}
+}
+
+[btn-light-gray] {
+	color: hsl(var(--hue-saturation-gray), 40%);
+	background: hsl(var(--hue-saturation-gray), 95%);
+	border: 1px solid hsl(var(--hue-saturation-gray), 90%);
+	&:hover {
+		background: hsl(var(--hue-saturation-gray), 90%);
+		border-color: hsl(var(--hue-saturation-gray), 85%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-gray), 85%);
+		border-color: hsl(var(--hue-saturation-gray), 80%);
+	}
+}
+
+[txt-light-purple] {
+	color: hsl(var(--hue-saturation-purple), 30%);
+	background: hsl(var(--hue-saturation-purple), 90%);
+	border: 1px solid hsl(var(--hue-saturation-purple), 85%);
+}
+
+[txt-light-pink] {
+	color: hsl(var(--hue-saturation-pink), 30%);
+	background: hsl(var(--hue-saturation-pink), 90%);
+	border: 1px solid hsl(var(--hue-saturation-pink), 85%);
+}
+
+[txt-light-orange] {
+	color: hsl(var(--hue-saturation-orange), 30%);
+	background: hsl(var(--hue-saturation-orange), 90%);
+	border: 1px solid hsl(var(--hue-saturation-orange), 85%);
+}
+
+[txt-light-teal] {
+	color: hsl(var(--hue-saturation-teal), 30%);
+	background: hsl(var(--hue-saturation-teal), 90%);
+	border: 1px solid hsl(var(--hue-saturation-teal), 85%);
+}
+
+[txt-lightyellow] {
+	color: hsl(var(--hue-saturation-yellow), 30%);
+	background: hsl(var(--hue-saturation-yellow), 90%);
+	border: 1px solid hsl(var(--hue-saturation-yellow), 85%);
 }
 
 [txt-lightred] {
@@ -308,10 +424,10 @@ ol, ul, li {
 	border: 1px solid hsl(var(--hue-saturation-blue), 85%);
 }
 
-[txt-lightyellow] {
-	color: hsl(var(--hue-saturation-yellow), 30%);
-	background: hsl(var(--hue-saturation-yellow), 90%);
-	border: 1px solid hsl(var(--hue-saturation-yellow), 85%);
+[txt-lightgray] {
+	color: hsl(var(--hue-saturation-gray), 30%);
+	background: hsl(var(--hue-saturation-gray), 90%);
+	border: 1px solid hsl(var(--hue-saturation-gray), 85%);
 }
 
 [color-lv-1] { color: var(--color-lv-1); }
@@ -337,6 +453,8 @@ ol, ul, li {
 [bdrs-lv-3] { border-radius: var(--bdrs-lv-3); }
 
 [bdrs-lv-4] { border-radius: var(--bdrs-lv-4); }
+
+[bdrs-lv-5] { border-radius: var(--bdrs-lv-5); }
 
 #preloader {
 	position: fixed;
