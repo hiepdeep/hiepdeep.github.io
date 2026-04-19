@@ -400,31 +400,31 @@ ol, ul, li {
 	border: 1px solid hsl(var(--hue-saturation-teal), 85%);
 }
 
-[txt-lightyellow] {
+[txt-light-yellow] {
 	color: hsl(var(--hue-saturation-yellow), 30%);
 	background: hsl(var(--hue-saturation-yellow), 90%);
 	border: 1px solid hsl(var(--hue-saturation-yellow), 85%);
 }
 
-[txt-lightred] {
+[txt-light-red] {
 	color: hsl(var(--hue-saturation-red), 30%);
 	background: hsl(var(--hue-saturation-red), 90%);
 	border: 1px solid hsl(var(--hue-saturation-red), 85%);
 }
 
-[txt-lightgreen] {
+[txt-light-green] {
 	color: hsl(var(--hue-saturation-green), 30%);
 	background: hsl(var(--hue-saturation-green), 90%);
 	border: 1px solid hsl(var(--hue-saturation-green), 85%);
 }
 
-[txt-lightblue] {
+[txt-light-blue] {
 	color: hsl(var(--hue-saturation-blue), 30%);
 	background: hsl(var(--hue-saturation-blue), 90%);
 	border: 1px solid hsl(var(--hue-saturation-blue), 85%);
 }
 
-[txt-lightgray] {
+[txt-light-gray] {
 	color: hsl(var(--hue-saturation-gray), 30%);
 	background: hsl(var(--hue-saturation-gray), 90%);
 	border: 1px solid hsl(var(--hue-saturation-gray), 85%);
