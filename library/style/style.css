@@ -117,11 +117,12 @@ ol, ul, li {
 }
 
 :root {
-	--hue-saturation-gray: 200deg, 10%;
+	--hue-saturation-purple: 280deg, 40%;
+	--hue-saturation-yellow: 50deg, 80%;
 	--hue-saturation-red: 10deg, 65%;
 	--hue-saturation-green: 150deg, 50%;
-	--hue-saturation-blue: 200deg, 50%;
-	--hue-saturation-yellow: 50deg, 75%;
+	--hue-saturation-blue: 200deg, 70%;
+	--hue-saturation-gray: 200deg, 10%;
 	--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
 	--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
 	--bg-box: hsl(var(--hue-saturation-gray), 100%);
@@ -140,6 +141,7 @@ ol, ul, li {
 	--bdrs-lv-2: 12px;
 	--bdrs-lv-3: 8px;
 	--bdrs-lv-4: 4px;
+	--bdrs-lv-5: 2px;
 }
 
 [btn-gray] {
