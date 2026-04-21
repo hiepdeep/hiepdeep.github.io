@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
+		<title>Replace</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="box">
+			<div class="data in-change">
+				<textarea name="" id="txts-old" placeholder="Aa"></textarea>
+				<button class="material-symbols-rounded" onclick="replaceAll()" btn-blue>chevron_forward</button>
+				<textarea name="" id="txts-new" placeholder="Aa"></textarea>
+			</div>
+			<div class="data in-textarea">
+				<textarea name="" id="code-old" placeholder="Aa"></textarea>
+				<textarea name="" id="code-new" placeholder="Aa"></textarea>
+			</div>
+		</div>
+		<script>
+			console.clear();
+			function replaceAll() {
+				const txts_old = document.getElementById("txts-old").value;
+				const txts_new = document.getElementById("txts-new").value;
+				const code_old = document.getElementById("code-old").value;
+				document.getElementById("code-new").value = code_old.replaceAll(txts_old, txts_new);
+			}
+		</script>
+	</body>
+</html>
