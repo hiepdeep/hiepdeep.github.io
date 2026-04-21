@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="/cdn/favicon/favicon.svg">
+		<title>Get Thumbnail Youtube</title>
+		<link rel="stylesheet" href="../cdn/style.css">
+		<style type="text/css">
+			* {
+				font-family: "Be Vietnam Pro", sans-serif;
+				letter-spacing: 0.04em;
+			}
+
+			body {
+				background: var(--light);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				padding: 12px;
+				overflow: hidden;
+			}
+
+			.get-thumbnail-youtube {
+				margin: 1rem auto;
+				padding: 12px;
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				gap: 12px;
+				background: #FFF;
+				border-radius: 4px;
+				box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+				position: relative;
+			}
+
+			.get-thumbnail-youtube:before {
+				content: "";
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				background: var(--bg);
+				background-position: center;
+				background-size: cover;
+				z-index: -1;
+				filter: blur(25px);
+				opacity: 0.75;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%) scale(1.2);
+			}
+
+			.get-thumbnail-youtube .input {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				gap: 12px;
+			}
+
+			.get-thumbnail-youtube .input input {
+				color: #8898AA;
+				background: #F5F5F5;
+				width: 100%;
+				outline: none;
+				border: 0;
+				border-radius: 4px;
+				padding: 0 12px;
+				font-size: 14px;
+			}
+
+			.get-thumbnail-youtube .input input::placeholder {
+				opacity: 0.5;
+			}
+
+			.get-thumbnail-youtube .input button {
+				flex-shrink: 0;
+				width: 42px;
+				height: 42px;
+				background: #5890FF;
+				color: #FFF;
+				font-size: 14px;
+				font-weight: 500;
+				border: 0;
+				border-radius: 4px;
+				user-select: none;
+				outline: none;
+				cursor: pointer;
+				box-shadow: 0 0 1rem -0.5rem #322E2F;
+			}
+
+			.get-thumbnail-youtube #youtubethumbnail {
+				display: block;
+			}
+
+			.get-thumbnail-youtube #youtubethumbnail img {
+				width: 1280px;
+				height: 720px;
+				display: block;
+				border-radius: 4px;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".get-thumbnail-youtube .input input").click(function() {
+					$(this).select();
+				});
+				$(".get-thumbnail-youtube .input button").click(() => {
+					var url = $(".get-thumbnail-youtube .input input").val(),
+						url = url.match(/.*(?:be\/|v\/|u\/\w\/|embed\/|watch\?v=)([a-zA-Z0-9-_]+)/g),
+						id = url[0],
+						id = id.replace(/.*watch\?v=/g, "").replace(/.*be\//g, "");
+					var youtubethumbnail = "https://i3.ytimg.com/vi/" + id + "/maxresdefault.jpg";
+					$(".get-thumbnail-youtube #youtubethumbnail").find("img").attr("src", youtubethumbnail);
+					$(".get-thumbnail-youtube").css("--bg", "url(" + youtubethumbnail + ")");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="get-thumbnail-youtube">
+			<div class="input">
+				<input placeholder="Paste Youtube video URL here..." value="">
+				<button>OK</button>
+			</div>
+			<a id="youtubethumbnail">
+				<img src="https://hiepdeep.github.io/cdn/pictures/720h/thumbnail/1vvyyhteIv4.jpg">
+			</a>
+		</div>
+	</body>
+</html>

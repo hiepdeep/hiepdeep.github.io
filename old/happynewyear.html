@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="/cdn/favicon/favicon.svg">
+		<title>Chúc Mừng Năm Mới 2022 !</title>
+		<link rel="stylesheet" href="../cdn/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<style type="text/css">
+			body {
+				background: var(--body-background);
+				font-family: "Source Serif Pro", sans-serif;
+			}
+
+			#countdown {
+				background-image: url("https://i.imgur.com/YwUy783.jpg");
+				width: 100vw;
+				height: 100vh;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				user-select: none;
+			}
+
+			#countdown h2 {
+				color: #fff;
+				font-size: 4em;
+				margin-bottom: 1rem;
+				text-shadow: -1.5px -1.5px 0 #0FF, 2px 2px 0 #F00;
+			}
+
+			#countdown .timer {
+				display: flex;
+				font-size: 4em;
+			}
+
+			#countdown .timer .time {
+				background: #00000080;
+				color: #FFFFFFBD;
+				width: 120px;
+				height: 120px;
+				text-align: center;
+				line-height: 120px;
+				display: block;
+				border-radius: 4px;
+				position: relative;
+				-webkit-backdrop-filter: blur(2px);
+				backdrop-filter: blur(2px);
+			}
+
+			#countdown .timer .time+.time {
+				margin-left: 1rem;
+			}
+
+			#countdown .timer .time:before {
+				position: absolute;
+				background: #F92455;
+				width: 34px;
+				height: 34px;
+				left: calc(50% - 34px/2);
+				top: calc(100% - 17px);
+				border-radius: 50%;
+				z-index: 1;
+				font-size: 14px;
+				line-height: 34px;
+			}
+
+			#countdown .timer .time.day:before {
+				content: "D";
+			}
+
+			#countdown .timer .time.hours:before {
+				content: "H";
+			}
+
+			#countdown .timer .time.minute:before {
+				content: "M";
+			}
+
+			#countdown .timer .time.seconds:before {
+				content: "S";
+			}
+		</style>
+	</head>
+	<body>
+		<div id="countdown"></div>
+		<script type="text/javascript">
+			var countDownDate = new Date("February 10, 2024 0:0:0").getTime();
+			var x = setInterval(function() {
+				var now = new Date().getTime();
+				var distance = countDownDate - now;
+				var d = Math.floor(distance / (1000 * 60 * 60 * 24));
+				var h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+				var s = Math.floor((distance % (1000 * 60)) / 1000);
+				d = checkTime(d);
+				h = checkTime(h);
+				m = checkTime(m);
+				s = checkTime(s);
+				function checkTime(i) {
+					if (i < 10) {
+						i = "0" + i;
+					}
+					return i;
+				}
+				var c = "";
+				c+= "<h2>HAPPY NEW YEAR 2021 !</h2>";
+				c+= "<div class='timer'>";
+					c+= "<div class='time day'>" + d + "</div>";
+					c+= "<div class='time hours'>" + h + "</div>";
+					c+= "<div class='time minute'>" + m + "</div>";
+					c+= "<div class='time seconds'>" + s + "</div>";
+				c+= "</div>";
+				document.getElementById("countdown").innerHTML = c;
+				if (distance < 0) {
+					clearInterval(x);
+					document.getElementById("countdown").innerHTML = "<h2>HAPPY NEW YEAR 2024 !</h2>";
+				}
+			});
+		</script>
+	</body>
+</html>

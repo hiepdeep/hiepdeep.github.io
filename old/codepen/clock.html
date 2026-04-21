@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="icon" href="../../library/favicon/favicon.svg">
+		<title>Đồng hồ kim</title>
+		<meta name="title" content="Đồng hồ kim">
+		<meta name="description" content="Đồng hồ kim">
+		<link rel="stylesheet" href="../../library/code/css/oneforall.css">
+		<style type="text/css">
+			body {
+				background: #E4EBF5;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				overflow: hidden;
+			}
+			.clock {
+				width: 240px;
+				height: 240px;
+				justify-self: center;
+				border-radius: 24px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				transform: scale(3);
+			}
+			.clock .hand {
+				position: absolute;
+				transform-origin: bottom;
+				bottom: 120px;
+				border-radius: 24px;
+				z-index: 8;
+			}
+			.clock .hand.hours {
+				width: 6px;
+				height: 40px;
+				background: #6f7d88;
+			}
+			.clock .hand.minutes {
+				width: 6px;
+				height: 65px;
+				background: #aebac3;
+			}
+			.clock .hand.seconds {
+				width: 4px;
+				height: 80px;
+				background: #6d5dfc;
+			}
+			.clock .point {
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: #6d5dfc;
+				z-index: 9;
+				box-shadow: 0 0 0 2px #E4EBF5;
+			}
+			.clock .marker {
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			.clock .marker .mr {
+				position: absolute;
+				width: 4px;
+				height: 100%;
+				left: calc(50% - 3px);
+			}
+			.clock .marker .mr:before,
+			.clock .marker .mr:after {
+				content: "";
+				position: absolute;
+				background: #aaa;
+				width: 4px;
+				height: 4px;
+				border-radius: 4px;
+			}
+			.clock .marker .mr:after {
+				bottom: 0;
+			}
+			.clock .marker .mr:nth-child(1) {
+				transform: rotate(0deg);
+			}
+			.clock .marker .mr:nth-child(1):before,
+			.clock .marker .mr:nth-child(1):after {
+				height: 8px;
+			}
+			.clock .marker .mr:nth-child(2) {
+				transform: rotate(30deg);
+			}
+			.clock .marker .mr:nth-child(3) {
+				transform: rotate(60deg);
+			}
+			.clock .marker .mr:nth-child(4) {
+				transform: rotate(90deg);
+			}
+			.clock .marker .mr:nth-child(4):before,
+			.clock .marker .mr:nth-child(4):after {
+				height: 8px;
+			}
+			.clock .marker .mr:nth-child(5) {
+				transform: rotate(120deg);
+			}
+			.clock .marker .mr:nth-child(6) {
+				transform: rotate(150deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="clock">
+			<div class="hand minutes"></div>
+			<div class="hand hours"></div>
+			<div class="hand seconds"></div>
+			<div class="point"></div>
+			<div class="marker">
+				<span class="mr"></span>
+				<span class="mr"></span>
+				<span class="mr"></span>
+				<span class="mr"></span>
+				<span class="mr"></span>
+				<span class="mr"></span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			const hours = document.querySelector('.hours');
+			const minutes = document.querySelector('.minutes');
+			const seconds = document.querySelector('.seconds');
+			clock = () => {
+				let today = new Date();
+				let h = (today.getHours() % 12) + today.getMinutes() / 59; // 22 % 12 = 10pm
+				let m = today.getMinutes(); // 0 - 59
+				let s = today.getSeconds(); // 0 - 59
+				h *= 30; // 12 * 30 = 360deg
+				m *= 6;
+				s *= 6; // 60 *  6 = 360deg
+				rotation(hours, h);
+				rotation(minutes, m);
+				rotation(seconds, s);
+				// call every second
+				setTimeout(clock, 0);
+			}
+			rotation = (target, val) => {
+				target.style.transform = `rotate(${val}deg)`;
+			}
+			window.onload = clock();
+		</script>
+	</body>
+</html>
