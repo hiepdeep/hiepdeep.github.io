@@ -13,88 +13,148 @@ let date = new Date();
 let month = date.getMonth();
 let year = date.getFullYear();
 
+function calculateAttendanceData(y, m, d) {
+	const isHalfMorning = document.forms["form"]["half-morning"].checked;
+	const isHalfAfternoon = document.forms["form"]["half-afternoon"].checked;
+	const isOvertime = document.forms["form"]["overtime"].checked;
+	const isNightShift = document.forms["form"]["night-shift"].checked;
+	const dayOfWeek = new Date(y, m, d).getDay();
+	const data = {
+		task: { morning: 4, afternoon: 4},
+		overtime: { o150: 0, o200: 0, o210: 0, o270: 0 },
+		shift: isNightShift ? "nightshift" : "dayshift"
+	};
+	if (dayOfWeek !== 0) {
+		if (isHalfMorning) data.task.morning = 0;
+		if (isHalfAfternoon) data.task.afternoon = 0;
+	} else {
+		data.task.morning = 0;
+		data.task.afternoon = 0;
+	}
+	if (isOvertime) {
+		if (!isNightShift) {
+			if (dayOfWeek === 0) data.overtime.o200 = 11;
+			else data.overtime.o150 = 3;
+		} else {
+			if (dayOfWeek === 6) {
+				data.overtime.o210 = 2;
+				data.overtime.o270 = 0.75;
+			} else {
+				data.overtime.o150 = 2;
+				data.overtime.o200 = 0.75;
+			}
+		}
+	}
+	return data;
+}
+
+async function sendDataToFirebase(y, m, d, data) {
+	const timeYear = y;
+	const timeMonth = String(m + 1).padStart(2, "0");
+	const timeDate = String(d).padStart(2, "0");
+	const path = `${db}/${timeYear}/${timeMonth}/${timeDate}`;
+	try {
+		await database.ref(path).set(data);
+		renderCalendar();
+	} catch (error) {
+		console.error("Lỗi Firebase:", error);
+		alert("Không thể lưu dữ liệu.");
+	}
+}
+
+async function autoFillMissingDays() {
+	const now = new Date();
+	const currentYear = now.getFullYear();
+	const currentMonth = String(now.getMonth() + 1).padStart(2, "0");
+	const today = now.getDate();
+	const snapshot = await database.ref(`${db}/${currentYear}/${currentMonth}`).once("value");
+	const monthData = snapshot.val() || {};
+	let updates = {};
+	let hasMissing = false;
+	for (let i = 1; i < today; i++) {
+		const dayKey = String(i).padStart(2, "0");
+		if (!monthData[dayKey]) {
+			hasMissing = true;
+			updates[dayKey] = {
+				task: { morning: 0, afternoon: 0 },
+				overtime: { o150: 0, o200: 0, o210: 0, o270: 0 },
+				shift: "dayshift"
+			};
+		}
+	}
+	if (hasMissing) {
+		await database.ref(`${db}/${currentYear}/${currentMonth}`).update(updates);
+		renderCalendar();
+	}
+}
+
 async function renderCalendar() {
 	const snapshot = await database.ref(db).once("value");
 	const task_data = snapshot.val() || {};
-	const start = new Date(year, month, 1).getDay();
+	const startDay = new Date(year, month, 1).getDay();
 	const endDate = new Date(year, month + 1, 0).getDate();
-	const end = new Date(year, month, endDate).getDay();
+	const endDay = new Date(year, month, endDate).getDay();
 	const endDatePrev = new Date(year, month, 0).getDate();
 	const monthKey = String(month + 1).padStart(2, "0");
 	const yearKey = String(year);
-	let totalDayShiftHours = 0;
-	let totalNightShiftHours = 0;
-	let totalLeaveHours = 0;
-	let totalO150 = 0;
-	let totalO200 = 0;
-	let totalO210 = 0;
-	let totalO270 = 0;
-	let countSunday = 0;
-	let countDaymonth = 0;
+	let stats = { ds: 0, ns: 0, leave: 0, o150: 0, o200: 0, o210: 0, o270: 0 };
+	let countWorkDays = 0;
 	let datesHtml = "";
-	for (let i = start; i > 0; i--) {
+	for (let i = startDay; i > 0; i--) {
 		datesHtml += `<li class="old"><span class="day">${endDatePrev - i + 1}</span></li>`;
 	}
 	for (let i = 1; i <= endDate; i++) {
 		const dayKey = String(i).padStart(2, "0");
-		const dayData = task_data[yearKey] && task_data[yearKey][monthKey] ? task_data[yearKey][monthKey][dayKey] : null;
-		const isSunday = new Date(year, month, i).getDay() === 0 ? "sunday" : "";
-		if (isSunday) countSunday++;
-		if (!isSunday) countDaymonth++;
-		let attr_morning = "";
-		let attr_afternoon = "";
-		let attr_nightshift = "";
-		let attr_overtime_dayshift = "";
-		let attr_overtime_nightshift = "";
-		let attr_overtime_sunday_dayshift = "";
-		let attr_overtime_sunday_nightshift = "";
+		const dayData = task_data[yearKey]?.[monthKey]?.[dayKey];
+		const isSunday = new Date(year, month, i).getDay() === 0;
+		if (!isSunday) countWorkDays++;
+		let attrs = { morning: "", afternoon: "", ns: "", o_ds: "", o_ns: "", o_sun_ds: "", o_sun_ns: "" };
 		if (dayData) {
-			if (dayData.task.morning > 0) attr_morning = "work";
-			if (dayData.task.afternoon > 0) attr_afternoon = "work";
-			if (!isSunday && dayData.shift === "dayshift" && dayData.overtime.o150 > 0) attr_overtime_dayshift = "overtime_dayshift";
-			if (isSunday && dayData.shift === "dayshift" && dayData.overtime.o200 > 0) attr_overtime_sunday_dayshift = "overtime_sunday_dayshift";
-			if (!isSunday && dayData.shift === "nightshift" && dayData.overtime.o150 > 0) attr_overtime_nightshift = "overtime_nightshift";
-			if (isSunday && dayData.shift === "nightshift" && dayData.overtime.o210 > 0) attr_overtime_sunday_nightshift = "overtime_sunday_nightshift";
-			let dailyHours = dayData.task.morning + dayData.task.afternoon;
+			if (dayData.task.morning > 0) attrs.morning = "work";
+			if (dayData.task.afternoon > 0) attrs.afternoon = "work";
+			const dailyHours = dayData.task.morning + dayData.task.afternoon;
 			if (dayData.shift === "nightshift") {
-				totalNightShiftHours += dailyHours;
-				attr_nightshift = "ns";
+				stats.ns += dailyHours;
+				attrs.ns = "ns";
 			} else {
-				totalDayShiftHours += dailyHours;
+				stats.ds += dailyHours;
 			}
-			if (!isSunday && dayData.task.morning === 0) totalLeaveHours += 4;
-			if (!isSunday && dayData.task.afternoon === 0) totalLeaveHours += 4;
-			totalO150 += dayData.overtime.o150 || 0;
-			totalO200 += dayData.overtime.o200 || 0;
-			totalO210 += dayData.overtime.o210 || 0;
-			totalO270 += dayData.overtime.o270 || 0;
+			if (!isSunday && dayData.shift === "dayshift" && dayData.overtime.o150 > 0) attrs.o_ds = "overtime_dayshift";
+			if (isSunday && dayData.shift === "dayshift" && dayData.overtime.o200 > 0) attrs.o_sun_ds = "overtime_sunday_dayshift";
+			if (!isSunday && dayData.shift === "nightshift" && dayData.overtime.o150 > 0) attrs.o_ns = "overtime_nightshift";
+			if (isSunday && dayData.shift === "nightshift" && dayData.overtime.o210 > 0) attrs.o_sun_ns = "overtime_sunday_nightshift";
+			if (!isSunday) stats.leave += (8 - dailyHours);
+			stats.o150 += dayData.overtime.o150 || 0;
+			stats.o200 += dayData.overtime.o200 || 0;
+			stats.o210 += dayData.overtime.o210 || 0;
+			stats.o270 += dayData.overtime.o270 || 0;
 		}
-		let isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? "today" : "";
+		const isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? "today" : "";
 		datesHtml += `
-			<li ${isSunday} ${isToday} ${attr_nightshift}>
-				<span class="day">${String(i).padStart(2, "0")}</span>
-				<div class="data-task" ${attr_overtime_sunday_dayshift} ${attr_overtime_sunday_nightshift}>
+			<li ${isSunday ? "sunday" : ""} ${isToday} ${attrs.ns} data-day="${i}" style="cursor: pointer;">
+				<span class="day">${dayKey}</span>
+				<div class="data-task" ${attrs.o_sun_ds} ${attrs.o_sun_ns}>
 					<div class="process">
-						<span class="half-day" ${attr_morning}></span>
-						<span class="half-day" ${attr_afternoon}></span>
+						<span class="half-day" ${attrs.morning}></span>
+						<span class="half-day" ${attrs.afternoon}></span>
 					</div>
-					<span class="overtime" ${attr_overtime_dayshift} ${attr_overtime_nightshift}></span>
+					<span class="overtime" ${attrs.o_ds} ${attrs.o_ns}></span>
 				</div>
 			</li>
 		`;
 	}
-	for (let i = end; i < 6; i++) {
-		datesHtml += `<li class="old"><span class="day">${i - end + 1}</span></li>`;
+	for (let i = endDay; i < 6; i++) {
+		datesHtml += `<li class="old"><span class="day">${i - endDay + 1}</span></li>`;
 	}
 	header.textContent = `${months[month]} ${year}`;
 	dates.innerHTML = datesHtml;
-	document.getElementById("hours_in_dayshift").textContent = totalDayShiftHours + "/" + countDaymonth * 8;
-	document.getElementById("hours_in_nightshift").textContent = totalNightShiftHours + "/" + countDaymonth * 8;
-	document.getElementById("half_in_month").textContent = totalLeaveHours;
-	document.getElementById("hours_150").textContent = totalO150;
-	document.getElementById("hours_200").textContent = totalO200;
-	document.getElementById("hours_210").textContent = totalO210;
-	document.getElementById("hours_270").textContent = totalO270;
+	document.getElementById("hours_in_dayshift").textContent = `${stats.ds}/${countWorkDays * 8}`;
+	document.getElementById("hours_in_nightshift").textContent = `${stats.ns}/${countWorkDays * 8}`;
+	document.getElementById("half_in_month").textContent = stats.leave;
+	document.getElementById("hours_150").textContent = stats.o150;
+	document.getElementById("hours_200").textContent = stats.o200;
+	document.getElementById("hours_210").textContent = stats.o210;
+	document.getElementById("hours_270").textContent = stats.o270;
 }
 
 function updateMonth(delta) {
@@ -109,86 +169,33 @@ function updateMonth(delta) {
 	renderCalendar();
 }
 
-nav.forEach(btn => {
-    btn.addEventListener("click", e => {
-        const delta = (btn.id === "next") ? 1 : -1;
-        updateMonth(delta);
-    });
-});
+nav.forEach(btn => btn.addEventListener("click", () => updateMonth(btn.id === "next" ? 1 : -1)));
 
 window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") {
-        updateMonth(-1);
-    } else if (e.key === "ArrowRight") {
-        updateMonth(1);
-    }
+	if (e.key === "ArrowLeft") updateMonth(-1);
+	if (e.key === "ArrowRight") updateMonth(1);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+	autoFillMissingDays();
 	renderCalendar();
-	document.forms["form"].addEventListener("submit", async function(event) {
-		event.preventDefault();
-		const isHalfMorning = document.forms["form"]["half-morning"].checked;
-		const isHalfAfternoon = document.forms["form"]["half-afternoon"].checked;
-		const isOvertime = document.forms["form"]["overtime"].checked;
-		const isNightShift = document.forms["form"]["night-shift"].checked;
-		let now = new Date();
-		let timeYear = now.getFullYear();
-		let timeMonth = String(now.getMonth() + 1).padStart(2, "0");
-		let timeDate = String(now.getDate()).padStart(2, "0");
-		let returnTime = `${timeYear}/${timeMonth}/${timeDate}`;
-		let dayOfWeek = now.getDay(); // 0: Chủ Nhật, 6: Thứ 7
-		const data = {
-			task: {
-				morning: 4,
-				afternoon: 4
-			},
-			overtime: {
-				o150: 0,
-				o200: 0,
-				o210: 0,
-				o270: 0
-			},
-			shift: isNightShift ? "nightshift" : "dayshift"
-		};
-		// 4. Xử lý nghỉ nửa buổi (Chỉ áp dụng nếu không phải Chủ Nhật)
-		if (dayOfWeek !== 0) {
-			if (isHalfMorning) data.task.morning = 0;
-			if (isHalfAfternoon) data.task.afternoon = 0;
-		} else {
-			// Nếu là Chủ Nhật, mặc định giờ hành chính bằng 0
-			data.task.morning = 0;
-			data.task.afternoon = 0;
-		}
-		// 5. Logic tính toán Tăng ca (Overtime)
-		if (isOvertime) {
-			if (!isNightShift) {
-				// Ca ngày
-				if (dayOfWeek === 0) {
-					data.overtime.o200 = 11; // Tăng ca Chủ Nhật
-				} else {
-					data.overtime.o150 = 3; // Tăng ca ngày thường
-				}
-			} else {
-				// Ca đêm
-				if (dayOfWeek === 6) {
-					// Tăng ca đêm Thứ 7 (sang rạng sáng CN)
-					data.overtime.o210 = 2;
-					data.overtime.o270 = 0.75;
-				} else {
-					// Tăng ca đêm ngày thường
-					data.overtime.o150 = 2;
-					data.overtime.o200 = 0.75;
-				}
+	document.forms["form"].addEventListener("submit", (e) => {
+		e.preventDefault();
+		const now = new Date();
+		const data = calculateAttendanceData(now.getFullYear(), now.getMonth(), now.getDate());
+		sendDataToFirebase(now.getFullYear(), now.getMonth(), now.getDate(), data).then(() => {
+			alert("Đã chấm công hôm nay.");
+			document.forms["form"].reset();
+		});
+	});
+	dates.addEventListener("click", (e) => {
+		const li = e.target.closest("li");
+		if (li && li.dataset.day && !li.classList.contains("old")) {
+			const d = parseInt(li.dataset.day);
+			if (confirm(`Chấm công ngày ${d}/${month + 1}/${year} với tùy chọn đang chọn?`)) {
+				const data = calculateAttendanceData(year, month, d);
+				sendDataToFirebase(year, month, d, data);
 			}
 		}
-		database.ref(`${db}/${returnTime}`).set(data).then(() => {
-			alert("Đã chấm công ngày hôm nay.");
-			document.forms["form"].reset();
-			renderCalendar();
-		}).catch((error) => {
-			alert("Lỗi khi gửi yêu cầu.");
-			console.error("Chi tiết lỗi:", error);
-		});
 	});
 });
