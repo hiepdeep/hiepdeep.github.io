@@ -66,14 +66,15 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 :root {
 	--sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-	--hue-saturation-purple: 280deg, 40%;
+	--hue-saturation-purple: 260deg, 50%;
 	--hue-saturation-pink: 330deg, 60%;
-	--hue-saturation-orange: 25deg, 80%;
+	--hue-saturation-orange: 30deg, 80%;
+	--hue-saturation-brown: 20deg, 40%;
 	--hue-saturation-teal: 170deg, 50%;
 	--hue-saturation-yellow: 50deg, 80%;
 	--hue-saturation-red: 10deg, 70%;
 	--hue-saturation-green: 140deg, 50%;
-	--hue-saturation-blue: 200deg, 70%;
+	--hue-saturation-blue: 210deg, 70%;
 	--hue-saturation-gray: 200deg, 10%;
 	--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
 	--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
@@ -163,6 +164,20 @@ ol, ul, li {
 	&:active {
 		background: hsl(var(--hue-saturation-orange), 40%);
 		border-color: hsl(var(--hue-saturation-orange), 35%);
+	}
+}
+
+[btn-brown] {
+	color: hsl(var(--hue-saturation-brown), 95%);
+	background: hsl(var(--hue-saturation-brown), 50%);
+	border: 1px solid hsl(var(--hue-saturation-brown), 45%);
+	&:hover {
+		background: hsl(var(--hue-saturation-brown), 45%);
+		border-color: hsl(var(--hue-saturation-brown), 40%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-brown), 40%);
+		border-color: hsl(var(--hue-saturation-brown), 35%);
 	}
 }
 
@@ -292,6 +307,20 @@ ol, ul, li {
 	}
 }
 
+[btn-light-brown] {
+	color: hsl(var(--hue-saturation-brown), 40%);
+	background: hsl(var(--hue-saturation-brown), 95%);
+	border: 1px solid hsl(var(--hue-saturation-brown), 90%);
+	&:hover {
+		background: hsl(var(--hue-saturation-brown), 90%);
+		border-color: hsl(var(--hue-saturation-brown), 85%);
+	}
+	&:active {
+		background: hsl(var(--hue-saturation-brown), 85%);
+		border-color: hsl(var(--hue-saturation-brown), 80%);
+	}
+}
+
 [btn-light-teal] {
 	color: hsl(var(--hue-saturation-teal), 40%);
 	background: hsl(var(--hue-saturation-teal), 95%);
@@ -392,6 +421,12 @@ ol, ul, li {
 	color: hsl(var(--hue-saturation-orange), 30%);
 	background: hsl(var(--hue-saturation-orange), 90%);
 	border: 1px solid hsl(var(--hue-saturation-orange), 85%);
+}
+
+[txt-light-brown] {
+	color: hsl(var(--hue-saturation-brown), 30%);
+	background: hsl(var(--hue-saturation-brown), 90%);
+	border: 1px solid hsl(var(--hue-saturation-brown), 85%);
 }
 
 [txt-light-teal] {
