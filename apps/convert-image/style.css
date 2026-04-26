@@ -254,53 +254,61 @@ body {
 			&.side-r {
 				width: 100%;
 				padding: 12px;
-				.import-picture {
-					display: flex;
-					flex-direction: column;
-					gap: 12px;
-					label {
-						.label-name {
-							display: inline-block;
-							display: grid;
-							place-items: center;
-							height: 32px;
-							border-radius: var(--bdrs-lv-4);
-						}
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+				label[for="import-picture"] {
+					.label-name {
+						display: inline-block;
+						display: grid;
+						place-items: center;
+						height: 32px;
+						border-radius: var(--bdrs-lv-4);
 					}
-					.preview-picture {
-						h3 {
-							display: block;
-							margin-bottom: 6px;
-							font-weight: 500;
-							color: var(--color-lv-1);
+				}
+				.preview-picture {
+					h3 {
+						display: block;
+						margin-bottom: 6px;
+						font-weight: 500;
+						color: var(--color-lv-1);
+					}
+					#preview {
+						display: flex;
+						gap: 12px;
+						img {
+							width: auto;
+							height: 90px;
 						}
-						#preview {
+						#preview-data-image {
 							display: flex;
-							gap: 12px;
-							img {
-								width: auto;
-								height: 90px;
-							}
-							#preview-data-image {
-								display: flex;
-								flex-direction: column;
-								justify-content: space-between;
-								span {
-									color: var(--color-lv-3);
-									strong {
-										color: var(--color-lv-2);
-										font-weight: 500;
-									}
+							flex-direction: column;
+							justify-content: space-between;
+							span {
+								color: var(--color-lv-3);
+								strong {
+									color: var(--color-lv-2);
+									font-weight: 500;
 								}
 							}
 						}
 					}
-					.return-picture {
-						h3 {
-							display: block;
-							margin-bottom: 6px;
-							font-weight: 500;
-							color: var(--color-lv-1);
+				}
+				.return-picture {
+					display: flex;
+					flex-direction: column;
+					height: 100%;
+					h3 {
+						display: block;
+						margin-bottom: 6px;
+						font-weight: 500;
+						color: var(--color-lv-1);
+					}
+					#return {
+						max-height: 500px;
+						display: flex;
+						img {
+							object-fit: contain;
 						}
 					}
 				}
