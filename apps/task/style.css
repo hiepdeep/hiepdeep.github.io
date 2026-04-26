@@ -171,6 +171,9 @@ body {
 										&[work] {
 											background: hsl(var(--hue-saturation-green), 40%);
 										}
+										&[leave] {
+											background: hsl(var(--hue-saturation-gray), 40%);
+										}
 									}
 								}
 							}
@@ -192,6 +195,9 @@ body {
 									background: hsl(var(--hue-saturation-gray), 90%);
 									&[work] {
 										background: hsl(var(--hue-saturation-green), 50%);
+									}
+									&[leave] {
+										background: hsl(var(--hue-saturation-gray), 50%);
 									}
 								}
 							}
