@@ -110,8 +110,13 @@ async function renderCalendar() {
 		if (!isSunday) countWorkDays++;
 		let attrs = { morning: "", afternoon: "", ns: "", o_ds: "", o_ns: "", o_sun_ds: "", o_sun_ns: "" };
 		if (dayData) {
-			if (dayData.task.morning > 0) attrs.morning = "work";
-			if (dayData.task.afternoon > 0) attrs.afternoon = "work";
+			if (!isSunday) {
+				attrs.morning = dayData.task.morning > 0 ? "work" : "leave";
+				attrs.afternoon = dayData.task.afternoon > 0 ? "work" : "leave";
+			} else {
+				attrs.morning = dayData.task.morning > 0 ? "work" : "";
+				attrs.afternoon = dayData.task.afternoon > 0 ? "work" : "";
+			}
 			const dailyHours = dayData.task.morning + dayData.task.afternoon;
 			if (dayData.shift === "nightshift") {
 				stats.ns += dailyHours;
@@ -131,17 +136,17 @@ async function renderCalendar() {
 		}
 		const isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? "today" : "";
 		datesHtml += `
-			<li ${isSunday ? "sunday" : ""} ${isToday} ${attrs.ns} data-day="${i}" style="cursor: pointer;">
-				<span class="day">${dayKey}</span>
-				<div class="data-task" ${attrs.o_sun_ds} ${attrs.o_sun_ns}>
-					<div class="process">
-						<span class="half-day" ${attrs.morning}></span>
-						<span class="half-day" ${attrs.afternoon}></span>
-					</div>
-					<span class="overtime" ${attrs.o_ds} ${attrs.o_ns}></span>
-				</div>
-			</li>
-		`;
+            <li ${isSunday ? "sunday" : ""} ${isToday} ${attrs.ns} data-day="${i}" style="cursor: pointer;">
+                <span class="day">${dayKey}</span>
+                <div class="data-task" ${attrs.o_sun_ds} ${attrs.o_sun_ns}>
+                    <div class="process">
+                        <span class="half-day" ${attrs.morning}></span>
+                        <span class="half-day" ${attrs.afternoon}></span>
+                    </div>
+                    <span class="overtime" ${attrs.o_ds} ${attrs.o_ns}></span>
+                </div>
+            </li>
+        `;
 	}
 	for (let i = endDay; i < 6; i++) {
 		datesHtml += `<li class="old"><span class="day">${i - endDay + 1}</span></li>`;
