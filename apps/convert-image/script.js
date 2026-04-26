@@ -52,10 +52,10 @@ function renderResult() {
 	const newW = parseInt(changeW.value) || 1920;
 	const newH = parseInt(changeH.value) || 1080;
 	const isFill = optionFill.checked;
-	const selectedAngle = document.querySelector('input[name="change-angle"]:checked').value;
+	const selectedAngle = document.querySelector("input[name='change-angle']:checked").value;
 	// Tạo canvas để xử lý ảnh
-	const canvas = document.createElement('canvas');
-	const ctx = canvas.getContext('2d');
+	const canvas = document.createElement("canvas");
+	const ctx = canvas.getContext("2d");
 	canvas.width = newW;
 	canvas.height = newH;
 	// Xoá canvas (trong suốt)
@@ -72,15 +72,15 @@ function renderResult() {
 		const imgW = originalImage.width;
 		const imgH = originalImage.height;
 		// Tính toán tọa độ X
-		if (selectedAngle.includes('left')) posX = 0;
-		else if (selectedAngle.includes('right')) posX = newW - imgW;
+		if (selectedAngle.includes("left")) posX = 0;
+		else if (selectedAngle.includes("right")) posX = newW - imgW;
 		else posX = (newW - imgW) / 2; // Center
 		// Tính toán tọa độ Y
-		if (selectedAngle.includes('top')) posY = 0;
-		else if (selectedAngle.includes('bottom')) posY = newH - imgH;
+		if (selectedAngle.includes("top")) posY = 0;
+		else if (selectedAngle.includes("bottom")) posY = newH - imgH;
 		else posY = (newH - imgH) / 2; // Center
 		ctx.drawImage(originalImage, posX, posY, imgW, imgH);
 	}
 	// Xuất kết quả ra thẻ img #return
-	returnImg.src = canvas.toDataURL(fileType || 'image/png');
+	returnImg.src = canvas.toDataURL(fileType || "image/png");
 }
