@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
+		<title>Convert Image</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="box">
+			<div id="header-top">
+				<a href="" class="logo">
+					<img src="https://hiepdeep.github.io/library/pictures/picture.png" alt="">
+					<span class="text">Convert Image</span>
+				</a>
+				<div class="btn-gr">
+					<button class="material-symbols-rounded" id="btn-dark-more" btn-light-gray>clear_day</button>
+				</div>
+			</div>
+			<div class="main">
+				<div class="side side-l">
+					<div class="options">
+						<div class="change-size">
+							<div class="gr-label">
+								<label for="change-w">
+									<input id="change-w" type="tel" pattern="[0-9.]*" placeholder="0" required>
+									<span class="label-name">px</span>
+								</label>
+								<label for="change-h">
+									<input id="change-h" type="tel" pattern="[0-9.]*" placeholder="0" required>
+									<span class="label-name">px</span>
+								</label>
+							</div>
+						</div>
+						<label for="option-fill" class="option-fill">
+							<input type="checkbox" name="option-fill" id="option-fill" value="fill" checked>
+							<span class="label-name">Fill</span>
+						</label>
+						<div class="gr-label gr-change-angle">
+							<label for="angle-center-center">
+								<input type="radio" name="change-angle" id="angle-center-center" value="angle-center-center" checked>
+								<span class="label-name">center-center</span>
+							</label>
+							<label for="angle-top-left">
+								<input type="radio" name="change-angle" id="angle-top-left" value="angle-top-left">
+								<span class="label-name">top-left</span>
+							</label>
+							<label for="angle-top-center">
+								<input type="radio" name="change-angle" id="angle-top-center" value="angle-top-center">
+								<span class="label-name">top-center</span>
+							</label>
+							<label for="angle-top-right">
+								<input type="radio" name="change-angle" id="angle-top-right" value="angle-top-right">
+								<span class="label-name">top-right</span>
+							</label>
+							<label for="angle-center-right">
+								<input type="radio" name="change-angle" id="angle-center-right" value="angle-center-right">
+								<span class="label-name">center-right</span>
+							</label>
+							<label for="angle-bottom-right">
+								<input type="radio" name="change-angle" id="angle-bottom-right" value="angle-bottom-right">
+								<span class="label-name">bottom-right</span>
+							</label>
+							<label for="angle-bottom-center">
+								<input type="radio" name="change-angle" id="angle-bottom-center" value="angle-bottom-center">
+								<span class="label-name">bottom-center</span>
+							</label>
+							<label for="angle-bottom-left">
+								<input type="radio" name="change-angle" id="angle-bottom-left" value="angle-bottom-left">
+								<span class="label-name">bottom-left</span>
+							</label>
+							<label for="angle-center-left">
+								<input type="radio" name="change-angle" id="angle-center-left" value="angle-center-left">
+								<span class="label-name">center-left</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="side side-r">
+					<div class="import-picture">
+						<label for="import-picture">
+							<input type="file" id="import-picture" accept="image/*" style="display:none">
+							<span class="label-name" btn-blue>Import Image</span>
+						</label>
+						<div class="preview-picture">
+							<h3>Preview:</h3>
+							<div id="preview">
+								<img src="https://hiepdeep.github.io/library/pictures/yasuo128x72.png" alt="">
+								<div id="preview-data-image">
+									<span class="data-image">Name: <strong id="data-image-name">Yasuo.png</strong></span>
+									<span class="data-image">Type: <strong id="data-image-type">PNG</strong></span>
+									<span class="data-image">Dimensions: <strong id="data-image-dimensions">128x72</strong></span>
+									<span class="data-image">Size: <strong id="data-image-size">26.2KB</strong></span>
+								</div>
+							</div>
+						</div>
+						<div class="return-picture">
+							<h3>Return:</h3>
+							<div id="return">
+								<img src="https://hiepdeep.github.io/library/pictures/yasuo1280x720.png" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="script.js"></script>
+	</body>
+</html>
