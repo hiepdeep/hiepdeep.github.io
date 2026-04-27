@@ -1,7 +1,8 @@
 console.clear();
 
 // Chọn các phần tử DOM
-const importInput = document.getElementById("import-picture");
+const importInput = document.getElementById("import-image");
+const pasteInput = document.getElementById("paste-image");
 const changeW = document.getElementById("change-w");
 const changeH = document.getElementById("change-h");
 const optionFill = document.getElementById("option-fill");
@@ -15,6 +16,13 @@ const dataSize = document.getElementById("data-image-size");
 let originalImage = new Image();
 let fileName = "";
 let fileType = "";
+
+document.addEventListener("DOMContentLoaded", (e) => {
+	e.preventDefault();
+	const $return = document.getElementById("return");
+	const $return_top = $return.getBoundingClientRect().top;
+	$return.style.maxHeight = `calc(100vh - ${$return_top}px - 12px * 2 - 1px)`;
+});
 
 importInput.addEventListener("change", function(e) {
 	const file = e.target.files[0];
