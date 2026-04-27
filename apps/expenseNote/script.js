@@ -95,7 +95,7 @@ async function renderViewsChart(ctxId) {
 			const x = gap + (slot_width + gap) * index;
 			const baseY = myCanvas.height - paddingBottom;
 			const y = baseY - currentBarHeight;
-			ctx.fillStyle = val === maxVal ? "hsl(200deg, 70%, 50%)" : "hsl(200deg, 70%, 60%)";
+			ctx.fillStyle = val === maxVal ? "hsl(210deg, 70%, 50%)" : "hsl(210deg, 70%, 60%)";
 			ctx.beginPath();
 			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
 			ctx.fill();
