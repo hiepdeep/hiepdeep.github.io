@@ -308,6 +308,7 @@ body {
 					}
 					#return {
 						display: flex;
+						background: hsl(var(--hue-saturation-gray), 95%);
 						img {
 							object-fit: contain;
 						}
