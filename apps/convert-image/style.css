@@ -281,6 +281,8 @@ body {
 						img {
 							width: auto;
 							height: 90px;
+							border-radius: var(--bdrs-lv-4);
+							overflow: hidden;
 						}
 						#preview-data-image {
 							display: flex;
@@ -309,6 +311,8 @@ body {
 					#return {
 						display: flex;
 						background: hsl(var(--hue-saturation-gray), 95%);
+						border-radius: var(--bdrs-lv-4);
+						overflow: hidden;
 						img {
 							object-fit: contain;
 						}
