@@ -44,8 +44,8 @@ body {
 		}
 		button {
 			flex-shrink: 0;
+			width: 30px;
 			height: 30px;
-			aspect-ratio: 1;
 			border-radius: var(--bdrs-lv-3);
 		}
 	}
