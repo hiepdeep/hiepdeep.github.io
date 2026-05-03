@@ -1,86 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="vn">
 	<head>
 		<meta charset="UTF-8">
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-		<meta content="width=device-width, initial-scale=1" name="viewport">
-		<link rel="icon" href="/cdn/favicon/favicon.svg">
-		<title>Notepad - HiepDeep</title>
-		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/all.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
+		<title>GameBox</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
 		<style type="text/css">
+			* {
+				font-family: "Quicksand", sans-serif;
+				color: red;
+				font-size: var(--fz-lv-4);
+			}
 			body {
-				background: var(--light);
-				font-family: "Be Vietnam Pro", sans-serif;
+				background: var(--bg-body-blue);
+				display: grid;
+				place-items: center;
+				padding: 12px;
+			}
+			.box {
+				width: 100%;
+				max-width: 1080px;
 				display: flex;
-				justify-content: center;
-				padding: 1rem;
-				letter-spacing: .04em;
-			}
-
-			#notepad {
-				display: grid;
-				grid-gap: 1rem;
-				max-width: 1000px;
-			}
-
-			#notepad .notepad {
-				background: #FFF;
-				display: grid;
-				grid-gap: 1rem;
-				padding: 0 1rem;
-			}
-
-			#notepad .notepad .title {
-				border-bottom: 2px solid var(--light);
-				color: var(--black-clr-54);
-				font-size: 14px;
-				font-weight: 500;
-				line-height: 40px;
-				user-select: none;
-			}
-
-			#notepad .notepad .content {
-				display: grid;
-			}
-
-			#notepad .notepad .content h2 {
-				font-size: 12px;
-				font-weight: 500;
-				color: var(--black-clr-38);
-				margin-bottom: 1rem;
-			}
-
-			#notepad .notepad .content a {
-				display: inline-flex;
-				align-items: center;
-				margin-bottom: 1rem;
-				color: var(--black-clr-54);
-				user-select: text;
-			}
-
-			#notepad .notepad .content a:hover {
-				color: var(--black-clr-87);
-			}
-
-			#notepad .notepad .content a img {
-				width: 16px;
-				height: 16px;
-				margin-right: 6px;
-			}
-
-			#notepad .notepad .content a span {
-				font-size: 12px;
-				font-weight: 500;
+				flex-direction: column;
+				gap: 24px;
+				.item {
+					display: flex;
+					flex-direction: column;
+					gap: 12px;
+					h3 {
+						color: var(--color-lv-1);
+						font-size: var(--fz-lv-1);
+						font-weight: 500;
+					}
+					ul {
+						display: flex;
+						flex-direction: column;
+						gap: 12px;
+						li {
+							a {
+								display: flex;
+								align-items: center;
+								gap: 12px;
+								padding: 6px;
+								background: hsl(var(--hue-saturation-gray), 100%);
+								border: 1px solid hsl(var(--hue-saturation-gray), 90%);
+								border-radius: var(--bdrs-lv-3);
+								&:hover {
+									background: hsl(var(--hue-saturation-gray), 95%);
+									border-color: hsl(var(--hue-saturation-gray), 85%);
+								}
+								&:active {
+									background: hsl(var(--hue-saturation-gray), 90%);
+									border-color: hsl(var(--hue-saturation-gray), 80%);
+								}
+								img {
+									width: 16px;
+									height: 16px;
+								}
+								span {
+									font-weight: 500;
+									color: hsl(var(--hue-saturation-gray), 30%);
+								}
+							}
+							&.seen {
+								a {
+									background: hsl(var(--hue-saturation-gray), 90%);
+									border-color: hsl(var(--hue-saturation-gray), 80%);
+								}
+							}
+						}
+					}
+				}
 			}
 		</style>
 	</head>
 	<body>
-		<div id="notepad"></div>
+		<div class="box" id="box"></div>
 		<script type="text/javascript">
-			var notepad = [
+			console.clear();
+			const notepad = [
 				{
-					"title": "Useful Tools",
+					"title": "New",
 					"content": [
 						{
 							"title": "Online JavaScript beautifier",
@@ -90,6 +92,24 @@
 							"title": "Autoprefixer CSS online",
 							"url": "https://autoprefixer.github.io"
 						},
+						{
+							"title": "",
+							"url": ""
+						},
+					]
+				},
+				{
+					"title": "Old",
+					"content": [
+						{
+							"title": "",
+							"url": ""
+						},
+					]
+				},
+				{
+					"title": "Useful Tools",
+					"content": [
 						{
 							"title": "Generate unique SVG design assets | Haikei",
 							"url": "https://app.haikei.app"
@@ -862,42 +882,33 @@
 						},
 					]
 				}
-			]
-			var note = "";
-			for (var i, i = 0; i < notepad.length; i++) {
-				note += "<div class='notepad'>";
-					note += "<div class='title'>" + notepad[i].title + "</div>";
-					note += "<div class='content'>";
-						for (var c, c = 0; c < notepad[i].content.length; c++) {
-							if (!notepad[i].content[c].title == "") {
-								if (notepad[i].content[c].url == "") {
-									note += "<h2>" + notepad[i].content[c].title + "</h2>";
-								}
-								else {
-									note += "<p>";
-										note += "<a href='" + notepad[i].content[c].url + "' target='_blank'>";
-											note += "<img src='https://www.google.com/s2/favicons?domain=" + notepad[i].content[c].url + "'>";
-											note += "<span>" + notepad[i].content[c].title + "</span>";
-										note += "</a>";
-									note += "</p>";
-								}
-							}
-							else if (notepad[i].content[c].title == "" && notepad[i].content[c].url == "") {
-								note += "<p style='height: calc(32px - 16px);'></p>";
-							}
-							else {
-								note += "<p>";
-									note += "<a href='" + notepad[i].content[c].url + "' target='_blank'>";
-										note += "<img src='https://www.google.com/s2/favicons?domain=" + notepad[i].content[c].url + "'>";
-										note += "<span>" + notepad[i].content[c].url + "</span>";
-									note += "</a>";
-								note += "</p>";
-							}
-						}
-					note += "</div>";
-				note += "</div>";
-			}
-			$("#notepad").html(note);
+			];
+			const box = document.getElementById("box");
+			notepad.forEach(e => {
+				const div = document.createElement("div");
+				div.classList.add("item");
+				const h3 = document.createElement("h3");
+				h3.innerText = e.title;
+				div.appendChild(h3);
+				const ul = document.createElement("ul");
+				e.content.forEach(x => {
+					if(!x.url) return;
+					const li = document.createElement("li");
+					li.innerHTML = `
+						<a href="${x.url}" target="_blank">
+							<img src="https://www.google.com/s2/favicons?domain=${x.url}">
+							<span>${x.title}</span>
+						</a>
+					`;
+					ul.appendChild(li);
+					li.addEventListener("click", function(){
+						li.classList.add("seen");
+					});
+				});
+				div.appendChild(ul);
+				box.appendChild(div);
+			});
 		</script>
 	</body>
 </html>
+
