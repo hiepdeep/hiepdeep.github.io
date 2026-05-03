@@ -2,6 +2,7 @@ console.clear();
 
 const importInput = document.getElementById("import-image");
 const pasteInput = document.getElementById("paste-image");
+const pasteYoutube = document.getElementById("paste-youtube");
 const changeW = document.getElementById("change-w");
 const changeH = document.getElementById("change-h");
 const optionFill = document.getElementById("option-fill");
@@ -23,7 +24,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
 	$return.style.maxHeight = `calc(100vh - ${$return_top}px - 12px * 2 - 1px)`;
 });
 
-// Xử lý tải file từ máy tính
 importInput.addEventListener("change", function(e) {
 	const file = e.target.files[0];
 	if (!file) return;
@@ -37,7 +37,6 @@ importInput.addEventListener("change", function(e) {
 	reader.readAsDataURL(file);
 });
 
-// Xử lý tải file từ URL
 pasteInput.addEventListener("change", function() {
 	const url = this.value.trim();
 	if (!url) return;
@@ -45,7 +44,23 @@ pasteInput.addEventListener("change", function() {
 	loadImage(url, "N/A");
 });
 
-// Hàm bổ trợ để load ảnh dùng chung cho cả 2 cách
+pasteYoutube.addEventListener("change", function() {
+	const url = this.value.trim();
+	if (!url) return;
+	originalImage.crossOrigin = "Anonymous";
+	const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/\s]{11})/;
+	const match = url.match(regex);
+	if (match && match[1]) {
+		const videoId = match[1];
+		console.log("Tìm thấy ID:", videoId);
+		const thumbUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+		loadImage(thumbUrl, "N/A");
+	} else {
+		alert("Link YouTube không đúng định dạng, vui lòng kiểm tra lại!");
+		this.value = "";
+	}
+});
+
 function loadImage(src, sizeText) {
 	originalImage.src = src;
 	originalImage.onload = function() {
@@ -67,20 +82,16 @@ function renderResult() {
 	const newH = parseInt(changeH.value) || 1080;
 	const isFill = optionFill.checked;
 	const selectedAngle = document.querySelector("input[name='change-angle']:checked").value;
-
 	const canvas = document.createElement("canvas");
 	const ctx = canvas.getContext("2d");
 	canvas.width = newW;
 	canvas.height = newH;
-
 	ctx.fillStyle = "white";
 	ctx.fillRect(0, 0, newW, newH);
-
 	if (isFill) {
 		ctx.drawImage(originalImage, 0, 0, newW, newH);
 	} else {
-		let posX = 0,
-			posY = 0;
+		let posX = 0, posY = 0;
 		const imgW = originalImage.width;
 		const imgH = originalImage.height;
 		if (selectedAngle.includes("left")) posX = 0;

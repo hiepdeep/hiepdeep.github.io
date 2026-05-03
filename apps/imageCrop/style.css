@@ -214,14 +214,14 @@ body {
 				gap: 12px;
 				label[for="import-image"] {
 					.label-name {
-						display: inline-block;
 						display: grid;
 						place-items: center;
 						height: 32px;
 						border-radius: var(--bdrs-lv-4);
+						cursor: pointer;
 					}
 				}
-				label[for="paste-image"] {
+				label[for="paste-image"], label[for="paste-youtube"] {
 					display: flex;
 					align-items: center;
 					gap: 12px;
