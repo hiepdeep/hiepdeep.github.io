@@ -24,6 +24,7 @@ const filters = {
 	saturation: { input: document.getElementById("filter-saturation"), val: document.getElementById("filter-val-saturation"), unit: "" },
 	sepia: { input: document.getElementById("filter-sepia"), val: document.getElementById("filter-val-sepia"), unit: "%" }
 };
+const btnResetFilter = document.getElementById("reset-filter");
 let originalImage = new Image();
 let fileName = "";
 let fileType = "";
@@ -94,6 +95,18 @@ Object.keys(filters).forEach(key => {
 	});
 });
 
+const defaultFilters = {
+	blur: 0,
+	brightness: 100,
+	contrast: 100,
+	grayscale: 0,
+	hueRotate: 0,
+	invert: 0,
+	opacity: 100,
+	saturation: 1,
+	sepia: 0
+};
+
 function getFilterString() {
 	return `
         blur(${filters.blur.input.value}px)
@@ -107,6 +120,15 @@ function getFilterString() {
         sepia(${filters.sepia.input.value}%)
     `;
 }
+
+btnResetFilter.addEventListener("click", () => {
+	Object.keys(filters).forEach(key => {
+		const defaultValue = defaultFilters[key];
+		filters[key].input.value = defaultValue;
+		filters[key].val.innerText = defaultValue;
+	});
+	renderResult();
+});
 
 function renderResult() {
 	if (!originalImage.src) return;
