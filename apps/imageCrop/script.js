@@ -13,6 +13,17 @@ const dataName = document.getElementById("data-image-name");
 const dataType = document.getElementById("data-image-type");
 const dataDimensions = document.getElementById("data-image-dimensions");
 const dataSize = document.getElementById("data-image-size");
+const filters = {
+	blur: { input: document.getElementById("filter-blur"), val: document.getElementById("filter-val-blur"), unit: "px" },
+	brightness: { input: document.getElementById("filter-brightness"), val: document.getElementById("filter-val-brightness"), unit: "%" },
+	contrast: { input: document.getElementById("filter-contrast"), val: document.getElementById("filter-val-contrast"), unit: "%" },
+	grayscale: { input: document.getElementById("filter-grayscale"), val: document.getElementById("filter-val-grayscale"), unit: "%" },
+	hueRotate: { input: document.getElementById("filter-hue-rotate"), val: document.getElementById("filter-val-hue-rotate"), unit: "deg" },
+	invert: { input: document.getElementById("filter-invert"), val: document.getElementById("filter-val-invert"), unit: "%" },
+	opacity: { input: document.getElementById("filter-opacity"), val: document.getElementById("filter-val-opacity"), unit: "%" },
+	saturation: { input: document.getElementById("filter-saturation"), val: document.getElementById("filter-val-saturation"), unit: "" },
+	sepia: { input: document.getElementById("filter-sepia"), val: document.getElementById("filter-val-sepia"), unit: "%" }
+};
 let originalImage = new Image();
 let fileName = "";
 let fileType = "";
@@ -76,6 +87,27 @@ function loadImage(src, sizeText) {
 [changeW, changeH, optionFill].forEach(el => el.addEventListener("input", renderResult));
 angleRadios.forEach(radio => radio.addEventListener("change", renderResult));
 
+Object.keys(filters).forEach(key => {
+	filters[key].input.addEventListener("input", function() {
+		filters[key].val.innerText = this.value;
+		renderResult();
+	});
+});
+
+function getFilterString() {
+	return `
+        blur(${filters.blur.input.value}px)
+        brightness(${filters.brightness.input.value}%)
+        contrast(${filters.contrast.input.value}%)
+        grayscale(${filters.grayscale.input.value}%)
+        hue-rotate(${filters.hueRotate.input.value}deg)
+        invert(${filters.invert.input.value}%)
+        opacity(${filters.opacity.input.value}%)
+        saturate(${filters.saturation.input.value})
+        sepia(${filters.sepia.input.value}%)
+    `;
+}
+
 function renderResult() {
 	if (!originalImage.src) return;
 	const newW = parseInt(changeW.value) || 1920;
@@ -88,6 +120,7 @@ function renderResult() {
 	canvas.height = newH;
 	ctx.fillStyle = "white";
 	ctx.fillRect(0, 0, newW, newH);
+	ctx.filter = getFilterString();
 	if (isFill) {
 		ctx.drawImage(originalImage, 0, 0, newW, newH);
 	} else {
