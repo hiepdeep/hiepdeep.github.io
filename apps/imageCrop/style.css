@@ -249,6 +249,11 @@ body {
 								}
 							}
 						}
+						#reset-filter {
+							height: 32px;
+							margin-top: 6px;
+							border-radius: var(--bdrs-lv-4);
+						}
 					}
 				}
 			}
