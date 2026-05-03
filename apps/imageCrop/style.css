@@ -72,10 +72,10 @@ body {
 				.options {
 					display: flex;
 					flex-direction: column;
-					gap: 24px;
+					gap: 12px;
 					.change-size {
 						display: flex;
-						gap: 12px;
+						gap: 6px;
 						label {
 							display: flex;
 							align-items: center;
@@ -152,8 +152,8 @@ body {
 							background: hsl(var(--hue-saturation-gray), 80%);
 							border: 0;
 							border-radius: var(--bdrs-lv-5);
-							width: 10px;
-							height: 10px;
+							width: 12px;
+							height: 12px;
 							position: absolute;
 							overflow: hidden;
 							cursor: pointer;
@@ -201,6 +201,51 @@ body {
 									top: 50%;
 									left: 50%;
 									transform: translate(-50%, -50%);
+							}
+						}
+					}
+					.change-filter {
+						display: flex;
+						flex-direction: column;
+						gap: 6px;
+						label {
+							display: flex;
+							flex-direction: column;
+							gap: 6px;
+							.label-name {
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+								color: var(--color-lv-2);
+							}
+							.filter-val {
+								min-width: 20px;
+								height: 20px;
+								display: grid;
+								place-items: center;
+								font-family: "IBM Plex Mono", monospace;
+								border-radius: var(--bdrs-lv-4);
+							}
+							input[type="range"] {
+								-webkit-appearance: none;
+								width: 100%;
+								height: 12px;
+								outline: none;
+								background: hsl(var(--hue-saturation-gray), 95%);
+								border-radius: var(--bdrs-lv-4);
+								overflow: hidden;
+								cursor: pointer;
+								&:hover {
+									background: hsl(var(--hue-saturation-gray), 90%);
+								}
+								&::-webkit-slider-thumb {
+									-webkit-appearance: none;
+									appearance: none;
+									width: 12px;
+									height: 12px;
+									background: hsl(var(--hue-saturation-blue), 60%);
+									border-radius: var(--bdrs-lv-4);
+								}
 							}
 						}
 					}
