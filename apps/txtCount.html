@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
+		<title>Text Count</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<style type="text/css">
+			* {
+				font-family: "Quicksand", sans-serif;
+				color: red;
+				font-size: var(--fz-lv-4);
+			}
+			body {
+				background: var(--bg-body-blue);
+				display: grid;
+				place-items: center;
+				height: 100vh;
+				padding: 12px;
+			}
+			.box {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				gap: 12px;
+				textarea {
+					font-family: "Consolas";
+					resize: none;
+					width: 100%;
+					line-height: 24px;
+					padding: 12px;
+					color: var(--color-lv-3);
+					background: var(--bg-box);
+					border: 1px solid var(--bd-box);
+					border-radius: var(--bdrs-lv-3);
+					&::placeholder {
+						color: var(--color-placeholder);
+					}
+				}
+				.return-data {
+					flex-shrink: 0;
+					width: 300px;
+					display: flex;
+					flex-direction: column;
+					gap: 6px;
+					padding: 12px;
+					background: var(--bg-box);
+					border: 1px solid var(--bd-box);
+					border-radius: var(--bdrs-lv-3);
+					.txt {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						gap: 12px;
+						position: relative;
+						padding-left: calc(12px + 2px);
+						color: var(--color-lv-1);
+						&:before {
+							content: "";
+							position: absolute;
+							width: 1px;
+							height: 100%;
+							bottom: 0;
+							left: 0;
+							background: hsl(var(--hue-saturation-gray), 90%);
+						}
+						&:nth-child(n+2) {
+							padding-top: 6px;
+							border-top: 1px solid var(--bd-box);
+							&:before {
+								height: calc(100% - 6px);
+							}
+						}
+						strong {
+							display: grid;
+							place-items: center;
+							font-weight: 500;
+							height: 24px;
+							padding: 0 6px;
+							font-family: "IBM Plex Mono", monospace;
+							border-radius: var(--bdrs-lv-4);
+						}
+					}
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<textarea id="textarea"></textarea>
+			<div class="return-data">
+				<span class="txt">Dòng <strong id="line" txt-light-gray>0</strong></span>
+				<span class="txt">Đoạn <strong id="paragraph" txt-light-gray>0</strong></span>
+				<span class="txt">Câu <strong id="sentence" txt-light-gray>0</strong></span>
+				<span class="txt">Từ <strong id="word" txt-light-gray>0</strong></span>
+				<span class="txt">Ký tự <strong id="char" txt-light-gray>0</strong></span>
+			</div>
+		</div>
+		<script>
+			console.clear();
+			const textarea = document.getElementById("textarea");
+			const lineCount = document.getElementById("line");
+			const paragraphCount = document.getElementById("paragraph");
+			const sentenceCount = document.getElementById("sentence");
+			const wordCount = document.getElementById("word");
+			const charCount = document.getElementById("char");
+			textarea.addEventListener("input", () => {
+				const text = textarea.value;
+				// 1. Đếm ký tự (bao gồm cả khoảng trắng)
+				charCount.innerText = text.length;
+				// 2. Đếm dòng (dựa trên ký tự xuống dòng \n)
+				const lines = text.split("\n");
+				lineCount.innerText = text.trim() === "" ? 0 : lines.length;
+				// 3. Đếm từ (lọc bỏ khoảng trắng thừa)
+				const words = text.trim().split(/\s+/);
+				wordCount.innerText = text.trim() === "" ? 0 : words.length;
+				// 4. Đếm câu (kết thúc bằng . ! ?)
+				const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+				sentenceCount.innerText = sentences.length;
+				// 5. Đếm đoạn (dựa trên 2 lần xuống dòng hoặc kết thúc đoạn)
+				const paragraphs = text.split(/\n+/).filter(p => p.trim().length > 0);
+				paragraphCount.innerText = paragraphs.length;
+			});
+		</script>
+	</body>
+</html>
