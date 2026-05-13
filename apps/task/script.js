@@ -140,17 +140,17 @@ async function renderCalendar() {
 		}
 		const isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? "today" : "";
 		datesHtml += `
-            <li ${isSunday ? "sunday" : ""} ${isToday} ${attrs.ns} data-day="${i}" style="cursor: pointer;">
-                <span class="day">${dayKey}</span>
-                <div class="data-task" ${attrs.o_sun_ds} ${attrs.o_sun_ns}>
-                    <div class="process">
-                        <span class="half-day" ${attrs.morning}></span>
-                        <span class="half-day" ${attrs.afternoon}></span>
-                    </div>
-                    <span class="overtime" ${attrs.o_ds} ${attrs.o_ns}></span>
-                </div>
-            </li>
-        `;
+			<li ${isSunday ? "sunday" : ""} ${isToday} ${attrs.ns} data-day="${i}" style="cursor: pointer;">
+				<span class="day">${dayKey}</span>
+				<div class="data-task" ${attrs.o_sun_ds} ${attrs.o_sun_ns}>
+					<div class="process">
+						<span class="half-day" ${attrs.morning}></span>
+						<span class="half-day" ${attrs.afternoon}></span>
+					</div>
+					<span class="overtime" ${attrs.o_ds} ${attrs.o_ns}></span>
+				</div>
+			</li>
+		`;
 	}
 	for (let i = endDay; i < 6; i++) {
 		datesHtml += `<li class="old"><span class="day">${i - endDay + 1}</span></li>`;
