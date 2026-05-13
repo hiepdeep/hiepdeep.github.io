@@ -71,45 +71,6 @@ function calculateAttendanceData(y, m, d) {
 	return data;
 }
 
-function calculateAttendanceData(y, m, d) {
-	const isHalfMorning = document.forms["form"]["half-morning"].checked;
-	const isHalfAfternoon = document.forms["form"]["half-afternoon"].checked;
-	const isOvertime = document.forms["form"]["overtime"].checked;
-	const isNightShift = document.forms["form"]["night-shift"].checked;
-	const dateObj = new Date(y, m, d);
-	const dayOfWeek = dateObj.getDay();
-	const data = {
-		task: { morning: 4, afternoon: 4 },
-		overtime: { o150: 0, o200: 0, o210: 0, o270: 0 },
-		shift: isNightShift ? "nightshift" : "dayshift"
-	};
-	if (dayOfWeek === 0) {
-		data.task.morning = 0;
-		data.task.afternoon = 0;
-	} else {
-		if (isHalfMorning) data.task.morning = 0;
-		if (isHalfAfternoon) data.task.afternoon = 0;
-	}
-	if (isOvertime) {
-		if (!isNightShift) {
-			if (dayOfWeek === 0) {
-				data.overtime.o200 = 11;
-			} else {
-				data.overtime.o150 = 3;
-			}
-		} else {
-			if (dayOfWeek === 0) {
-				data.overtime.o210 = 2;
-				data.overtime.o270 = 0.75;
-			} else {
-				data.overtime.o150 = 2;
-				data.overtime.o200 = 0.75;
-			}
-		}
-	}
-	return data;
-}
-
 async function sendDataToFirebase(y, m, d, data) {
 	const timeYear = y;
 	const timeMonth = String(m + 1).padStart(2, "0");
