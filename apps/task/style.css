@@ -298,5 +298,21 @@ body {
 				}
 			}
 		}
+		.calendar {
+			.cal-body {
+				ul {
+					&.dates {
+						li {
+							&[ns] {
+								&:before {
+									top: 2px;
+									font-size: 18px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
