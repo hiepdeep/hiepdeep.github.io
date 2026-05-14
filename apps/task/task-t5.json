@@ -1,0 +1,186 @@
+{
+	"05": {
+		"01": {
+			"overtime": {
+				"o150": 0,
+				"o200": 0,
+				"o210": 0,
+				"o270": 0
+			},
+			"shift": "dayshift",
+			"task": {
+				"afternoon": 0,
+				"morning": 0
+			}
+		},
+		"02": {
+			"overtime": {
+				"o150": 2,
+				"o200": 0,
+				"o210": 6,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		},
+		"03": {
+			"overtime": {
+				"o150": 0,
+				"o200": 0,
+				"o210": 0,
+				"o270": 0
+			},
+			"shift": "dayshift",
+			"task": {
+				"afternoon": 0,
+				"morning": 0
+			}
+		},
+		"04": {
+			"overtime": {
+				"o150": 2,
+				"o200": 0,
+				"o210": 6,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		},
+		"05": {
+			"overtime": {
+				"o150": 2,
+				"o200": 0,
+				"o210": 6,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		},
+		"06": {
+			"overtime": {
+				"o150": 0,
+				"o200": 0,
+				"o210": 0,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		},
+		"07": {
+			"overtime": {
+				"o150": 2,
+				"o200": 0,
+				"o210": 6,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		},
+		"08": {
+			"overtime": {
+				"o150": 2,
+				"o200": 0,
+				"o210": 6,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		},
+		"09": {
+			"overtime": {
+				"o150": 2,
+				"o200": 0,
+				"o210": 6,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		},
+		"10": {
+			"overtime": {
+				"o150": 0,
+				"o200": 0,
+				"o210": 0,
+				"o270": 0
+			},
+			"shift": "dayshift",
+			"task": {
+				"afternoon": 0,
+				"morning": 0
+			}
+		},
+		"11": {
+			"overtime": {
+				"o150": 2,
+				"o200": 0,
+				"o210": 6,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		},
+		"12": {
+			"overtime": {
+				"o150": 2,
+				"o200": 0,
+				"o210": 6,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		},
+		"13": {
+			"overtime": {
+				"o150": 2,
+				"o200": 0,
+				"o210": 6,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		},
+		"14": {
+			"overtime": {
+				"o150": 2,
+				"o200": 0,
+				"o210": 6,
+				"o270": 0
+			},
+			"shift": "nightshift",
+			"task": {
+				"afternoon": 4,
+				"morning": 4
+			}
+		}
+	}
+}
