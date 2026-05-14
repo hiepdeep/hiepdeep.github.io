@@ -183,6 +183,20 @@ async function renderCalendar() {
 	document.getElementById("hours_200").textContent = stats.o200;
 	document.getElementById("hours_210").textContent = stats.o210;
 	document.getElementById("hours_270").textContent = stats.o270;
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	const formatMoney = (amount) => new Intl.NumberFormat("vi-VN").format(amount);
+	const __lcb    = 9172000;
+	const __1h     = __lcb / (countWorkDays * 8);
+	const __pc     = 900000;
+	const work_day = __1h * (stats.ds + stats.ns + stats.leave);
+	const work_150 = (__1h * stats.o150) * 1.5;
+	const work_200 = (__1h * stats.o200) * 2;
+	const work_210 = (__1h * stats.o210) * 2.1;
+	const work_270 = (__1h * stats.o270) * 2.7;
+	const __sum    = work_day + work_150 + work_200 + work_210 + work_270 + __pc + 32000 - (__lcb * 0.105) - 47000;
+	console.clear();
+	console.log(  formatMoney(__sum)  );
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 function updateMonth(delta) {
