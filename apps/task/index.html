@@ -14,22 +14,10 @@
 			<div class="form">
 				<form action="" id="form">
 					<div class="gr-checkbox">
-						<label for="half-morning">
-							<input type="checkbox" name="half-morning" id="half-morning" value="4">
-							<span class="name">Nghỉ buổi sáng</span>
-						</label>
-						<label for="half-afternoon">
-							<input type="checkbox" name="half-afternoon" id="half-afternoon" value="4">
-							<span class="name">Nghỉ buổi chiều</span>
-						</label>
-						<label for="overtime">
-							<input type="checkbox" name="overtime" id="overtime" value="true">
-							<span class="name">Tăng ca</span>
-						</label>
-						<label for="night-shift">
-							<input type="checkbox" name="night-shift" id="night-shift" value="true">
-							<span class="name">Ca đêm</span>
-						</label>
+						<input type="checkbox" name="half-morning" id="half-morning" value="4">
+						<input type="checkbox" name="half-afternoon" id="half-afternoon" value="4">
+						<input type="checkbox" name="overtime" id="overtime" value="true">
+						<input type="checkbox" name="night-shift" id="night-shift" value="true">
 					</div>
 					<button type="submit" btn-blue>Chấm công hôm nay</button>
 				</form>
@@ -61,6 +49,7 @@
 				<span class="txt">Tăng ca 200% (h)<strong id="hours_200" txt-light-gray>0</strong></span>
 				<span class="txt">Tăng ca 210% (h)<strong id="hours_210" txt-light-gray>0</strong></span>
 				<span class="txt">Tăng ca 270% (h)<strong id="hours_270" txt-light-gray>0</strong></span>
+				<span class="txt wage">Lương dự kiến nhận được<strong id="wage" txt-light-purple>0</strong></span>
 			</div>
 		</div>
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
