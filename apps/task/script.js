@@ -194,8 +194,7 @@ async function renderCalendar() {
 	const work_210 = (__1h * stats.o210) * 2.1;
 	const work_270 = (__1h * stats.o270) * 2.7;
 	const __sum    = work_day + work_150 + work_200 + work_210 + work_270 + __pc + 32000 - (__lcb * 0.105) - 47000;
-	console.clear();
-	console.log(  formatMoney(__sum)  );
+	document.getElementById("wage").textContent = formatMoney(__sum);
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
