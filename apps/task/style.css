@@ -300,6 +300,7 @@ body {
 			}
 			&.wage {
 				font-weight: 600;
+				color: hsl(var(--hue-saturation-purple), 50%);
 			}
 		}
 	}
