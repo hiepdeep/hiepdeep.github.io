@@ -185,13 +185,12 @@ body {
 							&:before {
 								content: "\ef44";
 								font-family: "Material Symbols Rounded";
-								font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 48;
-								color: var(--color-placeholder);
+								font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 20;
+								color: var(--color-lv-4);
 								position: absolute;
 								left: 6px;
-								top: 0;
-								height: calc(100% - 6px * 3);
-								font-size: 20px;
+								top: 6px;
+								font-size: 13px;
 								display: grid;
 								place-items: center;
 							}
@@ -321,22 +320,6 @@ body {
 				}
 				button[type="submit"] {
 					height: 30px;
-				}
-			}
-		}
-		.calendar {
-			.cal-body {
-				ul {
-					&.dates {
-						li {
-							&[ns] {
-								&:before {
-									top: 2px;
-									font-size: 18px;
-								}
-							}
-						}
-					}
 				}
 			}
 		}
