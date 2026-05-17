@@ -186,7 +186,7 @@ body {
 								content: "\ef44";
 								font-family: "Material Symbols Rounded";
 								font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 200, "opsz" 20;
-								color: var(--color-lv-4);
+								color: hsl(var(--hue-saturation-gray), 60%);
 								position: absolute;
 								left: 6px;
 								top: 6px;
