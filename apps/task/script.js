@@ -45,27 +45,24 @@ function calculateAttendanceData(y, m, d) {
 	// 2. Tính giờ tăng ca (Overtime) dựa theo ảnh bảng tra
 	if (isOvertime) {
 		if (!isNightShift) {
-			// CA NGÀY (08h00 - 20h00) -> Tăng ca 3 tiếng sau 17h
 			if (isSunday) {
-				// Nếu đi làm CN từ 8h-20h: Tính toàn bộ 11 tiếng vào 200% (hoặc tùy bạn quy định)
-				// Ở đây mình tính 3h OT theo đúng yêu cầu "tăng ca 3h"
 				data.overtime.o200 = 11;
 			} else {
-				data.overtime.o150 = 3; // Ngày thường tăng ca 3h (150%)
+				data.overtime.o150 = 3;
 			}
 		} else {
-			// CA ĐÊM (20h00 - 08h00 sáng hôm sau)
 			if (isSunday) {
 				// Nếu rạng sáng hôm nay là Chủ Nhật (nghĩa là đi từ đêm thứ 7)
 				// Theo bảng: 00h-06h (270% -> 6h), 06h-08h (200% -> 2h)
-				data.overtime.o270 = 6;
 				data.overtime.o200 = 2;
+				data.overtime.o270 = 1;
 			} else {
 				// Ngày thường: 00h-06h (210% -> 6h), 06h-08h (150% -> 2h)
-				data.overtime.o210 = 6;
 				data.overtime.o150 = 2;
+				data.overtime.o210 = 1;
+				
+				
 			}
-			// Lưu ý: 4 tiếng đầu (20h-00h) thường tính vào công cơ bản của ca đêm
 		}
 	}
 	return data;
