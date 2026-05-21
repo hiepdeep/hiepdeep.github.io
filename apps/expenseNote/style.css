@@ -61,7 +61,7 @@ body {
 		height: 100%;
 		display: flex;
 		gap: 12px;
-		#sidebar {
+		#ssidebar {
 			flex-shrink: 0;
 			width: 300px;
 			padding: 12px;
@@ -131,6 +131,101 @@ body {
 				}
 				button[type="submit"] {
 					height: 44px;
+					border-radius: var(--bdrs-lv-4);
+				}
+				button#close-form {
+					display: none;
+					height: 30px;
+					border-radius: var(--bdrs-lv-4);
+				}
+			}
+		}
+		#sidebar {
+			flex-shrink: 0;
+			width: 300px;
+			padding: 12px;
+			background: var(--bg-box);
+			border: 1px solid var(--bd-box);
+			border-radius: var(--bdrs-lv-3);
+			#form {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+				user-select: none;
+				position: relative;
+				.gr-label {
+					display: flex;
+					gap: 12px;
+					label {
+						width: 100%;
+						display: flex;
+						align-items: center;
+						border-radius: var(--bdrs-lv-4);
+						overflow: hidden;
+						cursor: pointer;
+						input[type="radio"] {
+							flex-shrink: 0;
+							-webkit-appearance: none;
+							background: 0;
+							border: 0;
+							width: 30px;
+							height: 30px;
+							position: relative;
+							cursor: pointer;
+							&:before {
+								font-family: "Material Symbols Rounded";
+								font-size: 20px;
+								font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 200, "opsz" 20;
+								color: hsl(var(--hue-saturation-gray), 40%);
+								background: hsl(var(--hue-saturation-gray), 95%);
+								position: absolute;
+								width: 100%;
+								height: 100%;
+								display: grid;
+								place-items: center;
+							}
+							&[name="form-person"] {
+								&:before {
+									content: "\e87c";
+								}
+							}
+							&[name="form-type"] {
+								&:before {
+									content: "\f1cc";
+									font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 20;
+								}
+							}
+							&:checked {
+								&:before, & ~ .name {
+									color: hsl(var(--hue-saturation-blue), 40%);
+									background: hsl(var(--hue-saturation-blue), 90%);
+								}
+							}
+						}
+						.name {
+							width: 100%;
+							line-height: 30px;
+							padding-right: 8px;
+							font-weight: 500;
+							color: hsl(var(--hue-saturation-gray), 40%);
+							background: hsl(var(--hue-saturation-gray), 95%);
+						}
+					}
+				}
+				input[type="text"], input[type="tel"] {
+					padding: 0 6px;
+					height: 30px;
+					color: var(--color-lv-2);
+					background: transparent;
+					border: 1px solid var(--bd-box);
+					border-radius: var(--bdrs-lv-4);
+					&::placeholder {
+						color: var(--color-placeholder);
+					}
+				}
+				button[type="submit"] {
+					height: 30px;
 					border-radius: var(--bdrs-lv-4);
 				}
 				button#close-form {
