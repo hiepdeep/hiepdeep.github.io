@@ -691,7 +691,7 @@
 				formatInput_1("importMark");
 			});
 			document.getElementById("addPartReportUnit").addEventListener("change", function() {
-				let files = document.getElementById("addPartReportUnit").files;
+				let files = this.files;
 				if (files.length === 0) return;
 				let allDataRows = [];
 				let filesRead = 0;
