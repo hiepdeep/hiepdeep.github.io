@@ -327,6 +327,12 @@ body {
 			.form-data {
 				.form {
 					width: 100%;
+					#form {
+						input[type="text"], input[type="tel"] {
+							padding: 8px 6px;
+							height: auto;
+						}
+					}
 				}
 				#return-chart {
 					display: none;
