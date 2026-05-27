@@ -276,13 +276,3 @@ document.getElementById("openbox-expense-hieu").addEventListener("click", () => 
 document.getElementById("openbox-expense-hiep").addEventListener("click", () => openDetailBox("hiep", "expense"));
 document.getElementById("openbox-borrow-hieu").addEventListener("click", () => openDetailBox("hieu", "borrow"));
 document.getElementById("openbox-borrow-hiep").addEventListener("click", () => openDetailBox("hiep", "borrow"));
-
-document.getElementById("btn-create-new").addEventListener("click", function() {
-	event.preventDefault();
-	document.getElementById("sidebar").classList.add("open-form");
-});
-
-document.getElementById("close-form").addEventListener("click", function() {
-	event.preventDefault();
-	document.getElementById("sidebar").classList.remove("open-form");
-});

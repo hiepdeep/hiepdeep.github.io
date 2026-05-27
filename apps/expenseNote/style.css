@@ -51,10 +51,6 @@ body {
 			#btn-dark-more {
 				aspect-ratio: 1;
 			}
-			#btn-create-new {
-				padding: 0 12px;
-				display: none;
-			}
 		}
 	}
 	.main {
@@ -327,14 +323,6 @@ body {
 
 @media (max-width: 650px) {
 	.box {
-		position: relative;
-		#header-top {
-			.btn-gr {
-				#btn-create-new {
-					display: block;
-				}
-			}
-		}
 		.main {
 			.form-data {
 				.form {
