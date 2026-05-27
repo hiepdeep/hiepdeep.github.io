@@ -58,8 +58,8 @@ async function renderViewsChart(ctxId) {
 	const chartView = document.getElementById("return-chart");
 	const myCanvas = document.getElementById(ctxId);
 	const ctx = myCanvas.getContext("2d");
-	myCanvas.width = chartView.getBoundingClientRect().width - 2;
-	myCanvas.height = chartView.getBoundingClientRect().height - 2;
+	myCanvas.width = chartView.getBoundingClientRect().width;
+	myCanvas.height = document.getElementsByClassName("form")[0].getBoundingClientRect().height;
 	const currentYear = new Date().getFullYear().toString();
 	const snapshot = await database.ref(`${db}/${currentYear}`).once("value");
 	const yearData = snapshot.val() || {};
