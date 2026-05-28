@@ -58,8 +58,8 @@ async function renderViewsChart(ctxId) {
 	const chartView = document.getElementById("return-chart");
 	const myCanvas = document.getElementById(ctxId);
 	const ctx = myCanvas.getContext("2d");
-	myCanvas.width = chartView.getBoundingClientRect().width;
-	myCanvas.height = document.getElementsByClassName("form")[0].getBoundingClientRect().height;
+	myCanvas.width = chartView.getBoundingClientRect().width - 2;
+	myCanvas.height = document.getElementsByClassName("form")[0].getBoundingClientRect().height - 2;
 	const currentYear = new Date().getFullYear().toString();
 	const snapshot = await database.ref(`${db}/${currentYear}`).once("value");
 	const yearData = snapshot.val() || {};
@@ -83,7 +83,7 @@ async function renderViewsChart(ctxId) {
 	const paddingTop = gap;
 	const paddingBottom = 30;
 	const slot_width = (myCanvas.width - (gap * (total_month + 1))) / total_month;
-	const borderRadius = [6, 6, 2, 2];
+	const borderRadius = [4, 4, 2, 2];
 	let progress = 0;
 	function animate() {
 		progress += 0.02;
@@ -95,7 +95,7 @@ async function renderViewsChart(ctxId) {
 			const x = gap + (slot_width + gap) * index;
 			const baseY = myCanvas.height - paddingBottom;
 			const y = baseY - currentBarHeight;
-			ctx.fillStyle = val === maxVal ? "hsl(210deg, 70%, 50%)" : "hsl(210deg, 70%, 60%)";
+			ctx.fillStyle = val === maxVal ? "hsl(210deg, 70%, 50%)" : "hsl(210deg, 70%, 55%)";
 			ctx.beginPath();
 			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
 			ctx.fill();
