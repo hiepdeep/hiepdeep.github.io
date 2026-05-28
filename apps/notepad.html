@@ -31,13 +31,13 @@
 					gap: 12px;
 					h3 {
 						color: var(--color-lv-1);
-						font-size: var(--fz-lv-1);
+						font-size: var(--fz-lv-2);
 						font-weight: 500;
 					}
 					ul {
 						display: flex;
 						flex-direction: column;
-						gap: 12px;
+						gap: 6px;
 						li {
 							a {
 								display: flex;
@@ -61,7 +61,7 @@
 								}
 								span {
 									font-weight: 500;
-									color: hsl(var(--hue-saturation-gray), 30%);
+									color: var(--color-lv-3);
 								}
 							}
 							&.seen {
@@ -698,7 +698,7 @@
 						},
 						{
 							"title": "Kiểm tra dữ liệu có cấu trúc",
-							"url": "https://search.google.com/structured-data/testing-tool\#"
+							"url": "https://search.google.com/structured-data/testing-tool"
 						},
 						{
 							"title": "Trình gỡ lỗi chia sẻ - Facebook for Developers",
@@ -830,7 +830,7 @@
 					li.innerHTML = `
 						<a href="${x.url}" target="_blank">
 							<img src="https://www.google.com/s2/favicons?domain=${x.url}">
-							<span>${x.title}</span>
+							<span>${(x.title && x.title.trim() !== "") ? x.title : x.url}</span>
 						</a>
 					`;
 					ul.appendChild(li);
