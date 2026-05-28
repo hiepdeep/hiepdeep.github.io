@@ -112,8 +112,17 @@ body {
 								}
 								&[name="form-type"] {
 									&:before {
-										content: "\f1cc";
 										font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 20;
+									}
+									&[value="expense"] {
+										&:before {
+											content: "\eb88";
+										}
+									}
+									&[value="borrow"] {
+										&:before {
+											content: "\e54c";
+										}
 									}
 								}
 								&:checked {
