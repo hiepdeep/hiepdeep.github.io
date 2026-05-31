@@ -173,13 +173,6 @@ async function renderCalendar() {
 	}
 	header.textContent = `${months[month]} ${year}`;
 	dates.innerHTML = datesHtml;
-	document.getElementById("hours_in_dayshift").textContent = `${stats.ds}/${countWorkDays * 8}`;
-	document.getElementById("hours_in_nightshift").textContent = `${stats.ns}/${countWorkDays * 8}`;
-	document.getElementById("half_in_month").textContent = stats.leave;
-	document.getElementById("hours_150").textContent = stats.o150;
-	document.getElementById("hours_200").textContent = stats.o200;
-	document.getElementById("hours_210").textContent = stats.o210;
-	document.getElementById("hours_270").textContent = stats.o270;
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	const formatMoney = (amount) => new Intl.NumberFormat("vi-VN").format(amount);
 	const __lcb    = 9172000;
@@ -191,6 +184,13 @@ async function renderCalendar() {
 	const work_210 = (__1h * stats.o210) * 2.1;
 	const work_270 = (__1h * stats.o270) * 2.7;
 	const __sum    = work_day + work_150 + work_200 + work_210 + work_270 + __pc + 32000 - (__lcb * 0.105) - 47000;
+	document.getElementById("hours_in_dayshift").textContent = `${stats.ds}/${countWorkDays * 8}`;
+	document.getElementById("hours_in_nightshift").textContent = `${stats.ns}/${countWorkDays * 8}`;
+	document.getElementById("half_in_month").textContent = stats.leave;
+	document.getElementById("hours_150").textContent = stats.o150 + "/" + formatMoney((__1h * stats.o150) * 1.5);
+	document.getElementById("hours_200").textContent = stats.o200 + "/" + formatMoney((__1h * stats.o200) * 2);
+	document.getElementById("hours_210").textContent = stats.o210 + "/" + formatMoney((__1h * stats.o210) * 2.1);
+	document.getElementById("hours_270").textContent = stats.o270 + "/" + formatMoney((__1h * stats.o270) * 2.7);
 	document.getElementById("wage").textContent = formatMoney(__sum);
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
