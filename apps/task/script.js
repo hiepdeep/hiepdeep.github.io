@@ -34,7 +34,6 @@ function calculateAttendanceData(y, m, d) {
 		},
 		shift: isNightShift ? "nightshift" : "dayshift"
 	};
-	// 1. Tính giờ công cơ bản
 	if (isSunday) {
 		data.task.morning = 0;
 		data.task.afternoon = 0;
@@ -42,7 +41,6 @@ function calculateAttendanceData(y, m, d) {
 		if (isHalfMorning) data.task.morning = 0;
 		if (isHalfAfternoon) data.task.afternoon = 0;
 	}
-	// 2. Tính giờ tăng ca (Overtime)
 	if (isOvertime) {
 		if (!isNightShift) {
 			if (isSunday) {
