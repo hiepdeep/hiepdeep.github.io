@@ -213,7 +213,7 @@ body {
 							display: grid;
 							grid-template-columns: repeat(11, 1fr);
 							grid-gap: 2px;
-							border-radius: var(--bdrs-lv-4);
+							border-radius: var(--bdrs-lv-5);
 							overflow: hidden;
 							.process {
 								grid-column: span 8;
