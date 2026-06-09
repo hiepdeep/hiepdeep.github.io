@@ -531,7 +531,51 @@
 					.txtImport {
 						display: none;
 						height: 100%;
-						label[for="addPartReportUnit"] {
+						.table {
+							background: var(--bg-box);
+							border: 1px solid var(--bd-box);
+							border-radius: var(--bdrs-lv-4);
+							overflow: hidden;
+							height: 100%;
+							table[id="importMark"] {
+								border-collapse: collapse;
+								width: 100%;
+								user-select: all;
+								tr {
+									border-bottom: 1px solid var(--bd-box);
+									th, td {
+										text-align: left;
+										color: var(--color-lv-3);
+									}
+									th {
+										padding: 12px;
+										font-weight: 600;
+										user-select: none;
+										&:nth-child(even) {
+											border-left: 1px solid var(--bd-box);
+											border-right: 1px solid var(--bd-box);
+										}
+									}
+									td {
+										&:nth-child(even) {
+											border-left: 1px solid var(--bd-box);
+											border-right: 1px solid var(--bd-box);
+										}
+										input {
+											width: 100%;
+											padding: 12px 12px;
+											color: var(--color-lv-2);
+											background: transparent;
+											border: 0;
+											&::placeholder {
+												color: var(--color-placeholder);
+											}
+										}
+									}
+								}
+							}
+						}
+						label[for="addCSV"] {
 							.txt {
 								display: block;
 								padding: 6px;
@@ -672,7 +716,7 @@
 			</div>
 			<div class="my-footer">
 				<div class="totals">
-					<span><strong id="total-place">0</strong></span>
+					<span><strong id="total-csv">0</strong></span>
 					<span><strong id="total-cad">0</strong></span>
 				</div>
 				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
@@ -684,7 +728,6 @@
 			const txtImports = document.getElementsByClassName("txtImport");
 			const btnExport = document.getElementById("btnExport");
 			const txtExport = document.getElementById("txtExport");
-
 			for (let i = 0; i < btnImports.length; i++) {
 				btnImports[i].addEventListener("click", (e) => {
 					e.preventDefault();
@@ -701,7 +744,6 @@
 			document.getElementById("addCSV").addEventListener("change", function() {
 				let file = this.files[0];
 				if (!file) return;
-				let allDataRows = [];
 				let reader = new FileReader();
 				reader.onload = function(e) {
 					let result = e.target.result.trim();
@@ -752,6 +794,7 @@
 							}
 						}
 						inputElement.value = ee.trim();
+						document.getElementById("total-csv").innerText = txtInput.length;
 					}
 				};
 				reader.readAsText(file);
@@ -764,28 +807,26 @@
 				}
 				btnExport.classList.add("active");
 				txtExport.classList.add("active");
-				// Place
-				let data_Place = document.getElementById("importCSV").value.trim();
-				let row_Place = [];
-				let tempPlaceRows = data_Place.split("\n");
-				for (let x = 0; x < tempPlaceRows.length; x++) {
-					row_Place.push([]);
-					let cells = tempPlaceRows[x].split("|");
+				let data_CSV = document.getElementById("importCSV").value.trim();
+				let row_CSV = [];
+				let tempCSVRows = data_CSV.split("\n");
+				for (let x = 0; x < tempCSVRows.length; x++) {
+					row_CSV.push([]);
+					let cells = tempCSVRows[x].split("|");
 					for (let xx = 0; xx < cells.length; xx++) {
-						row_Place[x].push(cells[xx].trim());
+						row_CSV[x].push(cells[xx].trim());
 					}
 				}
-				let place_Board = row_Place[0].indexOf("Pattern");
-				let place_Ref = row_Place[0].indexOf("Designator");
-				let place_PosX = row_Place[0].indexOf("X");
-				let place_PosY = row_Place[0].indexOf("Y");
-				let place_Rotation = row_Place[0].indexOf("Rotation");
-				let place_PartNumber = row_Place[0].indexOf("Part Name");
-				let place_Head = row_Place[0].indexOf("Head");
-				let place_Feeder = row_Place[0].indexOf("Slot");
-				let place_Holder = row_Place[0].indexOf("NHP");
-				let place_Nozzle = row_Place[0].indexOf("Nozzle");
-				console.log( row_Place );
+				let csv_Board = row_CSV[0].indexOf("Pattern");
+				let csv_Ref = row_CSV[0].indexOf("Designator");
+				let csv_PosX = row_CSV[0].indexOf("X");
+				let csv_PosY = row_CSV[0].indexOf("Y");
+				let csv_Rotation = row_CSV[0].indexOf("Rotation");
+				let csv_PartNumber = row_CSV[0].indexOf("Part Name");
+				let csv_Head = row_CSV[0].indexOf("Head");
+				let csv_Feeder = row_CSV[0].indexOf("Slot");
+				let csv_Holder = row_CSV[0].indexOf("NHP");
+				let csv_Nozzle = row_CSV[0].indexOf("Nozzle");
 				// Generator CAD
 				let sumCad = 0;
 				let table = document.createElement("table");
@@ -796,19 +837,44 @@
 					th.textContent = headerText;
 					headerRow.appendChild(th);
 				});
-				for (let i = 1; i < row_Place.length; i++) {
-					sumCad++;
+				let mark = [
+					[
+						document.getElementById("mark-X1").value.trim(),
+						document.getElementById("mark-Y1").value.trim()
+					],
+					[
+						document.getElementById("mark-X2").value.trim(),
+						document.getElementById("mark-Y2").value.trim()
+					]
+				]
+				for (let i = 0; i < 2; i++) {
 					let row = table.insertRow();
-					row.insertCell().textContent = row_Place[i][place_Board];
-					row.insertCell().textContent = row_Place[i][place_Ref];
-					row.insertCell().textContent = row_Place[i][place_PosX];
-					row.insertCell().textContent = row_Place[i][place_PosY];
-					row.insertCell().textContent = row_Place[i][place_Rotation];
-					row.insertCell().textContent = row_Place[i][place_PartNumber];
-					row.insertCell().textContent = "M" + row_Place[i][place_Head];
-					row.insertCell().textContent = "F" + row_Place[i][place_Feeder];
-					row.insertCell().textContent = "H" + row_Place[i][place_Holder];
-					row.insertCell().textContent = "N" + row_Place[i][place_Nozzle];
+					row.insertCell().textContent = "0";
+					row.insertCell().textContent = "Mark" + (i + 1);
+					row.insertCell().textContent = mark[i][0];
+					row.insertCell().textContent = mark[i][1];
+					row.insertCell().textContent = "0";
+					row.insertCell().textContent = "Mark";
+					row.insertCell().textContent = "0";
+					row.insertCell().textContent = "0";
+					row.insertCell().textContent = "0";
+					row.insertCell().textContent = "0";
+				}
+				for (let i = 1; i < row_CSV.length; i++) {
+					sumCad++;
+					let machine = row_CSV[i][csv_Head] - Math.floor(row_CSV[i][csv_Head] / 2);
+					let feeder = row_CSV[i][csv_Feeder].replace(/^.*0+/, "");
+					let row = table.insertRow();
+					row.insertCell().textContent = row_CSV[i][csv_Board];
+					row.insertCell().textContent = row_CSV[i][csv_Ref];
+					row.insertCell().textContent = row_CSV[i][csv_PosX];
+					row.insertCell().textContent = row_CSV[i][csv_PosY];
+					row.insertCell().textContent = row_CSV[i][csv_Rotation];
+					row.insertCell().textContent = row_CSV[i][csv_PartNumber];
+					row.insertCell().textContent = "M" + machine + "T" + row_CSV[i][csv_Head];
+					row.insertCell().textContent = "F0" + feeder;
+					row.insertCell().textContent = "H" + row_CSV[i][csv_Holder];
+					row.insertCell().textContent = "N" + row_CSV[i][csv_Nozzle];
 				}
 				document.getElementById("txtExport").innerHTML = "";
 				document.getElementById("txtExport").appendChild(table);
