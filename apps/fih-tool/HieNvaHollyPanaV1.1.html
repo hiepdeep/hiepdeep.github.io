@@ -208,19 +208,19 @@
 			console.clear();
 		    console.log("Welcome to Tool Make CAD AOI Holly by HieNva");
 			console.log("Update V1.1: Tối ưu hóa cho các trình duyệt cũ");
-			var arrPlace = [];
+			let arrPlace = [];
 			function getElementsByClass(className) {
 				return document.getElementsByClassName(className);
 			}
-			var btnImports = getElementsByClass("btnImport");
-			var txtImports = getElementsByClass("txtImport");
-			var ctnTabs = document.getElementById("ctnTabs");
-			var btnExport = document.getElementById("btnExport");
-			var txtExport = document.getElementById("txtExport");
-			for (var i = 0; i < btnImports.length; i++) {
+			let btnImports = getElementsByClass("btnImport");
+			let txtImports = getElementsByClass("txtImport");
+			let ctnTabs = document.getElementById("ctnTabs");
+			let btnExport = document.getElementById("btnExport");
+			let txtExport = document.getElementById("txtExport");
+			for (let i = 0; i < btnImports.length; i++) {
 				(function(index) {
 					btnImports[index].addEventListener("click", function() {
-						for (var j = 0; j < btnImports.length; j++) {
+						for (let j = 0; j < btnImports.length; j++) {
 							btnImports[j].classList.remove("active");
 							txtImports[j].classList.remove("active");
 						}
@@ -232,64 +232,102 @@
 					});
 				})(i);
 			}
-			document.getElementById("addPlace").addEventListener("change", function() {
-				var fileInput = document.getElementById("addPlace");
-				var file = fileInput.files[0];
-				if (!file) return;
-				var read_PlaceCSV = new FileReader();
-				read_PlaceCSV.readAsText(file);
-				read_PlaceCSV.onload = function() {
-					var result = read_PlaceCSV.result;
-					var load_PlaceCSV = document.getElementById("importPlace");
-					var arr0 = [];
-					var tb = "";
-					arrPlace = [];
-					var split_row_Place = result.split("\n");
-					var tr, td;
-					for (tr in split_row_Place) {
-						if (split_row_Place[tr] && split_row_Place[tr].match(/\w/g) !== null) {
-							arr0.push([]);
-							var split_td_Place = split_row_Place[tr].split(",");
-							var currentRowIndex = arr0.length - 1;
-							for (td in split_td_Place) {
-								arr0[currentRowIndex].push(split_td_Place[td].trim());
-							}
-						}
-					}
-					if (arr0.length > 0) {
-						var header = arr0[0];
-						var cols = ["Designator", "Part Name", "X", "Y", "Rotation", "Pattern", "Head", "Slot", "NHP", "Nozzle"];
-						for (var i = 0; i < arr0.length; i++) {
-							arrPlace.push([]);
-							for (var k = 0; k < cols.length; k++) {
-								var colIndex = header.indexOf(cols[k]);
-								arrPlace[i].push(colIndex !== -1 ? arr0[i][colIndex] : "");
-							}
-						}
-						for (tr in arrPlace) {
-							tb += "<tr>";
-							for (td in arrPlace[tr]) {
-								tb += "<td>" + arrPlace[tr][td] + "</td>";
-							}
-							tb += "</tr>";
-						}
-					}
-					load_PlaceCSV.innerHTML = tb;
-				};
-			});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById("addPlace").addEventListener("change", function() {
+	let fileInput = document.getElementById("addPlace");
+	let file = fileInput.files[0];
+	if (!file) return;
+	let read_PlaceCSV = new FileReader();
+	read_PlaceCSV.readAsText(file);
+	read_PlaceCSV.onload = function() {
+		let result = read_PlaceCSV.result;
+		let load_PlaceCSV = document.getElementById("importPlace");
+		let arr0 = [];
+		let tb = "";
+		arrPlace = [];
+		let split_row_Place = result.split("\n");
+		let tr, td;
+		for (tr in split_row_Place) {
+			if (split_row_Place[tr] && split_row_Place[tr].match(/\w/g) !== null) {
+				arr0.push([]);
+				let split_td_Place = split_row_Place[tr].split(",");
+				let currentRowIndex = arr0.length - 1;
+				for (td in split_td_Place) {
+					arr0[currentRowIndex].push(split_td_Place[td].trim());
+				}
+			}
+		}
+		if (arr0.length > 0) {
+			let header = arr0[0];
+			let cols = ["Designator", "Part Name", "X", "Y", "Rotation", "Pattern", "Head", "Slot", "NHP", "Nozzle"];
+			for (let i = 0; i < arr0.length; i++) {
+				arrPlace.push([]);
+				for (let k = 0; k < cols.length; k++) {
+					let colIndex = header.indexOf(cols[k]);
+					arrPlace[i].push(colIndex !== -1 ? arr0[i][colIndex] : "");
+				}
+			}
+			for (tr in arrPlace) {
+				tb += "<tr>";
+				for (td in arrPlace[tr]) {
+					tb += "<td>" + arrPlace[tr][td] + "</td>";
+				}
+				tb += "</tr>";
+			}
+		}
+		load_PlaceCSV.innerHTML = tb;
+	};
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			document.getElementById("btnExport").addEventListener("click", function() {
 				document.getElementById("export").innerHTML = "";
-				for (var j = 0; j < btnImports.length; j++) {
+				for (let j = 0; j < btnImports.length; j++) {
 					btnImports[j].classList.remove("active");
 					txtImports[j].classList.remove("active");
 				}
 				ctnTabs.style.display = "none";
 				txtExport.classList.add("active");
-				var markX1 = document.getElementById("mark-X1").value.trim();
-				var markY1 = document.getElementById("mark-Y1").value.trim();
-				var markX2 = document.getElementById("mark-X2").value.trim();
-				var markY2 = document.getElementById("mark-Y2").value.trim();
-				var push_table = "";
+				let markX1 = document.getElementById("mark-X1").value.trim();
+				let markY1 = document.getElementById("mark-Y1").value.trim();
+				let markX2 = document.getElementById("mark-X2").value.trim();
+				let markY2 = document.getElementById("mark-Y2").value.trim();
+				let push_table = "";
 				push_table += "<tr>"
 					+ "<th>Block</th>"
 					+ "<th>Location Name</th>"
@@ -326,9 +364,9 @@
 					+ "<td>0</td>"
 					+ "<td>0</td>"
 				+ "</tr>";
-				var headerRow = arrPlace[0];
-				var dataRow;
-				var i,
+				let headerRow = arrPlace[0];
+				let dataRow;
+				let i,
 					idx_Pattern = headerRow.indexOf("Pattern"),
 					idx_Designator = headerRow.indexOf("Designator"),
 					idx_X = headerRow.indexOf("X"),
