@@ -1,0 +1,29 @@
+{
+	"manifest_version": 3,
+	"name": "Custom CSS Injector",
+	"version": "1.0",
+	"description": "Tuỳ chỉnh và lưu CSS cho bất kỳ trang web nào.",
+	"permissions": ["storage", "activeTab", "tabs"],
+	"host_permissions": ["<all_urls>"],
+	"action": {
+		"default_title": "CSS Custom Editor",
+		"default_icon": {
+			"16": "css_16dp.png",
+			"48": "css_48dp.png",
+			"128": "css_128dp.png"
+		}
+	},
+	"icons": {
+		"16": "css_16dp.png",
+		"48": "css_48dp.png",
+		"128": "css_128dp.png"
+	},
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_scripts": [{
+		"matches": ["<all_urls>"],
+		"js": ["content.js"],
+		"run_at": "document_start"
+	}]
+}
