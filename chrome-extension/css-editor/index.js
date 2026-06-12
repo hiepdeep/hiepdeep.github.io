@@ -18,11 +18,33 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		});
 	}
-	// 2. Xử lý Logic thông minh cho Editor (Auto cặp ngoặc, Enter, Tab)
+	// Hàm xử lý Lưu cấu hình (Dùng chung cho cả click chuột và phím tắt)
+	function handleSave() {
+		const domain = inputPath.value.trim();
+		const cssContent = cssEditor.value.trim();
+		if (!domain) return;
+		chrome.storage.local.get(["customStyles"], (result) => {
+			const styles = result.customStyles || {};
+			styles[domain] = cssContent;
+			chrome.storage.local.set({
+				customStyles: styles
+			}, () => {
+				showNotification("Đã lưu cấu hình thành công!");
+				reloadTargetTabs(domain);
+			});
+		});
+	}
+	// 2. Xử lý Logic thông minh cho Editor (Auto cặp ngoặc, Enter, Tab, và Ctrl+S)
 	cssEditor.addEventListener("keydown", function(e) {
 		const start = this.selectionStart;
 		const end = this.selectionEnd;
 		const value = this.value;
+		// TÍNH NĂNG MỚI: Bắt phím tắt Ctrl + S (hoặc Cmd + S trên Mac) để lưu nhanh
+		if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+			e.preventDefault(); // Chặn hành vi mở hộp thoại lưu file mặc định của trình duyệt
+			handleSave(); // Gọi hàm lưu dữ liệu
+			return;
+		}
 		// Tự động đóng ngoặc đằng sau và đặt trỏ chuột ở giữa
 		const pairs = {
 			"{": "}",
@@ -53,22 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			return;
 		}
 	});
-	// 3. Sự kiện Save cấu hình
-	btnSave.addEventListener("click", () => {
-		const domain = inputPath.value.trim();
-		const cssContent = cssEditor.value.trim();
-		if (!domain) return;
-		chrome.storage.local.get(["customStyles"], (result) => {
-			const styles = result.customStyles || {};
-			styles[domain] = cssContent;
-			chrome.storage.local.set({
-				customStyles: styles
-			}, () => {
-				showNotification("Đã lưu cấu hình thành công!");
-				reloadTargetTabs(domain);
-			});
-		});
-	});
+	// 3. Sự kiện Click nút Save bằng chuột
+	btnSave.addEventListener("click", handleSave);
 	// 4. Sự kiện Delete cấu hình
 	btnDelete.addEventListener("click", () => {
 		const domain = inputPath.value.trim();
@@ -91,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	function showNotification(message) {
 		const toast = document.createElement("div");
 		toast.textContent = message;
-		// Style nhanh cho toast nổi lên màn hình
 		Object.assign(toast.style, {
 			position: "fixed",
 			bottom: "20px",
