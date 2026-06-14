@@ -8,15 +8,15 @@
 	"action": {
 		"default_title": "CSS Custom Editor",
 		"default_icon": {
-			"16": "css_16dp.png",
-			"48": "css_48dp.png",
-			"128": "css_128dp.png"
+			"16": "css-16.png",
+			"48": "css-48.png",
+			"128": "css-128.png"
 		}
 	},
 	"icons": {
-		"16": "css_16dp.png",
-		"48": "css_48dp.png",
-		"128": "css_128dp.png"
+		"16": "css-16.png",
+		"48": "css-48.png",
+		"128": "css-128.png"
 	},
 	"background": {
 		"service_worker": "background.js"
