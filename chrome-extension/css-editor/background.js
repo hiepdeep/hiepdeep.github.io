@@ -35,11 +35,11 @@ function updateBadge(tabId, urlString) {
 			if (styles[hostname] && styles[hostname].trim() !== "") {
 				chrome.action.setBadgeText({
 					tabId: tabId,
-					text: "CSS"
+					text: "&"
 				});
 				chrome.action.setBadgeBackgroundColor({
 					tabId: tabId,
-					color: "#dc3545"
+					color: "#555"
 				});
 			} else {
 				chrome.action.setBadgeText({
