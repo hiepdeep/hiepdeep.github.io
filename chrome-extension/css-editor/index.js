@@ -59,11 +59,30 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		// Khi nhấn Enter ở giữa cặp dấu ngoặc nhọn {}
 		if (e.key === "Enter") {
+			// Tìm vị trí bắt đầu của dòng hiện tại
+			const lastNewLine = value.lastIndexOf("\n", start - 1);
+			const lineStart = lastNewLine === -1 ? 0 : lastNewLine + 1;
+			// Lấy toàn bộ phần thụt lề (khoảng trắng/tab) của dòng hiện tại
+			const currentLine = value.substring(lineStart, start);
+			const match = currentLine.match(/^[\t ]*/);
+			const currentIndent = match ? match[0] : "";
+			// Trường hợp đặc biệt: Nhấn Enter ở giữa cặp dấu ngoặc nhọn {}
 			if (value[start - 1] === "{" && value[start] === "}") {
 				e.preventDefault();
-				const indent = "\n\t\n"; // Xuống dòng và thụt 1 tab ở dòng giữa
-				this.value = value.substring(0, start) + indent + value.substring(end);
-				this.selectionStart = this.selectionEnd = start + 2; // Đặt nháy chuột ngay vị trí tab
+				// Dòng giữa tăng 1 tab, dòng chứa dấu } đóng ngoặc giữ nguyên độ thụt lề cũ
+				const indentMiddle = "\n" + currentIndent + "\t";
+				const indentEnd = "\n" + currentIndent;
+				this.value = value.substring(0, start) + indentMiddle + indentEnd + value.substring(end);
+				// Đặt con trỏ chuột ở cuối dòng giữa (sau tab mới tăng)
+				this.selectionStart = this.selectionEnd = start + indentMiddle.length;
+				return;
+			}
+			// Trường hợp Enter bình thường: Giữ nguyên độ thụt lề của dòng trước (giống các code editor)
+			else {
+				e.preventDefault();
+				const insertText = "\n" + currentIndent;
+				this.value = value.substring(0, start) + insertText + value.substring(end);
+				this.selectionStart = this.selectionEnd = start + insertText.length;
 				return;
 			}
 		}
