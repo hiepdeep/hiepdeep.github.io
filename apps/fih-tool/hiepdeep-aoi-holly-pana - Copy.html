@@ -24,9 +24,9 @@
 			/* font-family: "Space Mono", monospace; */
 			@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 			/* font-family: "JetBrains Mono", monospace; */
-			@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+			@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 			/* font-family: "IBM Plex Mono", monospace; */
-			@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+			@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 			/* font-family: "Itim", cursive; */
 			@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
 			/* font-family: "Inter", sans-serif; */
@@ -40,7 +40,7 @@
 			/* font-family: "Google Sans"; font-family: "Google Sans Display"; font-family: "Google Sans Text"; font-family: "Product Sans"; */
 			@import url("https://fonts.googleapis.com/css2?family=Product+Sans&family=Google+Sans+Display:ital@0;1&family=Google+Sans_old:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&display=swap");
 			/* font-family: "Playpen Sans", cursive; */
-			@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&amp;display=swap");
+			@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap");
 			/* font-family: "Noto Sans SC", serif; font-family: "Noto Serif SC", serif; */
 			@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Serif+SC:wght@200..900&display=swap");
 			/* font-family: "Material Icons"; */
@@ -60,6 +60,9 @@
 			:link, button {
 				text-decoration: none;
 				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
 				user-select: none;
 			}
 			:link, :hover, :focus, :active, :visited {
@@ -105,6 +108,7 @@
 			* {
 				margin: 0;
 				padding: 0;
+				-webkit-box-sizing: border-box;
 				box-sizing: border-box;
 				letter-spacing: 0.05em;
 				-webkit-tap-highlight-color: transparent;
@@ -117,6 +121,7 @@
 				width: 100%;
 				height: 100%;
 				display: block;
+				-o-object-fit: cover;
 				object-fit: cover;
 			}
 			ol, ul, li {
@@ -129,261 +134,261 @@
 				color: hsl(var(--hue-saturation-purple), 95%);
 				background: hsl(var(--hue-saturation-purple), 50%);
 				border: 1px solid hsl(var(--hue-saturation-purple), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-purple), 45%);
-					border-color: hsl(var(--hue-saturation-purple), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-purple), 40%);
-					border-color: hsl(var(--hue-saturation-purple), 35%);
-				}
+			}
+			[btn-purple]:hover {
+				background: hsl(var(--hue-saturation-purple), 45%);
+				border-color: hsl(var(--hue-saturation-purple), 40%);
+			}
+			[btn-purple]:active {
+				background: hsl(var(--hue-saturation-purple), 40%);
+				border-color: hsl(var(--hue-saturation-purple), 35%);
 			}
 			[btn-pink] {
 				color: hsl(var(--hue-saturation-pink), 95%);
 				background: hsl(var(--hue-saturation-pink), 50%);
 				border: 1px solid hsl(var(--hue-saturation-pink), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-pink), 45%);
-					border-color: hsl(var(--hue-saturation-pink), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-pink), 40%);
-					border-color: hsl(var(--hue-saturation-pink), 35%);
-				}
+			}
+			[btn-pink]:hover {
+				background: hsl(var(--hue-saturation-pink), 45%);
+				border-color: hsl(var(--hue-saturation-pink), 40%);
+			}
+			[btn-pink]:active {
+				background: hsl(var(--hue-saturation-pink), 40%);
+				border-color: hsl(var(--hue-saturation-pink), 35%);
 			}
 			[btn-orange] {
 				color: hsl(var(--hue-saturation-orange), 95%);
 				background: hsl(var(--hue-saturation-orange), 50%);
 				border: 1px solid hsl(var(--hue-saturation-orange), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-orange), 45%);
-					border-color: hsl(var(--hue-saturation-orange), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-orange), 40%);
-					border-color: hsl(var(--hue-saturation-orange), 35%);
-				}
+			}
+			[btn-orange]:hover {
+				background: hsl(var(--hue-saturation-orange), 45%);
+				border-color: hsl(var(--hue-saturation-orange), 40%);
+			}
+			[btn-orange]:active {
+				background: hsl(var(--hue-saturation-orange), 40%);
+				border-color: hsl(var(--hue-saturation-orange), 35%);
 			}
 			[btn-brown] {
 				color: hsl(var(--hue-saturation-brown), 95%);
 				background: hsl(var(--hue-saturation-brown), 50%);
 				border: 1px solid hsl(var(--hue-saturation-brown), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-brown), 45%);
-					border-color: hsl(var(--hue-saturation-brown), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-brown), 40%);
-					border-color: hsl(var(--hue-saturation-brown), 35%);
-				}
+			}
+			[btn-brown]:hover {
+				background: hsl(var(--hue-saturation-brown), 45%);
+				border-color: hsl(var(--hue-saturation-brown), 40%);
+			}
+			[btn-brown]:active {
+				background: hsl(var(--hue-saturation-brown), 40%);
+				border-color: hsl(var(--hue-saturation-brown), 35%);
 			}
 			[btn-teal] {
 				color: hsl(var(--hue-saturation-teal), 95%);
 				background: hsl(var(--hue-saturation-teal), 50%);
 				border: 1px solid hsl(var(--hue-saturation-teal), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-teal), 45%);
-					border-color: hsl(var(--hue-saturation-teal), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-teal), 40%);
-					border-color: hsl(var(--hue-saturation-teal), 35%);
-				}
+			}
+			[btn-teal]:hover {
+				background: hsl(var(--hue-saturation-teal), 45%);
+				border-color: hsl(var(--hue-saturation-teal), 40%);
+			}
+			[btn-teal]:active {
+				background: hsl(var(--hue-saturation-teal), 40%);
+				border-color: hsl(var(--hue-saturation-teal), 35%);
 			}
 			[btn-yellow] {
 				color: hsl(var(--hue-saturation-yellow), 95%);
 				background: hsl(var(--hue-saturation-yellow), 50%);
 				border: 1px solid hsl(var(--hue-saturation-yellow), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-yellow), 45%);
-					border-color: hsl(var(--hue-saturation-yellow), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-yellow), 40%);
-					border-color: hsl(var(--hue-saturation-yellow), 35%);
-				}
+			}
+			[btn-yellow]:hover {
+				background: hsl(var(--hue-saturation-yellow), 45%);
+				border-color: hsl(var(--hue-saturation-yellow), 40%);
+			}
+			[btn-yellow]:active {
+				background: hsl(var(--hue-saturation-yellow), 40%);
+				border-color: hsl(var(--hue-saturation-yellow), 35%);
 			}
 			[btn-red] {
 				color: hsl(var(--hue-saturation-red), 95%);
 				background: hsl(var(--hue-saturation-red), 50%);
 				border: 1px solid hsl(var(--hue-saturation-red), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-red), 45%);
-					border-color: hsl(var(--hue-saturation-red), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-red), 40%);
-					border-color: hsl(var(--hue-saturation-red), 35%);
-				}
+			}
+			[btn-red]:hover {
+				background: hsl(var(--hue-saturation-red), 45%);
+				border-color: hsl(var(--hue-saturation-red), 40%);
+			}
+			[btn-red]:active {
+				background: hsl(var(--hue-saturation-red), 40%);
+				border-color: hsl(var(--hue-saturation-red), 35%);
 			}
 			[btn-green] {
 				color: hsl(var(--hue-saturation-green), 95%);
 				background: hsl(var(--hue-saturation-green), 50%);
 				border: 1px solid hsl(var(--hue-saturation-green), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-green), 45%);
-					border-color: hsl(var(--hue-saturation-green), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-green), 40%);
-					border-color: hsl(var(--hue-saturation-green), 35%);
-				}
+			}
+			[btn-green]:hover {
+				background: hsl(var(--hue-saturation-green), 45%);
+				border-color: hsl(var(--hue-saturation-green), 40%);
+			}
+			[btn-green]:active {
+				background: hsl(var(--hue-saturation-green), 40%);
+				border-color: hsl(var(--hue-saturation-green), 35%);
 			}
 			[btn-blue] {
 				color: hsl(var(--hue-saturation-blue), 95%);
 				background: hsl(var(--hue-saturation-blue), 50%);
 				border: 1px solid hsl(var(--hue-saturation-blue), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-blue), 45%);
-					border-color: hsl(var(--hue-saturation-blue), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-blue), 40%);
-					border-color: hsl(var(--hue-saturation-blue), 35%);
-				}
+			}
+			[btn-blue]:hover {
+				background: hsl(var(--hue-saturation-blue), 45%);
+				border-color: hsl(var(--hue-saturation-blue), 40%);
+			}
+			[btn-blue]:active {
+				background: hsl(var(--hue-saturation-blue), 40%);
+				border-color: hsl(var(--hue-saturation-blue), 35%);
 			}
 			[btn-gray] {
 				color: hsl(var(--hue-saturation-gray), 95%);
 				background: hsl(var(--hue-saturation-gray), 50%);
 				border: 1px solid hsl(var(--hue-saturation-gray), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-gray), 45%);
-					border-color: hsl(var(--hue-saturation-gray), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-gray), 40%);
-					border-color: hsl(var(--hue-saturation-gray), 35%);
-				}
+			}
+			[btn-gray]:hover {
+				background: hsl(var(--hue-saturation-gray), 45%);
+				border-color: hsl(var(--hue-saturation-gray), 40%);
+			}
+			[btn-gray]:active {
+				background: hsl(var(--hue-saturation-gray), 40%);
+				border-color: hsl(var(--hue-saturation-gray), 35%);
 			}
 			[btn-light-purple] {
 				color: hsl(var(--hue-saturation-purple), 40%);
 				background: hsl(var(--hue-saturation-purple), 95%);
 				border: 1px solid hsl(var(--hue-saturation-purple), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-purple), 90%);
-					border-color: hsl(var(--hue-saturation-purple), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-purple), 85%);
-					border-color: hsl(var(--hue-saturation-purple), 80%);
-				}
+			}
+			[btn-light-purple]:hover {
+				background: hsl(var(--hue-saturation-purple), 90%);
+				border-color: hsl(var(--hue-saturation-purple), 85%);
+			}
+			[btn-light-purple]:active {
+				background: hsl(var(--hue-saturation-purple), 85%);
+				border-color: hsl(var(--hue-saturation-purple), 80%);
 			}
 			[btn-light-pink] {
 				color: hsl(var(--hue-saturation-pink), 40%);
 				background: hsl(var(--hue-saturation-pink), 95%);
 				border: 1px solid hsl(var(--hue-saturation-pink), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-pink), 90%);
-					border-color: hsl(var(--hue-saturation-pink), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-pink), 85%);
-					border-color: hsl(var(--hue-saturation-pink), 80%);
-				}
+			}
+			[btn-light-pink]:hover {
+				background: hsl(var(--hue-saturation-pink), 90%);
+				border-color: hsl(var(--hue-saturation-pink), 85%);
+			}
+			[btn-light-pink]:active {
+				background: hsl(var(--hue-saturation-pink), 85%);
+				border-color: hsl(var(--hue-saturation-pink), 80%);
 			}
 			[btn-light-orange] {
 				color: hsl(var(--hue-saturation-orange), 40%);
 				background: hsl(var(--hue-saturation-orange), 95%);
 				border: 1px solid hsl(var(--hue-saturation-orange), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-orange), 90%);
-					border-color: hsl(var(--hue-saturation-orange), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-orange), 85%);
-					border-color: hsl(var(--hue-saturation-orange), 80%);
-				}
+			}
+			[btn-light-orange]:hover {
+				background: hsl(var(--hue-saturation-orange), 90%);
+				border-color: hsl(var(--hue-saturation-orange), 85%);
+			}
+			[btn-light-orange]:active {
+				background: hsl(var(--hue-saturation-orange), 85%);
+				border-color: hsl(var(--hue-saturation-orange), 80%);
 			}
 			[btn-light-brown] {
 				color: hsl(var(--hue-saturation-brown), 40%);
 				background: hsl(var(--hue-saturation-brown), 95%);
 				border: 1px solid hsl(var(--hue-saturation-brown), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-brown), 90%);
-					border-color: hsl(var(--hue-saturation-brown), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-brown), 85%);
-					border-color: hsl(var(--hue-saturation-brown), 80%);
-				}
+			}
+			[btn-light-brown]:hover {
+				background: hsl(var(--hue-saturation-brown), 90%);
+				border-color: hsl(var(--hue-saturation-brown), 85%);
+			}
+			[btn-light-brown]:active {
+				background: hsl(var(--hue-saturation-brown), 85%);
+				border-color: hsl(var(--hue-saturation-brown), 80%);
 			}
 			[btn-light-teal] {
 				color: hsl(var(--hue-saturation-teal), 40%);
 				background: hsl(var(--hue-saturation-teal), 95%);
 				border: 1px solid hsl(var(--hue-saturation-teal), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-teal), 90%);
-					border-color: hsl(var(--hue-saturation-teal), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-teal), 85%);
-					border-color: hsl(var(--hue-saturation-teal), 80%);
-				}
+			}
+			[btn-light-teal]:hover {
+				background: hsl(var(--hue-saturation-teal), 90%);
+				border-color: hsl(var(--hue-saturation-teal), 85%);
+			}
+			[btn-light-teal]:active {
+				background: hsl(var(--hue-saturation-teal), 85%);
+				border-color: hsl(var(--hue-saturation-teal), 80%);
 			}
 			[btn-light-yellow] {
 				color: hsl(var(--hue-saturation-yellow), 40%);
 				background: hsl(var(--hue-saturation-yellow), 95%);
 				border: 1px solid hsl(var(--hue-saturation-yellow), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-yellow), 90%);
-					border-color: hsl(var(--hue-saturation-yellow), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-yellow), 85%);
-					border-color: hsl(var(--hue-saturation-yellow), 80%);
-				}
+			}
+			[btn-light-yellow]:hover {
+				background: hsl(var(--hue-saturation-yellow), 90%);
+				border-color: hsl(var(--hue-saturation-yellow), 85%);
+			}
+			[btn-light-yellow]:active {
+				background: hsl(var(--hue-saturation-yellow), 85%);
+				border-color: hsl(var(--hue-saturation-yellow), 80%);
 			}
 			[btn-light-red] {
 				color: hsl(var(--hue-saturation-red), 40%);
 				background: hsl(var(--hue-saturation-red), 95%);
 				border: 1px solid hsl(var(--hue-saturation-red), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-red), 90%);
-					border-color: hsl(var(--hue-saturation-red), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-red), 85%);
-					border-color: hsl(var(--hue-saturation-red), 80%);
-				}
+			}
+			[btn-light-red]:hover {
+				background: hsl(var(--hue-saturation-red), 90%);
+				border-color: hsl(var(--hue-saturation-red), 85%);
+			}
+			[btn-light-red]:active {
+				background: hsl(var(--hue-saturation-red), 85%);
+				border-color: hsl(var(--hue-saturation-red), 80%);
 			}
 			[btn-light-green] {
 				color: hsl(var(--hue-saturation-green), 40%);
 				background: hsl(var(--hue-saturation-green), 95%);
 				border: 1px solid hsl(var(--hue-saturation-green), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-green), 90%);
-					border-color: hsl(var(--hue-saturation-green), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-green), 85%);
-					border-color: hsl(var(--hue-saturation-green), 80%);
-				}
+			}
+			[btn-light-green]:hover {
+				background: hsl(var(--hue-saturation-green), 90%);
+				border-color: hsl(var(--hue-saturation-green), 85%);
+			}
+			[btn-light-green]:active {
+				background: hsl(var(--hue-saturation-green), 85%);
+				border-color: hsl(var(--hue-saturation-green), 80%);
 			}
 			[btn-light-blue] {
 				color: hsl(var(--hue-saturation-blue), 40%);
 				background: hsl(var(--hue-saturation-blue), 95%);
 				border: 1px solid hsl(var(--hue-saturation-blue), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-blue), 90%);
-					border-color: hsl(var(--hue-saturation-blue), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-blue), 85%);
-					border-color: hsl(var(--hue-saturation-blue), 80%);
-				}
+			}
+			[btn-light-blue]:hover {
+				background: hsl(var(--hue-saturation-blue), 90%);
+				border-color: hsl(var(--hue-saturation-blue), 85%);
+			}
+			[btn-light-blue]:active {
+				background: hsl(var(--hue-saturation-blue), 85%);
+				border-color: hsl(var(--hue-saturation-blue), 80%);
 			}
 			[btn-light-gray] {
 				color: hsl(var(--hue-saturation-gray), 40%);
 				background: hsl(var(--hue-saturation-gray), 95%);
 				border: 1px solid hsl(var(--hue-saturation-gray), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-gray), 90%);
-					border-color: hsl(var(--hue-saturation-gray), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-gray), 85%);
-					border-color: hsl(var(--hue-saturation-gray), 80%);
-				}
+			}
+			[btn-light-gray]:hover {
+				background: hsl(var(--hue-saturation-gray), 90%);
+				border-color: hsl(var(--hue-saturation-gray), 85%);
+			}
+			[btn-light-gray]:active {
+				background: hsl(var(--hue-saturation-gray), 85%);
+				border-color: hsl(var(--hue-saturation-gray), 80%);
 			}
 			[txt-light-purple] {
 				color: hsl(var(--hue-saturation-purple), 30%);
@@ -435,19 +440,45 @@
 				background: hsl(var(--hue-saturation-gray), 90%);
 				border: 1px solid hsl(var(--hue-saturation-gray), 85%);
 			}
-			[color-lv-1] { color: var(--color-lv-1); }
-			[color-lv-2] { color: var(--color-lv-2); }
-			[color-lv-3] { color: var(--color-lv-3); }
-			[color-lv-4] { color: var(--color-lv-4); }
-			[fz-lv-1] { font-size: var(--fz-lv-1); }
-			[fz-lv-2] { font-size: var(--fz-lv-2); }
-			[fz-lv-3] { font-size: var(--fz-lv-3); }
-			[fz-lv-4] { font-size: var(--fz-lv-4); }
-			[bdrs-lv-1] { border-radius: var(--bdrs-lv-1); }
-			[bdrs-lv-2] { border-radius: var(--bdrs-lv-2); }
-			[bdrs-lv-3] { border-radius: var(--bdrs-lv-3); }
-			[bdrs-lv-4] { border-radius: var(--bdrs-lv-4); }
-			[bdrs-lv-5] { border-radius: var(--bdrs-lv-5); }
+			[color-lv-1] {
+				color: var(--color-lv-1);
+			}
+			[color-lv-2] {
+				color: var(--color-lv-2);
+			}
+			[color-lv-3] {
+				color: var(--color-lv-3);
+			}
+			[color-lv-4] {
+				color: var(--color-lv-4);
+			}
+			[fz-lv-1] {
+				font-size: var(--fz-lv-1);
+			}
+			[fz-lv-2] {
+				font-size: var(--fz-lv-2);
+			}
+			[fz-lv-3] {
+				font-size: var(--fz-lv-3);
+			}
+			[fz-lv-4] {
+				font-size: var(--fz-lv-4);
+			}
+			[bdrs-lv-1] {
+				border-radius: var(--bdrs-lv-1);
+			}
+			[bdrs-lv-2] {
+				border-radius: var(--bdrs-lv-2);
+			}
+			[bdrs-lv-3] {
+				border-radius: var(--bdrs-lv-3);
+			}
+			[bdrs-lv-4] {
+				border-radius: var(--bdrs-lv-4);
+			}
+			[bdrs-lv-5] {
+				border-radius: var(--bdrs-lv-5);
+			}
 			* {
 				font-family: "Quicksand", sans-serif;
 				color: red;
@@ -455,6 +486,7 @@
 			}
 			body {
 				background: var(--bg-body-blue);
+				display: -ms-grid;
 				display: grid;
 				place-items: center;
 				height: 100vh;
@@ -463,210 +495,253 @@
 				width: 100%;
 				height: 100vh;
 				margin: 0 auto;
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
 				flex-direction: column;
 				gap: 12px;
 				padding: 12px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
 				user-select: none;
-				.my-header {
-					flex-shrink: 0;
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					padding: 12px;
-					background: var(--bg-box);
-					border: 1px solid var(--bd-box);
-					border-radius: var(--bdrs-lv-4);
-					a {
-						font-weight: 600;
-						font-size: var(--fz-lv-3);
-						color: var(--color-lv-1);
-					}
-					.navigation-bar {
-						display: flex;
-						align-items: center;
-						gap: 12px;
-						.btnImport {
-							all: unset;
-							cursor: pointer;
-							color: var(--color-lv-3);
-							b {
-								font-weight: 600;
-								color: inherit;
-							}
-							&.active {
-								text-decoration: underline;
-							}
-						}
-						#btnExport {
-							padding: 6px;
-							color: hsl(var(--hue-saturation-blue), 95%);
-							background: hsl(var(--hue-saturation-blue), 50%);
-							border: 1px solid hsl(var(--hue-saturation-blue), 45%);
-							border-radius: var(--bdrs-lv-5);
-							&:hover {
-								background: hsl(var(--hue-saturation-blue), 45%);
-								border-color: hsl(var(--hue-saturation-blue), 40%);
-							}
-							&:active {
-								background: hsl(var(--hue-saturation-blue), 40%);
-								border-color: hsl(var(--hue-saturation-blue), 35%);
-							}
-							&.active {
-								background: hsl(var(--hue-saturation-green), 40%);
-								border-color: hsl(var(--hue-saturation-green), 35%);
-							}
-						}
-						.split {
-							color: var(--color-placeholder);
-						}
-					}
-				}
-				.main {
-					display: flex;
-					flex-direction: column;
-					height: 100%;
-					overflow: hidden;
-					.txtImport {
-						display: none;
-						height: 100%;
-						.table {
-							background: var(--bg-box);
-							border: 1px solid var(--bd-box);
-							border-radius: var(--bdrs-lv-4);
-							overflow: hidden;
-							height: 100%;
-							table[id="importMark"] {
-								border-collapse: collapse;
-								width: 100%;
-								user-select: all;
-								tr {
-									border-bottom: 1px solid var(--bd-box);
-									th, td {
-										text-align: left;
-										color: var(--color-lv-3);
-									}
-									th {
-										padding: 12px;
-										font-weight: 600;
-										user-select: none;
-										&:nth-child(even) {
-											border-left: 1px solid var(--bd-box);
-											border-right: 1px solid var(--bd-box);
-										}
-									}
-									td {
-										&:nth-child(even) {
-											border-left: 1px solid var(--bd-box);
-											border-right: 1px solid var(--bd-box);
-										}
-										input {
-											width: 100%;
-											padding: 12px 12px;
-											color: var(--color-lv-2);
-											background: transparent;
-											border: 0;
-											&::placeholder {
-												color: var(--color-placeholder);
-											}
-										}
-									}
-								}
-							}
-						}
-						label[for="addCSV"] {
-							.txt {
-								display: block;
-								padding: 6px;
-								text-align: center;
-								cursor: pointer;
-								color: hsl(var(--hue-saturation-gray), 95%);
-								background: hsl(var(--hue-saturation-gray), 50%);
-								border: 1px solid hsl(var(--hue-saturation-gray), 45%);
-								border-radius: var(--bdrs-lv-4);
-								&:hover {
-									background: hsl(var(--hue-saturation-gray), 45%);
-									border-color: hsl(var(--hue-saturation-gray), 40%);
-								}
-								&:active {
-									background: hsl(var(--hue-saturation-gray), 40%);
-									border-color: hsl(var(--hue-saturation-gray), 35%);
-								}
-							}
-						}
-						textarea {
-							width: 100%;
-							height: 100%;
-							padding: 12px;
-							font-family: "consolas";
-							font-size: 11px;
-							color: var(--color-lv-3);
-							background: var(--bg-box);
-							border: 1px solid var(--bd-box);
-							border-radius: var(--bdrs-lv-4);
-							resize: none;
-							overflow-y: scroll;
-						}
-						&.active {
-							display: flex;
-							flex-direction: column;
-							gap: 6px;
-						}
-					}
-					.txtExport {
-						display: none;
-						height: 100%;
-						padding: 6px;
-						background: var(--bg-box);
-						border: 1px solid var(--bd-box);
-						border-radius: var(--bdrs-lv-4);
-						overflow-y: scroll;
-						table {
-							border-collapse: collapse;
-							width: 100%;
-							user-select: all;
-							tr {
-								th, td {
-									text-align: left;
-									padding: 6px;
-									color: var(--color-lv-3);
-								}
-								th {
-									font-weight: 600;
-									border-bottom: 1px solid var(--bd-box);
-								}
-								td {
-									
-								}
-							}
-						}
-						&.active {
-							display: block;
-						}
-					}
-				}
-				.my-footer {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					gap: 12px;
-					.totals {
-						span {
-							color: var(--color-lv-4);
-							strong {
-								font-weight: 600;
-								color: inherit;
-							}
-						}
-					}
-					.copyright {
-						color: var(--color-lv-4);
-						b {
-							font-weight: 600;
-							color: inherit;
-						}
-					}
-				}
+			}
+			.box .my-header {
+				-ms-flex-negative: 0;
+				flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				padding: 12px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .my-header a {
+				font-weight: 600;
+				font-size: var(--fz-lv-3);
+				color: var(--color-lv-1);
+			}
+			.box .my-header .navigation-bar {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				gap: 12px;
+			}
+			.box .my-header .navigation-bar .btnImport {
+				all: unset;
+				cursor: pointer;
+				color: var(--color-lv-3);
+			}
+			.box .my-header .navigation-bar .btnImport b {
+				font-weight: 600;
+				color: inherit;
+			}
+			.box .my-header .navigation-bar .btnImport.active {
+				text-decoration: underline;
+			}
+			.box .my-header .navigation-bar #btnExport {
+				padding: 6px;
+				color: hsl(var(--hue-saturation-blue), 95%);
+				background: hsl(var(--hue-saturation-blue), 50%);
+				border: 1px solid hsl(var(--hue-saturation-blue), 45%);
+				border-radius: var(--bdrs-lv-5);
+			}
+			.box .my-header .navigation-bar #btnExport:hover {
+				background: hsl(var(--hue-saturation-blue), 45%);
+				border-color: hsl(var(--hue-saturation-blue), 40%);
+			}
+			.box .my-header .navigation-bar #btnExport:active {
+				background: hsl(var(--hue-saturation-blue), 40%);
+				border-color: hsl(var(--hue-saturation-blue), 35%);
+			}
+			.box .my-header .navigation-bar #btnExport.active {
+				background: hsl(var(--hue-saturation-green), 40%);
+				border-color: hsl(var(--hue-saturation-green), 35%);
+			}
+			.box .my-header .navigation-bar .split {
+				color: var(--color-placeholder);
+			}
+			.box .main {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				height: 100%;
+				overflow: hidden;
+			}
+			.box .main .txtImport {
+				display: none;
+				height: 100%;
+			}
+			.box .main .txtImport .table {
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				overflow: hidden;
+				height: 100%;
+			}
+			.box .main .txtImport .table table[id=importMark] {
+				border-collapse: collapse;
+				width: 100%;
+				-webkit-user-select: all;
+				-moz-user-select: all;
+				user-select: all;
+			}
+			.box .main .txtImport .table table[id=importMark] tr {
+				border-bottom: 1px solid var(--bd-box);
+			}
+			.box .main .txtImport .table table[id=importMark] tr th, .box .main .txtImport .table table[id=importMark] tr td {
+				text-align: left;
+				color: var(--color-lv-3);
+			}
+			.box .main .txtImport .table table[id=importMark] tr th {
+				padding: 12px;
+				font-weight: 600;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			.box .main .txtImport .table table[id=importMark] tr th:nth-child(even) {
+				border-left: 1px solid var(--bd-box);
+				border-right: 1px solid var(--bd-box);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td:nth-child(even) {
+				border-left: 1px solid var(--bd-box);
+				border-right: 1px solid var(--bd-box);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input {
+				width: 100%;
+				padding: 12px 12px;
+				color: var(--color-lv-2);
+				background: transparent;
+				border: 0;
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input::-webkit-input-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input::-moz-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input:-ms-input-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input::-ms-input-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input::placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txtImport label[for=addCSV] .txt {
+				display: block;
+				padding: 6px;
+				text-align: center;
+				cursor: pointer;
+				color: hsl(var(--hue-saturation-gray), 95%);
+				background: hsl(var(--hue-saturation-gray), 50%);
+				border: 1px solid hsl(var(--hue-saturation-gray), 45%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .txtImport label[for=addCSV] .txt:hover {
+				background: hsl(var(--hue-saturation-gray), 45%);
+				border-color: hsl(var(--hue-saturation-gray), 40%);
+			}
+			.box .main .txtImport label[for=addCSV] .txt:active {
+				background: hsl(var(--hue-saturation-gray), 40%);
+				border-color: hsl(var(--hue-saturation-gray), 35%);
+			}
+			.box .main .txtImport textarea {
+				width: 100%;
+				height: 100%;
+				padding: 12px;
+				font-family: "consolas";
+				font-size: 11px;
+				color: var(--color-lv-3);
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				resize: none;
+				overflow-y: scroll;
+			}
+			.box .main .txtImport.active {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.box .main .txtExport {
+				display: none;
+				height: 100%;
+				padding: 6px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				overflow-y: scroll;
+			}
+			.box .main .txtExport table {
+				border-collapse: collapse;
+				width: 100%;
+				-webkit-user-select: all;
+				-moz-user-select: all;
+				user-select: all;
+			}
+			.box .main .txtExport table tr th, .box .main .txtExport table tr td {
+				text-align: left;
+				padding: 6px;
+				color: var(--color-lv-3);
+			}
+			.box .main .txtExport table tr th {
+				font-weight: 600;
+				border-bottom: 1px solid var(--bd-box);
+			}
+			.box .main .txtExport.active {
+				display: block;
+			}
+			.box .my-footer {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				gap: 12px;
+			}
+			.box .my-footer .totals span {
+				color: var(--color-lv-4);
+			}
+			.box .my-footer .totals span strong {
+				font-weight: 600;
+				color: inherit;
+			}
+			.box .my-footer .copyright {
+				color: var(--color-lv-4);
+			}
+			.box .my-footer .copyright b {
+				font-weight: 600;
+				color: inherit;
 			}
 		</style>
 	</head>
@@ -723,66 +798,68 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
-			const btnImports = document.getElementsByClassName("btnImport");
-			const txtImports = document.getElementsByClassName("txtImport");
-			const btnExport = document.getElementById("btnExport");
-			const txtExport = document.getElementById("txtExport");
-			for (let i = 0; i < btnImports.length; i++) {
-				btnImports[i].addEventListener("click", (e) => {
-					e.preventDefault();
-					for (let j = 0; j < btnImports.length; j++) {
-						btnImports[j].classList.remove("active");
-						txtImports[j].classList.remove("active");
-					}
-					btnExport.classList.remove("active");
-					txtExport.classList.remove("active");
-					btnImports[i].classList.add("active");
-					txtImports[i].classList.add("active");
-				});
+			var btnImports = document.getElementsByClassName("btnImport");
+			var txtImports = document.getElementsByClassName("txtImport");
+			var btnExport = document.getElementById("btnExport");
+			var txtExport = document.getElementById("txtExport");
+			for (var i = 0; i < btnImports.length; i++) {
+				(function(index) {
+					btnImports[index].addEventListener("click", function(e) {
+						e.preventDefault();
+						for (var j = 0; j < btnImports.length; j++) {
+							btnImports[j].classList.remove("active");
+							txtImports[j].classList.remove("active");
+						}
+						btnExport.classList.remove("active");
+						txtExport.classList.remove("active");
+						btnImports[index].classList.add("active");
+						txtImports[index].classList.add("active");
+					});
+				})(i);
 			}
 			document.getElementById("addCSV").addEventListener("change", function() {
-				let file = this.files[0];
+				var file = this.files ? this.files[0] : null;
 				if (!file) return;
-				let reader = new FileReader();
+				var reader = new FileReader();
 				reader.onload = function(e) {
-					let result = e.target.result.trim();
-					let arr0 = [];
-					let arr1 = [];
-					let arr2 = [];
-					let arr3 = [];
-					let inputElement = document.getElementById("importCSV");
-					let txtInput = result.split("\n");
-					for (let x = 0; x < txtInput.length; x++) {
+					var result = e.target.result.trim();
+					var arr0 = [];
+					var arr1 = [];
+					var arr2 = [];
+					var arr3 = [];
+					var inputElement = document.getElementById("importCSV");
+					var txtInput = result.split("\n");
+					for (var x = 0; x < txtInput.length; x++) {
 						arr0.push([]);
-						let cells = txtInput[x].split(",");
-						for (let xx = 0; xx < cells.length; xx++) {
+						var cells = txtInput[x].split(",");
+						for (var xx = 0; xx < cells.length; xx++) {
 							arr0[x].push(cells[xx].trim());
 						}
 					}
 					if (arr0.length > 0 && arr0[0].length > 0) {
-						for (let x = 0; x < arr0[0].length; x++) {
+						for (var x = 0; x < arr0[0].length; x++) {
 							arr1.push([]);
 							arr2.push([]);
 							arr3.push([]);
-							for (let xx = 0; xx < arr0.length; xx++) {
-								let cellValue = arr0[xx][x] || "";
+							for (var xx = 0; xx < arr0.length; xx++) {
+								var cellValue = arr0[xx][x] || "";
 								arr1[x].push(cellValue);
 								arr2[x].push(cellValue.length);
 							}
 							arr3[x].push(Math.max.apply(null, arr2[x]));
-							for (let u = 0; u < arr1[x].length; u++) {
-								let uLength = arr1[x][u].length;
-								let maxLength = arr3[x][0];
+							for (var u = 0; u < arr1[x].length; u++) {
+								var uLength = arr1[x][u].length;
+								var maxLength = arr3[x][0];
 								if (uLength < maxLength) {
-									for (let k = 0; k < (maxLength - uLength); k++) {
+									for (var k = 0; k < (maxLength - uLength); k++) {
 										arr1[x][u] += " ";
 									}
 								}
 							}
 						}
-						let ee = "";
-						for (let x = 0; x < arr1[0].length; x++) {
-							for (let xx = 0; xx < arr1.length; xx++) {
+						var ee = "";
+						for (var x = 0; x < arr1[0].length; x++) {
+							for (var xx = 0; xx < arr1.length; xx++) {
 								ee += arr1[xx][x];
 								if (xx < arr1.length - 1) {
 									ee += " | ";
@@ -798,45 +875,45 @@
 				};
 				reader.readAsText(file);
 			});
-			btnExport.addEventListener("click", (e) => {
+			btnExport.addEventListener("click", function(e) {
 				e.preventDefault();
-				for (let j = 0; j < btnImports.length; j++) {
+				for (var j = 0; j < btnImports.length; j++) {
 					btnImports[j].classList.remove("active");
 					txtImports[j].classList.remove("active");
 				}
 				btnExport.classList.add("active");
 				txtExport.classList.add("active");
-				let data_CSV = document.getElementById("importCSV").value.trim();
-				let row_CSV = [];
-				let tempCSVRows = data_CSV.split("\n");
-				for (let x = 0; x < tempCSVRows.length; x++) {
+				var data_CSV = document.getElementById("importCSV").value.trim();
+				var row_CSV = [];
+				var tempCSVRows = data_CSV.split("\n");
+				for (var x = 0; x < tempCSVRows.length; x++) {
 					row_CSV.push([]);
-					let cells = tempCSVRows[x].split("|");
-					for (let xx = 0; xx < cells.length; xx++) {
+					var cells = tempCSVRows[x].split("|");
+					for (var xx = 0; xx < cells.length; xx++) {
 						row_CSV[x].push(cells[xx].trim());
 					}
 				}
-				let csv_Board = row_CSV[0].indexOf("Pattern");
-				let csv_Ref = row_CSV[0].indexOf("Designator");
-				let csv_PosX = row_CSV[0].indexOf("X");
-				let csv_PosY = row_CSV[0].indexOf("Y");
-				let csv_Rotation = row_CSV[0].indexOf("Rotation");
-				let csv_PartNumber = row_CSV[0].indexOf("Part Name");
-				let csv_Head = row_CSV[0].indexOf("Head");
-				let csv_Feeder = row_CSV[0].indexOf("Slot");
-				let csv_Holder = row_CSV[0].indexOf("NHP");
-				let csv_Nozzle = row_CSV[0].indexOf("Nozzle");
+				var csv_Board = row_CSV[0].indexOf("Pattern");
+				var csv_Ref = row_CSV[0].indexOf("Designator");
+				var csv_PosX = row_CSV[0].indexOf("X");
+				var csv_PosY = row_CSV[0].indexOf("Y");
+				var csv_Rotation = row_CSV[0].indexOf("Rotation");
+				var csv_PartNumber = row_CSV[0].indexOf("Part Name");
+				var csv_Head = row_CSV[0].indexOf("Head");
+				var csv_Feeder = row_CSV[0].indexOf("Slot");
+				var csv_Holder = row_CSV[0].indexOf("NHP");
+				var csv_Nozzle = row_CSV[0].indexOf("Nozzle");
 				// Generator CAD
-				let sumCad = 0;
-				let table = document.createElement("table");
-				let headerRow = table.insertRow();
-				let headers = ["Board", "Location Name", "X", "Y", "Angle", "Part Number", "Mouter", "Feeder", "Holder", "Nozzle"];
-				headers.forEach(headerText => {
-					let th = document.createElement("th");
-					th.textContent = headerText;
+				var sumCad = 0;
+				var table = document.createElement("table");
+				var headerRow = table.insertRow();
+				var headers = ["Board", "Location Name", "X", "Y", "Angle", "Part Number", "Mouter", "Feeder", "Holder", "Nozzle"];
+				for (var h = 0; h < headers.length; h++) {
+					var th = document.createElement("th");
+					th.textContent = headers[h];
 					headerRow.appendChild(th);
-				});
-				let mark = [
+				}
+				var mark = [
 					[
 						document.getElementById("mark-X1").value.trim(),
 						document.getElementById("mark-Y1").value.trim()
@@ -845,9 +922,9 @@
 						document.getElementById("mark-X2").value.trim(),
 						document.getElementById("mark-Y2").value.trim()
 					]
-				]
-				for (let i = 0; i < 2; i++) {
-					let row = table.insertRow();
+				];
+				for (var i = 0; i < 2; i++) {
+					var row = table.insertRow();
 					row.insertCell().textContent = "0";
 					row.insertCell().textContent = "Mark" + (i + 1);
 					row.insertCell().textContent = mark[i][0];
@@ -859,11 +936,11 @@
 					row.insertCell().textContent = "0";
 					row.insertCell().textContent = "0";
 				}
-				for (let i = 1; i < row_CSV.length; i++) {
+				for (var i = 1; i < row_CSV.length; i++) {
 					sumCad++;
-					let machine = row_CSV[i][csv_Head] - Math.floor(row_CSV[i][csv_Head] / 2);
-					let feeder = row_CSV[i][csv_Feeder].replace(/^.*0+/, "");
-					let row = table.insertRow();
+					var machine = row_CSV[i][csv_Head] - Math.floor(row_CSV[i][csv_Head] / 2);
+					var feeder = row_CSV[i][csv_Feeder].replace(/^.*0+/, "");
+					var row = table.insertRow();
 					row.insertCell().textContent = row_CSV[i][csv_Board];
 					row.insertCell().textContent = row_CSV[i][csv_Ref];
 					row.insertCell().textContent = row_CSV[i][csv_PosX];

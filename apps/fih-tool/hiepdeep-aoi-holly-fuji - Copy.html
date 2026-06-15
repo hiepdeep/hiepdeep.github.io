@@ -24,9 +24,9 @@
 			/* font-family: "Space Mono", monospace; */
 			@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 			/* font-family: "JetBrains Mono", monospace; */
-			@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+			@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 			/* font-family: "IBM Plex Mono", monospace; */
-			@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+			@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 			/* font-family: "Itim", cursive; */
 			@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
 			/* font-family: "Inter", sans-serif; */
@@ -40,7 +40,7 @@
 			/* font-family: "Google Sans"; font-family: "Google Sans Display"; font-family: "Google Sans Text"; font-family: "Product Sans"; */
 			@import url("https://fonts.googleapis.com/css2?family=Product+Sans&family=Google+Sans+Display:ital@0;1&family=Google+Sans_old:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&display=swap");
 			/* font-family: "Playpen Sans", cursive; */
-			@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&amp;display=swap");
+			@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap");
 			/* font-family: "Noto Sans SC", serif; font-family: "Noto Serif SC", serif; */
 			@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Serif+SC:wght@200..900&display=swap");
 			/* font-family: "Material Icons"; */
@@ -60,6 +60,9 @@
 			:link, button {
 				text-decoration: none;
 				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
 				user-select: none;
 			}
 			:link, :hover, :focus, :active, :visited {
@@ -105,6 +108,7 @@
 			* {
 				margin: 0;
 				padding: 0;
+				-webkit-box-sizing: border-box;
 				box-sizing: border-box;
 				letter-spacing: 0.05em;
 				-webkit-tap-highlight-color: transparent;
@@ -117,6 +121,7 @@
 				width: 100%;
 				height: 100%;
 				display: block;
+				-o-object-fit: cover;
 				object-fit: cover;
 			}
 			ol, ul, li {
@@ -129,261 +134,261 @@
 				color: hsl(var(--hue-saturation-purple), 95%);
 				background: hsl(var(--hue-saturation-purple), 50%);
 				border: 1px solid hsl(var(--hue-saturation-purple), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-purple), 45%);
-					border-color: hsl(var(--hue-saturation-purple), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-purple), 40%);
-					border-color: hsl(var(--hue-saturation-purple), 35%);
-				}
+			}
+			[btn-purple]:hover {
+				background: hsl(var(--hue-saturation-purple), 45%);
+				border-color: hsl(var(--hue-saturation-purple), 40%);
+			}
+			[btn-purple]:active {
+				background: hsl(var(--hue-saturation-purple), 40%);
+				border-color: hsl(var(--hue-saturation-purple), 35%);
 			}
 			[btn-pink] {
 				color: hsl(var(--hue-saturation-pink), 95%);
 				background: hsl(var(--hue-saturation-pink), 50%);
 				border: 1px solid hsl(var(--hue-saturation-pink), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-pink), 45%);
-					border-color: hsl(var(--hue-saturation-pink), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-pink), 40%);
-					border-color: hsl(var(--hue-saturation-pink), 35%);
-				}
+			}
+			[btn-pink]:hover {
+				background: hsl(var(--hue-saturation-pink), 45%);
+				border-color: hsl(var(--hue-saturation-pink), 40%);
+			}
+			[btn-pink]:active {
+				background: hsl(var(--hue-saturation-pink), 40%);
+				border-color: hsl(var(--hue-saturation-pink), 35%);
 			}
 			[btn-orange] {
 				color: hsl(var(--hue-saturation-orange), 95%);
 				background: hsl(var(--hue-saturation-orange), 50%);
 				border: 1px solid hsl(var(--hue-saturation-orange), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-orange), 45%);
-					border-color: hsl(var(--hue-saturation-orange), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-orange), 40%);
-					border-color: hsl(var(--hue-saturation-orange), 35%);
-				}
+			}
+			[btn-orange]:hover {
+				background: hsl(var(--hue-saturation-orange), 45%);
+				border-color: hsl(var(--hue-saturation-orange), 40%);
+			}
+			[btn-orange]:active {
+				background: hsl(var(--hue-saturation-orange), 40%);
+				border-color: hsl(var(--hue-saturation-orange), 35%);
 			}
 			[btn-brown] {
 				color: hsl(var(--hue-saturation-brown), 95%);
 				background: hsl(var(--hue-saturation-brown), 50%);
 				border: 1px solid hsl(var(--hue-saturation-brown), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-brown), 45%);
-					border-color: hsl(var(--hue-saturation-brown), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-brown), 40%);
-					border-color: hsl(var(--hue-saturation-brown), 35%);
-				}
+			}
+			[btn-brown]:hover {
+				background: hsl(var(--hue-saturation-brown), 45%);
+				border-color: hsl(var(--hue-saturation-brown), 40%);
+			}
+			[btn-brown]:active {
+				background: hsl(var(--hue-saturation-brown), 40%);
+				border-color: hsl(var(--hue-saturation-brown), 35%);
 			}
 			[btn-teal] {
 				color: hsl(var(--hue-saturation-teal), 95%);
 				background: hsl(var(--hue-saturation-teal), 50%);
 				border: 1px solid hsl(var(--hue-saturation-teal), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-teal), 45%);
-					border-color: hsl(var(--hue-saturation-teal), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-teal), 40%);
-					border-color: hsl(var(--hue-saturation-teal), 35%);
-				}
+			}
+			[btn-teal]:hover {
+				background: hsl(var(--hue-saturation-teal), 45%);
+				border-color: hsl(var(--hue-saturation-teal), 40%);
+			}
+			[btn-teal]:active {
+				background: hsl(var(--hue-saturation-teal), 40%);
+				border-color: hsl(var(--hue-saturation-teal), 35%);
 			}
 			[btn-yellow] {
 				color: hsl(var(--hue-saturation-yellow), 95%);
 				background: hsl(var(--hue-saturation-yellow), 50%);
 				border: 1px solid hsl(var(--hue-saturation-yellow), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-yellow), 45%);
-					border-color: hsl(var(--hue-saturation-yellow), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-yellow), 40%);
-					border-color: hsl(var(--hue-saturation-yellow), 35%);
-				}
+			}
+			[btn-yellow]:hover {
+				background: hsl(var(--hue-saturation-yellow), 45%);
+				border-color: hsl(var(--hue-saturation-yellow), 40%);
+			}
+			[btn-yellow]:active {
+				background: hsl(var(--hue-saturation-yellow), 40%);
+				border-color: hsl(var(--hue-saturation-yellow), 35%);
 			}
 			[btn-red] {
 				color: hsl(var(--hue-saturation-red), 95%);
 				background: hsl(var(--hue-saturation-red), 50%);
 				border: 1px solid hsl(var(--hue-saturation-red), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-red), 45%);
-					border-color: hsl(var(--hue-saturation-red), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-red), 40%);
-					border-color: hsl(var(--hue-saturation-red), 35%);
-				}
+			}
+			[btn-red]:hover {
+				background: hsl(var(--hue-saturation-red), 45%);
+				border-color: hsl(var(--hue-saturation-red), 40%);
+			}
+			[btn-red]:active {
+				background: hsl(var(--hue-saturation-red), 40%);
+				border-color: hsl(var(--hue-saturation-red), 35%);
 			}
 			[btn-green] {
 				color: hsl(var(--hue-saturation-green), 95%);
 				background: hsl(var(--hue-saturation-green), 50%);
 				border: 1px solid hsl(var(--hue-saturation-green), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-green), 45%);
-					border-color: hsl(var(--hue-saturation-green), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-green), 40%);
-					border-color: hsl(var(--hue-saturation-green), 35%);
-				}
+			}
+			[btn-green]:hover {
+				background: hsl(var(--hue-saturation-green), 45%);
+				border-color: hsl(var(--hue-saturation-green), 40%);
+			}
+			[btn-green]:active {
+				background: hsl(var(--hue-saturation-green), 40%);
+				border-color: hsl(var(--hue-saturation-green), 35%);
 			}
 			[btn-blue] {
 				color: hsl(var(--hue-saturation-blue), 95%);
 				background: hsl(var(--hue-saturation-blue), 50%);
 				border: 1px solid hsl(var(--hue-saturation-blue), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-blue), 45%);
-					border-color: hsl(var(--hue-saturation-blue), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-blue), 40%);
-					border-color: hsl(var(--hue-saturation-blue), 35%);
-				}
+			}
+			[btn-blue]:hover {
+				background: hsl(var(--hue-saturation-blue), 45%);
+				border-color: hsl(var(--hue-saturation-blue), 40%);
+			}
+			[btn-blue]:active {
+				background: hsl(var(--hue-saturation-blue), 40%);
+				border-color: hsl(var(--hue-saturation-blue), 35%);
 			}
 			[btn-gray] {
 				color: hsl(var(--hue-saturation-gray), 95%);
 				background: hsl(var(--hue-saturation-gray), 50%);
 				border: 1px solid hsl(var(--hue-saturation-gray), 45%);
-				&:hover {
-					background: hsl(var(--hue-saturation-gray), 45%);
-					border-color: hsl(var(--hue-saturation-gray), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-gray), 40%);
-					border-color: hsl(var(--hue-saturation-gray), 35%);
-				}
+			}
+			[btn-gray]:hover {
+				background: hsl(var(--hue-saturation-gray), 45%);
+				border-color: hsl(var(--hue-saturation-gray), 40%);
+			}
+			[btn-gray]:active {
+				background: hsl(var(--hue-saturation-gray), 40%);
+				border-color: hsl(var(--hue-saturation-gray), 35%);
 			}
 			[btn-light-purple] {
 				color: hsl(var(--hue-saturation-purple), 40%);
 				background: hsl(var(--hue-saturation-purple), 95%);
 				border: 1px solid hsl(var(--hue-saturation-purple), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-purple), 90%);
-					border-color: hsl(var(--hue-saturation-purple), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-purple), 85%);
-					border-color: hsl(var(--hue-saturation-purple), 80%);
-				}
+			}
+			[btn-light-purple]:hover {
+				background: hsl(var(--hue-saturation-purple), 90%);
+				border-color: hsl(var(--hue-saturation-purple), 85%);
+			}
+			[btn-light-purple]:active {
+				background: hsl(var(--hue-saturation-purple), 85%);
+				border-color: hsl(var(--hue-saturation-purple), 80%);
 			}
 			[btn-light-pink] {
 				color: hsl(var(--hue-saturation-pink), 40%);
 				background: hsl(var(--hue-saturation-pink), 95%);
 				border: 1px solid hsl(var(--hue-saturation-pink), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-pink), 90%);
-					border-color: hsl(var(--hue-saturation-pink), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-pink), 85%);
-					border-color: hsl(var(--hue-saturation-pink), 80%);
-				}
+			}
+			[btn-light-pink]:hover {
+				background: hsl(var(--hue-saturation-pink), 90%);
+				border-color: hsl(var(--hue-saturation-pink), 85%);
+			}
+			[btn-light-pink]:active {
+				background: hsl(var(--hue-saturation-pink), 85%);
+				border-color: hsl(var(--hue-saturation-pink), 80%);
 			}
 			[btn-light-orange] {
 				color: hsl(var(--hue-saturation-orange), 40%);
 				background: hsl(var(--hue-saturation-orange), 95%);
 				border: 1px solid hsl(var(--hue-saturation-orange), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-orange), 90%);
-					border-color: hsl(var(--hue-saturation-orange), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-orange), 85%);
-					border-color: hsl(var(--hue-saturation-orange), 80%);
-				}
+			}
+			[btn-light-orange]:hover {
+				background: hsl(var(--hue-saturation-orange), 90%);
+				border-color: hsl(var(--hue-saturation-orange), 85%);
+			}
+			[btn-light-orange]:active {
+				background: hsl(var(--hue-saturation-orange), 85%);
+				border-color: hsl(var(--hue-saturation-orange), 80%);
 			}
 			[btn-light-brown] {
 				color: hsl(var(--hue-saturation-brown), 40%);
 				background: hsl(var(--hue-saturation-brown), 95%);
 				border: 1px solid hsl(var(--hue-saturation-brown), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-brown), 90%);
-					border-color: hsl(var(--hue-saturation-brown), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-brown), 85%);
-					border-color: hsl(var(--hue-saturation-brown), 80%);
-				}
+			}
+			[btn-light-brown]:hover {
+				background: hsl(var(--hue-saturation-brown), 90%);
+				border-color: hsl(var(--hue-saturation-brown), 85%);
+			}
+			[btn-light-brown]:active {
+				background: hsl(var(--hue-saturation-brown), 85%);
+				border-color: hsl(var(--hue-saturation-brown), 80%);
 			}
 			[btn-light-teal] {
 				color: hsl(var(--hue-saturation-teal), 40%);
 				background: hsl(var(--hue-saturation-teal), 95%);
 				border: 1px solid hsl(var(--hue-saturation-teal), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-teal), 90%);
-					border-color: hsl(var(--hue-saturation-teal), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-teal), 85%);
-					border-color: hsl(var(--hue-saturation-teal), 80%);
-				}
+			}
+			[btn-light-teal]:hover {
+				background: hsl(var(--hue-saturation-teal), 90%);
+				border-color: hsl(var(--hue-saturation-teal), 85%);
+			}
+			[btn-light-teal]:active {
+				background: hsl(var(--hue-saturation-teal), 85%);
+				border-color: hsl(var(--hue-saturation-teal), 80%);
 			}
 			[btn-light-yellow] {
 				color: hsl(var(--hue-saturation-yellow), 40%);
 				background: hsl(var(--hue-saturation-yellow), 95%);
 				border: 1px solid hsl(var(--hue-saturation-yellow), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-yellow), 90%);
-					border-color: hsl(var(--hue-saturation-yellow), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-yellow), 85%);
-					border-color: hsl(var(--hue-saturation-yellow), 80%);
-				}
+			}
+			[btn-light-yellow]:hover {
+				background: hsl(var(--hue-saturation-yellow), 90%);
+				border-color: hsl(var(--hue-saturation-yellow), 85%);
+			}
+			[btn-light-yellow]:active {
+				background: hsl(var(--hue-saturation-yellow), 85%);
+				border-color: hsl(var(--hue-saturation-yellow), 80%);
 			}
 			[btn-light-red] {
 				color: hsl(var(--hue-saturation-red), 40%);
 				background: hsl(var(--hue-saturation-red), 95%);
 				border: 1px solid hsl(var(--hue-saturation-red), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-red), 90%);
-					border-color: hsl(var(--hue-saturation-red), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-red), 85%);
-					border-color: hsl(var(--hue-saturation-red), 80%);
-				}
+			}
+			[btn-light-red]:hover {
+				background: hsl(var(--hue-saturation-red), 90%);
+				border-color: hsl(var(--hue-saturation-red), 85%);
+			}
+			[btn-light-red]:active {
+				background: hsl(var(--hue-saturation-red), 85%);
+				border-color: hsl(var(--hue-saturation-red), 80%);
 			}
 			[btn-light-green] {
 				color: hsl(var(--hue-saturation-green), 40%);
 				background: hsl(var(--hue-saturation-green), 95%);
 				border: 1px solid hsl(var(--hue-saturation-green), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-green), 90%);
-					border-color: hsl(var(--hue-saturation-green), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-green), 85%);
-					border-color: hsl(var(--hue-saturation-green), 80%);
-				}
+			}
+			[btn-light-green]:hover {
+				background: hsl(var(--hue-saturation-green), 90%);
+				border-color: hsl(var(--hue-saturation-green), 85%);
+			}
+			[btn-light-green]:active {
+				background: hsl(var(--hue-saturation-green), 85%);
+				border-color: hsl(var(--hue-saturation-green), 80%);
 			}
 			[btn-light-blue] {
 				color: hsl(var(--hue-saturation-blue), 40%);
 				background: hsl(var(--hue-saturation-blue), 95%);
 				border: 1px solid hsl(var(--hue-saturation-blue), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-blue), 90%);
-					border-color: hsl(var(--hue-saturation-blue), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-blue), 85%);
-					border-color: hsl(var(--hue-saturation-blue), 80%);
-				}
+			}
+			[btn-light-blue]:hover {
+				background: hsl(var(--hue-saturation-blue), 90%);
+				border-color: hsl(var(--hue-saturation-blue), 85%);
+			}
+			[btn-light-blue]:active {
+				background: hsl(var(--hue-saturation-blue), 85%);
+				border-color: hsl(var(--hue-saturation-blue), 80%);
 			}
 			[btn-light-gray] {
 				color: hsl(var(--hue-saturation-gray), 40%);
 				background: hsl(var(--hue-saturation-gray), 95%);
 				border: 1px solid hsl(var(--hue-saturation-gray), 90%);
-				&:hover {
-					background: hsl(var(--hue-saturation-gray), 90%);
-					border-color: hsl(var(--hue-saturation-gray), 85%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-gray), 85%);
-					border-color: hsl(var(--hue-saturation-gray), 80%);
-				}
+			}
+			[btn-light-gray]:hover {
+				background: hsl(var(--hue-saturation-gray), 90%);
+				border-color: hsl(var(--hue-saturation-gray), 85%);
+			}
+			[btn-light-gray]:active {
+				background: hsl(var(--hue-saturation-gray), 85%);
+				border-color: hsl(var(--hue-saturation-gray), 80%);
 			}
 			[txt-light-purple] {
 				color: hsl(var(--hue-saturation-purple), 30%);
@@ -435,19 +440,45 @@
 				background: hsl(var(--hue-saturation-gray), 90%);
 				border: 1px solid hsl(var(--hue-saturation-gray), 85%);
 			}
-			[color-lv-1] { color: var(--color-lv-1); }
-			[color-lv-2] { color: var(--color-lv-2); }
-			[color-lv-3] { color: var(--color-lv-3); }
-			[color-lv-4] { color: var(--color-lv-4); }
-			[fz-lv-1] { font-size: var(--fz-lv-1); }
-			[fz-lv-2] { font-size: var(--fz-lv-2); }
-			[fz-lv-3] { font-size: var(--fz-lv-3); }
-			[fz-lv-4] { font-size: var(--fz-lv-4); }
-			[bdrs-lv-1] { border-radius: var(--bdrs-lv-1); }
-			[bdrs-lv-2] { border-radius: var(--bdrs-lv-2); }
-			[bdrs-lv-3] { border-radius: var(--bdrs-lv-3); }
-			[bdrs-lv-4] { border-radius: var(--bdrs-lv-4); }
-			[bdrs-lv-5] { border-radius: var(--bdrs-lv-5); }
+			[color-lv-1] {
+				color: var(--color-lv-1);
+			}
+			[color-lv-2] {
+				color: var(--color-lv-2);
+			}
+			[color-lv-3] {
+				color: var(--color-lv-3);
+			}
+			[color-lv-4] {
+				color: var(--color-lv-4);
+			}
+			[fz-lv-1] {
+				font-size: var(--fz-lv-1);
+			}
+			[fz-lv-2] {
+				font-size: var(--fz-lv-2);
+			}
+			[fz-lv-3] {
+				font-size: var(--fz-lv-3);
+			}
+			[fz-lv-4] {
+				font-size: var(--fz-lv-4);
+			}
+			[bdrs-lv-1] {
+				border-radius: var(--bdrs-lv-1);
+			}
+			[bdrs-lv-2] {
+				border-radius: var(--bdrs-lv-2);
+			}
+			[bdrs-lv-3] {
+				border-radius: var(--bdrs-lv-3);
+			}
+			[bdrs-lv-4] {
+				border-radius: var(--bdrs-lv-4);
+			}
+			[bdrs-lv-5] {
+				border-radius: var(--bdrs-lv-5);
+			}
 			* {
 				font-family: "Quicksand", sans-serif;
 				color: red;
@@ -455,6 +486,7 @@
 			}
 			body {
 				background: var(--bg-body-blue);
+				display: -ms-grid;
 				display: grid;
 				place-items: center;
 				height: 100vh;
@@ -463,166 +495,194 @@
 				width: 100%;
 				height: 100vh;
 				margin: 0 auto;
+				display: -webkit-box;
+				display: -ms-flexbox;
 				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
 				flex-direction: column;
 				gap: 12px;
 				padding: 12px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
 				user-select: none;
-				.my-header {
-					flex-shrink: 0;
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					padding: 12px;
-					background: var(--bg-box);
-					border: 1px solid var(--bd-box);
-					border-radius: var(--bdrs-lv-4);
-					a {
-						font-weight: 600;
-						font-size: var(--fz-lv-3);
-						color: var(--color-lv-1);
-					}
-					.navigation-bar {
-						display: flex;
-						align-items: center;
-						gap: 12px;
-						.btnImport {
-							all: unset;
-							cursor: pointer;
-							color: var(--color-lv-3);
-							b {
-								font-weight: 600;
-								color: inherit;
-							}
-							&.active {
-								text-decoration: underline;
-							}
-						}
-						#btnExport {
-							padding: 6px;
-							color: hsl(var(--hue-saturation-blue), 95%);
-							background: hsl(var(--hue-saturation-blue), 50%);
-							border: 1px solid hsl(var(--hue-saturation-blue), 45%);
-							border-radius: var(--bdrs-lv-5);
-							&:hover {
-								background: hsl(var(--hue-saturation-blue), 45%);
-								border-color: hsl(var(--hue-saturation-blue), 40%);
-							}
-							&:active {
-								background: hsl(var(--hue-saturation-blue), 40%);
-								border-color: hsl(var(--hue-saturation-blue), 35%);
-							}
-							&.active {
-								background: hsl(var(--hue-saturation-green), 40%);
-								border-color: hsl(var(--hue-saturation-green), 35%);
-							}
-						}
-						.split {
-							color: var(--color-placeholder);
-						}
-					}
-				}
-				.main {
-					display: flex;
-					flex-direction: column;
-					height: 100%;
-					overflow: hidden;
-					.txtImport {
-						display: none;
-						height: 100%;
-						label[for="addPartReportUnit"] {
-							.txt {
-								display: block;
-								padding: 6px;
-								text-align: center;
-								cursor: pointer;
-								color: hsl(var(--hue-saturation-gray), 95%);
-								background: hsl(var(--hue-saturation-gray), 50%);
-								border: 1px solid hsl(var(--hue-saturation-gray), 45%);
-								border-radius: var(--bdrs-lv-4);
-								&:hover {
-									background: hsl(var(--hue-saturation-gray), 45%);
-									border-color: hsl(var(--hue-saturation-gray), 40%);
-								}
-								&:active {
-									background: hsl(var(--hue-saturation-gray), 40%);
-									border-color: hsl(var(--hue-saturation-gray), 35%);
-								}
-							}
-						}
-						textarea {
-							width: 100%;
-							height: 100%;
-							padding: 12px;
-							font-family: "consolas";
-							font-size: 11px;
-							color: var(--color-lv-3);
-							background: var(--bg-box);
-							border: 1px solid var(--bd-box);
-							border-radius: var(--bdrs-lv-4);
-							resize: none;
-							overflow-y: scroll;
-						}
-						&.active {
-							display: flex;
-							flex-direction: column;
-							gap: 6px;
-						}
-					}
-					.txtExport {
-						display: none;
-						height: 100%;
-						padding: 6px;
-						background: var(--bg-box);
-						border: 1px solid var(--bd-box);
-						border-radius: var(--bdrs-lv-4);
-						overflow-y: scroll;
-						table {
-							border-collapse: collapse;
-							width: 100%;
-							user-select: all;
-							tr {
-								th, td {
-									text-align: left;
-									padding: 6px;
-									color: var(--color-lv-3);
-								}
-								th {
-									font-weight: 600;
-									border-bottom: 1px solid var(--bd-box);
-								}
-								td {
-									
-								}
-							}
-						}
-						&.active {
-							display: block;
-						}
-					}
-				}
-				.my-footer {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					gap: 12px;
-					.totals {
-						span {
-							color: var(--color-lv-4);
-							strong {
-								font-weight: 600;
-								color: inherit;
-							}
-						}
-					}
-					.copyright {
-						color: var(--color-lv-4);
-						b {
-							font-weight: 600;
-							color: inherit;
-						}
-					}
-				}
+			}
+			.box .my-header {
+				-ms-flex-negative: 0;
+				flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				padding: 12px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .my-header a {
+				font-weight: 600;
+				font-size: var(--fz-lv-3);
+				color: var(--color-lv-1);
+			}
+			.box .my-header .navigation-bar {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				gap: 12px;
+			}
+			.box .my-header .navigation-bar .btnImport {
+				all: unset;
+				cursor: pointer;
+				color: var(--color-lv-3);
+			}
+			.box .my-header .navigation-bar .btnImport b {
+				font-weight: 600;
+				color: inherit;
+			}
+			.box .my-header .navigation-bar .btnImport.active {
+				text-decoration: underline;
+			}
+			.box .my-header .navigation-bar #btnExport {
+				padding: 6px;
+				color: hsl(var(--hue-saturation-blue), 95%);
+				background: hsl(var(--hue-saturation-blue), 50%);
+				border: 1px solid hsl(var(--hue-saturation-blue), 45%);
+				border-radius: var(--bdrs-lv-5);
+			}
+			.box .my-header .navigation-bar #btnExport:hover {
+				background: hsl(var(--hue-saturation-blue), 45%);
+				border-color: hsl(var(--hue-saturation-blue), 40%);
+			}
+			.box .my-header .navigation-bar #btnExport:active {
+				background: hsl(var(--hue-saturation-blue), 40%);
+				border-color: hsl(var(--hue-saturation-blue), 35%);
+			}
+			.box .my-header .navigation-bar #btnExport.active {
+				background: hsl(var(--hue-saturation-green), 40%);
+				border-color: hsl(var(--hue-saturation-green), 35%);
+			}
+			.box .my-header .navigation-bar .split {
+				color: var(--color-placeholder);
+			}
+			.box .main {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				height: 100%;
+				overflow: hidden;
+			}
+			.box .main .txtImport {
+				display: none;
+				height: 100%;
+			}
+			.box .main .txtImport label[for=addPartReportUnit] .txt {
+				display: block;
+				padding: 6px;
+				text-align: center;
+				cursor: pointer;
+				color: hsl(var(--hue-saturation-gray), 95%);
+				background: hsl(var(--hue-saturation-gray), 50%);
+				border: 1px solid hsl(var(--hue-saturation-gray), 45%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .txtImport label[for=addPartReportUnit] .txt:hover {
+				background: hsl(var(--hue-saturation-gray), 45%);
+				border-color: hsl(var(--hue-saturation-gray), 40%);
+			}
+			.box .main .txtImport label[for=addPartReportUnit] .txt:active {
+				background: hsl(var(--hue-saturation-gray), 40%);
+				border-color: hsl(var(--hue-saturation-gray), 35%);
+			}
+			.box .main .txtImport textarea {
+				width: 100%;
+				height: 100%;
+				padding: 12px;
+				font-family: "consolas";
+				font-size: 11px;
+				color: var(--color-lv-3);
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				resize: none;
+				overflow-y: scroll;
+			}
+			.box .main .txtImport.active {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.box .main .txtExport {
+				display: none;
+				height: 100%;
+				padding: 6px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				overflow-y: scroll;
+			}
+			.box .main .txtExport table {
+				border-collapse: collapse;
+				width: 100%;
+				-webkit-user-select: all;
+				-moz-user-select: all;
+				user-select: all;
+			}
+			.box .main .txtExport table tr th, .box .main .txtExport table tr td {
+				text-align: left;
+				padding: 6px;
+				color: var(--color-lv-3);
+			}
+			.box .main .txtExport table tr th {
+				font-weight: 600;
+				border-bottom: 1px solid var(--bd-box);
+			}
+			.box .main .txtExport.active {
+				display: block;
+			}
+			.box .my-footer {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				gap: 12px;
+			}
+			.box .my-footer .totals span {
+				color: var(--color-lv-4);
+			}
+			.box .my-footer .totals span strong {
+				font-weight: 600;
+				color: inherit;
+			}
+			.box .my-footer .copyright {
+				color: var(--color-lv-4);
+			}
+			.box .my-footer .copyright b {
+				font-weight: 600;
+				color: inherit;
 			}
 		</style>
 	</head>
@@ -671,51 +731,52 @@
 		</div>
 		<script type="text/javascript">
 			console.clear();
-			const btnImports = document.getElementsByClassName("btnImport");
-			const txtImports = document.getElementsByClassName("txtImport");
-			const btnExport = document.getElementById("btnExport");
-			const txtExport = document.getElementById("txtExport");
-			for (let i = 0; i < btnImports.length; i++) {
-				btnImports[i].addEventListener("click", (e) => {
-					e.preventDefault();
-					for (let j = 0; j < btnImports.length; j++) {
-						btnImports[j].classList.remove("active");
-						txtImports[j].classList.remove("active");
-					}
-					btnExport.classList.remove("active");
-					txtExport.classList.remove("active");
-					btnImports[i].classList.add("active");
-					txtImports[i].classList.add("active");
-				});
+			var btnImports = document.getElementsByClassName("btnImport");
+			var txtImports = document.getElementsByClassName("txtImport");
+			var btnExport = document.getElementById("btnExport");
+			var txtExport = document.getElementById("txtExport");
+			for (var i = 0; i < btnImports.length; i++) {
+				(function(index) {
+					btnImports[index].addEventListener("click", function(e) {
+						e.preventDefault();
+						for (var j = 0; j < btnImports.length; j++) {
+							btnImports[j].classList.remove("active");
+							txtImports[j].classList.remove("active");
+						}
+						btnExport.classList.remove("active");
+						txtExport.classList.remove("active");
+						btnImports[index].classList.add("active");
+						txtImports[index].classList.add("active");
+					});
+				})(i);
 			}
-			document.getElementById("importMark").addEventListener("input", (e) => {
+			document.getElementById("importMark").addEventListener("input", function(e) {
 				formatInput_1("importMark");
 			});
 			document.getElementById("addPartReportUnit").addEventListener("change", function() {
-				let files = this.files;
-				if (files.length === 0) return;
-				let allDataRows = [];
-				let filesRead = 0;
-				let globalCounter = 1;
+				var files = this.files;
+				if (!files || files.length === 0) return;
+				var allDataRows = [];
+				var globalCounter = 1;
 				function readIndividualFile(index) {
 					if (index >= files.length) {
 						formatInput_2("importPartReportUnit", allDataRows);
 						return;
 					}
-					let reader = new FileReader();
+					var reader = new FileReader();
 					reader.onload = function(e) {
-						let result = e.target.result.replace(/(\<\?)(.+)(\?\>)/gi, "").trim();
-						let tempDiv = document.createElement("div");
+						var result = e.target.result.replace(/(\<\?)(.+)(\?\>)/gi, "").trim();
+						var tempDiv = document.createElement("div");
 						tempDiv.innerHTML = result;
-						let xml_partreportunit = tempDiv.getElementsByTagName("partreportunit");
-						let xml_unit = xml_partreportunit.length > 0 ? xml_partreportunit[0].getElementsByTagName("unit") : [];
-						for (let i = 0; i < xml_unit.length; i++) {
-							// Chỉ lấy tiêu đề ở file đầu tiên, các file sau bỏ qua dòng i=0
+						var xml_partreportunit = tempDiv.getElementsByTagName("partreportunit");
+						var xml_unit = xml_partreportunit.length > 0 ? xml_partreportunit[0].getElementsByTagName("unit") : [];
+						for (var i = 0; i < xml_unit.length; i++) {
 							if (index > 0 && i === 0) continue;
-							let rowData = [];
-							let children = xml_unit[i].children;
-							for (let j = 0; j < children.length; j++) {
-								let cellText = children[j].innerText.trim();
+							var rowData = [];
+							var children = xml_unit[i].children;
+							for (var j = 0; j < children.length; j++) {
+								// Dùng innerText hoặc textContent cho các trình duyệt cũ biệt lập
+								var cellText = (children[j].innerText || children[j].textContent || "").trim();
 								if (j === 0 && cellText !== "seqInsOrder") {
 									rowData.push(globalCounter.toString());
 								} else {
@@ -732,35 +793,35 @@
 					reader.readAsText(files[index]);
 				}
 				function formatInput_2(elementId, arr0) {
-					let arr1 = [];
-					let arr2 = [];
-					let arr3 = [];
-					let inputElement = document.getElementById(elementId);
+					var arr1 = [];
+					var arr2 = [];
+					var arr3 = [];
+					var inputElement = document.getElementById(elementId);
 					inputElement.value = "";
 					if (arr0.length > 0 && arr0[0].length > 0) {
-						for (let x = 0; x < arr0[0].length; x++) {
+						for (var x = 0; x < arr0[0].length; x++) {
 							arr1.push([]);
 							arr2.push([]);
 							arr3.push([]);
-							for (let xx = 0; xx < arr0.length; xx++) {
-								let cellValue = arr0[xx][x] || "";
+							for (var xx = 0; xx < arr0.length; xx++) {
+								var cellValue = arr0[xx][x] || "";
 								arr1[x].push(cellValue);
 								arr2[x].push(cellValue.length);
 							}
 							arr3[x].push(Math.max.apply(null, arr2[x]));
-							for (let u = 0; u < arr1[x].length; u++) {
-								let uLength = arr1[x][u].length;
-								let maxLength = arr3[x][0];
+							for (var u = 0; u < arr1[x].length; u++) {
+								var uLength = arr1[x][u].length;
+								var maxLength = arr3[x][0];
 								if (uLength < maxLength) {
-									for (let k = 0; k < (maxLength - uLength); k++) {
+									for (var k = 0; k < (maxLength - uLength); k++) {
 										arr1[x][u] += " ";
 									}
 								}
 							}
 						}
-						let ee = "";
-						for (let x = 0; x < arr1[0].length; x++) {
-							for (let xx = 0; xx < arr1.length; xx++) {
+						var ee = "";
+						for (var x = 0; x < arr1[0].length; x++) {
+							for (var xx = 0; xx < arr1.length; xx++) {
 								ee += arr1[xx][x];
 								if (xx < arr1.length - 1) {
 									ee += " | ";
@@ -777,66 +838,71 @@
 				}
 				readIndividualFile(0);
 			});
-			document.getElementById("importPlace").addEventListener("input", (e) => {
+			document.getElementById("importPlace").addEventListener("input", function(e) {
 				formatInput_1("importPlace");
-				document.getElementById("total-place").innerText = e.target.value.trim().split("\n").length - 1;
+				var val = e.target.value || "";
+				document.getElementById("total-place").innerText = val.trim().split("\n").length - 1;
 			});
-			document.getElementById("importInsertOrder").addEventListener("input", (e) => {
+			document.getElementById("importInsertOrder").addEventListener("input", function(e) {
 				formatInput_1("importInsertOrder");
 			});
-			btnExport.addEventListener("click", (e) => {
+			btnExport.addEventListener("click", function(e) {
 				e.preventDefault();
-				for (let j = 0; j < btnImports.length; j++) {
+				for (var j = 0; j < btnImports.length; j++) {
 					btnImports[j].classList.remove("active");
 					txtImports[j].classList.remove("active");
 				}
 				btnExport.classList.add("active");
 				txtExport.classList.add("active");
 				// Mark
-				let data_Mark = document.getElementById("importMark").value.trim();
-				let row_Mark = [];
-				let tempMarkRows = data_Mark.split("\n");
-				for (let x = 0; x < tempMarkRows.length; x++) {
+				var data_Mark = document.getElementById("importMark").value.trim();
+				var row_Mark = [];
+				var tempMarkRows = data_Mark.split("\n");
+				for (var x = 0; x < tempMarkRows.length; x++) {
 					row_Mark.push([]);
-					let cells = tempMarkRows[x].split("|");
-					for (let xx = 0; xx < cells.length; xx++) {
+					var cells = tempMarkRows[x].split("|");
+					for (var xx = 0; xx < cells.length; xx++) {
 						row_Mark[x].push(cells[xx].trim());
 					}
 				}
-				let mark_Block = row_Mark[0].indexOf("Board");
-				let mark_LocationName = row_Mark[0].indexOf("Ref.");
-				let mark_X = row_Mark[0].indexOf("Pos X");
-				let mark_Y = row_Mark[0].indexOf("Pos Y");
-				let arr_Mark = [["Block", "Location Name", "X", "Y"]];
-				for (let row = 1; row < row_Mark.length; row++) {
+				var mark_Block = row_Mark[0].indexOf("Board");
+				var mark_LocationName = row_Mark[0].indexOf("Ref.");
+				var mark_X = row_Mark[0].indexOf("Pos X");
+				var mark_Y = row_Mark[0].indexOf("Pos Y");
+				var arr_Mark = [
+					["Block", "Location Name", "X", "Y"]
+				];
+				for (var row = 1; row < row_Mark.length; row++) {
 					arr_Mark.push([]);
-					let newRowIndex = arr_Mark.length - 1;
+					var newRowIndex = arr_Mark.length - 1;
 					arr_Mark[newRowIndex].push(row_Mark[row][mark_Block].trim());
 					arr_Mark[newRowIndex].push(row_Mark[row][mark_LocationName].trim());
 					arr_Mark[newRowIndex].push(row_Mark[row][mark_X].trim());
 					arr_Mark[newRowIndex].push(row_Mark[row][mark_Y].trim());
 				}
 				// PartReportUnit
-				let data_PartReportUnit = document.getElementById("importPartReportUnit").value.trim();
-				let row_PartReportUnit = [];
-				let tempPartReportUnitRows = data_PartReportUnit.split("\n");
-				for (let x = 0; x < tempPartReportUnitRows.length; x++) {
+				var data_PartReportUnit = document.getElementById("importPartReportUnit").value.trim();
+				var row_PartReportUnit = [];
+				var tempPartReportUnitRows = data_PartReportUnit.split("\n");
+				for (var x = 0; x < tempPartReportUnitRows.length; x++) {
 					row_PartReportUnit.push([]);
-					let cells = tempPartReportUnitRows[x].split("|");
-					for (let xx = 0; xx < cells.length; xx++) {
+					var cells = tempPartReportUnitRows[x].split("|");
+					for (var xx = 0; xx < cells.length; xx++) {
 						row_PartReportUnit[x].push(cells[xx].trim());
 					}
 				}
-				let unit_seqBrdNum = row_PartReportUnit[0].indexOf("seqBrdNum");
-				let unit_seqRef = row_PartReportUnit[0].indexOf("seqRef");
-				let unit_seqPartNum = row_PartReportUnit[0].indexOf("seqPartNum");
-				let unit_fsSetPos = row_PartReportUnit[0].indexOf("fsSetPos");
-				let arr_PartReportUnit = [["Board", "Ref.", "Part Number", "Mounter", "Feeder", "BoardRef"]];
-				for (let row = 1; row < row_PartReportUnit.length; row++) {
+				var unit_seqBrdNum = row_PartReportUnit[0].indexOf("seqBrdNum");
+				var unit_seqRef = row_PartReportUnit[0].indexOf("seqRef");
+				var unit_seqPartNum = row_PartReportUnit[0].indexOf("seqPartNum");
+				var unit_fsSetPos = row_PartReportUnit[0].indexOf("fsSetPos");
+				var arr_PartReportUnit = [
+					["Board", "Ref.", "Part Number", "Mounter", "Feeder", "BoardRef"]
+				];
+				for (var row = 1; row < row_PartReportUnit.length; row++) {
 					arr_PartReportUnit.push([]);
-					let newRowIndex = arr_PartReportUnit.length - 1;
-					let brdNum = row_PartReportUnit[row][unit_seqBrdNum].trim();
-					let ref = row_PartReportUnit[row][unit_seqRef].trim();
+					var newRowIndex = arr_PartReportUnit.length - 1;
+					var brdNum = row_PartReportUnit[row][unit_seqBrdNum].trim();
+					var ref = row_PartReportUnit[row][unit_seqRef].trim();
 					arr_PartReportUnit[newRowIndex].push(brdNum);
 					arr_PartReportUnit[newRowIndex].push(ref);
 					arr_PartReportUnit[newRowIndex].push(row_PartReportUnit[row][unit_seqPartNum].trim());
@@ -845,28 +911,30 @@
 					arr_PartReportUnit[newRowIndex].push(brdNum + ref);
 				}
 				// Place
-				let data_Place = document.getElementById("importPlace").value.trim();
-				let row_Place = [];
-				let tempPlaceRows = data_Place.split("\n");
-				for (let x = 0; x < tempPlaceRows.length; x++) {
+				var data_Place = document.getElementById("importPlace").value.trim();
+				var row_Place = [];
+				var tempPlaceRows = data_Place.split("\n");
+				for (var x = 0; x < tempPlaceRows.length; x++) {
 					row_Place.push([]);
-					let cells = tempPlaceRows[x].split("|");
-					for (let xx = 0; xx < cells.length; xx++) {
+					var cells = tempPlaceRows[x].split("|");
+					for (var xx = 0; xx < cells.length; xx++) {
 						row_Place[x].push(cells[xx].trim());
 					}
 				}
-				let place_Board = row_Place[0].indexOf("Board");
-				let place_Ref = row_Place[0].indexOf("Ref.");
-				let place_PosX = row_Place[0].indexOf("Pos X");
-				let place_PosY = row_Place[0].indexOf("Pos Y");
-				let place_Rotation = row_Place[0].indexOf("Rotation");
-				let place_PartNumber = row_Place[0].indexOf("Part Number");
-				let arr_Place = [["Board", "Ref.", "Pos X", "Pos Y", "Rotation", "Part Number", "BoardRef"]];
-				for (let row = 1; row < row_Place.length; row++) {
+				var place_Board = row_Place[0].indexOf("Board");
+				var place_Ref = row_Place[0].indexOf("Ref.");
+				var place_PosX = row_Place[0].indexOf("Pos X");
+				var place_PosY = row_Place[0].indexOf("Pos Y");
+				var place_Rotation = row_Place[0].indexOf("Rotation");
+				var place_PartNumber = row_Place[0].indexOf("Part Number");
+				var arr_Place = [
+					["Board", "Ref.", "Pos X", "Pos Y", "Rotation", "Part Number", "BoardRef"]
+				];
+				for (var row = 1; row < row_Place.length; row++) {
 					arr_Place.push([]);
-					let newRowIndex = arr_Place.length - 1;
-					let brdNum = row_Place[row][place_Board].trim();
-					let ref = row_Place[row][place_Ref].trim();
+					var newRowIndex = arr_Place.length - 1;
+					var brdNum = row_Place[row][place_Board].trim();
+					var ref = row_Place[row][place_Ref].trim();
 					arr_Place[newRowIndex].push(brdNum);
 					arr_Place[newRowIndex].push(ref);
 					arr_Place[newRowIndex].push(row_Place[row][place_PosX].trim());
@@ -876,21 +944,23 @@
 					arr_Place[newRowIndex].push(brdNum + ref);
 				}
 				// InsertOrder
-				let data_InsertOrder = document.getElementById("importInsertOrder").value.trim();
-				let hasInsertOrderData = data_InsertOrder.length > 0;
-				let arr_InsertOrder = [["Reference", "Holder"]];
+				var data_InsertOrder = document.getElementById("importInsertOrder").value.trim();
+				var hasInsertOrderData = data_InsertOrder.length > 0;
+				var arr_InsertOrder = [
+					["Reference", "Holder"]
+				];
 				if (hasInsertOrderData) {
-					let row_InsertOrder = [];
-					let tempInsertOrderRows = data_InsertOrder.split("\n");
-					for (let x = 0; x < tempInsertOrderRows.length; x++) {
+					var row_InsertOrder = [];
+					var tempInsertOrderRows = data_InsertOrder.split("\n");
+					for (var x = 0; x < tempInsertOrderRows.length; x++) {
 						row_InsertOrder.push([]);
-						let cells = tempInsertOrderRows[x].split("|");
-						for (let xx = 0; xx < cells.length; xx++) {
+						var cells = tempInsertOrderRows[x].split("|");
+						for (var xx = 0; xx < cells.length; xx++) {
 							row_InsertOrder[x].push(cells[xx].trim());
 						}
 					}
-					let order_Reference = null;
-					let order_Holder = null;
+					var order_Reference = null;
+					var order_Holder = null;
 					if (row_InsertOrder.length > 0 && row_InsertOrder[0].length > 0) {
 						order_Reference = row_InsertOrder[0].indexOf("Reference");
 						order_Holder = row_InsertOrder[0].indexOf("Holder Number");
@@ -898,32 +968,32 @@
 						order_Reference = -1;
 						order_Holder = -1;
 					}
-					for (let row = 1; row < row_InsertOrder.length; row++) {
+					for (var row = 1; row < row_InsertOrder.length; row++) {
 						if (row_InsertOrder[row].length > order_Reference && row_InsertOrder[row].length > order_Holder && order_Reference !== -1 && order_Holder !== -1) {
 							arr_InsertOrder.push([]);
-							let newRowIndex = arr_InsertOrder.length - 1;
+							var newRowIndex = arr_InsertOrder.length - 1;
 							arr_InsertOrder[newRowIndex].push(row_InsertOrder[row][order_Reference].trim());
 							arr_InsertOrder[newRowIndex].push(row_InsertOrder[row][order_Holder].trim());
 						}
 					}
 				}
 				// Generator CAD
-				let table = document.createElement("table");
-				let headerRow = table.insertRow();
-				let headers = ["Board", "Location Name", "X", "Y", "Angle", "Part Number", "Mouter", "Feeder"];
+				var table = document.createElement("table");
+				var headerRow = table.insertRow();
+				var headers = ["Board", "Location Name", "X", "Y", "Angle", "Part Number", "Mouter", "Feeder"];
 				if (hasInsertOrderData) {
 					headers.push("Holder");
 				}
-				headers.forEach(headerText => {
-					let th = document.createElement("th");
-					th.textContent = headerText;
+				for (var h = 0; h < headers.length; h++) {
+					var th = document.createElement("th");
+					th.textContent = headers[h];
 					headerRow.appendChild(th);
-				});
-				for (let tr_Mark = 1; tr_Mark < arr_Mark.length; tr_Mark++) {
+				}
+				for (var tr_Mark = 1; tr_Mark < arr_Mark.length; tr_Mark++) {
 					if (arr_Mark[tr_Mark][0] == "0") {
-						let locationName = arr_Mark[tr_Mark][1];
-						let lastChar = locationName.charAt(locationName.length - 1);
-						let row = table.insertRow();
+						var locationName = arr_Mark[tr_Mark][1];
+						var lastChar = locationName.charAt(locationName.length - 1);
+						var row = table.insertRow();
 						row.insertCell().textContent = arr_Mark[tr_Mark][0];
 						row.insertCell().textContent = arr_Mark[tr_Mark][1];
 						row.insertCell().textContent = arr_Mark[tr_Mark][2];
@@ -937,21 +1007,21 @@
 						}
 					}
 				}
-				let ref_PartUnit = arr_PartReportUnit[0].indexOf("BoardRef");
-				let sumCad = 0;
-				for (let tr_PartUnit = 1; tr_PartUnit < arr_PartReportUnit.length; tr_PartUnit++) {
-					let boardRefKey = arr_PartReportUnit[tr_PartUnit][ref_PartUnit];
-					let board = vlookup(boardRefKey, arr_Place, 0);
-					let ref = vlookup(boardRefKey, arr_Place, 1);
-					let posX = vlookup(boardRefKey, arr_Place, 2);
-					let posY = vlookup(boardRefKey, arr_Place, 3);
-					let rotation = vlookup(boardRefKey, arr_Place, 4);
-					let partNumber = vlookup(boardRefKey, arr_Place, 5);
-					let mounter = arr_PartReportUnit[tr_PartUnit][3];
-					let feeder = arr_PartReportUnit[tr_PartUnit][4];
+				var ref_PartUnit = arr_PartReportUnit[0].indexOf("BoardRef");
+				var sumCad = 0;
+				for (var tr_PartUnit = 1; tr_PartUnit < arr_PartReportUnit.length; tr_PartUnit++) {
+					var boardRefKey = arr_PartReportUnit[tr_PartUnit][ref_PartUnit];
+					var board = vlookup(boardRefKey, arr_Place, 0);
+					var ref = vlookup(boardRefKey, arr_Place, 1);
+					var posX = vlookup(boardRefKey, arr_Place, 2);
+					var posY = vlookup(boardRefKey, arr_Place, 3);
+					var rotation = vlookup(boardRefKey, arr_Place, 4);
+					var partNumber = vlookup(boardRefKey, arr_Place, 5);
+					var mounter = arr_PartReportUnit[tr_PartUnit][3];
+					var feeder = arr_PartReportUnit[tr_PartUnit][4];
 					if (board && ref) {
 						sumCad++;
-						let row = table.insertRow();
+						var row = table.insertRow();
 						row.insertCell().textContent = board.trim();
 						row.insertCell().textContent = ref.trim();
 						row.insertCell().textContent = posX.trim();
@@ -961,55 +1031,55 @@
 						row.insertCell().textContent = "M" + mounter.trim();
 						row.insertCell().textContent = "F" + feeder.trim();
 						if (hasInsertOrderData) {
-							let searchOrder = board.trim() + ":" + ref.trim();
-							let holderValue = getHolder(searchOrder, arr_InsertOrder);
-							let holderCell = holderValue ? "H" + holderValue.trim() : "";
+							var searchOrder = board.trim() + ":" + ref.trim();
+							var holderValue = getHolder(searchOrder, arr_InsertOrder);
+							var holderCell = holderValue ? "H" + holderValue.trim() : "";
 							row.insertCell().textContent = holderCell;
 						}
 					}
 				}
 				document.getElementById("txtExport").innerHTML = "";
 				document.getElementById("txtExport").appendChild(table);
-			    document.getElementById("total-cad").innerText = sumCad;
+				document.getElementById("total-cad").innerText = sumCad;
 			});
 			function formatInput_1(elementId) {
-				let arr0 = [];
-				let arr1 = [];
-				let arr2 = [];
-				let arr3 = [];
-				let inputElement = document.getElementById(elementId);
-				let txtInput = inputElement.value.trim().split("\n");
-				for (let x = 0; x < txtInput.length; x++) {
+				var arr0 = [];
+				var arr1 = [];
+				var arr2 = [];
+				var arr3 = [];
+				var inputElement = document.getElementById(elementId);
+				var txtInput = inputElement.value.trim().split("\n");
+				for (var x = 0; x < txtInput.length; x++) {
 					arr0.push([]);
-					let cells = txtInput[x].split("\t");
-					for (let xx = 0; xx < cells.length; xx++) {
+					var cells = txtInput[x].split("\t");
+					for (var xx = 0; xx < cells.length; xx++) {
 						arr0[x].push(cells[xx].trim());
 					}
 				}
 				if (arr0.length > 0 && arr0[0].length > 0) {
-					for (let x = 0; x < arr0[0].length; x++) {
+					for (var x = 0; x < arr0[0].length; x++) {
 						arr1.push([]);
 						arr2.push([]);
 						arr3.push([]);
-						for (let xx = 0; xx < arr0.length; xx++) {
-							let cellValue = arr0[xx][x] || "";
+						for (var xx = 0; xx < arr0.length; xx++) {
+							var cellValue = arr0[xx][x] || "";
 							arr1[x].push(cellValue);
 							arr2[x].push(cellValue.length);
 						}
 						arr3[x].push(Math.max.apply(null, arr2[x]));
-						for (let u = 0; u < arr1[x].length; u++) {
-							let uLength = arr1[x][u].length;
-							let maxLength = arr3[x][0];
+						for (var u = 0; u < arr1[x].length; u++) {
+							var uLength = arr1[x][u].length;
+							var maxLength = arr3[x][0];
 							if (uLength < maxLength) {
-								for (let k = 0; k < (maxLength - uLength); k++) {
+								for (var k = 0; k < (maxLength - uLength); k++) {
 									arr1[x][u] += " ";
 								}
 							}
 						}
 					}
-					let ee = "";
-					for (let x = 0; x < arr1[0].length; x++) {
-						for (let xx = 0; xx < arr1.length; xx++) {
+					var ee = "";
+					for (var x = 0; x < arr1[0].length; x++) {
+						for (var xx = 0; xx < arr1.length; xx++) {
 							ee += arr1[xx][x];
 							if (xx < arr1.length - 1) {
 								ee += " | ";
@@ -1023,7 +1093,7 @@
 				}
 			}
 			function vlookup(key, range, col) {
-				for (let i = 0; i < range.length; i++) {
+				for (var i = 0; i < range.length; i++) {
 					if (range[i].length > 6 && range[i][6] == key) {
 						return range[i][col];
 					}
@@ -1031,10 +1101,10 @@
 				return "";
 			}
 			function getHolder(searchOrderKey, arr) {
-				for (let i = 1; i < arr.length; i++) {
+				for (var i = 1; i < arr.length; i++) {
 					if (arr[i].length >= 2) {
-						let reference = arr[i][0];
-						let holder = arr[i][1];
+						var reference = arr[i][0];
+						var holder = arr[i][1];
 						if (reference === searchOrderKey) {
 							return holder;
 						}
