@@ -69,8 +69,8 @@ body {
 			background: var(--bg-box);
 			border: 1px solid var(--bd-box);
 			border-radius: var(--bdrs-lv-4);
-			resize: none;
 			tab-size: 4;
+			resize: none;
 			&::placeholder {
 				color: var(--color-placeholder);
 			}
