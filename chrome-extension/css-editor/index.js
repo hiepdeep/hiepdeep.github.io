@@ -1,102 +1,215 @@
 console.clear();
-
 document.addEventListener("DOMContentLoaded", () => {
 	const inputPath = document.getElementById("reference-path");
-	const cssEditor = document.getElementById("css-editor");
+	const editor = document.getElementById("editor");
+	const hl = document.getElementById("hl");
+	const lineNums = document.getElementById("lineNums");
 	const btnSave = document.getElementById("save");
 	const btnDelete = document.getElementById("delete");
-	// 1. Phân tích tham số domain từ URL để hiển thị vào input và load dữ liệu cũ
 	const urlParams = new URLSearchParams(window.location.search);
 	const targetDomain = urlParams.get("domain");
 	if (targetDomain) {
 		inputPath.value = targetDomain;
-		// Load lại cấu hình CSS đã lưu của domain này (nếu có)
 		chrome.storage.local.get(["customStyles"], (result) => {
 			const styles = result.customStyles || {};
 			if (styles[targetDomain]) {
-				cssEditor.value = styles[targetDomain];
+				editor.value = styles[targetDomain];
+				render();
 			}
 		});
 	}
-	// Hàm xử lý Lưu cấu hình (Dùng chung cho cả click chuột và phím tắt)
 	function handleSave() {
 		const domain = inputPath.value.trim();
-		const cssContent = cssEditor.value.trim();
+		const cssContent = editor.value;
 		if (!domain) return;
 		chrome.storage.local.get(["customStyles"], (result) => {
 			const styles = result.customStyles || {};
 			styles[domain] = cssContent;
-			chrome.storage.local.set({
-				customStyles: styles
-			}, () => {
+			chrome.storage.local.set({ customStyles: styles }, () => {
 				showNotification("Đã lưu cấu hình thành công!");
 				reloadTargetTabs(domain);
 			});
 		});
 	}
-	// 2. Xử lý Logic thông minh cho Editor (Auto cặp ngoặc, Enter, Tab, và Ctrl+S)
-	cssEditor.addEventListener("keydown", function(e) {
+	function esc(s) {
+		return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+	}
+	function highlightCSS(code) {
+		let out = "", i = 0;
+		while (i < code.length) {
+			// Comments
+			if (code[i] === "/" && code[i + 1] === "*") {
+				const end = code.indexOf("*/", i + 2);
+				const sl = end === -1 ? code.slice(i) : code.slice(i, end + 2);
+				out += `<span class="c-cmt">${esc(sl)}</span>`;
+				i += sl.length;
+				continue;
+			}
+			// Strings
+			if (code[i] === '"' || code[i] === "'") {
+				const q = code[i];
+				let j = i + 1, s = q;
+				while (j < code.length) {
+					s += esc(code[j]);
+					if (code[j] === q) { j++; break; }
+					j++;
+				}
+				out += `<span class="c-str">${s}</span>`;
+				i = j;
+				continue;
+			}
+			// At-rules
+			if (code[i] === "@") {
+				let j = i;
+				while (j < code.length && /[\w-]/.test(code[j] || "")) j++;
+				out += `<span class="c-atrule">${esc(code.slice(i, j))}</span>`;
+				i = j;
+				continue;
+			}
+			// CSS variable --
+			if (code[i] === "-" && code[i + 1] === "-") {
+				let j = i;
+				while (j < code.length && /[\w-]/.test(code[j])) j++;
+				out += `<span class="c-var">${esc(code.slice(i, j))}</span>`;
+				i = j;
+				continue;
+			}
+			// Hex color
+			if (code[i] === "#") {
+				let j = i + 1;
+				while (j < code.length && /[0-9a-fA-F]/.test(code[j])) j++;
+				if (j - i > 1) {
+					out += `<span class="c-hash">${esc(code.slice(i, j))}</span>`;
+					i = j;
+					continue;
+				}
+			}
+			// Number + optional unit
+			if (/[0-9]/.test(code[i]) || (code[i] === "-" && /[0-9]/.test(code[i + 1] || ""))) {
+				let j = i;
+				if (code[j] === "-") j++;
+				while (j < code.length && /[0-9.]/.test(code[j])) j++;
+				const num = code.slice(i, j);
+				const uM = code.slice(j).match(/^(px|em|rem|vh|vw|vmin|vmax|%|deg|s|ms|fr|ch|ex|pt|pc|cm|mm|in)/);
+				const unit = uM ? uM[1] : "";
+				out += `<span class="c-num">${esc(num + unit)}</span>`;
+				i = j + unit.length;
+				continue;
+			}
+			// Words
+			if (/[a-zA-Z_]/.test(code[i])) {
+				let j = i;
+				while (j < code.length && /[\w-]/.test(code[j])) j++;
+				const word = code.slice(i, j);
+				const after = code[j] || '';
+				const before = code.slice(0, i).trimEnd();
+				const lastMeaningful = before[before.length - 1] || "";
+				if ((after === ":" && /[{;}\n]/.test(lastMeaningful)) || lastMeaningful === "{" || lastMeaningful === ";" || lastMeaningful === "}") {
+					if (lastMeaningful === "{" || lastMeaningful === ";") {
+						out += `<span class="c-prop">${esc(word)}</span>`;
+					} else {
+						out += `<span class="c-sel">${esc(word)}</span>`;
+					}
+				} else if (/^(px|em|rem|solid|dashed|none|auto|inherit|initial|flex|block|inline|grid|absolute|relative|fixed|sticky|center|left|right|top|bottom|bold|normal|italic|transparent|currentColor|url|rgb|rgba|hsl|hsla|var|calc|min|max|clamp|repeat|wrap|nowrap|column|row|space-between|space-around|stretch|start|end|baseline|unset|revert|pointer|default|cursor|border-box|content-box|uppercase|lowercase|capitalize|underline|overline|line-through|hidden|visible|scroll|clip|ellipsis|pre|nowrap|break-word|serif|sans-serif|monospace)$/.test(word)) {
+					out += `<span class="c-val">${esc(word)}</span>`;
+				} else {
+					out += `<span class="c-sel">${esc(word)}</span>`;
+				}
+				i = j;
+				continue;
+			}
+			// Punctuation
+			if (/[{}:;,()\[\]]/.test(code[i])) {
+				out += `<span class="c-punct">${esc(code[i])}</span>`;
+				i++;
+				continue;
+			}
+			out += esc(code[i]);
+			i++;
+		}
+		return out;
+	}
+	function render() {
+		const code = editor.value;
+		hl.innerHTML = highlightCSS(code) + "\n";
+		const lines = code.split("\n").length;
+		let ln = "";
+		for (let i = 1; i <= lines; i++) {
+			ln += `<span>${i}</span>`;
+		}
+		lineNums.innerHTML = ln;
+		syncScroll();
+	}
+	function syncScroll() {
+		hl.scrollTop = editor.scrollTop;
+		hl.scrollLeft = editor.scrollLeft;
+		lineNums.scrollTop = editor.scrollTop;
+	}
+	editor.addEventListener("input", render);
+	editor.addEventListener("scroll", syncScroll);
+	editor.addEventListener("keydown", function(e) {
 		const start = this.selectionStart;
 		const end = this.selectionEnd;
 		const value = this.value;
-		// TÍNH NĂNG MỚI: Bắt phím tắt Ctrl + S (hoặc Cmd + S trên Mac) để lưu nhanh
+		const isSelected = start !== end;
 		if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
-			e.preventDefault(); // Chặn hành vi mở hộp thoại lưu file mặc định của trình duyệt
-			handleSave(); // Gọi hàm lưu dữ liệu
+			e.preventDefault();
+			handleSave();
 			return;
 		}
-		// Tự động đóng ngoặc đằng sau và đặt trỏ chuột ở giữa
 		const pairs = {
 			"{": "}",
 			"[": "]",
-			"(": ")"
+			"(": ")",
+			'"': '"',
+			"'": "'"
 		};
 		if (pairs[e.key]) {
 			e.preventDefault();
-			this.value = value.substring(0, start) + e.key + pairs[e.key] + value.substring(end);
-			this.selectionStart = this.selectionEnd = start + 1;
+			if (isSelected) {
+				const selectedText = value.substring(start, end);
+				this.value = value.substring(0, start) + e.key + selectedText + pairs[e.key] + value.substring(end);
+				this.selectionStart = start;
+				this.selectionEnd = end + 2;
+			} else {
+				this.value = value.substring(0, start) + e.key + pairs[e.key] + value.substring(end);
+				this.selectionStart = this.selectionEnd = start + 1;
+			}
+			render();
 			return;
 		}
-		// Khi nhấn Enter ở giữa cặp dấu ngoặc nhọn {}
 		if (e.key === "Enter") {
-			// Tìm vị trí bắt đầu của dòng hiện tại
 			const lastNewLine = value.lastIndexOf("\n", start - 1);
 			const lineStart = lastNewLine === -1 ? 0 : lastNewLine + 1;
-			// Lấy toàn bộ phần thụt lề (khoảng trắng/tab) của dòng hiện tại
 			const currentLine = value.substring(lineStart, start);
 			const match = currentLine.match(/^[\t ]*/);
 			const currentIndent = match ? match[0] : "";
-			// Trường hợp đặc biệt: Nhấn Enter ở giữa cặp dấu ngoặc nhọn {}
 			if (value[start - 1] === "{" && value[start] === "}") {
 				e.preventDefault();
-				// Dòng giữa tăng 1 tab, dòng chứa dấu } đóng ngoặc giữ nguyên độ thụt lề cũ
 				const indentMiddle = "\n" + currentIndent + "\t";
 				const indentEnd = "\n" + currentIndent;
 				this.value = value.substring(0, start) + indentMiddle + indentEnd + value.substring(end);
-				// Đặt con trỏ chuột ở cuối dòng giữa (sau tab mới tăng)
 				this.selectionStart = this.selectionEnd = start + indentMiddle.length;
+				render();
 				return;
-			}
-			// Trường hợp Enter bình thường: Giữ nguyên độ thụt lề của dòng trước (giống các code editor)
-			else {
+			} else {
 				e.preventDefault();
 				const insertText = "\n" + currentIndent;
 				this.value = value.substring(0, start) + insertText + value.substring(end);
 				this.selectionStart = this.selectionEnd = start + insertText.length;
+				render();
 				return;
 			}
 		}
-		// Cho phép nhấn phím Tab để thụt lề văn bản thay vì chuyển focus ra ngoài
 		if (e.key === "Tab") {
 			e.preventDefault();
 			this.value = value.substring(0, start) + "\t" + value.substring(end);
 			this.selectionStart = this.selectionEnd = start + 1;
+			render();
 			return;
 		}
 	});
-	// 3. Sự kiện Click nút Save bằng chuột
 	btnSave.addEventListener("click", handleSave);
-	// 4. Sự kiện Delete cấu hình
 	btnDelete.addEventListener("click", () => {
 		const domain = inputPath.value.trim();
 		if (!domain) return;
@@ -104,17 +217,15 @@ document.addEventListener("DOMContentLoaded", () => {
 			const styles = result.customStyles || {};
 			if (styles[domain]) {
 				delete styles[domain];
-				chrome.storage.local.set({
-					customStyles: styles
-				}, () => {
-					cssEditor.value = "";
+				chrome.storage.local.set({ customStyles: styles }, () => {
+					editor.value = "";
 					showNotification("Đã xoá cấu hình thành công!");
+					render();
 					reloadTargetTabs(domain);
 				});
 			}
 		});
 	});
-	// Hàm hiển thị thông báo Toast dạng Floating Overlay không ảnh hưởng tới layout
 	function showNotification(message) {
 		const toast = document.createElement("div");
 		toast.textContent = message;
@@ -132,9 +243,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			boxShadow: "0 2px 8px rgba(0,0,0,0.2)"
 		});
 		document.body.appendChild(toast);
-		setTimeout(() => toast.remove(), 2500); // 2.5s tự xoá thông báo
+		setTimeout(() => toast.remove(), 2500);
 	}
-	// Tự động tìm và reload các tab đang mở đúng domain vừa sửa để cập nhật trực tiếp CSS
 	function reloadTargetTabs(domain) {
 		chrome.tabs.query({}, (tabs) => {
 			tabs.forEach((tab) => {
@@ -149,4 +259,5 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		});
 	}
+	render();
 });
