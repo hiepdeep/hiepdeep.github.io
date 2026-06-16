@@ -11,18 +11,20 @@
 	</head>
 	<body>
 		<div class="box">
-			<div class="header">
-				<div class="input">
-					<input type="text" placeholder="https//..." id="reference-path">
-				</div>
+			<div class="topbar">
+				<input class="url-input" type="text" placeholder="https//..." id="reference-path">
 				<div class="btn-gr">
 					<button id="save" btn-blue>Save</button>
 					<button id="delete" btn-red>Delete</button>
 				</div>
 			</div>
-			<div class="editor-box">
-				<label for="css-editor">CSS Editor:</label>
-				<textarea id="css-editor" spellcheck="false" placeholder="/* Nhập CSS tại đây... */"></textarea>
+			<div class="editor-label">CSS Editor:</div>
+			<div class="editor-wrap">
+				<div class="line-numbers" id="lineNums"></div>
+				<div class="code-area">
+					<div id="hl" aria-hidden="true"></div>
+					<textarea id="editor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="/* Nhập CSS tại đây... */"></textarea>
+				</div>
 			</div>
 		</div>
 		<script src="index.js"></script>
