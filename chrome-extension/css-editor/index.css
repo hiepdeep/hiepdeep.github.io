@@ -1,41 +1,33 @@
-* {
-	font-family: "Quicksand", sans-serif;
-	color: red;
-	font-size: var(--fz-lv-4);
-}
-
 body {
+	font-family: "Quicksand", sans-serif;
+	font-size: var(--fz-lv-4);
+	color: red;
 	background: var(--bg-body-blue);
-	display: grid;
-	place-items: center;
-	height: 100vh;
 }
 
 .box {
 	width: 100%;
-	height: 100vh;
 	padding: 12px;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	.header {
+	.topbar {
+		flex-shrink: 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		gap: 12px;
-		.input {
+		.url-input {
 			width: 100%;
-			input {
-				width: 100%;
-				height: 30px;
-				padding: 0 6px;
-				color: var(--color-lv-2);
-				background: var(--bg-box);
-				border: 1px solid var(--bd-box);
-				border-radius: var(--bdrs-lv-4);
-				&::placeholder {
-					color: var(--color-placeholder);
-				}
+			height: 30px;
+			padding: 0 6px;
+			font-size: var(--fz-lv-4);
+			color: var(--color-lv-2);
+			background: var(--bg-box);
+			border: 1px solid var(--bd-box);
+			border-radius: var(--bdrs-lv-4);
+			&::placeholder {
+				color: var(--color-placeholder);
 			}
 		}
 		.btn-gr {
@@ -45,34 +37,106 @@ body {
 			button {
 				height: 30px;
 				padding: 0 12px;
+				font-size: var(--fz-lv-4);
 				border-radius: var(--bdrs-lv-4);
 			}
 		}
 	}
-	.editor-box {
-		width: 100%;
-		height: 100%;
+	.editor-label {
+		font-size: var(--fz-lv-3);
+		font-weight: 500;
+		color: var(--color-lv-3);
+	}
+	.editor-wrap {
+		flex: 1;
 		display: flex;
-		flex-direction: column;
-		gap: 6px;
-		label {
-			font-size: var(--fz-lv-3);
-			font-weight: 500;
-			color: var(--color-lv-3);
+		background: var(--bg-box);
+		border: 1px solid var(--bd-box);
+		border-radius: var(--bdrs-lv-4);
+		overflow: hidden;
+		.line-numbers {
+			padding: 6px 0;
+			min-width: 36px;
+			text-align: right;
+			font-family: 'Consolas', 'Courier New', monospace;
+			font-size: 12px;
+			line-height: 1.55;
+			color: #aaa;
+			user-select: none;
+			overflow: hidden;
+			flex-shrink: 0;
+			background: #fafafa;
+			border-right: 1px solid #e8e8e8;
+			span {
+				display: block;
+				padding-right: 8px;
+			}
 		}
-		textarea {
-			width: 100%;
-			height: 100%;
-			padding: 6px;
-			font-family: "consolas";
-			color: var(--color-lv-3);
-			background: var(--bg-box);
-			border: 1px solid var(--bd-box);
-			border-radius: var(--bdrs-lv-4);
-			tab-size: 4;
-			resize: none;
-			&::placeholder {
-				color: var(--color-placeholder);
+		.code-area {
+			flex: 1;
+			position: relative;
+			overflow: auto;
+			min-height: calc(100vh - 98px);
+			 #hl, textarea {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				min-height: 100%;
+				padding: 6px 12px;
+				font-family: 'Consolas', 'Courier New', monospace;
+				font-size: 12px;
+				line-height: 1.55;
+				tab-size: 4;
+				white-space: pre;
+				word-wrap: normal;
+				overflow: hidden;
+				border: none;
+				outline: none;
+			}
+			#hl {
+				background: #fff;
+				color: #000;
+				pointer-events: none;
+				z-index: 1;
+				.c-sel {
+					color: #881280;
+				}
+				.c-prop {
+					color: #164BCB;
+				}
+				.c-val {
+					color: #007c05;
+				}
+				.c-num {
+					color: #1750eb;
+				}
+				.c-str {
+					color: #c41a16;
+				}
+				.c-cmt {
+					color: #888;
+					font-style: italic;
+				}
+				.c-atrule {
+					color: #881280;
+				}
+				.c-punct {
+					color: #666;
+				}
+				.c-var {
+					color: #c41a16;
+				}
+				.c-hash {
+					color: #007c05;
+				}
+			}
+			textarea {
+				background: transparent;
+				color: transparent;
+				caret-color: #000;
+				resize: none;
+				z-index: 2;
 			}
 		}
 	}
