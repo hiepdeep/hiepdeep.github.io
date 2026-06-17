@@ -36,7 +36,7 @@ body {
 			align-items: center;
 			gap: 12px;
 			button {
-				height: 30px;
+				height: 28px;
 				padding: 0 12px;
 				font-size: var(--fz-lv-4);
 				border-radius: var(--bdrs-lv-4);
