@@ -57,8 +57,6 @@ function calculateAttendanceData(y, m, d) {
 				// Tăng ca đêm ngày thường
 				data.overtime.o150 = 2;
 				data.overtime.o210 = 1;
-				
-				
 			}
 		}
 	}
