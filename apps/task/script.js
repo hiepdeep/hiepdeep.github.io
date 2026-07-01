@@ -44,9 +44,11 @@ function calculateAttendanceData(y, m, d) {
 	if (isOvertime) {
 		if (!isNightShift) {
 			if (isSunday) {
-				data.overtime.o200 = 11; // Tăng ca ngày chủ nhật
+				// Tăng ca ngày chủ nhật
+				data.overtime.o200 = 11;
 			} else {
-				data.overtime.o150 = 3; // Tăng ca ngày thường
+				// Tăng ca ngày thường
+				data.overtime.o150 = 3;
 			}
 		} else {
 			if (isSunday) {
