@@ -35,30 +35,34 @@ function calculateAttendanceData(y, m, d) {
 		shift: isNightShift ? "nightshift" : "dayshift"
 	};
 	if (isSunday) {
-		data.task.morning = 0;
-		data.task.afternoon = 0;
+		// Ngày chủ nhật (ca ngày): 8h 200%, trừ 4h nếu nghỉ nửa buổi
+		let sundayHours = 8;
+		if (isHalfMorning) sundayHours -= 4;
+		if (isHalfAfternoon) sundayHours -= 4;
+		data.overtime.o200 = sundayHours;
+		// Tăng ca chủ nhật (ca ngày): thêm 3h vào 200%
+		if (isOvertime) {
+			data.overtime.o200 += 3;
+		}
 	} else {
-		if (isHalfMorning) data.task.morning = 0;
-		if (isHalfAfternoon) data.task.afternoon = 0;
-	}
-	if (isOvertime) {
-		if (!isNightShift) {
-			if (isSunday) {
-				// Tăng ca ngày chủ nhật
-				data.overtime.o200 = 11;
-			} else {
-				// Tăng ca ngày thường
+		// Ngày thường (bao gồm cả thứ 7)
+		data.task.morning = isHalfMorning ? 0 : 4;
+		data.task.afternoon = isHalfAfternoon ? 0 : 4;
+		if (isOvertime) {
+			if (!isNightShift) {
+				// Tăng ca ngày thường/thứ 7 (ca ngày): 3h 150%
 				data.overtime.o150 = 3;
-			}
-		} else {
-			if (isSunday) {
-				// Tăng ca đêm thứ 7 sang chủ nhật
-				data.overtime.o200 = 2;
-				data.overtime.o270 = 1;
 			} else {
-				// Tăng ca đêm ngày thường
-				data.overtime.o150 = 2;
-				data.overtime.o210 = 1;
+				// Kiểm tra nếu là đêm thứ 7 sang sáng chủ nhật
+				// (Giả sử hàm này được gọi vào ngày thứ 7)
+				if (dayOfWeek === 6) {
+					data.overtime.o200 = 2;
+					data.overtime.o270 = 1;
+				} else {
+					// Tăng ca đêm ngày thường khác
+					data.overtime.o150 = 2;
+					data.overtime.o210 = 1;
+				}
 			}
 		}
 	}
