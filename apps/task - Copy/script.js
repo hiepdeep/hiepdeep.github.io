@@ -134,6 +134,16 @@ async function renderCalendar() {
 		let attrs = { morning: "", afternoon: "", overtime: "", ns: ""};
 		if (dayData) {
 			if (!isSunday) {
+				const dailyHours = dayData.task.morning + dayData.task.afternoon;
+				if (dayData.shift === "nightshift") {
+					stats.ns += dailyHours;
+					attrs.ns = "ns";
+				} else {
+					stats.ds += dailyHours;
+				}
+				stats.leave += (8 - dailyHours);
+			}
+			if (!isSunday) {
 				attrs.morning = dayData.task.morning > 0 ? "work" : "leave";
 				attrs.afternoon = dayData.task.afternoon > 0 ? "work" : "leave";
 				attrs.overtime = dayData.task.overtime > 0 ? "work" : "leave";
@@ -142,14 +152,6 @@ async function renderCalendar() {
 				attrs.afternoon = dayData.task.afternoon > 0 ? "work" : "";
 				attrs.overtime = dayData.task.overtime > 0 ? "work" : "";
 			}
-			const dailyHours = dayData.task.morning + dayData.task.afternoon;
-			if (dayData.shift === "nightshift") {
-				stats.ns += dailyHours;
-				attrs.ns = "ns";
-			} else {
-				stats.ds += dailyHours;
-			}
-			if (!isSunday) stats.leave += (8 - dailyHours);
 			stats.o150 += dayData.overtime.o150 || 0;
 			stats.o200 += dayData.overtime.o200 || 0;
 			stats.o210 += dayData.overtime.o210 || 0;
