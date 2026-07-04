@@ -3,7 +3,7 @@ const app = firebase.initializeApp({
 	databaseURL: "https://eimi-fukada-default-rtdb.firebaseio.com"
 });
 const database = firebase.database();
-const db = "task";
+const db = "task-v3";
 
 const dates = document.querySelector(".dates");
 const header = document.querySelector(".title");
@@ -23,8 +23,9 @@ function calculateAttendanceData(y, m, d) {
 	const isSunday = (dayOfWeek === 0);
 	const data = {
 		task: {
-			morning: 4,
-			afternoon: 4
+			morning: isHalfMorning ? 0 : 4,
+			afternoon: isHalfAfternoon ? 0 : 4,
+			overtime: isOvertime ? 3 : 0
 		},
 		overtime: {
 			o150: 0,
@@ -35,26 +36,15 @@ function calculateAttendanceData(y, m, d) {
 		shift: isNightShift ? "nightshift" : "dayshift"
 	};
 	if (isSunday) {
-		// Ngày chủ nhật (ca ngày): 8h 200%, trừ 4h nếu nghỉ nửa buổi
 		let sundayHours = 8;
 		if (isHalfMorning) sundayHours -= 4;
 		if (isHalfAfternoon) sundayHours -= 4;
+		if (isOvertime) sundayHours += 3;
 		data.overtime.o200 = sundayHours;
-		// Tăng ca chủ nhật (ca ngày): thêm 3h vào 200%
-		if (isOvertime) {
-			data.overtime.o200 += 3;
-		}
 	} else {
-		// Ngày thường (bao gồm cả thứ 7)
-		data.task.morning = isHalfMorning ? 0 : 4;
-		data.task.afternoon = isHalfAfternoon ? 0 : 4;
 		if (isOvertime) {
-			if (!isNightShift) {
-				// Tăng ca ngày thường/thứ 7 (ca ngày): 3h 150%
-				data.overtime.o150 = 3;
-			} else {
+			if (isNightShift) {
 				// Kiểm tra nếu là đêm thứ 7 sang sáng chủ nhật
-				// (Giả sử hàm này được gọi vào ngày thứ 7)
 				if (dayOfWeek === 6) {
 					data.overtime.o200 = 2;
 					data.overtime.o270 = 1;
@@ -63,6 +53,9 @@ function calculateAttendanceData(y, m, d) {
 					data.overtime.o150 = 2;
 					data.overtime.o210 = 1;
 				}
+			} else {
+				// Tăng ca ngày thường (ca ngày): 3h 150%
+				data.overtime.o150 = 3;
 			}
 		}
 	}
@@ -97,8 +90,17 @@ async function autoFillMissingDays() {
 		if (!monthData[dayKey]) {
 			hasMissing = true;
 			updates[dayKey] = {
-				task: { morning: 0, afternoon: 0 },
-				overtime: { o150: 0, o200: 0, o210: 0, o270: 0 },
+				task: {
+					morning: 0,
+					afternoon: 0,
+					overtime: 0
+				},
+				overtime: {
+					o150: 0,
+					o200: 0,
+					o210: 0,
+					o270: 0
+				},
 				shift: "dayshift"
 			};
 		}
@@ -129,27 +131,27 @@ async function renderCalendar() {
 		const dayData = task_data[yearKey]?.[monthKey]?.[dayKey];
 		const isSunday = new Date(year, month, i).getDay() === 0;
 		if (!isSunday) countWorkDays++;
-		let attrs = { morning: "", afternoon: "", ns: "", o_ds: "", o_ns: "", o_sun_ds: "", o_sun_ns: "" };
+		let attrs = { morning: "", afternoon: "", overtime: "", ns: ""};
 		if (dayData) {
+			if (!isSunday) {
+				const dailyHours = dayData.task.morning + dayData.task.afternoon;
+				if (dayData.shift === "nightshift") {
+					stats.ns += dailyHours;
+					attrs.ns = "ns";
+				} else {
+					stats.ds += dailyHours;
+				}
+				stats.leave += (8 - dailyHours);
+			}
 			if (!isSunday) {
 				attrs.morning = dayData.task.morning > 0 ? "work" : "leave";
 				attrs.afternoon = dayData.task.afternoon > 0 ? "work" : "leave";
+				attrs.overtime = dayData.task.overtime > 0 ? "work" : "leave";
 			} else {
 				attrs.morning = dayData.task.morning > 0 ? "work" : "";
 				attrs.afternoon = dayData.task.afternoon > 0 ? "work" : "";
+				attrs.overtime = dayData.task.overtime > 0 ? "work" : "";
 			}
-			const dailyHours = dayData.task.morning + dayData.task.afternoon;
-			if (dayData.shift === "nightshift") {
-				stats.ns += dailyHours;
-				attrs.ns = "ns";
-			} else {
-				stats.ds += dailyHours;
-			}
-			if (!isSunday && dayData.shift === "dayshift" && dayData.overtime.o150 > 0) attrs.o_ds = "overtime_dayshift";
-			if (isSunday && dayData.shift === "dayshift" && dayData.overtime.o200 > 0) attrs.o_sun_ds = "overtime_sunday_dayshift";
-			if (!isSunday && dayData.shift === "nightshift" && dayData.overtime.o150 > 0) attrs.o_ns = "overtime_nightshift";
-			if (isSunday && dayData.shift === "nightshift" && dayData.overtime.o210 > 0) attrs.o_sun_ns = "overtime_sunday_nightshift";
-			if (!isSunday) stats.leave += (8 - dailyHours);
 			stats.o150 += dayData.overtime.o150 || 0;
 			stats.o200 += dayData.overtime.o200 || 0;
 			stats.o210 += dayData.overtime.o210 || 0;
@@ -159,12 +161,10 @@ async function renderCalendar() {
 		datesHtml += `
 			<li ${isSunday ? "sunday" : ""} ${isToday} ${attrs.ns} data-day="${i}" style="cursor: pointer;">
 				<span class="day">${dayKey}</span>
-				<div class="data-task" ${attrs.o_sun_ds} ${attrs.o_sun_ns}>
-					<div class="process">
-						<span class="half-day" ${attrs.morning}></span>
-						<span class="half-day" ${attrs.afternoon}></span>
-					</div>
-					<span class="overtime" ${attrs.o_ds} ${attrs.o_ns}></span>
+				<div class="data-task">
+					<span class="half-day" ${attrs.morning}></span>
+					<span class="half-day" ${attrs.afternoon}></span>
+					<span class="overtime" ${attrs.overtime}></span>
 				</div>
 			</li>
 		`;

@@ -198,13 +198,6 @@ body {
 								}
 							}
 						}
-						&[today] {
-							border-color: hsl(var(--hue-saturation-blue), 60%);
-							span {
-								font-weight: 600;
-								text-decoration-line: underline;
-							}
-						}
 						&[sunday] {
 							border-color: hsl(var(--hue-saturation-gray), 85%);
 							.data-task {
@@ -258,6 +251,13 @@ body {
 										}
 									}
 								}
+							}
+						}
+						&[today] {
+							border-color: hsl(var(--hue-saturation-blue), 60%);
+							span {
+								font-weight: 600;
+								text-decoration-line: underline;
 							}
 						}
 					}
