@@ -3,7 +3,7 @@ const app = firebase.initializeApp({
 	databaseURL: "https://eimi-fukada-default-rtdb.firebaseio.com"
 });
 const database = firebase.database();
-const db = "task-v3";
+const db = "task";
 
 const dates = document.querySelector(".dates");
 const header = document.querySelector(".title");
