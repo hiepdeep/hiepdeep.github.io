@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/pictures/favicon/calendar_month_48dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png">
+		<link rel="apple-touch-icon" href="https://hiepdeep.github.io/apps/task/icon.png">
+		<title>Chấm công ngày làm việc</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="box">
+			<div class="form">
+				<form action="" id="form">
+					<div class="gr-checkbox">
+						<label for="half-morning">
+							<input type="checkbox" name="half-morning" id="half-morning" value="4">
+							<span class="label-txt">Off 4h</span>
+						</label>
+						<label for="half-afternoon">
+							<input type="checkbox" name="half-afternoon" id="half-afternoon" value="4">
+							<span class="label-txt">Off 4h</span>
+						</label>
+						<label for="overtime">
+							<input type="checkbox" name="overtime" id="overtime" value="true">
+							<span class="label-txt">Overtime</span>
+						</label>
+						<label for="night-shift">
+							<input type="checkbox" name="night-shift" id="night-shift" value="true">
+							<span class="label-txt">Night</span>
+						</label>
+					</div>
+					<button type="submit" btn-blue>Chấm công hôm nay</button>
+				</form>
+			</div>
+			<div class="calendar">
+				<div class="cal-head">
+					<button id="prev" class="material-symbols-rounded" btn-light-gray>chevron_backward</button>
+					<h3 class="title"></h3>
+					<button id="next" class="material-symbols-rounded" btn-light-gray>chevron_forward</button>
+				</div>
+				<div class="cal-body">
+					<ul class="days">
+						<li>Sun</li>
+						<li>Mon</li>
+						<li>Tue</li>
+						<li>Wed</li>
+						<li>Thu</li>
+						<li>Fri</li>
+						<li>Sat</li>
+					</ul>
+					<ul class="dates"></ul>
+				</div>
+			</div>
+			<div class="return-data">
+				<span class="txt">Số giờ làm việc ca ngày (h)<strong id="hours_in_dayshift" txt-light-gray>0</strong></span>
+				<span class="txt">Số giờ làm việc ca đêm (h)<strong id="hours_in_nightshift" txt-light-gray>0</strong></span>
+				<span class="txt">Số giờ nghỉ phép (h)<strong id="half_in_month" txt-light-gray>0</strong></span>
+				<span class="txt">Tăng ca 150% (h)<strong id="hours_150" txt-light-gray>0/0</strong></span>
+				<span class="txt">Tăng ca 200% (h)<strong id="hours_200" txt-light-gray>0/0</strong></span>
+				<span class="txt">Tăng ca 210% (h)<strong id="hours_210" txt-light-gray>0/0</strong></span>
+				<span class="txt">Tăng ca 270% (h)<strong id="hours_270" txt-light-gray>0/0</strong></span>
+				<span class="txt wage">Lương dự kiến nhận được<strong id="wage" txt-light-purple>0</strong></span>
+			</div>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="script.js"></script>
+	</body>
+</html>
