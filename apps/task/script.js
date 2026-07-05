@@ -1,6 +1,6 @@
 console.clear();
 const app = firebase.initializeApp({
-	databaseURL: "https://eimi-fukada-default-rtdb.firebaseio.com"
+	databaseURL: "https://hiepdeep-default-rtdb.firebaseio.com"
 });
 const database = firebase.database();
 const db = "task";
