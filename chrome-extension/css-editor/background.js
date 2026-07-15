@@ -35,7 +35,7 @@ function updateBadge(tabId, urlString) {
 			if (styles[hostname] && styles[hostname].trim() !== "") {
 				chrome.action.setBadgeText({
 					tabId: tabId,
-					text: "&"
+					text: "/"
 				});
 				chrome.action.setBadgeBackgroundColor({
 					tabId: tabId,
