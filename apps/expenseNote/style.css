@@ -116,12 +116,12 @@ body {
 									}
 									&[value="expense"] {
 										&:before {
-											content: "\eb88";
+											content: "\e8cc";
 										}
 									}
 									&[value="borrow"] {
 										&:before {
-											content: "\e54c";
+											content: "\f293";
 										}
 									}
 								}
