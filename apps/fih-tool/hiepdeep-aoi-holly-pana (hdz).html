@@ -1,0 +1,549 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>Get CAD AOi Holly V1.3 | PANA</title>
+		<style type="text/css">
+			html, body, div, a, b, i, label, span, strong, table, tbody, td, tfoot, th, thead, tr {
+				outline: none;
+				vertical-align: baseline;
+			}
+			:link, button {
+				text-decoration: none;
+				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			:link, :hover, :focus, :active, :visited {
+				outline: none;
+			}
+			::-webkit-scrollbar {
+				width: 0;
+				height: 0;
+			}
+			:root {
+				--sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+				--monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+				--hue-saturation-purple: 260deg, 50%;
+				--hue-saturation-pink: 330deg, 60%;
+				--hue-saturation-orange: 30deg, 80%;
+				--hue-saturation-brown: 20deg, 40%;
+				--hue-saturation-teal: 170deg, 50%;
+				--hue-saturation-yellow: 50deg, 80%;
+				--hue-saturation-red: 10deg, 70%;
+				--hue-saturation-green: 140deg, 50%;
+				--hue-saturation-blue: 210deg, 70%;
+				--hue-saturation-gray: 200deg, 10%;
+				--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
+				--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
+				--bg-box: hsl(var(--hue-saturation-gray), 100%);
+				--bd-box: hsl(var(--hue-saturation-gray), 90%);
+				--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
+				--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
+				--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
+				--color-lv-4: hsl(var(--hue-saturation-gray), 40%);
+				--color-white: hsl(var(--hue-saturation-gray), 95%);
+				--color-placeholder: hsl(var(--hue-saturation-gray), 70%);
+				--fz-lv-1: 18px;
+				--fz-lv-2: 16px;
+				--fz-lv-3: 14px;
+				--fz-lv-4: 12px;
+				--bdrs-lv-1: 16px;
+				--bdrs-lv-2: 12px;
+				--bdrs-lv-3: 8px;
+				--bdrs-lv-4: 4px;
+				--bdrs-lv-5: 2px;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				letter-spacing: 0.05em;
+				-webkit-tap-highlight-color: transparent;
+				-webkit-font-smoothing: antialiased;
+				font-family: "Courier New", sans-serif;
+				color: red;
+				font-size: var(--fz-lv-4);
+			}
+			ul, li {
+				list-style-type: none;
+			}
+			body {
+				background: var(--bg-body-blue);
+				display: -ms-grid;
+				display: grid;
+				place-items: center;
+				height: 100vh;
+			}
+			.box {
+				width: 100%;
+				height: 100vh;
+				margin: 0 auto;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 12px;
+				padding: 12px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			.box .my-header {
+				-ms-flex-negative: 0;
+				flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				padding: 12px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .my-header a {
+				font-weight: bold;
+				font-size: var(--fz-lv-3);
+				color: var(--color-lv-1);
+			}
+			.box .my-header .navigation-bar {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				gap: 12px;
+			}
+			.box .my-header .navigation-bar .btnImport {
+				all: unset;
+				cursor: pointer;
+				color: var(--color-lv-3);
+			}
+			.box .my-header .navigation-bar .btnImport b {
+				font-weight: bold;
+				color: inherit;
+			}
+			.box .my-header .navigation-bar .btnImport.active {
+				text-decoration: underline;
+			}
+			.box .my-header .navigation-bar #btnExport {
+				padding: 6px;
+				color: hsl(var(--hue-saturation-blue), 95%);
+				background: hsl(var(--hue-saturation-blue), 50%);
+				border: 1px solid hsl(var(--hue-saturation-blue), 45%);
+				border-radius: var(--bdrs-lv-5);
+			}
+			.box .my-header .navigation-bar #btnExport:hover {
+				background: hsl(var(--hue-saturation-blue), 45%);
+				border-color: hsl(var(--hue-saturation-blue), 40%);
+			}
+			.box .my-header .navigation-bar #btnExport:active {
+				background: hsl(var(--hue-saturation-blue), 40%);
+				border-color: hsl(var(--hue-saturation-blue), 35%);
+			}
+			.box .my-header .navigation-bar #btnExport.active {
+				background: hsl(var(--hue-saturation-green), 40%);
+				border-color: hsl(var(--hue-saturation-green), 35%);
+			}
+			.box .my-header .navigation-bar .split {
+				color: var(--color-placeholder);
+			}
+			.box .main {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				height: 100%;
+				overflow: hidden;
+			}
+			.box .main .txtImport {
+				display: none;
+				height: 100%;
+			}
+			.box .main .txtImport .table {
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				overflow: hidden;
+				height: 100%;
+			}
+			.box .main .txtImport .table table[id=importMark] {
+				border-collapse: collapse;
+				width: 100%;
+				-webkit-user-select: all;
+				-moz-user-select: all;
+				user-select: all;
+			}
+			.box .main .txtImport .table table[id=importMark] tr {
+				border-bottom: 1px solid var(--bd-box);
+			}
+			.box .main .txtImport .table table[id=importMark] tr th, .box .main .txtImport .table table[id=importMark] tr td {
+				text-align: left;
+				color: var(--color-lv-3);
+			}
+			.box .main .txtImport .table table[id=importMark] tr th {
+				padding: 12px;
+				font-weight: bold;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			.box .main .txtImport .table table[id=importMark] tr th:nth-child(even) {
+				border-left: 1px solid var(--bd-box);
+				border-right: 1px solid var(--bd-box);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td:nth-child(even) {
+				border-left: 1px solid var(--bd-box);
+				border-right: 1px solid var(--bd-box);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input {
+				width: 100%;
+				padding: 12px 12px;
+				color: var(--color-lv-2);
+				background: transparent;
+				border: 0;
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input::-webkit-input-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input::-moz-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input:-ms-input-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input::-ms-input-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txtImport .table table[id=importMark] tr td input::placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txtImport label[for=addCSV] .txt {
+				display: block;
+				padding: 6px;
+				text-align: center;
+				cursor: pointer;
+				color: hsl(var(--hue-saturation-gray), 95%);
+				background: hsl(var(--hue-saturation-gray), 50%);
+				border: 1px solid hsl(var(--hue-saturation-gray), 45%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .txtImport label[for=addCSV] .txt:hover {
+				background: hsl(var(--hue-saturation-gray), 45%);
+				border-color: hsl(var(--hue-saturation-gray), 40%);
+			}
+			.box .main .txtImport label[for=addCSV] .txt:active {
+				background: hsl(var(--hue-saturation-gray), 40%);
+				border-color: hsl(var(--hue-saturation-gray), 35%);
+			}
+			.box .main .txtImport textarea {
+				width: 100%;
+				height: 100%;
+				padding: 12px;
+				font-family: "consolas";
+				font-size: var(--fz-lv-4);
+				color: var(--color-lv-3);
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				resize: none;
+				overflow-y: scroll;
+			}
+			.box .main .txtImport.active {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.box .main .txtExport {
+				display: none;
+				height: 100%;
+				padding: 6px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				overflow-y: scroll;
+			}
+			.box .main .txtExport table {
+				border-collapse: collapse;
+				width: 100%;
+				-webkit-user-select: all;
+				-moz-user-select: all;
+				user-select: all;
+			}
+			.box .main .txtExport table tr th, .box .main .txtExport table tr td {
+				text-align: left;
+				padding: 6px;
+				color: var(--color-lv-3);
+			}
+			.box .main .txtExport table tr th {
+				font-weight: bold;
+				border-bottom: 1px solid var(--bd-box);
+			}
+			.box .main .txtExport.active {
+				display: block;
+			}
+			.box .my-footer {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				gap: 12px;
+			}
+			.box .my-footer .totals span {
+				color: var(--color-lv-4);
+			}
+			.box .my-footer .totals span strong {
+				font-weight: bold;
+				color: inherit;
+			}
+			.box .my-footer .copyright {
+				color: var(--color-lv-4);
+			}
+			.box .my-footer .copyright b {
+				font-weight: bold;
+				color: inherit;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="my-header">
+				<a href="">Generator CAD AOi Holly - Panasonic</a>
+				<div class="navigation-bar">
+					<button class="btnImport active"><b>Mark</b></button>
+					<span class="split">&gt;</span>
+					<button class="btnImport">file <b>CSV</b></button>
+					<span class="split">&gt;</span>
+					<button id="btnExport">Generator</button>
+				</div>
+			</div>
+			<div class="main">
+				<div class="txtImport active">
+					<div class="table">
+						<table id="importMark">
+							<tr>
+								<th></th>
+								<th>X</th>
+								<th>Y</th>
+							</tr>
+							<tr>
+								<th>Mark 1</th>
+								<td><input type="tel" id="mark-X1" placeholder="0" pattern="[0-9.]*" required></td>
+								<td><input type="tel" id="mark-Y1" placeholder="0" pattern="[0-9.]*" required></td>
+							</tr>
+							<tr>
+								<th>Mark 2</th>
+								<td><input type="tel" id="mark-X2" placeholder="0" pattern="[0-9.]*" required></td>
+								<td><input type="tel" id="mark-Y2" placeholder="0" pattern="[0-9.]*" required></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="txtImport">
+					<label class="addCSV" for="addCSV">
+						<input type="file" id="addCSV" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
+						<span class="txt">Chọn file CSV đã lưu</span>
+					</label>
+					<textarea id="importCSV" placeholder="Pls add CSV.."></textarea>
+				</div>
+				<div class="txtExport" id="txtExport"></div>
+			</div>
+			<div class="my-footer">
+				<div class="totals">
+					<span><strong id="total-csv">0</strong></span>
+					<span><strong id="total-cad">0</strong></span>
+				</div>
+				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			console.clear();
+			var btnImports = document.getElementsByClassName("btnImport");
+			var txtImports = document.getElementsByClassName("txtImport");
+			var btnExport = document.getElementById("btnExport");
+			var txtExport = document.getElementById("txtExport");
+			for (var i = 0; i < btnImports.length; i++) {
+				(function(index) {
+					btnImports[index].addEventListener("click", function(e) {
+						e.preventDefault();
+						for (var j = 0; j < btnImports.length; j++) {
+							btnImports[j].classList.remove("active");
+							txtImports[j].classList.remove("active");
+						}
+						btnExport.classList.remove("active");
+						txtExport.classList.remove("active");
+						btnImports[index].classList.add("active");
+						txtImports[index].classList.add("active");
+					});
+				})(i);
+			}
+			document.getElementById("addCSV").addEventListener("change", function() {
+				var file = this.files ? this.files[0] : null;
+				if (!file) return;
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					var result = e.target.result.trim();
+					var arr0 = [];
+					var arr1 = [];
+					var arr2 = [];
+					var arr3 = [];
+					var inputElement = document.getElementById("importCSV");
+					var txtInput = result.split("\n");
+					for (var x = 0; x < txtInput.length; x++) {
+						arr0.push([]);
+						var cells = txtInput[x].split(",");
+						for (var xx = 0; xx < cells.length; xx++) {
+							arr0[x].push(cells[xx].trim());
+						}
+					}
+					if (arr0.length > 0 && arr0[0].length > 0) {
+						for (var x = 0; x < arr0[0].length; x++) {
+							arr1.push([]);
+							arr2.push([]);
+							arr3.push([]);
+							for (var xx = 0; xx < arr0.length; xx++) {
+								var cellValue = arr0[xx][x] || "";
+								arr1[x].push(cellValue);
+								arr2[x].push(cellValue.length);
+							}
+							arr3[x].push(Math.max.apply(null, arr2[x]));
+							for (var u = 0; u < arr1[x].length; u++) {
+								var uLength = arr1[x][u].length;
+								var maxLength = arr3[x][0];
+								if (uLength < maxLength) {
+									for (var k = 0; k < (maxLength - uLength); k++) {
+										arr1[x][u] += " ";
+									}
+								}
+							}
+						}
+						var ee = "";
+						for (var x = 0; x < arr1[0].length; x++) {
+							for (var xx = 0; xx < arr1.length; xx++) {
+								ee += arr1[xx][x];
+								if (xx < arr1.length - 1) {
+									ee += " | ";
+								}
+							}
+							if (x < arr1[0].length - 1) {
+								ee += "\n";
+							}
+						}
+						inputElement.value = ee.trim();
+						document.getElementById("total-csv").innerText = txtInput.length - 1;
+					}
+				};
+				reader.readAsText(file);
+			});
+			btnExport.addEventListener("click", function(e) {
+				e.preventDefault();
+				for (var j = 0; j < btnImports.length; j++) {
+					btnImports[j].classList.remove("active");
+					txtImports[j].classList.remove("active");
+				}
+				btnExport.classList.add("active");
+				txtExport.classList.add("active");
+				var data_CSV = document.getElementById("importCSV").value.trim();
+				var row_CSV = [];
+				var tempCSVRows = data_CSV.split("\n");
+				for (var x = 0; x < tempCSVRows.length; x++) {
+					row_CSV.push([]);
+					var cells = tempCSVRows[x].split("|");
+					for (var xx = 0; xx < cells.length; xx++) {
+						row_CSV[x].push(cells[xx].trim());
+					}
+				}
+				var csv_Board = row_CSV[0].indexOf("Pattern");
+				var csv_Ref = row_CSV[0].indexOf("Designator");
+				var csv_PosX = row_CSV[0].indexOf("X");
+				var csv_PosY = row_CSV[0].indexOf("Y");
+				var csv_Rotation = row_CSV[0].indexOf("Rotation");
+				var csv_PartNumber = row_CSV[0].indexOf("Part Name");
+				var csv_Head = row_CSV[0].indexOf("Head");
+				var csv_Feeder = row_CSV[0].indexOf("Slot");
+				var csv_Holder = row_CSV[0].indexOf("NHP");
+				var csv_Nozzle = row_CSV[0].indexOf("Nozzle");
+				// Generator CAD
+				var sumCad = 0;
+				var table = document.createElement("table");
+				var headerRow = table.insertRow();
+				var headers = ["Board", "Location Name", "X", "Y", "Angle", "Part Number", "Mouter", "Feeder", "Holder"];
+				for (var h = 0; h < headers.length; h++) {
+					var th = document.createElement("th");
+					th.textContent = headers[h];
+					headerRow.appendChild(th);
+				}
+				var mark = [
+					[
+						document.getElementById("mark-X1").value.trim(),
+						document.getElementById("mark-Y1").value.trim()
+					],
+					[
+						document.getElementById("mark-X2").value.trim(),
+						document.getElementById("mark-Y2").value.trim()
+					]
+				];
+				for (var i = 0; i < 2; i++) {
+					var row = table.insertRow();
+					row.insertCell().textContent = "0";
+					row.insertCell().textContent = "Mark" + (i + 1);
+					row.insertCell().textContent = mark[i][0];
+					row.insertCell().textContent = mark[i][1];
+					row.insertCell().textContent = "0";
+					row.insertCell().textContent = "Mark";
+					row.insertCell().textContent = "0";
+					row.insertCell().textContent = "0";
+					row.insertCell().textContent = "0";
+				}
+				for (var i = 1; i < row_CSV.length; i++) {
+					sumCad++;
+					var machine = row_CSV[i][csv_Head] - Math.floor(row_CSV[i][csv_Head] / 2);
+					var feeder = row_CSV[i][csv_Feeder].replace(/^.*0/, "");
+					var row = table.insertRow();
+					row.insertCell().textContent = row_CSV[i][csv_Board];
+					row.insertCell().textContent = row_CSV[i][csv_Ref];
+					row.insertCell().textContent = row_CSV[i][csv_PosX];
+					row.insertCell().textContent = row_CSV[i][csv_PosY];
+					row.insertCell().textContent = row_CSV[i][csv_Rotation];
+					row.insertCell().textContent = row_CSV[i][csv_PartNumber];
+					row.insertCell().textContent = "M" + machine + "T" + row_CSV[i][csv_Head];
+					row.insertCell().textContent = "F" + row_CSV[i][csv_Feeder].split("00")[1];
+					row.insertCell().textContent = "H" + row_CSV[i][csv_Holder];
+				}
+				document.getElementById("txtExport").innerHTML = "";
+				document.getElementById("txtExport").appendChild(table);
+				document.getElementById("total-cad").innerText = sumCad;
+			});
+		</script>
+	</body>
+</html>
