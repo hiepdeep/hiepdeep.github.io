@@ -54,6 +54,7 @@ body {
 		}
 	}
 	.main {
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
@@ -175,6 +176,7 @@ body {
 		.return {
 			position: relative;
 			width: 100%;
+			height: 100%;
 			display: flex;
 			flex-direction: column;
 			gap: 12px;
@@ -266,6 +268,11 @@ body {
 					display: grid;
 					grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 					grid-gap: 12px;
+					overflow-y: scroll;
+					&::-webkit-scrollbar {
+						width: 0px;
+						height: 0px;
+					}
 					li {
 						padding: 6px;
 						display: flex;
