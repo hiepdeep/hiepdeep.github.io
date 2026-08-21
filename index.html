@@ -234,6 +234,22 @@
 					}
 				}
 			}
+			@media (max-width: 920px) {
+				.box {
+					flex-direction: column;
+					.sidebar-left {
+						width: 100%;
+						height: auto;
+						.item {
+							&:nth-child(1) {
+								.thumb {
+									width: 200px;
+								}
+							}
+						}
+					}
+				}
+			}
 		</style>
 	</head>
 	<body>
