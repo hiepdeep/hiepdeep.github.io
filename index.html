@@ -184,25 +184,47 @@
 									display: flex;
 									justify-content: space-between;
 									font-weight: 500;
-									.name {
-										
-									}
-									.time {
-										
-									}
 								}
 								p {
-									padding-left: 12px;
-									position: relative;
-									&:before {
-										content: "";
-										position: absolute;
-										width: 4px;
-										height: 4px;
-										left: 0;
-										top: calc(50% - 2px);
-										background: hsl(var(--hue-saturation-brown), 80%);
-										border-radius: 50%;
+									font-style: italic;
+								}
+								& > ul {
+									display: flex;
+									flex-direction: column;
+									gap: 6px;
+									& > li {
+										padding-left: calc(12px + 4px);
+										position: relative;
+										&:before {
+											content: "";
+											position: absolute;
+											width: 4px;
+											height: 4px;
+											left: 0;
+											top: calc(50% - 2px);
+											background: hsl(var(--hue-saturation-gray), 60%);
+											border-radius: 2px;
+										}
+									}
+									& > ul {
+										display: flex;
+										flex-direction: column;
+										gap: 6px;
+										& > li {
+											text-align: justify;
+											padding-left: calc(12px + 12px + 2px);
+											position: relative;
+											&:before {
+												content: "";
+												position: absolute;
+												width: 2px;
+												height: 100%;
+												left: 12px;
+												top: 0;
+												background: hsl(var(--hue-saturation-gray), 80%);
+												border-radius: 2px;
+											}
+										}
 									}
 								}
 							}
@@ -288,8 +310,30 @@
 								<span class="name">Công ty TNHH Fushan Technology Việt Nam</span>
 								<span class="time">05/2022 - nay</span>
 							</div>
-							<p>Kỹ thuật viên bộ phận bảo dưỡng SMT.</p>
-							<p>Kỹ thuật viên bộ phận NPI.</p>
+							<p>Kỹ thuật viên bộ phận NPI & Bảo dưỡng SMT.</p>
+							<ul>
+								<li>Vận hành & lập trình:</li>
+								<ul>
+									<li>Chủ động lập trình, tối ưu hóa chương trình và xử lý nhanh chóng các lỗi kỹ thuật cho hệ thống máy SMT đa dạng gồm: Lazer (Webest); Printer (DEK, GKG, MPM, HCX); SPI/AOI (Holly, iHorry); Router (Aurotek).</li>
+									<li>Tối ưu hóa quy trình Reflow cho các dòng máy JT, Sonic, Ersa thông qua việc đo và tinh chỉnh Profile nhiệt độ, đảm bảo chất lượng hàn linh kiện.</li>
+									<li>Thiết lập và vận hành chuyên sâu các dòng máy Mounter (Fuji, Panasonic): Thực hiện các thao tác nâng cao như setup, mô phỏng (simulation), điều phối feeder/nozzle, nhận dạng linh kiện và bypass hệ thống.</li>
+								</ul>
+							</ul>
+							<ul>
+								<li>Bảo trì & Sửa chữa:</li>
+								<ul>
+									<li>Thực hiện bảo dưỡng định kỳ và khắc phục sự cố chuyên sâu phần cứng/phần mềm cho các máy Printer (DEK, GKG), đảm bảo máy vận hành ổn định.</li>
+									<li>Xử lý sự cố phần cứng phức tạp đối với dòng máy Mounter (Fuji, Panasonic): Thay thế và hiệu chỉnh linh kiện cơ khí chính xác như Module, Servo, Head, trục, Nozzle, thắt lưng truyền động (belt) và hệ thống điều khiển.</li>
+									<li>Thực hiện Finetune và căn chỉnh các thiết bị SPI/AOI (Holly, iHorry) nhằm tối đa hóa độ chính xác khi kiểm tra linh kiện trên bảng mạch.</li>
+								</ul>
+							</ul>
+							<ul>
+								<li>Ngoài ra:</li>
+								<ul>
+									<li>Tối ưu hóa thông số phần cứng và chương trình, góp phần cải thiện đáng kể thời gian chu kỳ (cycletime) của dây chuyền.</li>
+									<li>Kiểm soát và giảm thiểu tỷ lệ lỗi sản phẩm thông qua việc tinh chỉnh liên tục các chương trình máy.</li>
+								</ul>
+							</ul>
 						</div>
 					</div>
 				</div>
