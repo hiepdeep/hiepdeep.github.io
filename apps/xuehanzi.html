@@ -21,7 +21,6 @@
 				margin: 0 auto;
 				display: flex;
 				flex-direction: column;
-				gap: 12px;
 				padding: 12px;
 				user-select: none;
 				#header-top {
@@ -33,7 +32,8 @@
 					padding: 12px;
 					background: var(--bg-box);
 					border: 1px solid var(--bd-box);
-					border-radius: var(--bdrs-lv-3);
+					border-radius: var(--bdrs-lv-3) var(--bdrs-lv-3) 0 0;
+					box-shadow: 0 -20px var(--bg-body-blue);
 					position: sticky;
 					top: 12px;
 					left: 0;
@@ -74,22 +74,23 @@
 					}
 				}
 				.main {
-					#page-vocabulary {
+					.check-vocabulary {
 						display: flex;
 						flex-direction: column;
 						gap: 12px;
+						padding: 12px;
+						background: var(--bg-box);
+						border: 1px solid var(--bd-box);
+						border-radius: 0 0 var(--bdrs-lv-3) var(--bdrs-lv-3);
+						border-top: 0px solid var(--bd-box);
+						position: sticky;
+						top: calc(56px + 12px);
+						left: 0;
+						z-index: 9999;
 						#checked-vocabulary {
 							display: flex;
 							justify-content: space-between;
 							align-items: center;
-							padding: 12px;
-							background: var(--bg-box);
-							border: 1px solid var(--bd-box);
-							border-radius: var(--bdrs-lv-3);
-							position: sticky;
-							top: calc(56px + 24px);
-							left: 0;
-							z-index: 9999;
 							.t {
 								font-size: var(--fz-lv-3);
 								color: var(--color-lv-1);
@@ -118,53 +119,104 @@
 								}
 							}
 						}
-						#vocabularys {
-							display: grid;
-							grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-							grid-gap: 12px;
-							.item {
-								display: flex;
-								flex-direction: column;
-								justify-content: space-between;
-								align-items: center;
-								padding: 12px;
-								position: relative;
+						.filter-box {
+							display: flex;
+							align-items: center;
+							gap: 12px;
+							input[type="search"] {
+								width: 100%;
+								height: 30px;
+								padding: 0 6px;
+								font-family: "Consolas", "Courier New", monospace;
+								font-size: var(--fz-lv-4);
 								color: var(--color-lv-2);
 								background: var(--bg-box);
 								border: 1px solid var(--bd-box);
-								border-radius: var(--bdrs-lv-3);
-								.hanzi {
-									font-family: "Noto Serif SC", serif;
-									font-size: 40px;
+								border-radius: var(--bdrs-lv-4);
+								&::placeholder {
+									color: var(--color-placeholder);
 								}
-								.pinyin, .vietnamse {
-									font-size: 14px;
+								&:focus {
+									border-color: var(--color-placeholder);
 								}
-								.bottom {
-									margin-top: 12px;
+							}
+							.option {
+								flex-shrink: 0;
+								display: flex;
+								gap: 6px;
+								label {
 									display: flex;
-									justify-content: space-between;
 									align-items: center;
-									width: 100%;
-									.label {
-										line-height: 24px;
-										padding: 0 6px;
-										font-size: 10px;
-										font-weight: 500;
-										color: hsl(var(--hue-saturation-blue), 30%);
-										background: hsl(var(--hue-saturation-blue), 90%);
-										border: 1px solid hsl(var(--hue-saturation-blue), 85%);
-										border-radius: var(--bdrs-lv-4);
+									height: 30px;
+									padding: 0 6px;
+									color: hsl(var(--hue-saturation-gray), 40%);
+									background: hsl(var(--hue-saturation-gray), 95%);
+									border: 1px solid hsl(var(--hue-saturation-gray), 90%);
+									border-radius: var(--bdrs-lv-4);
+									cursor: pointer;
+									input {
+										display: none;
 									}
-									button {
-										width: 26px;
-										height: 100%;
-										border-radius: var(--bdrs-lv-4);
-										&.learned {
-											color: hsl(var(--hue-saturation-teal), 30%);
-											background: hsl(var(--hue-saturation-teal), 90%);
-											border: 1px solid hsl(var(--hue-saturation-teal), 85%);
-										}
+									&:has(input:checked) {
+										color: hsl(var(--hue-saturation-gray), 95%);
+										background: hsl(var(--hue-saturation-gray), 50%);
+										border: 1px solid hsl(var(--hue-saturation-gray), 45%);
+									}
+								}
+							}
+						}
+					}
+					#vocabularys {
+						margin-top: 12px;
+						display: grid;
+						grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+						grid-gap: 12px;
+						.item {
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+							align-items: center;
+							padding: 12px;
+							position: relative;
+							color: var(--color-lv-2);
+							background: var(--bg-box);
+							border: 1px solid var(--bd-box);
+							border-radius: var(--bdrs-lv-3);
+							&.learned {
+								border: 1px solid hsl(var(--hue-saturation-green), 60%);
+								box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-green), 60%) inset;
+							}
+							.hanzi {
+								font-family: "Noto Serif SC", serif;
+								font-size: 40px;
+							}
+							.pinyin, .vietnamse {
+								font-size: 14px;
+							}
+							.bottom {
+								margin-top: 12px;
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+								width: 100%;
+								.label {
+									line-height: 24px;
+									padding: 0 6px;
+									font-size: 10px;
+									font-weight: 500;
+									border-radius: var(--bdrs-lv-4);
+									color: hsl(var(--hue-saturation-orange), 40%);
+									background: hsl(var(--hue-saturation-orange), 95%);
+									border: 1px solid hsl(var(--hue-saturation-orange), 90%);
+								}
+								button {
+									width: 26px;
+									height: 100%;
+									border-radius: var(--bdrs-lv-4);
+									&.learned {
+										color: hsl(var(--hue-saturation-green), 40%);
+										background: hsl(var(--hue-saturation-green), 95%);
+										border: 1px solid hsl(var(--hue-saturation-green), 90%);
 									}
 								}
 							}
@@ -247,12 +299,31 @@
 				</div>
 			</div>
 			<div class="main">
-				<div id="page-vocabulary">
-					<div id="checked-vocabulary">
-						<span class="t">Từ vựng đã học</span>
-						<div class="range">
-							<progress id="range-vocabulary" name="range-vocabulary" value="0"></progress>
-							<span class="checked-total">0</span>
+				<div class="main-top">
+					<div class="check-vocabulary">
+						<div id="checked-vocabulary">
+							<span class="t">Từ vựng đã học</span>
+							<div class="range">
+								<progress id="range-vocabulary" name="range-vocabulary" value="0"></progress>
+								<span class="checked-total">0</span>
+							</div>
+						</div>
+						<div class="filter-box">
+							<input type="search" id="search-vocabulary" placeholder="Search..">
+							<div class="option">
+								<label for="age1">
+									<input type="radio" id="age1" name="view-learn" value="all" checked>
+									<span class="txt">Tất cả</span>
+								</label>
+								<label for="age2">
+									<input type="radio" id="age2" name="view-learn" value="learn">
+									<span class="txt">Chưa học</span>
+								</label>
+								<label for="age3">
+									<input type="radio" id="age3" name="view-learn" value="learned">
+									<span class="txt">Đã học</span>
+								</label>
+							</div>
 						</div>
 					</div>
 					<div id="vocabularys"></div>
@@ -281,18 +352,21 @@
 						index_vocabulary.innerHTML = "";
 						Object.entries(data).forEach(([itemKey, item], index) => {
 							const isLearned = item.learn === "learned";
-							if (isLearned) {
-								learnedCount++;
-							}
+							if (isLearned) learnedCount++;
 							const div = document.createElement("div");
 							div.classList.add("item");
+							if (isLearned) div.classList.add("learned");
 							div.innerHTML = `
 								<span class="pinyin">${item.pinyin}</span>
 								<span class="hanzi">${item.hanzi}</span>
 								<span class="vietnamese">${item.vietnamese}</span>
 								<div class="bottom">
 									<span class="label">${item.label}</span>
-									<button btn-light-gray class="material-symbols-rounded learn-btn ${isLearned ? 'learned' : ''}" data-key="${itemKey}">${isLearned ? "star_shine" : "star"}</button>
+									<button
+										btn-light-gray
+										class="material-symbols-rounded learn-btn ${isLearned ? 'learned' : ''}"
+										data-key="${itemKey}"
+									>${isLearned ? "star_shine" : "star"}</button>
 								</div>
 							`;
 							index_vocabulary.appendChild(div);
