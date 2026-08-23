@@ -36,6 +36,10 @@
 					background: var(--bg-box);
 					border: 1px solid var(--bd-box);
 					border-radius: var(--bdrs-lv-3);
+					position: sticky;
+					top: 12px;
+					left: 0;
+					z-index: 9999;
 					.logo {
 						display: flex;
 						align-items: center;
@@ -177,6 +181,7 @@
 					.main {
 						#page-vocabulary {
 							#checked-vocabulary {
+								top: calc(98px + 24px);
 								.range {
 									#range-vocabulary {
 										width: 200px;
@@ -192,6 +197,18 @@
 					#header-top {
 						.nav {
 							display: none;
+						}
+					}
+					.main {
+						#page-vocabulary {
+							#checked-vocabulary {
+								top: calc(56px + 24px);
+								.range {
+									#range-vocabulary {
+										width: 200px;
+									}
+								}
+							}
 						}
 					}
 				}
