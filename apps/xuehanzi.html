@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
+		<title>Xue Hanzi</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<style type="text/css">
+			body {
+				font-family: "Quicksand", sans-serif;
+				font-size: var(--fz-lv-4);
+				color: red;
+				background: var(--bg-body-blue);
+				display: grid;
+				place-items: center;
+				height: 100vh;
+			}
+			.box {
+				width: 100%;
+				max-width: 1080px;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+				padding: 12px;
+				user-select: none;
+				#header-top {
+					flex-shrink: 0;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					gap: 12px;
+					padding: 12px;
+					background: var(--bg-box);
+					border: 1px solid var(--bd-box);
+					border-radius: var(--bdrs-lv-3);
+					.logo {
+						display: flex;
+						align-items: center;
+						gap: 12px;
+						img {
+							width: auto;
+							height: 30px;
+						}
+						span {
+							color: var(--color-lv-1);
+							font-size: var(--fz-lv-1);
+							font-weight: 600;
+						}
+					}
+					.nav {
+						height: 100%;
+						display: flex;
+						gap: 6px;
+						li {
+							a {
+								display: block;
+								height: 30px;
+								line-height: 30px;
+								padding: 0 12px;
+								font-size: var(--fz-lv-3);
+								color: var(--color-lv-1);
+								border-radius: var(--bdrs-lv-4);
+								&:hover, &.focus {
+									color: hsl(var(--hue-saturation-gray), 95%);
+									background: hsl(var(--hue-saturation-orange), 50%);
+								}
+							}
+						}
+					}
+				}
+				.main {
+					#page-vocabulary {
+						display: flex;
+						flex-direction: column;
+						gap: 12px;
+						#checked-vocabulary {
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							padding: 12px;
+							background: var(--bg-box);
+							border: 1px solid var(--bd-box);
+							border-radius: var(--bdrs-lv-3);
+							position: sticky;
+							top: 12px;
+							left: 0;
+							z-index: 9999;
+							.t {
+								font-size: var(--fz-lv-3);
+								color: var(--color-lv-1);
+								font-weight: 500;
+							}
+							.range {
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+								gap: 12px;
+								#range-vocabulary {
+									-webkit-appearance: none;
+									appearance: none;
+									width: 300px;
+									height: 8px;
+									&::-webkit-progress-bar {
+										background: var(--bd-box);
+										border-radius: var(--bdrs-lv-4);
+									}
+									&::-webkit-progress-value {
+										background: hsl(var(--hue-saturation-teal), 50%);
+										border-radius: var(--bdrs-lv-4);
+									}
+								}
+								.checked-total {
+									font-size: var(--fz-lv-4);
+									color: var(--color-lv-1);
+								}
+							}
+						}
+						#vocabularys {
+							display: grid;
+							grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+							grid-gap: 12px;
+							.item {
+								display: flex;
+								flex-direction: column;
+								justify-content: space-between;
+								align-items: center;
+								padding: 12px;
+								position: relative;
+								color: var(--color-lv-2);
+								background: var(--bg-box);
+								border: 1px solid var(--bd-box);
+								border-radius: var(--bdrs-lv-3);
+								.hanzi {
+									font-family: "Noto Serif SC", serif;
+									font-size: 40px;
+								}
+								.pinyin, .vietnamse {
+									font-size: 14px;
+								}
+								.bottom {
+									margin-top: 12px;
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+									width: 100%;
+									.label {
+										line-height: 24px;
+										padding: 0 6px;
+										color: hsl(var(--hue-saturation-blue), 30%);
+										background: hsl(var(--hue-saturation-blue), 90%);
+										border: 1px solid hsl(var(--hue-saturation-blue), 85%);
+										border-radius: var(--bdrs-lv-4);
+									}
+									button {
+										height: 100%;
+										padding: 0 6px;
+										border-radius: var(--bdrs-lv-4);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			@media (max-width: 630px) {
+				.box {
+					flex-direction: column;
+					#header-top {
+						flex-direction: column;
+					}
+					.main {
+						#page-vocabulary {
+							#checked-vocabulary {
+								.range {
+									#range-vocabulary {
+										width: 200px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			@media (max-width: 470px) {
+				.box {
+					#header-top {
+						.nav {
+							display: none;
+						}
+					}
+				}
+			}
+			@media (max-width: 440px) {
+				.box {
+					.main {
+						#page-vocabulary {
+							#checked-vocabulary {
+								.range {
+									#range-vocabulary {
+										width: 100px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div id="header-top">
+				<a href="" class="logo">
+					<img src="https://hiepdeep.github.io/library/pictures/svg/books.svg" alt="">
+					<span class="text">Xué Hànzì</span>
+				</a>
+				<div class="nav">
+					<li><a href="javascript:;" class="focus">Từ vựng</a></li>
+					<li><a href="javascript:;">Mẫu câu</a></li>
+					<li><a href="javascript:;">Đoạn văn</a></li>
+					<li><a href="javascript:;">Đoạn hội thoại</a></li>
+				</div>
+			</div>
+			<div class="main">
+				<div id="page-vocabulary">
+					<div id="checked-vocabulary">
+						<span class="t">Từ vụng đã học</span>
+						<div class="range">
+							<progress id="range-vocabulary" name="range-vocabulary" value="0"></progress>
+							<span class="checked-total">0</span>
+						</div>
+					</div>
+					<div id="vocabularys"></div>
+				</div>
+			</div>
+		</div>
+		<script>
+			console.clear();
+			const vocabulary_hsk1 = [
+				{"hanzi": "爱", "pinyin": "ài", "vietnamese": "yêu, thích", "label": "HSK1", "learn": ""},
+				{"hanzi": "爱好", "pinyin": "àihào", "vietnamese": "sở thích", "label": "HSK1", "learn": ""},
+				{"hanzi": "八", "pinyin": "bā", "vietnamese": "số 8", "label": "HSK1", "learn": ""},
+				{"hanzi": "爸爸", "pinyin": "bàba", "vietnamese": "Bố", "label": "HSK1", "learn": ""},
+				{"hanzi": "吧", "pinyin": "ba", "vietnamese": "nào, nhé, chứ, đi (trợ từ)", "label": "HSK1", "learn": ""},
+				{"hanzi": "白", "pinyin": "bái", "vietnamese": "trắng", "label": "HSK1", "learn": ""},
+				{"hanzi": "白天", "pinyin": "báitiān", "vietnamese": "ban ngày", "label": "HSK1", "learn": ""},
+				{"hanzi": "百", "pinyin": "bǎi", "vietnamese": "một trăm", "label": "HSK1", "learn": ""},
+				{"hanzi": "班", "pinyin": "bān", "vietnamese": "lớp", "label": "HSK1", "learn": ""},
+				{"hanzi": "半", "pinyin": "bàn", "vietnamese": "một nửa", "label": "HSK1", "learn": ""},
+				{"hanzi": "半年", "pinyin": "bànnián", "vietnamese": "nửa năm", "label": "HSK1", "learn": ""},
+				{"hanzi": "半天", "pinyin": "bàntiān", "vietnamese": "nửa ngày", "label": "HSK1", "learn": ""},
+				{"hanzi": "帮", "pinyin": "bāng", "vietnamese": "giúp đỡ", "label": "HSK1", "learn": ""},
+				{"hanzi": "帮忙", "pinyin": "bāngmáng", "vietnamese": "giúp đỡ", "label": "HSK1", "learn": ""},
+				{"hanzi": "包", "pinyin": "bāo", "vietnamese": "bao, cái túi; gói, bọc", "label": "HSK1", "learn": ""},
+				{"hanzi": "包子", "pinyin": "bāozǐ", "vietnamese": "bánh bao", "label": "HSK1", "learn": ""},
+				{"hanzi": "杯", "pinyin": "bēi", "vietnamese": "cốc, ly", "label": "HSK1", "learn": ""},
+				{"hanzi": "杯子", "pinyin": "bēizǐ", "vietnamese": "cốc, chén, ly", "label": "HSK1", "learn": ""},
+				{"hanzi": "北", "pinyin": "běi", "vietnamese": "bắc", "label": "HSK1", "learn": ""},
+				{"hanzi": "北边", "pinyin": "běibiān", "vietnamese": "phía Bắc", "label": "HSK1", "learn": ""},
+				{"hanzi": "北京", "pinyin": "Běijīng", "vietnamese": "Bắc Kinh", "label": "HSK1", "learn": ""},
+				{"hanzi": "本", "pinyin": "běn", "vietnamese": "cuốn, quyển, tập", "label": "HSK1", "learn": ""},
+				{"hanzi": "本子", "pinyin": "běnzi", "vietnamese": "vở, cuốn vở", "label": "HSK1", "learn": ""},
+				{"hanzi": "比", "pinyin": "bǐ", "vietnamese": "so, so với", "label": "HSK1", "learn": ""},
+				{"hanzi": "别", "pinyin": "bié", "vietnamese": "đừng, không được", "label": "HSK1", "learn": ""},
+				{"hanzi": "别的", "pinyin": "biéde", "vietnamese": "cái khác", "label": "HSK1", "learn": ""},
+				{"hanzi": "别人", "pinyin": "biérén", "vietnamese": "người khác, người ta", "label": "HSK1", "learn": ""},
+				{"hanzi": "病", "pinyin": "bìng", "vietnamese": "bệnh", "label": "HSK1", "learn": ""},
+				{"hanzi": "病人", "pinyin": "bìngrén", "vietnamese": "bệnh nhân", "label": "HSK1", "learn": ""},
+				{"hanzi": "不大", "pinyin": "bú dà", "vietnamese": "nhỏ, không lớn", "label": "HSK1", "learn": ""},
+				{"hanzi": "不对", "pinyin": "búduì", "vietnamese": "không đúng", "label": "HSK1", "learn": ""},
+				{"hanzi": "不客气", "pinyin": "bú kèqi", "vietnamese": "không có gì", "label": "HSK1", "learn": ""},
+				{"hanzi": "不用", "pinyin": "búyòng", "vietnamese": "không cần", "label": "HSK1", "learn": ""},
+				{"hanzi": "不", "pinyin": "bù", "vietnamese": "không", "label": "HSK1", "learn": ""},
+				{"hanzi": "菜", "pinyin": "cài", "vietnamese": "đồ ăn, món ăn", "label": "HSK1", "learn": ""},
+				{"hanzi": "差", "pinyin": "chà", "vietnamese": "thiếu, kém", "label": "HSK1", "learn": ""},
+				{"hanzi": "茶", "pinyin": "chá", "vietnamese": "trà", "label": "HSK1", "learn": ""},
+				{"hanzi": "常", "pinyin": "cháng", "vietnamese": "thường", "label": "HSK1", "learn": ""},
+				{"hanzi": "常常", "pinyin": "chángcháng", "vietnamese": "thường thường", "label": "HSK1", "learn": ""},
+				{"hanzi": "唱", "pinyin": "chàng", "vietnamese": "hát", "label": "HSK1", "learn": ""},
+				{"hanzi": "唱歌", "pinyin": "chànggē", "vietnamese": "hát, ca hát", "label": "HSK1", "learn": ""},
+				{"hanzi": "车", "pinyin": "chē", "vietnamese": "xe", "label": "HSK1", "learn": ""},
+				{"hanzi": "车票", "pinyin": "chēpiào", "vietnamese": "vé xe", "label": "HSK1", "learn": ""},
+				{"hanzi": "车上", "pinyin": "chē shang", "vietnamese": "trên xe", "label": "HSK1", "learn": ""},
+				{"hanzi": "车站", "pinyin": "chēzhàn", "vietnamese": "bến xe", "label": "HSK1", "learn": ""},
+				{"hanzi": "吃", "pinyin": "chī", "vietnamese": "ăn", "label": "HSK1", "learn": ""},
+				{"hanzi": "吃饭", "pinyin": "chīfàn", "vietnamese": "ăn cơm", "label": "HSK1", "learn": ""},
+				{"hanzi": "出", "pinyin": "chū", "vietnamese": "ra, xuất", "label": "HSK1", "learn": ""},
+				{"hanzi": "出来", "pinyin": "chūlái", "vietnamese": "xuất hiện, đi ra", "label": "HSK1", "learn": ""},
+				{"hanzi": "出去", "pinyin": "chūqù", "vietnamese": "ra, ra ngoài", "label": "HSK1", "learn": ""},
+				{"hanzi": "穿", "pinyin": "chuān", "vietnamese": "mặc", "label": "HSK1", "learn": ""},
+				{"hanzi": "床", "pinyin": "chuáng", "vietnamese": "giường, đệm", "label": "HSK1", "learn": ""},
+				{"hanzi": "次", "pinyin": "cì", "vietnamese": "lần", "label": "HSK1", "learn": ""},
+				{"hanzi": "从", "pinyin": "cóng", "vietnamese": "từ, qua, theo", "label": "HSK1", "learn": ""},
+				{"hanzi": "错", "pinyin": "cuò", "vietnamese": "sai", "label": "HSK1", "learn": ""},
+				{"hanzi": "打", "pinyin": "dǎ", "vietnamese": "đánh, bắt", "label": "HSK1", "learn": ""},
+				{"hanzi": "打车", "pinyin": "dǎchē", "vietnamese": "bắt xe", "label": "HSK1", "learn": ""},
+				{"hanzi": "打电话", "pinyin": "dǎ diànhuà", "vietnamese": "gọi điện", "label": "HSK1", "learn": ""},
+				{"hanzi": "打开", "pinyin": "dǎkāi", "vietnamese": "mở, mở ra", "label": "HSK1", "learn": ""},
+				{"hanzi": "打球", "pinyin": "dǎ qiú", "vietnamese": "chơi bóng", "label": "HSK1", "learn": ""},
+				{"hanzi": "大", "pinyin": "dà", "vietnamese": "to, lớn", "label": "HSK1", "learn": ""},
+				{"hanzi": "大学", "pinyin": "dàxué", "vietnamese": "đại học", "label": "HSK1", "learn": ""},
+				{"hanzi": "大学生", "pinyin": "dàxuéshēng", "vietnamese": "sinh viên đại học", "label": "HSK1", "learn": ""},
+				{"hanzi": "到", "pinyin": "dào", "vietnamese": "đến, tới", "label": "HSK1", "learn": ""},
+				{"hanzi": "得到", "pinyin": "dédào", "vietnamese": "đạt được, nhận được", "label": "HSK1", "learn": ""},
+				{"hanzi": "地", "pinyin": "de", "vietnamese": "biểu thị từ trước nó là trạng ngữ", "label": "HSK1", "learn": ""},
+				{"hanzi": "的", "pinyin": "de", "vietnamese": "(biểu thị sự sở hữu) của…", "label": "HSK1", "learn": ""},
+				{"hanzi": "等", "pinyin": "děng", "vietnamese": "đợi, chờ", "label": "HSK1", "learn": ""},
+				{"hanzi": "地", "pinyin": "dì", "vietnamese": "đất, lục địa; trái đất", "label": "HSK1", "learn": ""},
+				{"hanzi": "地点", "pinyin": "dìdiǎn", "vietnamese": "địa điểm, nơi chốn", "label": "HSK1", "learn": ""},
+				{"hanzi": "地方", "pinyin": "dìfang", "vietnamese": "nơi, địa phương", "label": "HSK1", "learn": ""},
+				{"hanzi": "地上", "pinyin": "dìshang", "vietnamese": "trên mặt đất", "label": "HSK1", "learn": ""},
+				{"hanzi": "地图", "pinyin": "dìtú", "vietnamese": "bản đồ", "label": "HSK1", "learn": ""},
+				{"hanzi": "弟弟", "pinyin": "dìdi", "vietnamese": "em trai", "label": "HSK1", "learn": ""},
+				{"hanzi": "第", "pinyin": "dì", "vietnamese": "thứ…", "label": "HSK1", "learn": ""},
+				{"hanzi": "点", "pinyin": "diǎn", "vietnamese": "ít, chút, hơi", "label": "HSK1", "learn": ""},
+				{"hanzi": "电", "pinyin": "diàn", "vietnamese": "điện, pin", "label": "HSK1", "learn": ""},
+				{"hanzi": "电话", "pinyin": "diànhuà", "vietnamese": "điện thoại", "label": "HSK1", "learn": ""},
+				{"hanzi": "电脑", "pinyin": "diànnǎo", "vietnamese": "máy tính", "label": "HSK1", "learn": ""},
+				{"hanzi": "电视", "pinyin": "diànshì", "vietnamese": "truyền hình; TV", "label": "HSK1", "learn": ""},
+				{"hanzi": "电视机", "pinyin": "diànshìjī", "vietnamese": "(chiếc) TV", "label": "HSK1", "learn": ""},
+				{"hanzi": "电影", "pinyin": "diànyǐng", "vietnamese": "điện ảnh, phim (nói chung)", "label": "HSK1", "learn": ""},
+				{"hanzi": "电影院", "pinyin": "diànyǐngyuàn", "vietnamese": "rạp chiếu phim", "label": "HSK1", "learn": ""},
+				{"hanzi": "东", "pinyin": "dōng", "vietnamese": "đông", "label": "HSK1", "learn": ""},
+				{"hanzi": "东边", "pinyin": "dōngbian", "vietnamese": "phía đông", "label": "HSK1", "learn": ""},
+				{"hanzi": "东西", "pinyin": "dōngxi", "vietnamese": "đồ đạc, đồ, vật", "label": "HSK1", "learn": ""},
+				{"hanzi": "动", "pinyin": "dòng", "vietnamese": "động, chạm", "label": "HSK1", "learn": ""},
+				{"hanzi": "动作", "pinyin": "dòngzuò", "vietnamese": "động tác, hoạt động", "label": "HSK1", "learn": ""},
+				{"hanzi": "都", "pinyin": "dōu", "vietnamese": "đều", "label": "HSK1", "learn": ""},
+				{"hanzi": "读", "pinyin": "dú", "vietnamese": "đọc", "label": "HSK1", "learn": ""},
+				{"hanzi": "读书", "pinyin": "dúshū", "vietnamese": "đọc sách", "label": "HSK1", "learn": ""},
+				{"hanzi": "对", "pinyin": "duì", "vietnamese": "đúng", "label": "HSK1", "learn": ""},
+				{"hanzi": "对不起", "pinyin": "duìbuqǐ", "vietnamese": "xin lỗi", "label": "HSK1", "learn": ""},
+				{"hanzi": "多", "pinyin": "duō", "vietnamese": "nhiều (đại từ nghi vấn) bao nhiêu", "label": "HSK1", "learn": ""},
+				{"hanzi": "多少", "pinyin": "duōshǎo", "vietnamese": "bao nhiêu", "label": "HSK1", "learn": ""},
+				{"hanzi": "饿", "pinyin": "è", "vietnamese": "đói", "label": "HSK1", "learn": ""},
+				{"hanzi": "儿子", "pinyin": "érzi", "vietnamese": "con trai", "label": "HSK1", "learn": ""},
+				{"hanzi": "二", "pinyin": "èr", "vietnamese": "số 2", "label": "HSK1", "learn": ""},
+				{"hanzi": "饭", "pinyin": "fàn", "vietnamese": "cơm", "label": "HSK1", "learn": ""},
+				{"hanzi": "饭店", "pinyin": "fàndiàn", "vietnamese": "quán ăn, nhà hàng", "label": "HSK1", "learn": ""},
+				{"hanzi": "房间", "pinyin": "fángjiān", "vietnamese": "căn phòng", "label": "HSK1", "learn": ""},
+				{"hanzi": "房子", "pinyin": "fángzi", "vietnamese": "căn nhà, căn hộ", "label": "HSK1", "learn": ""},
+				{"hanzi": "放", "pinyin": "fàng", "vietnamese": "thả, đặt, để", "label": "HSK1", "learn": ""},
+				{"hanzi": "放假", "pinyin": "fàngjià", "vietnamese": "nghỉ, nghỉ định kỳ", "label": "HSK1", "learn": ""},
+				{"hanzi": "放学", "pinyin": "fàngxué", "vietnamese": "tan học", "label": "HSK1", "learn": ""},
+				{"hanzi": "飞", "pinyin": "fēi", "vietnamese": "bay", "label": "HSK1", "learn": ""},
+				{"hanzi": "飞机", "pinyin": "fēijī", "vietnamese": "máy bay", "label": "HSK1", "learn": ""},
+				{"hanzi": "非常", "pinyin": "fēicháng", "vietnamese": "vô cùng, hết sức, rất", "label": "HSK1", "learn": ""},
+				{"hanzi": "分", "pinyin": "fēn", "vietnamese": "phút", "label": "HSK1", "learn": ""},
+				{"hanzi": "风", "pinyin": "fēng", "vietnamese": "gió", "label": "HSK1", "learn": ""},
+				{"hanzi": "干", "pinyin": "gān", "vietnamese": "khô", "label": "HSK1", "learn": ""},
+				{"hanzi": "干净", "pinyin": "gānjìng", "vietnamese": "sạch sẽ", "label": "HSK1", "learn": ""},
+				{"hanzi": "干", "pinyin": "gàn", "vietnamese": "làm", "label": "HSK1", "learn": ""},
+				{"hanzi": "干什么", "pinyin": "gànshénme", "vietnamese": "làm gì đó", "label": "HSK1", "learn": ""},
+				{"hanzi": "高", "pinyin": "gāo", "vietnamese": "cao", "label": "HSK1", "learn": ""},
+				{"hanzi": "高兴", "pinyin": "gāoxìng", "vietnamese": "vui vẻ, vui mừng", "label": "HSK1", "learn": ""},
+				{"hanzi": "告诉", "pinyin": "gàosù", "vietnamese": "nói, kể lại", "label": "HSK1", "learn": ""},
+				{"hanzi": "哥哥", "pinyin": "gēge", "vietnamese": "anh trai", "label": "HSK1", "learn": ""},
+				{"hanzi": "歌", "pinyin": "gē", "vietnamese": "bài hát", "label": "HSK1", "learn": ""},
+				{"hanzi": "个", "pinyin": "gè", "vietnamese": "cái", "label": "HSK1", "learn": ""},
+				{"hanzi": "给", "pinyin": "gěi", "vietnamese": "cho", "label": "HSK1", "learn": ""},
+				{"hanzi": "跟", "pinyin": "gēn", "vietnamese": "và, cùng", "label": "HSK1", "learn": ""},
+				{"hanzi": "工人", "pinyin": "gōngrén", "vietnamese": "công nhân, người lao động nói chung", "label": "HSK1", "learn": ""},
+				{"hanzi": "工作", "pinyin": "gōngzuò", "vietnamese": "công việc", "label": "HSK1", "learn": ""},
+				{"hanzi": "关", "pinyin": "guān", "vietnamese": "đóng", "label": "HSK1", "learn": ""},
+				{"hanzi": "关上", "pinyin": "guānshàng", "vietnamese": "khép vào", "label": "HSK1", "learn": ""},
+				{"hanzi": "贵", "pinyin": "guì", "vietnamese": "đắt", "label": "HSK1", "learn": ""},
+				{"hanzi": "国", "pinyin": "guó", "vietnamese": "đất nước, nước nhà, Tổ quốc", "label": "HSK1", "learn": ""},
+				{"hanzi": "国家", "pinyin": "guójiā", "vietnamese": "đất nước, Quốc Gia", "label": "HSK1", "learn": ""},
+				{"hanzi": "国外", "pinyin": "guó wài", "vietnamese": "nước ngoài", "label": "HSK1", "learn": ""},
+				{"hanzi": "过", "pinyin": "guò", "vietnamese": "(đi) qua, (bước) qua", "label": "HSK1", "learn": ""},
+				{"hanzi": "还", "pinyin": "hái", "vietnamese": "vẫn, còn", "label": "HSK1", "learn": ""},
+				{"hanzi": "还是", "pinyin": "háishi", "vietnamese": "hay là", "label": "HSK1", "learn": ""},
+				{"hanzi": "还有", "pinyin": "hái yǒu", "vietnamese": "còn có, còn nữa là", "label": "HSK1", "learn": ""},
+				{"hanzi": "孩子", "pinyin": "háizi", "vietnamese": "đứa trẻ, con (tôi)", "label": "HSK1", "learn": ""},
+				{"hanzi": "汉语", "pinyin": "Hànyǔ", "vietnamese": "tiếng Hán", "label": "HSK1", "learn": ""},
+				{"hanzi": "汉字", "pinyin": "Hànzì", "vietnamese": "chữ Hán", "label": "HSK1", "learn": ""},
+				{"hanzi": "好", "pinyin": "hǎo", "vietnamese": "tốt, đẹp", "label": "HSK1", "learn": ""},
+				{"hanzi": "好吃", "pinyin": "hǎochī", "vietnamese": "ăn ngon", "label": "HSK1", "learn": ""},
+				{"hanzi": "好看", "pinyin": "hǎokàn", "vietnamese": "đẹp, xinh, hay", "label": "HSK1", "learn": ""},
+				{"hanzi": "好听", "pinyin": "hǎotīng", "vietnamese": "êm tai, du dương, dễ nghe", "label": "HSK1", "learn": ""},
+				{"hanzi": "好玩儿", "pinyin": "hǎowánr", "vietnamese": "(chơi) vui", "label": "HSK1", "learn": ""},
+				{"hanzi": "号", "pinyin": "hào", "vietnamese": "ngày", "label": "HSK1", "learn": ""},
+				{"hanzi": "喝", "pinyin": "hē", "vietnamese": "uống", "label": "HSK1", "learn": ""},
+				{"hanzi": "和", "pinyin": "hé", "vietnamese": "và", "label": "HSK1", "learn": ""},
+				{"hanzi": "很", "pinyin": "hěn", "vietnamese": "rất", "label": "HSK1", "learn": ""},
+				{"hanzi": "后", "pinyin": "hòu", "vietnamese": "sau", "label": "HSK1", "learn": ""},
+				{"hanzi": "后边", "pinyin": "hòubian", "vietnamese": "phía sau", "label": "HSK1", "learn": ""},
+				{"hanzi": "后天", "pinyin": "hòutiān", "vietnamese": "ngày kia", "label": "HSK1", "learn": ""},
+				{"hanzi": "花", "pinyin": "huā", "vietnamese": "đóa hoa", "label": "HSK1", "learn": ""},
+				{"hanzi": "话", "pinyin": "huà", "vietnamese": "lời nói", "label": "HSK1", "learn": ""},
+				{"hanzi": "坏", "pinyin": "huài", "vietnamese": "xấu, hỏng", "label": "HSK1", "learn": ""},
+				{"hanzi": "还", "pinyin": "huán", "vietnamese": "trả", "label": "HSK1", "learn": ""},
+				{"hanzi": "回", "pinyin": "huí", "vietnamese": "quay lại, về", "label": "HSK1", "learn": ""},
+				{"hanzi": "回答", "pinyin": "huídá", "vietnamese": "trả lời", "label": "HSK1", "learn": ""},
+				{"hanzi": "回到", "pinyin": "huídào", "vietnamese": "quay về", "label": "HSK1", "learn": ""},
+				{"hanzi": "回家", "pinyin": "huí jiā", "vietnamese": "về nhà", "label": "HSK1", "learn": ""},
+				{"hanzi": "回来", "pinyin": "huílái", "vietnamese": "về, quay về (hướng gần)", "label": "HSK1", "learn": ""},
+				{"hanzi": "回去", "pinyin": "huíqù", "vietnamese": "về, quay về (hướng xa)", "label": "HSK1", "learn": ""},
+				{"hanzi": "会", "pinyin": "huì", "vietnamese": "sẽ, biết làm", "label": "HSK1", "learn": ""},
+				{"hanzi": "火车", "pinyin": "huǒchē", "vietnamese": "xe lửa", "label": "HSK1", "learn": ""},
+				{"hanzi": "机场", "pinyin": "jīchǎng", "vietnamese": "sân bay", "label": "HSK1", "learn": ""},
+				{"hanzi": "机票", "pinyin": "jīpiào", "vietnamese": "vé máy bay", "label": "HSK1", "learn": ""},
+				{"hanzi": "鸡蛋", "pinyin": "jīdàn", "vietnamese": "trứng gà", "label": "HSK1", "learn": ""},
+				{"hanzi": "几", "pinyin": "jǐ", "vietnamese": "mấy, vài", "label": "HSK1", "learn": ""},
+				{"hanzi": "记", "pinyin": "jì", "vietnamese": "nhớ", "label": "HSK1", "learn": ""},
+				{"hanzi": "记得", "pinyin": "jìde", "vietnamese": "ghi nhớ", "label": "HSK1", "learn": ""},
+				{"hanzi": "记住", "pinyin": "jìzhù", "vietnamese": "nhớ kĩ", "label": "HSK1", "learn": ""},
+				{"hanzi": "家", "pinyin": "jiā", "vietnamese": "nhà", "label": "HSK1", "learn": ""},
+				{"hanzi": "家里", "pinyin": "jiā lǐ", "vietnamese": "trong nhà", "label": "HSK1", "learn": ""},
+				{"hanzi": "家人", "pinyin": "jiārén", "vietnamese": "người nhà, người trong gia đình", "label": "HSK1", "learn": ""},
+				{"hanzi": "间", "pinyin": "jiān", "vietnamese": "giữa", "label": "HSK1", "learn": ""},
+				{"hanzi": "见", "pinyin": "jiàn", "vietnamese": "gặp, thấy", "label": "HSK1", "learn": ""},
+				{"hanzi": "见面", "pinyin": "jiànmiàn", "vietnamese": "gặp mặt", "label": "HSK1", "learn": ""},
+				{"hanzi": "教", "pinyin": "jiāo", "vietnamese": "dạy", "label": "HSK1", "learn": ""},
+				{"hanzi": "叫", "pinyin": "jiào", "vietnamese": "gọi, kêu", "label": "HSK1", "learn": ""},
+				{"hanzi": "教学楼", "pinyin": "jiàoxuélóu", "vietnamese": "khu nhà dạy học", "label": "HSK1", "learn": ""},
+				{"hanzi": "姐姐", "pinyin": "jiějie", "vietnamese": "chị gái", "label": "HSK1", "learn": ""},
+				{"hanzi": "介绍", "pinyin": "jièshào", "vietnamese": "giới thiệu", "label": "HSK1", "learn": ""},
+				{"hanzi": "今年", "pinyin": "jīnnián", "vietnamese": "năm nay", "label": "HSK1", "learn": ""},
+				{"hanzi": "今天", "pinyin": "jīntiān", "vietnamese": "ngày hôm nay", "label": "HSK1", "learn": ""},
+				{"hanzi": "进", "pinyin": "jìn", "vietnamese": "vào", "label": "HSK1", "learn": ""},
+				{"hanzi": "进来", "pinyin": "jìnlái", "vietnamese": "bước vào (lại gần chỗ người nói)", "label": "HSK1", "learn": ""},
+				{"hanzi": "进去", "pinyin": "jìnqù", "vietnamese": "bước vào (chỗ đó đi, xa người nói)", "label": "HSK1", "learn": ""},
+				{"hanzi": "九", "pinyin": "jiǔ", "vietnamese": "số 9", "label": "HSK1", "learn": ""},
+				{"hanzi": "就", "pinyin": "jiù", "vietnamese": "đã; lập tức, ngay", "label": "HSK1", "learn": ""},
+				{"hanzi": "觉得", "pinyin": "juéde", "vietnamese": "cảm thấy", "label": "HSK1", "learn": ""},
+				{"hanzi": "开", "pinyin": "kāi", "vietnamese": "mở", "label": "HSK1", "learn": ""},
+				{"hanzi": "开车", "pinyin": "kāichē", "vietnamese": "lái xe", "label": "HSK1", "learn": ""},
+				{"hanzi": "开会", "pinyin": "kāihuì", "vietnamese": "mở họp, họp", "label": "HSK1", "learn": ""},
+				{"hanzi": "开玩笑", "pinyin": "kāi wánxiào", "vietnamese": "nói đùa", "label": "HSK1", "learn": ""},
+				{"hanzi": "看", "pinyin": "kàn", "vietnamese": "nhìn, xem, ngắm", "label": "HSK1", "learn": ""},
+				{"hanzi": "看病", "pinyin": "kànbìng", "vietnamese": "khám bệnh", "label": "HSK1", "learn": ""},
+				{"hanzi": "看到", "pinyin": "kàndào", "vietnamese": "nhìn thấy", "label": "HSK1", "learn": ""},
+				{"hanzi": "看见", "pinyin": "kànjiàn", "vietnamese": "nhìn thấy", "label": "HSK1", "learn": ""},
+				{"hanzi": "考", "pinyin": "kǎo", "vietnamese": "thi", "label": "HSK1", "learn": ""},
+				{"hanzi": "考试", "pinyin": "kǎoshì", "vietnamese": "kì thi", "label": "HSK1", "learn": ""},
+				{"hanzi": "渴", "pinyin": "kě", "vietnamese": "khát", "label": "HSK1", "learn": ""},
+				{"hanzi": "课", "pinyin": "kè", "vietnamese": "tiết (học)", "label": "HSK1", "learn": ""},
+				{"hanzi": "课本", "pinyin": "kèběn", "vietnamese": "sách giáo khoa", "label": "HSK1", "learn": ""},
+				{"hanzi": "课文", "pinyin": "kèwén", "vietnamese": "bài khóa, bài đọc", "label": "HSK1", "learn": ""},
+				{"hanzi": "口", "pinyin": "kǒu", "vietnamese": "lượng chỉ người trong gia đình", "label": "HSK1", "learn": ""},
+				{"hanzi": "块", "pinyin": "kuài", "vietnamese": "tệ (đơn vị tiền tệ)", "label": "HSK1", "learn": ""},
+				{"hanzi": "快", "pinyin": "kuài", "vietnamese": "nhanh", "label": "HSK1", "learn": ""},
+				{"hanzi": "来", "pinyin": "lái", "vietnamese": "đến, tới", "label": "HSK1", "learn": ""},
+				{"hanzi": "来到", "pinyin": "láidào", "vietnamese": "đến", "label": "HSK1", "learn": ""},
+				{"hanzi": "老", "pinyin": "lǎo", "vietnamese": "già, cũ, cổ", "label": "HSK1", "learn": ""},
+				{"hanzi": "老人", "pinyin": "lǎorén", "vietnamese": "người già", "label": "HSK1", "learn": ""},
+				{"hanzi": "老师", "pinyin": "lǎoshī", "vietnamese": "thầy, cô giáo", "label": "HSK1", "learn": ""},
+				{"hanzi": "了", "pinyin": "le", "vietnamese": "trợ từ biểu thị sự thay đổi", "label": "HSK1", "learn": ""},
+				{"hanzi": "累", "pinyin": "lèi", "vietnamese": "mệt mỏi", "label": "HSK1", "learn": ""},
+				{"hanzi": "冷", "pinyin": "lěng", "vietnamese": "lạnh", "label": "HSK1", "learn": ""},
+				{"hanzi": "里", "pinyin": "lǐ", "vietnamese": "trong, bên trong", "label": "HSK1", "learn": ""},
+				{"hanzi": "里边", "pinyin": "lǐbian", "vietnamese": "phía trong", "label": "HSK1", "learn": ""},
+				{"hanzi": "两", "pinyin": "liǎng", "vietnamese": "hai", "label": "HSK1", "learn": ""},
+				{"hanzi": "零", "pinyin": "líng", "vietnamese": "số 0", "label": "HSK1", "learn": ""},
+				{"hanzi": "六", "pinyin": "liù", "vietnamese": "số 6", "label": "HSK1", "learn": ""},
+				{"hanzi": "楼", "pinyin": "lóu", "vietnamese": "tầng, lầu", "label": "HSK1", "learn": ""},
+				{"hanzi": "楼上", "pinyin": "lóu shàng", "vietnamese": "tầng trên", "label": "HSK1", "learn": ""},
+				{"hanzi": "楼下", "pinyin": "lóu xià", "vietnamese": "tầng dưới", "label": "HSK1", "learn": ""},
+				{"hanzi": "路", "pinyin": "lù", "vietnamese": "đường xá", "label": "HSK1", "learn": ""},
+				{"hanzi": "路口", "pinyin": "lùkǒu", "vietnamese": "giao lộ, đường giao nhau, ngã ba đường", "label": "HSK1", "learn": ""},
+				{"hanzi": "路上", "pinyin": "lùshang", "vietnamese": "trên đường", "label": "HSK1", "learn": ""},
+				{"hanzi": "妈妈", "pinyin": "māma", "vietnamese": "Mẹ", "label": "HSK1", "learn": ""},
+				{"hanzi": "马路", "pinyin": "mǎlù", "vietnamese": "đường cái, đường quốc lộ", "label": "HSK1", "learn": ""},
+				{"hanzi": "马上", "pinyin": "mǎshàng", "vietnamese": "lập tức, ngay", "label": "HSK1", "learn": ""},
+				{"hanzi": "吗", "pinyin": "ma", "vietnamese": "từ để hỏi", "label": "HSK1", "learn": ""},
+				{"hanzi": "买", "pinyin": "mǎi", "vietnamese": "mua", "label": "HSK1", "learn": ""},
+				{"hanzi": "慢", "pinyin": "màn", "vietnamese": "chậm, từ từ", "label": "HSK1", "learn": ""},
+				{"hanzi": "忙", "pinyin": "máng", "vietnamese": "bận, bận rộn", "label": "HSK1", "learn": ""},
+				{"hanzi": "毛", "pinyin": "máo", "vietnamese": "lượng từ", "label": "HSK1", "learn": ""},
+				{"hanzi": "没", "pinyin": "méi", "vietnamese": "không", "label": "HSK1", "learn": ""},
+				{"hanzi": "没关系", "pinyin": "méi guānxi", "vietnamese": "không sao", "label": "HSK1", "learn": ""},
+				{"hanzi": "没什么", "pinyin": "méi shénme", "vietnamese": "không có gì", "label": "HSK1", "learn": ""},
+				{"hanzi": "没事儿", "pinyin": "méishìr", "vietnamese": "không có việc gì", "label": "HSK1", "learn": ""},
+				{"hanzi": "没有", "pinyin": "méiyǒu", "vietnamese": "không có", "label": "HSK1", "learn": ""},
+				{"hanzi": "妹妹", "pinyin": "mèimei", "vietnamese": "em gái", "label": "HSK1", "learn": ""},
+				{"hanzi": "门", "pinyin": "mén", "vietnamese": "cửa", "label": "HSK1", "learn": ""},
+				{"hanzi": "门口", "pinyin": "ménkǒu", "vietnamese": "cửa, cổng", "label": "HSK1", "learn": ""},
+				{"hanzi": "门票", "pinyin": "ménpiào", "vietnamese": "vé vào cửa", "label": "HSK1", "learn": ""},
+				{"hanzi": "们", "pinyin": "men（péngyǒumen）", "vietnamese": "từ chỉ số nhiều", "label": "HSK1", "learn": ""},
+				{"hanzi": "米饭", "pinyin": "mǐfàn", "vietnamese": "cơm", "label": "HSK1", "learn": ""},
+				{"hanzi": "面包", "pinyin": "miànbāo", "vietnamese": "bánh mì", "label": "HSK1", "learn": ""},
+				{"hanzi": "面条儿", "pinyin": "miàntiáor", "vietnamese": "mì sợi", "label": "HSK1", "learn": ""},
+				{"hanzi": "名字", "pinyin": "míngzi", "vietnamese": "tên", "label": "HSK1", "learn": ""},
+				{"hanzi": "明白", "pinyin": "míngbai", "vietnamese": "biết, hiểu", "label": "HSK1", "learn": ""},
+				{"hanzi": "明年", "pinyin": "míngnián", "vietnamese": "năm sau, năm tới", "label": "HSK1", "learn": ""},
+				{"hanzi": "明天", "pinyin": "míngtiān", "vietnamese": "ngày mai", "label": "HSK1", "learn": ""},
+				{"hanzi": "拿", "pinyin": "ná", "vietnamese": "lấy, cầm", "label": "HSK1", "learn": ""},
+				{"hanzi": "哪", "pinyin": "nǎ", "vietnamese": "nào", "label": "HSK1", "learn": ""},
+				{"hanzi": "哪里", "pinyin": "nǎlǐ", "vietnamese": "đâu, ở đâu, ở chỗ nào", "label": "HSK1", "learn": ""},
+				{"hanzi": "哪儿", "pinyin": "nǎr", "vietnamese": "đâu, ở đâu", "label": "HSK1", "learn": ""},
+				{"hanzi": "哪些", "pinyin": "nǎxiē", "vietnamese": "những ... nào", "label": "HSK1", "learn": ""},
+				{"hanzi": "那", "pinyin": "nà", "vietnamese": "kia, ấy, vậy, vậy thì", "label": "HSK1", "learn": ""},
+				{"hanzi": "那边", "pinyin": "nàbiān", "vietnamese": "bên kia", "label": "HSK1", "learn": ""},
+				{"hanzi": "那里", "pinyin": "nàlǐ", "vietnamese": "ở đó, nơi đó", "label": "HSK1", "learn": ""},
+				{"hanzi": "那儿", "pinyin": "nàr", "vietnamese": "ở đó, nơi đó", "label": "HSK1", "learn": ""},
+				{"hanzi": "那些", "pinyin": "nàxiē", "vietnamese": "những ... ấy, những kia", "label": "HSK1", "learn": ""},
+				{"hanzi": "奶", "pinyin": "nǎi", "vietnamese": "sữa", "label": "HSK1", "learn": ""},
+				{"hanzi": "奶奶", "pinyin": "nǎinai", "vietnamese": "bà nội, bà", "label": "HSK1", "learn": ""},
+				{"hanzi": "男", "pinyin": "nán", "vietnamese": "nam (giới tính nam)", "label": "HSK1", "learn": ""},
+				{"hanzi": "男孩儿", "pinyin": "nánháir", "vietnamese": "bạn bé", "label": "HSK1", "learn": ""},
+				{"hanzi": "男朋友", "pinyin": "nánpéngyǒu", "vietnamese": "bạn trai", "label": "HSK1", "learn": ""},
+				{"hanzi": "男人", "pinyin": "nánrén", "vietnamese": "con trai, đàn ông", "label": "HSK1", "learn": ""},
+				{"hanzi": "男生", "pinyin": "nánshēng", "vietnamese": "nam sinh, học sinh nam", "label": "HSK1", "learn": ""},
+				{"hanzi": "南", "pinyin": "nán", "vietnamese": "nam", "label": "HSK1", "learn": ""},
+				{"hanzi": "南边", "pinyin": "nánbian", "vietnamese": "phía nam", "label": "HSK1", "learn": ""},
+				{"hanzi": "难", "pinyin": "nán", "vietnamese": "khó", "label": "HSK1", "learn": ""},
+				{"hanzi": "呢", "pinyin": "ne", "vietnamese": "đâu, thế, nhỉ, vậy...", "label": "HSK1", "learn": ""},
+				{"hanzi": "能", "pinyin": "néng", "vietnamese": "có thể", "label": "HSK1", "learn": ""},
+				{"hanzi": "你", "pinyin": "nǐ", "vietnamese": "anh, chị, bạn, ...", "label": "HSK1", "learn": ""},
+				{"hanzi": "你们", "pinyin": "nǐmen", "vietnamese": "các anh, các chị, các bạn", "label": "HSK1", "learn": ""},
+				{"hanzi": "年", "pinyin": "nián", "vietnamese": "năm", "label": "HSK1", "learn": ""},
+				{"hanzi": "您", "pinyin": "nín", "vietnamese": "ngài, ông, bà (thể hiện sự kính trọng)", "label": "HSK1", "learn": ""},
+				{"hanzi": "牛奶", "pinyin": "niúnǎi", "vietnamese": "sữa bò", "label": "HSK1", "learn": ""},
+				{"hanzi": "女", "pinyin": "nǚ", "vietnamese": "nữ (giới tính nữ)", "label": "HSK1", "learn": ""},
+				{"hanzi": "女儿", "pinyin": "nǚ'ér", "vietnamese": "con gái", "label": "HSK1", "learn": ""},
+				{"hanzi": "女孩儿", "pinyin": "nǚháir", "vietnamese": "cô bé", "label": "HSK1", "learn": ""},
+				{"hanzi": "女朋友", "pinyin": "nǚpéngyǒu", "vietnamese": "bạn gái", "label": "HSK1", "learn": ""},
+				{"hanzi": "女人", "pinyin": "nǚrén", "vietnamese": "con gái, phụ nữ", "label": "HSK1", "learn": ""},
+				{"hanzi": "女生", "pinyin": "nǚshēng", "vietnamese": "nữ sinh, học sinh nữ", "label": "HSK1", "learn": ""},
+				{"hanzi": "旁边", "pinyin": "pángbiān", "vietnamese": "bên cạnh", "label": "HSK1", "learn": ""},
+				{"hanzi": "跑", "pinyin": "pǎo", "vietnamese": "chạy", "label": "HSK1", "learn": ""},
+				{"hanzi": "朋友", "pinyin": "péngyǒu", "vietnamese": "bạn, bạn bè", "label": "HSK1", "learn": ""},
+				{"hanzi": "票", "pinyin": "piào", "vietnamese": "vé, phiếu", "label": "HSK1", "learn": ""},
+				{"hanzi": "七", "pinyin": "qī", "vietnamese": "số 7", "label": "HSK1", "learn": ""},
+				{"hanzi": "起", "pinyin": "qǐ", "vietnamese": "dậy", "label": "HSK1", "learn": ""},
+				{"hanzi": "起床", "pinyin": "qǐchuáng", "vietnamese": "thức dậy, ngủ dậy", "label": "HSK1", "learn": ""},
+				{"hanzi": "起来", "pinyin": "qǐlái", "vietnamese": "ngồi dậy, đứng đậy, thức dậy", "label": "HSK1", "learn": ""},
+				{"hanzi": "汽车", "pinyin": "qìchē", "vietnamese": "ôtô, xe hơi", "label": "HSK1", "learn": ""},
+				{"hanzi": "前", "pinyin": "qián", "vietnamese": "trước", "label": "HSK1", "learn": ""},
+				{"hanzi": "前边", "pinyin": "qiánbian", "vietnamese": "phía trước", "label": "HSK1", "learn": ""},
+				{"hanzi": "前天", "pinyin": "qiántiān", "vietnamese": "hôm kia, hôm trước", "label": "HSK1", "learn": ""},
+				{"hanzi": "钱", "pinyin": "qián", "vietnamese": "tiền", "label": "HSK1", "learn": ""},
+				{"hanzi": "钱包", "pinyin": "qiánbāo", "vietnamese": "ví tiền", "label": "HSK1", "learn": ""},
+				{"hanzi": "请", "pinyin": "qǐng", "vietnamese": "mời", "label": "HSK1", "learn": ""},
+				{"hanzi": "请假", "pinyin": "qǐngjià", "vietnamese": "xin nghỉ phép", "label": "HSK1", "learn": ""},
+				{"hanzi": "请进", "pinyin": "qǐng jìn", "vietnamese": "mời vào", "label": "HSK1", "learn": ""},
+				{"hanzi": "请问", "pinyin": "qǐngwèn", "vietnamese": "xin hỏi", "label": "HSK1", "learn": ""},
+				{"hanzi": "请坐", "pinyin": "qǐng zuò", "vietnamese": "mời ngồi", "label": "HSK1", "learn": ""},
+				{"hanzi": "球", "pinyin": "qiú", "vietnamese": "quả bóng", "label": "HSK1", "learn": ""},
+				{"hanzi": "去", "pinyin": "qù", "vietnamese": "đi", "label": "HSK1", "learn": ""},
+				{"hanzi": "去年", "pinyin": "qùnián", "vietnamese": "năm ngoái, năm vừa rồi", "label": "HSK1", "learn": ""},
+				{"hanzi": "热", "pinyin": "rè", "vietnamese": "nóng", "label": "HSK1", "learn": ""},
+				{"hanzi": "人", "pinyin": "rén", "vietnamese": "người", "label": "HSK1", "learn": ""},
+				{"hanzi": "认识", "pinyin": "rènshi", "vietnamese": "biết, quen", "label": "HSK1", "learn": ""},
+				{"hanzi": "认真", "pinyin": "rènzhēn", "vietnamese": "nghiêm túc, chăm chỉ", "label": "HSK1", "learn": ""},
+				{"hanzi": "日", "pinyin": "rì", "vietnamese": "ngày", "label": "HSK1", "learn": ""},
+				{"hanzi": "日期", "pinyin": "rìqī", "vietnamese": "ngày (xác định)", "label": "HSK1", "learn": ""},
+				{"hanzi": "肉", "pinyin": "ròu", "vietnamese": "thịt", "label": "HSK1", "learn": ""},
+				{"hanzi": "三", "pinyin": "sān", "vietnamese": "số 3", "label": "HSK1", "learn": ""},
+				{"hanzi": "山", "pinyin": "shān", "vietnamese": "núi", "label": "HSK1", "learn": ""},
+				{"hanzi": "商场", "pinyin": "shāngchǎng", "vietnamese": "trung tâm thương mại", "label": "HSK1", "learn": ""},
+				{"hanzi": "商店", "pinyin": "shāngdiàn", "vietnamese": "tiệm tạp hóa, cửa hàng", "label": "HSK1", "learn": ""},
+				{"hanzi": "上", "pinyin": "shàng", "vietnamese": "trên", "label": "HSK1", "learn": ""},
+				{"hanzi": "上班", "pinyin": "shàngbān", "vietnamese": "đi làm", "label": "HSK1", "learn": ""},
+				{"hanzi": "上边", "pinyin": "shàngbiān", "vietnamese": "bên trên", "label": "HSK1", "learn": ""},
+				{"hanzi": "上车", "pinyin": "shàngchē", "vietnamese": "lên xe", "label": "HSK1", "learn": ""},
+				{"hanzi": "上次", "pinyin": "shàngcì", "vietnamese": "lần trước", "label": "HSK1", "learn": ""},
+				{"hanzi": "上课", "pinyin": "shàngkè", "vietnamese": "vào lớp, đi học", "label": "HSK1", "learn": ""},
+				{"hanzi": "上网", "pinyin": "shàngwǎng", "vietnamese": "lên mạng", "label": "HSK1", "learn": ""},
+				{"hanzi": "上午", "pinyin": "shàngwǔ", "vietnamese": "buổi sáng", "label": "HSK1", "learn": ""},
+				{"hanzi": "上学", "pinyin": "shàngxué", "vietnamese": "(đang) đi học", "label": "HSK1", "learn": ""},
+				{"hanzi": "少", "pinyin": "shǎo", "vietnamese": "ít, thiếu", "label": "HSK1", "learn": ""},
+				{"hanzi": "谁", "pinyin": "shéi", "vietnamese": "ai", "label": "HSK1", "learn": ""},
+				{"hanzi": "身上", "pinyin": "shēnshang", "vietnamese": "trên người", "label": "HSK1", "learn": ""},
+				{"hanzi": "身体", "pinyin": "shēntǐ", "vietnamese": "cơ thể, sức khỏe", "label": "HSK1", "learn": ""},
+				{"hanzi": "什么", "pinyin": "shénme", "vietnamese": "cái gì", "label": "HSK1", "learn": ""},
+				{"hanzi": "生病", "pinyin": "shēngbìng", "vietnamese": "đổ bệnh, bị ốm", "label": "HSK1", "learn": ""},
+				{"hanzi": "生气", "pinyin": "shēngqì", "vietnamese": "tức giận", "label": "HSK1", "learn": ""},
+				{"hanzi": "生日", "pinyin": "shēngrì", "vietnamese": "ngày sinh nhật", "label": "HSK1", "learn": ""},
+				{"hanzi": "十", "pinyin": "shí", "vietnamese": "số 10", "label": "HSK1", "learn": ""},
+				{"hanzi": "时候", "pinyin": "shíhòu", "vietnamese": "thời gian, lúc", "label": "HSK1", "learn": ""},
+				{"hanzi": "时间", "pinyin": "shíjiān", "vietnamese": "thời gian", "label": "HSK1", "learn": ""},
+				{"hanzi": "事", "pinyin": "shì", "vietnamese": "chuyện, việc", "label": "HSK1", "learn": ""},
+				{"hanzi": "试", "pinyin": "shì", "vietnamese": "thử", "label": "HSK1", "learn": ""},
+				{"hanzi": "是", "pinyin": "shì", "vietnamese": "thì. là", "label": "HSK1", "learn": ""},
+				{"hanzi": "是不是", "pinyin": "shìbùshì", "vietnamese": "có phải hay không", "label": "HSK1", "learn": ""},
+				{"hanzi": "手", "pinyin": "shǒu", "vietnamese": "tay", "label": "HSK1", "learn": ""},
+				{"hanzi": "手机", "pinyin": "shǒujī", "vietnamese": "điện thoại di động", "label": "HSK1", "learn": ""},
+				{"hanzi": "书", "pinyin": "shū", "vietnamese": "sách", "label": "HSK1", "learn": ""},
+				{"hanzi": "书包", "pinyin": "shūbāo", "vietnamese": "cặp sách", "label": "HSK1", "learn": ""},
+				{"hanzi": "书店", "pinyin": "shūdiàn", "vietnamese": "cửa hàng sách, tiệm sách", "label": "HSK1", "learn": ""},
+				{"hanzi": "树", "pinyin": "shù", "vietnamese": "cây", "label": "HSK1", "learn": ""},
+				{"hanzi": "水", "pinyin": "shuǐ", "vietnamese": "nước", "label": "HSK1", "learn": ""},
+				{"hanzi": "水果", "pinyin": "shuǐguǒ", "vietnamese": "nước hoa quả. nước ép", "label": "HSK1", "learn": ""},
+				{"hanzi": "睡", "pinyin": "shuì", "vietnamese": "ngủ", "label": "HSK1", "learn": ""},
+				{"hanzi": "睡觉", "pinyin": "shuìjiào", "vietnamese": "ngủ", "label": "HSK1", "learn": ""},
+				{"hanzi": "说", "pinyin": "shuō", "vietnamese": "nói", "label": "HSK1", "learn": ""},
+				{"hanzi": "说话", "pinyin": "shuōhuà", "vietnamese": "nói, trò chuyện", "label": "HSK1", "learn": ""},
+				{"hanzi": "四", "pinyin": "sì", "vietnamese": "số 4", "label": "HSK1", "learn": ""},
+				{"hanzi": "送", "pinyin": "sòng", "vietnamese": "tặng, đưa cho", "label": "HSK1", "learn": ""},
+				{"hanzi": "岁", "pinyin": "suì", "vietnamese": "tuổi", "label": "HSK1", "learn": ""},
+				{"hanzi": "他", "pinyin": "tā", "vietnamese": "anh ấy, ông ấy (ngôi 3 chỉ nam)", "label": "HSK1", "learn": ""},
+				{"hanzi": "他们", "pinyin": "tāmen", "vietnamese": "các anh ấy, bọn họ (nam)", "label": "HSK1", "learn": ""},
+				{"hanzi": "她", "pinyin": "tā", "vietnamese": "cô ấy, bà ấy (ngôi 3 chỉ nữ)", "label": "HSK1", "learn": ""},
+				{"hanzi": "她们", "pinyin": "tāmen", "vietnamese": "các cô ấy", "label": "HSK1", "learn": ""},
+				{"hanzi": "太", "pinyin": "tài", "vietnamese": "quá", "label": "HSK1", "learn": ""},
+				{"hanzi": "天", "pinyin": "tiān", "vietnamese": "trời", "label": "HSK1", "learn": ""},
+				{"hanzi": "天气", "pinyin": "tiānqì", "vietnamese": "thời tiết", "label": "HSK1", "learn": ""},
+				{"hanzi": "听", "pinyin": "tīng", "vietnamese": "nghe", "label": "HSK1", "learn": ""},
+				{"hanzi": "听到", "pinyin": "tīngdào", "vietnamese": "nghe thấy", "label": "HSK1", "learn": ""},
+				{"hanzi": "听见", "pinyin": "tīngjiàn", "vietnamese": "nghe thấy", "label": "HSK1", "learn": ""},
+				{"hanzi": "听写", "pinyin": "tīngxiě", "vietnamese": "nghe viết", "label": "HSK1", "learn": ""},
+				{"hanzi": "同学", "pinyin": "tóngxué", "vietnamese": "bạn học", "label": "HSK1", "learn": ""},
+				{"hanzi": "图书馆", "pinyin": "túshūguǎn", "vietnamese": "thư viện", "label": "HSK1", "learn": ""},
+				{"hanzi": "外", "pinyin": "wài", "vietnamese": "ngoài", "label": "HSK1", "learn": ""},
+				{"hanzi": "外边", "pinyin": "wàibiān", "vietnamese": "bên ngoài", "label": "HSK1", "learn": ""},
+				{"hanzi": "外国", "pinyin": "wàiguó", "vietnamese": "nước ngoài", "label": "HSK1", "learn": ""},
+				{"hanzi": "外语", "pinyin": "wàiyǔ", "vietnamese": "tiếng nước ngoài, ngoại ngữ", "label": "HSK1", "learn": ""},
+				{"hanzi": "玩儿", "pinyin": "wánr", "vietnamese": "chơi", "label": "HSK1", "learn": ""},
+				{"hanzi": "晚", "pinyin": "wǎn", "vietnamese": "buổi tối, muộn", "label": "HSK1", "learn": ""},
+				{"hanzi": "晚饭", "pinyin": "wǎnfàn", "vietnamese": "cơm tối, bữa tối", "label": "HSK1", "learn": ""},
+				{"hanzi": "晚上", "pinyin": "wǎnshang", "vietnamese": "buổi tối", "label": "HSK1", "learn": ""},
+				{"hanzi": "网上", "pinyin": "wǎng shang", "vietnamese": "trên mạng", "label": "HSK1", "learn": ""},
+				{"hanzi": "网友", "pinyin": "wǎngyǒu", "vietnamese": "bạn trên mạng", "label": "HSK1", "learn": ""},
+				{"hanzi": "忘", "pinyin": "wàng", "vietnamese": "quên", "label": "HSK1", "learn": ""},
+				{"hanzi": "忘记", "pinyin": "wàngjì", "vietnamese": "quên, quên mất", "label": "HSK1", "learn": ""},
+				{"hanzi": "问", "pinyin": "wèn", "vietnamese": "hỏi", "label": "HSK1", "learn": ""},
+				{"hanzi": "我", "pinyin": "wǒ", "vietnamese": "tôi, tớ, bạn (ngôi thứ nhất)", "label": "HSK1", "learn": ""},
+				{"hanzi": "我们", "pinyin": "wǒmen", "vietnamese": "chúng ta (nhiều người)", "label": "HSK1", "learn": ""},
+				{"hanzi": "五", "pinyin": "wǔ", "vietnamese": "số 5", "label": "HSK1", "learn": ""},
+				{"hanzi": "午饭", "pinyin": "wǔfàn", "vietnamese": "bữa trưa", "label": "HSK1", "learn": ""},
+				{"hanzi": "西", "pinyin": "xī", "vietnamese": "tây", "label": "HSK1", "learn": ""},
+				{"hanzi": "西边", "pinyin": "xībian", "vietnamese": "phía tây", "label": "HSK1", "learn": ""},
+				{"hanzi": "洗", "pinyin": "xǐ", "vietnamese": "rửa", "label": "HSK1", "learn": ""},
+				{"hanzi": "洗手间", "pinyin": "xǐshǒujiān", "vietnamese": "nhà vệ sinh", "label": "HSK1", "learn": ""},
+				{"hanzi": "喜欢", "pinyin": "xǐhuān", "vietnamese": "thích, được yêu thích", "label": "HSK1", "learn": ""},
+				{"hanzi": "下", "pinyin": "xià", "vietnamese": "xuống dưới bên dưới", "label": "HSK1", "learn": ""},
+				{"hanzi": "下班", "pinyin": "xiàbān", "vietnamese": "tan làm", "label": "HSK1", "learn": ""},
+				{"hanzi": "下边", "pinyin": "xiàbian", "vietnamese": "bên dưới", "label": "HSK1", "learn": ""},
+				{"hanzi": "下车", "pinyin": "xià chē", "vietnamese": "xuống xe", "label": "HSK1", "learn": ""},
+				{"hanzi": "下次", "pinyin": "xià cì", "vietnamese": "lần kế tiếp, lần sau", "label": "HSK1", "learn": ""},
+				{"hanzi": "下课", "pinyin": "xiàkè", "vietnamese": "tan học", "label": "HSK1", "learn": ""},
+				{"hanzi": "下午", "pinyin": "xiàwǔ", "vietnamese": "buổi chiều", "label": "HSK1", "learn": ""},
+				{"hanzi": "下雨", "pinyin": "xià yǔ", "vietnamese": "đổ mưa", "label": "HSK1", "learn": ""},
+				{"hanzi": "先", "pinyin": "xiān", "vietnamese": "trước", "label": "HSK1", "learn": ""},
+				{"hanzi": "先生", "pinyin": "xiānsheng", "vietnamese": "quý ông (gọi tôn kính)", "label": "HSK1", "learn": ""},
+				{"hanzi": "现在", "pinyin": "xiànzài", "vietnamese": "hiện tại, bây giờ", "label": "HSK1", "learn": ""},
+				{"hanzi": "想", "pinyin": "xiǎng", "vietnamese": "muốn, suy nghĩ", "label": "HSK1", "learn": ""},
+				{"hanzi": "小", "pinyin": "xiǎo", "vietnamese": "nhỏ, bé", "label": "HSK1", "learn": ""},
+				{"hanzi": "小孩儿", "pinyin": "xiǎoháir", "vietnamese": "trẻ em", "label": "HSK1", "learn": ""},
+				{"hanzi": "小姐", "pinyin": "xiǎojiě", "vietnamese": "tiểu thư, cô, em", "label": "HSK1", "learn": ""},
+				{"hanzi": "小朋友", "pinyin": "xiǎopéngyǒu", "vietnamese": "trẻ em, bạn nhỏ", "label": "HSK1", "learn": ""},
+				{"hanzi": "小时", "pinyin": "xiǎoshí", "vietnamese": "tiếng, giờ đồng hồ", "label": "HSK1", "learn": ""},
+				{"hanzi": "小学", "pinyin": "xiǎoxué", "vietnamese": "bậc tiểu học", "label": "HSK1", "learn": ""},
+				{"hanzi": "小学生", "pinyin": "xiǎoxuéshēng", "vietnamese": "học sinh tiểu học", "label": "HSK1", "learn": ""},
+				{"hanzi": "笑", "pinyin": "xiào", "vietnamese": "cười", "label": "HSK1", "learn": ""},
+				{"hanzi": "写", "pinyin": "xiě", "vietnamese": "viết", "label": "HSK1", "learn": ""},
+				{"hanzi": "谢谢", "pinyin": "xièxie", "vietnamese": "cảm ơn", "label": "HSK1", "learn": ""},
+				{"hanzi": "新", "pinyin": "xīn", "vietnamese": "mới", "label": "HSK1", "learn": ""},
+				{"hanzi": "新年", "pinyin": "xīnnián", "vietnamese": "năm mới", "label": "HSK1", "learn": ""},
+				{"hanzi": "星期", "pinyin": "xīngqī", "vietnamese": "tuần, thứ", "label": "HSK1", "learn": ""},
+				{"hanzi": "星期日", "pinyin": "xīngqīrì", "vietnamese": "chủ nhật", "label": "HSK1", "learn": ""},
+				{"hanzi": "星期天", "pinyin": "xīngqītiān", "vietnamese": "chủ nhật", "label": "HSK1", "learn": ""},
+				{"hanzi": "行", "pinyin": "xíng", "vietnamese": "được, ổn", "label": "HSK1", "learn": ""},
+				{"hanzi": "休息", "pinyin": "xiūxi", "vietnamese": "nghỉ ngơi", "label": "HSK1", "learn": ""},
+				{"hanzi": "学", "pinyin": "xué", "vietnamese": "học", "label": "HSK1", "learn": ""},
+				{"hanzi": "学生", "pinyin": "xuéshēng", "vietnamese": "học sinh, sinh viên", "label": "HSK1", "learn": ""},
+				{"hanzi": "学习", "pinyin": "xuéxí", "vietnamese": "học tập", "label": "HSK1", "learn": ""},
+				{"hanzi": "学校", "pinyin": "xuéxiào", "vietnamese": "trường học", "label": "HSK1", "learn": ""},
+				{"hanzi": "学院", "pinyin": "xuéyuàn", "vietnamese": "học viện", "label": "HSK1", "learn": ""},
+				{"hanzi": "要", "pinyin": "yào", "vietnamese": "muốn, cần, phải", "label": "HSK1", "learn": ""},
+				{"hanzi": "爷爷", "pinyin": "yéye", "vietnamese": "ông nội, ông", "label": "HSK1", "learn": ""},
+				{"hanzi": "也", "pinyin": "yě", "vietnamese": "cũng", "label": "HSK1", "learn": ""},
+				{"hanzi": "页", "pinyin": "yè", "vietnamese": "trang", "label": "HSK1", "learn": ""},
+				{"hanzi": "一", "pinyin": "yī", "vietnamese": "số 1", "label": "HSK1", "learn": ""},
+				{"hanzi": "衣服", "pinyin": "yīfu", "vietnamese": "quần áo", "label": "HSK1", "learn": ""},
+				{"hanzi": "医生", "pinyin": "yīshēng", "vietnamese": "bác sĩ", "label": "HSK1", "learn": ""},
+				{"hanzi": "医院", "pinyin": "yīyuàn", "vietnamese": "bệnh viện", "label": "HSK1", "learn": ""},
+				{"hanzi": "一半", "pinyin": "yíbàn", "vietnamese": "một nửa", "label": "HSK1", "learn": ""},
+				{"hanzi": "一会儿", "pinyin": "yíhuìr", "vietnamese": "một chốc, một lát", "label": "HSK1", "learn": ""},
+				{"hanzi": "一块儿", "pinyin": "yíkuàir", "vietnamese": "cùng nơi, cùng chỗ, cùng nhau", "label": "HSK1", "learn": ""},
+				{"hanzi": "一下儿", "pinyin": "yíxiàr", "vietnamese": "một lát, một lúc", "label": "HSK1", "learn": ""},
+				{"hanzi": "一样", "pinyin": "yíyàng", "vietnamese": "giống nhau, như nhau", "label": "HSK1", "learn": ""},
+				{"hanzi": "一边", "pinyin": "yìbiān", "vietnamese": "một bên, một mặt", "label": "HSK1", "learn": ""},
+				{"hanzi": "一点儿", "pinyin": "yìdiǎnr", "vietnamese": "một chút", "label": "HSK1", "learn": ""},
+				{"hanzi": "一起", "pinyin": "yìqǐ", "vietnamese": "cùng", "label": "HSK1", "learn": ""},
+				{"hanzi": "一些", "pinyin": "yìxiē", "vietnamese": "một ít, một chút", "label": "HSK1", "learn": ""},
+				{"hanzi": "用", "pinyin": "yòng", "vietnamese": "dùng, sử dụng", "label": "HSK1", "learn": ""},
+				{"hanzi": "有", "pinyin": "yǒu", "vietnamese": "có", "label": "HSK1", "learn": ""},
+				{"hanzi": "有的", "pinyin": "yǒude", "vietnamese": "có", "label": "HSK1", "learn": ""},
+				{"hanzi": "有名", "pinyin": "yǒumíng", "vietnamese": "nổi tiếng", "label": "HSK1", "learn": ""},
+				{"hanzi": "有时候", "pinyin": "yǒushíhou", "vietnamese": "có lúc", "label": "HSK1", "learn": ""},
+				{"hanzi": "有一些", "pinyin": "yǒu（yì）xiē", "vietnamese": "có một tí", "label": "HSK1", "learn": ""},
+				{"hanzi": "有用", "pinyin": "yǒuyòng", "vietnamese": "có ích, có tác dụng", "label": "HSK1", "learn": ""},
+				{"hanzi": "右", "pinyin": "yòu", "vietnamese": "bên phải", "label": "HSK1", "learn": ""},
+				{"hanzi": "右边", "pinyin": "yòubian", "vietnamese": "phía bên phải", "label": "HSK1", "learn": ""},
+				{"hanzi": "雨", "pinyin": "yǔ", "vietnamese": "mưa", "label": "HSK1", "learn": ""},
+				{"hanzi": "元", "pinyin": "yuán", "vietnamese": "đồng (đơn vị tiền tệ)", "label": "HSK1", "learn": ""},
+				{"hanzi": "远", "pinyin": "yuǎn", "vietnamese": "xa", "label": "HSK1", "learn": ""},
+				{"hanzi": "月", "pinyin": "yuè", "vietnamese": "mặt trăng, tháng", "label": "HSK1", "learn": ""},
+				{"hanzi": "再", "pinyin": "zài", "vietnamese": "lại", "label": "HSK1", "learn": ""},
+				{"hanzi": "再见", "pinyin": "zàijiàn", "vietnamese": "hẹn gặp lại/ Tạm biệt", "label": "HSK1", "learn": ""},
+				{"hanzi": "在", "pinyin": "zài", "vietnamese": "đang, ở tại", "label": "HSK1", "learn": ""},
+				{"hanzi": "在家", "pinyin": "zàijiā", "vietnamese": "ở nhà", "label": "HSK1", "learn": ""},
+				{"hanzi": "早", "pinyin": "zǎo", "vietnamese": "sớm", "label": "HSK1", "learn": ""},
+				{"hanzi": "早饭", "pinyin": "zǎofàn", "vietnamese": "bữa sáng", "label": "HSK1", "learn": ""},
+				{"hanzi": "早上", "pinyin": "zǎoshàng", "vietnamese": "buổi sáng", "label": "HSK1", "learn": ""},
+				{"hanzi": "怎么", "pinyin": "zěnme", "vietnamese": "làm sao, thế nào", "label": "HSK1", "learn": ""},
+				{"hanzi": "站", "pinyin": "zhàn", "vietnamese": "bến, trạm", "label": "HSK1", "learn": ""},
+				{"hanzi": "找", "pinyin": "zhǎo", "vietnamese": "tìm", "label": "HSK1", "learn": ""},
+				{"hanzi": "找到", "pinyin": "zhǎodào", "vietnamese": "tìm thấy", "label": "HSK1", "learn": ""},
+				{"hanzi": "这", "pinyin": "zhè", "vietnamese": "này, đây", "label": "HSK1", "learn": ""},
+				{"hanzi": "这边", "pinyin": "zhèbiān", "vietnamese": "bên này", "label": "HSK1", "learn": ""},
+				{"hanzi": "这里", "pinyin": "zhèlǐ", "vietnamese": "nơi đây", "label": "HSK1", "learn": ""},
+				{"hanzi": "这儿", "pinyin": "zhèr", "vietnamese": "đây", "label": "HSK1", "learn": ""},
+				{"hanzi": "这些", "pinyin": "zhèxiē", "vietnamese": "những cái này", "label": "HSK1", "learn": ""},
+				{"hanzi": "着", "pinyin": "zhe", "vietnamese": "đang (trợ từ động thái)", "label": "HSK1", "learn": ""},
+				{"hanzi": "真", "pinyin": "zhēn", "vietnamese": "thật là", "label": "HSK1", "learn": ""},
+				{"hanzi": "真的", "pinyin": "zhēnde", "vietnamese": "Thật ư? Thật đó!", "label": "HSK1", "learn": ""},
+				{"hanzi": "正", "pinyin": "zhèng", "vietnamese": "khéo, chính,...", "label": "HSK1", "learn": ""},
+				{"hanzi": "正在", "pinyin": "zhèngzài", "vietnamese": "đang", "label": "HSK1", "learn": ""},
+				{"hanzi": "知道", "pinyin": "zhīdào", "vietnamese": "biết", "label": "HSK1", "learn": ""},
+				{"hanzi": "知识", "pinyin": "zhīshì", "vietnamese": "kiến thức", "label": "HSK1", "learn": ""},
+				{"hanzi": "中", "pinyin": "zhōng", "vietnamese": "giữa", "label": "HSK1", "learn": ""},
+				{"hanzi": "中国", "pinyin": "Zhōngguó", "vietnamese": "nước Trung Quốc", "label": "HSK1", "learn": ""},
+				{"hanzi": "中间", "pinyin": "zhōngjiān", "vietnamese": "giữa", "label": "HSK1", "learn": ""},
+				{"hanzi": "中文", "pinyin": "Zhōngwén", "vietnamese": "(văn tự) Tiếng Trung", "label": "HSK1", "learn": ""},
+				{"hanzi": "中午", "pinyin": "zhōngwǔ", "vietnamese": "buổi trưa", "label": "HSK1", "learn": ""},
+				{"hanzi": "中学", "pinyin": "zhōngxué", "vietnamese": "cấp Trung học", "label": "HSK1", "learn": ""},
+				{"hanzi": "中学生", "pinyin": "zhōngxuéshēn", "vietnamese": "học sinh Trung học", "label": "HSK1", "learn": ""},
+				{"hanzi": "重", "pinyin": "zhòng", "vietnamese": "nặng", "label": "HSK1", "learn": ""},
+				{"hanzi": "重要", "pinyin": "zhòngyào", "vietnamese": "quan trọng", "label": "HSK1", "learn": ""},
+				{"hanzi": "住", "pinyin": "zhù", "vietnamese": "ở tại", "label": "HSK1", "learn": ""},
+				{"hanzi": "准备", "pinyin": "zhǔnbèi", "vietnamese": "chuẩn bị", "label": "HSK1", "learn": ""},
+				{"hanzi": "桌子", "pinyin": "zhuōzi", "vietnamese": "cái bàn", "label": "HSK1", "learn": ""},
+				{"hanzi": "字", "pinyin": "zì", "vietnamese": "chữ, chữ viết, văn tự", "label": "HSK1", "learn": ""},
+				{"hanzi": "子", "pinyin": "zi（zhuōzi）", "vietnamese": "cái", "label": "HSK1", "learn": ""},
+				{"hanzi": "走", "pinyin": "zǒu", "vietnamese": "đi", "label": "HSK1", "learn": ""},
+				{"hanzi": "走路", "pinyin": "zǒulù", "vietnamese": "đi đường, đi bộ", "label": "HSK1", "learn": ""},
+				{"hanzi": "最", "pinyin": "zuì", "vietnamese": "nhất, số một", "label": "HSK1", "learn": ""},
+				{"hanzi": "最好", "pinyin": "zuìhǎo", "vietnamese": "tốt nhất", "label": "HSK1", "learn": ""},
+				{"hanzi": "最后", "pinyin": "zuìhòu", "vietnamese": "cuối cùng, sau cùng", "label": "HSK1", "learn": ""},
+				{"hanzi": "昨天", "pinyin": "zuótiān", "vietnamese": "hôm qua", "label": "HSK1", "learn": ""},
+				{"hanzi": "左", "pinyin": "zuǒ", "vietnamese": "bên trái", "label": "HSK1", "learn": ""},
+				{"hanzi": "左边", "pinyin": "zuǒbiān", "vietnamese": "bên trái", "label": "HSK1", "learn": ""},
+				{"hanzi": "坐", "pinyin": "zuò", "vietnamese": "ngồi", "label": "HSK1", "learn": ""},
+				{"hanzi": "坐下", "pinyin": "zuòxià", "vietnamese": "ngồi xuống", "label": "HSK1", "learn": ""},
+				{"hanzi": "做", "pinyin": "zuò", "vietnamese": "làm", "label": "HSK1", "learn": ""}
+			]
+			const progressBar = document.getElementById("range-vocabulary");
+			const progressText = document.querySelector(".checked-total");
+			const range_vocabulary = document.getElementById("range-vocabulary");
+			const index_vocabulary = document.getElementById("vocabularys");
+			let learnedCount = 0;
+			const totalWords = vocabulary_hsk1.length;
+			progressBar.max = totalWords;
+			progressText.textContent = `${learnedCount}/${totalWords}`;
+			for (i in vocabulary_hsk1) {
+				const item = document.createElement("div");
+				item.classList.add("item");
+				item.innerHTML = `
+					<span class="pinyin">${vocabulary_hsk1[i].pinyin}</span>
+					<span class="hanzi">${vocabulary_hsk1[i].hanzi}</span>
+					<span class="vietnamese">${vocabulary_hsk1[i].vietnamese}</span>
+					<div class="bottom">
+						<span class="label">${vocabulary_hsk1[i].label}</span>
+						<button btn-light-gray class="learn-btn" data-index="${i}">Learn</button>
+					</div>
+				`
+				index_vocabulary.appendChild(item);
+			}
+			index_vocabulary.addEventListener("click", function(e) {
+				const learnBtn = e.target.closest(".learn-btn");
+				if (learnBtn && !learnBtn.classList.contains("learned")) {
+					const index = learnBtn.getAttribute("data-index");
+					const selectedWord = vocabulary_hsk1[index];
+					learnBtn.classList.add("learned");
+					learnBtn.textContent = "Learned";
+					learnBtn.disabled = true;
+					learnedCount++;
+					progressBar.value = learnedCount;
+					progressText.textContent = `${learnedCount}/${totalWords}`;
+					console.log("Đã học từ:", selectedWord);
+				}
+			});
+		</script>
+	</body>
+</html>
