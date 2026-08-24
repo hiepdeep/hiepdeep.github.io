@@ -9,7 +9,7 @@ body {
 	width: 100%;
 	max-width: 1080px;
 	margin: 0 auto;
-	padding: 12px;
+	padding: calc(12px + env(safe-area-inset-top));
 	user-select: none;
 	.app-header {
 		flex-shrink: 0;
@@ -23,7 +23,7 @@ body {
 		border-radius: var(--bdrs-lv-3) var(--bdrs-lv-3) 0 0;
 		box-shadow: 0 -50px var(--bg-body-blue);
 		position: sticky;
-		top: 12px;
+		top: calc(12px + env(safe-area-inset-top));
 		left: 0;
 		z-index: 9999;
 		.logo {
@@ -74,7 +74,7 @@ body {
 			border-radius: 0 0 var(--bdrs-lv-3) var(--bdrs-lv-3);
 			box-shadow: 0 -20px var(--bg-body-blue);
 			position: sticky;
-			top: calc(56px + 12px);
+			top: calc(56px + 12px + env(safe-area-inset-top));
 			left: 0;
 			z-index: 999;
 			.vocab-progress {
@@ -221,7 +221,7 @@ body {
 		}
 		.app-main {
 			.vocab-dashboard {
-				top: calc(98px + 12px);
+				top: calc(98px + 12px + env(safe-area-inset-top));
 			}
 		}
 	}
@@ -235,7 +235,7 @@ body {
 		}
 		.app-main {
 			.vocab-dashboard {
-				top: calc(56px + 12px);
+				top: calc(56px + 12px + env(safe-area-inset-top));
 				.filter-box {
 					flex-direction: column;
 				}
