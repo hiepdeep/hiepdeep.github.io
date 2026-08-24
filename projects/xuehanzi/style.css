@@ -21,7 +21,7 @@ body {
 		background: var(--bg-box);
 		border: 1px solid var(--bd-box);
 		border-radius: var(--bdrs-lv-3) var(--bdrs-lv-3) 0 0;
-		box-shadow: 0 -20px var(--bg-body-blue);
+		box-shadow: 0 -50px var(--bg-body-blue);
 		position: sticky;
 		top: 12px;
 		left: 0;
