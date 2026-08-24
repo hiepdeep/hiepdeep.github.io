@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="favicon.png">
+		<link rel="apple-touch-icon" href="icon.png">
+		<title>学汉字 | Xué Hànzì</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="box">
+			<div id="header-top">
+				<a href="" class="logo">
+					<img src="https://hiepdeep.github.io/library/pictures/svg/books.svg" alt="">
+					<span class="text">Xué Hànzì</span>
+				</a>
+				<div class="nav">
+					<li><a href="javascript:;" class="focus">Từ vựng</a></li>
+					<li><a href="javascript:;">Mẫu câu</a></li>
+					<li><a href="javascript:;">Đoạn văn</a></li>
+					<li><a href="javascript:;">Đoạn hội thoại</a></li>
+				</div>
+			</div>
+			<div class="main">
+				<div class="main-top">
+					<div class="check-vocabulary">
+						<div id="checked-vocabulary">
+							<span class="t">Từ vựng đã học</span>
+							<div class="range">
+								<progress id="range-vocabulary" name="range-vocabulary" value="0"></progress>
+								<span class="checked-total">0</span>
+							</div>
+						</div>
+						<div class="filter-box">
+							<input type="search" id="search-vocabulary" placeholder="Search..">
+							<div class="option">
+								<label for="age1">
+									<input type="radio" id="age1" name="view-learn" value="all" checked>
+									<span class="txt">Tất cả</span>
+								</label>
+								<label for="age2">
+									<input type="radio" id="age2" name="view-learn" value="learn">
+									<span class="txt">Chưa học</span>
+								</label>
+								<label for="age3">
+									<input type="radio" id="age3" name="view-learn" value="learned">
+									<span class="txt">Đã học</span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div id="vocabularys"></div>
+				</div>
+			</div>
+		</div>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="script.js"></script>
+	</body>
+</html>
