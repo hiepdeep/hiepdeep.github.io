@@ -214,7 +214,7 @@ body {
 	}
 }
 
-@media (max-width: 610px) {
+@media (max-width: 620px) {
 	.app-container {
 		.app-header {
 			flex-direction: column;
@@ -226,7 +226,7 @@ body {
 		}
 	}
 }
-@media (max-width: 460px) {
+@media (max-width: 470px) {
 	.app-container {
 		.app-header {
 			.nav {
@@ -234,8 +234,11 @@ body {
 			}
 		}
 		.app-main {
-			.filter-box {
-				flex-direction: column;
+			.vocab-dashboard {
+				top: calc(56px + 12px);
+				.filter-box {
+					flex-direction: column;
+				}
 			}
 		}
 	}
