@@ -54,6 +54,7 @@ body {
 					padding: 6px;
 					width: 30px;
 					height: 30px;
+					background: hsl(var(--hue-saturation-gray), 95%);
 					border: 1px solid hsl(var(--hue-saturation-gray), 90%);
 					border-radius: var(--bdrs-lv-4);
 					.dot {
@@ -179,14 +180,30 @@ body {
 							background: hsl(var(--hue-saturation-gray), 95%);
 							border: 1px solid hsl(var(--hue-saturation-gray), 90%);
 							border-radius: var(--bdrs-lv-4);
+							&:hover {
+								background: hsl(var(--hue-saturation-gray), 90%);
+								border-color: hsl(var(--hue-saturation-gray), 85%);
+							}
+							&:active {
+								background: hsl(var(--hue-saturation-gray), 85%);
+								border-color: hsl(var(--hue-saturation-gray), 80%);
+							}
 							cursor: pointer;
 							input[type="radio"] {
 								display: none;
 							}
 							&:has(input:checked) {
-								color: hsl(var(--hue-saturation-gray), 95%);
-								background: hsl(var(--hue-saturation-gray), 50%);
-								border: 1px solid hsl(var(--hue-saturation-gray), 45%);
+								color: hsl(var(--hue-saturation-blue), 95%);
+								background: hsl(var(--hue-saturation-blue), 50%);
+								border: 1px solid hsl(var(--hue-saturation-blue), 45%);
+								&:hover {
+									background: hsl(var(--hue-saturation-blue), 45%);
+									border-color: hsl(var(--hue-saturation-blue), 40%);
+								}
+								&:active {
+									background: hsl(var(--hue-saturation-blue), 40%);
+									border-color: hsl(var(--hue-saturation-blue), 35%);
+								}
 							}
 						}
 					}
@@ -211,8 +228,11 @@ body {
 				background: var(--bg-box);
 				border: 1px solid var(--bd-box);
 				border-radius: var(--bdrs-lv-3);
+				&:hover {
+					border-color: hsl(var(--hue-saturation-gray), 80%);
+				}
 				&.learned {
-					border: 1px solid hsl(var(--hue-saturation-green), 60%);
+					border-color: hsl(var(--hue-saturation-green), 60%);
 					box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-green), 60%) inset;
 				}
 				.hanzi {
@@ -247,6 +267,14 @@ body {
 							color: hsl(var(--hue-saturation-green), 40%);
 							background: hsl(var(--hue-saturation-green), 95%);
 							border: 1px solid hsl(var(--hue-saturation-green), 90%);
+							&:hover {
+								background: hsl(var(--hue-saturation-green), 90%);
+								border-color: hsl(var(--hue-saturation-green), 85%);
+							}
+							&:active {
+								background: hsl(var(--hue-saturation-green), 85%);
+								border-color: hsl(var(--hue-saturation-green), 80%);
+							}
 						}
 					}
 				}
