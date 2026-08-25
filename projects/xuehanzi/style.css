@@ -223,11 +223,13 @@ body {
 @media (max-width: 620px) {
 	.app-container {
 		.app-header {
-			flex-direction: column;
+			.margin {
+				flex-direction: column;
+			}
 		}
 		.app-main {
 			.vocab-dashboard {
-				top: calc(98px + 12px);
+				top: 98px;
 			}
 		}
 	}
@@ -235,15 +237,19 @@ body {
 @media (max-width: 470px) {
 	.app-container {
 		.app-header {
-			.nav {
-				display: none;
+			.margin {
+				.nav {
+					display: none;
+				}
 			}
 		}
 		.app-main {
 			.vocab-dashboard {
-				top: calc(56px + 12px);
-				.filter-box {
-					flex-direction: column;
+				top: 56px;
+				.margin {
+					.filter-box {
+						flex-direction: column;
+					}
 				}
 			}
 		}
