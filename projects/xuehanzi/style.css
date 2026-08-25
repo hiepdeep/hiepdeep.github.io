@@ -216,6 +216,11 @@ body {
 					}
 				}
 			}
+			.null {
+				display: block;
+				text-align: center;
+				color: hsl(var(--hue-saturation-gray), 50%);
+			}
 		}
 	}
 }
