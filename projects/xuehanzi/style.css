@@ -142,7 +142,17 @@ body {
 							background: var(--bd-box);
 						}
 						&::-webkit-progress-value {
-							background: hsl(var(--hue-saturation-teal), 50%);
+							background-image: linear-gradient(
+								90deg,
+								rgba(245, 231, 163, 1) 0%,
+								rgba(245, 204, 163, 1) 20%,
+								rgba(240, 180, 168, 1) 40%,
+								rgba(179, 230, 221, 1) 60%,
+								rgba(168, 204, 240, 1) 80%,
+								rgba(196, 179, 230, 1) 100%
+							);
+							background-size: 100vw 100%;
+							background-attachment: fixed;
 						}
 					}
 				}
@@ -223,7 +233,6 @@ body {
 				justify-content: space-between;
 				align-items: center;
 				padding: 12px;
-				position: relative;
 				color: var(--color-lv-2);
 				background: var(--bg-box);
 				border: 1px solid var(--bd-box);
@@ -251,38 +260,143 @@ body {
 						font-size: 10px;
 						font-weight: 500;
 						border-radius: var(--bdrs-lv-4);
-						color: hsl(var(--hue-saturation-yellow), 30%);
-						background: hsl(var(--hue-saturation-yellow), 90%);
-						border: 1px solid hsl(var(--hue-saturation-yellow), 85%);
 					}
 					button {
 						width: 26px;
 						height: 100%;
 						border-radius: var(--bdrs-lv-4);
-						&.learned {
-							color: hsl(var(--hue-saturation-yellow), 15%);
-							background: hsl(var(--hue-saturation-yellow), 75%);
-							border: 1px solid hsl(var(--hue-saturation-yellow), 70%);
-							&:hover {
-								background: hsl(var(--hue-saturation-yellow), 70%);
-								border-color: hsl(var(--hue-saturation-yellow), 65%);
-							}
-							&:active {
-								background: hsl(var(--hue-saturation-yellow), 65%);
-								border-color: hsl(var(--hue-saturation-yellow), 60%);
+					}
+				}
+				&[data-label="HSK1"] {
+					.bottom {
+						.label {
+							color: hsl(var(--hue-saturation-yellow), 30%);
+							background: hsl(var(--hue-saturation-yellow), 90%);
+							border: 1px solid hsl(var(--hue-saturation-yellow), 85%);
+						}
+					}
+					&.learned {
+						color: hsl(var(--hue-saturation-yellow), 25%);
+						background: hsl(var(--hue-saturation-yellow), 85%);
+						border: 1px solid hsl(var(--hue-saturation-yellow), 80%);
+						box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-yellow), 60%) inset;
+						.bottom {
+							button {
+								color: hsl(var(--hue-saturation-yellow), 30%);
+								background: hsl(var(--hue-saturation-yellow), 90%);
+								border: 1px solid hsl(var(--hue-saturation-yellow), 85%);
 							}
 						}
 					}
 				}
-				&.learned {
-					color: hsl(var(--hue-saturation-yellow), 20%);
-					background: hsl(var(--hue-saturation-yellow), 80%);
-					border: 1px solid hsl(var(--hue-saturation-yellow), 75%);
-					box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-yellow), 60%) inset;
-					.label {
-						color: hsl(var(--hue-saturation-yellow), 15%);
-						background: hsl(var(--hue-saturation-yellow), 75%);
-						border: 1px solid hsl(var(--hue-saturation-yellow), 70%);
+				&[data-label="HSK2"] {
+					.bottom {
+						.label {
+							color: hsl(var(--hue-saturation-orange), 30%);
+							background: hsl(var(--hue-saturation-orange), 90%);
+							border: 1px solid hsl(var(--hue-saturation-orange), 85%);
+						}
+					}
+					&.learned {
+						color: hsl(var(--hue-saturation-orange), 25%);
+						background: hsl(var(--hue-saturation-orange), 85%);
+						border: 1px solid hsl(var(--hue-saturation-orange), 80%);
+						box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-orange), 60%) inset;
+						.bottom {
+							button {
+								color: hsl(var(--hue-saturation-orange), 30%);
+								background: hsl(var(--hue-saturation-orange), 90%);
+								border: 1px solid hsl(var(--hue-saturation-orange), 85%);
+							}
+						}
+					}
+				}
+				&[data-label="HSK3"] {
+					.bottom {
+						.label {
+							color: hsl(var(--hue-saturation-red), 30%);
+							background: hsl(var(--hue-saturation-red), 90%);
+							border: 1px solid hsl(var(--hue-saturation-red), 85%);
+						}
+					}
+					&.learned {
+						color: hsl(var(--hue-saturation-red), 25%);
+						background: hsl(var(--hue-saturation-red), 85%);
+						border: 1px solid hsl(var(--hue-saturation-red), 80%);
+						box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-red), 60%) inset;
+						.bottom {
+							button {
+								color: hsl(var(--hue-saturation-red), 30%);
+								background: hsl(var(--hue-saturation-red), 90%);
+								border: 1px solid hsl(var(--hue-saturation-red), 85%);
+							}
+						}
+					}
+				}
+				&[data-label="HSK4"] {
+					.bottom {
+						.label {
+							color: hsl(var(--hue-saturation-teal), 30%);
+							background: hsl(var(--hue-saturation-teal), 90%);
+							border: 1px solid hsl(var(--hue-saturation-teal), 85%);
+						}
+					}
+					&.learned {
+						color: hsl(var(--hue-saturation-teal), 25%);
+						background: hsl(var(--hue-saturation-teal), 85%);
+						border: 1px solid hsl(var(--hue-saturation-teal), 80%);
+						box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-teal), 60%) inset;
+						.bottom {
+							button {
+								color: hsl(var(--hue-saturation-teal), 30%);
+								background: hsl(var(--hue-saturation-teal), 90%);
+								border: 1px solid hsl(var(--hue-saturation-teal), 85%);
+							}
+						}
+					}
+				}
+				&[data-label="HSK5"] {
+					.bottom {
+						.label {
+							color: hsl(var(--hue-saturation-blue), 30%);
+							background: hsl(var(--hue-saturation-blue), 90%);
+							border: 1px solid hsl(var(--hue-saturation-blue), 85%);
+						}
+					}
+					&.learned {
+						color: hsl(var(--hue-saturation-blue), 25%);
+						background: hsl(var(--hue-saturation-blue), 85%);
+						border: 1px solid hsl(var(--hue-saturation-blue), 80%);
+						box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-blue), 60%) inset;
+						.bottom {
+							button {
+								color: hsl(var(--hue-saturation-blue), 30%);
+								background: hsl(var(--hue-saturation-blue), 90%);
+								border: 1px solid hsl(var(--hue-saturation-blue), 85%);
+							}
+						}
+					}
+				}
+				&[data-label="HSK6"] {
+					.bottom {
+						.label {
+							color: hsl(var(--hue-saturation-purple), 30%);
+							background: hsl(var(--hue-saturation-purple), 90%);
+							border: 1px solid hsl(var(--hue-saturation-purple), 85%);
+						}
+					}
+					&.learned {
+						color: hsl(var(--hue-saturation-purple), 25%);
+						background: hsl(var(--hue-saturation-purple), 85%);
+						border: 1px solid hsl(var(--hue-saturation-purple), 80%);
+						box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-purple), 60%) inset;
+						.bottom {
+							button {
+								color: hsl(var(--hue-saturation-purple), 30%);
+								background: hsl(var(--hue-saturation-purple), 90%);
+								border: 1px solid hsl(var(--hue-saturation-purple), 85%);
+							}
+						}
 					}
 				}
 			}
