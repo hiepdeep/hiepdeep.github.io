@@ -231,10 +231,6 @@ body {
 				&:hover {
 					border-color: hsl(var(--hue-saturation-gray), 80%);
 				}
-				&.learned {
-					border-color: hsl(var(--hue-saturation-green), 60%);
-					box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-green), 60%) inset;
-				}
 				.hanzi {
 					font-family: "Noto Serif SC", serif;
 					font-size: 40px;
@@ -255,27 +251,38 @@ body {
 						font-size: 10px;
 						font-weight: 500;
 						border-radius: var(--bdrs-lv-4);
-						color: hsl(var(--hue-saturation-orange), 40%);
-						background: hsl(var(--hue-saturation-orange), 95%);
-						border: 1px solid hsl(var(--hue-saturation-orange), 90%);
+						color: hsl(var(--hue-saturation-yellow), 30%);
+						background: hsl(var(--hue-saturation-yellow), 90%);
+						border: 1px solid hsl(var(--hue-saturation-yellow), 85%);
 					}
 					button {
 						width: 26px;
 						height: 100%;
 						border-radius: var(--bdrs-lv-4);
 						&.learned {
-							color: hsl(var(--hue-saturation-green), 40%);
-							background: hsl(var(--hue-saturation-green), 95%);
-							border: 1px solid hsl(var(--hue-saturation-green), 90%);
+							color: hsl(var(--hue-saturation-yellow), 15%);
+							background: hsl(var(--hue-saturation-yellow), 75%);
+							border: 1px solid hsl(var(--hue-saturation-yellow), 70%);
 							&:hover {
-								background: hsl(var(--hue-saturation-green), 90%);
-								border-color: hsl(var(--hue-saturation-green), 85%);
+								background: hsl(var(--hue-saturation-yellow), 70%);
+								border-color: hsl(var(--hue-saturation-yellow), 65%);
 							}
 							&:active {
-								background: hsl(var(--hue-saturation-green), 85%);
-								border-color: hsl(var(--hue-saturation-green), 80%);
+								background: hsl(var(--hue-saturation-yellow), 65%);
+								border-color: hsl(var(--hue-saturation-yellow), 60%);
 							}
 						}
+					}
+				}
+				&.learned {
+					color: hsl(var(--hue-saturation-yellow), 20%);
+					background: hsl(var(--hue-saturation-yellow), 80%);
+					border: 1px solid hsl(var(--hue-saturation-yellow), 75%);
+					box-shadow: 0 0 12px -6px hsl(var(--hue-saturation-yellow), 60%) inset;
+					.label {
+						color: hsl(var(--hue-saturation-yellow), 15%);
+						background: hsl(var(--hue-saturation-yellow), 75%);
+						border: 1px solid hsl(var(--hue-saturation-yellow), 70%);
 					}
 				}
 			}
