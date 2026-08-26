@@ -101,13 +101,14 @@ function filterAndDisplayVocabulary() {
 			visibleCount++;
 			const div = document.createElement("div");
 			div.classList.add("item");
+			div.dataset.label = item.label;
 			if (isLearned) div.classList.add("learned");
 			div.innerHTML = `
-				<span class="pinyin">${item.pinyin || ""}</span>
-				<span class="hanzi">${item.hanzi || ""}</span>
-				<span class="vietnamese">${item.vietnamese || ""}</span>
+				<span class="pinyin">${item.pinyin}</span>
+				<span class="hanzi">${item.hanzi}</span>
+				<span class="vietnamese">${item.vietnamese}</span>
 				<div class="bottom">
-					<span class="label">${item.label || ""}</span>
+					<span class="label">${item.label}</span>
 					<button
 						btn-light-gray
 						class="material-symbols-rounded learn-btn ${isLearned ? 'learned' : ''}"
