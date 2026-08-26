@@ -15,6 +15,7 @@ const filterRadios = document.querySelectorAll('input[name="view-learn"]');
 let allVocabularyData = {};
 let currentFilter = "all";
 let currentSearchText = "";
+let hasAnimated = false;
 
 document.addEventListener("DOMContentLoaded", () => {
 	render_vocabularys();
@@ -84,19 +85,16 @@ function filterAndDisplayVocabulary() {
 		totalWords++;
 		const isLearned = item.learn === "learned";
 		if (isLearned) learnedCount++;
-		// Kiểm tra điều kiện lọc trạng thái (radio)
 		let matchesFilter = true;
 		if (currentFilter === "learn") {
-			matchesFilter = !isLearned; // Chưa học
+			matchesFilter = !isLearned;
 		} else if (currentFilter === "learned") {
-			matchesFilter = isLearned; // Đã học
+			matchesFilter = isLearned;
 		}
-		// Kiểm tra điều kiện tìm kiếm (pinyin, hanzi, vietnamese)
 		const pinyin = (item.pinyin || "").toLowerCase();
 		const hanzi = (item.hanzi || "").toLowerCase();
 		const vietnamese = (item.vietnamese || "").toLowerCase();
 		const matchesSearch = pinyin.includes(currentSearchText) || hanzi.includes(currentSearchText) || vietnamese.includes(currentSearchText);
-		// Nếu thỏa mãn cả 2 điều kiện thì render ra giao diện
 		if (matchesFilter && matchesSearch) {
 			visibleCount++;
 			const div = document.createElement("div");
@@ -119,12 +117,39 @@ function filterAndDisplayVocabulary() {
 			index_vocabulary.appendChild(div);
 		}
 	});
-	// Cập nhật thanh tiến trình (progress bar) tổng thể
-	progressBar.max = totalWords;
-	progressBar.value = learnedCount;
-	progressText.textContent = `${learnedCount}/${totalWords}`;
-	// Hiển thị thông báo nếu không có từ nào khớp kết quả tìm kiếm/lọc
+	// --- XỬ LÝ ANIMATION KHI RELOAD ---
+	if (!hasAnimated && totalWords > 0) {
+		hasAnimated = true;
+		animateProgress(learnedCount, totalWords);
+	} else if (hasAnimated) {
+		// Cập nhật tức thì nếu người dùng kích hoạt sự kiện click/search/filter
+		progressBar.max = totalWords;
+		progressBar.value = learnedCount;
+		progressText.textContent = `${learnedCount}/${totalWords}`;
+	}
 	if (visibleCount === 0) {
 		index_vocabulary.innerHTML = `<span class="null">Không tìm thấy dữ liệu từ vựng nào!</span>`;
 	}
+}
+
+function animateProgress(targetLearned, totalWords, duration = 500) {
+	let startTime = null;
+	function step(timestamp) {
+		if (!startTime) startTime = timestamp;
+		// 1. Tỷ lệ thời gian trôi qua từ 0 đến 1 (Chuyển động tuyến tính / Đều)
+		const progress = Math.min((timestamp - startTime) / duration, 1);
+		// 2. Tính số đếm trực tiếp dựa trên tỷ lệ tuyến tính
+		const currentCount = Math.floor(progress * targetLearned);
+		progressBar.max = totalWords;
+		progressBar.value = currentCount;
+		progressText.textContent = `${currentCount}/${totalWords}`;
+		if (progress < 1) {
+			requestAnimationFrame(step);
+		} else {
+			// Đảm bảo số chính xác tuyệt đối khi hoàn thành
+			progressBar.value = targetLearned;
+			progressText.textContent = `${targetLearned}/${totalWords}`;
+		}
+	}
+	requestAnimationFrame(step);
 }
