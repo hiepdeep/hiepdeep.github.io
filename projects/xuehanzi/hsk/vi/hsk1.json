@@ -8,8 +8,8 @@
 		"m": "to love; affection; to be fond of; to like",
 		"o": [
 			"Động từ",
-			"Verbal Noun",
-			"Distinction Word"
+			"Danh động từ",
+			"Từ phân biệt"
 		],
 		"f": 120,
 		"q": 13772657,
@@ -30,7 +30,7 @@
 		"z": "ㄅㄚ・",
 		"m": "(modal particle indicating suggestion or surmise); ...right?; ...OK?; ...I presume.",
 		"o": [
-			"Modal Particle"
+			"Trợ từ tình thái"
 		],
 		"f": 89,
 		"q": 17812571,
@@ -57,8 +57,8 @@
 		"z": "ㄅㄚ",
 		"m": "eight; 8",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		],
 		"r": [
 			{
@@ -77,7 +77,7 @@
 		"z": "ㄅㄚˋ ㄅㄚ・",
 		"m": "(informal) father",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -102,8 +102,8 @@
 		"z": "ㄅㄞˇ",
 		"m": "hundred; numerous; all kinds of",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		],
 		"r": [
 			{
@@ -128,7 +128,7 @@
 		"z": "ㄅㄞˊ ㄊㄧㄢ",
 		"m": "daytime; during the day; day",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -152,7 +152,7 @@
 		"z": "ㄅㄢˋ",
 		"m": "half; semi-; incomplete; (after a number) and a half",
 		"o": [
-			"Numeral"
+			"Chữ số"
 		],
 		"f": 821,
 		"q": 2854116
@@ -165,7 +165,7 @@
 		"z": "ㄅㄠ ㄗ・",
 		"m": "steamed stuffed bun",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -189,7 +189,7 @@
 		"z": "ㄅㄟ ㄗ・",
 		"m": "cup; glass",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -214,10 +214,10 @@
 		"z": "ㄅㄣˇ",
 		"m": "roots or stems of plants; origin; source; this; the current; root; foundation; basis; (classifier for books, periodicals, files etc)",
 		"o": [
-			"Pronoun",
-			"Classifier",
-			"Adverb",
-			"Noun"
+			"Đại từ",
+			"Lượng từ",
+			"Trạng từ",
+			"Danh từ"
 		],
 		"f": 103,
 		"q": 15546838,
@@ -238,7 +238,7 @@
 		"z": "ㄅㄧㄢ",
 		"m": "side; edge; margin; border; boundary; CL:個|个[ge4]; simultaneously",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 674,
 		"q": 3385425,
@@ -265,7 +265,7 @@
 		"z": "ㄅㄧㄥˋ",
 		"m": "ailment; sickness; illness; disease; fall ill; sick; defect",
 		"o": [
-			"Noun",
+			"Danh từ",
 			"Động từ"
 		],
 		"c": [
@@ -290,7 +290,7 @@
 		"z": "ㄅㄨˋ",
 		"m": "(negative prefix); not; no",
 		"o": [
-			"Adverb"
+			"Trạng từ"
 		],
 		"f": 12,
 		"q": 70153387,
@@ -321,7 +321,7 @@
 		"z": "ㄅㄨˋ ㄧㄠˋ",
 		"m": "don't!; must not",
 		"o": [
-			"Adverb"
+			"Trạng từ"
 		],
 		"f": 237,
 		"q": 7793782
@@ -334,7 +334,7 @@
 		"z": "ㄘㄞˋ",
 		"m": "dish (type of food); vegetables; vegetable",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"棵[ke1])",
@@ -361,8 +361,8 @@
 		"z": "ㄔㄚˊ",
 		"m": "tea; tea plant",
 		"o": [
-			"Noun",
-			"Morpheme"
+			"Danh từ",
+			"Hình thái từ"
 		],
 		"c": [
 			"杯[bei1]",
@@ -408,7 +408,7 @@
 		"z": "ㄔㄠ ㄕˋ",
 		"m": "supermarket (abbr.)",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"家[jia1]"
@@ -430,7 +430,7 @@
 		"z": "ㄔㄜ",
 		"m": "car; vehicle; CL:輛|辆[liang4]; machine; to shape with a lathe; Kangxi radical 159",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 188,
 		"q": 9131035,
@@ -463,7 +463,7 @@
 		"z": "ㄔ",
 		"m": "to eat; to consume; to eat at (a cafeteria etc); to eradicate; to destroy; to absorb; to suffer (shock, injury, defeat etc); variant of 吃[chi1]",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 128,
 		"q": 12987492
@@ -476,7 +476,7 @@
 		"z": "ㄔㄨ ㄗㄨ ㄔㄜ",
 		"m": "taxi",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 3495,
 		"q": 627350,
@@ -518,10 +518,10 @@
 		"z": "ㄉㄚˋ",
 		"m": "big; large; great; older (than another person); eldest (as in 大姐[da4 jie3]); greatly; freely; fully; (dialect) father; (dialect) uncle (father's brother)",
 		"o": [
-			"Adjective",
-			"Adverb",
-			"Noun",
-			"Morpheme"
+			"Tính từ",
+			"Trạng từ",
+			"Danh từ",
+			"Hình thái từ"
 		],
 		"f": 33,
 		"q": 38361973,
@@ -561,8 +561,8 @@
 		"z": "ㄉㄚˋ ㄐㄧㄚ",
 		"m": "authority; everyone",
 		"o": [
-			"Pronoun",
-			"Noun"
+			"Đại từ",
+			"Danh từ"
 		],
 		"f": 147,
 		"q": 11129890,
@@ -583,7 +583,7 @@
 		"z": "ㄉㄚˋ ㄒㄩㄝˊ",
 		"m": "university; college; CL:所[suo3]",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"所[suo3]"
@@ -613,7 +613,7 @@
 		"z": "ㄉㄚˋ ㄒㄩㄝˊ ㄕㄥ",
 		"m": "university student; college student",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 2167,
 		"q": 1078582
@@ -627,7 +627,7 @@
 		"m": "to (a place); until (a time); up to; to go; to arrive",
 		"o": [
 			"Động từ",
-			"Preposition"
+			"Giới từ"
 		],
 		"f": 24,
 		"q": 50645570,
@@ -648,8 +648,8 @@
 		"z": "ㄉㄜ・",
 		"m": "of; ~'s (possessive particle); (used after an attribute when it modifies a noun); (used at the end of a declarative sentence for emphasis); (used after a noun, verb or adjective to form a nominal expression, as in 皮革的[pi2 ge2 de5] 'one made of leather' or 跑堂兒的|跑堂儿的[pao3 tang2 r5 de5] 'a waiter (literally, one who runs back and forth in a restaurant)' or 新的[xin1 de5] 'new one'); also pr. [di4] or [di5] in poetry and songs",
 		"o": [
-			"Particle",
-			"Noun"
+			"Trợ từ",
+			"Danh từ"
 		],
 		"f": 1,
 		"q": 943370349,
@@ -688,7 +688,7 @@
 		"z": "ㄉㄧˋ",
 		"m": "(prefix indicating ordinal number, e.g. first, number two etc)",
 		"o": [
-			"Numeral"
+			"Chữ số"
 		],
 		"f": 1400,
 		"q": 1732367,
@@ -709,7 +709,7 @@
 		"z": "ㄉㄧˋ ㄉㄧ・",
 		"m": "younger brother",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -734,7 +734,7 @@
 		"z": "ㄉㄧㄢˋ",
 		"m": "inn; shop; store",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"家[jia1])"
@@ -758,9 +758,9 @@
 		"z": "ㄉㄧㄢˇ",
 		"m": "point; dot; speck; drop; decimal point; point of a scale; point in a theory or argument; downwards-right convex character stroke; a little (usually 一点); a jot; beat (of percussion instrument); to draw a dot; to touch slightly; to drip; classifier for items; classifier for small indeterminate quantities; to nod; to select item from a list; to order (food in a restaurant); to count; o'clock; one fifth of a two hour watch (old); hour; point of time; iron bell (used to mark time); pastry; dimsum 炥心|点心",
 		"o": [
-			"Temporal Classifier",
-			"Noun",
-			"Time Word",
+			"Lượng từ chỉ thời gian",
+			"Danh từ",
+			"Từ chỉ thời gian",
 			"Động từ"
 		],
 		"r": [
@@ -780,7 +780,7 @@
 		"z": "ㄉㄧㄢˋ ㄏㄨㄚˋ",
 		"m": "telephone; phone call",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"部[bu4]",
@@ -805,7 +805,7 @@
 		"z": "ㄉㄧㄢˋ ㄋㄠˇ",
 		"m": "computer",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"臺|台[tai2]"
@@ -829,7 +829,7 @@
 		"z": "ㄉㄧㄢˋ ㄕˋ",
 		"m": "television; TV",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"臺|台[tai2]",
@@ -854,7 +854,7 @@
 		"z": "ㄉㄧㄢˋ ㄧㄥˇ",
 		"m": "movie; film",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"部[bu4]",
@@ -880,7 +880,7 @@
 		"z": "ㄉㄧㄢˋ ㄧㄥˇ ㄩㄢˋ",
 		"m": "cinema; movie theater",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"家[jia1]",
@@ -905,9 +905,8 @@
 		"z": "ㄉㄨㄥ ㄒㄧ・",
 		"m": "thing; stuff; person; CL:個|个[ge4],件[jian4]",
 		"o": [
-			"Noun",
-			"Direction Word",
-			"Personal Name"
+			"Danh từ",
+			"Phương vị từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -938,8 +937,8 @@
 		"z": "ㄉㄡ",
 		"m": "all; both; entirely; (used for emphasis) even; already; (not) at all",
 		"o": [
-			"Adverb",
-			"Morpheme"
+			"Trạng từ",
+			"Hình thái từ"
 		],
 		"f": 22,
 		"q": 52527496,
@@ -972,7 +971,7 @@
 		"z": "ㄉㄨˊ",
 		"m": "to read out; to read aloud; to read; to attend (school); to study (a subject in school); to pronounce",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 1309,
 		"q": 1849464,
@@ -1000,7 +999,7 @@
 		"m": "study; read",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 3077,
 		"q": 735952,
@@ -1021,10 +1020,10 @@
 		"z": "ㄉㄨㄟˋ",
 		"m": "couple; pair; to be opposite; to oppose; to face; versus; for; to; correct (answer); to answer; to reply; to direct (towards sth); right",
 		"o": [
-			"Preposition",
+			"Giới từ",
 			"Động từ",
-			"Classifier",
-			"Adjective"
+			"Lượng từ",
+			"Tính từ"
 		],
 		"f": 20,
 		"q": 56546971,
@@ -1066,12 +1065,12 @@
 		"z": "ㄉㄨㄛ",
 		"m": "many; much; a lot of; numerous; multi-",
 		"o": [
-			"Adjective",
-			"Numeral",
-			"Adverbial Adjective",
-			"Adverb",
+			"Tính từ",
+			"Chữ số",
+			"Tính từ chỉ trạng ngữ",
+			"Trạng từ",
 			"Động từ",
-			"Morpheme"
+			"Hình thái từ"
 		],
 		"r": [
 			{
@@ -1090,7 +1089,7 @@
 		"z": "ㄉㄨㄛ ㄕㄠ・",
 		"m": "how much?; how many?; (phone number, student ID etc) what number?",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 675,
 		"q": 3379566,
@@ -1117,8 +1116,8 @@
 		"z": "ㄦˋ",
 		"m": "two; 2",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		],
 		"r": [
 			{
@@ -1137,7 +1136,7 @@
 		"z": "ㄦˊ ㄗ・",
 		"m": "son",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 985,
 		"q": 2389621
@@ -1150,7 +1149,7 @@
 		"z": "ㄈㄢˋ",
 		"m": "food; cuisine; cooked rice; meal",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"碗[wan3]",
@@ -1175,7 +1174,7 @@
 		"z": "ㄈㄢˋ ㄉㄧㄢˋ",
 		"m": "restaurant; hotel",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"家[jia1]",
@@ -1200,7 +1199,7 @@
 		"z": "ㄈㄤˊ ㄐㄧㄢ",
 		"m": "room",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"間|间[jian1]",
@@ -1225,8 +1224,8 @@
 		"z": "ㄈㄟ ㄔㄤˊ",
 		"m": "unusual; extraordinary; extreme; very; exceptional",
 		"o": [
-			"Adverb",
-			"Distinction Word"
+			"Trạng từ",
+			"Từ phân biệt"
 		],
 		"f": 224,
 		"q": 8056541,
@@ -1247,7 +1246,7 @@
 		"z": "ㄈㄟ ㄐㄧ",
 		"m": "airplane; CL: 架[jia4]",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"架[jia4]"
@@ -1271,12 +1270,12 @@
 		"z": "ㄈㄣ",
 		"m": "to divide; to separate; to distribute; to allocate; to distinguish (good and bad); (bound form) branch of (an organization); sub- (as in 分局[fen1 ju2]); fraction; one tenth (of certain units); unit of length equivalent to 0.33 cm; minute (unit of time); minute (angular measurement unit); a point (in sports or games); 0.01 yuan (unit of money)",
 		"o": [
-			"Time Word",
-			"Temporal Classifier",
+			"Từ chỉ thời gian",
+			"Lượng từ chỉ thời gian",
 			"Động từ",
-			"Morpheme",
-			"Noun",
-			"Adverb"
+			"Hình thái từ",
+			"Danh từ",
+			"Trạng từ"
 		],
 		"f": 137,
 		"q": 11826179,
@@ -1303,7 +1302,7 @@
 		"z": "ㄈㄣ ㄓㄨㄥ",
 		"m": "minute",
 		"o": [
-			"Temporal Classifier"
+			"Lượng từ chỉ thời gian"
 		],
 		"f": 592,
 		"q": 3812320
@@ -1316,8 +1315,8 @@
 		"z": "ㄍㄠ ㄒㄧㄥˋ",
 		"m": "happy; glad; willing (to do sth); in a cheerful mood",
 		"o": [
-			"Adjective",
-			"Nominal Adjective"
+			"Tính từ",
+			"Tính từ chỉ danh từ"
 		],
 		"f": 1565,
 		"q": 1554692
@@ -1330,7 +1329,7 @@
 		"z": "ㄍㄜˋ",
 		"m": "(classifier used before a noun that has no specific classifier); (bound form) individual; variant of 個|个[ge4]",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 9,
 		"q": 87859759,
@@ -1357,8 +1356,8 @@
 		"z": "ㄍㄜ",
 		"m": "song",
 		"o": [
-			"Noun",
-			"Morpheme"
+			"Danh từ",
+			"Hình thái từ"
 		],
 		"c": [
 			"首[shou3]",
@@ -1383,7 +1382,7 @@
 		"z": "ㄍㄜ ㄍㄜ・",
 		"m": "older brother",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -1408,7 +1407,7 @@
 		"z": "ㄍㄟˇ",
 		"m": "to; for; for the benefit of; to give; to allow; to do sth (for sb); (grammatical equivalent of 被); (grammatical equivalent of 把); (sentence intensifier)",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 48,
 		"q": 28952371,
@@ -1435,7 +1434,7 @@
 		"z": "ㄍㄨㄥ ㄙ",
 		"m": "(business) company; company; firm; corporation; incorporated",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"家[jia1]"
@@ -1459,9 +1458,9 @@
 		"z": "ㄍㄨㄥ ㄗㄨㄛˋ",
 		"m": "job; work; construction; task",
 		"o": [
-			"Verbal Noun",
+			"Danh động từ",
 			"Động từ",
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -1487,7 +1486,7 @@
 		"z": "ㄍㄡˇ",
 		"m": "dog",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"隻|只[zhi1]",
@@ -1512,10 +1511,10 @@
 		"z": "ㄍㄨㄟˋ",
 		"m": "expensive; (bound form) highly valued; precious; (bound form) noble; of high rank; (prefix) (honorific) your",
 		"o": [
-			"Adjective",
-			"Pronoun",
-			"Distinction Word",
-			"Morpheme"
+			"Tính từ",
+			"Đại từ",
+			"Từ phân biệt",
+			"Hình thái từ"
 		],
 		"f": 1936,
 		"q": 1228605,
@@ -1542,7 +1541,7 @@
 		"z": "ㄍㄨㄛˊ",
 		"m": "country; nation; state; (bound form) national",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 453,
 		"q": 4684995,
@@ -1569,7 +1568,7 @@
 		"z": "ㄏㄞˊ",
 		"m": "still; still in progress; still more; yet; even more; in addition; fairly; passably (good); as early as; even; also; else",
 		"o": [
-			"Adverb",
+			"Trạng từ",
 			"Động từ"
 		],
 		"f": 35,
@@ -1603,7 +1602,7 @@
 		"z": "ㄏㄞˊ ㄗ・",
 		"m": "child",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 291,
 		"q": 6681697
@@ -1616,7 +1615,7 @@
 		"z": "ㄏㄢˋ ㄩˇ",
 		"m": "Chinese language",
 		"o": [
-			"Proper Noun"
+			"Danh từ riêng"
 		],
 		"f": 5169,
 		"q": 376386
@@ -1629,8 +1628,8 @@
 		"z": "ㄏㄢˋ ㄗˋ",
 		"m": "Chinese character, kanji",
 		"o": [
-			"Proper Noun",
-			"Noun"
+			"Danh từ riêng",
+			"Danh từ"
 		],
 		"f": 9290,
 		"q": 159378,
@@ -1651,8 +1650,8 @@
 		"z": "ㄏㄠˇ",
 		"m": "good; appropriate; proper; all right!; (before a verb) easy to; (before a verb) good to; (before an adjective for exclamatory effect) so; (verb complement indicating completion); (of two people) close; on intimate terms; (after a personal pronoun) hello",
 		"o": [
-			"Adjective",
-			"Adverb",
+			"Tính từ",
+			"Trạng từ",
 			"Động từ"
 		],
 		"f": 30,
@@ -1680,8 +1679,8 @@
 		"z": "ㄏㄠˋ",
 		"m": "ordinal number; day of a month; mark; sign; business establishment; size; ship suffix; horn (wind instrument); bugle call; assumed name; to take a pulse; classifier used to indicate number of people",
 		"o": [
-			"Classifier",
-			"Noun",
+			"Lượng từ",
+			"Danh từ",
 			"Động từ"
 		],
 		"f": 253,
@@ -1709,7 +1708,7 @@
 		"z": "ㄏㄠˇ ㄔ",
 		"m": "tasty; delicious",
 		"o": [
-			"Adjective"
+			"Tính từ"
 		],
 		"f": 2811,
 		"q": 819558,
@@ -1736,7 +1735,7 @@
 		"z": "ㄏㄠˇ ㄎㄢˋ",
 		"m": "good-looking",
 		"o": [
-			"Adjective"
+			"Tính từ"
 		],
 		"f": 1715,
 		"q": 1414439,
@@ -1757,7 +1756,7 @@
 		"z": "ㄏㄠˇ ㄊㄧㄥ",
 		"m": "pleasant to hear",
 		"o": [
-			"Adjective"
+			"Tính từ"
 		],
 		"f": 3955,
 		"q": 535740
@@ -1770,7 +1769,7 @@
 		"z": "ㄏㄠˇ ㄨㄢˊ undefined・",
 		"m": "interesting; delightful; amusing",
 		"o": [
-			"Adjective"
+			"Tính từ"
 		],
 		"f": 28832,
 		"q": 21352,
@@ -1792,11 +1791,11 @@
 		"m": "(joining two nouns) and; together with; with (Taiwan pr. [han4]); (math.) sum; to make peace; (sports) to draw; to tie; (bound form) harmonious; (bound form) Japan; Japanese; (literary) harmonious (variant of 和[he2])",
 		"o": [
 			"Coordinating Conjunction",
-			"Preposition",
+			"Giới từ",
 			"Động từ",
 			"Verbal Classifier",
-			"Morpheme",
-			"Noun"
+			"Hình thái từ",
+			"Danh từ"
 		],
 		"f": 6,
 		"q": 118878434,
@@ -1847,8 +1846,8 @@
 		"z": "ㄏㄜ",
 		"m": "to drink; variant of 嗬[he1]",
 		"o": [
-			"Morpheme",
-			"Verbal Noun"
+			"Hình thái từ",
+			"Danh động từ"
 		],
 		"f": 578,
 		"q": 3881270,
@@ -1875,7 +1874,7 @@
 		"z": "ㄏㄣˇ",
 		"m": "(adverb of degree); quite; very; awfully",
 		"o": [
-			"Adverb"
+			"Trạng từ"
 		],
 		"f": 47,
 		"q": 29046232,
@@ -1896,9 +1895,9 @@
 		"z": "ㄏㄡˋ",
 		"m": "empress; queen; (archaic) monarch; ruler; back; behind; rear; afterwards; after; later; post-",
 		"o": [
-			"Direction Word",
-			"Morpheme",
-			"Time Word"
+			"Phương vị từ",
+			"Hình thái từ",
+			"Từ chỉ thời gian"
 		],
 		"f": 40,
 		"q": 33767571,
@@ -1926,7 +1925,7 @@
 		"m": "can; to have the skill; to know how to; to be likely to; to be sure to; to meet; to get together; meeting; gathering; (suffix) union; group; association; (bound form) a moment (Taiwan pr. [hui3])",
 		"o": [
 			"Động từ",
-			"Noun"
+			"Danh từ"
 		],
 		"f": 32,
 		"q": 40026863,
@@ -1953,7 +1952,7 @@
 		"z": "ㄏㄨㄟˊ",
 		"m": "to circle; to go back; to turn around; to answer; to return; to revolve; Hui ethnic group (Chinese Muslims); time; classifier for acts of a play; section or chapter (of a classic book); to curve; to return; to revolve; variant of 迴|回[hui2]",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 301,
 		"q": 6341453
@@ -1966,7 +1965,7 @@
 		"z": "ㄏㄨㄛˇ ㄔㄜ",
 		"m": "train",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"列[lie4]",
@@ -1993,8 +1992,8 @@
 		"z": "ㄐㄧˇ",
 		"m": "how much; how many; several; a few",
 		"o": [
-			"Numeral",
-			"Adverb"
+			"Chữ số",
+			"Trạng từ"
 		],
 		"f": 167,
 		"q": 10023845,
@@ -2021,7 +2020,7 @@
 		"z": "ㄐㄧ ㄉㄢˋ",
 		"m": "(chicken) egg; hen's egg",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -2046,7 +2045,7 @@
 		"z": "ㄐㄧㄚ",
 		"m": "used in 傢伙|家伙[jia1 huo5] and 傢俱|家俱[jia1 ju4]; home; family; (polite) my (sister, uncle etc); classifier for families or businesses; refers to the philosophical schools of pre-Han China; noun suffix for a specialist in some activity, such as a musician or revolutionary, corresponding to English -ist, -er, -ary or -ian; CL:個|个[ge4]",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -2062,8 +2061,7 @@
 		"z": "ㄐㄧㄚ ㄖㄣˊ",
 		"m": "household; (one's) family",
 		"o": [
-			"Noun",
-			"Personal Name"
+			"Danh từ"
 		],
 		"f": 2025,
 		"q": 1165923,
@@ -2084,7 +2082,7 @@
 		"z": "ㄐㄧㄢˋ",
 		"m": "to see; to meet; to appear (to be sth); to interview; opinion; view",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 204,
 		"q": 8490843,
@@ -2111,8 +2109,8 @@
 		"z": "ㄐㄧㄢˋ",
 		"m": "item; component; classifier for events, things, clothes etc",
 		"o": [
-			"Classifier",
-			"Morpheme"
+			"Lượng từ",
+			"Hình thái từ"
 		],
 		"f": 367,
 		"q": 5517461
@@ -2126,8 +2124,8 @@
 		"m": "to call; to yell; to order; to ask; to be called",
 		"o": [
 			"Động từ",
-			"Preposition",
-			"Noun"
+			"Giới từ",
+			"Danh từ"
 		],
 		"f": 266,
 		"q": 7079928,
@@ -2148,7 +2146,7 @@
 		"z": "ㄐㄧㄠˇ ㄗ・",
 		"m": "dumpling; pot-sticker",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -2173,7 +2171,7 @@
 		"z": "ㄐㄧㄝˇ ㄐㄧㄝ・",
 		"m": "older sister",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -2197,7 +2195,7 @@
 		"z": "ㄐㄧㄣ ㄋㄧㄢˊ",
 		"m": "this year",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"f": 176,
 		"q": 9714475
@@ -2210,7 +2208,7 @@
 		"z": "ㄐㄧㄣ ㄊㄧㄢ",
 		"m": "today; at the present; now",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"f": 134,
 		"q": 12378709,
@@ -2231,9 +2229,9 @@
 		"z": "ㄐㄧㄡˇ",
 		"m": "nine; 9",
 		"o": [
-			"Numeral",
-			"Time Word",
-			"Distinction Word"
+			"Chữ số",
+			"Từ chỉ thời gian",
+			"Từ phân biệt"
 		]
 	},
 	{
@@ -2266,7 +2264,7 @@
 		"m": "to open; to start; to turn on; to write out (a medical prescription); to operate (vehicle); abbr. for 开尔文 degrees Kelvin",
 		"o": [
 			"Động từ",
-			"Classifier"
+			"Lượng từ"
 		],
 		"f": 229,
 		"q": 7960803,
@@ -2288,7 +2286,7 @@
 		"m": "to drive a car",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 3744,
 		"q": 571486,
@@ -2310,7 +2308,7 @@
 		"m": "to see; to look at; to read; to watch; to visit; to call on; to consider; to regard as; to look after; to treat (a patient or illness); to depend on; to feel (that); (after a verb) to give it a try; to watch out for",
 		"o": [
 			"Động từ",
-			"Particle"
+			"Trợ từ"
 		],
 		"f": 53,
 		"q": 27275620,
@@ -2338,7 +2336,7 @@
 		"m": "to visit a doctor; to see a patient",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 6165,
 		"q": 292655
@@ -2364,7 +2362,7 @@
 		"z": "ㄎㄜˋ",
 		"m": "subject; course; class; lesson; CL:堂[tang2]",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"門|门[men2]",
@@ -2411,8 +2409,8 @@
 		"z": "ㄎㄡˇ",
 		"m": "mouth; (classifier for things with mouths such as people, domestic animals, cannons, wells etc)",
 		"o": [
-			"Classifier",
-			"Noun"
+			"Lượng từ",
+			"Danh từ"
 		],
 		"f": 504,
 		"q": 4395540,
@@ -2433,7 +2431,7 @@
 		"z": "ㄎㄨㄞˋ",
 		"m": "lump; chunk; piece; classifier for pieces of cloth, cake, soap etc; (coll.) classifier for money and currency units",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 580,
 		"q": 3871951
@@ -2446,7 +2444,7 @@
 		"z": "ㄌㄞˊ",
 		"m": "to come; (used as a substitute for a more specific verb); hither (directional complement for motion toward the speaker, as in 回來|回来[hui2 lai5]); ever since (as in 自古以來|自古以来[zi4 gu3 yi3 lai2]); for the past (amount of time); (prefix) the coming ...; the next ... (as in 來世|来世[lai2 shi4]); (between two verbs) in order to; (after a round number) approximately; (used after 得[de2] to indicate possibility, as in 談得來|谈得来[tan2 de5 lai2], or after 不[bu4] to indicate impossibility, as in 吃不來|吃不来[chi1 bu5 lai2])",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 34,
 		"q": 37970033
@@ -2459,7 +2457,7 @@
 		"z": "ㄌㄠˇ ㄕ",
 		"m": "teacher",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -2484,8 +2482,8 @@
 		"z": "ㄌㄜ・",
 		"m": "(completed action marker); (modal particle indicating change of state, situation now); (modal particle intensifying preceding clause)",
 		"o": [
-			"Particle",
-			"Noun"
+			"Trợ từ",
+			"Danh từ"
 		],
 		"f": 2,
 		"q": 255733044,
@@ -2518,9 +2516,9 @@
 		"z": "ㄌㄥˇ",
 		"m": "cold",
 		"o": [
-			"Adjective",
-			"Adverbial Adjective",
-			"Morpheme"
+			"Tính từ",
+			"Tính từ chỉ trạng ngữ",
+			"Hình thái từ"
 		],
 		"f": 803,
 		"q": 2914595,
@@ -2547,7 +2545,7 @@
 		"z": "ㄌㄧˇ",
 		"m": "lining; interior; inside; internal; also written 裏|里[li3]; li, ancient measure of length, approx. 500 m; neighborhood; ancient administrative unit of 25 families; (Tw) borough, administrative unit between the township 鎮|镇[zhen4] and neighborhood 鄰|邻[lin2] levels",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 80,
 		"q": 19397088,
@@ -2574,8 +2572,8 @@
 		"z": "ㄌㄧㄤˇ",
 		"m": "both; two; ounce; some; a few; tael",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		],
 		"f": 41,
 		"q": 32745515,
@@ -2596,9 +2594,9 @@
 		"z": "ㄌㄧㄥˊ",
 		"m": "remnant; zero",
 		"o": [
-			"Numeral",
-			"Time Word",
-			"Morpheme"
+			"Chữ số",
+			"Từ chỉ thời gian",
+			"Hình thái từ"
 		],
 		"r": [
 			{
@@ -2617,8 +2615,8 @@
 		"z": "ㄌㄧㄡˋ",
 		"m": "six; 6",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		],
 		"r": [
 			{
@@ -2643,7 +2641,7 @@
 		"z": "ㄇㄚ・",
 		"m": "(question particle for 'yes-no' questions)",
 		"o": [
-			"Modal Particle"
+			"Trợ từ tình thái"
 		],
 		"f": 149,
 		"q": 10975592,
@@ -2676,7 +2674,7 @@
 		"z": "ㄇㄚ ㄇㄚ・",
 		"m": "mama; mommy; mother",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -2744,10 +2742,10 @@
 		"m": "busy",
 		"o": [
 			"Động từ",
-			"Adjective",
-			"Adverbial Adjective",
-			"Morpheme",
-			"Nominal Adjective"
+			"Tính từ",
+			"Tính từ chỉ trạng ngữ",
+			"Hình thái từ",
+			"Tính từ chỉ danh từ"
 		],
 		"f": 1273,
 		"q": 1911546,
@@ -2768,7 +2766,7 @@
 		"z": "ㄇㄠ",
 		"m": "cat (CL:隻|只[zhi1]); (dialect) to hide oneself; (loanword) (coll.) modem",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 1382,
 		"q": 1748687,
@@ -2795,7 +2793,7 @@
 		"z": "ㄇㄟˊ",
 		"m": "(negative prefix for verbs) have not; not",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 91,
 		"q": 17613557,
@@ -2835,7 +2833,7 @@
 		"z": "ㄇㄟˋ ㄇㄟ・",
 		"m": "younger sister; fig. younger woman (esp. girl friend or rival)",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -2881,7 +2879,7 @@
 		"m": "haven't; hasn't; doesn't exist; to not have; to not be",
 		"o": [
 			"Động từ",
-			"Adverb"
+			"Trạng từ"
 		],
 		"f": 43,
 		"q": 30405623
@@ -2894,7 +2892,7 @@
 		"z": "ㄇㄣ・",
 		"m": "plural marker for pronouns, and nouns referring to individuals",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 785,
 		"q": 2962827
@@ -2907,7 +2905,7 @@
 		"z": "ㄇㄧˇ ㄈㄢˋ",
 		"m": "(cooked) rice",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 10578,
 		"q": 129974
@@ -2920,7 +2918,7 @@
 		"z": "ㄇㄧㄢˋ ㄅㄠ",
 		"m": "bread",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"片[pian4]",
@@ -2956,7 +2954,7 @@
 		"z": "ㄇㄧㄥˊ ㄋㄧㄢˊ",
 		"m": "next year",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"f": 1550,
 		"q": 1578089
@@ -2969,7 +2967,7 @@
 		"z": "ㄇㄧㄥˊ ㄊㄧㄢ",
 		"m": "tomorrow",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"f": 572,
 		"q": 3889610
@@ -2982,7 +2980,7 @@
 		"z": "ㄇㄧㄥˊ ㄗ・",
 		"m": "name (of a person or thing)",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -3006,8 +3004,8 @@
 		"z": "ㄋㄚˋ",
 		"m": "(specifier) that; the; those (colloquial pr. [nei4]); (pronoun) that (referring to persons, things or situations); then (in that case)",
 		"o": [
-			"Pronoun",
-			"Conjunction"
+			"Đại từ",
+			"Liên từ"
 		],
 		"f": 68,
 		"q": 21808185,
@@ -3052,8 +3050,8 @@
 		"z": "ㄋㄚˇ",
 		"m": "how; which",
 		"o": [
-			"Pronoun",
-			"Modal Particle"
+			"Đại từ",
+			"Trợ từ tình thái"
 		],
 		"f": 908,
 		"q": 2578497,
@@ -3092,7 +3090,7 @@
 		"z": "ㄋㄚˋ ㄅㄧㄢ・",
 		"m": "yonder",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 4187,
 		"q": 498433,
@@ -3113,7 +3111,7 @@
 		"z": "ㄋㄚˋ ㄍㄜ・",
 		"m": "that one; that one",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 391,
 		"q": 5296183,
@@ -3134,7 +3132,7 @@
 		"z": "ㄋㄚˇ ㄍㄜ・",
 		"m": "which; who",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 2333,
 		"q": 986728
@@ -3147,7 +3145,7 @@
 		"z": "ㄋㄚˇ ㄌㄧˇ",
 		"m": "where?; somewhere; anywhere; wherever; nowhere (negative answer to question); humble expression denying compliment; where?; somewhere; anywhere; wherever; nowhere (negative answer to question); humble expression denying compliment; also written 哪里",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 1199,
 		"q": 2017051,
@@ -3168,7 +3166,7 @@
 		"z": "ㄋㄚˋ ㄌㄧ・",
 		"m": "there; that place",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 1275,
 		"q": 1905367,
@@ -3189,7 +3187,7 @@
 		"z": "ㄋㄚˇ undefined・",
 		"m": "where?; wherever; anywhere",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 4646,
 		"q": 435352,
@@ -3210,7 +3208,7 @@
 		"z": "ㄋㄚˋ undefined・",
 		"m": "there",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 6239,
 		"q": 287368
@@ -3223,7 +3221,7 @@
 		"z": "ㄋㄚˋ ㄒㄧㄝ",
 		"m": "those",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 479,
 		"q": 4520517
@@ -3236,7 +3234,7 @@
 		"z": "ㄋㄚˇ ㄒㄧㄝ",
 		"m": "which; who; what",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 3411,
 		"q": 648251,
@@ -3257,8 +3255,8 @@
 		"z": "ㄋㄢˊ",
 		"m": "male; Baron, lowest of five orders of nobility 五等爵位[wu3 deng3 jue2 wei4]",
 		"o": [
-			"Distinction Word",
-			"Morpheme"
+			"Từ phân biệt",
+			"Hình thái từ"
 		],
 		"f": 586,
 		"q": 3847599,
@@ -3279,7 +3277,7 @@
 		"z": "ㄋㄢˊ ㄆㄥˊ ㄧㄡ・",
 		"m": "male friend; boyfriend",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 4993,
 		"q": 394072,
@@ -3300,7 +3298,7 @@
 		"z": "ㄋㄜ・",
 		"m": "particle indicating that a previously asked question is to be applied to the preceding word ('What about ...?', 'And ...?'); particle for inquiring about location ('Where is ...?'); particle signaling a pause, to emphasize the preceding words and allow the listener time to take them on board ('ok?', 'are you with me?'); (at the end of a declarative sentence) particle indicating continuation of a state or action; particle indicating strong affirmation",
 		"o": [
-			"Modal Particle"
+			"Trợ từ tình thái"
 		],
 		"f": 131,
 		"q": 12641044,
@@ -3328,7 +3326,7 @@
 		"m": "can; to be able to; might possibly; ability; (physics) energy",
 		"o": [
 			"Động từ",
-			"Morpheme"
+			"Hình thái từ"
 		],
 		"f": 61,
 		"q": 23909882,
@@ -3355,7 +3353,7 @@
 		"z": "ㄋㄧˇ",
 		"m": "you (informal, as opposed to courteous 您[nin2]); you (Note: In Taiwan, 妳 is used to address females, but in mainland China, it is not commonly used. Instead, 你 is used to address both males and females.)",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 8,
 		"q": 88487705
@@ -3389,7 +3387,7 @@
 		"z": "ㄋㄧˇ ㄇㄣ・",
 		"m": "you (plural)",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 203,
 		"q": 8527633
@@ -3402,9 +3400,9 @@
 		"z": "ㄋㄧㄢˊ",
 		"m": "year; CL:個|个[ge4]; grain; harvest (old); variant of 年[nian2]",
 		"o": [
-			"Temporal Classifier",
-			"Time Word",
-			"Noun"
+			"Lượng từ chỉ thời gian",
+			"Từ chỉ thời gian",
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -3434,7 +3432,7 @@
 		"z": "ㄋㄧㄣˊ",
 		"m": "you (polite, as opposed to informal 你[ni3])",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 473,
 		"q": 4560428,
@@ -3455,7 +3453,7 @@
 		"z": "ㄋㄧㄡˊ ㄋㄞˇ",
 		"m": "cow's milk",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"瓶[ping2]",
@@ -3480,8 +3478,8 @@
 		"z": "ㄋㄩˇ",
 		"m": "female; woman; daughter",
 		"o": [
-			"Distinction Word",
-			"Morpheme"
+			"Từ phân biệt",
+			"Hình thái từ"
 		],
 		"f": 318,
 		"q": 5946513,
@@ -3508,7 +3506,7 @@
 		"z": "ㄋㄩˇ ㄦˊ",
 		"m": "daughter",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 1321,
 		"q": 1835470
@@ -3521,7 +3519,7 @@
 		"z": "ㄋㄩˇ ㄆㄥˊ ㄧㄡ・",
 		"m": "female friend; girlfriend",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 4723,
 		"q": 426753,
@@ -3542,7 +3540,7 @@
 		"z": "ㄋㄩˇ ㄕˋ",
 		"m": "lady; madam",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -3567,7 +3565,7 @@
 		"z": "ㄆㄥˊ ㄧㄡ・",
 		"m": "friend",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -3592,9 +3590,9 @@
 		"z": "ㄆㄧㄢˊ ㄧ・",
 		"m": "cheap; inexpensive; a petty advantage; to let sb off lightly",
 		"o": [
-			"Adjective",
+			"Tính từ",
 			"Động từ",
-			"Nominal Adjective"
+			"Tính từ chỉ danh từ"
 		],
 		"f": 2834,
 		"q": 812874,
@@ -3621,7 +3619,7 @@
 		"z": "ㄆㄧㄠˋ ㄌㄧㄤ・",
 		"m": "pretty; beautiful",
 		"o": [
-			"Adjective"
+			"Tính từ"
 		],
 		"f": 1470,
 		"q": 1660274
@@ -3634,7 +3632,7 @@
 		"z": "ㄆㄧㄥˊ ㄍㄨㄛˇ",
 		"m": "apple; CL:個|个[ge4],顆|颗[ke1]",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -3665,8 +3663,8 @@
 		"z": "ㄑㄧ",
 		"m": "seven; 7",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		]
 	},
 	{
@@ -3698,7 +3696,7 @@
 		"z": "ㄑㄧㄢˊ",
 		"m": "before; in front; ago; former; previous; earlier; front",
 		"o": [
-			"Direction Word",
+			"Phương vị từ",
 			"Động từ"
 		],
 		"f": 83,
@@ -3720,8 +3718,7 @@
 		"z": "ㄑㄧㄢˊ",
 		"m": "coin; money; CL:筆|笔[bi3]; unit of weight, one tenth of a tael 兩|两[liang3]",
 		"o": [
-			"Noun",
-			"Personal Name"
+			"Danh từ"
 		],
 		"c": [
 			"筆|笔[bi3]"
@@ -3751,8 +3748,8 @@
 		"z": "ㄑㄧㄢ",
 		"m": "a swing; thousand",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		],
 		"r": [
 			{
@@ -3826,7 +3823,7 @@
 		"z": "ㄑㄩˋ ㄋㄧㄢˊ",
 		"m": "last year",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"f": 390,
 		"q": 5301941
@@ -3839,12 +3836,12 @@
 		"z": "ㄖㄜˋ",
 		"m": "heat; to heat up; fervent; hot (of weather); warm up",
 		"o": [
-			"Adjective",
-			"Noun",
+			"Tính từ",
+			"Danh từ",
 			"Suffix",
 			"Động từ",
-			"Adverbial Adjective",
-			"Nominal Adjective"
+			"Tính từ chỉ trạng ngữ",
+			"Tính từ chỉ danh từ"
 		],
 		"f": 856,
 		"q": 2750130,
@@ -3865,7 +3862,7 @@
 		"z": "ㄖㄣˊ",
 		"m": "man; person; people",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -3891,8 +3888,8 @@
 		"m": "to know; to recognize; to be familiar with; acquainted with sth; knowledge; understanding; awareness; cognition",
 		"o": [
 			"Động từ",
-			"Noun",
-			"Verbal Noun"
+			"Danh từ",
+			"Danh động từ"
 		],
 		"f": 649,
 		"q": 3502311,
@@ -3913,10 +3910,10 @@
 		"z": "ㄖˋ",
 		"m": "sun; day; date, day of the month",
 		"o": [
-			"Time Word",
-			"Morpheme",
-			"Distinction Word",
-			"Temporal Classifier"
+			"Từ chỉ thời gian",
+			"Hình thái từ",
+			"Từ phân biệt",
+			"Lượng từ chỉ thời gian"
 		],
 		"f": 28,
 		"q": 42260866,
@@ -3943,8 +3940,8 @@
 		"z": "ㄙㄢ",
 		"m": "three; 3",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		],
 		"r": [
 			{
@@ -3969,9 +3966,9 @@
 		"z": "ㄕㄤˋ",
 		"m": "(bound form) up; upper; above; previous; first (of multiple parts); to climb; to get onto; to go up; to attend (class or university); (directional complement) up; (noun suffix) on; above",
 		"o": [
-			"Direction Word",
+			"Phương vị từ",
 			"Động từ",
-			"Morpheme"
+			"Hình thái từ"
 		],
 		"f": 14,
 		"q": 66509925,
@@ -3999,7 +3996,7 @@
 		"m": "to go to work; to be on duty; to start work; to go to the office",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 1650,
 		"q": 1465310
@@ -4012,7 +4009,7 @@
 		"z": "ㄕㄤ ㄉㄧㄢˋ",
 		"m": "store; shop",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"家[jia1]",
@@ -4038,7 +4035,7 @@
 		"m": "to attend class",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 3171,
 		"q": 703933,
@@ -4059,7 +4056,7 @@
 		"z": "ㄕㄤˋ ㄨˇ",
 		"m": "morning",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -4096,11 +4093,11 @@
 		"z": "ㄕㄠˇ",
 		"m": "few; less; to lack; to be missing; to stop (doing sth); seldom",
 		"o": [
-			"Adjective",
-			"Adverbial Adjective",
+			"Tính từ",
+			"Tính từ chỉ trạng ngữ",
 			"Động từ",
-			"Adverb",
-			"Morpheme"
+			"Trạng từ",
+			"Hình thái từ"
 		],
 		"f": 450,
 		"q": 4710056,
@@ -4127,7 +4124,7 @@
 		"z": "ㄕㄟˊ",
 		"m": "who; also pr. [shui2]",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 201,
 		"q": 8548190
@@ -4140,7 +4137,7 @@
 		"z": "ㄕㄣˊ ㄇㄜ・",
 		"m": "what; what?; who?; something; anything",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 90,
 		"q": 17796936,
@@ -4203,8 +4200,8 @@
 		"z": "ㄕˋ",
 		"m": "matter; thing; item; work; affair",
 		"o": [
-			"Noun",
-			"Morpheme"
+			"Danh từ",
+			"Hình thái từ"
 		],
 		"c": [
 			"件[jian4]",
@@ -4230,8 +4227,8 @@
 		"z": "ㄕˊ",
 		"m": "ten; 10",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		]
 	},
 	{
@@ -4242,7 +4239,7 @@
 		"z": "ㄕˊ ㄏㄡ・",
 		"m": "time; length of time; moment; period",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 129,
 		"q": 12888353
@@ -4255,7 +4252,7 @@
 		"z": "ㄕˊ ㄐㄧㄢ",
 		"m": "time; period",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 111,
 		"q": 14785440,
@@ -4276,7 +4273,7 @@
 		"z": "ㄕㄡˇ ㄐㄧ",
 		"m": "cell phone; cellular phone; mobile phone",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"部[bu4]"
@@ -4298,8 +4295,8 @@
 		"z": "ㄕㄨ",
 		"m": "book; letter; document; CL:本[ben3],冊|册[ce4],部[bu4]; to write",
 		"o": [
-			"Noun",
-			"Morpheme"
+			"Danh từ",
+			"Hình thái từ"
 		],
 		"c": [
 			"本[ben3]",
@@ -4331,7 +4328,7 @@
 		"z": "ㄕㄨ ㄉㄧㄢˋ",
 		"m": "bookstore",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"家[jia1]"
@@ -4355,7 +4352,7 @@
 		"z": "ㄕㄨㄟˇ",
 		"m": "water; (after a name) ... River; to swim (used mostly in 會水|会水[hui4 shui3] and 水性[shui3 xing4]); (coll.) lacking in substance; shoddy; (bound form) additional cost; extra income; classifier for washings of a garment",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 221,
 		"q": 8153040,
@@ -4383,7 +4380,7 @@
 		"m": "to sleep",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 490,
 		"q": 4464165,
@@ -4404,7 +4401,7 @@
 		"z": "ㄕㄨㄟˇ ㄍㄨㄛˇ",
 		"m": "fruit",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -4450,7 +4447,7 @@
 		"m": "to speak; to talk; to say; to explain; to comment; to scold; to tell off; (bound form) theory; doctrine; variant of 說|说[shuo1]",
 		"o": [
 			"Động từ",
-			"Morpheme"
+			"Hình thái từ"
 		],
 		"f": 21,
 		"q": 52966771,
@@ -4478,7 +4475,7 @@
 		"m": "to speak; to say; to talk; to gossip; to tell stories; talk; word",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 1343,
 		"q": 1801458
@@ -4491,8 +4488,8 @@
 		"z": "ㄙˋ",
 		"m": "four; 4",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		]
 	},
 	{
@@ -4503,7 +4500,7 @@
 		"z": "ㄙㄨㄟˋ",
 		"m": "year; years old; classifier for years old",
 		"o": [
-			"Temporal Classifier"
+			"Lượng từ chỉ thời gian"
 		],
 		"f": 218,
 		"q": 8215534,
@@ -4524,7 +4521,7 @@
 		"z": "ㄊㄚ",
 		"m": "he; him",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 13,
 		"q": 67051085,
@@ -4545,7 +4542,7 @@
 		"z": "ㄊㄚ",
 		"m": "she",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 56,
 		"q": 26689468
@@ -4558,7 +4555,7 @@
 		"z": "ㄊㄚ",
 		"m": "it (used for things)",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 135,
 		"q": 12176287,
@@ -4579,7 +4576,7 @@
 		"z": "ㄊㄚ ㄇㄣ・",
 		"m": "they",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 62,
 		"q": 23760910,
@@ -4600,7 +4597,7 @@
 		"z": "ㄊㄚ ㄇㄣ・",
 		"m": "they (for inanimate objects)",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 1195,
 		"q": 2024150,
@@ -4621,7 +4618,7 @@
 		"z": "ㄊㄚ ㄇㄣ・",
 		"m": "they; them (for females)",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 1255,
 		"q": 1938149,
@@ -4642,8 +4639,8 @@
 		"z": "ㄊㄞˋ",
 		"m": "highest; greatest; too (much); very; extremely",
 		"o": [
-			"Adverb",
-			"Distinction Word"
+			"Trạng từ",
+			"Từ phân biệt"
 		],
 		"f": 105,
 		"q": 15451106
@@ -4656,8 +4653,8 @@
 		"z": "ㄊㄧㄢ",
 		"m": "day; sky; heaven",
 		"o": [
-			"Temporal Classifier",
-			"Noun"
+			"Lượng từ chỉ thời gian",
+			"Danh từ"
 		],
 		"f": 76,
 		"q": 20457907
@@ -4670,7 +4667,7 @@
 		"z": "ㄊㄧㄢ ㄑㄧˋ",
 		"m": "weather",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 1305,
 		"q": 1855577
@@ -4731,7 +4728,7 @@
 		"z": "ㄊㄨㄥˊ ㄒㄩㄝˊ",
 		"m": "(fellow) classmate",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"位[wei4]",
@@ -4756,7 +4753,7 @@
 		"z": "ㄨㄞˋ",
 		"m": "outside; in addition; foreign; external",
 		"o": [
-			"Direction Word"
+			"Phương vị từ"
 		],
 		"f": 200,
 		"q": 8587903
@@ -4769,7 +4766,7 @@
 		"z": "ㄨㄞˋ ㄅㄧㄢ・",
 		"m": "outside; outer surface; abroad; place other than one's home",
 		"o": [
-			"Direction Word"
+			"Phương vị từ"
 		],
 		"f": 14871,
 		"q": 74404
@@ -4803,9 +4800,9 @@
 		"z": "ㄨㄢˇ",
 		"m": "evening; night; late",
 		"o": [
-			"Time Morpheme",
-			"Adjective",
-			"Adverbial Adjective"
+			"Ngữ tố chỉ thời gian",
+			"Tính từ",
+			"Tính từ chỉ trạng ngữ"
 		],
 		"f": 670,
 		"q": 3391123
@@ -4818,7 +4815,7 @@
 		"z": "ㄨㄢˇ ㄈㄢˋ",
 		"m": "evening meal; dinner; supper",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"份[fen4]",
@@ -4845,7 +4842,7 @@
 		"z": "ㄨㄢˇ ㄕㄤ・",
 		"m": "in the evening",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -4870,7 +4867,7 @@
 		"m": "hey; to feed (an animal, baby, invalid etc); variant of 餵|喂[wei4]; to feed",
 		"o": [
 			"Động từ",
-			"Exclamation"
+			"Thán từ"
 		],
 		"f": 2227,
 		"q": 1042918,
@@ -4898,8 +4895,8 @@
 		"m": "to ask",
 		"o": [
 			"Động từ",
-			"Morpheme",
-			"Verbal Noun"
+			"Hình thái từ",
+			"Danh động từ"
 		],
 		"f": 285,
 		"q": 6740338,
@@ -4920,7 +4917,7 @@
 		"z": "ㄨㄣˋ ㄊㄧˊ",
 		"m": "question; problem; issue; topic",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -4944,7 +4941,7 @@
 		"z": "ㄨㄛˇ",
 		"m": "I; me; my",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 5,
 		"q": 169391220
@@ -4957,7 +4954,7 @@
 		"z": "ㄨㄛˇ ㄇㄣ・",
 		"m": "we; us; ourselves; our",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 29,
 		"q": 41787606
@@ -4970,8 +4967,8 @@
 		"z": "ㄨˇ",
 		"m": "five; 5",
 		"o": [
-			"Numeral",
-			"Time Word"
+			"Chữ số",
+			"Từ chỉ thời gian"
 		]
 	},
 	{
@@ -4982,7 +4979,7 @@
 		"z": "ㄨˇ ㄈㄢˋ",
 		"m": "lunch",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"份[fen4]",
@@ -5010,7 +5007,7 @@
 		"m": "to like; to be fond of",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 178,
 		"q": 9589721
@@ -5024,9 +5021,9 @@
 		"m": "down; downwards; below; lower; later; next (week etc); second (of two parts); to decline; to go down",
 		"o": [
 			"Động từ",
-			"Direction Word",
-			"Temporal Classifier",
-			"Morpheme"
+			"Phương vị từ",
+			"Lượng từ chỉ thời gian",
+			"Hình thái từ"
 		],
 		"f": 55,
 		"q": 26737542,
@@ -5048,7 +5045,7 @@
 		"m": "to finish work; to get off work",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 3522,
 		"q": 620525,
@@ -5070,7 +5067,7 @@
 		"m": "class is over",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 8459,
 		"q": 183572,
@@ -5091,7 +5088,7 @@
 		"z": "ㄒㄧㄚˋ ㄨˇ",
 		"m": "afternoon; p.m.",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -5136,7 +5133,7 @@
 		"z": "ㄒㄧㄢ ㄕㄥ・",
 		"m": "sir; mister; teacher; (title of respect)",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"位[wei4]"
@@ -5160,7 +5157,7 @@
 		"z": "ㄒㄧㄢˋ ㄗㄞˋ",
 		"m": "now; at present; modern; current; nowadays",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"f": 95,
 		"q": 16365880,
@@ -5202,8 +5199,8 @@
 		"z": "ㄒㄧㄠˇ",
 		"m": "small; tiny; few; young",
 		"o": [
-			"Adjective",
-			"Adverbial Adjective"
+			"Tính từ",
+			"Tính từ chỉ trạng ngữ"
 		],
 		"f": 74,
 		"q": 20674943
@@ -5216,7 +5213,7 @@
 		"z": "ㄒㄧㄠˇ ㄆㄥˊ ㄧㄡˇ",
 		"m": "children",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -5240,8 +5237,8 @@
 		"z": "ㄒㄧㄠˇ ㄕˊ",
 		"m": "hour",
 		"o": [
-			"Noun",
-			"Classifier"
+			"Danh từ",
+			"Lượng từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -5265,7 +5262,7 @@
 		"z": "ㄒㄧㄠˇ ㄒㄩㄝˊ",
 		"m": "primary school",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 2306,
 		"q": 1000714,
@@ -5286,7 +5283,7 @@
 		"z": "ㄒㄧㄠˇ ㄒㄩㄝˊ ㄕㄥ",
 		"m": "primary school student; schoolchild",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -5338,7 +5335,7 @@
 		"z": "ㄒㄧㄝ",
 		"m": "some; few; several; (a measure word)",
 		"o": [
-			"Classifier"
+			"Lượng từ"
 		],
 		"f": 1003,
 		"q": 2344133,
@@ -5380,9 +5377,9 @@
 		"z": "ㄒㄧㄣ",
 		"m": "new; newly; meso- (chemistry)",
 		"o": [
-			"Adjective",
-			"Adverb",
-			"Distinction Word"
+			"Tính từ",
+			"Trạng từ",
+			"Từ phân biệt"
 		],
 		"f": 69,
 		"q": 21776749,
@@ -5409,7 +5406,7 @@
 		"z": "ㄒㄧㄥ ㄑㄧ",
 		"m": "week",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -5433,7 +5430,7 @@
 		"z": "ㄒㄧㄥ ㄑㄧ ㄖˋ",
 		"m": "Sunday",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"f": 12337,
 		"q": 101243
@@ -5446,7 +5443,7 @@
 		"z": "ㄒㄧㄥ ㄑㄧ ㄊㄧㄢ",
 		"m": "Sunday",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"f": 10248,
 		"q": 136670
@@ -5460,7 +5457,7 @@
 		"m": "rest; to rest",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 1640,
 		"q": 1474359
@@ -5474,7 +5471,7 @@
 		"m": "learn; study; science; -ology",
 		"o": [
 			"Động từ",
-			"Morpheme"
+			"Hình thái từ"
 		],
 		"f": 492,
 		"q": 4458826,
@@ -5495,7 +5492,7 @@
 		"z": "ㄒㄩㄝˇ",
 		"m": "snow; CL:場|场[chang2]; (literary) to wipe away (a humiliation etc)",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"場|场[chang2]"
@@ -5525,7 +5522,7 @@
 		"z": "ㄒㄩㄝˊ ㄕㄥ・",
 		"m": "student; school child",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 274,
 		"q": 6886521,
@@ -5547,7 +5544,7 @@
 		"m": "to learn; to study",
 		"o": [
 			"Động từ",
-			"Verbal Noun"
+			"Danh động từ"
 		],
 		"f": 354,
 		"q": 5570557
@@ -5560,7 +5557,7 @@
 		"z": "ㄒㄩㄝˊ ㄒㄧㄠˋ",
 		"m": "school; CL:所[suo3]",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"所[suo3]"
@@ -5603,10 +5600,10 @@
 		"z": "ㄧㄝˇ",
 		"m": "also; too; as well; (not ...) either; (used after a verbal or nominal expression X to indicate that X is an extreme or unexpected case) even (X); (literary) particle having functions similar to 啊[a5]",
 		"o": [
-			"Adverb",
-			"Modal Particle",
-			"Particle",
-			"Distinction Word"
+			"Trạng từ",
+			"Trợ từ tình thái",
+			"Trợ từ",
+			"Từ phân biệt"
 		],
 		"f": 10,
 		"q": 77259249,
@@ -5633,9 +5630,9 @@
 		"z": "ㄧ",
 		"m": "one; 1; single; a (article); as soon as; entire; whole; all; throughout",
 		"o": [
-			"Numeral",
-			"Adverb",
-			"Time Word"
+			"Chữ số",
+			"Trạng từ",
+			"Từ chỉ thời gian"
 		],
 		"r": [
 			{
@@ -5654,7 +5651,7 @@
 		"z": "ㄧ ㄅㄢˋ",
 		"m": "half",
 		"o": [
-			"Numeral"
+			"Chữ số"
 		],
 		"f": 1939,
 		"q": 1227406
@@ -5667,7 +5664,7 @@
 		"z": "ㄧ ㄉㄧㄢˇ undefined・",
 		"m": "a little",
 		"o": [
-			"Numeral-Classifier"
+			"Cụm từ cố định"
 		],
 		"f": 10607,
 		"q": 129371,
@@ -5688,7 +5685,7 @@
 		"z": "ㄧ ㄈㄨ・",
 		"m": "clothes",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"件[jian4]",
@@ -5713,7 +5710,7 @@
 		"z": "ㄧ ㄕㄥ",
 		"m": "doctor",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -5739,8 +5736,8 @@
 		"z": "ㄧ ㄒㄧㄚˋ",
 		"m": "(used after a verb) give it a go; to do (sth for a bit to give it a try); one time; once; in a while; all of a sudden; all at once",
 		"o": [
-			"Numeral-Classifier",
-			"Adverb"
+			"Cụm từ cố định",
+			"Trạng từ"
 		],
 		"f": 320,
 		"q": 5932374,
@@ -5761,7 +5758,7 @@
 		"z": "ㄧ ㄒㄧㄝ",
 		"m": "some; a few; a little",
 		"o": [
-			"Numeral-Classifier"
+			"Cụm từ cố định"
 		],
 		"f": 140,
 		"q": 11583138,
@@ -5782,7 +5779,7 @@
 		"z": "ㄧ ㄩㄢˋ",
 		"m": "hospital",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"所[suo3]",
@@ -5808,7 +5805,7 @@
 		"z": "ㄧˇ ㄗ・",
 		"m": "chair",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"把[ba3]",
@@ -5854,7 +5851,7 @@
 		"z": "ㄧㄡˇ ㄉㄜ・",
 		"m": "(there are) some (who are...); some (exist)",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 716,
 		"q": 3183017
@@ -5880,7 +5877,7 @@
 		"z": "ㄧㄡˇ ㄒㄧㄝ",
 		"m": "some; somewhat",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 392,
 		"q": 5287025
@@ -5893,8 +5890,8 @@
 		"z": "ㄩˇ",
 		"m": "rain; CL:陣|阵[zhen4],場|场[chang2]",
 		"o": [
-			"Noun",
-			"Morpheme"
+			"Danh từ",
+			"Hình thái từ"
 		],
 		"f": 1838,
 		"q": 1306669,
@@ -5921,8 +5918,8 @@
 		"z": "ㄩㄢˊ",
 		"m": "currency unit (esp. Chinese yuan); (bound form) first; original; primary; (bound form) basic; fundamental; (bound form) constituent; part; (prefix) meta-; (math.) argument; variable; era (of a reign); (Tw) (geology) eon",
 		"o": [
-			"Classifier",
-			"Time Morpheme"
+			"Lượng từ",
+			"Ngữ tố chỉ thời gian"
 		],
 		"f": 52,
 		"q": 27576670,
@@ -5949,8 +5946,8 @@
 		"z": "ㄩㄝˋ",
 		"m": "moon; month",
 		"o": [
-			"Noun",
-			"Time Word"
+			"Danh từ",
+			"Từ chỉ thời gian"
 		],
 		"c": [
 			"個|个[ge4]",
@@ -5975,9 +5972,9 @@
 		"z": "ㄗㄞˋ",
 		"m": "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)",
 		"o": [
-			"Preposition",
+			"Giới từ",
 			"Động từ",
-			"Adverb"
+			"Trạng từ"
 		],
 		"f": 3,
 		"q": 197672850,
@@ -5998,8 +5995,8 @@
 		"z": "ㄗㄞˋ",
 		"m": "again; once more; re-; second; another; then (after sth, and not until then)",
 		"o": [
-			"Adverb",
-			"Morpheme"
+			"Trạng từ",
+			"Hình thái từ"
 		],
 		"f": 106,
 		"q": 15399566,
@@ -6041,9 +6038,9 @@
 		"z": "ㄗㄠˇ",
 		"m": "early; morning",
 		"o": [
-			"Adverbial Adjective",
-			"Adjective",
-			"Time Morpheme"
+			"Tính từ chỉ trạng ngữ",
+			"Tính từ",
+			"Ngữ tố chỉ thời gian"
 		],
 		"f": 584,
 		"q": 3857863,
@@ -6064,7 +6061,7 @@
 		"z": "ㄗㄠˇ ㄈㄢˋ",
 		"m": "breakfast",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"份[fen4]",
@@ -6091,7 +6088,7 @@
 		"z": "ㄗㄠˇ ㄕㄤ・",
 		"m": "early morning",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -6115,7 +6112,7 @@
 		"z": "ㄗㄣˇ ㄇㄜ・",
 		"m": "how?; what?; why?",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 196,
 		"q": 8708842,
@@ -6136,7 +6133,7 @@
 		"z": "ㄗㄣˇ ㄇㄜ・ ㄧㄤˋ",
 		"m": "how?; how about?; how was it?; how are things?",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 2468,
 		"q": 927693
@@ -6170,7 +6167,7 @@
 		"z": "ㄓㄜˋ",
 		"m": "(pronoun) this; these; (bound form) this; the (followed by a noun); (bound form) this; these (followed by a classifier) (in this sense, commonly pr. [zhei4], esp. in Beijing)",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 11,
 		"q": 73252887,
@@ -6197,7 +6194,7 @@
 		"z": "ㄓㄜˋ ㄅㄧㄢ",
 		"m": "this side; here",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 4693,
 		"q": 429528
@@ -6210,7 +6207,7 @@
 		"z": "ㄓㄜˋ ㄍㄜ・",
 		"m": "this; this one",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 60,
 		"q": 24376948,
@@ -6231,7 +6228,7 @@
 		"z": "ㄓㄜˋ ㄌㄧˇ",
 		"m": "here",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 335,
 		"q": 5812931,
@@ -6252,7 +6249,7 @@
 		"z": "ㄓㄜˋ undefined・",
 		"m": "here",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 4701,
 		"q": 428939
@@ -6265,7 +6262,7 @@
 		"z": "ㄓㄜˋ ㄒㄧㄝ",
 		"m": "these",
 		"o": [
-			"Pronoun"
+			"Đại từ"
 		],
 		"f": 143,
 		"q": 11378382
@@ -6278,9 +6275,9 @@
 		"z": "ㄓㄣ",
 		"m": "really; truly; indeed; real; true; genuine",
 		"o": [
-			"Adverb",
-			"Adjective",
-			"Morpheme"
+			"Trạng từ",
+			"Tính từ",
+			"Hình thái từ"
 		],
 		"f": 98,
 		"q": 16020066
@@ -6293,7 +6290,7 @@
 		"z": "ㄓㄥˋ ㄗㄞˋ",
 		"m": "in the process of (doing something or happening); while (doing)",
 		"o": [
-			"Adverb"
+			"Trạng từ"
 		],
 		"f": 333,
 		"q": 5824702,
@@ -6314,7 +6311,7 @@
 		"z": "ㄓ",
 		"m": "grain that has begun to ripen; classifier for birds and certain animals, one of a pair, some utensils, vessels etc",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 132,
 		"q": 12513893,
@@ -6383,7 +6380,7 @@
 		"z": "ㄓㄨㄥ ㄨㄣˊ",
 		"m": "Chinese; Chinese written language; Chinese writing",
 		"o": [
-			"Proper Noun"
+			"Danh từ riêng"
 		],
 		"f": 3375,
 		"q": 654899,
@@ -6404,7 +6401,7 @@
 		"z": "ㄓㄨㄥ ㄨˇ",
 		"m": "noon; midday",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -6428,7 +6425,7 @@
 		"z": "ㄓㄨㄥ ㄒㄩㄝˊ",
 		"m": "middle school",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 3151,
 		"q": 710971
@@ -6441,7 +6438,7 @@
 		"z": "ㄓㄨㄥ ㄒㄩㄝˊ ㄕㄥ",
 		"m": "middle-school student; high school student",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"f": 7694,
 		"q": 208792
@@ -6475,7 +6472,7 @@
 		"z": "ㄓㄨㄛ ㄗ・",
 		"m": "table; desk",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"張|张[zhang1]",
@@ -6500,7 +6497,7 @@
 		"z": "ㄗˋ",
 		"m": "letter; symbol; character; word",
 		"o": [
-			"Noun"
+			"Danh từ"
 		],
 		"c": [
 			"個|个[ge4]"
@@ -6585,7 +6582,7 @@
 		"z": "ㄗㄨㄛˊ ㄊㄧㄢ",
 		"m": "yesterday",
 		"o": [
-			"Time Word"
+			"Từ chỉ thời gian"
 		],
 		"f": 401,
 		"q": 5187383
