@@ -5,7 +5,7 @@
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 		<meta content="width=device-width, initial-scale=1" name="viewport">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-		<title>Get CAD AOi Holly V1.3 | FUJI</title>
+		<title>Get CAD AOi Holly V2026.8.29 | FUJI</title>
 		<style type="text/css">
 			html, body, div, a, b, i, label, span, strong, table, tbody, td, tfoot, th, thead, tr {
 				outline: none;
@@ -27,8 +27,6 @@
 				height: 0;
 			}
 			:root {
-				--sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-				--monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 				--hue-saturation-purple: 260deg, 50%;
 				--hue-saturation-pink: 330deg, 60%;
 				--hue-saturation-orange: 30deg, 80%;
@@ -70,9 +68,6 @@
 				font-family: "Courier New", sans-serif;
 				color: red;
 				font-size: var(--fz-lv-4);
-			}
-			ul, li {
-				list-style-type: none;
 			}
 			body {
 				background: var(--bg-body-blue);
@@ -365,7 +360,6 @@
 							var rowData = [];
 							var children = xml_unit[i].children;
 							for (var j = 0; j < children.length; j++) {
-								// Dùng innerText hoặc textContent cho các trình duyệt cũ biệt lập
 								var cellText = (children[j].innerText || children[j].textContent || "").trim();
 								if (j === 0 && cellText !== "seqInsOrder") {
 									rowData.push(globalCounter.toString());
@@ -381,50 +375,6 @@
 						readIndividualFile(index + 1);
 					};
 					reader.readAsText(files[index]);
-				}
-				function formatInput_2(elementId, arr0) {
-					var arr1 = [];
-					var arr2 = [];
-					var arr3 = [];
-					var inputElement = document.getElementById(elementId);
-					inputElement.value = "";
-					if (arr0.length > 0 && arr0[0].length > 0) {
-						for (var x = 0; x < arr0[0].length; x++) {
-							arr1.push([]);
-							arr2.push([]);
-							arr3.push([]);
-							for (var xx = 0; xx < arr0.length; xx++) {
-								var cellValue = arr0[xx][x] || "";
-								arr1[x].push(cellValue);
-								arr2[x].push(cellValue.length);
-							}
-							arr3[x].push(Math.max.apply(null, arr2[x]));
-							for (var u = 0; u < arr1[x].length; u++) {
-								var uLength = arr1[x][u].length;
-								var maxLength = arr3[x][0];
-								if (uLength < maxLength) {
-									for (var k = 0; k < (maxLength - uLength); k++) {
-										arr1[x][u] += " ";
-									}
-								}
-							}
-						}
-						var ee = "";
-						for (var x = 0; x < arr1[0].length; x++) {
-							for (var xx = 0; xx < arr1.length; xx++) {
-								ee += arr1[xx][x];
-								if (xx < arr1.length - 1) {
-									ee += " | ";
-								}
-							}
-							if (x < arr1[0].length - 1) {
-								ee += "\n";
-							}
-						}
-						inputElement.value = ee.trim();
-					} else {
-						inputElement.value = "Lỗi: Không tìm thấy dữ liệu!";
-					}
 				}
 				readIndividualFile(0);
 			});
@@ -496,8 +446,8 @@
 					arr_PartReportUnit[newRowIndex].push(brdNum);
 					arr_PartReportUnit[newRowIndex].push(ref);
 					arr_PartReportUnit[newRowIndex].push(row_PartReportUnit[row][unit_seqPartNum].trim());
-					arr_PartReportUnit[newRowIndex].push(row_PartReportUnit[row][unit_fsSetPos].split("-")[0].trim());
-					arr_PartReportUnit[newRowIndex].push(row_PartReportUnit[row][unit_fsSetPos].split("-")[1].trim());
+					arr_PartReportUnit[newRowIndex].push(convertFsSetPos(row_PartReportUnit[row][unit_fsSetPos].trim(), "M"));
+					arr_PartReportUnit[newRowIndex].push(convertFsSetPos(row_PartReportUnit[row][unit_fsSetPos].trim(), "F"));
 					arr_PartReportUnit[newRowIndex].push(brdNum + ref);
 				}
 				// Place
@@ -517,9 +467,8 @@
 				var place_PosY = row_Place[0].indexOf("Pos Y");
 				var place_Rotation = row_Place[0].indexOf("Rotation");
 				var place_PartNumber = row_Place[0].indexOf("Part Number");
-				var arr_Place = [
-					["Board", "Ref.", "Pos X", "Pos Y", "Rotation", "Part Number", "BoardRef"]
-				];
+				var place_Assign = row_Place[0].indexOf("Assign");
+				var arr_Place = [["Board", "Ref.", "Pos X", "Pos Y", "Rotation", "Part Number", "BoardRef", "Assign"]];
 				for (var row = 1; row < row_Place.length; row++) {
 					arr_Place.push([]);
 					var newRowIndex = arr_Place.length - 1;
@@ -532,6 +481,7 @@
 					arr_Place[newRowIndex].push(row_Place[row][place_Rotation].trim());
 					arr_Place[newRowIndex].push(row_Place[row][place_PartNumber].trim());
 					arr_Place[newRowIndex].push(brdNum + ref);
+					arr_Place[newRowIndex].push(row_Place[row][place_Assign].trim());
 				}
 				// InsertOrder
 				var data_InsertOrder = document.getElementById("importInsertOrder").value.trim();
@@ -570,7 +520,7 @@
 				// Generator CAD
 				var table = document.createElement("table");
 				var headerRow = table.insertRow();
-				var headers = ["Board", "Location Name", "X", "Y", "Angle", "Part Number", "Mouter", "Feeder"];
+				var headers = ["Block", "Location Name", "X", "Y", "Angle", "Part Number", "Mouter", "Feeder"];
 				if (hasInsertOrderData) {
 					headers.push("Holder");
 				}
@@ -607,6 +557,7 @@
 					var posY = vlookup(boardRefKey, arr_Place, 3);
 					var rotation = vlookup(boardRefKey, arr_Place, 4);
 					var partNumber = vlookup(boardRefKey, arr_Place, 5);
+					var assign = vlookup(boardRefKey, arr_Place, 7);
 					var mounter = arr_PartReportUnit[tr_PartUnit][3];
 					var feeder = arr_PartReportUnit[tr_PartUnit][4];
 					if (board && ref) {
@@ -618,8 +569,8 @@
 						row.insertCell().textContent = posY.trim();
 						row.insertCell().textContent = rotation.trim();
 						row.insertCell().textContent = partNumber.trim();
-						row.insertCell().textContent = "M" + mounter.trim();
-						row.insertCell().textContent = "F" + feeder.trim();
+						row.insertCell().textContent = assign.trim() + "-" + mounter.trim();
+						row.insertCell().textContent = feeder.trim();
 						if (hasInsertOrderData) {
 							var searchOrder = board.trim() + ":" + ref.trim();
 							var holderValue = getHolder(searchOrder, arr_InsertOrder);
@@ -681,6 +632,71 @@
 					}
 					inputElement.value = ee.trim();
 				}
+			}
+			function formatInput_2(elementId, arr0) {
+				var arr1 = [];
+				var arr2 = [];
+				var arr3 = [];
+				var inputElement = document.getElementById(elementId);
+				inputElement.value = "";
+				if (arr0.length > 0 && arr0[0].length > 0) {
+					for (var x = 0; x < arr0[0].length; x++) {
+						arr1.push([]);
+						arr2.push([]);
+						arr3.push([]);
+						for (var xx = 0; xx < arr0.length; xx++) {
+							var cellValue = arr0[xx][x] || "";
+							arr1[x].push(cellValue);
+							arr2[x].push(cellValue.length);
+						}
+						arr3[x].push(Math.max.apply(null, arr2[x]));
+						for (var u = 0; u < arr1[x].length; u++) {
+							var uLength = arr1[x][u].length;
+							var maxLength = arr3[x][0];
+							if (uLength < maxLength) {
+								for (var k = 0; k < (maxLength - uLength); k++) {
+									arr1[x][u] += " ";
+								}
+							}
+						}
+					}
+					var ee = "";
+					for (var x = 0; x < arr1[0].length; x++) {
+						for (var xx = 0; xx < arr1.length; xx++) {
+							ee += arr1[xx][x];
+							if (xx < arr1.length - 1) {
+								ee += " | ";
+							}
+						}
+						if (x < arr1[0].length - 1) {
+							ee += "\n";
+						}
+					}
+					inputElement.value = ee.trim();
+				} else {
+					inputElement.value = "Lỗi: Không tìm thấy dữ liệu!";
+				}
+			}
+			function convertFsSetPos(fsSetPos, type) {
+				if (!fsSetPos) return;
+				var x = fsSetPos.split(/[\s-]+/);
+				if (x.length === 2) {
+					if (type == "M") {
+						return "M" + x[0];
+					}
+					else if (type == "F") {
+						return "F" + x[1];
+					}
+				}
+				else if (x.length >= 3) {
+					if (type == "M") {
+						return "M" + x[0];
+					}
+					else if (type == "F") {
+						return x[1] + x[2];
+					}
+				}
+				return;
 			}
 			function vlookup(key, range, col) {
 				for (var i = 0; i < range.length; i++) {
