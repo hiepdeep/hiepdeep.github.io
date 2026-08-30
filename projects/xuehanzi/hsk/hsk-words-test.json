@@ -1,0 +1,286 @@
+{
+	"level_1": [
+		{
+			"word": "爱",
+			"pinyin_tone": "ài",
+			"meaning": "to love"
+		},
+		{
+			"word": "八",
+			"pinyin_tone": "bā",
+			"meaning": "eight"
+		},
+		{
+			"word": "爸爸",
+			"pinyin_tone": "bà ba",
+			"meaning": "father"
+		},
+		{
+			"word": "杯子",
+			"pinyin_tone": "bēi zi",
+			"meaning": "cup; glass; mug"
+		},
+		{
+			"word": "本",
+			"pinyin_tone": "běn",
+			"meaning": "root; [measure word for books]"
+		},
+		{
+			"word": "不客气",
+			"pinyin_tone": "bú kè qi",
+			"meaning": "you're welcome; impolite"
+		},
+		{
+			"word": "不",
+			"pinyin_tone": "bù",
+			"meaning": "not; no"
+		},
+		{
+			"word": "菜",
+			"pinyin_tone": "cài",
+			"meaning": "vegetable"
+		},
+		{
+			"word": "茶",
+			"pinyin_tone": "chá",
+			"meaning": "tea"
+		},
+		{
+			"word": "做",
+			"pinyin_tone": "zuò",
+			"meaning": "to do; to be; become (an occupation) "
+		}
+	],
+	"level_2": [
+		{
+			"word": "吧",
+			"pinyin_tone": "ba",
+			"meaning": "[makes a suggestion, eg. \"Let's …\")]"
+		},
+		{
+			"word": "白",
+			"pinyin_tone": "bái",
+			"meaning": "white"
+		},
+		{
+			"word": "百",
+			"pinyin_tone": "bǎi",
+			"meaning": "hundred"
+		},
+		{
+			"word": "帮助",
+			"pinyin_tone": "bāng zhù",
+			"meaning": "to help"
+		},
+		{
+			"word": "报纸",
+			"pinyin_tone": "bào zhǐ",
+			"meaning": "newspaper"
+		},
+		{
+			"word": "比",
+			"pinyin_tone": "bǐ",
+			"meaning": "to compare"
+		},
+		{
+			"word": "别",
+			"pinyin_tone": "bié",
+			"meaning": "separate"
+		},
+		{
+			"word": "宾馆",
+			"pinyin_tone": "bīn guǎn",
+			"meaning": "guesthouse"
+		},
+		{
+			"word": "左边",
+			"pinyin_tone": "zuǒ bian",
+			"meaning": "on the left"
+		}
+	],
+	"level_3": [
+		{
+			"word": "阿姨",
+			"pinyin_tone": "ā yí",
+			"meaning": "auntie [mother's younger sister]    "
+		},
+		{
+			"word": "啊",
+			"pinyin_tone": "a",
+			"meaning": "ah"
+		},
+		{
+			"word": "矮",
+			"pinyin_tone": "ǎi",
+			"meaning": "short [height]"
+		},
+		{
+			"word": "爱好",
+			"pinyin_tone": "ài hào",
+			"meaning": "interests; hobbies"
+		},
+		{
+			"word": "安静",
+			"pinyin_tone": "ān jìng",
+			"meaning": "to be quiet"
+		},
+		{
+			"word": "把",
+			"pinyin_tone": "bǎ",
+			"meaning": "grasp; [measure word for knives]"
+		}
+	],
+	"level_4": [
+		{
+			"word": "爱情",
+			"pinyin_tone": "ài qíng",
+			"meaning": "romantic love"
+		},
+		{
+			"word": "安排",
+			"pinyin_tone": "ān pái",
+			"meaning": "to arrange; plan"
+		},
+		{
+			"word": "安全",
+			"pinyin_tone": "ān quán",
+			"meaning": "safe; security"
+		},
+		{
+			"word": "按时",
+			"pinyin_tone": "àn shí",
+			"meaning": "on time"
+		},
+		{
+			"word": "按照",
+			"pinyin_tone": "àn zhào",
+			"meaning": "according to"
+		},
+		{
+			"word": "作家",
+			"pinyin_tone": "zuò jiā",
+			"meaning": "writer"
+		},
+		{
+			"word": "座位",
+			"pinyin_tone": "zuò wèi",
+			"meaning": "place; seat"
+		},
+		{
+			"word": "作用",
+			"pinyin_tone": "zuò yòng",
+			"meaning": "effect"
+		},
+		{
+			"word": "作者",
+			"pinyin_tone": "zuò zhě",
+			"meaning": "author"
+		}
+	],
+	"level_5": [
+		{
+			"word": "哎",
+			"pinyin_tone": "āi",
+			"meaning": "hey"
+		},
+		{
+			"word": "熬夜",
+			"pinyin_tone": "áo yè",
+			"meaning": "to stay up late or all night"
+		},
+		{
+			"word": "唉",
+			"pinyin_tone": "ài",
+			"meaning": "oh; ah; well"
+		},
+		{
+			"word": "爱护",
+			"pinyin_tone": "ài hù",
+			"meaning": "care; cherish; take good care of"
+		},
+		{
+			"word": "爱惜",
+			"pinyin_tone": "ài xī",
+			"meaning": "value; cherish; treasure"
+		},
+		{
+			"word": "作文",
+			"pinyin_tone": "zuò wén",
+			"meaning": "write a composition"
+		}
+	],
+	"level_6": [
+		{
+			"word": "偶像",
+			"pinyin_tone": "ǒu xiàng",
+			"meaning": "idol"
+		},
+		{
+			"word": "挨",
+			"pinyin_tone": "ái",
+			"meaning": "suffer; endure; drag out;"
+		},
+		{
+			"word": "癌症",
+			"pinyin_tone": "ái zhèng",
+			"meaning": "cancer"
+		},
+		{
+			"word": "做主",
+			"pinyin_tone": "zuò zhǔ",
+			"meaning": "take the responsibility for a decision"
+		}
+	],
+	"level_7-9": [
+		{
+			"word": "挨家挨户",
+			"pinyin_tone": "āi jiā āi hù",
+			"meaning": "from house to house / visit every household"
+		},
+		{
+			"word": "哀求",
+			"pinyin_tone": "āi qiú",
+			"meaning": "Beg / plead"
+		},
+		{
+			"word": "癌",
+			"pinyin_tone": "ái",
+			"meaning": "Cancer"
+		},
+		{
+			"word": "爱慕",
+			"pinyin_tone": "ài mù",
+			"meaning": "Love"
+		},
+		{
+			"word": "碍事",
+			"pinyin_tone": "ài shì",
+			"meaning": "cause trouble / impede / be in the way"
+		},
+		{
+			"word": "坐落",
+			"pinyin_tone": "zuò luò",
+			"meaning": "Situated / located"
+		},
+		{
+			"word": "座谈",
+			"pinyin_tone": "zuò tán",
+			"meaning": "Have a discussion / Symposium"
+		},
+		{
+			"word": "作物",
+			"pinyin_tone": "zuò wù",
+			"meaning": "Crop"
+		},
+		{
+			"word": "作战",
+			"pinyin_tone": "zuò zhàn",
+			"meaning": "fight"
+		},
+		{
+			"word": "做证",
+			"pinyin_tone": "zuò zhèng",
+			"meaning": "Testify"
+		}
+	]
+}
