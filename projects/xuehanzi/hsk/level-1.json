@@ -2047,32 +2047,6 @@
 				],
 				"learn": ""
 			},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			{
 				"simplified": "几",
 				"traditional": "幾",
@@ -2081,13 +2055,25 @@
 				"zhuyin": "ㄐㄧˇ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Đại từ nghi vấn",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "mấy, bao nhiêu (dùng để hỏi số lượng nhỏ, thường dưới 10)",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"你几岁？||Nǐ jǐ suì?||Bạn mấy tuổi rồi?",
+									"你们班有几 个人？||Nǐmen bān yǒu jǐ gè rén?||Lớp các bạn có mấy người?"
+								]
+							}
+						]
+					},
+					{
+						"pos": "Số từ",
+						"meanings": [
+							{
+								"meaning": "vài (chỉ số lượng phiếm định, thường nhỏ hơn 10)",
+								"examples": [
+									"我买了几本书。||Wǒ mǎile jǐ běn shū.||Tôi đã mua vài cuốn sách.",
+									"桌子上有几个苹果。||Zhuōzi shàng yǒu jǐ gè píngguǒ.||Trên bàn có vài quả táo."
 								]
 							}
 						]
@@ -2103,13 +2089,13 @@
 				"zhuyin": "ㄐㄧ ㄉㄢˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "trứng gà",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"妈妈买了很多鸡蛋。||Māma mǎile hěn duō jīdàn.||Mẹ đã mua rất nhiều trứng gà.",
+									"我想吃鸡蛋。||Wǒ xiǎng chī jīdàn.||Tôi muốn ăn trứng gà."
 								]
 							}
 						]
@@ -2125,13 +2111,25 @@
 				"zhuyin": "ㄐㄧㄚ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "nhà, gia đình",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我的家很大。||Wǒ de jiā hěn dà.||Nhà của tôi rất rộng.",
+									"爸爸在家。||Bāba zài jiā.||Bố đang ở nhà."
+								]
+							}
+						]
+					},
+					{
+						"pos": "Lượng từ",
+						"meanings": [
+							{
+								"meaning": "dùng cho gia đình, công ty, cửa hàng, v.v.",
+								"examples": [
+									"这是一家大饭店。||Zhè shì yì jiā dà fàndiàn.||Đây là một khách sạn lớn.",
+									"我们是一个 幸福的家。||Wǒmen shì yí gè xìngfú de jiā.||Chúng tôi là một gia đình hạnh phúc."
 								]
 							}
 						]
@@ -2147,13 +2145,13 @@
 				"zhuyin": "ㄐㄧㄚ ㄖㄣˊ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "người nhà, gia đình",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我的家人都在北京。||Wǒ de jiārén dōu zài Běijīng.||Người nhà của tôi đều ở Bắc Kinh.",
+									"我很想念家人。||Wǒ hěn xiǎngniàn jiārén.||Tôi rất nhớ người nhà."
 								]
 							}
 						]
@@ -2169,13 +2167,13 @@
 				"zhuyin": "ㄐㄧㄢˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "gặp, gặp gỡ",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"明天见。||Míngtiān jiàn.||Hẹn gặp lại ngày mai.",
+									"我想见他。||Wǒ xiǎng jiàn tā.||Tôi muốn gặp anh ấy."
 								]
 							}
 						]
@@ -2191,13 +2189,13 @@
 				"zhuyin": "ㄐㄧㄢˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Lượng từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "cái, chiếc (dùng cho sự việc, quần áo, v.v.)",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"这是一件衣服。||Zhè shì yí jiàn yīfu.||Đây là một bộ quần áo.",
+									"我有一件事。||Wǒ yǒu yí jiàn shì.||Tôi có một việc."
 								]
 							}
 						]
@@ -2213,13 +2211,25 @@
 				"zhuyin": "ㄐㄧㄠˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "kêu, gọi, tên là, gọi là",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"他叫什么名字？||Tā jiào shénme míngzi?||Anh ấy tên là gì?",
+									"那个动物叫什么？||Nà gè dòngwù jiào shénme?||Con vật kia gọi là gì?"
+								]
+							}
+						]
+					},
+					{
+						"pos": "Giới từ",
+						"meanings": [
+							{
+								"meaning": "bị, được (dùng trong câu bị động)",
+								"examples": [
+									"他叫 老师 批评了。||Tā jiào lǎoshī pīpíng le.||Anh ấy bị giáo viên phê bình rồi.",
+									"苹果叫他吃了。||Píngguǒ jiào tā chī le.||Táo đã bị anh ấy ăn rồi."
 								]
 							}
 						]
@@ -2235,13 +2245,13 @@
 				"zhuyin": "ㄐㄧㄠˇ ㄗ・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "sủi cảo, bánh chẻo",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我喜欢吃饺子。||Wǒ xǐhuān chī jiǎozi.||Tôi thích ăn sủi cảo.",
+									"今天晚上我们吃饺子。||Jīntiān wǎnshang wǒmen chī jiǎozi.||Tối nay chúng ta ăn sủi cảo."
 								]
 							}
 						]
@@ -2257,13 +2267,13 @@
 				"zhuyin": "ㄐㄧㄝˇ ㄐㄧㄝ・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "chị gái",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我有一个姐姐。||Wǒ yǒu yí gè jiějie.||Tôi có một người chị gái.",
+									"姐姐是医生。||Jiějie shì yīshēng.||Chị gái là bác sĩ."
 								]
 							}
 						]
@@ -2279,13 +2289,13 @@
 				"zhuyin": "ㄐㄧㄣ ㄋㄧㄢˊ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "năm nay",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"今年是二零二六年。||Jīnnián shì èr líng èr liù nián.||Năm nay là năm 2026.",
+									"我今年二十岁。||Wǒ jīnnián èrshí suì.||Năm nay tôi hai mươi tuổi."
 								]
 							}
 						]
@@ -2301,13 +2311,13 @@
 				"zhuyin": "ㄐㄧㄣ ㄊㄧㄢ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "hôm nay",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"今天是星期一。||Jīntiān shì xīngqīyī.||Hôm nay là thứ hai.",
+									"今天天气很好。||Jīntiān tiānqì hěn hǎo.||Thời tiết hôm nay rất đẹp."
 								]
 							}
 						]
@@ -2323,13 +2333,13 @@
 				"zhuyin": "ㄐㄧㄡˇ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Số từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "chín (số 9)",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"这是一个九月。||Zhè shì yí gè jiǔ yuè.||Đây là một tháng chín.",
+									"我有九个苹果。||Wǒ yǒu jiǔ gè píngguǒ.||Tôi có chín quả táo."
 								]
 							}
 						]
@@ -2345,13 +2355,13 @@
 				"zhuyin": "ㄐㄩㄝˊ ㄉㄜ・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "cảm thấy, cho rằng, nghĩ rằng",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我觉得今天很热。||Wǒ juéde jīntiān hěn rè.||Tôi cảm thấy hôm nay rất nóng.",
+									"你觉得这本书怎么样？||Nǐ juéde zhè běn shū zěnmeyàng?||Bạn thấy cuốn sách này thế nào?"
 								]
 							}
 						]
@@ -2367,13 +2377,13 @@
 				"zhuyin": "ㄎㄞ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "mở, khởi động, lái (xe), tổ chức",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"请开门。||Qǐng kāi mén.||Xin hãy mở cửa.",
+									"他会开车。||Tā huì kāi chē.||Anh ấy biết lái xe."
 								]
 							}
 						]
@@ -2389,13 +2399,13 @@
 				"zhuyin": "ㄎㄞ ㄔㄜ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "lái xe",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"他正在开车。||Tā zhèngzài kāichē.||Anh ấy đang lái xe.",
+									"我会开车去学校。||Wǒ huì kāichē qù xuéxiào.||Tôi biết lái xe đi trường học."
 								]
 							}
 						]
@@ -2411,13 +2421,13 @@
 				"zhuyin": "ㄎㄢˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "nhìn, xem, đọc, thăm",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我在看书。||Wǒ zài kàn shū.||Tôi đang đọc sách.",
+									"请看 那个 地方。||Qǐng kàn nà gè dìfang.||Xin hãy nhìn chỗ kia."
 								]
 							}
 						]
@@ -2433,13 +2443,13 @@
 				"zhuyin": "ㄎㄢˋ ㄅㄧㄥˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "khám bệnh, đi khám bác sĩ",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"妈妈带我去医院看病。||Māma dài wǒ qù yīyuàn kànbìng.||Mẹ đưa tôi đến bệnh viện khám bệnh.",
+									"他生病了，要去 看病。||Tā shēngbìng le, yào qù kànbìng.||Anh ấy bị ốm rồi, phải đi khám bệnh."
 								]
 							}
 						]
@@ -2455,13 +2465,13 @@
 				"zhuyin": "ㄎㄢˋ ㄐㄧㄢˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "nhìn thấy, trông thấy",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我看见他了。||Wǒ kànjiàn tā le.||Tôi nhìn thấy anh ấy rồi.",
+									"你看见我的书了吗？||Nǐ kànjiàn wǒ de shū le ma?||Bạn có nhìn thấy quyển sách của tôi không?"
 								]
 							}
 						]
@@ -2477,13 +2487,13 @@
 				"zhuyin": "ㄎㄜˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "học, tiết học, lớp học",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"现在开始上课。||Xiànzài kāishǐ shàng kè.||Bây giờ bắt đầu vào lớp.",
+									"我们今天有三节课。||Wǒmen jīntiān yǒu sān jié kè.||Hôm nay chúng ta có ba tiết học."
 								]
 							}
 						]
@@ -2499,13 +2509,23 @@
 				"zhuyin": "ㄎㄜˇ ㄧˇ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Phó từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "có thể",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"你可以帮我吗？||Nǐ kěyǐ bāng wǒ ma?||Bạn có thể giúp tôi không?"
+								]
+							}
+						]
+					},
+					{
+						"pos": "Động từ",
+						"meanings": [
+							{
+								"meaning": "được, chấp nhận",
+								"examples": [
+									"这样做可以。||Zhè yàng zuò kěyǐ.||Làm thế này là được."
 								]
 							}
 						]
@@ -2521,13 +2541,13 @@
 				"zhuyin": "ㄎㄡˇ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "cái miệng, mồm, khẩu (nhân khẩu)",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"他张开口。||Tā zhāng kāi kǒu.||Anh ấy há miệng ra.",
+									"我家里有四口人。||Wǒ jiā li yǒu sì kǒu rén.||Nhà tôi có bốn nhân khẩu (bốn người)."
 								]
 							}
 						]
@@ -2543,13 +2563,23 @@
 				"zhuyin": "ㄎㄨㄞˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "miếng, cục, hòn",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"这是一块 蛋糕。||Zhè shì yí kuài dàngāo.||Đây là một miếng bánh ngọt."
+								]
+							}
+						]
+					},
+					{
+						"pos": "Lượng từ",
+						"meanings": [
+							{
+								"meaning": "đồng (đơn vị tiền tệ, khẩu ngữ của '元')",
+								"examples": [
+									"这个苹果五块钱。||Zhè gè píngguǒ wǔ kuài qián.||Quả táo này năm đồng tiền."
 								]
 							}
 						]
@@ -2565,13 +2595,24 @@
 				"zhuyin": "ㄌㄞˊ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "đến, tới",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"他明天来我家。||Tā míngtiān lái wǒ jiā.||Anh ấy ngày mai đến nhà tôi.",
+									"你是什么时候来的？||Nǐ shì shénme shíhou lái de?||Bạn đến vào lúc nào thế?"
+								]
+							}
+						]
+					},
+					{
+						"pos": "Trợ động từ",
+						"meanings": [
+							{
+								"meaning": "dùng để chỉ mục đích hoặc hành động tiếp theo",
+								"examples": [
+									"我来 介绍一下。||Wǒ lái jièshào yíxià.||Để tôi giới thiệu một chút."
 								]
 							}
 						]
@@ -2587,13 +2628,13 @@
 				"zhuyin": "ㄌㄠˇ ㄕ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "giáo viên, thầy cô",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"他是我的汉语老师。||Tā shì wǒ de hànyǔ lǎoshī.||Anh ấy là giáo viên tiếng Hán của tôi.",
+									"老师，我有一个问题。||Lǎoshī, wǒ yǒu yí gè wèntí.||Thưa thầy/cô, em có một câu hỏi."
 								]
 							}
 						]
@@ -2609,13 +2650,13 @@
 				"zhuyin": "ㄌㄜ・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Trợ từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "rồi (biểu thị sự thay đổi hoặc hoàn thành của hành động)",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我吃饭了。||Wǒ chī fàn le.||Tôi ăn cơm rồi.",
+									"下雨了。||Xià yǔ le.||Trời mưa rồi."
 								]
 							}
 						]
@@ -2631,13 +2672,13 @@
 				"zhuyin": "ㄌㄥˇ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Tính từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "lạnh, rét",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"今天天气很冷。||Jīntiān tiānqì hěn lěng.||Thời tiết hôm nay rất lạnh.",
+									"外面太冷了。||Wàimiàn tài lěng le.||Bên ngoài lạnh quá rồi."
 								]
 							}
 						]
@@ -2653,13 +2694,19 @@
 				"zhuyin": "ㄌㄧˇ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "bên trong, trong",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"书在盒子里。||Shū zài hézi lǐ.||Quyển sách ở trong cái hộp.",
+									"房子里有谁？||Fángzi lǐ yǒu shéi?||Trong nhà có ai?"
+								]
+							},
+							{
+								"meaning": "lí (đơn vị đo chiều dài tương đương nửa cây số)",
+								"examples": [
+									"走一里路。||Zǒu yì lǐ lù.||Đi một dặm đường."
 								]
 							}
 						]
@@ -2675,13 +2722,18 @@
 				"zhuyin": "ㄌㄧㄤˇ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Số từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "số 2, hai (thường dùng trước lượng từ)",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"两个人。||Liǎng gè rén.||Hai người."
+								]
+							},
+							{
+								"meaning": "lạng (đơn vị đo lường trọng lượng, bằng 50 gram)",
+								"examples": [
+									"买半斤。||Mǎi bàn jīn.||Mua nửa cân."
 								]
 							}
 						]
@@ -2697,13 +2749,13 @@
 				"zhuyin": "ㄌㄧㄥˊ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Số từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "số 0",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"这是一个零。||Zhè shì yī gè líng.||Đây là số 0.",
+									"房间号是零零六。||Fángjiān hào shì líng líng liù.||Số phòng là 006."
 								]
 							}
 						]
@@ -2719,13 +2771,12 @@
 				"zhuyin": "ㄌㄧㄡˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Số từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "số 6, sáu",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我有六本书。||Wǒ yǒu liù běn shū.||Tôi có 6 quyển sách."
 								]
 							}
 						]
@@ -2741,13 +2792,13 @@
 				"zhuyin": "ㄇㄚ・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Trợ từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "dùng ở cuối câu để tạo thành câu hỏi (phát âm là 'ma')",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"你是学生吗？||Nǐ shì xuéshēng ma?||Bạn là học sinh phải không?",
+									"他今天来吗？||Tā jīntiān lái ma?||Hôm nay anh ấy có đến không?"
 								]
 							}
 						]
@@ -2763,13 +2814,13 @@
 				"zhuyin": "ㄇㄚ ㄇㄚ・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "mẹ, má",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我爱我的妈妈。||Wǒ ài wǒ de māma.||Tôi yêu mẹ của tôi.",
+									"妈妈不在家。||Māma bú zài jiā.||Mẹ không có ở nhà."
 								]
 							}
 						]
@@ -2785,13 +2836,13 @@
 				"zhuyin": "ㄇㄞˇ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "mua",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我去买苹果。||Wǒ qù mǎi píngguǒ.||Tôi đi mua táo.",
+									"你买什么？||Nǐ mǎi shénme?||Bạn mua cái gì?"
 								]
 							}
 						]
@@ -2807,13 +2858,13 @@
 				"zhuyin": "ㄇㄞˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "bán",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"这家商店卖水果。||Zhè jiā shāngdiàn mài shuǐguǒ.||Cửa hàng này bán hoa quả.",
+									"他把车卖了。||Tā bǎ chē mài le.||Anh ấy bán xe mất rồi."
 								]
 							}
 						]
@@ -2829,13 +2880,13 @@
 				"zhuyin": "ㄇㄤˊ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Tính từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "bận, bận rộn",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我今天很忙。||Wǒ jīntiān hěn máng.||Tôi hôm nay rất bận.",
+									"你在忙什么？||Nǐ zài máng shénme?||Bạn đang bận việc gì thế?"
 								]
 							}
 						]
@@ -2851,13 +2902,13 @@
 				"zhuyin": "ㄇㄠ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "con mèo",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"这只猫很可爱。||Zhè zhī māo hěn kě'ài.||Con mèo này rất đáng yêu.",
+									"我家里有一只猫。||Wǒ jiā lǐ yǒu yì zhī māo.||Trong nhà tôi có một con mèo."
 								]
 							}
 						]
@@ -2873,13 +2924,13 @@
 				"zhuyin": "ㄇㄟˊ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Phó từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "chưa, không (dùng để phủ định động từ có, hoặc hành động trong quá khứ)",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我没有钱。||Wǒ méiyǒu qián.||Tôi không có tiền.",
+									"他昨天没来。||Tā zuótiān méi lái.||Hôm qua anh ấy không đến."
 								]
 							}
 						]
@@ -2895,13 +2946,24 @@
 				"zhuyin": "ㄇㄟˊ ㄍㄨㄢ ㄒㄧ・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Thán từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "không sao, không có chi, không vấn đề gì",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"没关系，别客气。||Méiguānxi, bié kèqì.||Không sao đâu, đừng khách sáo.",
+									"—对不起！—没关系。||—Duìbuqǐ! —Méiguānxi.||—Xin lỗi! —Không sao."
+								]
+							}
+						]
+					},
+					{
+						"pos": "Động từ",
+						"meanings": [
+							{
+								"meaning": "không sao, không có chi, không vấn đề gì",
+								"examples": [
+									"这件事没关系。||Zhè jiàn shì méiguānxi.||Việc này không vấn đề gì."
 								]
 							}
 						]
@@ -2917,13 +2979,13 @@
 				"zhuyin": "ㄇㄟˋ ㄇㄟ・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "em gái",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我有一个妹妹。||Wǒ yǒu yí gè mèimei.||Tôi có một người em gái.",
+									"妹妹在北京。||Mèimei zài Běijīng.||Em gái ở Bắc Kinh."
 								]
 							}
 						]
@@ -2939,13 +3001,13 @@
 				"zhuyin": "ㄇㄟˊ ㄕˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Động từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "không việc gì, không sao",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"没事，不用谢。||Méishì, bú yòng xiè.||Không sao, không cần cảm ơn.",
+									"他去北京了，没事。||Tā qù Běijīng le, méishì.||Anh ấy đi Bắc Kinh rồi, không sao đâu."
 								]
 							}
 						]
@@ -2961,13 +3023,13 @@
 				"zhuyin": "ㄇㄟˊ ㄧㄡˇ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Phó từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "không có, chưa có",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我没有去北京。||Wǒ méiyǒu qù Běijīng.||Tôi không đi Bắc Kinh.",
+									"商店里没有苹果。||Shāngdiàn lǐ méiyǒu píngguǒ.||Trong cửa hàng không có táo."
 								]
 							}
 						]
@@ -2983,13 +3045,13 @@
 				"zhuyin": "ㄇㄣ・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Hậu tố",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "dùng sau danh từ chỉ người hoặc đại từ số ít để tạo thành số nhiều (chúng, các)",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我们去北京。||Wǒmen qù Běijīng.||Chúng tôi đi Bắc Kinh.",
+									"孩子们在学校。||Háizimen zài xuéxiào.||Các em nhỏ đang ở trường."
 								]
 							}
 						]
@@ -3005,13 +3067,13 @@
 				"zhuyin": "ㄇㄧˇ ㄈㄢˋ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "cơm, gạo (đã nấu chín)",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我喜欢吃米饭。||Wǒ xǐhuan chī mǐfàn.||Tôi thích ăn cơm.",
+									"商店里没有米饭。||Shāngdiàn lǐ méiyǒu mǐfàn.||Trong cửa hàng không có cơm."
 								]
 							}
 						]
@@ -3027,13 +3089,13 @@
 				"zhuyin": "ㄇㄧㄢˋ ㄅㄠ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "bánh mì",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我喜欢吃 商店里 的 面包。||Wǒ xǐhuan chī shāngdiàn lǐ de miànbāo.||Tôi thích ăn bánh mì trong cửa hàng.",
+									"妹妹 在 北京 买 面包。||Mèimei zài Běijīng mǎi miànbāo.||Em gái mua bánh mì ở Bắc Kinh."
 								]
 							}
 						]
@@ -3049,13 +3111,13 @@
 				"zhuyin": "ㄇㄧㄢˋ ㄊㄧㄠˊ undefined・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "mì sợi, món mì",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"我喜欢吃面条儿。||Wǒ xǐhuan chī miàntiáor.||Tôi thích ăn mì.",
+									"妹妹在北京吃面条儿。||Mèimei zài Běijīng chī miàntiáor.||Em gái ăn mì ở Bắc Kinh."
 								]
 							}
 						]
@@ -3071,13 +3133,13 @@
 				"zhuyin": "ㄇㄧㄥˊ ㄋㄧㄢˊ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "năm sau, năm tới",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"明年我去北京。||Míngnián wǒ qù Běijīng.||Năm sau tôi đi Bắc Kinh.",
+									"妹妹明年在学校。||Mèimei míngnián zài xuéxiào.||Em gái năm sau ở trường."
 								]
 							}
 						]
@@ -3093,13 +3155,13 @@
 				"zhuyin": "ㄇㄧㄥˊ ㄊㄧㄢ",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "ngày mai",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"明天我去北京。||Míngtiān wǒ qù Běijīng.||Ngày mai tôi đi Bắc Kinh.",
+									"明天 妹妹 在 学校。||Míngtiān mèimei zài xuéxiào.||Ngày mai em gái ở trường."
 								]
 							}
 						]
@@ -3115,13 +3177,13 @@
 				"zhuyin": "ㄇㄧㄥˊ ㄗ・",
 				"definitions": [
 					{
-						"pos": "_____từloại_____",
+						"pos": "Danh từ",
 						"meanings": [
 							{
-								"meaning": "_____nghĩa_____",
+								"meaning": "tên",
 								"examples": [
-									"___________________________",
-									"___________________________"
+									"你的名字是什么？||Nǐ de míngzi shì shénme?||Tên của bạn là gì?",
+									"妹妹的名字在北京。||Mèimei de míngzi shì zài Běijīng.||Tên của em gái ở Bắc Kinh."
 								]
 							}
 						]
