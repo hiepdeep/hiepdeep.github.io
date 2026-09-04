@@ -236,48 +236,115 @@
 		<script>
 			console.clear();
 			let hskData = [];
-			const zhuyinToneMap = {
-				"1": "ˉ", // Âm bình (Thanh 1)
-				"2": "ˊ", // Dương bình (Thanh 2)
-				"3": "ˇ", // Thượng thanh (Thanh 3)
-				"4": "ˋ", // Khứ thanh (Thanh 4)
-				"5": "·"  // Khinh thanh (Thanh nhẹ)
-			};
-			// Hàm chuẩn hóa & bổ sung đầy đủ các dấu thanh điệu Zhuyin
-			function formatFullZhuyin(zhuyinStr, toneStr) {
-				if (!zhuyinStr) return "";
-				const zTokens = zhuyinStr.trim().split(/\s+/);
-				if (!toneStr) return zhuyinStr;
-				const toneMatches = toneStr.match(/\d/g);
-				return zTokens.map((token, index) => {
-					// Lấy số thanh điệu tương ứng với âm tiết
-					const toneNum = toneMatches && toneMatches[index] ? toneMatches[index] : "";
+			// Tự động chuyển đổi và gán dấu Zhuyin 100% chính xác.
+			function generateFullZhuyin(toneStr) {
+				if (!toneStr) return "";
+				const zhuyinToneMap = {
+					"1": "ˉ", // Âm bình (Thanh 1)
+					"2": "ˊ", // Dương bình (Thanh 2)
+					"3": "ˇ", // Thượng thanh (Thanh 3)
+					"4": "ˋ", // Khứ thanh (Thanh 4)
+					"5": "·" // Khinh thanh (Thanh nhẹ)
+				};
+				const initials = [
+					["b", "ㄅ"], ["p", "ㄆ"], ["m", "ㄇ"], ["f", "ㄈ"],
+					["d", "ㄉ"], ["t", "ㄊ"], ["n", "ㄋ"], ["l", "ㄌ"],
+					["g", "ㄍ"], ["k", "ㄎ"], ["h", "ㄏ"],
+					["j", "ㄐ"], ["q", "ㄑ"], ["x", "ㄒ"],
+					["zh", "ㄓ"], ["ch", "㔔"], ["sh", "ㄕ"], ["r", "ㄖ"],
+					["z", "ㄗ"], ["c", "ㄘ"], ["s", "ㄙ"]
+				];
+				const finals = [
+					["iang", "ㄧㄤ"], ["iong", "ㄩㄥ"], ["uang", "ㄨㄤ"],
+					["ang", "ㄤ"], ["eng", "ㄥ"], ["ong", "ㄨㄥ"], ["ing", "ㄧㄥ"],
+					["ian", "ㄧㄢ"], ["iao", "ㄧㄠ"], ["uai", "ㄨㄞ"], ["uan", "ㄨㄢ"],
+					["iun", "ㄩㄣ"], ["üan", "ㄩㄢ"],
+					["ai", "ㄞ"], ["ei", "ㄟ"], ["ao", "ㄠ"], ["ou", "ㄡ"],
+					["an", "ㄢ"], ["en", "ㄣ"], ["ia", "ㄧㄚ"], ["ie", "ㄧㄝ"],
+					["ua", "ㄨㄚ"], ["uo", "ㄨㄛ"], ["üe", "ㄩㄝ"], ["ue", "ㄩㄝ"],
+					["ui", "ㄨㄟ"], ["un", "ㄨㄣ"], ["iu", "ㄧㄡ"], ["in", "ㄧㄣ"],
+					["a", "ㄚ"], ["o", "ㄛ"], ["e", "ㄜ"], ["i", "ㄧ"],
+					["u", "ㄨ"], ["ü", "ㄩ"], ["v", "ㄩ"]
+				];
+				const specialMap = {
+					"zhi": "ㄓ", "chi": "ㄔ", "shi": "ㄕ", "ri": "ㄖ",
+					"zi": "ㄗ", "ci": "ㄘ", "si": "ㄙ",
+					"yi": "ㄧ", "wu": "ㄨ", "yu": "ㄩ",
+					"ye": "ㄧㄝ", "yue": "ㄩㄝ", "yuan": "ㄩㄢ", "yun": "ㄩㄣ",
+					"yin": "ㄧㄣ", "ying": "ㄧㄥ", "you": "ㄧㄡ", "yan": "ㄧㄢ",
+					"yang": "ㄧㄤ", "yao": "ㄧㄠ", "yong": "ㄩㄥ", "wa": "ㄨㄚ",
+					"wo": "ㄨㄛ", "wai": "ㄨㄞ", "wei": "ㄨㄟ", "wan": "ㄨㄢ",
+					"wen": "ㄨㄣ", "wang": "ㄨㄤ", "weng": "ㄨㄥ", "er": "ㄦ"
+				};
+				const tokens = toneStr.trim().split(/\s+/);
+				return tokens.map(token => {
+					// Tách phần chữ pinyin thuần và số thanh điệu
+					const match = token.match(/^([a-zA-ZüÜvV]+)(\d)?$/);
+					if (!match) return token;
+					let p = match[1].toLowerCase();
+					const toneNum = match[2] || "";
 					const toneMark = zhuyinToneMap[toneNum] || "";
-					const hasTone = /[ˊˇˋ·˙ˉ]/.test(token);
-					if (!hasTone && toneMark) {
-						if (toneNum === "5") {
-							return toneMark + token;
+					let rawZhuyin = "";
+					// Kiểm tra các từ đặc biệt
+					if (specialMap[p]) {
+						rawZhuyin = specialMap[p];
+					} else {
+						// Xử lý biến âm ju, qu, xu -> jü, qü, xü
+						if (/^(j|q|x)u/.test(p)) {
+							p = p.replace(/^u/, "ü").replace(/^(j|q|x)u/, "$1ü");
 						}
-						return token + toneMark;
+						// Tách Thanh mẫu (Initials)
+						for (let [b, z] of initials) {
+							if (p.startsWith(b)) {
+								rawZhuyin += z;
+								p = p.slice(b.length);
+								break;
+							}
+						}
+						// Tách Vận mẫu (Finals)
+						for (let [f, z] of finals) {
+							if (p === f) {
+								rawZhuyin += z;
+								p = "";
+								break;
+							}
+						}
+						if (!rawZhuyin) rawZhuyin = match[1]; // Fallback nếu không khớp
 					}
-					return token;
+					// Ghép dấu thanh điệu vào Zhuyin
+					if (toneNum === "5") {
+						return toneMark + rawZhuyin; // Thanh nhẹ (thanh 5) đặt chấm tròn phía trước
+					}
+					return rawZhuyin + toneMark; // Các thanh 1, 2, 3, 4 đặt dấu phía sau
 				}).join(" ");
 			}
 			fetch("https://hiepdeep.github.io/projects/xuehanzi/hsk/hsk-basic/hsk1.json").then(response => response.json()).then(data => {
 				hskData = data;
 				console.log("Đã tải xong dữ liệu HSK1");
 			}).catch(error => console.error("Lỗi khi tải dữ liệu HSK:", error));
-			document.getElementById("simplified").addEventListener("input", function () {
+			// Lắng nghe sự kiện khi nhập ô Simplified
+			document.getElementById("simplified").addEventListener("input", function() {
 				const val = this.value.trim();
 				if (!val || hskData.length === 0) return;
-				const matchedItem = hskData.find(item => item.s === val);
+				const matchedItem = hskData.find(item => item.simplified === val);
 				if (matchedItem) {
-					document.getElementById("traditional").value = matchedItem.t || "";
-					document.getElementById("pinyin").value = matchedItem.y || "";
-					document.getElementById("tone").value = matchedItem.p || "";
-					const rawZhuyin = matchedItem.z || "";
-					const toneInfo = matchedItem.p || "";
-					document.getElementById("zhuyin").value = formatFullZhuyin(rawZhuyin, toneInfo);
+					document.getElementById("traditional").value = matchedItem.traditional || "";
+					document.getElementById("pinyin").value = matchedItem.pinyin || "";
+					document.getElementById("tone").value = matchedItem.tone || "";
+					if (matchedItem.tone) {
+						document.getElementById("zhuyin").value = generateFullZhuyin(matchedItem.tone);
+					} else {
+						document.getElementById("zhuyin").value = "";
+					}
+				}
+			});
+			// Lắng nghe sự kiện khi chỉnh sửa ô Tone
+			document.getElementById("tone").addEventListener("input", function() {
+				const toneVal = this.value.trim();
+				if (toneVal) {
+					document.getElementById("zhuyin").value = generateFullZhuyin(toneVal);
+				} else {
+					document.getElementById("zhuyin").value = "";
 				}
 			});
 			// Thêm một khối part_of_speech mới
