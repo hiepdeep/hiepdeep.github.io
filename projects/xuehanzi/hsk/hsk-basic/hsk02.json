@@ -5,9 +5,11 @@
 		"pinyin": "a",
 		"tone": "a5",
 		"zhuyin": "·ㄚ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "爱好",
@@ -15,9 +17,11 @@
 		"pinyin": "ài hào",
 		"tone": "ai4 hao4",
 		"zhuyin": "ㄞˋ ㄏㄠˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "白色",
@@ -25,9 +29,11 @@
 		"pinyin": "bái sè",
 		"tone": "bai2 se4",
 		"zhuyin": "ㄅㄞˊ ㄙㄜˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "班",
@@ -35,9 +41,11 @@
 		"pinyin": "bān",
 		"tone": "ban1",
 		"zhuyin": "ㄅㄢˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "帮",
@@ -45,9 +53,11 @@
 		"pinyin": "bāng",
 		"tone": "bang1",
 		"zhuyin": "ㄅㄤˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "帮忙",
@@ -55,9 +65,11 @@
 		"pinyin": "bāng máng",
 		"tone": "bang1 mang2",
 		"zhuyin": "ㄅㄤˉ ㄇㄤˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "包",
@@ -65,9 +77,11 @@
 		"pinyin": "bāo",
 		"tone": "bao1",
 		"zhuyin": "ㄅㄠˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "本子",
@@ -75,9 +89,11 @@
 		"pinyin": "běn zi",
 		"tone": "ben3 zi5",
 		"zhuyin": "ㄅㄣˇ ·ㄗ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "比",
@@ -85,9 +101,11 @@
 		"pinyin": "bǐ",
 		"tone": "bi3",
 		"zhuyin": "ㄅㄧˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "笔",
@@ -95,9 +113,11 @@
 		"pinyin": "bǐ",
 		"tone": "bi3",
 		"zhuyin": "ㄅㄧˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "别",
@@ -105,9 +125,11 @@
 		"pinyin": "bié",
 		"tone": "bie2",
 		"zhuyin": "ㄅㄧㄝˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "不错",
@@ -115,9 +137,11 @@
 		"pinyin": "bù cuò",
 		"tone": "bu4 cuo4",
 		"zhuyin": "ㄅㄨˋ ㄘㄨㄛˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "不好意思",
@@ -125,9 +149,11 @@
 		"pinyin": "bù hǎo yì si",
 		"tone": "bu4 hao3 yi4 si5",
 		"zhuyin": "ㄅㄨˋ ㄏㄠˇ ㄧˋ ·ㄙ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "长",
@@ -135,9 +161,11 @@
 		"pinyin": "cháng",
 		"tone": "chang2",
 		"zhuyin": "㔔ㄤˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "车站",
@@ -145,9 +173,11 @@
 		"pinyin": "chē zhàn",
 		"tone": "che1 zhan4",
 		"zhuyin": "㔔ㄜˉ ㄓㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "出",
@@ -155,9 +185,11 @@
 		"pinyin": "chū",
 		"tone": "chu1",
 		"zhuyin": "㔔ㄨˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "出国",
@@ -165,9 +197,11 @@
 		"pinyin": "chū guó",
 		"tone": "chu1 guo2",
 		"zhuyin": "㔔ㄨˉ ㄍㄨㄛˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "出来",
@@ -175,9 +209,11 @@
 		"pinyin": "chū lái",
 		"tone": "chu1 lai2",
 		"zhuyin": "㔔ㄨˉ ㄌㄞˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "出门",
@@ -185,9 +221,11 @@
 		"pinyin": "chū mén",
 		"tone": "chu1 men2",
 		"zhuyin": "㔔ㄨˉ ㄇㄣˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "出去",
@@ -195,9 +233,11 @@
 		"pinyin": "chū qù",
 		"tone": "chu1 qu4",
 		"zhuyin": "㔔ㄨˉ ㄑㄩˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "床",
@@ -205,9 +245,11 @@
 		"pinyin": "chuáng",
 		"tone": "chuang2",
 		"zhuyin": "㔔ㄨㄤˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "次",
@@ -215,9 +257,11 @@
 		"pinyin": "cì",
 		"tone": "ci4",
 		"zhuyin": "ㄘˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "词",
@@ -225,9 +269,11 @@
 		"pinyin": "cí",
 		"tone": "ci2",
 		"zhuyin": "ㄘˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "从",
@@ -235,9 +281,11 @@
 		"pinyin": "cóng",
 		"tone": "cong2",
 		"zhuyin": "ㄘㄨㄥˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "从小",
@@ -245,9 +293,11 @@
 		"pinyin": "cóng xiǎo",
 		"tone": "cong2 xiao3",
 		"zhuyin": "ㄘㄨㄥˊ ㄒㄧㄠˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "错",
@@ -255,9 +305,11 @@
 		"pinyin": "cuò",
 		"tone": "cuo4",
 		"zhuyin": "ㄘㄨㄛˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "打",
@@ -265,9 +317,11 @@
 		"pinyin": "dǎ",
 		"tone": "da3",
 		"zhuyin": "ㄉㄚˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "打车",
@@ -275,9 +329,11 @@
 		"pinyin": "dǎ chē",
 		"tone": "da3 che1",
 		"zhuyin": "ㄉㄚˇ 㔔ㄜˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "打开",
@@ -285,9 +341,11 @@
 		"pinyin": "dǎ kāi",
 		"tone": "da3 kai1",
 		"zhuyin": "ㄉㄚˇ ㄎㄞˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "但",
@@ -295,9 +353,11 @@
 		"pinyin": "dàn",
 		"tone": "dan4",
 		"zhuyin": "ㄉㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "但是",
@@ -305,9 +365,11 @@
 		"pinyin": "dàn shì",
 		"tone": "dan4 shi4",
 		"zhuyin": "ㄉㄢˋ ㄕˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "地",
@@ -315,9 +377,11 @@
 		"pinyin": "de",
 		"tone": "de5",
 		"zhuyin": "·ㄉㄜ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "得",
@@ -325,9 +389,11 @@
 		"pinyin": "de",
 		"tone": "de5",
 		"zhuyin": "·ㄉㄜ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "等",
@@ -335,9 +401,11 @@
 		"pinyin": "děng",
 		"tone": "deng3",
 		"zhuyin": "ㄉㄥˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "地铁",
@@ -345,9 +413,11 @@
 		"pinyin": "dì tiě",
 		"tone": "di4 tie3",
 		"zhuyin": "ㄉㄧˋ ㄊㄧㄝˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "点",
@@ -355,9 +425,11 @@
 		"pinyin": "diǎn",
 		"tone": "dian3",
 		"zhuyin": "ㄉㄧㄢˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "动",
@@ -365,9 +437,11 @@
 		"pinyin": "dòng",
 		"tone": "dong4",
 		"zhuyin": "ㄉㄨㄥˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "懂",
@@ -375,9 +449,11 @@
 		"pinyin": "dǒng",
 		"tone": "dong3",
 		"zhuyin": "ㄉㄨㄥˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "多",
@@ -385,9 +461,11 @@
 		"pinyin": "duō",
 		"tone": "duo1",
 		"zhuyin": "ㄉㄨㄛˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "饭馆",
@@ -395,9 +473,11 @@
 		"pinyin": "fàn guǎn",
 		"tone": "fan4 guan3",
 		"zhuyin": "ㄈㄢˋ ㄍㄨㄢˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "飞",
@@ -405,9 +485,11 @@
 		"pinyin": "fēi",
 		"tone": "fei1",
 		"zhuyin": "ㄈㄟˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "高",
@@ -415,9 +497,11 @@
 		"pinyin": "gāo",
 		"tone": "gao1",
 		"zhuyin": "ㄍㄠˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "告诉",
@@ -425,9 +509,11 @@
 		"pinyin": "gào su",
 		"tone": "gao4 su5",
 		"zhuyin": "ㄍㄠˋ ·ㄙㄨ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "高中",
@@ -435,9 +521,11 @@
 		"pinyin": "gāo zhōng",
 		"tone": "gao1 zhong1",
 		"zhuyin": "ㄍㄠˉ ㄓㄨㄥˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "个子",
@@ -445,9 +533,11 @@
 		"pinyin": "gè zi",
 		"tone": "ge4 zi5",
 		"zhuyin": "ㄍㄜˋ ·ㄗ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "给",
@@ -455,9 +545,11 @@
 		"pinyin": "gěi",
 		"tone": "gei3",
 		"zhuyin": "ㄍㄟˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "跟",
@@ -465,9 +557,11 @@
 		"pinyin": "gēn",
 		"tone": "gen1",
 		"zhuyin": "ㄍㄣˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "公交车",
@@ -475,9 +569,11 @@
 		"pinyin": "gōng jiāo chē",
 		"tone": "gong1 jiao1 che1",
 		"zhuyin": "ㄍㄨㄥˉ ㄐㄧㄠˉ 㔔ㄜˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "过",
@@ -485,9 +581,11 @@
 		"pinyin": "guò",
 		"tone": "guo4",
 		"zhuyin": "ㄍㄨㄛˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "过来",
@@ -495,9 +593,11 @@
 		"pinyin": "guò lái",
 		"tone": "guo4 lai2",
 		"zhuyin": "ㄍㄨㄛˋ ㄌㄞˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "过年",
@@ -505,9 +605,11 @@
 		"pinyin": "guò nián",
 		"tone": "guo4 nian2",
 		"zhuyin": "ㄍㄨㄛˋ ㄋㄧㄢˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "过去",
@@ -515,9 +617,11 @@
 		"pinyin": "guò qù",
 		"tone": "guo4 qu4",
 		"zhuyin": "ㄍㄨㄛˋ ㄑㄩˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "还是",
@@ -525,9 +629,11 @@
 		"pinyin": "hái shi",
 		"tone": "hai2 shi5",
 		"zhuyin": "ㄏㄞˊ ·ㄕ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "好",
@@ -535,9 +641,11 @@
 		"pinyin": "hǎo",
 		"tone": "hao3",
 		"zhuyin": "ㄏㄠˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "黑色",
@@ -545,9 +653,11 @@
 		"pinyin": "hēi sè",
 		"tone": "hei1 se4",
 		"zhuyin": "ㄏㄟˉ ㄙㄜˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "红茶",
@@ -555,9 +665,11 @@
 		"pinyin": "hóng chá",
 		"tone": "hong2 cha2",
 		"zhuyin": "ㄏㄨㄥˊ 㔔ㄚˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "红色",
@@ -565,9 +677,11 @@
 		"pinyin": "hóng sè",
 		"tone": "hong2 se4",
 		"zhuyin": "ㄏㄨㄥˊ ㄙㄜˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "后面",
@@ -575,9 +689,11 @@
 		"pinyin": "hòu mian",
 		"tone": "hou4 mian5",
 		"zhuyin": "ㄏㄡˋ ·ㄇㄧㄢ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "花",
@@ -585,9 +701,11 @@
 		"pinyin": "huā",
 		"tone": "hua1",
 		"zhuyin": "ㄏㄨㄚˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "画",
@@ -595,9 +713,11 @@
 		"pinyin": "huà",
 		"tone": "hua4",
 		"zhuyin": "ㄏㄨㄚˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "坏",
@@ -605,9 +725,11 @@
 		"pinyin": "huài",
 		"tone": "huai4",
 		"zhuyin": "ㄏㄨㄞˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "回来",
@@ -615,9 +737,11 @@
 		"pinyin": "huí lai",
 		"tone": "hui2 lai5",
 		"zhuyin": "ㄏㄨㄟˊ ·ㄌㄞ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "回去",
@@ -625,9 +749,11 @@
 		"pinyin": "huí qu",
 		"tone": "hui2 qu5",
 		"zhuyin": "ㄏㄨㄟˊ ·ㄑㄩ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "机场",
@@ -635,9 +761,11 @@
 		"pinyin": "jī chǎng",
 		"tone": "ji1 chang3",
 		"zhuyin": "ㄐㄧˉ 㔔ㄤˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "记得",
@@ -645,9 +773,11 @@
 		"pinyin": "jì de",
 		"tone": "ji4 de5",
 		"zhuyin": "ㄐㄧˋ ·ㄉㄜ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "机票",
@@ -655,9 +785,11 @@
 		"pinyin": "jī piào",
 		"tone": "ji1 piao4",
 		"zhuyin": "ㄐㄧˉ ㄆㄧㄠˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "间",
@@ -665,9 +797,11 @@
 		"pinyin": "jiān",
 		"tone": "jian1",
 		"zhuyin": "ㄐㄧㄢˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "教",
@@ -675,9 +809,11 @@
 		"pinyin": "jiāo",
 		"tone": "jiao1",
 		"zhuyin": "ㄐㄧㄠˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "教室",
@@ -685,9 +821,11 @@
 		"pinyin": "jiào shì",
 		"tone": "jiao4 shi4",
 		"zhuyin": "ㄐㄧㄠˋ ㄕˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "介绍",
@@ -695,9 +833,11 @@
 		"pinyin": "jiè shào",
 		"tone": "jie4 shao4",
 		"zhuyin": "ㄐㄧㄝˋ ㄕㄠˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "进",
@@ -705,9 +845,11 @@
 		"pinyin": "jìn",
 		"tone": "jin4",
 		"zhuyin": "ㄐㄧㄣˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "近",
@@ -715,9 +857,11 @@
 		"pinyin": "jìn",
 		"tone": "jin4",
 		"zhuyin": "ㄐㄧㄣˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "进来",
@@ -725,9 +869,11 @@
 		"pinyin": "jìn lái",
 		"tone": "jin4 lai2",
 		"zhuyin": "ㄐㄧㄣˋ ㄌㄞˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "进去",
@@ -735,9 +881,11 @@
 		"pinyin": "jìn qù",
 		"tone": "jin4 qu4",
 		"zhuyin": "ㄐㄧㄣˋ ㄑㄩˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "经常",
@@ -745,9 +893,11 @@
 		"pinyin": "jīng cháng",
 		"tone": "jing1 chang2",
 		"zhuyin": "ㄐㄧㄥˉ 㔔ㄤˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "就",
@@ -755,9 +905,11 @@
 		"pinyin": "jiù",
 		"tone": "jiu4",
 		"zhuyin": "ㄐㄧㄡˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "酒店",
@@ -765,9 +917,11 @@
 		"pinyin": "jiǔ diàn",
 		"tone": "jiu3 dian4",
 		"zhuyin": "ㄐㄧㄡˇ ㄉㄧㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "咖啡",
@@ -775,9 +929,11 @@
 		"pinyin": "kā fēi",
 		"tone": "ka1 fei1",
 		"zhuyin": "ㄎㄚˉ ㄈㄟˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "开始",
@@ -785,9 +941,11 @@
 		"pinyin": "kāi shǐ",
 		"tone": "kai1 shi3",
 		"zhuyin": "ㄎㄞˉ ㄕˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "开学",
@@ -795,9 +953,11 @@
 		"pinyin": "kāi xué",
 		"tone": "kai1 xue2",
 		"zhuyin": "ㄎㄞˉ ㄒㄩㄝˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "考",
@@ -805,9 +965,11 @@
 		"pinyin": "kǎo",
 		"tone": "kao3",
 		"zhuyin": "ㄎㄠˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "考试",
@@ -815,9 +977,11 @@
 		"pinyin": "kǎo shì",
 		"tone": "kao3 shi4",
 		"zhuyin": "ㄎㄠˇ ㄕˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "可能",
@@ -825,9 +989,11 @@
 		"pinyin": "kě néng",
 		"tone": "ke3 neng2",
 		"zhuyin": "ㄎㄜˇ ㄋㄥˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "裤子",
@@ -835,9 +1001,11 @@
 		"pinyin": "kù zi",
 		"tone": "ku4 zi5",
 		"zhuyin": "ㄎㄨˋ ·ㄗ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "快",
@@ -845,9 +1013,11 @@
 		"pinyin": "kuài",
 		"tone": "kuai4",
 		"zhuyin": "ㄎㄨㄞˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "快乐",
@@ -855,9 +1025,11 @@
 		"pinyin": "kuài lè",
 		"tone": "kuai4 le4",
 		"zhuyin": "ㄎㄨㄞˋ ㄌㄜˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "快要",
@@ -865,9 +1037,11 @@
 		"pinyin": "kuài yào",
 		"tone": "kuai4 yao4",
 		"zhuyin": "ㄎㄨㄞˋ ㄧㄠˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "篮球",
@@ -875,9 +1049,11 @@
 		"pinyin": "lán qiú",
 		"tone": "lan2 qiu2",
 		"zhuyin": "ㄌㄢˊ ㄑㄧㄡˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "累",
@@ -885,9 +1061,11 @@
 		"pinyin": "lèi",
 		"tone": "lei4",
 		"zhuyin": "ㄌㄟˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "离",
@@ -895,9 +1073,11 @@
 		"pinyin": "lí",
 		"tone": "li2",
 		"zhuyin": "ㄌㄧˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "里面",
@@ -905,9 +1085,11 @@
 		"pinyin": "lǐ miàn",
 		"tone": "li3 mian4",
 		"zhuyin": "ㄌㄧˇ ㄇㄧㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "楼",
@@ -915,9 +1097,11 @@
 		"pinyin": "lóu",
 		"tone": "lou2",
 		"zhuyin": "ㄌㄡˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "路",
@@ -925,9 +1109,11 @@
 		"pinyin": "lù",
 		"tone": "lu4",
 		"zhuyin": "ㄌㄨˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "绿茶",
@@ -935,9 +1121,11 @@
 		"pinyin": "lǜ chá",
 		"tone": "lu:4 cha2",
 		"zhuyin": "lu:4 㔔ㄚˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "绿色",
@@ -945,9 +1133,11 @@
 		"pinyin": "lǜ sè",
 		"tone": "lu:4 se4",
 		"zhuyin": "lu:4 ㄙㄜˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "路上",
@@ -955,9 +1145,11 @@
 		"pinyin": "lù shang",
 		"tone": "lu4 shang5",
 		"zhuyin": "ㄌㄨˋ ·ㄕㄤ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "旅游",
@@ -965,9 +1157,11 @@
 		"pinyin": "lǚ yóu",
 		"tone": "lu:3 you2",
 		"zhuyin": "lu:3 ㄧㄡˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "慢",
@@ -975,9 +1169,11 @@
 		"pinyin": "màn",
 		"tone": "man4",
 		"zhuyin": "ㄇㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "每",
@@ -985,9 +1181,11 @@
 		"pinyin": "měi",
 		"tone": "mei3",
 		"zhuyin": "ㄇㄟˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "没意思",
@@ -995,9 +1193,11 @@
 		"pinyin": "méi yì si",
 		"tone": "mei2 yi4 si5",
 		"zhuyin": "ㄇㄟˊ ㄧˋ ·ㄙ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "门",
@@ -1005,9 +1205,11 @@
 		"pinyin": "mén",
 		"tone": "men2",
 		"zhuyin": "ㄇㄣˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "门口",
@@ -1015,9 +1217,11 @@
 		"pinyin": "mén kǒu",
 		"tone": "men2 kou3",
 		"zhuyin": "ㄇㄣˊ ㄎㄡˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "门票",
@@ -1025,9 +1229,11 @@
 		"pinyin": "mén piào",
 		"tone": "men2 piao4",
 		"zhuyin": "ㄇㄣˊ ㄆㄧㄠˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "面",
@@ -1035,9 +1241,11 @@
 		"pinyin": "miàn",
 		"tone": "mian4",
 		"zhuyin": "ㄇㄧㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "名",
@@ -1045,9 +1253,11 @@
 		"pinyin": "míng",
 		"tone": "ming2",
 		"zhuyin": "ㄇㄧㄥˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "那",
@@ -1055,9 +1265,11 @@
 		"pinyin": "nà",
 		"tone": "na4",
 		"zhuyin": "ㄋㄚˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "拿",
@@ -1065,9 +1277,11 @@
 		"pinyin": "ná",
 		"tone": "na2",
 		"zhuyin": "ㄋㄚˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "那么",
@@ -1075,9 +1289,11 @@
 		"pinyin": "nà me",
 		"tone": "na4 me5",
 		"zhuyin": "ㄋㄚˋ ·ㄇㄜ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "那样",
@@ -1085,9 +1301,11 @@
 		"pinyin": "nà yàng",
 		"tone": "na4 yang4",
 		"zhuyin": "ㄋㄚˋ ㄧㄤˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "奶茶",
@@ -1095,9 +1313,11 @@
 		"pinyin": "nǎi chá",
 		"tone": "nai3 cha2",
 		"zhuyin": "ㄋㄞˇ 㔔ㄚˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "奶奶",
@@ -1105,9 +1325,11 @@
 		"pinyin": "nǎi nai",
 		"tone": "nai3 nai5",
 		"zhuyin": "ㄋㄞˇ ·ㄋㄞ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "男孩儿",
@@ -1115,9 +1337,11 @@
 		"pinyin": "nán hái r",
 		"tone": "nan2 hai2 r5",
 		"zhuyin": "ㄋㄢˊ ㄏㄞˊ ·ㄖ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "鸟",
@@ -1125,9 +1349,11 @@
 		"pinyin": "niǎo",
 		"tone": "niao3",
 		"zhuyin": "ㄋㄧㄠˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "女孩儿",
@@ -1135,9 +1361,11 @@
 		"pinyin": "nǚ hái r",
 		"tone": "nu:3 hai2 r5",
 		"zhuyin": "nu:3 ㄏㄞˊ ·ㄖ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "旁边",
@@ -1145,9 +1373,11 @@
 		"pinyin": "páng biān",
 		"tone": "pang2 bian1",
 		"zhuyin": "ㄆㄤˊ ㄅㄧㄢˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "跑",
@@ -1155,9 +1385,11 @@
 		"pinyin": "pǎo",
 		"tone": "pao3",
 		"zhuyin": "ㄆㄠˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "跑步",
@@ -1165,9 +1397,11 @@
 		"pinyin": "pǎo bù",
 		"tone": "pao3 bu4",
 		"zhuyin": "ㄆㄠˇ ㄅㄨˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "票",
@@ -1175,9 +1409,11 @@
 		"pinyin": "piào",
 		"tone": "piao4",
 		"zhuyin": "ㄆㄧㄠˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "起来",
@@ -1185,9 +1421,11 @@
 		"pinyin": "qi lai",
 		"tone": "qi5 lai5",
 		"zhuyin": "·ㄑㄧ ·ㄌㄞ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "妻子",
@@ -1195,9 +1433,11 @@
 		"pinyin": "qī zi",
 		"tone": "qi1 zi5",
 		"zhuyin": "ㄑㄧˉ ·ㄗ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "前面",
@@ -1205,9 +1445,11 @@
 		"pinyin": "qián miàn",
 		"tone": "qian2 mian4",
 		"zhuyin": "ㄑㄧㄢˊ ㄇㄧㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "晴",
@@ -1215,9 +1457,11 @@
 		"pinyin": "qíng",
 		"tone": "qing2",
 		"zhuyin": "ㄑㄧㄥˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "球",
@@ -1225,9 +1469,11 @@
 		"pinyin": "qiú",
 		"tone": "qiu2",
 		"zhuyin": "ㄑㄧㄡˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "让",
@@ -1235,9 +1481,11 @@
 		"pinyin": "ràng",
 		"tone": "rang4",
 		"zhuyin": "ㄖㄤˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "肉",
@@ -1245,9 +1493,11 @@
 		"pinyin": "ròu",
 		"tone": "rou4",
 		"zhuyin": "ㄖㄡˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "商场",
@@ -1255,9 +1505,11 @@
 		"pinyin": "shāng chǎng",
 		"tone": "shang1 chang3",
 		"zhuyin": "ㄕㄤˉ 㔔ㄤˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "上来",
@@ -1265,9 +1517,11 @@
 		"pinyin": "shàng lái",
 		"tone": "shang4 lai2",
 		"zhuyin": "ㄕㄤˋ ㄌㄞˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "上面",
@@ -1275,9 +1529,11 @@
 		"pinyin": "shàng miàn",
 		"tone": "shang4 mian4",
 		"zhuyin": "ㄕㄤˋ ㄇㄧㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "上去",
@@ -1285,9 +1541,11 @@
 		"pinyin": "shàng qù",
 		"tone": "shang4 qu4",
 		"zhuyin": "ㄕㄤˋ ㄑㄩˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "上网",
@@ -1295,9 +1553,11 @@
 		"pinyin": "shàng wǎng",
 		"tone": "shang4 wang3",
 		"zhuyin": "ㄕㄤˋ ㄨㄤˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "身体",
@@ -1305,9 +1565,11 @@
 		"pinyin": "shēn tǐ",
 		"tone": "shen1 ti3",
 		"zhuyin": "ㄕㄣˉ ㄊㄧˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "生日",
@@ -1315,9 +1577,11 @@
 		"pinyin": "shēng rì",
 		"tone": "sheng1 ri4",
 		"zhuyin": "ㄕㄥˉ ㄖˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "时",
@@ -1325,9 +1589,11 @@
 		"pinyin": "shí",
 		"tone": "shi2",
 		"zhuyin": "ㄕˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "事情",
@@ -1335,9 +1601,11 @@
 		"pinyin": "shì qing",
 		"tone": "shi4 qing5",
 		"zhuyin": "ㄕˋ ·ㄑㄧㄥ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "手",
@@ -1345,9 +1613,11 @@
 		"pinyin": "shǒu",
 		"tone": "shou3",
 		"zhuyin": "ㄕㄡˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "手表",
@@ -1355,9 +1625,11 @@
 		"pinyin": "shǒu biǎo",
 		"tone": "shou3 biao3",
 		"zhuyin": "ㄕㄡˇ ㄅㄧㄠˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "书包",
@@ -1365,9 +1637,11 @@
 		"pinyin": "shū bāo",
 		"tone": "shu1 bao1",
 		"zhuyin": "ㄕㄨˉ ㄅㄠˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "舒服",
@@ -1375,9 +1649,11 @@
 		"pinyin": "shū fu",
 		"tone": "shu1 fu5",
 		"zhuyin": "ㄕㄨˉ ·ㄈㄨ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "送",
@@ -1385,9 +1661,11 @@
 		"pinyin": "sòng",
 		"tone": "song4",
 		"zhuyin": "ㄙㄨㄥˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "虽然",
@@ -1395,9 +1673,11 @@
 		"pinyin": "suī rán",
 		"tone": "sui1 ran2",
 		"zhuyin": "ㄙㄨㄟˉ ㄖㄢˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "所以",
@@ -1405,9 +1685,11 @@
 		"pinyin": "suǒ yǐ",
 		"tone": "suo3 yi3",
 		"zhuyin": "ㄙㄨㄛˇ ㄧˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "疼",
@@ -1415,9 +1697,11 @@
 		"pinyin": "téng",
 		"tone": "teng2",
 		"zhuyin": "ㄊㄥˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "题",
@@ -1425,9 +1709,11 @@
 		"pinyin": "tí",
 		"tone": "ti2",
 		"zhuyin": "ㄊㄧˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "踢",
@@ -1435,9 +1721,11 @@
 		"pinyin": "tī",
 		"tone": "ti1",
 		"zhuyin": "ㄊㄧˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "条",
@@ -1445,9 +1733,11 @@
 		"pinyin": "tiáo",
 		"tone": "tiao2",
 		"zhuyin": "ㄊㄧㄠˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "跳舞",
@@ -1455,9 +1745,11 @@
 		"pinyin": "tiào wǔ",
 		"tone": "tiao4 wu3",
 		"zhuyin": "ㄊㄧㄠˋ ㄨˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "头",
@@ -1465,9 +1757,11 @@
 		"pinyin": "tóu",
 		"tone": "tou2",
 		"zhuyin": "ㄊㄡˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "外国",
@@ -1475,9 +1769,11 @@
 		"pinyin": "wài guó",
 		"tone": "wai4 guo2",
 		"zhuyin": "ㄨㄞˋ ㄍㄨㄛˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "外面",
@@ -1485,9 +1781,11 @@
 		"pinyin": "wài miàn",
 		"tone": "wai4 mian4",
 		"zhuyin": "ㄨㄞˋ ㄇㄧㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "完",
@@ -1495,9 +1793,11 @@
 		"pinyin": "wán",
 		"tone": "wan2",
 		"zhuyin": "ㄨㄢˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "万",
@@ -1505,9 +1805,11 @@
 		"pinyin": "wàn",
 		"tone": "wan4",
 		"zhuyin": "ㄨㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "往",
@@ -1515,9 +1817,11 @@
 		"pinyin": "wǎng",
 		"tone": "wang3",
 		"zhuyin": "ㄨㄤˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "忘",
@@ -1525,9 +1829,11 @@
 		"pinyin": "wàng",
 		"tone": "wang4",
 		"zhuyin": "ㄨㄤˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "网上",
@@ -1535,9 +1841,11 @@
 		"pinyin": "wǎng shàng",
 		"tone": "wang3 shang4",
 		"zhuyin": "ㄨㄤˇ ㄕㄤˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "位",
@@ -1545,9 +1853,11 @@
 		"pinyin": "wèi",
 		"tone": "wei4",
 		"zhuyin": "ㄨㄟˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "为什么",
@@ -1555,9 +1865,11 @@
 		"pinyin": "wèi shén me",
 		"tone": "wei4 shen2 me5",
 		"zhuyin": "ㄨㄟˋ ㄕㄣˊ ·ㄇㄜ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "洗",
@@ -1565,9 +1877,11 @@
 		"pinyin": "xǐ",
 		"tone": "xi3",
 		"zhuyin": "ㄒㄧˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "洗手间",
@@ -1575,9 +1889,11 @@
 		"pinyin": "xǐ shǒu jiān",
 		"tone": "xi3 shou3 jian1",
 		"zhuyin": "ㄒㄧˇ ㄕㄡˇ ㄐㄧㄢˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "希望",
@@ -1585,9 +1901,11 @@
 		"pinyin": "xī wàng",
 		"tone": "xi1 wang4",
 		"zhuyin": "ㄒㄧˉ ㄨㄤˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "下来",
@@ -1595,9 +1913,11 @@
 		"pinyin": "xià lai",
 		"tone": "xia4 lai5",
 		"zhuyin": "ㄒㄧㄚˋ ·ㄌㄞ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "下面",
@@ -1605,9 +1925,11 @@
 		"pinyin": "xià miàn",
 		"tone": "xia4 mian4",
 		"zhuyin": "ㄒㄧㄚˋ ㄇㄧㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "下去",
@@ -1615,9 +1937,11 @@
 		"pinyin": "xià qù",
 		"tone": "xia4 qu4",
 		"zhuyin": "ㄒㄧㄚˋ ㄑㄩˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "笑",
@@ -1625,9 +1949,11 @@
 		"pinyin": "xiào",
 		"tone": "xiao4",
 		"zhuyin": "ㄒㄧㄠˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "小孩儿",
@@ -1635,9 +1961,11 @@
 		"pinyin": "xiǎo hái r",
 		"tone": "xiao3 hai2 r5",
 		"zhuyin": "ㄒㄧㄠˇ ㄏㄞˊ ·ㄖ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "小时候",
@@ -1645,9 +1973,11 @@
 		"pinyin": "xiǎo shí hou",
 		"tone": "xiao3 shi2 hou5",
 		"zhuyin": "ㄒㄧㄠˇ ㄕˊ ·ㄏㄡ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "姓",
@@ -1655,9 +1985,11 @@
 		"pinyin": "xìng",
 		"tone": "xing4",
 		"zhuyin": "ㄒㄧㄥˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "姓名",
@@ -1665,9 +1997,11 @@
 		"pinyin": "xìng míng",
 		"tone": "xing4 ming2",
 		"zhuyin": "ㄒㄧㄥˋ ㄇㄧㄥˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "眼睛",
@@ -1675,9 +2009,11 @@
 		"pinyin": "yǎn jing",
 		"tone": "yan3 jing5",
 		"zhuyin": "ㄧㄢˇ ·ㄐㄧㄥ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "颜色",
@@ -1685,9 +2021,11 @@
 		"pinyin": "yán sè",
 		"tone": "yan2 se4",
 		"zhuyin": "ㄧㄢˊ ㄙㄜˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "药",
@@ -1695,9 +2033,11 @@
 		"pinyin": "yào",
 		"tone": "yao4",
 		"zhuyin": "ㄧㄠˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "药店",
@@ -1705,9 +2045,11 @@
 		"pinyin": "yào diàn",
 		"tone": "yao4 dian4",
 		"zhuyin": "ㄧㄠˋ ㄉㄧㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "爷爷",
@@ -1715,9 +2057,11 @@
 		"pinyin": "yé ye",
 		"tone": "ye2 ye5",
 		"zhuyin": "ㄧㄝˊ ·ㄧㄝ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "一会儿",
@@ -1725,9 +2069,11 @@
 		"pinyin": "yī huì r",
 		"tone": "yi1 hui4 r5",
 		"zhuyin": "ㄧˉ ㄏㄨㄟˋ ·ㄖ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "已经",
@@ -1735,9 +2081,11 @@
 		"pinyin": "yǐ jīng",
 		"tone": "yi3 jing1",
 		"zhuyin": "ㄧˇ ㄐㄧㄥˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "一起",
@@ -1745,9 +2093,11 @@
 		"pinyin": "yī qǐ",
 		"tone": "yi1 qi3",
 		"zhuyin": "ㄧˉ ㄑㄧˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "意思",
@@ -1755,9 +2105,11 @@
 		"pinyin": "yì si",
 		"tone": "yi4 si5",
 		"zhuyin": "ㄧˋ ·ㄙ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "阴",
@@ -1765,9 +2117,11 @@
 		"pinyin": "yīn",
 		"tone": "yin1",
 		"zhuyin": "ㄧㄣˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "因为",
@@ -1775,9 +2129,11 @@
 		"pinyin": "yīn wèi",
 		"tone": "yin1 wei4",
 		"zhuyin": "ㄧㄣˉ ㄨㄟˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "右",
@@ -1785,9 +2141,11 @@
 		"pinyin": "yòu",
 		"tone": "you4",
 		"zhuyin": "ㄧㄡˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "游",
@@ -1795,9 +2153,11 @@
 		"pinyin": "yóu",
 		"tone": "you2",
 		"zhuyin": "ㄧㄡˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "右边",
@@ -1805,9 +2165,11 @@
 		"pinyin": "yòu bian",
 		"tone": "you4 bian5",
 		"zhuyin": "ㄧㄡˋ ·ㄅㄧㄢ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "有时",
@@ -1815,9 +2177,11 @@
 		"pinyin": "yǒu shí",
 		"tone": "you3 shi2",
 		"zhuyin": "ㄧㄡˇ ㄕˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "有时候",
@@ -1825,9 +2189,11 @@
 		"pinyin": "yǒu shí hou",
 		"tone": "you3 shi2 hou5",
 		"zhuyin": "ㄧㄡˇ ㄕˊ ·ㄏㄡ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "有意思",
@@ -1835,9 +2201,11 @@
 		"pinyin": "yǒu yì si",
 		"tone": "you3 yi4 si5",
 		"zhuyin": "ㄧㄡˇ ㄧˋ ·ㄙ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "游泳",
@@ -1845,9 +2213,11 @@
 		"pinyin": "yóu yǒng",
 		"tone": "you2 yong3",
 		"zhuyin": "ㄧㄡˊ ㄩㄥˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "鱼",
@@ -1855,9 +2225,11 @@
 		"pinyin": "yú",
 		"tone": "yu2",
 		"zhuyin": "ㄩˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "远",
@@ -1865,9 +2237,11 @@
 		"pinyin": "yuǎn",
 		"tone": "yuan3",
 		"zhuyin": "ㄩㄢˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "运动",
@@ -1875,9 +2249,11 @@
 		"pinyin": "yùn dòng",
 		"tone": "yun4 dong4",
 		"zhuyin": "ㄩㄣˋ ㄉㄨㄥˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "站",
@@ -1885,9 +2261,11 @@
 		"pinyin": "zhàn",
 		"tone": "zhan4",
 		"zhuyin": "ㄓㄢˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "丈夫",
@@ -1895,9 +2273,11 @@
 		"pinyin": "zhàng fu",
 		"tone": "zhang4 fu5",
 		"zhuyin": "ㄓㄤˋ ·ㄈㄨ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "着",
@@ -1905,9 +2285,11 @@
 		"pinyin": "zhe",
 		"tone": "zhe5",
 		"zhuyin": "·ㄓㄜ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "这么",
@@ -1915,9 +2297,11 @@
 		"pinyin": "zhè me",
 		"tone": "zhe4 me5",
 		"zhuyin": "ㄓㄜˋ ·ㄇㄜ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "这样",
@@ -1925,9 +2309,11 @@
 		"pinyin": "zhè yàng",
 		"tone": "zhe4 yang4",
 		"zhuyin": "ㄓㄜˋ ㄧㄤˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "正",
@@ -1935,9 +2321,11 @@
 		"pinyin": "zhèng",
 		"tone": "zheng4",
 		"zhuyin": "ㄓㄥˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "周",
@@ -1945,9 +2333,11 @@
 		"pinyin": "zhōu",
 		"tone": "zhou1",
 		"zhuyin": "ㄓㄡˉ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "准备",
@@ -1955,9 +2345,11 @@
 		"pinyin": "zhǔn bèi",
 		"tone": "zhun3 bei4",
 		"zhuyin": "ㄓㄨㄣˇ ㄅㄟˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "自己",
@@ -1965,9 +2357,11 @@
 		"pinyin": "zì jǐ",
 		"tone": "zi4 ji3",
 		"zhuyin": "ㄗˋ ㄐㄧˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "走",
@@ -1975,9 +2369,11 @@
 		"pinyin": "zǒu",
 		"tone": "zou3",
 		"zhuyin": "ㄗㄡˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "走路",
@@ -1985,9 +2381,11 @@
 		"pinyin": "zǒu lù",
 		"tone": "zou3 lu4",
 		"zhuyin": "ㄗㄡˇ ㄌㄨˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "足球",
@@ -1995,9 +2393,11 @@
 		"pinyin": "zú qiú",
 		"tone": "zu2 qiu2",
 		"zhuyin": "ㄗㄨˊ ㄑㄧㄡˊ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "最",
@@ -2005,9 +2405,11 @@
 		"pinyin": "zuì",
 		"tone": "zui4",
 		"zhuyin": "ㄗㄨㄟˋ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "左",
@@ -2015,9 +2417,11 @@
 		"pinyin": "zuǒ",
 		"tone": "zuo3",
 		"zhuyin": "ㄗㄨㄛˇ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	},
 	{
 		"simplified": "左边",
@@ -2025,8 +2429,10 @@
 		"pinyin": "zuǒ bian",
 		"tone": "zuo3 bian5",
 		"zhuyin": "ㄗㄨㄛˇ ·ㄅㄧㄢ",
-		"favorites": "",
-		"learn": "",
-		"views": "0"
+		"status": {
+			"favorite": "",
+			"learned": "",
+			"views": "0"
+		}
 	}
 ]
