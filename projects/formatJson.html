@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/favicon/logo-light.ico">
+		<title>Format Json</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<style type="text/css">
+			::-webkit-scrollbar {width: 0; height: 0;}
+			* {
+				font-family: "Courier New", Courier, monospace;
+				font-size: 12px;
+			}
+			body {
+				background: #1e1e1e;
+				color: #d4d4d4;
+				padding: 12px;
+				display: grid;
+				place-items: center;
+				height: 100vh;
+				margin: 0;
+				box-sizing: border-box;
+			}
+			.form {
+				background: #252526;
+				border: 1px solid #3c3c3c;
+				border-radius: 6px;
+				padding: 12px;
+				width: 100%;
+				max-width: 1080px;
+				height: calc(100vh - 24px);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+				form {
+					display: flex;
+					flex-direction: column;
+					gap: 12px;
+					height: 100%;
+					.data {
+						display: flex;
+						flex-direction: column;
+						gap: 6px;
+						height: 100%;
+						overflow-y: scroll;
+						.line {
+							display: flex;
+							align-items: center;
+							gap: 1ch;
+							min-height: 20px;
+							&.indent-0 {margin-left: 4px;}
+							&.indent-1 {margin-left: 4ch;}
+							&.indent-2 {margin-left: 8ch;}
+							&.indent-3 {margin-left: 12ch;}
+							&.indent-4 {margin-left: 16ch;}
+							.bracket {
+								color: #ffd700;
+								font-weight: bold;
+							}
+							.key {
+								color: #9cdcfe;
+								font-weight: bold;
+							}
+							.string {
+								color: #ce9178;
+							}
+							input {
+								width: 100%;
+								height: 24px;
+								background: #3c3c3c;
+								border: 1px solid #555;
+								color: #ce9178;
+								padding: 2px 6px;
+								border-radius: 4px;
+							}
+							textarea {
+								width: 100%;
+								min-height: 24px;
+								background: #3c3c3c;
+								border: 1px solid #555;
+								color: #ce9178;
+								padding: 2px 6px;
+								border-radius: 4px;
+								resize: none;
+								field-sizing: content;
+							}
+							button {
+								width: 20px;
+								height: 20px;
+								border-radius: 2px;
+								border: none;
+								cursor: pointer;
+								&.icon {
+									position: relative;
+									&:before, &:after {
+										content: "";
+										position: absolute;
+										left: 50%;
+										top: 50%;
+										width: 8px;
+										height: 2px;
+										background: lightgray;
+										border-radius: 2px;
+									}
+									&.icon-remove {
+										width: 20px;
+										&:before, &:after {
+											transform: translate(-50%, -50%);
+										}
+									}
+									&.icon-add {
+										&:before {
+											transform: translate(-50%, -50%);
+										}
+										&:after {
+											transform: translate(-50%, -50%) rotate(90deg);
+										}
+									}
+								}
+							}
+						}
+						#definitionsContainer, .meanings-container, .examples-container {
+							display: flex;
+							flex-direction: column;
+							gap: 6px;
+							input, textarea {
+								font-family: "Bai Jamjuree", sans-serif;
+							}
+						}
+						.block {
+							display: flex;
+							flex-direction: column;
+							gap: 6px;
+							border-left: 1px dashed #444;
+							&.indent-1 {margin-left: 4ch;}
+							&.indent-2 {margin-left: 8ch;}
+							&.indent-3 {margin-left: 12ch;}
+							&.indent-4 {margin-left: 16ch;}
+						}
+					}
+					.btn-gr {
+						display: flex;
+						gap: 12px;
+						button {
+							width: 100%;
+							padding: 8px 16px;
+							border-radius: 4px;
+							&.btn-reset {
+								flex-shrink: 0;
+								width: fit-content;
+							}
+						}
+					}
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="form">
+			<form action="" id="form">
+				<div class="data">
+					<div class="line"><span class="bracket">{</span></div>
+					<div class="line indent-1">
+						<span class="key">"simplified":</span> <span class="string">"</span><input type="text" id="simplified"><span class="string">"</span>
+					</div>
+					<div class="line indent-1">
+						<span class="key">"traditional":</span> <span class="string">"</span><input type="text" id="traditional"><span class="string">"</span>
+					</div>
+					<div class="line indent-1">
+						<span class="key">"pinyin":</span> <span class="string">"</span><input type="text" id="pinyin"><span class="string">"</span>
+					</div>
+					<div class="line indent-1">
+						<span class="key">"tone":</span> <span class="string">"</span><input type="text" id="tone"><span class="string">"</span>
+					</div>
+					<div class="line indent-1">
+						<span class="key">"zhuyin":</span> <span class="string">"</span><input type="text" id="zhuyin"><span class="string">"</span>
+					</div>
+					<div class="line indent-1">
+						<span class="key">"stroke_count":</span> <span class="string">"</span><input type="text" id="stroke_count"><span class="string">"</span>
+					</div>
+					<div class="line indent-1">
+						<span class="key">"definitions":</span> <span class="bracket">[</span>
+					</div>
+					<div id="definitionsContainer"></div>
+					<div class="line indent-2">
+						<button type="button" btn-green class="icon icon-add" onclick="addPos()"></button>
+					</div>
+					<div class="line indent-1">
+						<span class="bracket">],</span>
+					</div>
+					<div class="line indent-1">
+						<span class="key">"views":</span> <span class="string">"</span><input type="text" id="views" value="0"><span class="string">"</span>
+					</div>
+					<div class="line indent-1">
+						<span class="key">"learn":</span> <span class="string">"</span><input type="text" id="learn"><span class="string">"</span>
+					</div>
+					<div class="line"><span class="bracket">}</span></div>
+				</div>
+				<div class="btn-gr">
+					<button type="button" btn-blue class="btn-submit" onclick="exportJSON()">Xuất JSON</button>
+					<button type="button" btn-purple class="btn-copy" onclick="copyJSON()">Copy JSON</button>
+					<button type="button" btn-orange class="btn-reset" onclick="resetForm()">Reset Form</button>
+				</div>
+			</form>
+		</div>
+		<script>
+			console.clear();
+			let hskData = [];
+			fetch("https://hiepdeep.github.io/projects/xuehanzi/hsk/exp/hsk1.json").then(response => response.json()).then(data => {
+				hskData = data;
+				console.log("Đã tải xong dữ liệu HSK1");
+			}).catch(error => console.error("Lỗi khi tải dữ liệu HSK:", error));
+			document.getElementById("simplified").addEventListener("input", function () {
+				const val = this.value.trim();
+				if (!val || hskData.length === 0) return;
+				const matchedItem = hskData.find(item => item.s === val);
+				if (matchedItem) {
+					document.getElementById("traditional").value = matchedItem.t || "";
+					document.getElementById("pinyin").value = matchedItem.y || "";
+					document.getElementById("tone").value = matchedItem.p || "";
+					document.getElementById("zhuyin").value = matchedItem.z || "";
+				}
+			});
+			// Thêm một khối part_of_speech mới
+			function addPos() {
+				const posId = `pos_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`;
+				const html = `
+					<div class="block indent-2 pos-block" id="${posId}">
+						<div class="line indent-0">
+							<span class="bracket">{</span>
+						</div>
+						<div class="line indent-1">
+							<span class="key">"pos":</span> <span class="string">"</span><input type="text" class="pos-input"><span class="string">"</span>
+						</div>
+						<div class="line indent-1">
+							<span class="key">"meanings":</span> <span class="bracket">[</span>
+						</div>
+						<div class="meanings-container"></div>
+							<div class="line indent-2">
+							<button type="button" btn-green class="icon icon-add" onclick="addMeaning('${posId}')"></button>
+						</div>
+						<div class="line indent-1">
+							<span class="bracket">]</span>
+						</div>
+						<div class="line indent-0">
+							<span class="bracket">}</span> <button type="button" btn-red class="icon icon-remove" onclick="removeElement('${posId}')"></button>
+						</div>
+					</div>
+				`;
+				document.getElementById("definitionsContainer").insertAdjacentHTML("beforeend", html);
+				addMeaning(posId);
+			}
+			// Thêm một khối meaning mới vào part_of_speech
+			function addMeaning(posId) {
+				const posEl = document.getElementById(posId);
+				const container = posEl.querySelector(".meanings-container");
+				const meaningId = `meaning_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`;
+				const html = `
+					<div class="block indent-2 meaning-block" id="${meaningId}">
+						<div class="line indent-0">
+							<span class="bracket">{</span>
+						</div>
+						<div class="line indent-1">
+							<span class="key">"meaning":</span> <span class="string">"</span><input type="text" class="meaning-input"><span class="string">"</span>
+						</div>
+						<div class="line indent-1">
+							<span class="key">"examples":</span> <span class="bracket">[</span>
+						</div>
+						<div class="examples-container"></div>
+						<div class="line indent-2">
+							<button type="button" btn-green class="icon icon-add" onclick="addExample('${meaningId}')"></button>
+						</div>
+						<div class="line indent-1">
+							<span class="bracket">]</span>
+						</div>
+						<div class="line indent-0">
+							<span class="bracket">}</span> <button type="button" btn-red class="icon icon-remove" onclick="removeElement('${meaningId}')"></button>
+						</div>
+					</div>
+				`;
+				container.insertAdjacentHTML("beforeend", html);
+				addExample(meaningId);
+			}
+			// Thêm một dòng example mới vào meaning
+			function addExample(meaningId) {
+				const meaningEl = document.getElementById(meaningId);
+				const container = meaningEl.querySelector(".examples-container");
+				const exampleId = `ex_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`;
+				const html = `
+					<div class="line indent-2 example-line" id="${exampleId}">
+						<span class="string">"</span><textarea class="example-input"></textarea><span class="string">"</span>
+						<button type="button" btn-red class="icon icon-remove" onclick="removeElement('${exampleId}')"></button>
+					</div>
+				`;
+				container.insertAdjacentHTML("beforeend", html);
+			}
+			// Xóa một phần tử theo ID
+			function removeElement(id) {
+				const el = document.getElementById(id);
+				if (el) el.remove();
+			}
+			// Reset form về trạng thái ban đầu
+			function resetForm() {
+				if (confirm("Bạn có chắc chắn muốn xóa toàn bộ dữ liệu và reset form?")) {
+					document.getElementById("form").reset();
+					document.getElementById("views").value = "0";
+					document.getElementById("definitionsContainer").innerHTML = "";
+					addPos();
+				}
+			}
+			// Hàm gom dữ liệu từ Form thành Object JSON
+			function getFormData() {
+				const definitions = [];
+				const posBlocks = document.querySelectorAll("#definitionsContainer > .pos-block");
+				posBlocks.forEach(posBlock => {
+					const posVal = posBlock.querySelector(".pos-input").value;
+					const meanings = [];
+					const meaningBlocks = posBlock.querySelectorAll(".meaning-block");
+					meaningBlocks.forEach(meaningBlock => {
+						const meaningVal = meaningBlock.querySelector(".meaning-input").value;
+						const examples = [];
+						const exampleInputs = meaningBlock.querySelectorAll(".example-input");
+						exampleInputs.forEach(input => {
+							if (input.value.trim() !== "") {
+								examples.push(input.value);
+							}
+						});
+						meanings.push({
+							meaning: meaningVal,
+							examples: examples
+						});
+					});
+					definitions.push({
+						pos: posVal,
+						meanings: meanings
+					});
+				});
+				return {
+					simplified: document.getElementById("simplified").value,
+					traditional: document.getElementById("traditional").value,
+					pinyin: document.getElementById("pinyin").value,
+					tone: document.getElementById("tone").value,
+					zhuyin: document.getElementById("zhuyin").value,
+					stroke_count: document.getElementById("stroke_count").value,
+					definitions: definitions,
+					views: document.getElementById("views").value,
+					learn: document.getElementById("learn").value
+				};
+			}
+			// Cập nhật hàm exportJSON sử dụng getFormData
+			function exportJSON() {
+				const resultData = getFormData();
+				const baseJSON = JSON.stringify(resultData, null, "\t");
+				const formattedJSON = baseJSON.split("\n").map(line => "\t" + line).join("\n").replace(/\}$/, "},");
+				console.log(formattedJSON);
+				alert("Đã xuất JSON! Mở DevTools (F12) -> Console để xem kết quả.");
+			}
+			// Hàm Sao chép JSON vào Clipboard với định dạng xuống dòng & thụt lề
+			function copyJSON() {
+				const resultData = getFormData();
+				const baseJSON = JSON.stringify(resultData, null, "\t");
+				const formattedJSON = baseJSON.split("\n").map(line => "\t" + line).join("\n").replace(/\}$/, "},");
+				navigator.clipboard.writeText(formattedJSON).then(() => {
+					alert("Đã sao chép chuỗi JSON vào bộ nhớ tạm!");
+				}).catch(err => {
+					console.error("Lỗi khi sao chép: ", err);
+					alert("Không thể sao chép, vui lòng thử lại.");
+				});
+			}
+			// Khởi tạo mặc định 1 part_of_speech khi tải trang
+			addPos();
+		</script>
+	</body>
+</html>
