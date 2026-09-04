@@ -318,7 +318,7 @@
 					return rawZhuyin + toneMark; // Các thanh 1, 2, 3, 4 đặt dấu phía sau
 				}).join(" ");
 			}
-			fetch("https://hiepdeep.github.io/projects/xuehanzi/hsk/hsk-basic/hsk1.json").then(response => response.json()).then(data => {
+			fetch("https://hiepdeep.github.io/projects/xuehanzi/hsk/hsk-basic/hsk01.json").then(response => response.json()).then(data => {
 				hskData = data;
 				console.log("Đã tải xong dữ liệu HSK1");
 			}).catch(error => console.error("Lỗi khi tải dữ liệu HSK:", error));
@@ -441,16 +441,16 @@
 				const definitions = [];
 				const posBlocks = document.querySelectorAll("#definitionsContainer > .pos-block");
 				posBlocks.forEach(posBlock => {
-					const posVal = posBlock.querySelector(".pos-input").value;
+					const posVal = posBlock.querySelector(".pos-input").value.trim();
 					const meanings = [];
 					const meaningBlocks = posBlock.querySelectorAll(".meaning-block");
 					meaningBlocks.forEach(meaningBlock => {
-						const meaningVal = meaningBlock.querySelector(".meaning-input").value;
+						const meaningVal = meaningBlock.querySelector(".meaning-input").value.trim();
 						const examples = [];
 						const exampleInputs = meaningBlock.querySelectorAll(".example-input");
 						exampleInputs.forEach(input => {
 							if (input.value.trim() !== "") {
-								examples.push(input.value);
+								examples.push(input.value.trim());
 							}
 						});
 						meanings.push({
@@ -464,15 +464,15 @@
 					});
 				});
 				return {
-					simplified: document.getElementById("simplified").value,
-					traditional: document.getElementById("traditional").value,
-					pinyin: document.getElementById("pinyin").value,
-					tone: document.getElementById("tone").value,
-					zhuyin: document.getElementById("zhuyin").value,
-					stroke_count: document.getElementById("stroke_count").value,
+					simplified: document.getElementById("simplified").value.trim(),
+					traditional: document.getElementById("traditional").value.trim(),
+					pinyin: document.getElementById("pinyin").value.trim(),
+					tone: document.getElementById("tone").value.trim(),
+					zhuyin: document.getElementById("zhuyin").value.trim(),
+					stroke_count: document.getElementById("stroke_count").value.trim(),
 					definitions: definitions,
-					views: document.getElementById("views").value,
-					learn: document.getElementById("learn").value
+					views: document.getElementById("views").value.trim(),
+					learn: document.getElementById("learn").value.trim()
 				};
 			}
 			// Hàm export JSON
