@@ -1973,263 +1973,1202 @@
 		"learn": ""
 	},
 	{
-		"s": "哥哥",
-		"t": "哥哥",
-		"y": "gē ge",
-		"p": "ge1 ge5",
-		"z": "ㄍㄜ ㄍㄜ・"
+		"simplified": "哥哥",
+		"traditional": "哥哥",
+		"pinyin": "gē ge",
+		"tone": "ge1 ge5",
+		"zhuyin": "ㄍㄜ ㄍㄜ・",
+		"stroke_count": "20",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Anh trai",
+						"examples": [
+							"我有一个哥哥。||Wǒ yǒu yí gè gēge.||Tôi có một người anh trai.",
+							"我的哥哥是医生。||Wǒ de gēge shì yīshēng.||Anh trai tôi là bác sĩ.",
+							"他比我大，他是我的哥哥。||Tā bǐ wǒ dà, tā shì wǒ de gēge.||Anh ấy lớn hơn tôi, anh ấy là anh trai của tôi."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "给",
-		"t": "給",
-		"y": "gěi",
-		"p": "gei3",
-		"z": "ㄍㄟˇ"
+		"simplified": "给",
+		"traditional": "給",
+		"pinyin": "gěi",
+		"tone": "gei3",
+		"zhuyin": "ㄍㄟˇ",
+		"stroke_count": "9",
+		"definitions": [
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Cho, đưa, tặng",
+						"examples": [
+							"请给我一杯水。||Qǐng gěi wǒ yì bēi shuǐ.||Xin hãy cho tôi một cốc nước.",
+							"他给了我一本书。||Tā gěi le wǒ yì běn shū.||Anh ấy đã đưa cho tôi một quyển sách."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Giới từ",
+				"meanings": [
+					{
+						"meaning": "Cho, vì, đối với (chỉ đối tượng hướng đến của hành động)",
+						"examples": [
+							"我给你打电话。||Wǒ gěi nǐ dǎ diànhuà.||Tôi gọi điện thoại cho bạn.",
+							"他给我买了一个苹果。||Tā gěi wǒ mǎi le yí gè píngguǒ.||Anh ấy mua cho tôi một quả táo."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "公司",
-		"t": "公司",
-		"y": "gōng sī",
-		"p": "gong1 si1",
-		"z": "ㄍㄨㄥ ㄙ"
+		"simplified": "公司",
+		"traditional": "公司",
+		"pinyin": "gōng sī",
+		"tone": "gong1 si1",
+		"zhuyin": "ㄍㄨㄥ ㄙ",
+		"stroke_count": "9",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Công ty",
+						"examples": [
+							"我在一家公司工作。||Wǒ zài yì jiā gōngsī gōngzuò.||Tôi làm việc ở một công ty.",
+							"这是我们公司的电脑。||Zhè shì wǒmen gōngsī de diànnǎo.||Đây là máy tính của công ty chúng tôi.",
+							"他的公司很大。||Tā de gōngsī hěn dà.||Công ty của anh ấy rất lớn."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "工作",
-		"t": "工作",
-		"y": "gōng zuò",
-		"p": "gong1 zuo4",
-		"z": "ㄍㄨㄥ ㄗㄨㄛˋ"
+		"simplified": "工作",
+		"traditional": "工作",
+		"pinyin": "gōng zuò",
+		"tone": "gong1 zuo4",
+		"zhuyin": "ㄍㄨㄥ ㄗㄨㄛˋ",
+		"stroke_count": "10",
+		"definitions": [
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Làm việc, lao động",
+						"examples": [
+							"我在公司工作。||Wǒ zài gōngsī gōngzuò.||Tôi làm việc ở công ty.",
+							"爸爸 Chester/每天都工作。||Bàba měitiān dōu gōngzuò.||Bố mỗi ngày đều làm việc.",
+							"他工作了八个小时。||Tā gōngzuò le bā gè xiǎoshí.||Anh ấy đã làm việc tám tiếng đồng hồ."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Công việc, việc làm",
+						"examples": [
+							"你做什么工作？||Nǐ zuò shénme gōngzuò?||Bạn làm công việc gì?",
+							"这个工作很好。||Zhège gōngzuò hěn hǎo.||Công việc này rất tốt.",
+							"我想找一份工作。||Wǒ xiǎng zhǎo yí fèn gōngzuò.||Tôi muốn tìm một công việc."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "狗",
-		"t": "狗",
-		"y": "gǒu",
-		"p": "gou3",
-		"z": "ㄍㄡˇ"
+		"simplified": "狗",
+		"traditional": "狗",
+		"pinyin": "gǒu",
+		"tone": "gou3",
+		"zhuyin": "ㄍㄡˇ",
+		"stroke_count": "8",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Con chó, chó",
+						"examples": [
+							"我家有一只小狗。||Wǒ jiā yǒu yì zhī xiǎogǒu.||Nhà tôi có một con chó nhỏ.",
+							"那只狗很大。||Nà zhī gǒu hěn dà.||Con chó kia rất lớn."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "贵",
-		"t": "貴",
-		"y": "guì",
-		"p": "gui4",
-		"z": "ㄍㄨㄟˋ"
+		"simplified": "贵",
+		"traditional": "貴",
+		"pinyin": "guì",
+		"tone": "gui4",
+		"zhuyin": "ㄍㄨㄟˋ",
+		"stroke_count": "9",
+		"definitions": [
+			{
+				"pos": "Tính từ",
+				"meanings": [
+					{
+						"meaning": "Đắt, quý, đắt đỏ",
+						"examples": [
+							"这个电脑很贵。||Zhège diànnǎo hěn guì.||Chiếc máy tính này rất đắt.",
+							"太贵了，便宜一点儿吧。||Tài guì le, piányi yìdiǎnr ba.||Đắt quá, rẻ một chút đi.",
+							"您贵姓？||Nín guìxìng?||Ngài họ gì? / Quý danh của ngài là gì?"
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "国",
-		"t": "國",
-		"y": "guó",
-		"p": "guo2",
-		"z": "ㄍㄨㄛˊ"
+		"simplified": "国",
+		"traditional": "國",
+		"pinyin": "guó",
+		"tone": "guo2",
+		"zhuyin": "ㄍㄨㄛˊ",
+		"stroke_count": "8",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Nước, quốc gia",
+						"examples": [
+							"你是哪国人？||Nǐ shì nǎ guó rén?||Bạn là người nước nào?",
+							"中国很大。||Zhōngguó hěn dà.||Trung Quốc rất lớn.",
+							"我去过很多国家。||Wǒ qù guo hěn duō guójiā.||Tôi đã đi qua rất nhiều quốc gia."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "还",
-		"t": "還",
-		"y": "hái",
-		"p": "hai2",
-		"z": "ㄏㄞˊ"
+		"simplified": "还",
+		"traditional": "還",
+		"pinyin": "hái",
+		"tone": "hai2",
+		"zhuyin": "ㄏㄞˊ",
+		"stroke_count": "7",
+		"definitions": [
+			{
+				"pos": "Phó từ",
+				"meanings": [
+					{
+						"meaning": "Còn, vẫn, vẫn còn (đọc là hái - biểu thị sự tiếp diễn của trạng thái/hành động)",
+						"examples": [
+							"他还在睡觉。||Tā hái zài shuìjiào.||Anh ấy vẫn còn đang ngủ.",
+							"我还有很多问题。||Wǒ hái yǒu hěn duō wèntí.||Tôi vẫn còn rất nhiều câu hỏi."
+						]
+					},
+					{
+						"meaning": "Còn... nữa, ngoài ra (đọc là hái - biểu thị sự bổ sung)",
+						"examples": [
+							"我想吃苹果，还想喝水。||Wǒ xiǎng chī píngguǒ, hái xiǎng hē shuǐ.||Tôi muốn ăn táo, còn muốn uống nước nữa."
+						]
+					},
+					{
+						"meaning": "Cũng còn, tàm tạm, khá (đọc là hái - biểu thị sự chấp nhận được trong 还好, 还可以)",
+						"examples": [
+							"今天天气还可以。||Jīntiān tiānqì hái kěyǐ.||Thời tiết hôm nay cũng tàm tạm."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Trả lại, hoàn trả (đọc là huán)",
+						"examples": [
+							"我去图书馆还书。||Wǒ qù túshūguǎn huán shū.||Tôi đi thư viện trả sách."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "孩子",
-		"t": "孩子",
-		"y": "hái zi",
-		"p": "hai2 zi5",
-		"z": "ㄏㄞˊ ㄗ・"
+		"simplified": "孩子",
+		"traditional": "孩子",
+		"pinyin": "hái zi",
+		"tone": "hai2 zi5",
+		"zhuyin": "ㄏㄞˊ ㄗ・",
+		"stroke_count": "12",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Con, con cái, trẻ em, đứa trẻ",
+						"examples": [
+							"他有三个孩子。||Tā yǒu sān gè háizi.||Anh ấy có ba người con.",
+							"这个孩子很聪明。||Zhège háizi hěn cōngming.||Đứa trẻ này rất thông minh.",
+							"孩子们都在看书。||Háizimen dōu zài kàn shū.||Mấy đứa trẻ đều đang đọc sách."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "汉语",
-		"t": "漢語",
-		"y": "Hàn yǔ",
-		"p": "Han4 yu3",
-		"z": "ㄏㄢˋ ㄩˇ"
+		"simplified": "汉语",
+		"traditional": "漢語",
+		"pinyin": "Hàn yǔ",
+		"tone": "Han4 yu3",
+		"zhuyin": "ㄏㄢˋ ㄩˇ",
+		"stroke_count": "18",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Tiếng Hán, Tiếng Trung (ngôn ngữ của người Hán)",
+						"examples": [
+							"我在学习汉语。||Wǒ zài xuéxí Hànyǔ.||Tôi đang học tiếng Trung.",
+							"他的汉语很好。||Tā de Hànyǔ hěn hǎo.||Tiếng Trung của anh ấy rất tốt.",
+							"你会说汉语吗？||Nǐ huì shuō Hànyǔ ma?||Bạn biết nói tiếng Trung không?"
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "汉字",
-		"t": "漢字",
-		"y": "hàn zì",
-		"p": "han4 zi4",
-		"z": "ㄏㄢˋ ㄗˋ"
+		"simplified": "汉字",
+		"traditional": "漢字",
+		"pinyin": "hàn zì",
+		"tone": "han4 zi4",
+		"zhuyin": "ㄏㄢˋ ㄗˋ",
+		"stroke_count": "11",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Chữ Hán, chữ Trung Quốc",
+						"examples": [
+							"这个汉字 làm sao/怎么写？||Zhège Hànzì zěnme xiě?||Chữ Hán này viết như thế nào?",
+							"我认识很多汉字。||Wǒ rènshi hěn duō Hànzì.||Tôi biết rất nhiều chữ Hán.",
+							"汉字很漂亮。||Hànzì hěn piàoliang.||Chữ Hán rất đẹp."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "好",
-		"t": "好",
-		"y": "hǎo",
-		"p": "hao3",
-		"z": "ㄏㄠˇ"
+		"simplified": "好",
+		"traditional": "好",
+		"pinyin": "hǎo",
+		"tone": "hao3",
+		"zhuyin": "ㄏㄠˇ",
+		"stroke_count": "6",
+		"definitions": [
+			{
+				"pos": "Tính từ",
+				"meanings": [
+					{
+						"meaning": "Tốt, đẹp, hay, ngon, khỏe",
+						"examples": [
+							"今天天气很好。||Jīntiān tiānqì hěn hǎo.||Thời tiết hôm nay rất tốt.",
+							"这个苹果很好吃。||Zhège píngguǒ hěn hǎochī.||Quả táo này rất ngon.",
+							"你好吗？||Nǐ hǎo ma?||Bạn có khỏe không?"
+						]
+					}
+				]
+			},
+			{
+				"pos": "Thán từ",
+				"meanings": [
+					{
+						"meaning": "Được, ừ, đồng ý, OK",
+						"examples": [
+							"好，我们明天去。||Hǎo, wǒmen míngtiān qù.||Được, ngày mai chúng ta đi."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Phó từ",
+				"meanings": [
+					{
+						"meaning": "Rất, quá (đứng trước tính từ để nhấn mạnh, tương đương 很)",
+						"examples": [
+							"好久不见！||Hǎojiǔ bú jiàn!||Lâu rồi không gặp!"
+						]
+					}
+				]
+			},
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Thích, yêu thích (đọc là hào - như trong 爱好, 好奇)",
+						"examples": [
+							"他好学。||Tā hào xué.||Anh ấy hiếu học."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "号",
-		"t": "號",
-		"y": "hào",
-		"p": "hao4",
-		"z": "ㄏㄠˋ"
+		"simplified": "号",
+		"traditional": "號",
+		"pinyin": "hào",
+		"tone": "hao4",
+		"zhuyin": "ㄏㄠˋ",
+		"stroke_count": "5",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Ngày, mùng (dùng trong ngày tháng khẩu ngữ)",
+						"examples": [
+							"今天是九月四号。||Jīntiān shì jiǔ yuè sì hào.||Hôm nay là ngày 4 tháng 9.",
+							"你几号去中国？||Nǐ jǐ hào qù Zhōngguó?||Mấy ngày nữa/Ngày mấy bạn đi Trung Quốc?"
+						]
+					},
+					{
+						"meaning": "Số (số nhà, số điện thoại, kích cỡ/size)",
+						"examples": [
+							"你的电话号码是多少号？/ 你住几号房间？||Nǐ zhù jǐ hào fángjiān?||Bạn ở phòng số mấy?",
+							"这件衣服是中号的。||Zhè jiàn yīfu shì zhōnghào de.||Chiếc áo này là cỡ vừa."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "好吃",
-		"t": "好吃",
-		"y": "hǎo chī",
-		"p": "hao3 chi1",
-		"z": "ㄏㄠˇ ㄔ"
+		"simplified": "好吃",
+		"traditional": "好吃",
+		"pinyin": "hǎo chī",
+		"tone": "hao3 chi1",
+		"zhuyin": "ㄏㄠˇ ㄔ",
+		"stroke_count": "15",
+		"definitions": [
+			{
+				"pos": "Tính từ",
+				"meanings": [
+					{
+						"meaning": "Ngon (dùng cho thức ăn)",
+						"examples": [
+							"这个菜很好吃。||Zhège cài hěn hǎochī.||Món ăn này rất ngon.",
+							"中国菜好吃吗？||Zhōngguó cài hǎochī ma?||Món ăn Trung Quốc có ngon không?",
+							"妈妈做的饭很好吃。||Māma zuò de fàn hěn hǎochī.||Cơm mẹ nấu rất ngon."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "好看",
-		"t": "好看",
-		"y": "hǎo kàn",
-		"p": "hao3 kan4",
-		"z": "ㄏㄠˇ ㄎㄢˋ"
+		"simplified": "好看",
+		"traditional": "好看",
+		"pinyin": "hǎo kàn",
+		"tone": "hao3 kan4",
+		"zhuyin": "ㄏㄠˇ ㄎㄢˋ",
+		"stroke_count": "15",
+		"definitions": [
+			{
+				"pos": "Tính từ",
+				"meanings": [
+					{
+						"meaning": "Đẹp, hay (dùng cho đồ vật, diện mạo, phim ảnh, sách báo)",
+						"examples": [
+							"这件衣服很好看。||Zhè jiàn yīfu hěn hǎokàn.||Chiếc áo này rất đẹp.",
+							"这个电影很好看。||Zhège diànyǐng hěn hǎokàn.||Bộ phim này rất hay.",
+							"这本书很好看。||Zhè běn shū hěn hǎokàn.||Quyển sách này rất hay."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "好听",
-		"t": "好聽",
-		"y": "hǎo tīng",
-		"p": "hao3 ting1",
-		"z": "ㄏㄠˇ ㄊㄧㄥ"
+		"simplified": "好听",
+		"traditional": "好聽",
+		"pinyin": "hǎo tīng",
+		"tone": "hao3 ting1",
+		"zhuyin": "ㄏㄠˇ ㄊㄧㄥ",
+		"stroke_count": "13",
+		"definitions": [
+			{
+				"pos": "Tính từ",
+				"meanings": [
+					{
+						"meaning": "Hay, êm tai, dễ nghe (dùng cho âm thanh, âm nhạc, giọng nói)",
+						"examples": [
+							"这首歌很好听。||Zhè shǒu gē hěn hǎotīng.||Bài hát này rất hay.",
+							"他的声音很好听。||Tā de shēngyīn hěn hǎotīng.||Giọng của anh ấy rất hay/êm tai.",
+							"这个名字很好听。||Zhège míngzi hěn hǎotīng.||Cái tên này rất hay/nghe rất kêu."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "好玩儿",
-		"t": "好玩兒",
-		"y": "hǎo wán r",
-		"p": "hao3 wan2 r5",
-		"z": "ㄏㄠˇ ㄨㄢˊ undefined・"
+		"simplified": "好玩儿",
+		"traditional": "好玩兒",
+		"pinyin": "hǎo wán r",
+		"tone": "hao3 wan2 r5",
+		"zhuyin": "ㄏㄠˇ ㄨㄢˊ ㄦ・",
+		"stroke_count": "14",
+		"definitions": [
+			{
+				"pos": "Tính từ",
+				"meanings": [
+					{
+						"meaning": "Vui, thú vị, hay, vui thích (dùng cho hoạt động, trò chơi, địa điểm)",
+						"examples": [
+							"这个地方很好玩儿。||Zhège dìfang hěn hǎowánr.||Nơi này rất vui/thú vị.",
+							"这个游戏很好玩儿。||Zhège yóuxì hěn hǎowánr.||Trò chơi này rất hay/vui.",
+							"北京有很多好玩儿的地方。||Běijīng yǒu hěn duō hǎowánr de dìfang.||Bắc Kinh có rất nhiều địa điểm vui chơi thú vị."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "和",
-		"t": "龢",
-		"y": "hé",
-		"p": "he2",
-		"z": "ㄏㄜˊ"
+		"simplified": "和",
+		"traditional": "龢",
+		"pinyin": "hé",
+		"tone": "he2",
+		"zhuyin": "ㄏㄜˊ",
+		"stroke_count": "8",
+		"definitions": [
+			{
+				"pos": "Liên từ",
+				"meanings": [
+					{
+						"meaning": "Và, với (dùng để nối danh từ hoặc đại từ)",
+						"examples": [
+							"我和你都是学生。||Wǒ hé nǐ dōu shì xuésheng.||Tôi và bạn đều là học sinh.",
+							"我想买苹果和牛奶。||Wǒ xiǎng mǎi píngguǒ hé niúnǎi.||Tôi muốn mua táo và sữa tươi."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Giới từ",
+				"meanings": [
+					{
+						"meaning": "Cùng, với (chỉ đối tượng thực hiện hành động cùng)",
+						"examples": [
+							"我和他一起去北京。||Wǒ hé tā yìqǐ qù Běijīng.||Tôi cùng với anh ấy đi Bắc Kinh."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Tính từ",
+				"meanings": [
+					{
+						"meaning": "Ôn hòa, hòa nhã (đọc là hé - trong 和气, 和平)",
+						"examples": [
+							"他是一个人和气的人。||Tā shì yí gè hénhe de rén.||Anh ấy là một người hòa nhã."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "喝",
-		"t": "喝",
-		"y": "hē",
-		"p": "he1",
-		"z": "ㄏㄜ"
+		"simplified": "喝",
+		"traditional": "喝",
+		"pinyin": "hē",
+		"tone": "he1",
+		"zhuyin": "ㄏㄜ",
+		"stroke_count": "12",
+		"definitions": [
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Uống",
+						"examples": [
+							"我想喝水。||Wǒ xiǎng hē shuǐ.||Tôi muốn uống nước.",
+							"你喝茶还是喝咖啡？||Nǐ hē chá háishi hē kāfēi?||Bạn uống trà hay là uống cà phê?",
+							"请喝茶。||Qǐng hē chá.||Mời uống trà."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Thán từ",
+				"meanings": [
+					{
+						"meaning": "Chà, chà chà (đọc là hè - thán từ biểu thị sự ngạc nhiên, khen ngợi)",
+						"examples": [
+							"喝，这小伙子真棒！||Hè, zhè xiǎohuǒzi zhēn bàng!||Chà, anh chàng này cừ thật!"
+						]
+					}
+				]
+			},
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Quát, hô to, hoan hô (đọc là hè - trong 喝彩, 喝令)",
+						"examples": [
+							"大家为他喝彩。||Dàjiā wèi tā hècǎi.||Mọi người hò reo hoan hô anh ấy."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "很",
-		"t": "很",
-		"y": "hěn",
-		"p": "hen3",
-		"z": "ㄏㄣˇ"
+		"simplified": "很",
+		"traditional": "很",
+		"pinyin": "hěn",
+		"tone": "hen3",
+		"zhuyin": "ㄏㄣˇ",
+		"stroke_count": "9",
+		"definitions": [
+			{
+				"pos": "Phó từ",
+				"meanings": [
+					{
+						"meaning": "Rất, vô cùng (đứng trước tính từ hoặc động từ tâm lý để chỉ mức độ)",
+						"examples": [
+							"我很高兴。||Wǒ hěn gāoxìng.||Tôi rất vui.",
+							"今天天气很好。||Jīntiān tiānqì hěn hǎo.||Thời tiết hôm nay rất tốt.",
+							"我很喜欢吃中国菜。||Wǒ hěn xǐhuan chī Zhōngguó cài.||Tôi rất thích ăn món ăn Trung Quốc."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "后",
-		"t": "後",
-		"y": "hòu",
-		"p": "hou4",
-		"z": "ㄏㄡˋ"
+		"simplified": "后",
+		"traditional": "後",
+		"pinyin": "hòu",
+		"tone": "hou4",
+		"zhuyin": "ㄏㄡˋ",
+		"stroke_count": "6",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Sau, phía sau (chỉ vị trí không gian)",
+						"examples": [
+							"医院在 trường học/学校后面。||Yīyuàn zài xuéxiào hòumiàn.||Bệnh viện ở phía sau trường học.",
+							"他坐在我后面。||Tā zuò zài wǒ hòumiàn.||Anh ấy ngồi ở phía sau tôi."
+						]
+					},
+					{
+						"meaning": "Sau, sau khi (chỉ thời gian)",
+						"examples": [
+							"三天后我再去。||Sān tiān hòu wǒ zài qù.||Ba ngày sau tôi mới đi lại.",
+							"放学后我们一起回家。||Fàngxué hòu wǒmen yìqǐ huí jiā.||Sau khi tan học chúng tôi cùng nhau về nhà."
+						]
+					},
+					{
+						"meaning": "Hoàng hậu, vương hậu",
+						"examples": [
+							"她是这个国家的皇后。||Tā shì zhège guójiā de huánghòu.||Bà ấy là hoàng hậu của quốc gia này."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "会",
-		"t": "會",
-		"y": "huì",
-		"p": "hui4",
-		"z": "ㄏㄨㄟˋ"
+		"simplified": "会",
+		"traditional": "會",
+		"pinyin": "huì",
+		"tone": "hui4",
+		"zhuyin": "ㄏㄨㄟˋ",
+		"stroke_count": "6",
+		"definitions": [
+			{
+				"pos": "Trợ động từ",
+				"meanings": [
+					{
+						"meaning": "Biết (thông qua học tập, rèn luyện mà có kỹ năng)",
+						"examples": [
+							"我会说汉语。||Wǒ huì shuō Hànyǔ.||Tôi biết nói tiếng Trung.",
+							"你会做中国菜吗？||Nǐ huì zuò Zhōngguó cài ma?||Bạn biết nấu món ăn Trung Quốc không?"
+						]
+					},
+					{
+						"meaning": "Sẽ (biểu thị khả năng xảy ra của một sự việc trong tương lai)",
+						"examples": [
+							"明天会下雨吗？||Míngtiān huì xià yǔ ma?||Ngày mai có mưa không/sẽ mưa không?",
+							"我一定会去。||Wǒ yídìng huì qù.||Tôi nhất định sẽ đi."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Cuộc họp, hội nghị",
+						"examples": [
+							"我们开会吧。||Wǒmen kāi huì ba.||Chúng ta họp thôi/họp nhé.",
+							"今天有一个会。||Jīntiān yǒu yí gè huì.||Hôm nay có một cuộc họp."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Gặp, gặp mặt",
+						"examples": [
+							"我去一会儿会朋友。||Wǒ qù yíhuìr huì péngyou.||Tôi đi gặp bạn một chút."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "回",
-		"t": "逥",
-		"y": "huí",
-		"p": "hui2",
-		"z": "ㄏㄨㄟˊ"
+		"simplified": "回",
+		"traditional": "逥",
+		"pinyin": "huí",
+		"tone": "hui2",
+		"zhuyin": "ㄏㄨㄟˊ",
+		"stroke_count": "6",
+		"definitions": [
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Về, trở về (quay lại địa điểm ban đầu)",
+						"examples": [
+							"我下午回家。||Wǒ xiàwǔ huí jiā.||Buổi chiều tôi về nhà.",
+							"你什么时候回国？||Nǐ shénme shíhou huí guó?||Khi nào bạn về nước?"
+						]
+					},
+					{
+						"meaning": "Trả lời, hồi đáp (đi kèm với tin nhắn, điện thoại, thư từ)",
+						"examples": [
+							"请回电话。||Qǐng huí diànhuà.||Xin vui lòng gọi điện thoại lại.",
+							"我要给他回信息。||Wǒ yào gěi tā huí xìnxī.||Tôi phải nhắn tin lại cho anh ấy."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Lượng từ",
+				"meanings": [
+					{
+						"meaning": "Lần, lượt (dùng làm lượng từ cho số lần thực hiện hành động)",
+						"examples": [
+							"我去过一回头。/ 我去过一回。||Wǒ qùguo yì huí.||Tôi từng đi một lần.",
+							"这是怎么回事？||Zhè shì zěnme huí shì?||Đây là chuyện như thế nào / Có chuyện gì thế này?"
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "火车",
-		"t": "火車",
-		"y": "huǒ chē",
-		"p": "huo3 che1",
-		"z": "ㄏㄨㄛˇ ㄔㄜ"
+		"simplified": "火车",
+		"traditional": "火車",
+		"pinyin": "huǒ chē",
+		"tone": "huo3 che1",
+		"zhuyin": "ㄏㄨㄛˇ ㄔㄜ",
+		"stroke_count": "11",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Tàu hỏa, xe lửa",
+						"examples": [
+							"我们坐火车去北京。||Wǒmen zuò huǒchē qù Běijīng.||Chúng tôi đi tàu hỏa đến Bắc Kinh.",
+							"火车来了。||Huǒchē lái le.||Tàu hỏa đến rồi.",
+							"这是火车站。||Zhè shì huǒchēzhàn.||Đây là ga tàu hỏa."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "几",
-		"t": "幾",
-		"y": "jǐ",
-		"p": "ji3",
-		"z": "ㄐㄧˇ"
+		"simplified": "几",
+		"traditional": "幾",
+		"pinyin": "jǐ",
+		"tone": "ji3",
+		"zhuyin": "ㄐㄧˇ",
+		"stroke_count": "2",
+		"definitions": [
+			{
+				"pos": "Đại từ",
+				"meanings": [
+					{
+						"meaning": "Mấy, bao nhiêu (dùng để hỏi số lượng nhỏ, thường nhỏ hơn 10)",
+						"examples": [
+							"你家有几口人？||Nǐ jiā yǒu jǐ kǒu rén?||Nhà bạn có mấy người?",
+							"现在几点？||Xiànzài jǐ diǎn?||Bây giờ là mấy giờ?",
+							"今天星期几？||Jīntiān xīngqījǐ?||Hôm nay là thứ mấy?"
+						]
+					},
+					{
+						"meaning": "Mấy, một vài (biểu thị số lượng ước chừng, nhỏ hơn 10)",
+						"examples": [
+							"我想买几个苹果。||Wǒ xiǎng mǎi jǐ gè píngguǒ.||Tôi muốn mua mấy quả táo.",
+							"桌子上有几本书。||Zhuōzi shàng yǒu jǐ běn shū.||Trên bàn có mấy cuốn sách."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Ghế đôn, bàn nhỏ (đọc là jī - trong 茶几: bàn trà)",
+						"examples": [
+							"茶几上放着一杯茶。||Chájī shàng fàngzhe yì bēi chá.||Trên bàn trà có đặt một ly trà."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "鸡蛋",
-		"t": "雞蛋",
-		"y": "jī dàn",
-		"p": "ji1 dan4",
-		"z": "ㄐㄧ ㄉㄢˋ"
+		"simplified": "鸡蛋",
+		"traditional": "雞蛋",
+		"pinyin": "jī dàn",
+		"tone": "ji1 dan4",
+		"zhuyin": "ㄐㄧ ㄉㄢˋ",
+		"stroke_count": "18",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Trứng gà",
+						"examples": [
+							"我早上吃鸡蛋。||Wǒ zǎoshang chī jīdàn.||Buổi sáng tôi ăn trứng gà.",
+							"你想买几个鸡蛋？||Nǐ xiǎng mǎi jǐ gè jīdàn?||Bạn muốn mua mấy quả trứng gà?",
+							"鸡蛋炒饭很好吃。||Jīdàn chǎofàn hěn hǎochī.||Cơm chiên trứng rất ngon."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "家",
-		"t": "家",
-		"y": "jiā",
-		"p": "jia1",
-		"z": "ㄐㄧㄚ"
+		"simplified": "家",
+		"traditional": "家",
+		"pinyin": "jiā",
+		"tone": "jia1",
+		"zhuyin": "ㄐㄧㄚ",
+		"stroke_count": "10",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Nhà, gia đình (chỉ nơi ở hoặc các thành viên trong gia đình)",
+						"examples": [
+							"我回家。||Wǒ huí jiā.||Tôi về nhà.",
+							"我家有四口人。||Wǒ jiā yǒu sì kǒu rén.||Nhà tôi có bốn người.",
+							"这是我的家。||Zhè shì wǒ de jiā.||Đây là nhà của tôi."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Hậu tố danh từ",
+				"meanings": [
+					{
+						"meaning": "Nhà (chỉ người chuyên môn, chuyên gia trong một lĩnh vực)",
+						"examples": [
+							"他是一个科学家。||Tā shì yí gè kēxuéjiā.||Anh ấy là một nhà khoa học."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Lượng từ",
+				"meanings": [
+					{
+						"meaning": "Cái, chiếc, ngôi (dùng làm lượng từ cho công ty, cửa hàng, nhà hàng, bệnh viện, khách sạn)",
+						"examples": [
+							"这家饭店的菜很好吃。||Zhè jiā fàndiàn de cài hěn hǎochī.||Món ăn của nhà hàng này rất ngon.",
+							"我在这家公司工作。||Wǒ zài zhè jiā gōngsī gōngzuò.||Tôi làm việc ở công ty này."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "家人",
-		"t": "家人",
-		"y": "jiā rén",
-		"p": "jia1 ren2",
-		"z": "ㄐㄧㄚ ㄖㄣˊ"
+		"simplified": "家人",
+		"traditional": "家人",
+		"pinyin": "jiā rén",
+		"tone": "jia1 ren2",
+		"zhuyin": "ㄐㄧㄚ ㄖㄣˊ",
+		"stroke_count": "12",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Người nhà, người thân trong gia đình",
+						"examples": [
+							"我的家人都在中国。||Wǒ de jiārén dōu zài Zhōngguó.||Người nhà của tôi đều ở Trung Quốc.",
+							"我很爱我的家人。||Wǒ hěn ài wǒ de jiārén.||Tôi rất yêu người nhà của tôi.",
+							"你和家人一起住吗？||Nǐ hé jiārén yìqǐ zhù ma?||Bạn ở cùng với người nhà à?"
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "见",
-		"t": "見",
-		"y": "jiàn",
-		"p": "jian4",
-		"z": "ㄐㄧㄢˋ"
+		"simplified": "见",
+		"traditional": "見",
+		"pinyin": "jiàn",
+		"tone": "jian4",
+		"zhuyin": "ㄐㄧㄢˋ",
+		"stroke_count": "4",
+		"definitions": [
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Gặp, thấy, gặp mặt",
+						"examples": [
+							"明天见。||Míngtiān jiàn.||Ngày mai gặp lại.",
+							"再见。||Zàijiàn.||Tạm biệt (hẹn gặp lại).",
+							"我很想见他。||Wǒ hěn xiǎng jiàn tā.||Tôi rất muốn gặp anh ấy."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Bổ ngữ kết quả",
+				"meanings": [
+					{
+						"meaning": "Thấy, nhận thấy (đứng sau các động từ cảm giác như 看, 听 để chỉ kết quả)",
+						"examples": [
+							"我看见他了。||Wǒ kànjiàn tā le.||Tôi nhìn thấy anh ấy rồi.",
+							"你听见了吗？||Nǐ tīngjiàn le ma?||Bạn nghe thấy chưa?"
+						]
+					}
+				]
+			},
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Ý kiến, quan điểm (trong các từ ghép như 意见 - ý kiến, 偏见 - định kiến)",
+						"examples": [
+							"你有什么意见？||Nǐ yǒu shénme yìjiàn?||Bạn có ý kiến gì không?"
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "件",
-		"t": "件",
-		"y": "jiàn",
-		"p": "jian4",
-		"z": "ㄐㄧㄢˋ"
+		"simplified": "件",
+		"traditional": "件",
+		"pinyin": "jiàn",
+		"tone": "jian4",
+		"zhuyin": "ㄐㄧㄢˋ",
+		"stroke_count": "6",
+		"definitions": [
+			{
+				"pos": "Lượng từ",
+				"meanings": [
+					{
+						"meaning": "Cái, chiếc, bộ (dùng làm lượng từ cho quần áo trang phục từ thắt lưng trở lên như áo sơ mi, áo khoác, áo may)",
+						"examples": [
+							"我想买一件衣服。||Wǒ xiǎng mǎi yí jiàn yīfu.||Tôi muốn mua một chiếc áo.",
+							"这件衣服很漂亮。||Zhè jiàn yīfu hěn piàoliang.||Chiếc áo này rất đẹp."
+						]
+					},
+					{
+						"meaning": "Vụ, việc, chuyện (dùng làm lượng từ cho sự việc, tin tức, hành lý)",
+						"examples": [
+							"这件事我知道。||Zhè jiàn shì wǒ zhīdào.||Chuyện này tôi biết.",
+							"你有几件行李？||Nǐ yǒu jǐ jiàn xíngli?||Bạn có mấy kiện hành lý?"
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "叫",
-		"t": "呌",
-		"y": "jiào",
-		"p": "jiao4",
-		"z": "ㄐㄧㄠˋ"
+		"simplified": "叫",
+		"traditional": "呌",
+		"pinyin": "jiào",
+		"tone": "jiao4",
+		"zhuyin": "ㄐㄧㄠˋ",
+		"stroke_count": "5",
+		"definitions": [
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Tên là, gọi là (dùng để giới thiệu hoặc hỏi tên)",
+						"examples": [
+							"我叫李华。||Wǒ jiào Lǐ Huá.||Tôi tên là Lý Hoa.",
+							"你叫什么名字？||Nǐ jiào shénme míngzi?||Bạn tên là gì?"
+						]
+					},
+					{
+						"meaning": "Gọi, gọi điện, gọi xe",
+						"examples": [
+							"妈妈叫我回家吃晚饭。||Māma jiào wǒ huí jiā chī wǎnfàn.||Mẹ gọi tôi về nhà ăn cơm tối.",
+							"我去叫出租车。||Wǒ qù jiào chūzūchē.||Tôi đi gọi xe taxi."
+						]
+					}
+				]
+			},
+			{
+				"pos": "Giới từ",
+				"meanings": [
+					{
+						"meaning": "Bị, được (dùng trong câu bị động, tương đương với 被 hoặc 让)",
+						"examples": [
+							"我的苹果叫他吃了。||Wǒ de píngguǒ jiào tā chī le.||Quả táo của tôi bị anh ấy ăn mất rồi."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "饺子",
-		"t": "餃子",
-		"y": "jiǎo zi",
-		"p": "jiao3 zi5",
-		"z": "ㄐㄧㄠˇ ㄗ・"
+		"simplified": "饺子",
+		"traditional": "餃子",
+		"pinyin": "jiǎo zi",
+		"tone": "jiao3 zi5",
+		"zhuyin": "ㄐㄧㄠˇ ㄗ・",
+		"stroke_count": "12",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Bánh sủi cảo, bánh há cảo",
+						"examples": [
+							"我喜欢吃饺子。||Wǒ xǐhuan chī jiǎozi.||Tôi thích ăn sủi cảo.",
+							"过年的时候我们要包饺子。||Guònián de shíhou wǒmen yào bāo jiǎozi.||Lúc đón tết chúng tôi phải gói sủi cảo.",
+							"你要一盘饺子还是两碗面条？||Nǐ yào yì pán jiǎozi háishì liǎng wǎn miàntiáo?||Bạn muốn một đĩa sủi cảo hay hai bát mì?"
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "姐姐",
-		"t": "姐姐",
-		"y": "jiě jie",
-		"p": "jie3 jie5",
-		"z": "ㄐㄧㄝˇ ㄐㄧㄝ・"
+		"simplified": "姐姐",
+		"traditional": "姐姐",
+		"pinyin": "jiě jie",
+		"tone": "jie3 jie5",
+		"zhuyin": "ㄐㄧㄝˇ ㄐㄧㄝ・",
+		"stroke_count": "16",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Chị gái",
+						"examples": [
+							"我有一个姐姐。||Wǒ yǒu yí gè jiějie.||Tôi có một người chị gái.",
+							"这是我姐姐。||Zhè shì wǒ jiějie.||Đây là chị gái của tôi.",
+							"我姐姐是老师。||Wǒ jiějie shì lǎoshī.||Chị gái tôi là giáo viên."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "今年",
-		"t": "今年",
-		"y": "jīn nián",
-		"p": "jin1 nian2",
-		"z": "ㄐㄧㄣ ㄋㄧㄢˊ"
+		"simplified": "今年",
+		"traditional": "今年",
+		"pinyin": "jīn nián",
+		"tone": "jin1 nian2",
+		"zhuyin": "ㄐㄧㄣ ㄋㄧㄢˊ",
+		"stroke_count": "10",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Năm nay",
+						"examples": [
+							"我今年二十岁。||Wǒ jīnnián èrshí suì.||Năm nay tôi hai mươi tuổi.",
+							"今年天气很热。||Jīnnián tiānqì hěn rè.||Năm nay thời tiết rất nóng.",
+							"你今年去 China 吗？||Nǐ jīnnián qù Zhōngguó ma?||Năm nay bạn có đi Trung Quốc không?"
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "今天",
-		"t": "今天",
-		"y": "jīn tiān",
-		"p": "jin1 tian1",
-		"z": "ㄐㄧㄣ ㄊㄧㄢ"
+		"simplified": "今天",
+		"traditional": "今天",
+		"pinyin": "jīn tiān",
+		"tone": "jin1 tian1",
+		"zhuyin": "ㄐㄧㄣ ㄊㄧㄢ",
+		"stroke_count": "8",
+		"definitions": [
+			{
+				"pos": "Danh từ",
+				"meanings": [
+					{
+						"meaning": "Hôm nay, ngày hôm nay",
+						"examples": [
+							"今天是星期一。||Jīntiān shì xīngqīyī.||Hôm nay là thứ hai.",
+							"我今天很忙。||Wǒ jīntiān hěn máng.||Hôm nay tôi rất bận.",
+							"你今天去哪儿？||Nǐ jīntiān qù nǎr?||Hôm nay bạn đi đâu?"
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "九",
-		"t": "九",
-		"y": "jiǔ",
-		"p": "jiu3",
-		"z": "ㄐㄧㄡˇ"
+		"simplified": "九",
+		"traditional": "九",
+		"pinyin": "jiǔ",
+		"tone": "jiu3",
+		"zhuyin": "ㄐㄧㄡˇ",
+		"stroke_count": "2",
+		"definitions": [
+			{
+				"pos": "Số từ",
+				"meanings": [
+					{
+						"meaning": "Số 9, chín",
+						"examples": [
+							"我家有九口人。||Wǒ jiā yǒu jiǔ kǒu rén.||Nhà tôi có chín người.",
+							"现在是九点。||Xiànzài shì jiǔ diǎn.||Bây giờ là chín giờ.",
+							"他九岁了。||Tā jiǔ suì le.||Cậu ấy chín tuổi rồi."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
-		"s": "觉得",
-		"t": "覺得",
-		"y": "jué de",
-		"p": "jue2 de5",
-		"z": "ㄐㄩㄝˊ ㄉㄜ・"
+		"simplified": "觉得",
+		"traditional": "覺得",
+		"pinyin": "jué de",
+		"tone": "jue2 de5",
+		"zhuyin": "ㄐㄩㄝˊ ㄉㄜ・",
+		"stroke_count": "22",
+		"definitions": [
+			{
+				"pos": "Động từ",
+				"meanings": [
+					{
+						"meaning": "Cảm thấy, thấy rằng, nghĩ rằng (biểu thị cảm giác, suy nghĩ hoặc ý kiến cá nhân)",
+						"examples": [
+							"我觉得今天很冷。||Wǒ juéde jīntiān hěn lěng.||Tôi cảm thấy hôm nay rất lạnh.",
+							"你觉得这件衣服 te怎么样？||Nǐ juéde zhè jiàn yīfu zěnmeyàng?||Bạn thấy chiếc áo này thế nào?",
+							"我觉得他是个好人。||Wǒ juéde tā shì gè hǎo rén.||Tôi nghĩ anh ấy là người tốt."
+						]
+					}
+				]
+			}
+		],
+		"views": "0",
+		"learn": ""
 	},
 	{
 		"s": "开",
@@ -2453,7 +3392,7 @@
 		"t": "麵條兒",
 		"y": "miàn tiáo r",
 		"p": "mian4 tiao2 r5",
-		"z": "ㄇㄧㄢˋ ㄊㄧㄠˊ undefined・"
+		"z": "ㄇㄧㄢˋ ㄊㄧㄠˊ ㄦ・"
 	},
 	{
 		"s": "明年",
@@ -2530,14 +3469,14 @@
 		"t": "哪兒",
 		"y": "nǎ r",
 		"p": "na3 r5",
-		"z": "ㄋㄚˇ undefined・"
+		"z": "ㄋㄚˇ ㄦ・"
 	},
 	{
 		"s": "那儿",
 		"t": "那兒",
 		"y": "nà r",
 		"p": "na4 r5",
-		"z": "ㄋㄚˋ undefined・"
+		"z": "ㄋㄚˋ ㄦ・"
 	},
 	{
 		"s": "那些",
@@ -3356,7 +4295,7 @@
 		"t": "一點兒",
 		"y": "yī diǎn r",
 		"p": "yi1 dian3 r5",
-		"z": "ㄧ ㄉㄧㄢˇ undefined・"
+		"z": "ㄧ ㄉㄧㄢˇ ㄦ・"
 	},
 	{
 		"s": "衣服",
@@ -3419,7 +4358,7 @@
 		"t": "有點兒",
 		"y": "yǒu diǎn r",
 		"p": "you3 dian3 r5",
-		"z": "ㄧㄡˇ ㄉㄧㄢˇ undefined・"
+		"z": "ㄧㄡˇ ㄉㄧㄢˇ ㄦ・"
 	},
 	{
 		"s": "有些",
@@ -3545,7 +4484,7 @@
 		"t": "這兒",
 		"y": "zhè r",
 		"p": "zhe4 r5",
-		"z": "ㄓㄜˋ undefined・"
+		"z": "ㄓㄜˋ ㄦ・"
 	},
 	{
 		"s": "这些",

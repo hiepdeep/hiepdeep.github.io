@@ -44,6 +44,7 @@
 						height: 100%;
 						overflow-y: scroll;
 						.line {
+							flex-shrink: 0;
 							display: flex;
 							align-items: center;
 							gap: 1ch;
@@ -120,6 +121,7 @@
 							}
 						}
 						#definitionsContainer, .meanings-container, .examples-container {
+							flex-shrink: 0;
 							display: flex;
 							flex-direction: column;
 							gap: 6px;
@@ -128,6 +130,7 @@
 							}
 						}
 						.block {
+							flex-shrink: 0;
 							display: flex;
 							flex-direction: column;
 							gap: 6px;
@@ -156,7 +159,7 @@
 			#snackbar {
 				position: fixed;
 				right: 24px;
-				bottom: 24px;
+				top: 24px;
 				min-width: 250px;
 				text-align: center;
 				padding: 12px 16px;
@@ -168,7 +171,7 @@
 				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 				visibility: hidden;
 				opacity: 0;
-				transform: translateY(20px);
+				transform: translateY(-20px);
 				transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 				z-index: 9999;
 				&.show {
@@ -330,12 +333,12 @@
 			}
 			// Reset form về trạng thái ban đầu
 			function resetForm() {
-				if (confirm("Bạn có chắc chắn muốn xóa toàn bộ dữ liệu và reset form?")) {
+				// if (confirm("Bạn có chắc chắn muốn xóa toàn bộ dữ liệu và reset form?")) {
 					document.getElementById("form").reset();
 					document.getElementById("views").value = "0";
 					document.getElementById("definitionsContainer").innerHTML = "";
 					addPos();
-				}
+				// }
 			}
 			// Hàm gom dữ liệu từ Form thành Object JSON
 			function getFormData() {
