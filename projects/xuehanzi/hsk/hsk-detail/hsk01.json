@@ -3171,1435 +3171,1435 @@
 		"learn": ""
 	},
 	{
-		"simplified": "开",
+		"s": "开",
 		"traditional": "開",
 		"pinyin": "kāi",
 		"tone": "kai1",
 		"zhuyin": "ㄎㄞˉ"
 	},
 	{
-		"simplified": "开车",
+		"s": "开车",
 		"traditional": "開車",
 		"pinyin": "kāi chē",
 		"tone": "kai1 che1",
 		"zhuyin": "ㄎㄞˉ 㔔ㄜˉ"
 	},
 	{
-		"simplified": "看",
+		"s": "看",
 		"traditional": "看",
 		"pinyin": "kàn",
 		"tone": "kan4",
 		"zhuyin": "ㄎㄢˋ"
 	},
 	{
-		"simplified": "看病",
+		"s": "看病",
 		"traditional": "看病",
 		"pinyin": "kàn bìng",
 		"tone": "kan4 bing4",
 		"zhuyin": "ㄎㄢˋ ㄅㄧㄥˋ"
 	},
 	{
-		"simplified": "看见",
+		"s": "看见",
 		"traditional": "看見",
 		"pinyin": "kàn jiàn",
 		"tone": "kan4 jian4",
 		"zhuyin": "ㄎㄢˋ ㄐㄧㄢˋ"
 	},
 	{
-		"simplified": "课",
+		"s": "课",
 		"traditional": "課",
 		"pinyin": "kè",
 		"tone": "ke4",
 		"zhuyin": "ㄎㄜˋ"
 	},
 	{
-		"simplified": "可以",
+		"s": "可以",
 		"traditional": "可以",
 		"pinyin": "kě yǐ",
 		"tone": "ke3 yi3",
 		"zhuyin": "ㄎㄜˇ ㄧˇ"
 	},
 	{
-		"simplified": "口",
+		"s": "口",
 		"traditional": "口",
 		"pinyin": "kǒu",
 		"tone": "kou3",
 		"zhuyin": "ㄎㄡˇ"
 	},
 	{
-		"simplified": "块",
+		"s": "块",
 		"traditional": "塊",
 		"pinyin": "kuài",
 		"tone": "kuai4",
 		"zhuyin": "ㄎㄨㄞˋ"
 	},
 	{
-		"simplified": "来",
+		"s": "来",
 		"traditional": "來",
 		"pinyin": "lái",
 		"tone": "lai2",
 		"zhuyin": "ㄌㄞˊ"
 	},
 	{
-		"simplified": "老师",
+		"s": "老师",
 		"traditional": "老師",
 		"pinyin": "lǎo shī",
 		"tone": "lao3 shi1",
 		"zhuyin": "ㄌㄠˇ ㄕˉ"
 	},
 	{
-		"simplified": "了",
+		"s": "了",
 		"traditional": "瞭",
 		"pinyin": "le",
 		"tone": "le5",
 		"zhuyin": "·ㄌㄜ"
 	},
 	{
-		"simplified": "冷",
+		"s": "冷",
 		"traditional": "冷",
 		"pinyin": "lěng",
 		"tone": "leng3",
 		"zhuyin": "ㄌㄥˇ"
 	},
 	{
-		"simplified": "里",
+		"s": "里",
 		"traditional": "里",
 		"pinyin": "lǐ",
 		"tone": "li3",
 		"zhuyin": "ㄌㄧˇ"
 	},
 	{
-		"simplified": "两",
+		"s": "两",
 		"traditional": "兩",
 		"pinyin": "liǎng",
 		"tone": "liang3",
 		"zhuyin": "ㄌㄧㄤˇ"
 	},
 	{
-		"simplified": "零",
+		"s": "零",
 		"traditional": "零",
 		"pinyin": "líng",
 		"tone": "ling2",
 		"zhuyin": "ㄌㄧㄥˊ"
 	},
 	{
-		"simplified": "六",
+		"s": "六",
 		"traditional": "六",
 		"pinyin": "liù",
 		"tone": "liu4",
 		"zhuyin": "ㄌㄧㄡˋ"
 	},
 	{
-		"simplified": "吗",
+		"s": "吗",
 		"traditional": "嗎",
 		"pinyin": "ma",
 		"tone": "ma5",
 		"zhuyin": "·ㄇㄚ"
 	},
 	{
-		"simplified": "妈妈",
+		"s": "妈妈",
 		"traditional": "媽媽",
 		"pinyin": "mā ma",
 		"tone": "ma1 ma5",
 		"zhuyin": "ㄇㄚˉ ·ㄇㄚ"
 	},
 	{
-		"simplified": "买",
+		"s": "买",
 		"traditional": "買",
 		"pinyin": "mǎi",
 		"tone": "mai3",
 		"zhuyin": "ㄇㄞˇ"
 	},
 	{
-		"simplified": "卖",
+		"s": "卖",
 		"traditional": "賣",
 		"pinyin": "mài",
 		"tone": "mai4",
 		"zhuyin": "ㄇㄞˋ"
 	},
 	{
-		"simplified": "忙",
+		"s": "忙",
 		"traditional": "忙",
 		"pinyin": "máng",
 		"tone": "mang2",
 		"zhuyin": "ㄇㄤˊ"
 	},
 	{
-		"simplified": "猫",
+		"s": "猫",
 		"traditional": "貓",
 		"pinyin": "māo",
 		"tone": "mao1",
 		"zhuyin": "ㄇㄠˉ"
 	},
 	{
-		"simplified": "没",
+		"s": "没",
 		"traditional": "沒",
 		"pinyin": "méi",
 		"tone": "mei2",
 		"zhuyin": "ㄇㄟˊ"
 	},
 	{
-		"simplified": "没关系",
+		"s": "没关系",
 		"traditional": "沒關係",
 		"pinyin": "méi guān xi",
 		"tone": "mei2 guan1 xi5",
 		"zhuyin": "ㄇㄟˊ ㄍㄨㄢˉ ·ㄒㄧ"
 	},
 	{
-		"simplified": "妹妹",
+		"s": "妹妹",
 		"traditional": "妹妹",
 		"pinyin": "mèi mei",
 		"tone": "mei4 mei5",
 		"zhuyin": "ㄇㄟˋ ·ㄇㄟ"
 	},
 	{
-		"simplified": "没事",
+		"s": "没事",
 		"traditional": "沒事",
 		"pinyin": "méi shì",
 		"tone": "mei2 shi4",
 		"zhuyin": "ㄇㄟˊ ㄕˋ"
 	},
 	{
-		"simplified": "没有",
+		"s": "没有",
 		"traditional": "沒有",
 		"pinyin": "méi yǒu",
 		"tone": "mei2 you3",
 		"zhuyin": "ㄇㄟˊ ㄧㄡˇ"
 	},
 	{
-		"simplified": "们",
+		"s": "们",
 		"traditional": "們",
 		"pinyin": "men",
 		"tone": "men5",
 		"zhuyin": "·ㄇㄣ"
 	},
 	{
-		"simplified": "米饭",
+		"s": "米饭",
 		"traditional": "米飯",
 		"pinyin": "mǐ fàn",
 		"tone": "mi3 fan4",
 		"zhuyin": "ㄇㄧˇ ㄈㄢˋ"
 	},
 	{
-		"simplified": "面包",
+		"s": "面包",
 		"traditional": "麵包",
 		"pinyin": "miàn bāo",
 		"tone": "mian4 bao1",
 		"zhuyin": "ㄇㄧㄢˋ ㄅㄠˉ"
 	},
 	{
-		"simplified": "面条儿",
+		"s": "面条儿",
 		"traditional": "麵條兒",
 		"pinyin": "miàn tiáo r",
 		"tone": "mian4 tiao2 r5",
 		"zhuyin": "ㄇㄧㄢˋ ㄊㄧㄠˊ ·ㄖ"
 	},
 	{
-		"simplified": "明年",
+		"s": "明年",
 		"traditional": "明年",
 		"pinyin": "míng nián",
 		"tone": "ming2 nian2",
 		"zhuyin": "ㄇㄧㄥˊ ㄋㄧㄢˊ"
 	},
 	{
-		"simplified": "明天",
+		"s": "明天",
 		"traditional": "明天",
 		"pinyin": "míng tiān",
 		"tone": "ming2 tian1",
 		"zhuyin": "ㄇㄧㄥˊ ㄊㄧㄢˉ"
 	},
 	{
-		"simplified": "名字",
+		"s": "名字",
 		"traditional": "名字",
 		"pinyin": "míng zi",
 		"tone": "ming2 zi5",
 		"zhuyin": "ㄇㄧㄥˊ ·ㄗ"
 	},
 	{
-		"simplified": "那",
+		"s": "那",
 		"traditional": "那",
 		"pinyin": "nà",
 		"tone": "na4",
 		"zhuyin": "ㄋㄚˋ"
 	},
 	{
-		"simplified": "哪",
+		"s": "哪",
 		"traditional": "哪",
 		"pinyin": "nǎ",
 		"tone": "na3",
 		"zhuyin": "ㄋㄚˇ"
 	},
 	{
-		"simplified": "那边",
+		"s": "那边",
 		"traditional": "那邊",
 		"pinyin": "nà bian",
 		"tone": "na4 bian5",
 		"zhuyin": "ㄋㄚˋ ·ㄅㄧㄢ"
 	},
 	{
-		"simplified": "那个",
+		"s": "那个",
 		"traditional": "那個",
 		"pinyin": "nà ge",
 		"tone": "na4 ge5",
 		"zhuyin": "ㄋㄚˋ ·ㄍㄜ"
 	},
 	{
-		"simplified": "哪个",
+		"s": "哪个",
 		"traditional": "哪個",
 		"pinyin": "nǎ ge",
 		"tone": "na3 ge5",
 		"zhuyin": "ㄋㄚˇ ·ㄍㄜ"
 	},
 	{
-		"simplified": "哪里",
+		"s": "哪里",
 		"traditional": "哪裡",
 		"pinyin": "nǎ lǐ",
 		"tone": "na3 li3",
 		"zhuyin": "ㄋㄚˇ ㄌㄧˇ"
 	},
 	{
-		"simplified": "那里",
+		"s": "那里",
 		"traditional": "那裡",
 		"pinyin": "nà li",
 		"tone": "na4 li5",
 		"zhuyin": "ㄋㄚˋ ·ㄌㄧ"
 	},
 	{
-		"simplified": "哪儿",
+		"s": "哪儿",
 		"traditional": "哪兒",
 		"pinyin": "nǎ r",
 		"tone": "na3 r5",
 		"zhuyin": "ㄋㄚˇ ·ㄖ"
 	},
 	{
-		"simplified": "那儿",
+		"s": "那儿",
 		"traditional": "那兒",
 		"pinyin": "nà r",
 		"tone": "na4 r5",
 		"zhuyin": "ㄋㄚˋ ·ㄖ"
 	},
 	{
-		"simplified": "那些",
+		"s": "那些",
 		"traditional": "那些",
 		"pinyin": "nà xiē",
 		"tone": "na4 xie1",
 		"zhuyin": "ㄋㄚˋ ㄒㄧㄝˉ"
 	},
 	{
-		"simplified": "哪些",
+		"s": "哪些",
 		"traditional": "哪些",
 		"pinyin": "nǎ xiē",
 		"tone": "na3 xie1",
 		"zhuyin": "ㄋㄚˇ ㄒㄧㄝˉ"
 	},
 	{
-		"simplified": "男",
+		"s": "男",
 		"traditional": "男",
 		"pinyin": "nán",
 		"tone": "nan2",
 		"zhuyin": "ㄋㄢˊ"
 	},
 	{
-		"simplified": "男朋友",
+		"s": "男朋友",
 		"traditional": "男朋友",
 		"pinyin": "nán péng you",
 		"tone": "nan2 peng2 you5",
 		"zhuyin": "ㄋㄢˊ ㄆㄥˊ ·ㄧㄡ"
 	},
 	{
-		"simplified": "呢",
+		"s": "呢",
 		"traditional": "呢",
 		"pinyin": "ne",
 		"tone": "ne5",
 		"zhuyin": "·ㄋㄜ"
 	},
 	{
-		"simplified": "能",
+		"s": "能",
 		"traditional": "能",
 		"pinyin": "néng",
 		"tone": "neng2",
 		"zhuyin": "ㄋㄥˊ"
 	},
 	{
-		"simplified": "你",
+		"s": "你",
 		"traditional": "妳",
 		"pinyin": "nǐ",
 		"tone": "ni3",
 		"zhuyin": "ㄋㄧˇ"
 	},
 	{
-		"simplified": "你好",
+		"s": "你好",
 		"traditional": "你好",
 		"pinyin": "nǐ hǎo",
 		"tone": "ni3 hao3",
 		"zhuyin": "ㄋㄧˇ ㄏㄠˇ"
 	},
 	{
-		"simplified": "你们",
+		"s": "你们",
 		"traditional": "你們",
 		"pinyin": "nǐ men",
 		"tone": "ni3 men5",
 		"zhuyin": "ㄋㄧˇ ·ㄇㄣ"
 	},
 	{
-		"simplified": "年",
+		"s": "年",
 		"traditional": "秊",
 		"pinyin": "nián",
 		"tone": "nian2",
 		"zhuyin": "ㄋㄧㄢˊ"
 	},
 	{
-		"simplified": "您",
+		"s": "您",
 		"traditional": "您",
 		"pinyin": "nín",
 		"tone": "nin2",
 		"zhuyin": "ㄋㄧㄣˊ"
 	},
 	{
-		"simplified": "牛奶",
+		"s": "牛奶",
 		"traditional": "牛奶",
 		"pinyin": "niú nǎi",
 		"tone": "niu2 nai3",
 		"zhuyin": "ㄋㄧㄡˊ ㄋㄞˇ"
 	},
 	{
-		"simplified": "女",
+		"s": "女",
 		"traditional": "女",
 		"pinyin": "nǚ",
 		"tone": "nu:3",
 		"zhuyin": "nu:3"
 	},
 	{
-		"simplified": "女儿",
+		"s": "女儿",
 		"traditional": "女兒",
 		"pinyin": "nǚ ér",
 		"tone": "nu:3 er2",
 		"zhuyin": "nu:3 ㄦˊ"
 	},
 	{
-		"simplified": "女朋友",
+		"s": "女朋友",
 		"traditional": "女朋友",
 		"pinyin": "nǚ péng you",
 		"tone": "nu:3 peng2 you5",
 		"zhuyin": "nu:3 ㄆㄥˊ ·ㄧㄡ"
 	},
 	{
-		"simplified": "女士",
+		"s": "女士",
 		"traditional": "女士",
 		"pinyin": "nǚ shì",
 		"tone": "nu:3 shi4",
 		"zhuyin": "nu:3 ㄕˋ"
 	},
 	{
-		"simplified": "朋友",
+		"s": "朋友",
 		"traditional": "朋友",
 		"pinyin": "péng you",
 		"tone": "peng2 you5",
 		"zhuyin": "ㄆㄥˊ ·ㄧㄡ"
 	},
 	{
-		"simplified": "便宜",
+		"s": "便宜",
 		"traditional": "便宜",
 		"pinyin": "pián yi",
 		"tone": "pian2 yi5",
 		"zhuyin": "ㄆㄧㄢˊ ·ㄧ"
 	},
 	{
-		"simplified": "漂亮",
+		"s": "漂亮",
 		"traditional": "漂亮",
 		"pinyin": "piào liang",
 		"tone": "piao4 liang5",
 		"zhuyin": "ㄆㄧㄠˋ ·ㄌㄧㄤ"
 	},
 	{
-		"simplified": "苹果",
+		"s": "苹果",
 		"traditional": "蘋果",
 		"pinyin": "píng guǒ",
 		"tone": "ping2 guo3",
 		"zhuyin": "ㄆㄧㄥˊ ㄍㄨㄛˇ"
 	},
 	{
-		"simplified": "七",
+		"s": "七",
 		"traditional": "七",
 		"pinyin": "qī",
 		"tone": "qi1",
 		"zhuyin": "ㄑㄧˉ"
 	},
 	{
-		"simplified": "起床",
+		"s": "起床",
 		"traditional": "起床",
 		"pinyin": "qǐ chuáng",
 		"tone": "qi3 chuang2",
 		"zhuyin": "ㄑㄧˇ 㔔ㄨㄤˊ"
 	},
 	{
-		"simplified": "前",
+		"s": "前",
 		"traditional": "前",
 		"pinyin": "qián",
 		"tone": "qian2",
 		"zhuyin": "ㄑㄧㄢˊ"
 	},
 	{
-		"simplified": "钱",
+		"s": "钱",
 		"traditional": "錢",
 		"pinyin": "qián",
 		"tone": "qian2",
 		"zhuyin": "ㄑㄧㄢˊ"
 	},
 	{
-		"simplified": "千",
+		"s": "千",
 		"traditional": "韆",
 		"pinyin": "qiān",
 		"tone": "qian1",
 		"zhuyin": "ㄑㄧㄢˉ"
 	},
 	{
-		"simplified": "请",
+		"s": "请",
 		"traditional": "請",
 		"pinyin": "qǐng",
 		"tone": "qing3",
 		"zhuyin": "ㄑㄧㄥˇ"
 	},
 	{
-		"simplified": "请问",
+		"s": "请问",
 		"traditional": "請問",
 		"pinyin": "qǐng wèn",
 		"tone": "qing3 wen4",
 		"zhuyin": "ㄑㄧㄥˇ ㄨㄣˋ"
 	},
 	{
-		"simplified": "去",
+		"s": "去",
 		"traditional": "去",
 		"pinyin": "qù",
 		"tone": "qu4",
 		"zhuyin": "ㄑㄩˋ"
 	},
 	{
-		"simplified": "去年",
+		"s": "去年",
 		"traditional": "去年",
 		"pinyin": "qù nián",
 		"tone": "qu4 nian2",
 		"zhuyin": "ㄑㄩˋ ㄋㄧㄢˊ"
 	},
 	{
-		"simplified": "热",
+		"s": "热",
 		"traditional": "熱",
 		"pinyin": "rè",
 		"tone": "re4",
 		"zhuyin": "ㄖㄜˋ"
 	},
 	{
-		"simplified": "人",
+		"s": "人",
 		"traditional": "人",
 		"pinyin": "rén",
 		"tone": "ren2",
 		"zhuyin": "ㄖㄣˊ"
 	},
 	{
-		"simplified": "认识",
+		"s": "认识",
 		"traditional": "認識",
 		"pinyin": "rèn shi",
 		"tone": "ren4 shi5",
 		"zhuyin": "ㄖㄣˋ ·ㄕ"
 	},
 	{
-		"simplified": "日",
+		"s": "日",
 		"traditional": "日",
 		"pinyin": "rì",
 		"tone": "ri4",
 		"zhuyin": "ㄖˋ"
 	},
 	{
-		"simplified": "三",
+		"s": "三",
 		"traditional": "三",
 		"pinyin": "sān",
 		"tone": "san1",
 		"zhuyin": "ㄙㄢˉ"
 	},
 	{
-		"simplified": "上",
+		"s": "上",
 		"traditional": "上",
 		"pinyin": "shàng",
 		"tone": "shang4",
 		"zhuyin": "ㄕㄤˋ"
 	},
 	{
-		"simplified": "上班",
+		"s": "上班",
 		"traditional": "上班",
 		"pinyin": "shàng bān",
 		"tone": "shang4 ban1",
 		"zhuyin": "ㄕㄤˋ ㄅㄢˉ"
 	},
 	{
-		"simplified": "商店",
+		"s": "商店",
 		"traditional": "商店",
 		"pinyin": "shāng diàn",
 		"tone": "shang1 dian4",
 		"zhuyin": "ㄕㄤˉ ㄉㄧㄢˋ"
 	},
 	{
-		"simplified": "上课",
+		"s": "上课",
 		"traditional": "上課",
 		"pinyin": "shàng kè",
 		"tone": "shang4 ke4",
 		"zhuyin": "ㄕㄤˋ ㄎㄜˋ"
 	},
 	{
-		"simplified": "上午",
+		"s": "上午",
 		"traditional": "上午",
 		"pinyin": "shàng wǔ",
 		"tone": "shang4 wu3",
 		"zhuyin": "ㄕㄤˋ ㄨˇ"
 	},
 	{
-		"simplified": "上学",
+		"s": "上学",
 		"traditional": "上學",
 		"pinyin": "shàng xué",
 		"tone": "shang4 xue2",
 		"zhuyin": "ㄕㄤˋ ㄒㄩㄝˊ"
 	},
 	{
-		"simplified": "少",
+		"s": "少",
 		"traditional": "少",
 		"pinyin": "shǎo",
 		"tone": "shao3",
 		"zhuyin": "ㄕㄠˇ"
 	},
 	{
-		"simplified": "谁",
+		"s": "谁",
 		"traditional": "誰",
 		"pinyin": "shéi",
 		"tone": "shei2",
 		"zhuyin": "ㄕㄟˊ"
 	},
 	{
-		"simplified": "什么",
+		"s": "什么",
 		"traditional": "什麼",
 		"pinyin": "shén me",
 		"tone": "shen2 me5",
 		"zhuyin": "ㄕㄣˊ ·ㄇㄜ"
 	},
 	{
-		"simplified": "生病",
+		"s": "生病",
 		"traditional": "生病",
 		"pinyin": "shēng bìng",
 		"tone": "sheng1 bing4",
 		"zhuyin": "ㄕㄥˉ ㄅㄧㄥˋ"
 	},
 	{
-		"simplified": "是",
+		"s": "是",
 		"traditional": "昰",
 		"pinyin": "shì",
 		"tone": "shi4",
 		"zhuyin": "ㄕˋ"
 	},
 	{
-		"simplified": "事",
+		"s": "事",
 		"traditional": "事",
 		"pinyin": "shì",
 		"tone": "shi4",
 		"zhuyin": "ㄕˋ"
 	},
 	{
-		"simplified": "十",
+		"s": "十",
 		"traditional": "十",
 		"pinyin": "shí",
 		"tone": "shi2",
 		"zhuyin": "ㄕˊ"
 	},
 	{
-		"simplified": "时候",
+		"s": "时候",
 		"traditional": "時候",
 		"pinyin": "shí hou",
 		"tone": "shi2 hou5",
 		"zhuyin": "ㄕˊ ·ㄏㄡ"
 	},
 	{
-		"simplified": "时间",
+		"s": "时间",
 		"traditional": "時間",
 		"pinyin": "shí jiān",
 		"tone": "shi2 jian1",
 		"zhuyin": "ㄕˊ ㄐㄧㄢˉ"
 	},
 	{
-		"simplified": "手机",
+		"s": "手机",
 		"traditional": "手機",
 		"pinyin": "shǒu jī",
 		"tone": "shou3 ji1",
 		"zhuyin": "ㄕㄡˇ ㄐㄧˉ"
 	},
 	{
-		"simplified": "书",
+		"s": "书",
 		"traditional": "書",
 		"pinyin": "shū",
 		"tone": "shu1",
 		"zhuyin": "ㄕㄨˉ"
 	},
 	{
-		"simplified": "书店",
+		"s": "书店",
 		"traditional": "書店",
 		"pinyin": "shū diàn",
 		"tone": "shu1 dian4",
 		"zhuyin": "ㄕㄨˉ ㄉㄧㄢˋ"
 	},
 	{
-		"simplified": "水",
+		"s": "水",
 		"traditional": "水",
 		"pinyin": "shuǐ",
 		"tone": "shui3",
 		"zhuyin": "ㄕㄨㄟˇ"
 	},
 	{
-		"simplified": "睡",
+		"s": "睡",
 		"traditional": "睡",
 		"pinyin": "shuì",
 		"tone": "shui4",
 		"zhuyin": "ㄕㄨㄟˋ"
 	},
 	{
-		"simplified": "水果",
+		"s": "水果",
 		"traditional": "水果",
 		"pinyin": "shuǐ guǒ",
 		"tone": "shui3 guo3",
 		"zhuyin": "ㄕㄨㄟˇ ㄍㄨㄛˇ"
 	},
 	{
-		"simplified": "睡觉",
+		"s": "睡觉",
 		"traditional": "睡覺",
 		"pinyin": "shuì jiào",
 		"tone": "shui4 jiao4",
 		"zhuyin": "ㄕㄨㄟˋ ㄐㄧㄠˋ"
 	},
 	{
-		"simplified": "说",
+		"s": "说",
 		"traditional": "説",
 		"pinyin": "shuō",
 		"tone": "shuo1",
 		"zhuyin": "ㄕㄨㄛˉ"
 	},
 	{
-		"simplified": "说话",
+		"s": "说话",
 		"traditional": "說話",
 		"pinyin": "shuō huà",
 		"tone": "shuo1 hua4",
 		"zhuyin": "ㄕㄨㄛˉ ㄏㄨㄚˋ"
 	},
 	{
-		"simplified": "四",
+		"s": "四",
 		"traditional": "四",
 		"pinyin": "sì",
 		"tone": "si4",
 		"zhuyin": "ㄙˋ"
 	},
 	{
-		"simplified": "岁",
+		"s": "岁",
 		"traditional": "歲",
 		"pinyin": "suì",
 		"tone": "sui4",
 		"zhuyin": "ㄙㄨㄟˋ"
 	},
 	{
-		"simplified": "他",
+		"s": "他",
 		"traditional": "他",
 		"pinyin": "tā",
 		"tone": "ta1",
 		"zhuyin": "ㄊㄚˉ"
 	},
 	{
-		"simplified": "她",
+		"s": "她",
 		"traditional": "她",
 		"pinyin": "tā",
 		"tone": "ta1",
 		"zhuyin": "ㄊㄚˉ"
 	},
 	{
-		"simplified": "它",
+		"s": "它",
 		"traditional": "牠",
 		"pinyin": "tā",
 		"tone": "ta1",
 		"zhuyin": "ㄊㄚˉ"
 	},
 	{
-		"simplified": "他们",
+		"s": "他们",
 		"traditional": "他們",
 		"pinyin": "tā men",
 		"tone": "ta1 men5",
 		"zhuyin": "ㄊㄚˉ ·ㄇㄣ"
 	},
 	{
-		"simplified": "它们",
+		"s": "它们",
 		"traditional": "它們",
 		"pinyin": "tā men",
 		"tone": "ta1 men5",
 		"zhuyin": "ㄊㄚˉ ·ㄇㄣ"
 	},
 	{
-		"simplified": "她们",
+		"s": "她们",
 		"traditional": "她們",
 		"pinyin": "tā men",
 		"tone": "ta1 men5",
 		"zhuyin": "ㄊㄚˉ ·ㄇㄣ"
 	},
 	{
-		"simplified": "太",
+		"s": "太",
 		"traditional": "太",
 		"pinyin": "tài",
 		"tone": "tai4",
 		"zhuyin": "ㄊㄞˋ"
 	},
 	{
-		"simplified": "天",
+		"s": "天",
 		"traditional": "天",
 		"pinyin": "tiān",
 		"tone": "tian1",
 		"zhuyin": "ㄊㄧㄢˉ"
 	},
 	{
-		"simplified": "天气",
+		"s": "天气",
 		"traditional": "天氣",
 		"pinyin": "tiān qì",
 		"tone": "tian1 qi4",
 		"zhuyin": "ㄊㄧㄢˉ ㄑㄧˋ"
 	},
 	{
-		"simplified": "听",
+		"s": "听",
 		"traditional": "聽",
 		"pinyin": "tīng",
 		"tone": "ting1",
 		"zhuyin": "ㄊㄧㄥˉ"
 	},
 	{
-		"simplified": "听见",
+		"s": "听见",
 		"traditional": "聽見",
 		"pinyin": "tīng jiàn",
 		"tone": "ting1 jian4",
 		"zhuyin": "ㄊㄧㄥˉ ㄐㄧㄢˋ"
 	},
 	{
-		"simplified": "同学",
+		"s": "同学",
 		"traditional": "同學",
 		"pinyin": "tóng xué",
 		"tone": "tong2 xue2",
 		"zhuyin": "ㄊㄨㄥˊ ㄒㄩㄝˊ"
 	},
 	{
-		"simplified": "外",
+		"s": "外",
 		"traditional": "外",
 		"pinyin": "wài",
 		"tone": "wai4",
 		"zhuyin": "ㄨㄞˋ"
 	},
 	{
-		"simplified": "外边",
+		"s": "外边",
 		"traditional": "外邊",
 		"pinyin": "wài bian",
 		"tone": "wai4 bian5",
 		"zhuyin": "ㄨㄞˋ ·ㄅㄧㄢ"
 	},
 	{
-		"simplified": "玩",
+		"s": "玩",
 		"traditional": "翫",
 		"pinyin": "wán",
 		"tone": "wan2",
 		"zhuyin": "ㄨㄢˊ"
 	},
 	{
-		"simplified": "晚",
+		"s": "晚",
 		"traditional": "晚",
 		"pinyin": "wǎn",
 		"tone": "wan3",
 		"zhuyin": "ㄨㄢˇ"
 	},
 	{
-		"simplified": "晚饭",
+		"s": "晚饭",
 		"traditional": "晚飯",
 		"pinyin": "wǎn fàn",
 		"tone": "wan3 fan4",
 		"zhuyin": "ㄨㄢˇ ㄈㄢˋ"
 	},
 	{
-		"simplified": "晚上",
+		"s": "晚上",
 		"traditional": "晚上",
 		"pinyin": "wǎn shang",
 		"tone": "wan3 shang5",
 		"zhuyin": "ㄨㄢˇ ·ㄕㄤ"
 	},
 	{
-		"simplified": "喂",
+		"s": "喂",
 		"traditional": "餵",
 		"pinyin": "wèi",
 		"tone": "wei4",
 		"zhuyin": "ㄨㄟˋ"
 	},
 	{
-		"simplified": "问",
+		"s": "问",
 		"traditional": "問",
 		"pinyin": "wèn",
 		"tone": "wen4",
 		"zhuyin": "ㄨㄣˋ"
 	},
 	{
-		"simplified": "问题",
+		"s": "问题",
 		"traditional": "問題",
 		"pinyin": "wèn tí",
 		"tone": "wen4 ti2",
 		"zhuyin": "ㄨㄣˋ ㄊㄧˊ"
 	},
 	{
-		"simplified": "我",
+		"s": "我",
 		"traditional": "我",
 		"pinyin": "wǒ",
 		"tone": "wo3",
 		"zhuyin": "ㄨㄛˇ"
 	},
 	{
-		"simplified": "我们",
+		"s": "我们",
 		"traditional": "我們",
 		"pinyin": "wǒ men",
 		"tone": "wo3 men5",
 		"zhuyin": "ㄨㄛˇ ·ㄇㄣ"
 	},
 	{
-		"simplified": "五",
+		"s": "五",
 		"traditional": "五",
 		"pinyin": "wǔ",
 		"tone": "wu3",
 		"zhuyin": "ㄨˇ"
 	},
 	{
-		"simplified": "午饭",
+		"s": "午饭",
 		"traditional": "午飯",
 		"pinyin": "wǔ fàn",
 		"tone": "wu3 fan4",
 		"zhuyin": "ㄨˇ ㄈㄢˋ"
 	},
 	{
-		"simplified": "喜欢",
+		"s": "喜欢",
 		"traditional": "喜歡",
 		"pinyin": "xǐ huan",
 		"tone": "xi3 huan5",
 		"zhuyin": "ㄒㄧˇ ·ㄏㄨㄢ"
 	},
 	{
-		"simplified": "下",
+		"s": "下",
 		"traditional": "下",
 		"pinyin": "xià",
 		"tone": "xia4",
 		"zhuyin": "ㄒㄧㄚˋ"
 	},
 	{
-		"simplified": "下班",
+		"s": "下班",
 		"traditional": "下班",
 		"pinyin": "xià bān",
 		"tone": "xia4 ban1",
 		"zhuyin": "ㄒㄧㄚˋ ㄅㄢˉ"
 	},
 	{
-		"simplified": "下课",
+		"s": "下课",
 		"traditional": "下課",
 		"pinyin": "xià kè",
 		"tone": "xia4 ke4",
 		"zhuyin": "ㄒㄧㄚˋ ㄎㄜˋ"
 	},
 	{
-		"simplified": "下午",
+		"s": "下午",
 		"traditional": "下午",
 		"pinyin": "xià wǔ",
 		"tone": "xia4 wu3",
 		"zhuyin": "ㄒㄧㄚˋ ㄨˇ"
 	},
 	{
-		"simplified": "下雨",
+		"s": "下雨",
 		"traditional": "下雨",
 		"pinyin": "xià yǔ",
 		"tone": "xia4 yu3",
 		"zhuyin": "ㄒㄧㄚˋ ㄩˇ"
 	},
 	{
-		"simplified": "先生",
+		"s": "先生",
 		"traditional": "先生",
 		"pinyin": "xiān sheng",
 		"tone": "xian1 sheng5",
 		"zhuyin": "ㄒㄧㄢˉ ·ㄕㄥ"
 	},
 	{
-		"simplified": "现在",
+		"s": "现在",
 		"traditional": "現在",
 		"pinyin": "xiàn zài",
 		"tone": "xian4 zai4",
 		"zhuyin": "ㄒㄧㄢˋ ㄗㄞˋ"
 	},
 	{
-		"simplified": "想",
+		"s": "想",
 		"traditional": "想",
 		"pinyin": "xiǎng",
 		"tone": "xiang3",
 		"zhuyin": "ㄒㄧㄤˇ"
 	},
 	{
-		"simplified": "小",
+		"s": "小",
 		"traditional": "小",
 		"pinyin": "xiǎo",
 		"tone": "xiao3",
 		"zhuyin": "ㄒㄧㄠˇ"
 	},
 	{
-		"simplified": "小朋友",
+		"s": "小朋友",
 		"traditional": "小朋友",
 		"pinyin": "xiǎo péng yǒu",
 		"tone": "xiao3 peng2 you3",
 		"zhuyin": "ㄒㄧㄠˇ ㄆㄥˊ ㄧㄡˇ"
 	},
 	{
-		"simplified": "小时",
+		"s": "小时",
 		"traditional": "小時",
 		"pinyin": "xiǎo shí",
 		"tone": "xiao3 shi2",
 		"zhuyin": "ㄒㄧㄠˇ ㄕˊ"
 	},
 	{
-		"simplified": "小学",
+		"s": "小学",
 		"traditional": "小學",
 		"pinyin": "xiǎo xué",
 		"tone": "xiao3 xue2",
 		"zhuyin": "ㄒㄧㄠˇ ㄒㄩㄝˊ"
 	},
 	{
-		"simplified": "小学生",
+		"s": "小学生",
 		"traditional": "小學生",
 		"pinyin": "xiǎo xué shēng",
 		"tone": "xiao3 xue2 sheng1",
 		"zhuyin": "ㄒㄧㄠˇ ㄒㄩㄝˊ ㄕㄥˉ"
 	},
 	{
-		"simplified": "写",
+		"s": "写",
 		"traditional": "寫",
 		"pinyin": "xiě",
 		"tone": "xie3",
 		"zhuyin": "ㄒㄧㄝˇ"
 	},
 	{
-		"simplified": "些",
+		"s": "些",
 		"traditional": "些",
 		"pinyin": "xiē",
 		"tone": "xie1",
 		"zhuyin": "ㄒㄧㄝˉ"
 	},
 	{
-		"simplified": "谢谢",
+		"s": "谢谢",
 		"traditional": "謝謝",
 		"pinyin": "xiè xie",
 		"tone": "xie4 xie5",
 		"zhuyin": "ㄒㄧㄝˋ ·ㄒㄧㄝ"
 	},
 	{
-		"simplified": "新",
+		"s": "新",
 		"traditional": "新",
 		"pinyin": "xīn",
 		"tone": "xin1",
 		"zhuyin": "ㄒㄧㄣˉ"
 	},
 	{
-		"simplified": "星期",
+		"s": "星期",
 		"traditional": "星期",
 		"pinyin": "xīng qī",
 		"tone": "xing1 qi1",
 		"zhuyin": "ㄒㄧㄥˉ ㄑㄧˉ"
 	},
 	{
-		"simplified": "星期日",
+		"s": "星期日",
 		"traditional": "星期日",
 		"pinyin": "Xīng qī rì",
 		"tone": "Xing1 qi1 ri4",
 		"zhuyin": "ㄒㄧㄥˉ ㄑㄧˉ ㄖˋ"
 	},
 	{
-		"simplified": "星期天",
+		"s": "星期天",
 		"traditional": "星期天",
 		"pinyin": "Xīng qī tiān",
 		"tone": "Xing1 qi1 tian1",
 		"zhuyin": "ㄒㄧㄥˉ ㄑㄧˉ ㄊㄧㄢˉ"
 	},
 	{
-		"simplified": "休息",
+		"s": "休息",
 		"traditional": "休息",
 		"pinyin": "xiū xi",
 		"tone": "xiu1 xi5",
 		"zhuyin": "ㄒㄧㄡˉ ·ㄒㄧ"
 	},
 	{
-		"simplified": "学",
+		"s": "学",
 		"traditional": "學",
 		"pinyin": "xué",
 		"tone": "xue2",
 		"zhuyin": "ㄒㄩㄝˊ"
 	},
 	{
-		"simplified": "雪",
+		"s": "雪",
 		"traditional": "雪",
 		"pinyin": "xuě",
 		"tone": "xue3",
 		"zhuyin": "ㄒㄩㄝˇ"
 	},
 	{
-		"simplified": "学生",
+		"s": "学生",
 		"traditional": "學生",
 		"pinyin": "xué sheng",
 		"tone": "xue2 sheng5",
 		"zhuyin": "ㄒㄩㄝˊ ·ㄕㄥ"
 	},
 	{
-		"simplified": "学习",
+		"s": "学习",
 		"traditional": "學習",
 		"pinyin": "xué xí",
 		"tone": "xue2 xi2",
 		"zhuyin": "ㄒㄩㄝˊ ㄒㄧˊ"
 	},
 	{
-		"simplified": "学校",
+		"s": "学校",
 		"traditional": "學校",
 		"pinyin": "xué xiào",
 		"tone": "xue2 xiao4",
 		"zhuyin": "ㄒㄩㄝˊ ㄒㄧㄠˋ"
 	},
 	{
-		"simplified": "要",
+		"s": "要",
 		"traditional": "要",
 		"pinyin": "yào",
 		"tone": "yao4",
 		"zhuyin": "ㄧㄠˋ"
 	},
 	{
-		"simplified": "也",
+		"s": "也",
 		"traditional": "也",
 		"pinyin": "yě",
 		"tone": "ye3",
 		"zhuyin": "ㄧㄝˇ"
 	},
 	{
-		"simplified": "一",
+		"s": "一",
 		"traditional": "一",
 		"pinyin": "yī",
 		"tone": "yi1",
 		"zhuyin": "ㄧˉ"
 	},
 	{
-		"simplified": "一半",
+		"s": "一半",
 		"traditional": "一半",
 		"pinyin": "yī bàn",
 		"tone": "yi1 ban4",
 		"zhuyin": "ㄧˉ ㄅㄢˋ"
 	},
 	{
-		"simplified": "一点儿",
+		"s": "一点儿",
 		"traditional": "一點兒",
 		"pinyin": "yī diǎn r",
 		"tone": "yi1 dian3 r5",
 		"zhuyin": "ㄧˉ ㄉㄧㄢˇ ·ㄖ"
 	},
 	{
-		"simplified": "衣服",
+		"s": "衣服",
 		"traditional": "衣服",
 		"pinyin": "yī fu",
 		"tone": "yi1 fu5",
 		"zhuyin": "ㄧˉ ·ㄈㄨ"
 	},
 	{
-		"simplified": "医生",
+		"s": "医生",
 		"traditional": "醫生",
 		"pinyin": "yī shēng",
 		"tone": "yi1 sheng1",
 		"zhuyin": "ㄧˉ ㄕㄥˉ"
 	},
 	{
-		"simplified": "一下",
+		"s": "一下",
 		"traditional": "一下",
 		"pinyin": "yī xià",
 		"tone": "yi1 xia4",
 		"zhuyin": "ㄧˉ ㄒㄧㄚˋ"
 	},
 	{
-		"simplified": "一些",
+		"s": "一些",
 		"traditional": "一些",
 		"pinyin": "yī xiē",
 		"tone": "yi1 xie1",
 		"zhuyin": "ㄧˉ ㄒㄧㄝˉ"
 	},
 	{
-		"simplified": "医院",
+		"s": "医院",
 		"traditional": "醫院",
 		"pinyin": "yī yuàn",
 		"tone": "yi1 yuan4",
 		"zhuyin": "ㄧˉ ㄩㄢˋ"
 	},
 	{
-		"simplified": "椅子",
+		"s": "椅子",
 		"traditional": "椅子",
 		"pinyin": "yǐ zi",
 		"tone": "yi3 zi5",
 		"zhuyin": "ㄧˇ ·ㄗ"
 	},
 	{
-		"simplified": "有",
+		"s": "有",
 		"traditional": "有",
 		"pinyin": "yǒu",
 		"tone": "you3",
 		"zhuyin": "ㄧㄡˇ"
 	},
 	{
-		"simplified": "有的",
+		"s": "有的",
 		"traditional": "有的",
 		"pinyin": "yǒu de",
 		"tone": "you3 de5",
 		"zhuyin": "ㄧㄡˇ ·ㄉㄜ"
 	},
 	{
-		"simplified": "有点儿",
+		"s": "有点儿",
 		"traditional": "有點兒",
 		"pinyin": "yǒu diǎn r",
 		"tone": "you3 dian3 r5",
 		"zhuyin": "ㄧㄡˇ ㄉㄧㄢˇ ·ㄖ"
 	},
 	{
-		"simplified": "有些",
+		"s": "有些",
 		"traditional": "有些",
 		"pinyin": "yǒu xiē",
 		"tone": "you3 xie1",
 		"zhuyin": "ㄧㄡˇ ㄒㄧㄝˉ"
 	},
 	{
-		"simplified": "雨",
+		"s": "雨",
 		"traditional": "雨",
 		"pinyin": "yǔ",
 		"tone": "yu3",
 		"zhuyin": "ㄩˇ"
 	},
 	{
-		"simplified": "元",
+		"s": "元",
 		"traditional": "元",
 		"pinyin": "yuán",
 		"tone": "yuan2",
 		"zhuyin": "ㄩㄢˊ"
 	},
 	{
-		"simplified": "月",
+		"s": "月",
 		"traditional": "月",
 		"pinyin": "yuè",
 		"tone": "yue4",
 		"zhuyin": "ㄩㄝˋ"
 	},
 	{
-		"simplified": "在",
+		"s": "在",
 		"traditional": "在",
 		"pinyin": "zài",
 		"tone": "zai4",
 		"zhuyin": "ㄗㄞˋ"
 	},
 	{
-		"simplified": "再",
+		"s": "再",
 		"traditional": "再",
 		"pinyin": "zài",
 		"tone": "zai4",
 		"zhuyin": "ㄗㄞˋ"
 	},
 	{
-		"simplified": "再见",
+		"s": "再见",
 		"traditional": "再見",
 		"pinyin": "zài jiàn",
 		"tone": "zai4 jian4",
 		"zhuyin": "ㄗㄞˋ ㄐㄧㄢˋ"
 	},
 	{
-		"simplified": "早",
+		"s": "早",
 		"traditional": "早",
 		"pinyin": "zǎo",
 		"tone": "zao3",
 		"zhuyin": "ㄗㄠˇ"
 	},
 	{
-		"simplified": "早饭",
+		"s": "早饭",
 		"traditional": "早飯",
 		"pinyin": "zǎo fàn",
 		"tone": "zao3 fan4",
 		"zhuyin": "ㄗㄠˇ ㄈㄢˋ"
 	},
 	{
-		"simplified": "早上",
+		"s": "早上",
 		"traditional": "早上",
 		"pinyin": "zǎo shang",
 		"tone": "zao3 shang5",
 		"zhuyin": "ㄗㄠˇ ·ㄕㄤ"
 	},
 	{
-		"simplified": "怎么",
+		"s": "怎么",
 		"traditional": "怎麽",
 		"pinyin": "zěn me",
 		"tone": "zen3 me5",
 		"zhuyin": "ㄗㄣˇ ·ㄇㄜ"
 	},
 	{
-		"simplified": "怎么样",
+		"s": "怎么样",
 		"traditional": "怎麼樣",
 		"pinyin": "zěn me yàng",
 		"tone": "zen3 me5 yang4",
 		"zhuyin": "ㄗㄣˇ ·ㄇㄜ ㄧㄤˋ"
 	},
 	{
-		"simplified": "找",
+		"s": "找",
 		"traditional": "找",
 		"pinyin": "zhǎo",
 		"tone": "zhao3",
 		"zhuyin": "ㄓㄠˇ"
 	},
 	{
-		"simplified": "这",
+		"s": "这",
 		"traditional": "這",
 		"pinyin": "zhè",
 		"tone": "zhe4",
 		"zhuyin": "ㄓㄜˋ"
 	},
 	{
-		"simplified": "这边",
+		"s": "这边",
 		"traditional": "這邊",
 		"pinyin": "zhè biān",
 		"tone": "zhe4 bian1",
 		"zhuyin": "ㄓㄜˋ ㄅㄧㄢˉ"
 	},
 	{
-		"simplified": "这个",
+		"s": "这个",
 		"traditional": "這個",
 		"pinyin": "zhè ge",
 		"tone": "zhe4 ge5",
 		"zhuyin": "ㄓㄜˋ ·ㄍㄜ"
 	},
 	{
-		"simplified": "这里",
+		"s": "这里",
 		"traditional": "這裡",
 		"pinyin": "zhè lǐ",
 		"tone": "zhe4 li3",
 		"zhuyin": "ㄓㄜˋ ㄌㄧˇ"
 	},
 	{
-		"simplified": "这儿",
+		"s": "这儿",
 		"traditional": "這兒",
 		"pinyin": "zhè r",
 		"tone": "zhe4 r5",
 		"zhuyin": "ㄓㄜˋ ·ㄖ"
 	},
 	{
-		"simplified": "这些",
+		"s": "这些",
 		"traditional": "這些",
 		"pinyin": "zhè xiē",
 		"tone": "zhe4 xie1",
 		"zhuyin": "ㄓㄜˋ ㄒㄧㄝˉ"
 	},
 	{
-		"simplified": "真",
+		"s": "真",
 		"traditional": "真",
 		"pinyin": "zhēn",
 		"tone": "zhen1",
 		"zhuyin": "ㄓㄣˉ"
 	},
 	{
-		"simplified": "正在",
+		"s": "正在",
 		"traditional": "正在",
 		"pinyin": "zhèng zài",
 		"tone": "zheng4 zai4",
 		"zhuyin": "ㄓㄥˋ ㄗㄞˋ"
 	},
 	{
-		"simplified": "只",
+		"s": "只",
 		"traditional": "隻",
 		"pinyin": "zhī",
 		"tone": "zhi1",
 		"zhuyin": "ㄓˉ"
 	},
 	{
-		"simplified": "知道",
+		"s": "知道",
 		"traditional": "知道",
 		"pinyin": "zhī dào",
 		"tone": "zhi1 dao4",
 		"zhuyin": "ㄓˉ ㄉㄠˋ"
 	},
 	{
-		"simplified": "中国",
+		"s": "中国",
 		"traditional": "中國",
 		"pinyin": "Zhōng guó",
 		"tone": "Zhong1 guo2",
 		"zhuyin": "ㄓㄨㄥˉ ㄍㄨㄛˊ"
 	},
 	{
-		"simplified": "中文",
+		"s": "中文",
 		"traditional": "中文",
 		"pinyin": "Zhōng wén",
 		"tone": "Zhong1 wen2",
 		"zhuyin": "ㄓㄨㄥˉ ㄨㄣˊ"
 	},
 	{
-		"simplified": "中午",
+		"s": "中午",
 		"traditional": "中午",
 		"pinyin": "zhōng wǔ",
 		"tone": "zhong1 wu3",
 		"zhuyin": "ㄓㄨㄥˉ ㄨˇ"
 	},
 	{
-		"simplified": "中学",
+		"s": "中学",
 		"traditional": "中學",
 		"pinyin": "zhōng xué",
 		"tone": "zhong1 xue2",
 		"zhuyin": "ㄓㄨㄥˉ ㄒㄩㄝˊ"
 	},
 	{
-		"simplified": "中学生",
+		"s": "中学生",
 		"traditional": "中學生",
 		"pinyin": "zhōng xué shēng",
 		"tone": "zhong1 xue2 sheng1",
 		"zhuyin": "ㄓㄨㄥˉ ㄒㄩㄝˊ ㄕㄥˉ"
 	},
 	{
-		"simplified": "住",
+		"s": "住",
 		"traditional": "住",
 		"pinyin": "zhù",
 		"tone": "zhu4",
 		"zhuyin": "ㄓㄨˋ"
 	},
 	{
-		"simplified": "桌子",
+		"s": "桌子",
 		"traditional": "桌子",
 		"pinyin": "zhuō zi",
 		"tone": "zhuo1 zi5",
 		"zhuyin": "ㄓㄨㄛˉ ·ㄗ"
 	},
 	{
-		"simplified": "字",
+		"s": "字",
 		"traditional": "字",
 		"pinyin": "zì",
 		"tone": "zi4",
 		"zhuyin": "ㄗˋ"
 	},
 	{
-		"simplified": "做",
+		"s": "做",
 		"traditional": "做",
 		"pinyin": "zuò",
 		"tone": "zuo4",
 		"zhuyin": "ㄗㄨㄛˋ"
 	},
 	{
-		"simplified": "坐",
+		"s": "坐",
 		"traditional": "坐",
 		"pinyin": "zuò",
 		"tone": "zuo4",
 		"zhuyin": "ㄗㄨㄛˋ"
 	},
 	{
-		"simplified": "做饭",
+		"s": "做饭",
 		"traditional": "做飯",
 		"pinyin": "zuò fàn",
 		"tone": "zuo4 fan4",
 		"zhuyin": "ㄗㄨㄛˋ ㄈㄢˋ"
 	},
 	{
-		"simplified": "昨天",
+		"s": "昨天",
 		"traditional": "昨天",
 		"pinyin": "zuó tiān",
 		"tone": "zuo2 tian1",
