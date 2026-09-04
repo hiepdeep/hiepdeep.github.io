@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/pictures/favicon/note_stack_48dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png">
+		<title>𝐗𝐮𝐞𝐇𝐚𝐧𝐳𝐢</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<style type="text/css">
+			::-webkit-scrollbar {
+				width: 0;
+				height: 0;
+			}
+			body {
+				font-family: "Quicksand", sans-serif;
+				font-size: var(--fz-lv-4);
+				color: red;
+				background: hsl(39, 47%, 96%);
+			}
+			.app {
+				width: 100%;
+				.app-header {
+					width: 100%;
+					background: var(--bg-box);
+					border-bottom: 1px solid var(--bd-box);
+					position: sticky;
+					top: 0;
+					left: 0;
+					z-index: 9999;
+					.app-header_container {
+						max-width: 1080px;
+						margin: 0 auto;
+						padding: 12px;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						gap: 12px;
+						.app-header_container_logo {
+							display: flex;
+							align-items: center;
+							gap: 12px;
+							.app-header_container_logo_img {
+								width: auto;
+								height: 30px;
+							}
+							.app-header_container_logo_text {
+								color: var(--color-lv-1);
+								font-size: var(--fz-lv-1);
+								font-weight: 600;
+							}
+						}
+					}
+				}
+				.app-main {
+					.app-main_container {
+						max-width: 1080px;
+						margin: 0 auto;
+						padding: 12px;
+						display: flex;
+						flex-direction: column;
+						gap: 12px;
+						.app-main_container_data_dashboard {
+							height: 100px;
+							background: var(--bg-box);
+							border: 1px solid var(--bd-box);
+							border-radius: var(--bdrs-lv-3);
+						}
+						.app-main_container_data_lists {
+							display: grid;
+							grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+							grid-gap: 12px;
+							.item {
+								display: flex;
+								flex-direction: column;
+								justify-content: space-between;
+								align-items: center;
+								padding: 12px;
+								color: var(--color-lv-2);
+								background: var(--bg-box);
+								border: 1px solid var(--bd-box);
+								border-radius: var(--bdrs-lv-3);
+								&:hover {
+									border-color: hsl(var(--hue-saturation-gray), 80%);
+								}
+								&[data-label="hsk01"] {
+									--hue-saturation: 40, 90%;
+									--light: 60%;
+								}
+								&[data-label="hsk02"] {
+									--hue-saturation: 35, 90%;
+									--light: 60%;
+								}
+								&[data-label="hsk03"] {
+									--hue-saturation: 30, 90%;
+									--light: 60%;
+								}
+								&[data-label="hsk04"] {
+									--hue-saturation: 185, 75%;
+									--light: 40%;
+								}
+								&[data-label="hsk05"] {
+									--hue-saturation: 180, 75%;
+									--light: 40%;
+								}
+								&[data-label="hsk06"] {
+									--hue-saturation: 175, 75%;
+									--light: 40%;
+								}
+								&[data-label="hsk79"] {
+									--hue-saturation: 260, 40%;
+									--light: 50%;
+								}
+								.pinyin {
+									font-family: "LXGW WenKai Mono TC", monospace;
+								}
+								.hanzi {
+									font-family: "LXGW WenKai Mono TC", monospace;
+									font-size: 40px;
+									font-weight: 300;
+									margin: 6px 0;
+								}
+								.bottom {
+									margin-top: 12px;
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+									width: 100%;
+									.label {
+										line-height: 24px;
+										padding: 0 6px;
+										font-size: 10px;
+										font-weight: 500;
+										color: rgba(255, 255, 255, 0.8);
+										background: hsl(var(--hue-saturation), var(--light));
+										border: 1px solid hsl(var(--hue-saturation), calc(var(--light) - 5%));
+										border-radius: var(--bdrs-lv-4);
+									}
+									.btn-gr {
+										display: flex;
+										gap: 6px;
+										button {
+											width: 26px;
+											height: 26px;
+											font-size: 20px;
+											border-radius: var(--bdrs-lv-4);
+											&.true {
+												color: rgba(255, 255, 255, 0.8);
+												background: hsl(var(--hue-saturation), var(--light));
+												border: 1px solid hsl(var(--hue-saturation), calc(var(--light) - 5%));
+											}
+										}
+									}
+								}
+								&.learned {
+									border: 1px solid hsl(var(--hue-saturation), calc(var(--light) + 10%));
+									box-shadow: 0 0 20px -10px hsl(var(--hue-saturation), var(--light)) inset;
+								}
+							}
+							.null {
+								display: block;
+								text-align: center;
+								color: hsl(var(--hue-saturation-gray), 50%);
+							}
+						}
+					}
+				}
+			}
+			#backToTop {
+				position: fixed;
+				bottom: 24px;
+				right: 24px;
+				display: none;
+				width: 45px;
+				height: 45px;
+				background: hsl(210, 50%, 25%);
+				color: hsl(39, 47%, 96%);
+				border: none;
+				border-radius: 50%;
+				font-size: 20px;
+				cursor: pointer;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+				&:hover {
+					background: hsl(210, 50%, 30%);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="app" id="app">
+			<header class="app-header">
+				<div class="app-header_container">
+					<a href="javascript:;" class="app-header_container_logo">
+						<img src="https://hiepdeep.github.io/library/pictures/svg/books.svg" alt="Xué Hànzì Logo" class="app-header_container_logo_img">
+						<span class="app-header_container_logo_text">𝐗𝐮𝐞𝐇𝐚𝐧𝐳𝐢</span>
+					</a>
+				</div>
+			</header>
+			<main class="app-main">
+				<div class="app-main_container">
+					<div class="app-main_container_data_dashboard" id="app-main_container_data_dashboard"></div>
+					<div class="app-main_container_data_lists" id="app-main_container_data_lists">
+						<span class="null">Không tìm thấy dữ liệu từ vựng nào!</span>
+					</div>
+				</div>
+			</main>
+		</div>
+		<button class="material-symbols-rounded" id="backToTop">vertical_align_top</button>
+		<script type="text/javascript">
+			console.clear();
+			async function renderHskList() {
+				const container = document.getElementById("app-main_container_data_lists");
+				const jsonUrl = "https://hiepdeep.github.io/projects/xuehanzi/hsk/hsk-basic/hsk01.json";
+				try {
+					const response = await fetch(jsonUrl);
+					if (!response.ok) throw new Error("Network response was not ok");
+					const dataList = await response.json();
+					if (!dataList || dataList.length === 0) {
+						container.innerHTML = "<span class='null'>Không tìm thấy dữ liệu từ vựng nào!</span>";
+						return;
+					}
+					const htmlContent = dataList.map(item => {
+						const isLearned = String(item.status?.learned) === "true";
+						const isFavorite = String(item.status?.favorite) === "true";
+						const itemClasses = `item${isLearned ? " learned" : ""}`;
+						const learnBtnClass = `material-symbols-rounded learn-btn${isLearned ? " true" : ""}`;
+						const favBtnClass = `material-symbols-rounded favorites-btn${isFavorite ? " true" : ""}`;
+						const favIconText = isFavorite ? "heart_minus" : "heart_plus";
+						return `
+			                <div class="${itemClasses}" data-label="hsk01">
+			                    <span class="pinyin">${item.pinyin || ""}</span>
+			                    <span class="hanzi">${item.simplified || ""}</span>
+			                    <div class="bottom">
+			                        <span class="label">HSK1</span>
+			                        <div class="btn-gr">
+			                            <button btn-light-gray class="material-symbols-rounded view-btn">language_pinyin</button>
+			                            <button btn-light-gray class="${favBtnClass}">${favIconText}</button>
+			                            <button btn-light-gray class="${learnBtnClass}">done</button>
+			                        </div>
+			                    </div>
+			                </div>
+			            `;
+					}).join("");
+					container.innerHTML = htmlContent;
+				} catch (error) {
+					console.error("Lỗi khi tải dữ liệu từ vựng:", error);
+					container.innerHTML = "<span class='null'>Không thể tải dữ liệu từ vựng!</span>";
+				}
+			}
+			document.addEventListener("DOMContentLoaded", renderHskList);
+			const backToTopBtn = document.getElementById("backToTop");
+			window.addEventListener("scroll", () => {
+				if (window.scrollY > 300) {
+					backToTopBtn.style.display = "block";
+				} else {
+					backToTopBtn.style.display = "none";
+				}
+			});
+			function scrollToTop(duration) {
+				const startPosition = window.scrollY;
+				const startTime = performance.now();
+				function step(currentTime) {
+					const elapsed = currentTime - startTime;
+					const progress = Math.min(elapsed / duration, 1);
+					const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+					window.scrollTo(0, startPosition * (1 - easeOutCubic));
+					if (progress < 1) {
+						requestAnimationFrame(step);
+					}
+				}
+				requestAnimationFrame(step);
+			}
+			backToTopBtn.addEventListener("click", () => {
+				scrollToTop(2000);
+			});
+		</script>
+	</body>
+</html>
+
