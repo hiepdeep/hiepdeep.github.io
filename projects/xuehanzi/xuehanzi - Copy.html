@@ -191,7 +191,7 @@
 		<div class="app" id="app">
 			<header class="app-header">
 				<div class="app-header_container">
-					<a href="" class="app-header_container_logo">
+					<a href="javascript:;" class="app-header_container_logo">
 						<img src="https://hiepdeep.github.io/library/pictures/svg/books.svg" alt="Xué Hànzì Logo" class="app-header_container_logo_img">
 						<span class="app-header_container_logo_text">𝐗𝐮𝐞𝐇𝐚𝐧𝐳𝐢</span>
 					</a>
@@ -201,7 +201,7 @@
 				<div class="app-main_container">
 					<div class="app-main_container_data_dashboard" id="app-main_container_data_dashboard"></div>
 					<div class="app-main_container_data_lists" id="app-main_container_data_lists">
-						<span class="null">Đang tải dữ liệu..</span>
+						<span class="null">Không tìm thấy dữ liệu từ vựng nào!</span>
 					</div>
 				</div>
 			</main>
@@ -212,57 +212,46 @@
 		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
 		<script type="text/javascript">
 			console.clear();
-			const app = firebase.initializeApp({
-				databaseURL: "https://xue-hanzi-default-rtdb.asia-southeast1.firebasedatabase.app"
-			});
-			const db = firebase.database();
-			// 1. Lấy dữ liệu từ Realtime Database thay cho Fetch API
-			function renderHskList() {
+			async function renderHskList() {
 				const container = document.getElementById("app-main_container_data_lists");
-				db.ref("hsk-basic/hsk01").once("value")
-					.then((snapshot) => {
-						if (!snapshot.exists()) {
-							container.innerHTML = "<span class='null'>Không tìm thấy dữ liệu từ vựng nào!</span>";
-							return;
-						}
-						const val = snapshot.val();
-						// Chuyển dữ liệu sang mảng nếu được lưu dưới dạng Object (Key-Value)
-						const dataList = Array.isArray(val) ? val : Object.values(val);
-						if (dataList.length === 0) {
-							container.innerHTML = "<span class='null'>Không tìm thấy dữ liệu từ vựng nào!</span>";
-							return;
-						}
-						const htmlContent = dataList.map((item, index) => {
-							const isLearned = String(item.status?.learned) === "true";
-							const isFavorite = String(item.status?.favorite) === "true";
-							const itemClasses = `item${isLearned ? " learned" : ""}`;
-							const learnBtnClass = `material-symbols-rounded learn-btn${isLearned ? " true" : ""}`;
-							const favBtnClass = `material-symbols-rounded favorites-btn${isFavorite ? " true" : ""}`;
-							const favIconText = isFavorite ? "heart_minus" : "heart_plus";
-							return `
-								<div class="${itemClasses}" data-label="hsk01" data-item="${index}">
-									<span class="pinyin">${item.pinyin || ""}</span>
-									<span class="hanzi">${item.simplified || ""}</span>
-									<div class="bottom">
-										<span class="label">HSK1</span>
-										<div class="btn-gr">
-											<button btn-light-gray class="material-symbols-rounded view-btn">language_pinyin</button>
-											<button btn-light-gray class="${favBtnClass}">${favIconText}</button>
-											<button btn-light-gray class="${learnBtnClass}">done</button>
-										</div>
-									</div>
-								</div>
-							`;
-						}).join("");
-						container.innerHTML = htmlContent;
-					})
-					.catch((error) => {
-						console.error("Lỗi khi tải dữ liệu từ Firebase:", error);
-						container.innerHTML = "<span class='null'>Không thể tải dữ liệu từ vựng!</span>";
-					});
+				const jsonUrl = "https://hiepdeep.github.io/projects/xuehanzi/hsk/hsk-basic/hsk01.json";
+				try {
+					const response = await fetch(jsonUrl);
+					if (!response.ok) throw new Error("Network response was not ok");
+					const dataList = await response.json();
+					if (!dataList || dataList.length === 0) {
+						container.innerHTML = "<span class='null'>Không tìm thấy dữ liệu từ vựng nào!</span>";
+						return;
+					}
+					const htmlContent = dataList.map(item => {
+						const isLearned = String(item.status?.learned) === "true";
+						const isFavorite = String(item.status?.favorite) === "true";
+						const itemClasses = `item${isLearned ? " learned" : ""}`;
+						const learnBtnClass = `material-symbols-rounded learn-btn${isLearned ? " true" : ""}`;
+						const favBtnClass = `material-symbols-rounded favorites-btn${isFavorite ? " true" : ""}`;
+						const favIconText = isFavorite ? "heart_minus" : "heart_plus";
+						return `
+			                <div class="${itemClasses}" data-label="hsk01">
+			                    <span class="pinyin">${item.pinyin || ""}</span>
+			                    <span class="hanzi">${item.simplified || ""}</span>
+			                    <div class="bottom">
+			                        <span class="label">HSK1</span>
+			                        <div class="btn-gr">
+			                            <button btn-light-gray class="material-symbols-rounded view-btn">language_pinyin</button>
+			                            <button btn-light-gray class="${favBtnClass}">${favIconText}</button>
+			                            <button btn-light-gray class="${learnBtnClass}">done</button>
+			                        </div>
+			                    </div>
+			                </div>
+			            `;
+					}).join("");
+					container.innerHTML = htmlContent;
+				} catch (error) {
+					console.error("Lỗi khi tải dữ liệu từ vựng:", error);
+					container.innerHTML = "<span class='null'>Không thể tải dữ liệu từ vựng!</span>";
+				}
 			}
 			document.addEventListener("DOMContentLoaded", renderHskList);
-			// Xử lý nút cuộn lên đầu trang
 			const backToTopBtn = document.getElementById("backToTop");
 			window.addEventListener("scroll", () => {
 				if (window.scrollY > 300) {
