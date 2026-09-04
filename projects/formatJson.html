@@ -236,7 +236,34 @@
 		<script>
 			console.clear();
 			let hskData = [];
-			fetch("https://hiepdeep.github.io/projects/xuehanzi/hsk/exp/hsk1.json").then(response => response.json()).then(data => {
+			const zhuyinToneMap = {
+				"1": "ˉ", // Âm bình (Thanh 1)
+				"2": "ˊ", // Dương bình (Thanh 2)
+				"3": "ˇ", // Thượng thanh (Thanh 3)
+				"4": "ˋ", // Khứ thanh (Thanh 4)
+				"5": "·"  // Khinh thanh (Thanh nhẹ)
+			};
+			// Hàm chuẩn hóa & bổ sung đầy đủ các dấu thanh điệu Zhuyin
+			function formatFullZhuyin(zhuyinStr, toneStr) {
+				if (!zhuyinStr) return "";
+				const zTokens = zhuyinStr.trim().split(/\s+/);
+				if (!toneStr) return zhuyinStr;
+				const toneMatches = toneStr.match(/\d/g);
+				return zTokens.map((token, index) => {
+					// Lấy số thanh điệu tương ứng với âm tiết
+					const toneNum = toneMatches && toneMatches[index] ? toneMatches[index] : "";
+					const toneMark = zhuyinToneMap[toneNum] || "";
+					const hasTone = /[ˊˇˋ·˙ˉ]/.test(token);
+					if (!hasTone && toneMark) {
+						if (toneNum === "5") {
+							return toneMark + token;
+						}
+						return token + toneMark;
+					}
+					return token;
+				}).join(" ");
+			}
+			fetch("https://hiepdeep.github.io/projects/xuehanzi/hsk/hsk-basic/hsk1.json").then(response => response.json()).then(data => {
 				hskData = data;
 				console.log("Đã tải xong dữ liệu HSK1");
 			}).catch(error => console.error("Lỗi khi tải dữ liệu HSK:", error));
@@ -248,7 +275,9 @@
 					document.getElementById("traditional").value = matchedItem.t || "";
 					document.getElementById("pinyin").value = matchedItem.y || "";
 					document.getElementById("tone").value = matchedItem.p || "";
-					document.getElementById("zhuyin").value = matchedItem.z || "";
+					const rawZhuyin = matchedItem.z || "";
+					const toneInfo = matchedItem.p || "";
+					document.getElementById("zhuyin").value = formatFullZhuyin(rawZhuyin, toneInfo);
 				}
 			});
 			// Thêm một khối part_of_speech mới
