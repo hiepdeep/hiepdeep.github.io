@@ -177,7 +177,7 @@ body {
 			background: var(--bg-box);
 			border-bottom: 1px solid var(--bd-box);
 			position: sticky;
-			top: 0;
+			top: calc(0px - 12px - 32px - 30px - 12px + 55px);
 			left: 0;
 			z-index: 9999;
 			user-select: none;
