@@ -94,13 +94,13 @@
 										}
 									}
 								}
-								#favorites-btn {
+								.favorites-btn {
 									display: flex;
 									align-items: center;
 									gap: 2px;
 									padding: 2px 6px;
 									border-radius: var(--bdrs-lv-3);
-									.data_dashboard_header_favorites {
+									#data_dashboard_header_favorites {
 										font-family: "Quicksand", sans-serif;
 										font-weight: 500;
 									}
@@ -354,17 +354,17 @@
 								<span class="data_dashboard_header_icon material-symbols-rounded">import_contacts</span>
 								<span class="data_dashboard_header_label">Học <strong>HSK1</strong></span>
 							</div>
-							<button id="favorites-btn" btn-light-red>
-								<span class="data_dashboard_header_favorites">59</span>
+							<button class="favorites-btn" btn-light-red>
+								<span id="data_dashboard_header_favorites">0</span>
 								<span class="data_dashboard_header_icon material-symbols-rounded">favorite</span>
 							</button>
 						</div>
 						<div class="data_dashboard_progress">
 							<div class="data_dashboard_progress_header">
-								<span id="data_dashboard_progress_count"><strong>99/500</strong> từ đã học thuộc</span>
-								<span id="data_dashboard_progress_percent">19.8%</span>
+								<span id="data_dashboard_progress_count"><strong>0/0</strong> từ đã học thuộc</span>
+								<span id="data_dashboard_progress_percent">0%</span>
 							</div>
-							<progress id="data_dashboard_progress_bar" name="data_dashboard_progress_bar" value="99" max="500"></progress>
+							<progress id="data_dashboard_progress_bar" name="data_dashboard_progress_bar" value="0" max="0"></progress>
 						</div>
 						<div class="data_dashboard_filter">
 							<input type="search" id="search_vocabulary" placeholder="Search..">
@@ -404,6 +404,7 @@
 			const db = firebase.database();
 			// Khai báo tên thẻ
 			const data_lists = document.getElementById("data_lists");
+			const listFavorite = document.getElementById("data_dashboard_header_favorites");
 			const progressCount = document.getElementById("data_dashboard_progress_count");
 			const progressPercent = document.getElementById("data_dashboard_progress_percent");
 			const progressBar = document.getElementById("data_dashboard_progress_bar");
@@ -415,20 +416,6 @@
 			let currentFilter = "all";
 			let currentSearchText = "";
 			let hasAnimated = false;
-			// Hàm hỗ trợ cập nhật dữ liệu ra Dashboard
-			function updateDashboard() {
-				// const dashboard = document.getElementById("data_dashboard");
-				// if (dashboard) {
-				// 	dashboard.innerHTML = `
-				// 		<div style="padding: 12px; display: flex; gap: 20px; align-items: center; height: 100%;">
-				// 			<div><strong>Tổng số từ:</strong> ${totalWords}</div>
-				// 			<div><strong>Yêu thích:</strong> ${favoriteCount}</div>
-				// 			<div><strong>Đã học:</strong> ${learnedCount}</div>
-				// 		</div>
-				// 	`;
-				// }
-				console.log({"totalWords": totalWords, "favoriteCount": favoriteCount, "learnedCount": learnedCount});
-			}
 			// Tải dữ liệu từ Realtime Database
 			async function render_lists() {
 				totalWords = 0;
@@ -520,6 +507,112 @@
 				}
 			}
 			document.addEventListener("DOMContentLoaded", render_lists);
+			// Hiệu ứng đếm số
+			function animateValue(element, start, end, duration, formatFn) {
+				if (start === end) {
+					element.innerHTML = formatFn ? formatFn(end) : end;
+					return;
+				}
+				let startTimestamp = null;
+				const step = (timestamp) => {
+					if (!startTimestamp) startTimestamp = timestamp;
+					const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+					const current = Math.floor(progress * (end - start) + start);
+					element.innerHTML = formatFn ? formatFn(current) : current;
+					if (progress < 1) {
+						window.requestAnimationFrame(step);
+					} else {
+						element.innerHTML = formatFn ? formatFn(end) : end;
+					}
+				};
+				window.requestAnimationFrame(step);
+			}
+			// Cập nhật Dashboard & Xử lý Tìm kiếm, Lọc
+			function updateDashboard() {
+				const targetPercent = totalWords > 0 ? Number(((learnedCount / totalWords) * 100).toFixed(1)) : 0;
+				if (!hasAnimated) {
+					animateValue(listFavorite, 0, favoriteCount, 1000);
+					animateValue(progressCount, 0, learnedCount, 1000, (val) => {
+						return `<strong>${val}/${totalWords}</strong> từ đã học thuộc`;
+					});
+					animateValue(progressPercent, 0, targetPercent, 1000, (val) => {
+						return `${val}%`;
+					});
+					let startProgress = 0;
+					const duration = 1000;
+					let startTimestamp = null;
+					const animateProgress = (timestamp) => {
+						if (!startTimestamp) startTimestamp = timestamp;
+						const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+						progressBar.value = progress * learnedCount;
+						progressBar.max = totalWords;
+						if (progress < 1) {
+							window.requestAnimationFrame(animateProgress);
+						} else {
+							progressBar.value = learnedCount;
+							progressBar.max = totalWords;
+						}
+					};
+					window.requestAnimationFrame(animateProgress);
+					hasAnimated = true;
+				} else {
+					listFavorite.textContent = favoriteCount;
+					progressCount.innerHTML = `<strong>${learnedCount}/${totalWords}</strong> từ đã học thuộc`;
+					progressPercent.textContent = `${targetPercent}%`;
+					progressBar.value = learnedCount;
+					progressBar.max = totalWords;
+				}
+				filterAndSearchList();
+			}
+			// Hàm thực thi lọc và tìm kiếm
+			function filterAndSearchList() {
+				const items = data_lists.querySelectorAll(".item");
+				let visibleCount = 0;
+				items.forEach((item) => {
+					const pinyinText = (item.querySelector(".pinyin")?.textContent || "").toLowerCase();
+					const hanziText = item.querySelector(".hanzi")?.textContent || "";
+					const isLearned = item.classList.contains("learned");
+					let matchesFilter = true;
+					if (currentFilter === "learned") {
+						matchesFilter = isLearned;
+					} else if (currentFilter === "unlearned") {
+						matchesFilter = !isLearned;
+					}
+					const matchesSearch = pinyinText.includes(currentSearchText) || hanziText.includes(currentSearchText);
+					if (matchesFilter && matchesSearch) {
+						item.style.display = "flex";
+						visibleCount++;
+					} else {
+						item.style.display = "none";
+					}
+				});
+				let nullMsg = data_lists.querySelector(".null-search");
+				if (visibleCount === 0 && items.length > 0) {
+					if (!nullMsg) {
+						nullMsg = document.createElement("span");
+						nullMsg.className = "null null-search";
+						data_lists.appendChild(nullMsg);
+					}
+					nullMsg.textContent = "Không tìm thấy từ vựng phù hợp!";
+					nullMsg.style.display = "block";
+				} else if (nullMsg) {
+					nullMsg.style.display = "none";
+				}
+			}
+			// Search
+			searchInput.addEventListener("input", (e) => {
+				currentSearchText = e.target.value.trim().toLowerCase();
+				filterAndSearchList();
+			});
+			// Filter
+			filterRadios.forEach((radio) => {
+				radio.addEventListener("change", (e) => {
+					if (e.target.checked) {
+						currentFilter = e.target.value;
+						filterAndSearchList();
+					}
+				});
+			});
 			// Xử lý nút cuộn lên đầu trang
 			const backToTopBtn = document.getElementById("backToTop");
 			window.addEventListener("scroll", () => {
