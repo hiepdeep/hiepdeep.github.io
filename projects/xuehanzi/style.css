@@ -55,6 +55,7 @@ body {
 			top: 0;
 			left: 0;
 			z-index: 9999;
+			user-select: none;
 			.app-main_container {
 				.data_dashboard_header {
 					display: flex;
