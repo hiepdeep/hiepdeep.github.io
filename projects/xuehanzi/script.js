@@ -37,6 +37,8 @@ async function render_vocabularys() {
 	try {
 		const snapshot = await database.ref(db_vocabularys).once("value");
 		if (snapshot.exists()) {
+			const val = snapshot.val();
+			console.log(val);
 			allVocabularyData = snapshot.val() || {};
 			filterAndDisplayVocabulary();
 			// Xử lý sự kiện click nút học trên danh sách
