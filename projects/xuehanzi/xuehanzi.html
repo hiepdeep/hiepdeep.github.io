@@ -21,6 +21,10 @@
 			}
 			.app {
 				width: 100%;
+				.app-header_container, .app-main_container {
+					max-width: 600px;
+					margin: 0 auto;
+				}
 				.app-header {
 					width: 100%;
 					background: var(--bg-box);
@@ -30,8 +34,6 @@
 					left: 0;
 					z-index: 9999;
 					.app-header_container {
-						max-width: 1080px;
-						margin: 0 auto;
 						padding: 12px;
 						display: flex;
 						justify-content: space-between;
@@ -54,19 +56,166 @@
 					}
 				}
 				.app-main {
+					.app-main_data_dashboard {
+						width: 100%;
+						background: var(--bg-box);
+						border-bottom: 1px solid var(--bd-box);
+						position: sticky;
+						top: 0;
+						left: 0;
+						z-index: 9999;
+						.app-main_container {
+							.data_dashboard_header {
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+								gap: 6px;
+								.data_dashboard_header {
+									display: flex;
+									align-items: center;
+									gap: 6px;
+									.data_dashboard_header_icon {
+										font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 200, "opsz" 48;
+										width: 30px;
+										line-height: 30px;
+										text-align: center;
+										font-size: 20px;
+										color: hsl(var(--hue-saturation-blue), 30%);
+										background: hsl(var(--hue-saturation-blue), 90%);
+										border: 1px solid hsl(var(--hue-saturation-blue), 85%);
+										border-radius: var(--bdrs-lv-3);
+									}
+									.data_dashboard_header_label {
+										color: var(--color-lv-2);
+										font-size: var(--fz-lv-2);
+										font-weight: 600;
+										strong {
+											font-weight: 700;
+										}
+									}
+								}
+								#favorites-btn {
+									display: flex;
+									align-items: center;
+									gap: 2px;
+									padding: 2px 6px;
+									border-radius: var(--bdrs-lv-3);
+									.data_dashboard_header_favorites {
+										font-family: "Quicksand", sans-serif;
+										font-weight: 500;
+									}
+									.data_dashboard_header_icon {
+										font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 200, "opsz" 48;
+										font-size: 20px;
+									}
+								}
+							}
+							.data_dashboard_progress {
+								display: flex;
+								flex-direction: column;
+								gap: 6px;
+								.data_dashboard_progress_header {
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+									gap: 6px;
+									#data_dashboard_progress_count {
+										color: var(--color-lv-4);
+										strong {
+											font-weight: 500;
+											color: hsl(var(--hue-saturation-blue), 30%);
+										}
+									}
+									#data_dashboard_progress_percent {
+										font-weight: 500;
+										color: hsl(var(--hue-saturation-blue), 30%);
+									}
+								}
+								#data_dashboard_progress_bar {
+									-webkit-appearance: none;
+									appearance: none;
+									width: 100%;
+									height: 8px;
+									border-radius: var(--bdrs-lv-3);
+									overflow: hidden;
+									&::-webkit-progress-bar {
+										background: hsl(var(--hue-saturation-blue), 90%);
+									}
+									&::-webkit-progress-value {
+										background: hsl(var(--hue-saturation-blue), 30%);
+										border-radius: var(--bdrs-lv-3);
+									}
+								}
+							}
+							.data_dashboard_filter {
+								display: flex;
+								align-items: center;
+								gap: 12px;
+								#search_vocabulary {
+									width: 100%;
+									height: 30px;
+									padding: 0 6px;
+									font-family: "Consolas", "Courier New", monospace;
+									font-size: var(--fz-lv-4);
+									color: var(--color-lv-2);
+									background: var(--bg-box);
+									border: 1px solid var(--bd-box);
+									border-radius: var(--bdrs-lv-3);
+									&::placeholder {
+										color: var(--color-placeholder);
+									}
+									&:focus {
+										border-color: var(--color-placeholder);
+									}
+								}
+								.option {
+									flex-shrink: 0;
+									display: flex;
+									gap: 6px;
+									label {
+										display: flex;
+										align-items: center;
+										height: 30px;
+										padding: 0 6px;
+										color: hsl(var(--hue-saturation-gray), 40%);
+										background: hsl(var(--hue-saturation-gray), 95%);
+										border: 1px solid hsl(var(--hue-saturation-gray), 90%);
+										border-radius: var(--bdrs-lv-3);
+										cursor: pointer;
+										&:hover {
+											background: hsl(var(--hue-saturation-gray), 90%);
+											border-color: hsl(var(--hue-saturation-gray), 85%);
+										}
+										&:active {
+											background: hsl(var(--hue-saturation-gray), 85%);
+											border-color: hsl(var(--hue-saturation-gray), 80%);
+										}
+										input[type="radio"] {
+											display: none;
+										}
+										&:has(input:checked) {
+											color: hsl(var(--hue-saturation-blue), 95%);
+											background: hsl(var(--hue-saturation-blue), 50%);
+											border: 1px solid hsl(var(--hue-saturation-blue), 45%);
+											&:hover {
+												background: hsl(var(--hue-saturation-blue), 45%);
+												border-color: hsl(var(--hue-saturation-blue), 40%);
+											}
+											&:active {
+												background: hsl(var(--hue-saturation-blue), 40%);
+												border-color: hsl(var(--hue-saturation-blue), 35%);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 					.app-main_container {
-						max-width: 1080px;
-						margin: 0 auto;
 						padding: 12px;
 						display: flex;
 						flex-direction: column;
 						gap: 12px;
-						.data_dashboard {
-							height: 100px;
-							background: var(--bg-box);
-							border: 1px solid var(--bd-box);
-							border-radius: var(--bdrs-lv-3);
-						}
 						.data_lists {
 							display: grid;
 							grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -198,13 +347,25 @@
 				</div>
 			</header>
 			<main class="app-main">
-				<div class="app-main_container">
-					<div class="data_dashboard" id="data_dashboard">
-						<div class="data_dashboard_progress_header">
-							<span class="data_dashboard_progress_label">Từ vựng đã học</span>
-							<span class="data_dashboard_progress_count">0/0</span>
+				<div class="app-main_data_dashboard">
+					<div class="app-main_container">
+						<div class="data_dashboard_header">
+							<div class="data_dashboard_header">
+								<span class="data_dashboard_header_icon material-symbols-rounded">import_contacts</span>
+								<span class="data_dashboard_header_label">Học <strong>HSK1</strong></span>
+							</div>
+							<button id="favorites-btn" btn-light-red>
+								<span class="data_dashboard_header_favorites">59</span>
+								<span class="data_dashboard_header_icon material-symbols-rounded">favorite</span>
+							</button>
 						</div>
-						<progress id="data_dashboard_progress_bar" name="data_dashboard_progress_bar" value="0" max="500"></progress>
+						<div class="data_dashboard_progress">
+							<div class="data_dashboard_progress_header">
+								<span id="data_dashboard_progress_count"><strong>99/500</strong> từ đã học thuộc</span>
+								<span id="data_dashboard_progress_percent">19.8%</span>
+							</div>
+							<progress id="data_dashboard_progress_bar" name="data_dashboard_progress_bar" value="99" max="500"></progress>
+						</div>
 						<div class="data_dashboard_filter">
 							<input type="search" id="search_vocabulary" placeholder="Search..">
 							<div class="option">
@@ -223,6 +384,8 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="app-main_container">
 					<div class="data_lists" id="data_lists">
 						<span class="null">Đang tải dữ liệu..</span>
 					</div>
@@ -241,7 +404,8 @@
 			const db = firebase.database();
 			// Khai báo tên thẻ
 			const data_lists = document.getElementById("data_lists");
-			const progressText = document.querySelector(".data_dashboard_progress_count");
+			const progressCount = document.getElementById("data_dashboard_progress_count");
+			const progressPercent = document.getElementById("data_dashboard_progress_percent");
 			const progressBar = document.getElementById("data_dashboard_progress_bar");
 			const searchInput = document.getElementById("search_vocabulary");
 			const filterRadios = document.querySelectorAll("input[name='view-learn']");
