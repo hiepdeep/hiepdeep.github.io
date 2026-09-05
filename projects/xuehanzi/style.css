@@ -281,6 +281,7 @@ body {
 							background: hsl(var(--hue-saturation), var(--light));
 							border: 1px solid hsl(var(--hue-saturation), calc(var(--light) - 5%));
 							border-radius: var(--bdrs-lv-4);
+							user-select: none;
 						}
 						.btn-gr {
 							display: flex;
