@@ -6,52 +6,49 @@
 		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
 		<link rel="icon" href="favicon.png">
 		<link rel="apple-touch-icon" href="icon.png">
-		<title>学汉字 | Xué Hànzì</title>
+		<title>学汉字 | 𝐗𝐮𝐞𝐇𝐚𝐧𝐳𝐢</title>
 		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div class="app-container">
-			<header class="app-header" id="header-top">
-				<div class="margin">
-					<a href="" class="logo">
-						<img src="https://hiepdeep.github.io/library/pictures/svg/books.svg" alt="">
-						<span class="text">Xué Hànzì</span>
+		<div class="app" id="app">
+			<header class="app-header">
+				<div class="app-header_container">
+					<a href="" class="app-header_container_logo">
+						<img src="https://hiepdeep.github.io/library/pictures/svg/books.svg" alt="Xué Hànzì Logo" class="app-header_container_logo_img">
+						<span class="app-header_container_logo_text">𝐗𝐮𝐞𝐇𝐚𝐧𝐳𝐢</span>
 					</a>
-					<nav class="nav">
-						<span class="open-nav">
-							<span class="dot"></span>
-							<span class="dot"></span>
-							<span class="dot"></span>
-						</span>
-						<ul>
-							<li><a href="javascript:;" class="focus">Từ vựng</a></li>
-							<li><a href="javascript:;">Mẫu câu</a></li>
-							<li><a href="javascript:;">Đoạn văn</a></li>
-							<li><a href="javascript:;">Đoạn hội thoại</a></li>
-						</ul>
-					</nav>
 				</div>
 			</header>
 			<main class="app-main">
-				<div class="vocab-dashboard">
-					<div class="margin">
-						<div class="vocab-progress">
-							<div class="vocab-progress__header">
-								<span class="vocab-progress__label">Từ vựng đã học</span>
-								<span class="vocab-progress__count">0/0</span>
+				<div class="app-main_data_dashboard">
+					<div class="app-main_container">
+						<div class="data_dashboard_header">
+							<div class="data_dashboard_header">
+								<span class="data_dashboard_header_icon material-symbols-rounded">import_contacts</span>
+								<span class="data_dashboard_header_label">Học <strong>HSK1</strong></span>
 							</div>
-							<progress id="vocab-progress__bar" name="vocab-progress__bar" value="0" max="500"></progress>
+							<button class="favorites-btn" id="favorites-btn" btn-light-red>
+								<span id="data_dashboard_favorite_count">0</span>
+								<span class="data_dashboard_favorite_icon material-symbols-rounded">favorite</span>
+							</button>
 						</div>
-						<div class="filter-box">
-							<input type="search" id="search-vocabulary" placeholder="Search..">
+						<div class="data_dashboard_progress">
+							<div class="data_dashboard_progress_header">
+								<span id="data_dashboard_progress_count"><strong>0/0</strong> từ đã học thuộc</span>
+								<span id="data_dashboard_progress_percent">0%</span>
+							</div>
+							<progress id="data_dashboard_progress_bar" name="data_dashboard_progress_bar" value="0" max="0"></progress>
+						</div>
+						<div class="data_dashboard_filter">
+							<input type="search" id="search_vocabulary" placeholder="Search..">
 							<div class="option">
 								<label for="filter-all">
 									<input type="radio" id="filter-all" name="view-learn" value="all" checked>
 									<span class="txt">Tất cả</span>
 								</label>
 								<label for="filter-unlearned">
-									<input type="radio" id="filter-unlearned" name="view-learn" value="learn">
+									<input type="radio" id="filter-unlearned" name="view-learn" value="unlearned">
 									<span class="txt">Chưa học</span>
 								</label>
 								<label for="filter-learned">
@@ -62,14 +59,17 @@
 						</div>
 					</div>
 				</div>
-				<div id="vocabulary-list">
-					<span class="null">Không tìm thấy dữ liệu từ vựng nào!</span>
+				<div class="app-main_container">
+					<div class="data_lists" id="data_lists">
+						<span class="null">Đang tải dữ liệu..</span>
+					</div>
 				</div>
 			</main>
 		</div>
+		<button class="material-symbols-rounded" id="backToTop">vertical_align_top</button>
+		<button class="material-symbols-rounded" id="backToTop">vertical_align_top</button>
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
 		<script src="script.js"></script>
 	</body>
 </html>
