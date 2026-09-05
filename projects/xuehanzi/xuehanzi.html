@@ -100,11 +100,16 @@
 									gap: 2px;
 									padding: 2px 6px;
 									border-radius: var(--bdrs-lv-3);
-									#data_dashboard_header_favorites {
+									&.active {
+										color: hsl(var(--hue-saturation-red), 95%);
+										background: hsl(var(--hue-saturation-red), 50%);
+										border: 1px solid hsl(var(--hue-saturation-red), 45%);
+									}
+									#data_dashboard_favorite_count {
 										font-family: "Quicksand", sans-serif;
 										font-weight: 500;
 									}
-									.data_dashboard_header_icon {
+									.data_dashboard_favorite_icon {
 										font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 200, "opsz" 48;
 										font-size: 20px;
 									}
@@ -355,8 +360,8 @@
 								<span class="data_dashboard_header_label">Học <strong>HSK1</strong></span>
 							</div>
 							<button class="favorites-btn" id="favorites-btn" btn-light-red>
-								<span id="data_dashboard_header_favorites">0</span>
-								<span class="data_dashboard_header_icon material-symbols-rounded">favorite</span>
+								<span id="data_dashboard_favorite_count">0</span>
+								<span class="data_dashboard_favorite_icon material-symbols-rounded">favorite</span>
 							</button>
 						</div>
 						<div class="data_dashboard_progress">
@@ -404,18 +409,22 @@
 			const db = firebase.database();
 			// Khai báo tên thẻ
 			const data_lists = document.getElementById("data_lists");
-			const listFavorite = document.getElementById("data_dashboard_header_favorites");
+			const favoritesBtn = document.getElementById("favorites-btn");
+			const favoritesCount = document.getElementById("data_dashboard_favorite_count");
 			const progressCount = document.getElementById("data_dashboard_progress_count");
 			const progressPercent = document.getElementById("data_dashboard_progress_percent");
 			const progressBar = document.getElementById("data_dashboard_progress_bar");
 			const searchInput = document.getElementById("search_vocabulary");
 			const filterRadios = document.querySelectorAll("input[name='view-learn']");
+			let isOnlyFavorite = false;
 			let totalWords = 0;
 			let favoriteCount = 0;
 			let learnedCount = 0;
 			let currentFilter = "all";
 			let currentSearchText = "";
 			let hasAnimated = false;
+			// Reload
+			document.addEventListener("DOMContentLoaded", render_lists);
 			// Tải dữ liệu từ Realtime Database
 			async function render_lists() {
 				totalWords = 0;
@@ -506,7 +515,21 @@
 					data_lists.innerHTML = "<span class='null'>Không thể tải dữ liệu từ vựng!</span>";
 				}
 			}
-			document.addEventListener("DOMContentLoaded", render_lists);
+			// Hiển thị danh sách Yêu thích
+			favoritesBtn.addEventListener("click", () => {
+				isOnlyFavorite = !isOnlyFavorite;
+				favoritesBtn.classList.toggle("active", isOnlyFavorite);
+				const items = data_lists.querySelectorAll(".item");
+				items.forEach((item) => {
+					const favBtn = item.querySelector(".favorite-btn");
+					const isFav = favBtn && favBtn.classList.contains("active");
+					if (isOnlyFavorite) {
+						item.style.display = isFav ? "flex" : "none";
+					} else {
+						filterAndSearchList();
+					}
+				});
+			});
 			// Hiệu ứng đếm số
 			function animateValue(element, start, end, duration, formatFn) {
 				if (start === end) {
@@ -531,7 +554,7 @@
 			function updateDashboard() {
 				const targetPercent = totalWords > 0 ? Number(((learnedCount / totalWords) * 100).toFixed(1)) : 0;
 				if (!hasAnimated) {
-					animateValue(listFavorite, 0, favoriteCount, 1000);
+					animateValue(favoritesCount, 0, favoriteCount, 1000);
 					animateValue(progressCount, 0, learnedCount, 1000, (val) => {
 						return `<strong>${val}/${totalWords}</strong> từ đã học thuộc`;
 					});
@@ -556,7 +579,7 @@
 					window.requestAnimationFrame(animateProgress);
 					hasAnimated = true;
 				} else {
-					listFavorite.textContent = favoriteCount;
+					favoritesCount.textContent = favoriteCount;
 					progressCount.innerHTML = `<strong>${learnedCount}/${totalWords}</strong> từ đã học thuộc`;
 					progressPercent.textContent = `${targetPercent}%`;
 					progressBar.value = learnedCount;
