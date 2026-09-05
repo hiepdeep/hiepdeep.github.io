@@ -72,6 +72,8 @@ async function render_lists() {
 				try {
 					const snap = await favoriteRef.once("value");
 					const isFav = String(snap.val()) === "true";
+					const message = isFav ? "Bạn có chắc chắn muốn bỏ từ này khỏi danh sách Yêu thích?" : "Bạn có muốn thêm từ này vào danh sách Yêu thích?";
+					if (!confirm(message)) return;
 					const nextState = isFav ? "" : "true";
 					await favoriteRef.set(nextState);
 					btn.classList.toggle("active", !isFav);
@@ -93,6 +95,8 @@ async function render_lists() {
 				try {
 					const snap = await learnedRef.once("value");
 					const isLearnedState = String(snap.val()) === "true";
+					const message = isLearnedState ? "Bạn muốn đánh dấu mục này là CHƯA HỌC?" : "Xác nhận bạn đã HỌC XONG mục này?";
+					if (!confirm(message)) return;
 					const nextState = isLearnedState ? "" : "true";
 					await learnedRef.set(nextState);
 					btn.classList.toggle("active", !isLearnedState);
