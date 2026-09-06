@@ -6,6 +6,8 @@ const db = firebase.database();
 
 // Khai báo tên thẻ
 const hidePinyinBtn = document.getElementById("hide-pinyin-btn");
+const menuToggle = document.querySelector(".navbar_hamburger");
+const navSidebar = document.querySelector(".navbar");
 const data_lists = document.getElementById("data_lists");
 const favoritesBtn = document.getElementById("favorites-btn");
 const favoritesCount = document.getElementById("data_dashboard_favorite_count");
@@ -134,6 +136,12 @@ favoritesBtn.addEventListener("click", () => {
 			filterAndSearchList();
 		}
 	});
+});
+
+// Navbar
+menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    navSidebar.classList.toggle("active");
 });
 
 // Ẩn Pinyin
