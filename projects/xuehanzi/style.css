@@ -514,3 +514,55 @@ body {
 		background: hsl(210, 50%, 30%);
 	}
 }
+
+@media screen and (max-width: 533px) {
+	.app {
+		.app-header {
+			.app-header_container {
+				.app-header_container_navbar {
+					.navbar_hamburger {
+						display: block;
+					}
+					.navbar {
+						min-width: 100px;
+						width: max-content;
+						position: absolute;
+						display: none;
+						padding: 0;
+						top: calc(100% + 24px);
+						right: calc(100% - 30px);
+						opacity: 0;
+						visibility: hidden;
+						transition: 0.2s ease;
+						&.active {
+							display: block;
+							top: calc(100% + 6px);
+							opacity: 1;
+							visibility: visible;
+						}
+						li {
+							a {
+								padding: 0 12px;
+								border-radius: 6px;
+							}
+							& > .navbar_dropdown_1 {
+								top: 0;
+								right: calc(100% + 24px);
+								&:before {
+									width: 12px;
+									height: 100%;
+									top: 0;
+									left: 100%;
+								}
+							}
+							&:hover > .navbar_dropdown_1 {
+								top: 0;
+								right: calc(100% + 6px);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
