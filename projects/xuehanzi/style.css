@@ -205,7 +205,7 @@ body {
 						font-size: 20px;
 						color: hsl(var(--hue-saturation-purple), 30%);
 						background: hsl(var(--hue-saturation-purple), 80%);
-						border-radius: var(--bdrs-lv-3);
+						border-radius: var(--bdrs-lv-3) 0 0 var(--bdrs-lv-3);
 					}
 					.hide_pinyin_label {
 						padding: 0 6px;
@@ -430,6 +430,9 @@ body {
 					}
 					.pinyin {
 						font-family: "LXGW WenKai Mono TC", monospace;
+						opacity: 1;
+						visibility: visible;
+						transition: 0.2s ease;
 					}
 					.hanzi {
 						font-family: "LXGW WenKai Mono TC", monospace;
@@ -479,6 +482,14 @@ body {
 					display: block;
 					text-align: center;
 					color: hsl(var(--hue-saturation-gray), 50%);
+				}
+				&.hide-pinyin {
+					.item {
+						.pinyin {
+							opacity: 0;
+							visibility: hidden;
+						}
+					}
 				}
 			}
 		}

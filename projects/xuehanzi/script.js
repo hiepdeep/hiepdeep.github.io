@@ -5,6 +5,7 @@ const app = firebase.initializeApp({
 const db = firebase.database();
 
 // Khai báo tên thẻ
+const hidePinyinBtn = document.getElementById("hide-pinyin-btn");
 const data_lists = document.getElementById("data_lists");
 const favoritesBtn = document.getElementById("favorites-btn");
 const favoritesCount = document.getElementById("data_dashboard_favorite_count");
@@ -133,6 +134,13 @@ favoritesBtn.addEventListener("click", () => {
 			filterAndSearchList();
 		}
 	});
+});
+
+// Ẩn Pinyin
+hidePinyinBtn.addEventListener("click", (e) => {
+	const btn = e.currentTarget;
+	const isHidden = data_lists.classList.toggle("hide-pinyin");
+	btn.querySelector(".hide_pinyin_label").textContent = isHidden ? "Hiện Pinyin" : "Ẩn Pinyin";
 });
 
 // Hiệu ứng đếm số
