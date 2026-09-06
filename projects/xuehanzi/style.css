@@ -515,7 +515,7 @@ body {
 	}
 }
 
-@media screen and (max-width: 533px) {
+@media screen and (max-width: 800px) {
 	.app {
 		.app-header {
 			.app-header_container {
