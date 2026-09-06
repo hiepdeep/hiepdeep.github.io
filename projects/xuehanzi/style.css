@@ -26,7 +26,7 @@ body {
 		position: sticky;
 		top: 0;
 		left: 0;
-		z-index: 9999;
+		z-index: 99999;
 		.app-header_container {
 			padding: 12px;
 			display: flex;
@@ -221,7 +221,7 @@ body {
 			background: var(--bg-box);
 			border-bottom: 1px solid var(--bd-box);
 			position: sticky;
-			top: ;
+			top: calc(54px - 12px - 32px - 12px - 28px);
 			left: 0;
 			z-index: 9999;
 			user-select: none;
