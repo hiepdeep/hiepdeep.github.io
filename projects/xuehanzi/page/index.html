@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+		<link rel="icon" href="favicon.png">
+		<link rel="apple-touch-icon" href="icon.png">
+		<title>学汉字 | 𝐗𝐮𝐞𝐇𝐚𝐧𝐳𝐢</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="app" id="app">
+			<header class="app-header">
+				<div class="app-header_container">
+					<a href="" class="app-header_container_logo">
+						<img src="https://hiepdeep.github.io/library/pictures/svg/books.svg" alt="Xué Hànzì Logo" class="app-header_container_logo_img">
+						<span class="app-header_container_logo_text">𝐗𝐮𝐞𝐇𝐚𝐧𝐳𝐢</span>
+					</a>
+					<div class="app-header_container_navbar">
+						<button class="navbar_hamburger"></button>
+						<ul class="navbar">
+							<li>
+								<a href="javascript:;">Từ vựng</a>
+								<ul class="navbar_dropdown_1">
+									<li>
+										<a href="javascript:;">Sơ cấp</a>
+										<ul class="navbar_dropdown_2">
+											<li><a href="javascript:;">HSK1</a></li>
+											<li><a href="javascript:;">HSK2</a></li>
+											<li><a href="javascript:;">HSK3</a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="javascript:;">Trung cấp</a>
+										<ul class="navbar_dropdown_2">
+											<li><a href="javascript:;">HSK4</a></li>
+											<li><a href="javascript:;">HSK5</a></li>
+											<li><a href="javascript:;">HSK6</a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="javascript:;">Cao cấp</a>
+										<ul class="navbar_dropdown_2">
+											<li><a href="javascript:;">HSK7-9</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="javascript:;">Đoạn văn</a></li>
+							<li><a href="javascript:;">Đoạn hội thoại</a></li>
+						</ul>
+						<button id="hide-pinyin-btn">
+							<span class="hide_pinyin_icon material-symbols-rounded">language_pinyin</span>
+							<span class="hide_pinyin_label">Ẩn Pinyin</span>
+						</button>
+					</div>
+				</div>
+			</header>
+			<main class="app-main">
+				<div class="app-main_data_dashboard">
+					<div class="app-main_container">
+						<div class="data_dashboard_header">
+							<div class="data_dashboard_header">
+								<span class="data_dashboard_header_icon material-symbols-rounded">import_contacts</span>
+								<a href="" class="data_dashboard_header_label">Học <strong>HSK1</strong></a>
+							</div>
+							<button class="favorites-btn" id="favorites-btn" btn-light-red>
+								<span id="data_dashboard_favorite_count">0</span>
+								<span class="data_dashboard_favorite_icon material-symbols-rounded">favorite</span>
+							</button>
+						</div>
+						<div class="data_dashboard_progress">
+							<div class="data_dashboard_progress_header">
+								<span id="data_dashboard_progress_count"><strong>0/0</strong> từ đã học thuộc</span>
+								<span id="data_dashboard_progress_percent">0%</span>
+							</div>
+							<progress id="data_dashboard_progress_bar" name="data_dashboard_progress_bar" value="0" max="0"></progress>
+						</div>
+						<div class="data_dashboard_filter">
+							<input type="search" id="search_vocabulary" placeholder="Search..">
+							<div class="option">
+								<label for="filter-all">
+									<input type="radio" id="filter-all" name="view-learn" value="all" checked>
+									<span class="txt">Tất cả</span>
+								</label>
+								<label for="filter-unlearned">
+									<input type="radio" id="filter-unlearned" name="view-learn" value="unlearned">
+									<span class="txt">Chưa học</span>
+								</label>
+								<label for="filter-learned">
+									<input type="radio" id="filter-learned" name="view-learn" value="learned">
+									<span class="txt">Đã học</span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="app-main_container">
+					<div class="data_lists" id="data_lists">
+						<span class="null">Đang tải dữ liệu..</span>
+					</div>
+				</div>
+			</main>
+		</div>
+		<button class="material-symbols-rounded" id="backToTop">vertical_align_top</button>
+		<button class="material-symbols-rounded" id="backToTop">vertical_align_top</button>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
