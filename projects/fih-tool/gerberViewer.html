@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+		<title>Gerber Viewer V1.0.1 - HiepDz</title>
+		<style>
+			a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+				outline: none;
+				vertical-align: baseline;
+			}
+			:link, button {
+				text-decoration: none;
+				cursor: pointer;
+				user-select: none;
+			}
+			:link, :hover, :focus, :active, :visited {
+				outline: none;
+			}
+			iframe {
+				width: 100%;
+			}
+			ol, ul, li {
+				list-style-type: none;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				letter-spacing: 0.05em;
+				-webkit-tap-highlight-color: transparent;
+				font-family: 'Consolas', 'Courier New', monospace;
+			}
+			body, html {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background-color: #0b0b0e;
+				color: #d1d5db;
+			}
+			#app {
+				display: flex;
+				flex-direction: column;
+				width: 100vw;
+				height: 100vh;
+				position: relative;
+			}
+			.toolbar {
+				height: 48px;
+				background-color: #16161a;
+				border-bottom: 1px solid #282830;
+				display: flex;
+				align-items: center;
+				padding: 0 12px;
+				gap: 8px;
+				z-index: 10;
+				flex-wrap: nowrap;
+				overflow-x: auto;
+			}
+			.btn, .select-btn {
+				background-color: #24242d;
+				color: #e5e7eb;
+				border: 1px solid #3b3b48;
+				padding: 6px 10px;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 12px;
+				font-weight: 500;
+				display: flex;
+				align-items: center;
+				gap: 5px;
+				white-space: nowrap;
+				transition: all 0.15s ease;
+			}
+			.btn:hover, .select-btn:hover {
+				background-color: #32323f;
+				border-color: #525266;
+				color: #ffffff;
+			}
+			.btn.active {
+				background-color: #0284c7;
+				border-color: #38bdf8;
+				color: #ffffff;
+				box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+			}
+			.btn-danger {
+				background-color: #3f1d1d;
+				border-color: #7f2929;
+				color: #fca5a5;
+			}
+			.btn-danger:hover {
+				background-color: #5c2424;
+				color: #ffffff;
+			}
+			select.select-btn {
+				outline: none;
+				appearance: auto;
+				padding-right: 6px;
+			}
+			.file-input-wrapper {
+				position: relative;
+				overflow: hidden;
+				display: inline-block;
+			}
+			.file-input-wrapper input[type=file] {
+				position: absolute;
+				left: 0;
+				top: 0;
+				opacity: 0;
+				cursor: pointer;
+				width: 100%;
+				height: 100%;
+			}
+			.separator {
+				width: 1px;
+				height: 22px;
+				background-color: #282830;
+				margin: 0 2px;
+				flex-shrink: 0;
+			}
+			.workspace {
+				display: flex;
+				flex: 1;
+				position: relative;
+				overflow: hidden;
+			}
+			.sidebar {
+				width: 270px;
+				background-color: #121215;
+				border-right: 1px solid #282830;
+				display: flex;
+				flex-direction: column;
+				z-index: 5;
+				flex-shrink: 0;
+			}
+			.sidebar-header {
+				padding: 10px 14px;
+				font-size: 12px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+				color: #9ca3af;
+				border-bottom: 1px solid #282830;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.layer-list {
+				flex: 1;
+				overflow-y: auto;
+				padding: 8px;
+			}
+			.layer-item {
+				display: flex;
+				align-items: center;
+				padding: 6px 8px;
+				background-color: #1a1a20;
+				border: 1px solid #262630;
+				border-radius: 4px;
+				margin-bottom: 6px;
+				gap: 8px;
+			}
+			.layer-item input[type="checkbox"] {
+				width: 15px;
+				height: 15px;
+				cursor: pointer;
+				accent-color: #0284c7;
+			}
+			.color-picker-wrapper {
+				width: 20px;
+				height: 20px;
+				border-radius: 3px;
+				overflow: hidden;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				cursor: pointer;
+				position: relative;
+				flex-shrink: 0;
+			}
+			.color-picker-wrapper input[type="color"] {
+				position: absolute;
+				top: -10px;
+				left: -10px;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				border: none;
+			}
+			.layer-info {
+				flex: 1;
+				overflow: hidden;
+			}
+			.layer-name {
+				font-size: 11px;
+				font-weight: 600;
+				color: #e5e7eb;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.layer-count {
+				font-size: 10px;
+				color: #6b7280;
+			}
+			.layer-del {
+				background: none;
+				border: none;
+				color: #6b7280;
+				cursor: pointer;
+				font-size: 13px;
+			}
+			.layer-del:hover {
+				color: #ef4444;
+			}
+			.sidebar-settings {
+				padding: 10px 14px;
+				border-top: 1px solid #282830;
+				background-color: #16161a;
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+				font-size: 11px;
+			}
+			.sidebar-settings label {
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				cursor: pointer;
+				color: #9ca3af;
+			}
+			.empty-state {
+				padding: 20px 14px;
+				text-align: center;
+				color: #4b5563;
+				font-size: 11px;
+				line-height: 1.5;
+			}
+			.canvas-container {
+				flex: 1;
+				position: relative;
+				background-color: #000000;
+				cursor: crosshair;
+			}
+			canvas {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+			.statusbar {
+				height: 36px;
+				background-color: #121215;
+				border-top: 1px solid #282830;
+				display: flex;
+				align-items: center;
+				padding: 0 12px;
+				font-size: 12px;
+				color: #9ca3af;
+				gap: 12px;
+				z-index: 10;
+			}
+			.status-box {
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				background-color: #1a1a20;
+				padding: 3px 8px;
+				border-radius: 3px;
+				border: 1px solid #262630;
+			}
+			.status-box .val {
+				color: #38bdf8;
+				font-weight: 600;
+			}
+			.status-spacer {
+				flex: 1;
+			}
+			#dragOverlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(2, 132, 199, 0.25);
+				border: 3px dashed #38bdf8;
+				z-index: 100;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: #ffffff;
+				font-size: 18px;
+				font-weight: bold;
+				pointer-events: none;
+				opacity: 0;
+				transition: opacity 0.2s ease;
+			}
+			#dragOverlay.active {
+				opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="dragOverlay">📥 Thả các file Gerber (.gbx, .gbr,...) vào đây để tải</div>
+			<header class="toolbar">
+				<div class="file-input-wrapper">
+					<button class="btn active" style="background-color: #0284c7; border-color: #38bdf8;">📂 Chọn Gerber</button>
+					<input type="file" id="fileInput" multiple accept="*">
+				</div>
+				<div class="separator"></div>
+				<button id="btnPan" class="btn active">🖐️ Pan</button>
+				<button id="btnSnap" class="btn">📍 Snap Center</button>
+				<button id="btnBoxSelect" class="btn">🔲 Tâm Vùng Chọn</button>
+				<button id="btnMeasure" class="btn">📏 Đo Khoảng Cách (Tâm - Tâm)</button>
+				<div class="separator"></div>
+				<select id="zoomSelect" class="select-btn">
+					<option value="FIT">🔍 Fit to view</option>
+					<option value="0.25">25%</option>
+					<option value="0.50">50%</option>
+					<option value="0.75">75%</option>
+					<option value="1.00">100%</option>
+					<option value="1.50">150%</option>
+					<option value="2.00">200%</option>
+					<option value="4.00">400%</option>
+				</select>
+				<div class="separator"></div>
+				<button id="btnZeroAlign" class="btn" title="Đưa toàn bộ Gerber về sát gốc tọa độ (0,0)">📐 Về Góc (0,0)</button>
+				<button id="btnMoveToZero" class="btn" title="Chuyển mép trái dưới của vùng bôi chọn về sát góc tọa độ (0,0)">📍 Move Vùng Chọn Về 0</button>
+				<div class="separator"></div>
+				<button id="btnClear" class="btn btn-danger">🗑️ Xóa Ghim</button>
+			</header>
+			<div class="workspace">
+				<aside class="sidebar">
+					<div class="sidebar-header">
+						<span>Danh sách Layers</span>
+						<span id="lblLayerCount" style="color: #0284c7;">0</span>
+					</div>
+					<div id="layerList" class="layer-list">
+						<div class="empty-state">
+							Chưa có layer nào.<br>Hãy kéo thả file hoặc bấm <b>"Chọn Gerber"</b>.
+						</div>
+					</div>
+					<div class="sidebar-settings">
+						<label><input type="checkbox" id="chkGrid" checked> Hiển thị Lưới (Grid)</label>
+						<label><input type="checkbox" id="chkOrigin" checked> Hiển thị Trục Gốc (0,0)</label>
+					</div>
+				</aside>
+				<main class="canvas-container" id="canvasContainer">
+					<canvas id="gerberCanvas"></canvas>
+				</main>
+			</div>
+			<footer class="statusbar">
+				<select id="unitSelect" class="select-btn" style="background:#16161a; border-color:#38bdf8; color:#38bdf8;">
+					<option value="mm">Millimeter (mm)</option>
+					<option value="cm">Centimeter (cm)</option>
+					<option value="mils">Mils (mil)</option>
+					<option value="inch">Inch (in)</option>
+					<option value="micron">Micron (µm)</option>
+				</select>
+				<div class="status-box">
+					<span>X:</span> <span id="lblX" class="val">0.0000</span>
+					<span style="margin-left:6px;">Y:</span> <span id="lblY" class="val">0.0000</span>
+				</div>
+				<div class="status-box">
+					<span>Ghim / Tâm:</span> <span id="lblPin" class="val">Chưa ghim</span>
+				</div>
+				<div class="status-box">
+					<span>Đo đạc:</span> <span id="lblMeasure" class="val">Chưa đo</span>
+				</div>
+				<div class="status-spacer"></div>
+				<div class="status-box">
+					<span>Zoom:</span> <span id="lblZoom" class="val">100%</span>
+				</div>
+			</footer>
+		</div>
+		<script>
+			// --- BỘ QUẢN LÝ ĐƠN VỊ ĐO ---
+			const UNITS = {
+				mm: {
+					name: 'Millimeter',
+					scale: 1.0,
+					decimals: 4,
+					label: 'mm'
+				},
+				cm: {
+					name: 'Centimeter',
+					scale: 0.1,
+					decimals: 4,
+					label: 'cm'
+				},
+				inch: {
+					name: 'Inch',
+					scale: 1 / 25.4,
+					decimals: 5,
+					label: 'in'
+				},
+				mils: {
+					name: 'Mils',
+					scale: 1000 / 25.4,
+					decimals: 2,
+					label: 'mil'
+				},
+				micron: {
+					name: 'Micron',
+					scale: 1000.0,
+					decimals: 2,
+					label: 'µm'
+				}
+			};
+			let currentUnit = 'mm';
+			// Tỷ lệ chuẩn physical 1:1 scale màn hình (96 DPI = 3.7795 px/mm)
+			const SCREEN_PHYSICAL_PX_PER_MM = 96 / 25.4;
+			function toUnit(valInMM) {
+				return valInMM * UNITS[currentUnit].scale;
+			}
+			function formatUnitVal(valInMM) {
+				const val = toUnit(valInMM);
+				return `${val.toFixed(UNITS[currentUnit].decimals)} ${UNITS[currentUnit].label}`;
+			}
+			// --- PARSER GERBER ---
+			class GerberParser {
+				static parse(text, fileName) {
+					let unitScale = 1.0;
+					let decX = 4,
+						decY = 4;
+					let currentX = 0,
+						currentY = 0;
+					let currentAperture = null;
+					const apertures = {};
+					const items = [];
+					if (/%MOIN\*%/i.test(text)) unitScale = 25.4;
+					else if (/%MOMM\*%/i.test(text)) unitScale = 1.0;
+					const fsMatch = text.match(/%FSLAX(\d)(\d)Y(\d)(\d)\*%/i);
+					if (fsMatch) {
+						decX = parseInt(fsMatch[2], 10);
+						decY = parseInt(fsMatch[4], 10);
+					}
+					const addRegex = /%ADD(\d+)([A-Za-z]+),([^%*]+)\*%/g;
+					let match;
+					while ((match = addRegex.exec(text)) !== null) {
+						const id = 'D' + match[1];
+						const type = match[2].toUpperCase();
+						const dims = match[3].split('X').map(v => parseFloat(v) * unitScale);
+						apertures[id] = {
+							type,
+							dims
+						};
+					}
+					const cleanText = text.replace(/[\r\n]/g, '');
+					const blocks = cleanText.split('*');
+					let inRegion = false;
+					let regionPoints = [];
+					const parseCoord = (str, dec) => {
+						if (!str) return null;
+						const val = parseInt(str, 10);
+						if (isNaN(val)) return null;
+						return (val / Math.pow(10, dec)) * unitScale;
+					};
+					for (let block of blocks) {
+						block = block.trim();
+						if (!block) continue;
+						if (block.includes('G36')) {
+							inRegion = true;
+							regionPoints = [];
+							continue;
+						}
+						if (block.includes('G37')) {
+							inRegion = false;
+							if (regionPoints.length > 2) items.push({
+								type: 'region',
+								points: regionPoints
+							});
+							regionPoints = [];
+							continue;
+						}
+						const apMatch = block.match(/^D(\d+)$/i) || block.match(/.*(D\d+)$/i);
+						if (apMatch) {
+							const code = apMatch[1].toUpperCase();
+							if (apertures[code]) currentAperture = apertures[code];
+						}
+						const xMatch = block.match(/X([+-]?\d+)/i);
+						const yMatch = block.match(/Y([+-]?\d+)/i);
+						const dMatch = block.match(/D0?([123])/i);
+						let newX = currentX;
+						let newY = currentY;
+						if (xMatch) {
+							const vx = parseCoord(xMatch[1], decX);
+							if (vx !== null) newX = vx;
+						}
+						if (yMatch) {
+							const vy = parseCoord(yMatch[1], decY);
+							if (vy !== null) newY = vy;
+						}
+						const op = dMatch ? dMatch[1] : null;
+						if (inRegion) {
+							if (xMatch || yMatch) regionPoints.push({
+								x: newX,
+								y: newY
+							});
+						} else {
+							if (op === '1') {
+								const width = currentAperture ? (currentAperture.dims[0] || 0.1) : 0.1;
+								items.push({
+									type: 'line',
+									x1: currentX,
+									y1: currentY,
+									x2: newX,
+									y2: newY,
+									width
+								});
+							} else if (op === '3') {
+								if (currentAperture) {
+									items.push({
+										type: 'pad',
+										shape: currentAperture.type,
+										dims: currentAperture.dims,
+										x: newX,
+										y: newY
+									});
+								}
+							}
+						}
+						currentX = newX;
+						currentY = newY;
+					}
+					return items;
+				}
+			}
+			function getGeometryCenter(item) {
+				if (item.type === 'pad') {
+					return {
+						x: item.x,
+						y: item.y,
+						label: `Pad ${item.shape}`,
+						item: item
+					};
+				} else if (item.type === 'line') {
+					return {
+						x: (item.x1 + item.x2) / 2,
+						y: (item.y1 + item.y2) / 2,
+						label: 'Track',
+						item: item
+					};
+				} else if (item.type === 'region' && item.points && item.points.length > 0) {
+					let minX = Infinity,
+						maxX = -Infinity,
+						minY = Infinity,
+						maxY = -Infinity;
+					item.points.forEach(p => {
+						if (p.x < minX) minX = p.x;
+						if (p.x > maxX) maxX = p.x;
+						if (p.y < minY) minY = p.y;
+						if (p.y > maxY) maxY = p.y;
+					});
+					return {
+						x: (minX + maxX) / 2,
+						y: (minY + maxY) / 2,
+						label: 'Region',
+						item: item
+					};
+				}
+				return null;
+			}
+			function getItemBoundingBox(item) {
+				if (item.type === 'pad') {
+					const w = item.dims[0] || 0.2;
+					const h = item.dims[1] || w;
+					return {
+						minX: item.x - w / 2,
+						maxX: item.x + w / 2,
+						minY: item.y - h / 2,
+						maxY: item.y + h / 2
+					};
+				} else if (item.type === 'line') {
+					const r = (item.width || 0.1) / 2;
+					return {
+						minX: Math.min(item.x1, item.x2) - r,
+						maxX: Math.max(item.x1, item.x2) + r,
+						minY: Math.min(item.y1, item.y2) - r,
+						maxY: Math.max(item.y1, item.y2) + r
+					};
+				} else if (item.type === 'region' && item.points && item.points.length > 0) {
+					let minX = Infinity,
+						maxX = -Infinity,
+						minY = Infinity,
+						maxY = -Infinity;
+					item.points.forEach(p => {
+						if (p.x < minX) minX = p.x;
+						if (p.x > maxX) maxX = p.x;
+						if (p.y < minY) minY = p.y;
+						if (p.y > maxY) maxY = p.y;
+					});
+					return {
+						minX,
+						maxX,
+						minY,
+						maxY
+					};
+				}
+				return null;
+			}
+			const PRESET_COLORS = ['#00FF66', '#FF3366', '#33CCFF', '#FFCC00', '#CC66FF', '#FF9933'];
+			let layers = [];
+			let activeTool = 'PAN';
+			let zoom = SCREEN_PHYSICAL_PX_PER_MM;
+			let panX = 0;
+			let panY = 0;
+			let pinnedPoint = null;
+			let measureStart = null;
+			let measureEnd = null;
+			let isBoxSelecting = false;
+			let boxStartWorld = null;
+			let boxEndWorld = null;
+			let selectedGeometries = [];
+			let calculatedCentroid = null;
+			let currentSelectedBounds = null; // Quản lý Bounding Box của vùng bôi chọn
+			let isDragging = false;
+			let dragStartX = 0,
+				dragStartY = 0;
+			let mouseWorld = {
+				x: 0,
+				y: 0
+			};
+			const canvas = document.getElementById('gerberCanvas');
+			const ctx = canvas.getContext('2d');
+			const container = document.getElementById('canvasContainer');
+			const fileInput = document.getElementById('fileInput');
+			const layerListEl = document.getElementById('layerList');
+			const dragOverlay = document.getElementById('dragOverlay');
+			const lblX = document.getElementById('lblX');
+			const lblY = document.getElementById('lblY');
+			const lblPin = document.getElementById('lblPin');
+			const lblMeasure = document.getElementById('lblMeasure');
+			const lblZoom = document.getElementById('lblZoom');
+			const lblLayerCount = document.getElementById('lblLayerCount');
+			const chkGrid = document.getElementById('chkGrid');
+			const chkOrigin = document.getElementById('chkOrigin');
+			const unitSelect = document.getElementById('unitSelect');
+			const zoomSelect = document.getElementById('zoomSelect');
+			const btnPan = document.getElementById('btnPan');
+			const btnSnap = document.getElementById('btnSnap');
+			const btnBoxSelect = document.getElementById('btnBoxSelect');
+			const btnMeasure = document.getElementById('btnMeasure');
+			const btnClear = document.getElementById('btnClear');
+			const btnZeroAlign = document.getElementById('btnZeroAlign');
+			const btnMoveToZero = document.getElementById('btnMoveToZero');
+			function resizeCanvas() {
+				canvas.width = container.clientWidth;
+				canvas.height = container.clientHeight;
+				requestAnimationFrame(draw);
+			}
+			window.addEventListener('resize', resizeCanvas);
+			function worldToScreen(wx, wy) {
+				return {
+					x: canvas.width / 2 + panX + wx * zoom,
+					y: canvas.height / 2 + panY - wy * zoom
+				};
+			}
+			function screenToWorld(sx, sy) {
+				return {
+					x: (sx - canvas.width / 2 - panX) / zoom,
+					y: (canvas.height / 2 + panY - sy) / zoom
+				};
+			}
+			function findNearestGeometry(wx, wy) {
+				const maxDist = 25 / zoom;
+				let closestItem = null,
+					closestCenter = null;
+				let minDist = maxDist;
+				for (const layer of layers) {
+					if (!layer.visible) continue;
+					for (const item of layer.items) {
+						const center = getGeometryCenter(item);
+						if (center) {
+							const dist = Math.hypot(center.x - wx, center.y - wy);
+							if (dist < minDist) {
+								minDist = dist;
+								closestItem = item;
+								closestCenter = center;
+							}
+						}
+					}
+				}
+				return {
+					item: closestItem,
+					center: closestCenter
+				};
+			}
+			function loadFiles(files) {
+				const fileArray = Array.from(files);
+				if (!fileArray.length) return;
+				fileArray.forEach((file) => {
+					const reader = new FileReader();
+					reader.onload = (event) => {
+						const items = GerberParser.parse(event.target.result, file.name);
+						const color = PRESET_COLORS[layers.length % PRESET_COLORS.length];
+						layers.push({
+							id: Date.now() + Math.random(),
+							name: file.name,
+							visible: true,
+							color,
+							items
+						});
+						updateSidebar();
+						if (layers.length === 1) fitView();
+						else requestAnimationFrame(draw);
+					};
+					reader.readAsText(file);
+				});
+			}
+			fileInput.addEventListener('change', (e) => {
+				loadFiles(e.target.files);
+				fileInput.value = '';
+			});
+			window.addEventListener('dragover', (e) => {
+				e.preventDefault();
+				dragOverlay.classList.add('active');
+			});
+			window.addEventListener('dragleave', (e) => {
+				if (e.clientX <= 0 || e.clientY <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+					dragOverlay.classList.remove('active');
+				}
+			});
+			window.addEventListener('drop', (e) => {
+				e.preventDefault();
+				dragOverlay.classList.remove('active');
+				if (e.dataTransfer && e.dataTransfer.files.length > 0) loadFiles(e.dataTransfer.files);
+			});
+			function updateSidebar() {
+				lblLayerCount.textContent = layers.length;
+				if (layers.length === 0) {
+					layerListEl.innerHTML = `<div class="empty-state">Chưa có layer nào.<br>Hãy kéo thả file hoặc bấm <b>"Chọn Gerber"</b>.</div>`;
+					return;
+				}
+				layerListEl.innerHTML = '';
+				layers.forEach((layer, idx) => {
+					const itemEl = document.createElement('div');
+					itemEl.className = 'layer-item';
+					itemEl.innerHTML = `
+	                    <input type="checkbox" ${layer.visible ? 'checked' : ''} data-idx="${idx}">
+	                    <div class="color-picker-wrapper" style="background-color: ${layer.color}">
+	                        <input type="color" value="${layer.color}" data-idx="${idx}">
+	                    </div>
+	                    <div class="layer-info">
+	                        <div class="layer-name" title="${layer.name}">${layer.name}</div>
+	                        <div class="layer-count">${layer.items.length.toLocaleString()} đối tượng</div>
+	                    </div>
+	                    <button class="layer-del" data-idx="${idx}">✕</button>
+	                `;
+					itemEl.querySelector('input[type="checkbox"]').addEventListener('change', (e) => {
+						layers[idx].visible = e.target.checked;
+						requestAnimationFrame(draw);
+					});
+					itemEl.querySelector('input[type="color"]').addEventListener('input', (e) => {
+						layers[idx].color = e.target.value;
+						itemEl.querySelector('.color-picker-wrapper').style.backgroundColor = e.target.value;
+						requestAnimationFrame(draw);
+					});
+					itemEl.querySelector('.layer-del').addEventListener('click', () => {
+						layers.splice(idx, 1);
+						updateSidebar();
+						requestAnimationFrame(draw);
+					});
+					layerListEl.appendChild(itemEl);
+				});
+			}
+			// Tính Bounding Box toàn bộ hình ảnh Gerber
+			function getOverallBoundingBox() {
+				let minX = Infinity,
+					maxX = -Infinity,
+					minY = Infinity,
+					maxY = -Infinity;
+				let hasItems = false;
+				layers.forEach(l => {
+					if (!l.visible) return;
+					l.items.forEach(it => {
+						const bbox = getItemBoundingBox(it);
+						if (bbox) {
+							hasItems = true;
+							if (bbox.minX < minX) minX = bbox.minX;
+							if (bbox.maxX > maxX) maxX = bbox.maxX;
+							if (bbox.minY < minY) minY = bbox.minY;
+							if (bbox.maxY > maxY) maxY = bbox.maxY;
+						}
+					});
+				});
+				return hasItems ? {
+					minX,
+					maxX,
+					minY,
+					maxY
+				} : null;
+			}
+			// Hàm di chuyển tất cả đối tượng Gerber
+			function shiftAllGerbers(dx, dy) {
+				layers.forEach(l => {
+					l.items.forEach(it => {
+						if (it.x !== undefined) it.x += dx;
+						if (it.y !== undefined) it.y += dy;
+						if (it.x1 !== undefined) {
+							it.x1 += dx;
+							it.x2 += dx;
+							it.y1 += dy;
+							it.y2 += dy;
+						}
+						if (it.type === 'region' && it.points) {
+							it.points.forEach(p => {
+								p.x += dx;
+								p.y += dy;
+							});
+						}
+					});
+				});
+				// Nếu đang có vùng bôi chọn, cập nhật vị trí khung bôi chọn theo offset
+				if (currentSelectedBounds) {
+					currentSelectedBounds.minX += dx;
+					currentSelectedBounds.maxX += dx;
+					currentSelectedBounds.minY += dy;
+					currentSelectedBounds.maxY += dy;
+					if (boxStartWorld && boxEndWorld) {
+						boxStartWorld.x += dx;
+						boxStartWorld.y += dy;
+						boxEndWorld.x += dx;
+						boxEndWorld.y += dy;
+					}
+					if (calculatedCentroid) {
+						calculatedCentroid.x += dx;
+						calculatedCentroid.y += dy;
+					}
+				}
+				pinnedPoint = null;
+				measureStart = null;
+				measureEnd = null;
+				requestAnimationFrame(draw);
+			}
+			// Đưa toàn bộ Gerber về gốc (0,0)
+			btnZeroAlign.addEventListener('click', () => {
+				const bbox = getOverallBoundingBox();
+				if (!bbox) return;
+				shiftAllGerbers(-bbox.minX, -bbox.minY);
+				fitView();
+			});
+			// XỬ LÝ SỰ KIỆN MOVE VÙNG CHỌN VỀ 0
+			btnMoveToZero.addEventListener('click', () => {
+				if (!currentSelectedBounds || selectedGeometries.length === 0) {
+					alert('Vui lòng dùng công cụ "🔲 Tâm Vùng Chọn" để khoanh vùng bôi chọn trước khi nhấn "Move Vùng Chọn Về 0"!');
+					return;
+				}
+				// Dịch chuyển Gerber sao cho Mép Trái Dưới (minX, minY) của vùng bôi nằm đúng ở gốc (0,0)
+				const dx = -currentSelectedBounds.minX;
+				const dy = -currentSelectedBounds.minY;
+				shiftAllGerbers(dx, dy);
+				fitView();
+			});
+			// --- BỘ QUẢN LÝ ZOOM LINH HOẠT & FIT TO VIEW ---
+			function fitView() {
+				const bbox = getOverallBoundingBox();
+				if (!bbox) {
+					zoom = SCREEN_PHYSICAL_PX_PER_MM;
+					panX = 0;
+					panY = 0;
+				} else {
+					const w = Math.max(bbox.maxX - bbox.minX, 1);
+					const h = Math.max(bbox.maxY - bbox.minY, 1);
+					const cx = (bbox.minX + bbox.maxX) / 2;
+					const cy = (bbox.minY + bbox.maxY) / 2;
+					const scaleX = (canvas.width * 0.82) / w;
+					const scaleY = (canvas.height * 0.82) / h;
+					zoom = Math.min(scaleX, scaleY);
+					panX = -cx * zoom;
+					panY = cy * zoom;
+				}
+				zoomSelect.value = 'FIT';
+				updateZoomLabel();
+				requestAnimationFrame(draw);
+			}
+			function setPresetZoom(factorStr) {
+				if (factorStr === 'FIT') {
+					fitView();
+					return;
+				}
+				const factor = parseFloat(factorStr);
+				const bbox = getOverallBoundingBox();
+				const cx = bbox ? (bbox.minX + bbox.maxX) / 2 : 0;
+				const cy = bbox ? (bbox.minY + bbox.maxY) / 2 : 0;
+				zoom = SCREEN_PHYSICAL_PX_PER_MM * factor;
+				panX = -cx * zoom;
+				panY = cy * zoom;
+				updateZoomLabel();
+				requestAnimationFrame(draw);
+			}
+			zoomSelect.addEventListener('change', (e) => setPresetZoom(e.target.value));
+			function updateZoomLabel() {
+				lblZoom.textContent = `${Math.round((zoom / SCREEN_PHYSICAL_PX_PER_MM) * 100)}%`;
+			}
+			unitSelect.addEventListener('change', (e) => {
+				currentUnit = e.target.value;
+				updateStatusText();
+				requestAnimationFrame(draw);
+			});
+			function updateStatusText() {
+				lblX.textContent = formatUnitVal(mouseWorld.x);
+				lblY.textContent = formatUnitVal(mouseWorld.y);
+				if (pinnedPoint) {
+					lblPin.textContent = `[${pinnedPoint.info}] X: ${formatUnitVal(pinnedPoint.x)}, Y: ${formatUnitVal(pinnedPoint.y)}`;
+				}
+			}
+			function draw() {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				if (chkGrid.checked) drawGrid();
+				if (chkOrigin.checked) drawOrigin();
+				ctx.save();
+				ctx.translate(canvas.width / 2 + panX, canvas.height / 2 + panY);
+				ctx.scale(zoom, -zoom);
+				layers.forEach(layer => {
+					if (!layer.visible) return;
+					ctx.fillStyle = layer.color;
+					ctx.strokeStyle = layer.color;
+					layer.items.forEach(item => {
+						if (item.type === 'line') {
+							ctx.lineWidth = item.width || 0.1;
+							ctx.lineCap = 'round';
+							ctx.beginPath();
+							ctx.moveTo(item.x1, item.y1);
+							ctx.lineTo(item.x2, item.y2);
+							ctx.stroke();
+						} else if (item.type === 'pad') {
+							drawPadShape(ctx, item);
+						} else if (item.type === 'region') {
+							ctx.beginPath();
+							item.points.forEach((pt, i) => {
+								if (i === 0) ctx.moveTo(pt.x, pt.y);
+								else ctx.lineTo(pt.x, pt.y);
+							});
+							ctx.closePath();
+							ctx.fill();
+						}
+					});
+				});
+				ctx.restore();
+				drawOverlay();
+			}
+			function drawPadShape(ctx, pad) {
+				const {
+					shape,
+					dims,
+					x,
+					y
+				} = pad;
+				ctx.beginPath();
+				if (shape === 'C') {
+					ctx.arc(x, y, (dims[0] || 0.2) / 2, 0, Math.PI * 2);
+					ctx.fill();
+				} else if (shape === 'R') {
+					const w = dims[0] || 0.2,
+						h = dims[1] || w;
+					ctx.fillRect(x - w / 2, y - h / 2, w, h);
+				} else {
+					ctx.arc(x, y, (dims[0] || 0.2) / 2, 0, Math.PI * 2);
+					ctx.fill();
+				}
+			}
+			function drawGrid() {
+				ctx.strokeStyle = '#181820';
+				ctx.lineWidth = 1;
+				let step = 1;
+				if (zoom < 5) step = 10;
+				if (zoom > 50) step = 0.5;
+				const minWorld = screenToWorld(0, canvas.height);
+				const maxWorld = screenToWorld(canvas.width, 0);
+				const startX = Math.floor(minWorld.x / step) * step;
+				const endX = Math.ceil(maxWorld.x / step) * step;
+				const startY = Math.floor(minWorld.y / step) * step;
+				const endY = Math.ceil(maxWorld.y / step) * step;
+				ctx.beginPath();
+				for (let x = startX; x <= endX; x += step) {
+					const s = worldToScreen(x, 0);
+					ctx.moveTo(s.x, 0);
+					ctx.lineTo(s.x, canvas.height);
+				}
+				for (let y = startY; y <= endY; y += step) {
+					const s = worldToScreen(0, y);
+					ctx.moveTo(0, s.y);
+					ctx.lineTo(canvas.width, s.y);
+				}
+				ctx.stroke();
+			}
+			function drawOrigin() {
+				const originS = worldToScreen(0, 0);
+				ctx.strokeStyle = '#882222';
+				ctx.lineWidth = 1.5;
+				ctx.beginPath();
+				ctx.moveTo(0, originS.y);
+				ctx.lineTo(canvas.width, originS.y);
+				ctx.stroke();
+				ctx.strokeStyle = '#228822';
+				ctx.beginPath();
+				ctx.moveTo(originS.x, 0);
+				ctx.lineTo(originS.x, canvas.height);
+				ctx.stroke();
+				ctx.fillStyle = '#ef4444';
+				ctx.beginPath();
+				ctx.arc(originS.x, originS.y, 4, 0, Math.PI * 2);
+				ctx.fill();
+				ctx.font = 'bold 11px monospace';
+				ctx.strokeStyle = '#000000';
+				ctx.lineWidth = 3;
+				ctx.strokeText('(0,0)', originS.x + 8, originS.y - 8);
+				ctx.fillStyle = '#ef4444';
+				ctx.fillText('(0,0)', originS.x + 8, originS.y - 8);
+			}
+			function drawOverlay() {
+				const nearest = findNearestGeometry(mouseWorld.x, mouseWorld.y);
+				if (nearest.center && (activeTool === 'SNAP' || activeTool === 'MEASURE')) {
+					const s = worldToScreen(nearest.center.x, nearest.center.y);
+					ctx.strokeStyle = '#38bdf8';
+					ctx.lineWidth = 2;
+					ctx.beginPath();
+					ctx.arc(s.x, s.y, 8, 0, Math.PI * 2);
+					ctx.stroke();
+					ctx.beginPath();
+					ctx.moveTo(s.x - 12, s.y);
+					ctx.lineTo(s.x + 12, s.y);
+					ctx.moveTo(s.x, s.y - 12);
+					ctx.lineTo(s.x, s.y + 12);
+					ctx.stroke();
+				}
+				if (boxStartWorld && boxEndWorld && (isBoxSelecting || activeTool === 'BOX_SELECT')) {
+					const p1 = worldToScreen(boxStartWorld.x, boxStartWorld.y);
+					const p2 = worldToScreen(boxEndWorld.x, boxEndWorld.y);
+					const bx = Math.min(p1.x, p2.x),
+						by = Math.min(p1.y, p2.y);
+					const bw = Math.abs(p1.x - p2.x),
+						bh = Math.abs(p1.y - p2.y);
+					ctx.strokeStyle = '#38bdf8';
+					ctx.lineWidth = 1.5;
+					ctx.setLineDash([5, 4]);
+					ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+					ctx.fillRect(bx, by, bw, bh);
+					ctx.strokeRect(bx, by, bw, bh);
+					ctx.setLineDash([]);
+				}
+				if (calculatedCentroid) {
+					const s = worldToScreen(calculatedCentroid.x, calculatedCentroid.y);
+					ctx.strokeStyle = '#38bdf8';
+					ctx.lineWidth = 2;
+					ctx.beginPath();
+					ctx.arc(s.x, s.y, 8, 0, Math.PI * 2);
+					ctx.stroke();
+					const labelText = `+ Tâm (${calculatedCentroid.count} Shapes): X: ${formatUnitVal(calculatedCentroid.x)}, Y: ${formatUnitVal(calculatedCentroid.y)} | W: ${formatUnitVal(calculatedCentroid.w)}, H: ${formatUnitVal(calculatedCentroid.h)}`;
+					ctx.font = 'bold 12px Segoe UI';
+					ctx.strokeStyle = '#000000';
+					ctx.lineWidth = 3.5;
+					ctx.strokeText(labelText, s.x + 16, s.y - 6);
+					ctx.fillStyle = '#38bdf8';
+					ctx.fillText(labelText, s.x + 16, s.y - 6);
+				}
+				if (pinnedPoint) {
+					const s = worldToScreen(pinnedPoint.x, pinnedPoint.y);
+					ctx.strokeStyle = '#38bdf8';
+					ctx.lineWidth = 2.5;
+					ctx.beginPath();
+					ctx.arc(s.x, s.y, 6, 0, Math.PI * 2);
+					ctx.stroke();
+					const textPin = `📍 X: ${formatUnitVal(pinnedPoint.x)}, Y: ${formatUnitVal(pinnedPoint.y)}`;
+					ctx.font = 'bold 12px Segoe UI';
+					ctx.strokeStyle = '#000000';
+					ctx.lineWidth = 3.5;
+					ctx.strokeText(textPin, s.x + 10, s.y - 10);
+					ctx.fillStyle = '#38bdf8';
+					ctx.fillText(textPin, s.x + 10, s.y - 10);
+				}
+				if (activeTool === 'MEASURE' && measureStart) {
+					const targetEndCenter = measureEnd || (nearest.center ? nearest.center : {
+						x: mouseWorld.x,
+						y: mouseWorld.y
+					});
+					const p1World = {
+						x: measureStart.x,
+						y: measureStart.y
+					};
+					const p2World = {
+						x: targetEndCenter.x,
+						y: targetEndCenter.y
+					};
+					const p1 = worldToScreen(p1World.x, p1World.y);
+					const p2 = worldToScreen(p2World.x, p2World.y);
+					ctx.strokeStyle = '#38bdf8';
+					ctx.lineWidth = 2;
+					ctx.setLineDash([5, 4]);
+					ctx.beginPath();
+					ctx.moveTo(p1.x, p1.y);
+					ctx.lineTo(p2.x, p2.y);
+					ctx.stroke();
+					ctx.setLineDash([]);
+					[p1, p2].forEach(p => {
+						ctx.fillStyle = '#38bdf8';
+						ctx.beginPath();
+						ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+						ctx.fill();
+						ctx.strokeStyle = '#ffffff';
+						ctx.lineWidth = 1.5;
+						ctx.stroke();
+					});
+					const dx = Math.abs(p2World.x - p1World.x);
+					const dy = Math.abs(p2World.y - p1World.y);
+					const dist = Math.hypot(p2World.x - p1World.x, p2World.y - p1World.y);
+					const midX = (p1.x + p2.x) / 2;
+					const midY = (p1.y + p2.y) / 2;
+					const text = `Dist: ${formatUnitVal(dist)} (dX: ${formatUnitVal(dx)}, dY: ${formatUnitVal(dy)})`;
+					ctx.font = 'bold 12px Segoe UI';
+					ctx.strokeStyle = '#000000';
+					ctx.lineWidth = 3.5;
+					ctx.strokeText(text, midX + 10, midY - 10);
+					ctx.fillStyle = '#38bdf8';
+					ctx.fillText(text, midX + 10, midY - 10);
+				}
+			}
+			canvas.addEventListener('mousedown', (e) => {
+				if (e.button !== 0) return;
+				isDragging = true;
+				dragStartX = e.clientX;
+				dragStartY = e.clientY;
+				const rect = canvas.getBoundingClientRect();
+				const sx = e.clientX - rect.left,
+					sy = e.clientY - rect.top;
+				if (activeTool === 'BOX_SELECT') {
+					isBoxSelecting = true;
+					boxStartWorld = screenToWorld(sx, sy);
+					boxEndWorld = {
+						...boxStartWorld
+					};
+					selectedGeometries = [];
+					calculatedCentroid = null;
+					currentSelectedBounds = null;
+					btnMoveToZero.classList.remove('active'); // Reset trạng thái tô sáng
+				}
+			});
+			canvas.addEventListener('mousemove', (e) => {
+				const rect = canvas.getBoundingClientRect();
+				const sx = e.clientX - rect.left,
+					sy = e.clientY - rect.top;
+				mouseWorld = screenToWorld(sx, sy);
+				if (isDragging) {
+					if (activeTool === 'PAN') {
+						panX += (e.clientX - dragStartX);
+						panY += (e.clientY - dragStartY);
+						dragStartX = e.clientX;
+						dragStartY = e.clientY;
+					} else if (activeTool === 'BOX_SELECT' && isBoxSelecting) {
+						boxEndWorld = mouseWorld;
+					}
+				}
+				updateStatusText();
+				requestAnimationFrame(draw);
+			});
+			canvas.addEventListener('mouseup', (e) => {
+				if (e.button !== 0) return;
+				const rect = canvas.getBoundingClientRect();
+				const sx = e.clientX - rect.left,
+					sy = e.clientY - rect.top;
+				const distDragged = Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY);
+				if (activeTool === 'BOX_SELECT' && isBoxSelecting) {
+					isBoxSelecting = false;
+					calculateAllGeometriesCentroid();
+				} else if (distDragged < 5) {
+					handleCanvasClick(screenToWorld(sx, sy));
+				}
+				isDragging = false;
+			});
+			function calculateAllGeometriesCentroid() {
+				if (!boxStartWorld || !boxEndWorld) return;
+				const selMinX = Math.min(boxStartWorld.x, boxEndWorld.x);
+				const selMaxX = Math.max(boxStartWorld.x, boxEndWorld.x);
+				const selMinY = Math.min(boxStartWorld.y, boxEndWorld.y);
+				const selMaxY = Math.max(boxStartWorld.y, boxEndWorld.y);
+				selectedGeometries = [];
+				let tightMinX = Infinity,
+					tightMaxX = -Infinity;
+				let tightMinY = Infinity,
+					tightMaxY = -Infinity;
+				layers.forEach(layer => {
+					if (!layer.visible) return;
+					layer.items.forEach(item => {
+						const center = getGeometryCenter(item);
+						if (center) {
+							if (center.x >= selMinX && center.x <= selMaxX && center.y >= selMinY && center.y <= selMaxY) {
+								selectedGeometries.push(center);
+								const bbox = getItemBoundingBox(item);
+								if (bbox) {
+									if (bbox.minX < tightMinX) tightMinX = bbox.minX;
+									if (bbox.maxX > tightMaxX) tightMaxX = bbox.maxX;
+									if (bbox.minY < tightMinY) tightMinY = bbox.minY;
+									if (bbox.maxY > tightMaxY) tightMaxY = bbox.maxY;
+								}
+							}
+						}
+					});
+				});
+				if (selectedGeometries.length > 0) {
+					currentSelectedBounds = {
+						minX: tightMinX,
+						maxX: tightMaxX,
+						minY: tightMinY,
+						maxY: tightMaxY
+					};
+					boxStartWorld = {
+						x: tightMinX,
+						y: tightMinY
+					};
+					boxEndWorld = {
+						x: tightMaxX,
+						y: tightMaxY
+					};
+					const centerX = (tightMinX + tightMaxX) / 2;
+					const centerY = (tightMinY + tightMaxY) / 2;
+					const width = tightMaxX - tightMinX;
+					const height = tightMaxY - tightMinY;
+					calculatedCentroid = {
+						x: centerX,
+						y: centerY,
+						w: width,
+						h: height,
+						count: selectedGeometries.length
+					};
+					lblPin.innerHTML = `Tâm (<b>${selectedGeometries.length} Shapes</b>): X: <b>${formatUnitVal(centerX)}</b>, Y: <b>${formatUnitVal(centerY)}</b>`;
+					// Tô sáng nút khi có đối tượng được bôi chọn
+					btnMoveToZero.classList.add('active');
+				} else {
+					currentSelectedBounds = null;
+					calculatedCentroid = null;
+					lblPin.textContent = `Không có hình học nào`;
+					// Tắt tô sáng nếu khoanh vào vùng trống
+					btnMoveToZero.classList.remove('active');
+				}
+				requestAnimationFrame(draw);
+			}
+			canvas.addEventListener('wheel', (e) => {
+				e.preventDefault();
+				const rect = canvas.getBoundingClientRect();
+				const mouseX = e.clientX - rect.left,
+					mouseY = e.clientY - rect.top;
+				const zoomFactor = e.deltaY < 0 ? 1.15 : 0.85;
+				const newZoom = Math.max(0.01, Math.min(1000, zoom * zoomFactor));
+				panX = mouseX - canvas.width / 2 - (mouseX - canvas.width / 2 - panX) * (newZoom / zoom);
+				panY = mouseY - canvas.height / 2 - (mouseY - canvas.height / 2 - panY) * (newZoom / zoom);
+				zoom = newZoom;
+				zoomSelect.value = 'FIT';
+				updateZoomLabel();
+				requestAnimationFrame(draw);
+			}, {
+				passive: false
+			});
+			function handleCanvasClick(worldPt) {
+				const nearest = findNearestGeometry(worldPt.x, worldPt.y);
+				if (activeTool === 'SNAP') {
+					if (nearest.center) {
+						pinnedPoint = {
+							x: nearest.center.x,
+							y: nearest.center.y,
+							info: nearest.center.label
+						};
+					} else {
+						pinnedPoint = {
+							x: worldPt.x,
+							y: worldPt.y,
+							info: 'Free Point'
+						};
+					}
+					lblPin.textContent = `[${pinnedPoint.info}] X: ${formatUnitVal(pinnedPoint.x)}, Y: ${formatUnitVal(pinnedPoint.y)}`;
+				} else if (activeTool === 'MEASURE') {
+					const targetObj = nearest.center ? nearest.center : {
+						x: worldPt.x,
+						y: worldPt.y,
+						item: null
+					};
+					if (!measureStart || (measureStart && measureEnd)) {
+						measureStart = targetObj;
+						measureEnd = null;
+						lblMeasure.textContent = `Đã chọn điểm 1. Hãy click điểm thứ 2...`;
+					} else {
+						measureEnd = targetObj;
+						const dist = Math.hypot(measureEnd.x - measureStart.x, measureEnd.y - measureStart.y);
+						lblMeasure.textContent = `Dist: ${formatUnitVal(dist)}`;
+					}
+				}
+				requestAnimationFrame(draw);
+			}
+			function setTool(tool) {
+				activeTool = tool;
+				btnPan.classList.toggle('active', tool === 'PAN');
+				btnSnap.classList.toggle('active', tool === 'SNAP');
+				btnBoxSelect.classList.toggle('active', tool === 'BOX_SELECT');
+				btnMeasure.classList.toggle('active', tool === 'MEASURE');
+				canvas.style.cursor = tool === 'PAN' ? 'grab' : 'crosshair';
+				requestAnimationFrame(draw);
+			}
+			btnPan.addEventListener('click', () => setTool('PAN'));
+			btnSnap.addEventListener('click', () => setTool('SNAP'));
+			btnBoxSelect.addEventListener('click', () => setTool('BOX_SELECT'));
+			btnMeasure.addEventListener('click', () => setTool('MEASURE'));
+			btnClear.addEventListener('click', () => {
+				pinnedPoint = null;
+				measureStart = null;
+				measureEnd = null;
+				selectedGeometries = [];
+				calculatedCentroid = null;
+				currentSelectedBounds = null;
+				boxStartWorld = null;
+				boxEndWorld = null;
+				btnMoveToZero.classList.remove('active');
+				lblPin.textContent = 'Chưa ghim';
+				lblMeasure.textContent = 'Chưa đo';
+				requestAnimationFrame(draw);
+			});
+			chkGrid.addEventListener('change', () => requestAnimationFrame(draw));
+			chkOrigin.addEventListener('change', () => requestAnimationFrame(draw));
+			resizeCanvas();
+		</script>
+	</body>
+</html>
