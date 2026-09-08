@@ -64,9 +64,13 @@ async function render_lists() {
 				</div>
 			`;
 			data_lists.appendChild(div);
-			// Nút View
 			div.querySelector(`.view-btn[data-key="${itemKey}"]`).addEventListener("click", () => {
-				window.open(`?page=${encodeURIComponent(item.simplified)}`, "_blank");
+				let hskVal = "00"; 
+				if (item.label && item.label[0]) {
+					hskVal = item.label[0].replace(/HSK/i, "");
+				}
+				const hanziVal = encodeURIComponent(item.simplified || "");
+				window.open(`page/index.html?hanzi="${hanziVal}"&hsk=${hskVal}`, "_blank");
 			});
 			// Nút Thêm vào danh sách Yêu thích
 			div.querySelector(`.favorite-btn[data-key="${itemKey}"]`).addEventListener("click", async (e) => {
@@ -140,8 +144,8 @@ favoritesBtn.addEventListener("click", () => {
 
 // Navbar
 menuToggle.addEventListener("click", () => {
-    menuToggle.classList.toggle("active");
-    navSidebar.classList.toggle("active");
+	menuToggle.classList.toggle("active");
+	navSidebar.classList.toggle("active");
 });
 
 // Ẩn Pinyin
