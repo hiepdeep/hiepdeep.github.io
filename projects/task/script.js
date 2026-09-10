@@ -176,7 +176,8 @@ async function renderCalendar() {
 	dates.innerHTML = datesHtml;
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	const formatMoney = (amount) => new Intl.NumberFormat("vi-VN").format(amount);
-	const __lcb    = 9172000;
+	// const __lcb    = 9172000;
+	const __lcb    = 9951620;
 	const __1h     = __lcb / (countWorkDays * 8);
 	const __pc     = 900000;
 	const work_day = __1h * (stats.ds + stats.ns + stats.leave);
