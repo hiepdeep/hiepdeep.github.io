@@ -36,6 +36,7 @@ let cadOriginalData = { headers: [], rows: [] };
 let boardData = [];
 const ctx = myCanvas.getContext("2d");
 let origMinX = 0, origMinY = 0;
+let boardBounds = { minX: 0, maxX: 0, minY: 0, maxY: 0 }; // Cache Bounding Box
 let zoomLevel = 1.0;
 let panOffset = { x: 0, y: 0 };
 let isPanning = false;
@@ -146,6 +147,19 @@ function renderCADsTextarea() {
 }
 document.getElementById("telitFormat").addEventListener("change", renderCADsTextarea);
 
+// Cập nhật Cache Bounding Box
+function updateBoardBounds() {
+	if (boardData.length === 0) return;
+	let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+	boardData.forEach(p => {
+		if (p.x < minX) minX = p.x;
+		if (p.x > maxX) maxX = p.x;
+		if (p.y < minY) minY = p.y;
+		if (p.y > maxY) maxY = p.y;
+	});
+	boardBounds = { minX, maxX, minY, maxY };
+}
+
 // Vẽ & quản lý Canvas
 function initCanvasSize() {
 	const container = myCanvas.parentElement;
@@ -156,14 +170,9 @@ function renderCanvas() {
 	if (!myCanvas.width || myCanvas.width === 0) initCanvasSize();
 	ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
 	if (boardData.length === 0) return;
-	// Tính toán khung giới hạn (bounding box) của dữ liệu:
-	let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-	boardData.forEach(p => {
-		if (p.x < minX) minX = p.x;
-		if (p.x > maxX) maxX = p.x;
-		if (p.y < minY) minY = p.y;
-		if (p.y > maxY) maxY = p.y;
-	});
+
+	// Dùng cache Bounding Box để tránh lặp tính toán
+	const { minX, maxX, minY, maxY } = boardBounds;
 	const dataW = maxX - minX || 1;
 	const dataH = maxY - minY || 1;
 	const pad = 30;
@@ -175,33 +184,40 @@ function renderCanvas() {
 	const midY = (minY + maxY) / 2;
 	const toCX = x => centerX + (x - midX) * scale;
 	const toCY = y => centerY - (y - midY) * scale;
-	// Sắp xếp thứ tự vẽ (Layer z-index):
-	const sortedBoardData = [...boardData].sort((a, b) => {
-		const getLayer = (p) => {
-			if (p.selected) return 3;
-			if (p.partNumber && p.partNumber !== "N/A") return 2;
-			return 1;
-		};
-		return getLayer(a) - getLayer(b);
-	});
-	// Vẽ các điểm linh kiện
+
 	const dotRadius = Math.max(3, Math.min(6, scale * 1.5));
-	sortedBoardData.forEach(p => {
-		const cx = toCX(p.x);
-		const cy = toCY(p.y);
-		ctx.beginPath();
-		ctx.arc(cx, cy, dotRadius, 0, Math.PI * 2);
-		if (p.selected) {
-			ctx.fillStyle = "#ffffff"; // Đang chọn = Màu trắng
-			ctx.fill();
-		} else if (p.partNumber && p.partNumber !== "N/A") {
-			ctx.fillStyle = "#ffdf82"; // Có Part = Vàng đồng
-			ctx.fill();
-		} else {
-			ctx.fillStyle = "#9fafa1"; // Thiếu Part (N/A) = Xám (nằm dưới cùng)
+
+	// Tối ưu 3-Pass Rendering (Không sử dụng .sort() để tiết kiệm CPU)
+	// Lượt 1: Part N/A (Thiếu Part = Màu xám - Nằm dưới cùng)
+	ctx.fillStyle = "#9fafa1";
+	boardData.forEach(p => {
+		if (!p.selected && (!p.partNumber || p.partNumber === "N/A")) {
+			ctx.beginPath();
+			ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
 			ctx.fill();
 		}
 	});
+
+	// Lượt 2: Có Part (Màu vàng đồng - Ở giữa)
+	ctx.fillStyle = "#ffdf82";
+	boardData.forEach(p => {
+		if (!p.selected && p.partNumber && p.partNumber !== "N/A") {
+			ctx.beginPath();
+			ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
+			ctx.fill();
+		}
+	});
+
+	// Lượt 3: Đang chọn (Màu trắng - Nằm trên cùng)
+	ctx.fillStyle = "#ffffff";
+	boardData.forEach(p => {
+		if (p.selected) {
+			ctx.beginPath();
+			ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
+			ctx.fill();
+		}
+	});
+
 	// Vẽ khung bôi chọn (Marquee) khi đang giữ chuột phải kéo chọn vùng
 	if (isSelecting) {
 		ctx.strokeStyle = "#00ffff";
@@ -225,12 +241,11 @@ myCanvas.addEventListener("wheel", function(e) {
 	const mouseY = e.clientY - rect.top;
 	const zoomFactor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
 	const newZoom = zoomLevel * zoomFactor;
-	// Giới hạn zoom nhỏ nhất bằng tỷ lệ ban đầu
+
 	if (newZoom <= 1.0) {
 		zoomLevel = 1.0;
 		panOffset = { x: 0, y: 0 };
 	} else {
-		// Tính toán lại offset để lấy điểm đặt chuột làm tâm thu phóng
 		const centerX = myCanvas.width / 2 + panOffset.x;
 		const centerY = myCanvas.height / 2 + panOffset.y;
 		panOffset.x -= (mouseX - centerX) * (zoomFactor - 1);
@@ -276,13 +291,7 @@ myCanvas.addEventListener("mouseup", function(e) {
 		const maxY = Math.max(selectStart.y, selectEnd.y);
 		const isDrag = (maxX - minX >= 3) && (maxY - minY >= 3);
 		if (isDrag) {
-			let pMinX = Infinity, pMaxX = -Infinity, pMinY = Infinity, pMaxY = -Infinity;
-			boardData.forEach(p => {
-				if (p.x < pMinX) pMinX = p.x;
-				if (p.x > pMaxX) pMaxX = p.x;
-				if (p.y < pMinY) pMinY = p.y;
-				if (p.y > pMaxY) pMaxY = p.y;
-			});
+			const { minX: pMinX, maxX: pMaxX, minY: pMinY, maxY: pMaxY } = boardBounds;
 			const dataW = pMaxX - pMinX || 1;
 			const dataH = pMaxY - pMinY || 1;
 			const pad = 30;
@@ -365,6 +374,7 @@ btnExport.addEventListener("click", function(e) {
 	if (boardData.length > 0) {
 		origMinX = Math.min(...boardData.map(p => p.x));
 		origMinY = Math.min(...boardData.map(p => p.y));
+		updateBoardBounds(); // Cập nhật cache Bounding Box
 	}
 	renderBasicTable();
 	setTimeout(() => {
@@ -394,6 +404,9 @@ rotate90.addEventListener("click", function(e) {
 		let newRot = ((parseFloat(p.rot) || 0) + 90) % 360;
 		p.rot = newRot.toString();
 	});
+
+	updateBoardBounds(); // Cập nhật cache Bounding Box sau khi xoay
+
 	// Render lại bảng và canvas
 	renderBasicTable();
 	zoomLevel = 1.0;
@@ -438,7 +451,7 @@ clearSelect.addEventListener("click", function(e) {
 	renderCanvas();
 });
 
-// // Tạo bảng dữ liệu đầy đủ
+// Tạo bảng dữ liệu đầy đủ
 exportTableAll.addEventListener("click", function(e) {
 	e.preventDefault();
 	const selectedPoints = boardData.filter(p => p.selected);
