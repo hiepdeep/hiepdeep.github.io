@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>Get Placements Flexa | V01</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="box">
+			<div class="my-header">
+				<a class="title" href="">Generator Placements Director</a>
+				<div class="navigation-bar">
+					<button class="btn-import active">select <b>BOMs</b></button>
+					<span class="split">&gt;</span>
+					<button class="btn-import">select <b>CADs</b></button>
+					<span class="split">&gt;</span>
+					<button id="btn-generator">Generator</button>
+				</div>
+			</div>
+			<div class="main">
+				<div class="txt-import active">
+					<div class="label">
+						<label class="btn-importfile" for="addBOMs">
+							<input type="file" id="addBOMs" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Chọn file BOMs đã lưu</span>
+						</label>
+					</div>
+					<textarea id="importBOMs" placeholder="Pls add BOMs.."></textarea>
+				</div>
+				<div class="txt-import">
+					<div class="label">
+						<label class="btn-importfile" for="addCADs">
+							<input type="file" id="addCADs" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Chọn file CADs đã lưu</span>
+						</label>
+						<label class="btn-checkbox" for="telitFormat" title="Xoay góc CADs cho dòng sản phẩm Telit">
+							<input type="checkbox" id="telitFormat">
+							<span class="txt">Telit Format</span>
+						</label>
+					</div>
+					<textarea id="importCADs" placeholder="Pls add CADs.."></textarea>
+				</div>
+				<div class="txt-export" id="txt-generator">
+					<div class="txtExportTable-customize">
+						<div id="txtExportTable-basic"></div>
+						<div class="canvas-box">
+							<div class="data">
+								<div class="col-1">
+									<button id="btn-turn90deg">Xoay +90°</button>
+									<div class="get-point">
+										<div class="item">
+											<input type="text" id="setAssign" placeholder="Assign">
+											<input type="text" id="setSide" placeholder="Side">
+										</div>
+										<div class="item">
+											<input type="text" id="mark-x1" placeholder="X1">
+											<input type="text" id="mark-y1" placeholder="Y1">
+											<button id="getMark1">Get FD1</button>
+										</div>
+										<div class="item">
+											<input type="text" id="mark-x2" placeholder="X2">
+											<input type="text" id="mark-y2" placeholder="Y2">
+											<button id="getMark2">Get FD2</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-2">
+									<div class="action">
+										<label class="btn-checkbox" for="selectMode" title="Bôi chọn 1 panel trong canvas">
+											<input type="checkbox" id="selectMode">
+											<span class="txt">Select Mode</span>
+										</label>
+										<button id="btn-clearSelect" title="Bỏ chọn trong canvas">Clear select</button>
+									</div>
+									<div class="myCanvas">
+										<canvas id="myCanvas"></canvas>
+									</div>
+								</div>
+							</div>
+							<button id="btn-exportTable">Export</button>
+						</div>
+					</div>
+					<div id="txtExportTable-all"></div>
+				</div>
+			</div>
+			<div class="my-footer">
+				<div class="totals">
+					<span><strong id="total-cads">0</strong> CADs, </span>
+					<span><strong id="total-cad">0</strong> CAD includes Part, </span>
+					<span><strong id="total-uncad">0</strong> CAD missing Part.</span>
+				</div>
+				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
