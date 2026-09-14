@@ -1,0 +1,1167 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>Get Placements Flexa | V01</title>
+		<style type="text/css">
+			a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+				outline: none;
+				vertical-align: baseline;
+			}
+			:link, button {
+				text-decoration: none;
+				cursor: pointer;
+				user-select: none;
+			}
+			:link, :hover, :focus, :active, :visited {
+				outline: none;
+			}
+			:root {
+				--hue-saturation-purple: 260deg, 50%;
+				--hue-saturation-pink: 330deg, 60%;
+				--hue-saturation-orange: 30deg, 80%;
+				--hue-saturation-brown: 20deg, 40%;
+				--hue-saturation-teal: 170deg, 50%;
+				--hue-saturation-yellow: 50deg, 80%;
+				--hue-saturation-red: 10deg, 70%;
+				--hue-saturation-green: 140deg, 50%;
+				--hue-saturation-blue: 210deg, 70%;
+				--hue-saturation-gray: 200deg, 10%;
+				--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
+				--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
+				--bg-box: hsl(var(--hue-saturation-gray), 100%);
+				--bd-box: hsl(var(--hue-saturation-gray), 90%);
+				--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
+				--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
+				--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
+				--color-lv-4: hsl(var(--hue-saturation-gray), 40%);
+				--color-white: hsl(var(--hue-saturation-gray), 95%);
+				--color-placeholder: hsl(var(--hue-saturation-gray), 70%);
+				--fz-lv-1: 18px;
+				--fz-lv-2: 16px;
+				--fz-lv-3: 14px;
+				--fz-lv-4: 12px;
+				--bdrs-lv-1: 16px;
+				--bdrs-lv-2: 12px;
+				--bdrs-lv-3: 8px;
+				--bdrs-lv-4: 4px;
+				--bdrs-lv-5: 2px;
+			}
+			iframe {
+				width: 100%;
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+			}
+			ol, ul, li {
+				list-style-type: none;
+			}
+			::-webkit-scrollbar {
+				width: 0;
+				height: 0;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				letter-spacing: 0.05em;
+				-webkit-tap-highlight-color: transparent;
+				-webkit-font-smoothing: antialiased;
+				font-family: "Courier New", sans-serif;
+				color: red;
+				font-size: var(--fz-lv-4);
+			}
+			body {
+				background: var(--bg-body-blue);
+				display: -ms-grid;
+				display: grid;
+				height: 100vh;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			input,
+			button {
+				border-radius: var(--bdrs-lv-5);
+			}
+			.btn-checkbox {
+				width: -webkit-max-content;
+				width: -moz-max-content;
+				width: max-content;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				gap: 6px;
+				padding: 0 6px 0 0;
+				cursor: pointer;
+				color: hsl(var(--hue-saturation-gray), 95%);
+				background: hsl(var(--hue-saturation-gray), 50%);
+				border: 1px solid hsl(var(--hue-saturation-gray), 45%);
+			}
+			.btn-checkbox:hover {
+				background: hsl(var(--hue-saturation-gray), 45%);
+				border-color: hsl(var(--hue-saturation-gray), 40%);
+			}
+			.btn-checkbox:active {
+				background: hsl(var(--hue-saturation-gray), 40%);
+				border-color: hsl(var(--hue-saturation-gray), 35%);
+			}
+			.btn-checkbox input {
+				display: block;
+				-webkit-appearance: none;
+				width: 28px;
+				height: 28px;
+				position: relative;
+				overflow: hidden;
+				cursor: pointer;
+				background: var(--bg-body-blue);
+			}
+			.btn-checkbox input:before {
+				content: "";
+				background: hsl(var(--hue-saturation-gray), 60%);
+				position: absolute;
+				width: calc((100% - 4px) / 3);
+				height: calc(100% - 4px);
+				left: 2px;
+				top: 50%;
+				-webkit-transform: translatey(-50%);
+				-ms-transform: translatey(-50%);
+				transform: translatey(-50%);
+				-webkit-transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
+				transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
+			}
+			.btn-checkbox input:checked:before {
+				width: calc((100% - 4px) / 2);
+				left: calc(100% - ((28px - 4px) / 2) - 2px);
+				background: hsl(var(--hue-saturation-green), 40%);
+			}
+			.btn-checkbox span {
+				width: -webkit-max-content;
+				width: -moz-max-content;
+				width: max-content;
+				font-weight: bold;
+				color: inherit;
+			}
+			.box {
+				width: 100%;
+				height: 100vh;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 6px;
+				padding: 12px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			.box .my-header {
+				-ms-flex-negative: 0;
+				flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				padding: 12px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .my-header .title {
+				font-weight: bold;
+				font-size: var(--fz-lv-3);
+				color: var(--color-lv-1);
+			}
+			.box .my-header .navigation-bar {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				gap: 12px;
+			}
+			.box .my-header .navigation-bar button {
+				cursor: pointer;
+			}
+			.box .my-header .navigation-bar button.btn-import {
+				all: unset;
+				color: var(--color-lv-3);
+				cursor: pointer;
+			}
+			.box .my-header .navigation-bar button.btn-import b {
+				font-weight: bold;
+				color: inherit;
+			}
+			.box .my-header .navigation-bar button.btn-import.active {
+				text-decoration: underline;
+			}
+			.box .my-header .navigation-bar button#btn-generator {
+				height: 30px;
+				padding: 0 12px;
+				color: hsl(var(--hue-saturation-blue), 95%);
+				background: hsl(var(--hue-saturation-blue), 50%);
+				border: 1px solid hsl(var(--hue-saturation-blue), 45%);
+			}
+			.box .my-header .navigation-bar button#btn-generator:hover {
+				background: hsl(var(--hue-saturation-blue), 45%);
+				border-color: hsl(var(--hue-saturation-blue), 40%);
+			}
+			.box .my-header .navigation-bar button#btn-generator:active,
+			.box .my-header .navigation-bar button#btn-generator.active {
+				background: hsl(var(--hue-saturation-blue), 40%);
+				border-color: hsl(var(--hue-saturation-blue), 35%);
+			}
+			.box .my-header .navigation-bar .split {
+				color: var(--color-placeholder);
+			}
+			.box .main {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				height: 100%;
+				overflow: hidden;
+			}
+			.box .main .txt-import {
+				height: 100%;
+				display: none;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.box .main .txt-import.active {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.box .main .txt-import .label {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				gap: 6px;
+			}
+			.box .main .txt-import .label label.btn-importfile {
+				width: 100%;
+			}
+			.box .main .txt-import .label label.btn-importfile .txt {
+				display: block;
+				line-height: 28px;
+				text-align: center;
+				cursor: pointer;
+				color: hsl(var(--hue-saturation-gray), 95%);
+				background: hsl(var(--hue-saturation-gray), 50%);
+				border: 1px solid hsl(var(--hue-saturation-gray), 45%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .txt-import .label label.btn-importfile .txt:hover {
+				background: hsl(var(--hue-saturation-gray), 45%);
+				border-color: hsl(var(--hue-saturation-gray), 40%);
+			}
+			.box .main .txt-import .label label.btn-importfile .txt:active {
+				background: hsl(var(--hue-saturation-gray), 40%);
+				border-color: hsl(var(--hue-saturation-gray), 35%);
+			}
+			.box .main .txt-import .label label.btn-checkbox {
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .txt-import .label label.btn-checkbox input {
+				border-radius: 3px;
+			}
+			.box .main .txt-import .label label.btn-checkbox input:before {
+				border-radius: 1px;
+			}
+			.box .main .txt-import textarea {
+				width: 100%;
+				height: 100%;
+				padding: 12px;
+				font-size: var(--fz-lv-4);
+				color: var(--color-lv-3);
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				resize: none;
+				overflow-y: scroll;
+			}
+			.box .main .txt-export {
+				display: none;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 6px;
+				height: 100%;
+			}
+			.box .main .txt-export .txtExportTable-customize {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				gap: 6px;
+			}
+			.box .main .txt-export .txtExportTable-customize #txtExportTable-basic {
+				width: 100%;
+				height: 296px;
+				padding: 6px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				overflow-y: scroll;
+			}
+			.box .main .txt-export .txtExportTable-customize #txtExportTable-basic table {
+				border-collapse: collapse;
+				width: 100%;
+				-webkit-user-select: all;
+				-moz-user-select: all;
+				user-select: all;
+			}
+			.box .main .txt-export .txtExportTable-customize #txtExportTable-basic table tr th,
+			.box .main .txt-export .txtExportTable-customize #txtExportTable-basic table tr td {
+				padding: 6px;
+				text-align: left;
+				color: var(--color-lv-3);
+			}
+			.box .main .txt-export .txtExportTable-customize #txtExportTable-basic table tr th {
+				font-weight: bold;
+				border-bottom: 1px solid var(--bd-box);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box {
+				-ms-flex-negative: 0;
+				flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				gap: 6px;
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 {
+				width: 334px;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 6px;
+				padding: 6px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 #btn-turn90deg {
+				height: 100%;
+				padding: 0 12px;
+				color: hsl(var(--hue-saturation-orange), 95%);
+				background: hsl(var(--hue-saturation-orange), 50%);
+				border: 1px solid hsl(var(--hue-saturation-orange), 45%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 #btn-turn90deg:hover {
+				background: hsl(var(--hue-saturation-orange), 45%);
+				border-color: hsl(var(--hue-saturation-orange), 40%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 #btn-turn90deg:active {
+				background: hsl(var(--hue-saturation-orange), 40%);
+				border-color: hsl(var(--hue-saturation-orange), 35%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				gap: 6px;
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input {
+				width: 100%;
+				height: 30px;
+				padding: 0 6px;
+				font-size: var(--fz-lv-4);
+				color: var(--color-lv-2);
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input::-webkit-input-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input::-moz-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input:-ms-input-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input::-ms-input-placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input::placeholder {
+				color: var(--color-placeholder);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item button {
+				-ms-flex-negative: 0;
+				flex-shrink: 0;
+				width: -webkit-max-content;
+				width: -moz-max-content;
+				width: max-content;
+				height: 30px;
+				padding: 0 12px;
+				color: hsl(var(--hue-saturation-teal), 95%);
+				background: hsl(var(--hue-saturation-teal), 50%);
+				border: 1px solid hsl(var(--hue-saturation-teal), 45%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item button:hover {
+				background: hsl(var(--hue-saturation-teal), 45%);
+				border-color: hsl(var(--hue-saturation-teal), 40%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item button:active {
+				background: hsl(var(--hue-saturation-teal), 40%);
+				border-color: hsl(var(--hue-saturation-teal), 35%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 6px;
+				padding: 6px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				gap: 6px;
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action .btn-checkbox {
+				border-radius: 3px;
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action .btn-checkbox input {
+				background: var(--bg-box);
+				border-radius: 2px;
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action .btn-checkbox input:before {
+				border-radius: 0px;
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button {
+				width: 100%;
+				height: 30px;
+				padding: 0 12px;
+				color: hsl(var(--hue-saturation-brown), 95%);
+				background: hsl(var(--hue-saturation-brown), 50%);
+				border: 1px solid hsl(var(--hue-saturation-brown), 45%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button:hover {
+				background: hsl(var(--hue-saturation-brown), 45%);
+				border-color: hsl(var(--hue-saturation-brown), 40%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button:active {
+				background: hsl(var(--hue-saturation-brown), 40%);
+				border-color: hsl(var(--hue-saturation-brown), 35%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .myCanvas {
+				width: calc(180px * 16 / 9);
+				height: 180px;
+				border-radius: 3px;
+				overflow: hidden;
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .myCanvas #myCanvas {
+				width: 100%;
+				height: 100%;
+				background: hsl(var(--hue-saturation-green), 40%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box #btn-exportTable {
+				width: 100%;
+				height: 60px;
+				padding: 0 12px;
+				color: hsl(var(--hue-saturation-purple), 95%);
+				background: hsl(var(--hue-saturation-purple), 50%);
+				border: 1px solid hsl(var(--hue-saturation-purple), 45%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box #btn-exportTable:hover {
+				background: hsl(var(--hue-saturation-purple), 45%);
+				border-color: hsl(var(--hue-saturation-purple), 40%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box #btn-exportTable:active,
+			.box .main .txt-export .txtExportTable-customize .canvas-box #btn-exportTable.active {
+				background: hsl(var(--hue-saturation-purple), 40%);
+				border-color: hsl(var(--hue-saturation-purple), 35%);
+			}
+			.box .main .txt-export #txtExportTable-all {
+				width: 100%;
+				height: 100%;
+				padding: 6px;
+				background: var(--bg-box);
+				border: 1px solid var(--bd-box);
+				border-radius: var(--bdrs-lv-4);
+				overflow-y: scroll;
+			}
+			.box .main .txt-export #txtExportTable-all table {
+				border-collapse: collapse;
+				width: 100%;
+				-webkit-user-select: all;
+				-moz-user-select: all;
+				user-select: all;
+			}
+			.box .main .txt-export #txtExportTable-all table tr th,
+			.box .main .txt-export #txtExportTable-all table tr td {
+				padding: 6px;
+				text-align: left;
+				color: var(--color-lv-3);
+			}
+			.box .main .txt-export #txtExportTable-all table tr th {
+				font-weight: bold;
+				border-bottom: 1px solid var(--bd-box);
+			}
+			.box .main .txt-export.active {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.box .my-footer {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+			}
+			.box .my-footer .totals span {
+				color: var(--color-lv-4);
+			}
+			.box .my-footer .totals span strong {
+				font-weight: bold;
+				color: inherit;
+			}
+			.box .my-footer .copyright {
+				color: var(--color-lv-4);
+			}
+			.box .my-footer .copyright b {
+				font-weight: bold;
+				color: inherit;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="my-header">
+				<a class="title" href="">Generator Placements Director</a>
+				<div class="navigation-bar">
+					<button class="btn-import active">select <b>BOMs</b></button>
+					<span class="split">&gt;</span>
+					<button class="btn-import">select <b>CADs</b></button>
+					<span class="split">&gt;</span>
+					<button id="btn-generator">Generator</button>
+				</div>
+			</div>
+			<div class="main">
+				<div class="txt-import active">
+					<div class="label">
+						<label class="btn-importfile" for="addBOMs">
+							<input type="file" id="addBOMs" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Chọn file BOMs đã lưu</span>
+						</label>
+					</div>
+					<textarea id="importBOMs" placeholder="Pls add BOMs.."></textarea>
+				</div>
+				<div class="txt-import">
+					<div class="label">
+						<label class="btn-importfile" for="addCADs">
+							<input type="file" id="addCADs" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Chọn file CADs đã lưu</span>
+						</label>
+						<label class="btn-checkbox" for="telitFormat" title="Xoay góc CADs cho dòng sản phẩm Telit">
+							<input type="checkbox" id="telitFormat">
+							<span class="txt">Telit Format</span>
+						</label>
+					</div>
+					<textarea id="importCADs" placeholder="Pls add CADs.."></textarea>
+				</div>
+				<div class="txt-export" id="txt-generator">
+					<div class="txtExportTable-customize">
+						<div id="txtExportTable-basic"></div>
+						<div class="canvas-box">
+							<div class="data">
+								<div class="col-1">
+									<button id="btn-turn90deg">Xoay +90°</button>
+									<div class="get-point">
+										<div class="item">
+											<input type="text" id="setAssign" placeholder="Assign">
+											<input type="text" id="setSide" placeholder="Side">
+										</div>
+										<div class="item">
+											<input type="text" id="mark-x1" placeholder="X1">
+											<input type="text" id="mark-y1" placeholder="Y1">
+											<button id="getMark1">Get FD1</button>
+										</div>
+										<div class="item">
+											<input type="text" id="mark-x2" placeholder="X2">
+											<input type="text" id="mark-y2" placeholder="Y2">
+											<button id="getMark2">Get FD2</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-2">
+									<div class="action">
+										<label class="btn-checkbox" for="selectMode" title="Bôi chọn 1 panel trong canvas">
+											<input type="checkbox" id="selectMode">
+											<span class="txt">Select Mode</span>
+										</label>
+										<button id="btn-clearSelect" title="Bỏ chọn trong canvas">Clear select</button>
+									</div>
+									<div class="myCanvas">
+										<canvas id="myCanvas"></canvas>
+									</div>
+								</div>
+							</div>
+							<button id="btn-exportTable">Export</button>
+						</div>
+					</div>
+					<div id="txtExportTable-all"></div>
+				</div>
+			</div>
+			<div class="my-footer">
+				<div class="totals">
+					<span><strong id="total-cads">0</strong> CADs, </span>
+					<span><strong id="total-cad">0</strong> CAD includes Part, </span>
+					<span><strong id="total-uncad">0</strong> CAD missing Part.</span>
+				</div>
+				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			console.clear();
+			console.log("Mã được tạo vào ngày 14/09/2026 bởi HiepDz");
+			console.log("");
+			console.log("Hướng dẫn sử dụng:");
+			console.log("1. Tải lên file BOM.");
+			console.log("2. Tải lên file CAD (Nếu là hàng Telit thì ấn nút 'Telit Format'.");
+			console.log("3. Ấn nút 'Generator'.");
+			console.log("4. Điền ô 'Assign', 'Side'.");
+			console.log("5. Ấn nút 'Select Mode' và giữ chuột phải quét 1 điểm và ấn nút 'Get FD1' để tạo điểm Mark 1. Ấn nút 'Clear select' để bỏ chọn và quét điểm Mark 2.");
+			console.log("6. Ấn nút 'Clear select' để bỏ chọn và phóng to 1 panel và quét chọn để lấy 1 panel.");
+			console.log("7. Ấn nút 'Export' để tạo bảng dữ liệu.");
+			console.log("8. Ấn vào bảng dữ liệu đã tạo và Ctrl+C để sao chép dữ liệu rồi ném vào chương trình Director.");
+			// Khai báo tên biến Element, trạng thái dữ liệu
+			const btnImports = document.getElementsByClassName("btn-import");
+			const txtImports = document.getElementsByClassName("txt-import");
+			const btnExport = document.getElementById("btn-generator");
+			const txtExport = document.getElementById("txt-generator");
+			const table_basic = document.getElementById("txtExportTable-basic");
+			const table_all = document.getElementById("txtExportTable-all");
+			const rotate90 = document.getElementById("btn-turn90deg");
+			const txtAssign = document.getElementById("setAssign");
+			const txtSide = document.getElementById("setSide");
+			const txtMark_X1 = document.getElementById("mark-x1");
+			const txtMark_Y1 = document.getElementById("mark-y1");
+			const txtMark_X2 = document.getElementById("mark-x2");
+			const txtMark_Y2 = document.getElementById("mark-y2");
+			const getMark_1 = document.getElementById("getMark1");
+			const getMark_2 = document.getElementById("getMark2");
+			const selectMode = document.getElementById("selectMode");
+			const clearSelect = document.getElementById("btn-clearSelect");
+			const myCanvas = document.getElementById("myCanvas");
+			const exportTableAll = document.getElementById("btn-exportTable");
+			let $cads = 0, $cad = 0, $uncad = 0;
+			let cadOriginalData = { headers: [], rows: [] };
+			let boardData = [];
+			const ctx = myCanvas.getContext("2d");
+			let origMinX = 0, origMinY = 0;
+			let boardBounds = { minX: 0, maxX: 0, minY: 0, maxY: 0 }; // Cache Bounding Box
+			let zoomLevel = 1.0;
+			let panOffset = { x: 0, y: 0 };
+			let isPanning = false;
+			let panStart = { x: 0, y: 0 };
+			let isSelecting = false;
+			let selectStart = { x: 0, y: 0 };
+			let selectEnd = { x: 0, y: 0 };
+			// Chuyển Tab
+			for (let i = 0; i < btnImports.length; i++) {
+				btnImports[i].addEventListener("click", (e) => {
+					e.preventDefault();
+					for (let j = 0; j < btnImports.length; j++) {
+						btnImports[j].classList.remove("active");
+						txtImports[j].classList.remove("active");
+					}
+					btnExport.classList.remove("active");
+					txtExport.classList.remove("active");
+					btnImports[i].classList.add("active");
+					txtImports[i].classList.add("active");
+				});
+			}
+			// Xử lý file BOMs
+			document.getElementById("addBOMs").addEventListener("change", function() {
+				let file = this.files[0];
+				if (!file) return;
+				let reader = new FileReader();
+				reader.onload = function(e) {
+					let rawText = e.target.result;
+					let startIndex = rawText.indexOf("|Lev|");
+					if (startIndex === -1) {
+						alert("Không tìm thấy dòng tiêu đề '|Lev|' trong file!");
+						return;
+					}
+					let lines = rawText.slice(startIndex).split("\n");
+					let parsedRows = [], headers = [];
+					for (let i = 0; i < lines.length; i++) {
+						let line = lines[i].trim();
+						if (!line || line.startsWith("|-") || line.startsWith("-")) continue;
+						let cells = line.split("|").slice(1, -1).map(cell => cell.trim());
+						if (headers.length === 0) headers = cells;
+						else parsedRows.push(cells);
+					}
+					let quantityIndex = 6, schemaRefIndex = 8, qtyCount = 0;
+					headers.forEach((h, c) => {
+						if (h === "Quantity" && ++qtyCount === 2) quantityIndex = c;
+						if (h === "Schema ref") schemaRefIndex = c;
+					});
+					let filteredRows = parsedRows.filter(row => (row[quantityIndex] || "") === "1,00" && (row[schemaRefIndex] || "") !== "");
+					let allData = [headers, ...filteredRows];
+					let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => (row[colIdx] || "").length)));
+					document.getElementById("importBOMs").value = allData.map(row =>
+						row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")
+					).join("\n");
+				};
+				reader.readAsText(file);
+			});
+			// Xử lý file CADs
+			function formatCADsOutput(headers, rows) {
+				let allData = [headers, ...rows];
+				let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => String(row[colIdx] || "").length)));
+				return allData.map(row => row.map((cell, colIdx) => String(cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
+			}
+			document.getElementById("addCADs").addEventListener("change", function() {
+				let file = this.files[0];
+				if (!file) return;
+				let reader = new FileReader();
+				reader.onload = function(e) {
+					let lines = e.target.result.split("\n");
+					let headerIndex = lines.findIndex(l => l.includes("Designator") && l.includes("Center-X(mm)"));
+					if (headerIndex === -1) {
+						alert("Không tìm thấy dòng tiêu đề CADs!");
+						return;
+					}
+					let headers = lines[headerIndex].trim().split(/\s+/);
+					let parsedRows = [];
+					for (let i = headerIndex + 1; i < lines.length; i++) {
+						let line = lines[i].trim();
+						if (!line) continue;
+						let cells = line.split(/\s+/);
+						if (cells.length >= 4) {
+							parsedRows.push(cells);
+						}
+					}
+					cadOriginalData = { headers, rows: parsedRows };
+					renderCADsTextarea();
+				};
+				reader.readAsText(file);
+			});
+			function renderCADsTextarea() {
+				if (cadOriginalData.headers.length === 0) return;
+				let isTelit = document.getElementById("telitFormat").checked;
+				let processedRows = cadOriginalData.rows.map(row => [...row]);
+				if (isTelit) {
+					processedRows.forEach(cells => {
+						let rotVal = parseFloat(cells[3]);
+						if (!isNaN(rotVal)) {
+							rotVal -= 90;
+							cells[3] = (rotVal === -90 ? 270 : rotVal).toString();
+						}
+					});
+				}
+				document.getElementById("importCADs").value = formatCADsOutput(cadOriginalData.headers, processedRows);
+				$cads = cadOriginalData.rows.length;
+				document.getElementById("total-cads").innerText = $cads;
+			}
+			document.getElementById("telitFormat").addEventListener("change", renderCADsTextarea);
+			// Cập nhật Cache Bounding Box
+			function updateBoardBounds() {
+				if (boardData.length === 0) return;
+				let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+				boardData.forEach(p => {
+					if (p.x < minX) minX = p.x;
+					if (p.x > maxX) maxX = p.x;
+					if (p.y < minY) minY = p.y;
+					if (p.y > maxY) maxY = p.y;
+				});
+				boardBounds = { minX, maxX, minY, maxY };
+			}
+			// Vẽ & quản lý Canvas
+			function initCanvasSize() {
+				const container = myCanvas.parentElement;
+				myCanvas.width = container.clientWidth || 600;
+				myCanvas.height = container.clientHeight || 400;
+			}
+			function renderCanvas() {
+				if (!myCanvas.width || myCanvas.width === 0) initCanvasSize();
+				ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+				if (boardData.length === 0) return;
+				// Dùng cache Bounding Box để tránh lặp tính toán
+				const { minX, maxX, minY, maxY } = boardBounds;
+				const dataW = maxX - minX || 1;
+				const dataH = maxY - minY || 1;
+				const pad = 30;
+				const baseScale = Math.min((myCanvas.width - pad * 2) / dataW, (myCanvas.height - pad * 2) / dataH);
+				const scale = baseScale * zoomLevel;
+				const centerX = myCanvas.width / 2 + panOffset.x;
+				const centerY = myCanvas.height / 2 + panOffset.y;
+				const midX = (minX + maxX) / 2;
+				const midY = (minY + maxY) / 2;
+				const toCX = x => centerX + (x - midX) * scale;
+				const toCY = y => centerY - (y - midY) * scale;
+				const dotRadius = Math.max(3, Math.min(6, scale * 1.5));
+				// Tối ưu 3-Pass Rendering (Không sử dụng .sort() để tiết kiệm CPU)
+				// Lượt 1: Part N/A (Thiếu Part = Màu xám - Nằm dưới cùng)
+				ctx.fillStyle = "#9fafa1";
+				boardData.forEach(p => {
+					if (!p.selected && (!p.partNumber || p.partNumber === "N/A")) {
+						ctx.beginPath();
+						ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
+						ctx.fill();
+					}
+				});
+				// Lượt 2: Có Part (Màu vàng đồng - Ở giữa)
+				ctx.fillStyle = "#ffdf82";
+				boardData.forEach(p => {
+					if (!p.selected && p.partNumber && p.partNumber !== "N/A") {
+						ctx.beginPath();
+						ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
+						ctx.fill();
+					}
+				});
+				// Lượt 3: Đang chọn (Màu trắng - Nằm trên cùng)
+				ctx.fillStyle = "#ffffff";
+				boardData.forEach(p => {
+					if (p.selected) {
+						ctx.beginPath();
+						ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
+						ctx.fill();
+					}
+				});
+				// Vẽ khung bôi chọn (Marquee) khi đang giữ chuột phải kéo chọn vùng
+				if (isSelecting) {
+					ctx.strokeStyle = "#00ffff";
+					ctx.lineWidth = 1;
+					ctx.setLineDash([4, 4]);
+					const rectX = Math.min(selectStart.x, selectEnd.x);
+					const rectY = Math.min(selectStart.y, selectEnd.y);
+					const rectW = Math.abs(selectEnd.x - selectStart.x);
+					const rectH = Math.abs(selectEnd.y - selectStart.y);
+					ctx.strokeRect(rectX, rectY, rectW, rectH);
+					ctx.setLineDash([]);
+				}
+			}
+			// Tương tác chuột trên Canvas
+			myCanvas.addEventListener("contextmenu", e => e.preventDefault());
+			myCanvas.addEventListener("wheel", function(e) {
+				e.preventDefault();
+				const rect = myCanvas.getBoundingClientRect();
+				const mouseX = e.clientX - rect.left;
+				const mouseY = e.clientY - rect.top;
+				const zoomFactor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+				const newZoom = zoomLevel * zoomFactor;
+				if (newZoom <= 1.0) {
+					zoomLevel = 1.0;
+					panOffset = { x: 0, y: 0 };
+				} else {
+					const centerX = myCanvas.width / 2 + panOffset.x;
+					const centerY = myCanvas.height / 2 + panOffset.y;
+					panOffset.x -= (mouseX - centerX) * (zoomFactor - 1);
+					panOffset.y -= (mouseY - centerY) * (zoomFactor - 1);
+					zoomLevel = newZoom;
+				}
+				renderCanvas();
+			});
+			myCanvas.addEventListener("mousedown", function(e) {
+				const rect = myCanvas.getBoundingClientRect();
+				const mouseX = e.clientX - rect.left;
+				const mouseY = e.clientY - rect.top;
+				if (e.button === 0) { // Chuột trái: Kéo di chuyển Canvas
+					isPanning = true;
+					panStart = { x: mouseX - panOffset.x, y: mouseY - panOffset.y };
+				} else if (e.button === 2 && selectMode.checked) { // Chuột phải: Bôi quét chọn điểm
+					isSelecting = true;
+					selectStart = { x: mouseX, y: mouseY };
+					selectEnd = { x: mouseX, y: mouseY };
+				}
+			});
+			myCanvas.addEventListener("mousemove", function(e) {
+				const rect = myCanvas.getBoundingClientRect();
+				const mouseX = e.clientX - rect.left;
+				const mouseY = e.clientY - rect.top;
+				if (isPanning) {
+					panOffset.x = mouseX - panStart.x;
+					panOffset.y = mouseY - panStart.y;
+					renderCanvas();
+				} else if (isSelecting) {
+					selectEnd = { x: mouseX, y: mouseY };
+					renderCanvas();
+				}
+			});
+			myCanvas.addEventListener("mouseup", function(e) {
+				if (e.button === 0 && isPanning) {
+					isPanning = false;
+				} else if (e.button === 2 && isSelecting) {
+					isSelecting = false;
+					const minX = Math.min(selectStart.x, selectEnd.x);
+					const maxX = Math.max(selectStart.x, selectEnd.x);
+					const minY = Math.min(selectStart.y, selectEnd.y);
+					const maxY = Math.max(selectStart.y, selectEnd.y);
+					const isDrag = (maxX - minX >= 3) && (maxY - minY >= 3);
+					if (isDrag) {
+						const { minX: pMinX, maxX: pMaxX, minY: pMinY, maxY: pMaxY } = boardBounds;
+						const dataW = pMaxX - pMinX || 1;
+						const dataH = pMaxY - pMinY || 1;
+						const pad = 30;
+						const baseScale = Math.min((myCanvas.width - pad * 2) / dataW, (myCanvas.height - pad * 2) / dataH);
+						const scale = baseScale * zoomLevel;
+						const centerX = myCanvas.width / 2 + panOffset.x;
+						const centerY = myCanvas.height / 2 + panOffset.y;
+						const midX = (pMinX + pMaxX) / 2;
+						const midY = (pMinY + pMaxY) / 2;
+						const toCX = x => centerX + (x - midX) * scale;
+						const toCY = y => centerY - (y - midY) * scale;
+						boardData.forEach(p => {
+							const cx = toCX(p.x);
+							const cy = toCY(p.y);
+							if (cx >= minX && cx <= maxX && cy >= minY && cy <= maxY) {
+								p.selected = true;
+							}
+						});
+					}
+					renderCanvas();
+				}
+			});
+			// Tạo bảng dữ liệu cơ bản
+			function renderBasicTable() {
+				let table = document.createElement("table");
+				let headerRow = table.insertRow();
+				["Ref.", "Pos X", "Pos Y", "Rotation", "Part Number"].forEach(h => {
+					let th = document.createElement("th");
+					th.textContent = h;
+					headerRow.appendChild(th);
+				});
+				$cad = 0;
+				$uncad = 0;
+				boardData.forEach(p => {
+					let row = table.insertRow();
+					row.insertCell().textContent = p.ref;
+					row.insertCell().textContent = p.x;
+					row.insertCell().textContent = p.y;
+					row.insertCell().textContent = p.rot;
+					row.insertCell().textContent = p.partNumber;
+					if (p.partNumber !== "N/A" && p.partNumber !== "") $cad++;
+					else $uncad++;
+				});
+				table_basic.innerHTML = "";
+				table_basic.appendChild(table);
+				document.getElementById("total-cad").innerText = $cad;
+				document.getElementById("total-uncad").innerText = $uncad;
+			}
+			// Khi nhấn nút Generator
+			btnExport.addEventListener("click", function(e) {
+				e.preventDefault();
+				for (let j = 0; j < btnImports.length; j++) {
+					btnImports[j].classList.remove("active");
+					txtImports[j].classList.remove("active");
+				}
+				btnExport.classList.add("active");
+				txtExport.classList.add("active");
+				let rowBOMs = document.getElementById("importBOMs").value.trim().split("\n").map(r => r.split("|").map(c => c.trim()));
+				let rowCADs = document.getElementById("importCADs").value.trim().split("\n").map(r => r.split("|").map(c => c.trim()));
+				if (rowCADs.length <= 1 || !rowCADs[0][0]) return;
+				let boms_PartNumber = rowBOMs[0].indexOf("Object ID");
+				let boms_SchemaRef = rowBOMs[0].indexOf("Schema ref");
+				let cads_Designator = rowCADs[0].indexOf("Designator");
+				let cads_X = rowCADs[0].indexOf("Center-X(mm)");
+				let cads_Y = rowCADs[0].indexOf("Center-Y(mm)");
+				let cads_Rotation = rowCADs[0].indexOf("Rotation");
+				boardData = [];
+				for (let i = 1; i < rowCADs.length; i++) {
+					if (!rowCADs[i] || rowCADs[i].length < 4) continue;
+					let ref = rowCADs[i][cads_Designator];
+					let x = parseFloat(rowCADs[i][cads_X]) || 0;
+					let y = parseFloat(rowCADs[i][cads_Y]) || 0;
+					let rot = rowCADs[i][cads_Rotation] || "0";
+					const matchedRow = rowBOMs.slice(1).find(r => r[boms_SchemaRef] === ref);
+					let partNumber = matchedRow ? matchedRow[boms_PartNumber] : "N/A";
+					boardData.push({ ref, x, y, rot, partNumber, selected: false });
+				}
+				if (boardData.length > 0) {
+					origMinX = Math.min(...boardData.map(p => p.x));
+					origMinY = Math.min(...boardData.map(p => p.y));
+					updateBoardBounds(); // Cập nhật cache Bounding Box
+				}
+				renderBasicTable();
+				setTimeout(() => {
+					initCanvasSize();
+					zoomLevel = 1.0;
+					panOffset = { x: 0, y: 0 };
+					renderCanvas();
+				}, 50);
+			});
+			// Khi ấn nút xoay board +90°
+			rotate90.addEventListener("click", function(e) {
+				e.preventDefault();
+				if (boardData.length === 0) return;
+				// Xoay 90 độ theo chiều kim đồng hồ: (X_rot, Y_rot) = (Y, -X)
+				let rotatedCoords = boardData.map(p => ({
+					rotX: p.y,
+					rotY: -p.x
+				}));
+				// Tìm tọa độ nhỏ nhất hiện tại sau khi xoay
+				let currentMinX = Math.min(...rotatedCoords.map(c => c.rotX));
+				let currentMinY = Math.min(...rotatedCoords.map(c => c.rotY));
+				// Dịch chuyển để điểm góc bản mạch duy trì đúng khoảng cách gốc ban đầu (origMinX, origMinY)
+				boardData.forEach((p, index) => {
+					p.x = Math.round((rotatedCoords[index].rotX - currentMinX + origMinX) * 1000) / 1000;
+					p.y = Math.round((rotatedCoords[index].rotY - currentMinY + origMinY) * 1000) / 1000;
+					let newRot = ((parseFloat(p.rot) || 0) + 90) % 360;
+					p.rot = newRot.toString();
+				});
+				updateBoardBounds(); // Cập nhật cache Bounding Box sau khi xoay
+				// Render lại bảng và canvas
+				renderBasicTable();
+				zoomLevel = 1.0;
+				panOffset = { x: 0, y: 0 };
+				renderCanvas();
+			});
+			// Lấy toạ độ điểm Mark
+			getMark_1.addEventListener("click", function(e) {
+				e.preventDefault();
+				if (!selectMode.checked) {
+					alert("Vui lòng bật Select Mode trước!");
+					return;
+				}
+				const selectedPoints = boardData.filter(p => p.selected);
+				if (selectedPoints.length !== 1) {
+					alert("Vui lòng bôi chọn đúng 1 điểm trên Canvas để đặt làm Mark 1!");
+					return;
+				}
+				txtMark_X1.value = selectedPoints[0].x;
+				txtMark_Y1.value = selectedPoints[0].y;
+			});
+			getMark_2.addEventListener("click", function(e) {
+				e.preventDefault();
+				if (!selectMode.checked) {
+					alert("Vui lòng bật Select Mode trước!");
+					return;
+				}
+				const selectedPoints = boardData.filter(p => p.selected);
+				if (selectedPoints.length !== 1) {
+					alert("Vui lòng bôi chọn đúng 1 điểm trên Canvas để đặt làm Mark 2!");
+					return;
+				}
+				txtMark_X2.value = selectedPoints[0].x;
+				txtMark_Y2.value = selectedPoints[0].y;
+			});
+			// Huỷ bỏ đánh dấu trong Canvas
+			clearSelect.addEventListener("click", function(e) {
+				e.preventDefault();
+				boardData.forEach(p => p.selected = false);
+				renderCanvas();
+			});
+			// Tạo bảng dữ liệu đầy đủ
+			exportTableAll.addEventListener("click", function(e) {
+				e.preventDefault();
+				const selectedPoints = boardData.filter(p => p.selected);
+				if (selectedPoints.length === 0) {
+					alert("Vui lòng bật Select Mode và chọn các điểm thuộc Panel 1 trên Canvas!");
+					return;
+				}
+				const assignVal = txtAssign ? txtAssign.value : "";
+				const sideVal = txtSide ? txtSide.value : "";
+				let table = document.createElement("table");
+				let headerRow = table.insertRow();
+				const headers = ["Board", "Ref.", "Pos X", "Pos Y", "Pos Z", "Rotation", "Part Number", "Place Before", "Gluing", "Skip", "Main Mark", "Sub Mark", "Sub Mark1", "Sub Mark2", "Carry Mode", "Stack Target", "Memo", "Tag", "Assign", "Side"];
+				headers.forEach(h => {
+					let th = document.createElement("th");
+					th.textContent = h;
+					headerRow.appendChild(th);
+				});
+				// Hàm hỗ trợ chèn 1 dòng dữ liệu vào bảng
+				const addRow = (data) => {
+					let row = table.insertRow();
+					data.forEach(val => {
+						row.insertCell().textContent = val;
+					});
+				};
+				// 1. Thêm dòng dữ liệu Mark 1 (nếu có tọa độ X1, Y1)
+				if (txtMark_X1.value.trim() !== "" && txtMark_Y1.value.trim() !== "") {
+					addRow(["0", "Mark1", txtMark_X1.value.trim(), txtMark_Y1.value.trim(), "0", "0", "MARK", "", "Yes", "No", "FD1", "FD2", "No", "No", "Arc", "", "", "No", assignVal, sideVal]);
+				}
+				// 2. Thêm dòng dữ liệu Mark 2 (nếu có tọa độ X2, Y2)
+				if (txtMark_X2.value.trim() !== "" && txtMark_Y2.value.trim() !== "") {
+					addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "FD1", "FD2", "No", "No", "Arc", "", "", "No", assignVal, sideVal]);
+				}
+				// 3. Thêm danh sách linh kiện đã được chọn thuộc Panel 1 (Board = 1)
+				selectedPoints.forEach(p => {
+					addRow([
+						"1", p.ref, p.x, p.y, "0", p.rot,
+						p.partNumber, "", "Yes", "No", "FD1", "FD2", "", "",
+						"Arc", "", "", "No", assignVal, sideVal
+					]);
+				});
+				table_all.innerHTML = "";
+				table_all.appendChild(table);
+			});
+			// Tự động căn chỉnh kích thước Canvas khi đổi kích thước cửa sổ
+			window.addEventListener("resize", () => {
+				if (txtExport.classList.contains("active")) {
+					initCanvasSize();
+					renderCanvas();
+				}
+			});
+		</script>
+	</body>
+</html>
