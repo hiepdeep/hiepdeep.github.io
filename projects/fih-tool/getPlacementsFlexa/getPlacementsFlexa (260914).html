@@ -1144,8 +1144,9 @@
 				if (txtMark_X2.value.trim() !== "" && txtMark_Y2.value.trim() !== "") {
 					addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "FD1", "FD2", "No", "No", "Arc", "", "", "No", assignVal, sideVal]);
 				}
-				// 3. Thêm danh sách linh kiện đã được chọn thuộc Panel 1 (Board = 1)
+				// 3. Thêm danh sách linh kiện đã được chọn thuộc Panel 1 (Loại bỏ Part N/A)
 				selectedPoints.forEach(p => {
+					if (!p.partNumber || p.partNumber === "N/A") return; // Bỏ qua linh kiện N/A
 					addRow([
 						"1", p.ref, p.x, p.y, "0", p.rot,
 						p.partNumber, "", "Yes", "No", "FD1", "FD2", "", "",
