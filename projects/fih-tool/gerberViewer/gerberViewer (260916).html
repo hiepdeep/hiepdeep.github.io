@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>Gerber Viewer | V01</title>
+		<style type="text/css">
+			a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+				outline: none;
+				vertical-align: baseline;
+			}
+			:link, button {
+				text-decoration: none;
+				cursor: pointer;
+				user-select: none;
+			}
+			:link, :hover, :focus, :active, :visited {
+				outline: none;
+			}
+			:root {
+				--hue-saturation-purple: 260deg, 50%;
+				--hue-saturation-pink: 330deg, 60%;
+				--hue-saturation-orange: 30deg, 80%;
+				--hue-saturation-brown: 20deg, 40%;
+				--hue-saturation-teal: 170deg, 50%;
+				--hue-saturation-yellow: 50deg, 80%;
+				--hue-saturation-red: 10deg, 70%;
+				--hue-saturation-green: 140deg, 50%;
+				--hue-saturation-blue: 210deg, 70%;
+				--hue-saturation-gray: 200deg, 10%;
+				--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
+				--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
+				--bg-box: hsl(var(--hue-saturation-gray), 100%);
+				--bd-box: hsl(var(--hue-saturation-gray), 90%);
+				--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
+				--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
+				--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
+				--color-lv-4: hsl(var(--hue-saturation-gray), 40%);
+				--color-white: hsl(var(--hue-saturation-gray), 95%);
+				--color-placeholder: hsl(var(--hue-saturation-gray), 70%);
+				--fz-lv-1: 18px;
+				--fz-lv-2: 16px;
+				--fz-lv-3: 14px;
+				--fz-lv-4: 12px;
+				--bdrs-lv-1: 16px;
+				--bdrs-lv-2: 12px;
+				--bdrs-lv-3: 8px;
+				--bdrs-lv-4: 4px;
+				--bdrs-lv-5: 2px;
+			}
+			iframe {
+				width: 100%;
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+			}
+			ol, ul, li {
+				list-style-type: none;
+			}
+			::-webkit-scrollbar {
+				width: 0;
+				height: 0;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				letter-spacing: 0.05em;
+				-webkit-tap-highlight-color: transparent;
+				-webkit-font-smoothing: antialiased;
+				font-family: "Courier New", sans-serif;
+				color: red;
+				font-size: var(--fz-lv-4);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="sidebar">
+				<label class="label-importfile">
+					<input type="file" id="importGerber" accept="text/*" hidden="hidden">
+					<span class="txt">Mở file Gerber</span>
+				</label>
+				<div class="sidebar-header">
+					<h2>Danh sách Layers</h2>
+					<span id="lblLayerCount">0</span>
+				</div>
+				<div class="layer-list" id="layerList">
+					<span class="empty-state">Chưa có layer nào.<br>Hãy kéo thả file hoặc bấm "Mở file Gerber".</span>
+				</div>
+				<div class="sidebar-settings">
+					<label class="label-checkbox">
+						<input type="checkbox" id="displayGrid" checked="">
+						<span class="txt">Hiển thị Lưới (Grid)</span>
+					</label>
+					<label class="label-checkbox">
+						<input type="checkbox" id="displayOrigin" checked="">
+						<span class="txt">Hiển thị Trục Gốc (0,0)</span>
+					</label>
+					<label class="label-checkbox">
+						<input type="checkbox" id="displayPads" checked="">
+						<span class="txt">Hiển thị Pads (Chân LK)</span>
+					</label>
+					<label class="label-checkbox">
+						<input type="checkbox" id="displayTracks" checked="">
+						<span class="txt">Hiển thị Tracks (Đường mạch)</span>
+					</label>
+					<label class="label-checkbox">
+						<input type="checkbox" id="displayRegions" checked="">
+						<span class="txt">Hiển thị Regions (Phủ đồng)</span>
+					</label>
+				</div>
+			</div>
+			<div class="main-control" id="mainControl">
+				<div class="main-control-toolbar">
+					<button id="btnMove" class="active">Move</button>
+					<span class="split">|</span>
+					<button id="btnSelectpoint">Chọn 1 điểm</button>
+					<button id="btnSelectarea">Chọn 1 vùng</button>
+					<button id="btnMeasure">Đo khoảng cách</button>
+					<span class="split">|</span>
+					<button id="btnUnselect">Bỏ chọn</button>
+				</div>
+				<div class="workspace">
+					<div class="canvas-container" id="canvasContainer"></div>
+				</div>
+				<div class="main-control-footer">
+					<div class="status-box">
+						<span>X:</span>
+						<span id="lblX" class="val">0.4202mm</span>
+						<span>Y:</span>
+						<span id="lblY" class="val">0.3140mm</span>
+					</div>
+					<div class="status-box" style="display:none">
+						<span>Point:</span>
+						<span>[</span>
+						<span>X:</span>
+						<span id="lblX" class="val">0.4202mm</span>
+						<span>Y:</span>
+						<span id="lblY" class="val">0.3140mm</span>
+						<span>W:</span>
+						<span id="lblY" class="val">0.3140mm</span>
+						<span>H:</span>
+						<span id="lblY" class="val">0.3140mm</span>
+						<span>]</span>
+					</div>
+					<div class="status-box">
+						<span>Đo:</span>
+						<span>[</span>
+						<span>X1:</span>
+						<span id="lblX" class="val">0.4202mm</span>
+						<span>Y1:</span>
+						<span id="lblY" class="val">0.3140mm</span>
+						<span>X2:</span>
+						<span id="lblX" class="val">0.4202mm</span>
+						<span>Y2:</span>
+						<span id="lblY" class="val">0.3140mm</span>
+						<span>W:</span>
+						<span id="lblY" class="val">0.3140mm</span>
+						<span>]</span>
+					</div>
+					<div class="status-spacer"></div>
+					<div class="status-box">
+						<span>Zoom:</span>
+						<span id="lblZoom" class="val">100%</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			console.clear();
+			console.log("Mã được tạo vào ngày 16/09/2026 bởi HiepDz");
+			console.log("");
+		</script>
+	</body>
+</html>
