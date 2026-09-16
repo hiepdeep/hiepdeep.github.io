@@ -13,7 +13,7 @@
 		<div class="box">
 			<div class="sidebar">
 				<label class="label-importfile">
-					<input type="file" id="importGerber" accept="text/*" hidden="hidden">
+					<input type="file" id="importGerber" accept="*" multiple hidden="hidden">
 					<span class="txt">Mở file Gerber</span>
 				</label>
 				<div class="sidebar-header">
@@ -77,50 +77,50 @@
 					</div>
 					<div class="status-box">
 						<span>X:</span>
-						<span id="realtimeX" class="val">0.4202mm</span>
+						<span id="realtimeX" class="val">0.0000mm</span>
 						<span>Y:</span>
-						<span id="realtimeY" class="val">0.3140mm</span>
+						<span id="realtimeY" class="val">0.0000mm</span>
 					</div>
 					<div class="status-box" id="statusBoxPoint">
 						<span>Point / Area:</span>
 						<span>[</span>
 						<span>X:</span>
-						<span id="pointX" class="val">0.4202mm</span>
+						<span id="pointX" class="val">0.0000mm</span>
 						<span>Y:</span>
-						<span id="pointY" class="val">0.3140mm</span>
+						<span id="pointY" class="val">0.0000mm</span>
 						<span>W:</span>
-						<span id="pointW" class="val">0.3140mm</span>
+						<span id="pointW" class="val">0.0000mm</span>
 						<span>H:</span>
-						<span id="pointH" class="val">0.3140mm</span>
+						<span id="pointH" class="val">0.0000mm</span>
 						<span>]</span>
 					</div>
 					<div class="status-box" id="statusBoxMeasure">
 						<span>Đo:</span>
 						<span>[</span>
 						<span>X1:</span>
-						<span id="areaX" class="val">0.4202mm</span>
+						<span id="areaX" class="val">0.0000mm</span>
 						<span>Y1:</span>
-						<span id="areaY" class="val">0.3140mm</span>
+						<span id="areaY" class="val">0.0000mm</span>
 						<span>X2:</span>
-						<span id="areaW" class="val">0.4202mm</span>
+						<span id="areaW" class="val">0.0000mm</span>
 						<span>Y2:</span>
-						<span id="areaH" class="val">0.3140mm</span>
-						<span>W:</span>
-						<span id="areaC" class="val">0.3140mm</span>
+						<span id="areaH" class="val">0.0000mm</span>
+						<span>L:</span>
+						<span id="areaC" class="val">0.0000mm</span>
 						<span>]</span>
 					</div>
 					<div class="status-spacer"></div>
 					<div class="status-box">
 						<span>Zoom:</span>
 						<div class="option-select-list option-zoom">
-							<div class="option-select toggle-dropdown">0%</div>
+							<div class="option-select toggle-dropdown">Fit</div>
 							<div class="option-list">
+								<span data-value="FIT">Fit View</span>
 								<span data-value="400%">400%</span>
 								<span data-value="200%">200%</span>
 								<span data-value="100%">100%</span>
 								<span data-value="50%">50%</span>
 								<span data-value="25%">25%</span>
-								<span data-value="0%">0%</span>
 							</div>
 						</div>
 					</div>
