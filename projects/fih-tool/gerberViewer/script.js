@@ -475,8 +475,13 @@ class GerberViewport {
 	}
 
 	initCanvas() {
-		this.resize();
-		window.addEventListener("resize", () => this.resize());
+	    this.resize();
+	    if (window.ResizeObserver) {
+	        const ro = new ResizeObserver(() => this.resize());
+	        ro.observe(this.container);
+	    } else {
+	        window.addEventListener("resize", () => this.resize());
+	    }
 	}
 
 	resize() {
@@ -987,34 +992,36 @@ class GerberViewport {
 	}
 
 	drawOrigin() {
-		const origin = this.worldToScreen(0, 0);
-		this.ctx.save();
-		this.ctx.lineWidth = 1.5;
+	    const origin = this.worldToScreen(0, 0);
+	    const dpr = window.devicePixelRatio || 1;
+	    const width = this.canvas.width / dpr;
+	    const height = this.canvas.height / dpr;
 
-		this.ctx.beginPath();
-		this.ctx.strokeStyle = "#ef4444";
-		this.ctx.moveTo(origin.x, origin.y);
-		this.ctx.lineTo(origin.x + 40, origin.y);
-		this.ctx.stroke();
+	    this.ctx.save();
+	    this.ctx.lineWidth = 1;
+	    this.ctx.strokeStyle = "#ef4444"; // Đường trục kéo dài màu đỏ
 
-		this.ctx.beginPath();
-		this.ctx.strokeStyle = "#22c55e";
-		this.ctx.moveTo(origin.x, origin.y);
-		this.ctx.lineTo(origin.x, origin.y - 40);
-		this.ctx.stroke();
+	    // Trục X kéo dài xuyên màn hình
+	    this.ctx.beginPath();
+	    this.ctx.moveTo(0, Math.floor(origin.y) + 0.5);
+	    this.ctx.lineTo(width, Math.floor(origin.y) + 0.5);
+	    this.ctx.stroke();
 
-		this.ctx.beginPath();
-		this.ctx.strokeStyle = "#38bdf8";
-		this.ctx.arc(origin.x, origin.y, 5, 0, Math.PI * 2);
-		this.ctx.stroke();
+	    // Trục Y kéo dài xuyên màn hình
+	    this.ctx.beginPath();
+	    this.ctx.moveTo(Math.floor(origin.x) + 0.5, 0);
+	    this.ctx.lineTo(Math.floor(origin.x) + 0.5, height);
+	    this.ctx.stroke();
 
-		this.ctx.font = 'bold 11px monospace';
-		this.ctx.fillStyle = '#ef4444';
-		this.ctx.fillText('(0,0)', origin.x + 8, origin.y - 8);
+	    // Chấm tròn đỏ ở tâm gốc tọa độ (0,0)
+	    this.ctx.beginPath();
+	    this.ctx.fillStyle = "#ef4444";
+	    this.ctx.arc(origin.x, origin.y, 4, 0, Math.PI * 2);
+	    this.ctx.fill();
 
-		this.ctx.restore();
+	    this.ctx.restore();
 	}
-
+	
 	drawOverlay() {
 		const nearest = this.findNearestGeometry(this.mouseWorldX, this.mouseWorldY);
 		if (nearest.center && (this.currentTool === 'selectpoint' || this.currentTool === 'measure')) {
