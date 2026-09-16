@@ -64,20 +64,20 @@ class GerberViewport {
 	}
 
 	resize() {
-	    const rect = this.container.getBoundingClientRect();
-	    const dpr = window.devicePixelRatio || 1;
+		const rect = this.container.getBoundingClientRect();
+		const dpr = window.devicePixelRatio || 1;
 
-	    // Kích thước Pixel thực tế dùng để render (HiDPI)
-	    this.canvas.width = rect.width * dpr;
-	    this.canvas.height = rect.height * dpr;
+		// Kích thước Pixel thực tế dùng để render (HiDPI)
+		this.canvas.width = rect.width * dpr;
+		this.canvas.height = rect.height * dpr;
 
-	    // Kích thước CSS layout: Để 100% và display: block để không bị đè Flexbox & không tràn baseline
-	    this.canvas.style.width = "100%";
-	    this.canvas.style.height = "100%";
-	    this.canvas.style.display = "block";
+		// Kích thước CSS layout: Để 100% và display: block để không bị đè Flexbox & không tràn baseline
+		this.canvas.style.width = "100%";
+		this.canvas.style.height = "100%";
+		this.canvas.style.display = "block";
 
-	    this.ctx.imageSmoothingEnabled = false;
-	    this.requestRender();
+		this.ctx.imageSmoothingEnabled = false;
+		this.requestRender();
 	}
 
 	centerOrigin() {
@@ -307,13 +307,38 @@ class GerberViewport {
 }
 
 // ==========================================
-// 3. KHỞI TẠO VÀ BẮT SỰ KIỆN GIAO DIỆN UI
+// 3. QUẢN LÝ ẨN / HIỂN THỊ CÁC PHẦN TỬ UI THEO CÔNG CỤ
+// ==========================================
+function updateToolUI(tool) {
+	const statusBoxPoint = document.getElementById("statusBoxPoint");
+	const statusBoxMeasure = document.getElementById("statusBoxMeasure");
+	const btnMovetozero = document.getElementById("btnMovetozero");
+	const splitMovetozero = document.querySelector(".split-movetozero");
+
+	// 1. status-box Point: chỉ hiện khi ở chế độ "selectpoint"
+	if (statusBoxPoint) {
+		statusBoxPoint.classList.toggle("hidden", tool !== "selectpoint");
+	}
+
+	// 2. status-box Đo: chỉ hiện khi ở chế độ "selectarea" HOẶC "measure"
+	if (statusBoxMeasure) {
+		statusBoxMeasure.classList.toggle("hidden", tool !== "selectarea" && tool !== "measure");
+	}
+
+	// 3. btnMovetozero & vạch phân cách: chỉ hiện khi ở chế độ "selectarea"
+	const isArea = (tool === "selectarea");
+	if (btnMovetozero) btnMovetozero.classList.toggle("hidden", !isArea);
+	if (splitMovetozero) splitMovetozero.classList.toggle("hidden", !isArea);
+}
+
+// ==========================================
+// 4. KHỞI TẠO VÀ BẮT SỰ KIỆN GIAO DIỆN UI
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
 	// Khởi tạo Viewport
 	const viewport = new GerberViewport("canvasContainer");
 
-	// --- 3.1 Dropdown & Component ---
+	// --- 4.1 Dropdown & Component ---
 	initDropdownComponent(".option-select-list");
 
 	// Lắng nghe đổi Đơn vị (Unit)
@@ -336,7 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
-	// --- 3.2 Lắng nghe Toolbar (Nút công cụ) ---
+	// --- 4.2 Lắng nghe Toolbar (Nút công cụ) ---
 	const toolButtons = [
 		{ id: "btnMove", tool: "move", cursor: "grab" },
 		{ id: "btnSelectpoint", tool: "selectpoint", cursor: "crosshair" },
@@ -353,10 +378,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			
 			viewport.currentTool = btnConfig.tool;
 			viewport.canvas.style.cursor = btnConfig.cursor;
+
+			// Cập nhật ẩn/hiện UI theo công cụ vừa chọn
+			updateToolUI(btnConfig.tool);
 		});
 	});
 
-	// --- 3.3 Lắng nghe Sidebar Checkboxes (Lưới & Trục Gốc) ---
+	// --- 4.3 Lắng nghe Sidebar Checkboxes (Lưới & Trục Gốc) ---
 	const chkGrid = document.getElementById("displayGrid");
 	if (chkGrid) {
 		chkGrid.addEventListener("change", (e) => {
@@ -372,6 +400,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			viewport.requestRender();
 		});
 	}
+
+	// Khởi tạo trạng thái hiển thị giao diện ban đầu
+	updateToolUI(viewport.currentTool);
 });
 
 function initDropdownComponent(selector) {

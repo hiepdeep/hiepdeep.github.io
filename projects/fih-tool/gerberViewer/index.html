@@ -55,7 +55,7 @@
 					<button id="btnMeasure">Đo khoảng cách</button>
 					<span class="split">|</span>
 					<button id="btnUnselect">Bỏ chọn</button>
-					<span class="split">|</span>
+					<span class="split split-movetozero">|</span>
 					<button id="btnMovetozero">Di chuyển vùng chọn về 0</button>
 				</div>
 				<div class="workspace">
@@ -81,7 +81,7 @@
 						<span>Y:</span>
 						<span id="realtimeY" class="val">0.3140mm</span>
 					</div>
-					<div class="status-box">
+					<div class="status-box" id="statusBoxPoint">
 						<span>Point:</span>
 						<span>[</span>
 						<span>X:</span>
@@ -94,7 +94,7 @@
 						<span id="pointH" class="val">0.3140mm</span>
 						<span>]</span>
 					</div>
-					<div class="status-box">
+					<div class="status-box" id="statusBoxMeasure">
 						<span>Đo:</span>
 						<span>[</span>
 						<span>X1:</span>
