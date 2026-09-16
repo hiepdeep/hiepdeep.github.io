@@ -315,20 +315,25 @@ function updateToolUI(tool) {
 	const btnMovetozero = document.getElementById("btnMovetozero");
 	const splitMovetozero = document.querySelector(".split-movetozero");
 
-	// 1. status-box Point: chỉ hiện khi ở chế độ "selectpoint"
+	// 1. statusBoxPoint: chỉ hiện khi ở chế độ "selectpoint" HOẶC "selectarea"
 	if (statusBoxPoint) {
-		statusBoxPoint.classList.toggle("hidden", tool !== "selectpoint");
+		const showPoint = (tool === "selectpoint" || tool === "selectarea");
+		statusBoxPoint.classList.toggle("hidden", !showPoint);
 	}
 
-	// 2. status-box Đo: chỉ hiện khi ở chế độ "selectarea" HOẶC "measure"
+	// 2. statusBoxMeasure: chỉ hiện khi ở chế độ "measure"
 	if (statusBoxMeasure) {
-		statusBoxMeasure.classList.toggle("hidden", tool !== "selectarea" && tool !== "measure");
+		const showMeasure = (tool === "measure");
+		statusBoxMeasure.classList.toggle("hidden", !showMeasure);
 	}
 
 	// 3. btnMovetozero & vạch phân cách: chỉ hiện khi ở chế độ "selectarea"
-	const isArea = (tool === "selectarea");
-	if (btnMovetozero) btnMovetozero.classList.toggle("hidden", !isArea);
-	if (splitMovetozero) splitMovetozero.classList.toggle("hidden", !isArea);
+	if (btnMovetozero) {
+		btnMovetozero.classList.toggle("hidden", tool !== "selectarea");
+	}
+	if (splitMovetozero) {
+		splitMovetozero.classList.toggle("hidden", tool !== "selectarea");
+	}
 }
 
 // ==========================================
