@@ -64,16 +64,20 @@ class GerberViewport {
 	}
 
 	resize() {
-		const rect = this.container.getBoundingClientRect();
-		const dpr = window.devicePixelRatio || 1;
-		
-		this.canvas.width = rect.width * dpr;
-		this.canvas.height = rect.height * dpr;
-		this.canvas.style.width = `${rect.width}px`;
-		this.canvas.style.height = `${rect.height}px`;
+	    const rect = this.container.getBoundingClientRect();
+	    const dpr = window.devicePixelRatio || 1;
 
-		this.ctx.imageSmoothingEnabled = false;
-		this.requestRender();
+	    // Kích thước Pixel thực tế dùng để render (HiDPI)
+	    this.canvas.width = rect.width * dpr;
+	    this.canvas.height = rect.height * dpr;
+
+	    // Kích thước CSS layout: Để 100% và display: block để không bị đè Flexbox & không tràn baseline
+	    this.canvas.style.width = "100%";
+	    this.canvas.style.height = "100%";
+	    this.canvas.style.display = "block";
+
+	    this.ctx.imageSmoothingEnabled = false;
+	    this.requestRender();
 	}
 
 	centerOrigin() {
