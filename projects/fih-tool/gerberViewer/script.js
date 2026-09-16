@@ -315,24 +315,24 @@ function updateToolUI(tool) {
 	const btnMovetozero = document.getElementById("btnMovetozero");
 	const splitMovetozero = document.querySelector(".split-movetozero");
 
+	const isPointOrArea = (tool === "selectpoint" || tool === "selectarea");
+
 	// 1. statusBoxPoint: chỉ hiện khi ở chế độ "selectpoint" HOẶC "selectarea"
 	if (statusBoxPoint) {
-		const showPoint = (tool === "selectpoint" || tool === "selectarea");
-		statusBoxPoint.classList.toggle("hidden", !showPoint);
+		statusBoxPoint.classList.toggle("hidden", !isPointOrArea);
 	}
 
 	// 2. statusBoxMeasure: chỉ hiện khi ở chế độ "measure"
 	if (statusBoxMeasure) {
-		const showMeasure = (tool === "measure");
-		statusBoxMeasure.classList.toggle("hidden", !showMeasure);
+		statusBoxMeasure.classList.toggle("hidden", tool !== "measure");
 	}
 
-	// 3. btnMovetozero & vạch phân cách: chỉ hiện khi ở chế độ "selectarea"
+	// 3. btnMovetozero & vạch phân cách: hiện khi ở chế độ "selectpoint" HOẶC "selectarea"
 	if (btnMovetozero) {
-		btnMovetozero.classList.toggle("hidden", tool !== "selectarea");
+		btnMovetozero.classList.toggle("hidden", !isPointOrArea);
 	}
 	if (splitMovetozero) {
-		splitMovetozero.classList.toggle("hidden", tool !== "selectarea");
+		splitMovetozero.classList.toggle("hidden", !isPointOrArea);
 	}
 }
 
