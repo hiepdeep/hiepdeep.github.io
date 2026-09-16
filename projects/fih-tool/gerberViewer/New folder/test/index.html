@@ -13,7 +13,7 @@
 		<div class="box">
 			<div class="sidebar">
 				<label class="label-importfile">
-					<input type="file" id="importGerber" accept="text/*" hidden="hidden">
+					<input type="file" id="importGerber" accept=".gbr,.pho,.ger,.art,.drl,.txt,text/*" multiple hidden="hidden">
 					<span class="txt">Mở file Gerber</span>
 				</label>
 				<div class="sidebar-header">
@@ -54,9 +54,9 @@
 					<button id="btnSelectarea">Chọn 1 vùng</button>
 					<button id="btnMeasure">Đo khoảng cách</button>
 					<span class="split">|</span>
-					<button id="btnUnselect">Bỏ chọn</button>
+					<button id="btnUnselect" class="not-allowed">Bỏ chọn</button>
 					<span class="split">|</span>
-					<button id="btnMovetozero">Di chuyển vùng chọn về 0</button>
+					<button id="btnMovetozero" class="not-allowed">Di chuyển vùng chọn về 0</button>
 				</div>
 				<div class="workspace">
 					<div class="canvas-container" id="canvasContainer"></div>
@@ -81,7 +81,7 @@
 						<span>Y:</span>
 						<span id="realtimeY" class="val">0.3140mm</span>
 					</div>
-					<div class="status-box">
+					<div class="status-box" id="boxArea">
 						<span>Point / Area:</span>
 						<span>[</span>
 						<span>X:</span>
@@ -94,7 +94,7 @@
 						<span id="pointH" class="val">0.3140mm</span>
 						<span>]</span>
 					</div>
-					<div class="status-box">
+					<div class="status-box" id="boxMeasure">
 						<span>Đo:</span>
 						<span>[</span>
 						<span>X1:</span>
