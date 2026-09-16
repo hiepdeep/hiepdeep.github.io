@@ -47,7 +47,7 @@
 				</div>
 			</div>
 			<div class="main-control" id="mainControl">
-				<div class="main-control-toolbar">
+				<div class="toolbar">
 					<button id="btnMove" class="active">Move</button>
 					<span class="split">|</span>
 					<button id="btnSelectpoint">Chọn 1 điểm</button>
@@ -55,49 +55,74 @@
 					<button id="btnMeasure">Đo khoảng cách</button>
 					<span class="split">|</span>
 					<button id="btnUnselect">Bỏ chọn</button>
+					<span class="split">|</span>
+					<button id="btnMovetozero">Di chuyển vùng chọn về 0</button>
 				</div>
 				<div class="workspace">
 					<div class="canvas-container" id="canvasContainer"></div>
 				</div>
-				<div class="main-control-footer">
+				<div class="footer">
+					<div class="status-box">
+						<span>Unit:</span>
+						<div class="option-select-list option-unit">
+							<div class="option-select toggle-dropdown">Millimeter (mm)</div>
+							<div class="option-list">
+								<span data-value="mm">Millimeter (mm)</span>
+								<span data-value="cm">Centimeter (cm)</span>
+								<span data-value="mils">Mils (mil)</span>
+								<span data-value="inch">Inch (in)</span>
+								<span data-value="micron">Micron (µm)</span>
+							</div>
+						</div>
+					</div>
 					<div class="status-box">
 						<span>X:</span>
-						<span id="lblX" class="val">0.4202mm</span>
+						<span id="realtimeX" class="val">0.4202mm</span>
 						<span>Y:</span>
-						<span id="lblY" class="val">0.3140mm</span>
+						<span id="realtimeY" class="val">0.3140mm</span>
 					</div>
-					<div class="status-box" style="display:none">
+					<div class="status-box">
 						<span>Point:</span>
 						<span>[</span>
 						<span>X:</span>
-						<span id="lblX" class="val">0.4202mm</span>
+						<span id="pointX" class="val">0.4202mm</span>
 						<span>Y:</span>
-						<span id="lblY" class="val">0.3140mm</span>
+						<span id="pointY" class="val">0.3140mm</span>
 						<span>W:</span>
-						<span id="lblY" class="val">0.3140mm</span>
+						<span id="pointW" class="val">0.3140mm</span>
 						<span>H:</span>
-						<span id="lblY" class="val">0.3140mm</span>
+						<span id="pointH" class="val">0.3140mm</span>
 						<span>]</span>
 					</div>
 					<div class="status-box">
 						<span>Đo:</span>
 						<span>[</span>
 						<span>X1:</span>
-						<span id="lblX" class="val">0.4202mm</span>
+						<span id="areaX" class="val">0.4202mm</span>
 						<span>Y1:</span>
-						<span id="lblY" class="val">0.3140mm</span>
+						<span id="areaY" class="val">0.3140mm</span>
 						<span>X2:</span>
-						<span id="lblX" class="val">0.4202mm</span>
+						<span id="areaW" class="val">0.4202mm</span>
 						<span>Y2:</span>
-						<span id="lblY" class="val">0.3140mm</span>
+						<span id="areaH" class="val">0.3140mm</span>
 						<span>W:</span>
-						<span id="lblY" class="val">0.3140mm</span>
+						<span id="areaC" class="val">0.3140mm</span>
 						<span>]</span>
 					</div>
 					<div class="status-spacer"></div>
 					<div class="status-box">
 						<span>Zoom:</span>
-						<span id="lblZoom" class="val">100%</span>
+						<div class="option-select-list option-zoom">
+							<div class="option-select toggle-dropdown">0%</div>
+							<div class="option-list">
+								<span data-value="400%">400%</span>
+								<span data-value="200%">200%</span>
+								<span data-value="100%">100%</span>
+								<span data-value="50%">50%</span>
+								<span data-value="25%">25%</span>
+								<span data-value="0%">0%</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
