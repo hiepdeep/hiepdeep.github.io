@@ -173,6 +173,9 @@ body {
 						border-color: hsl(var(--hue-saturation-red), 45%);
 					}
 				}
+				&.hidden {
+					display: none;
+				}
 			}
 			.split {
 				color: hsl(var(--hue-saturation-gray), 35%);
@@ -265,11 +268,11 @@ body {
 						}
 					}
 				}
+				&.hidden {
+					display: none;
+				}
 			}
 		}
 	}
 }
 
-.hidden {
-	display: none !important;
-}
