@@ -69,7 +69,12 @@ body {
 			flex: 1;
 			padding: 12px;
 			overflow-y: auto;
+			transition: 0.2s ease;
+			&.is-dragover {
+				background: rgba(255, 255, 255, 0.1);
+			}
 			.empty-state {
+				pointer-events: none;
 				display: block;
 				padding: 12px;
 				text-align: center;
