@@ -463,6 +463,16 @@ function getItemBoundingBox(item) {
     }
     return null;
 }
+// Kiểm tra item có đang được bật hiển thị hay không
+function isItemVisible(item) {
+    const displayPads = document.getElementById('displayPads');
+    const displayTracks = document.getElementById('displayTracks');
+    const displayRegions = document.getElementById('displayRegions');
+    if (item.type === 'pad' && displayPads && !displayPads.checked) return false;
+    if (item.type === 'line' && displayTracks && !displayTracks.checked) return false;
+    if (item.type === 'region' && displayRegions && !displayRegions.checked) return false;
+    return true;
+}
 function findNearestGeometry(wx, wy) {
     const maxDist = 25 / zoom;
     let closestItem = null,
@@ -471,6 +481,7 @@ function findNearestGeometry(wx, wy) {
     for (const layer of layers) {
         if (!layer.visible) continue;
         for (const item of layer.items) {
+            if (!isItemVisible(item)) continue;
             const center = getGeometryCenter(item);
             if (center) {
                 const dist = Math.hypot(center.x - wx, center.y - wy);
@@ -486,6 +497,20 @@ function findNearestGeometry(wx, wy) {
         item: closestItem,
         center: closestCenter
     };
+}
+// Hàm bổ trợ: Bỏ chọn tất cả các vùng/điểm đang chọn
+function clearAllSelections() {
+    pinnedPoint = null;
+    measureStart = null;
+    measureEnd = null;
+    selectedGeometries = [];
+    calculatedCentroid = null;
+    currentSelectedBounds = null;
+    boxStartWorld = null;
+    boxEndWorld = null;
+    isBoxSelecting = false;
+    const btnMovetozero = document.getElementById('btnMovetozero');
+    if (btnMovetozero) btnMovetozero.classList.add('not-allowed');
 }
 // ==========================================
 // 4. KẾT NỐI DOM VÀ QUẢN LÝ GIAO DIỆN
@@ -517,7 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Bảng trạng thái
     const boxArea = document.getElementById('boxArea');
     const boxMeasure = document.getElementById('boxMeasure');
-    // Text thông tin (Cập nhật đúng ID theo HTML mới)
+    // Text thông tin
     const realtimeX = document.getElementById('realtimeX');
     const realtimeY = document.getElementById('realtimeY');
     const pointX = document.getElementById('pointX');
@@ -625,6 +650,7 @@ document.addEventListener("DOMContentLoaded", () => {
         layers.forEach(l => {
             if (!l.visible) return;
             l.items.forEach(it => {
+                if (!isItemVisible(it)) return;
                 const bbox = getItemBoundingBox(it);
                 if (bbox) {
                     hasItems = true;
@@ -667,6 +693,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     function setTool(tool) {
         activeTool = tool;
+        // Tự động bỏ vùng chọn khi chuyển về chế độ Move
+        if (tool === 'MOVE') {
+            clearAllSelections();
+        }
         btnMove.classList.toggle('active', tool === 'MOVE');
         btnSelectpoint.classList.toggle('active', tool === 'SELECT_POINT');
         btnSelectarea.classList.toggle('active', tool === 'SELECT_AREA');
@@ -692,6 +722,7 @@ document.addEventListener("DOMContentLoaded", () => {
             boxMeasure.style.display = 'none';
         }
         canvas.style.cursor = tool === 'MOVE' ? 'grab' : 'crosshair';
+        updateInfoUI();
         requestAnimationFrame(draw);
     }
     btnMove.addEventListener('click', () => setTool('MOVE'));
@@ -700,15 +731,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnMeasure.addEventListener('click', () => setTool('MEASURE'));
     btnUnselect.addEventListener('click', () => {
         if (btnUnselect.classList.contains('not-allowed')) return;
-        pinnedPoint = null;
-        measureStart = null;
-        measureEnd = null;
-        selectedGeometries = [];
-        calculatedCentroid = null;
-        currentSelectedBounds = null;
-        boxStartWorld = null;
-        boxEndWorld = null;
-        btnMovetozero.classList.add('not-allowed');
+        clearAllSelections();
         updateInfoUI();
         requestAnimationFrame(draw);
     });
@@ -902,10 +925,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.lineTo(originS.x, canvas.height);
         ctx.stroke();
     }
-    // Vẽ chỉ báo Tâm (Crosshair Center Marker)
     function drawCenterMarker(x, y, labelColor = '#38bdf8') {
         const s = worldToScreen(x, y);
-        // Vòng tròn ngoài nét đứt
         ctx.strokeStyle = labelColor;
         ctx.lineWidth = 1.5;
         ctx.setLineDash([3, 3]);
@@ -913,7 +934,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.arc(s.x, s.y, 10, 0, Math.PI * 2);
         ctx.stroke();
         ctx.setLineDash([]);
-        // Chữ thập tại tâm
         ctx.beginPath();
         ctx.moveTo(s.x - 7, s.y);
         ctx.lineTo(s.x + 7, s.y);
@@ -923,7 +943,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function drawOverlay() {
         const nearest = findNearestGeometry(mouseWorld.x, mouseWorld.y);
-        // Hover vào điểm/đối tượng gần nhất
         if (nearest.center && (activeTool === 'SELECT_POINT' || activeTool === 'MEASURE')) {
             const s = worldToScreen(nearest.center.x, nearest.center.y);
             ctx.strokeStyle = '#38bdf8';
@@ -932,7 +951,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.arc(s.x, s.y, 8, 0, Math.PI * 2);
             ctx.stroke();
         }
-        // Vẽ khung chọn vùng (Select Area Box)
         if (boxStartWorld && boxEndWorld && (isBoxSelecting || activeTool === 'SELECT_AREA')) {
             const p1 = worldToScreen(boxStartWorld.x, boxStartWorld.y);
             const p2 = worldToScreen(boxEndWorld.x, boxEndWorld.y);
@@ -948,7 +966,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.strokeRect(bx, by, bw, bh);
             ctx.setLineDash([]);
         }
-        // 1. Hiển thị tâm vùng chọn (Point hoặc Area Centroid)
         if (activeTool === 'SELECT_POINT' && pinnedPoint) {
             drawCenterMarker(pinnedPoint.x, pinnedPoint.y, '#38bdf8');
         } else if (activeTool === 'SELECT_AREA' && currentSelectedBounds) {
@@ -956,7 +973,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const cy = (currentSelectedBounds.minY + currentSelectedBounds.maxY) / 2;
             drawCenterMarker(cx, cy, '#38bdf8');
         }
-        // 2. Hiển thị đường đo & Tâm đường đo (Measure Line & Center)
         if (activeTool === 'MEASURE' && measureStart) {
             const targetEnd = measureEnd || (nearest.center ? nearest.center : {
                 x: mouseWorld.x,
@@ -964,7 +980,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             const p1 = worldToScreen(measureStart.x, measureStart.y);
             const p2 = worldToScreen(targetEnd.x, targetEnd.y);
-            // Đoạn thẳng đo
             ctx.strokeStyle = '#38bdf8';
             ctx.lineWidth = 2;
             ctx.setLineDash([5, 4]);
@@ -973,14 +988,12 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
             ctx.setLineDash([]);
-            // Hai điểm mút
             [p1, p2].forEach(p => {
                 ctx.fillStyle = '#38bdf8';
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
                 ctx.fill();
             });
-            // Tâm (trung điểm) đường đo
             const midX = (measureStart.x + targetEnd.x) / 2;
             const midY = (measureStart.y + targetEnd.y) / 2;
             drawCenterMarker(midX, midY, '#f59e0b');
@@ -1082,6 +1095,7 @@ document.addEventListener("DOMContentLoaded", () => {
         layers.forEach(layer => {
             if (!layer.visible) return;
             layer.items.forEach(item => {
+                if (!isItemVisible(item)) return;
                 const center = getGeometryCenter(item);
                 if (center && center.x >= selMinX && center.x <= selMaxX && center.y >= selMinY && center.y <= selMaxY) {
                     selectedGeometries.push(center);
@@ -1125,6 +1139,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 pointY.textContent = formatUnitVal(pinnedPoint.y);
                 pointW.textContent = "0" + UNITS[currentUnit].label;
                 pointH.textContent = "0" + UNITS[currentUnit].label;
+            } else {
+                pointX.textContent = formatUnitVal(0);
+                pointY.textContent = formatUnitVal(0);
+                pointW.textContent = formatUnitVal(0);
+                pointH.textContent = formatUnitVal(0);
             }
         } else if (activeTool === 'SELECT_AREA') {
             if (currentSelectedBounds) {
@@ -1136,6 +1155,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 pointY.textContent = formatUnitVal(cy);
                 pointW.textContent = formatUnitVal(w);
                 pointH.textContent = formatUnitVal(h);
+            } else {
+                pointX.textContent = formatUnitVal(0);
+                pointY.textContent = formatUnitVal(0);
+                pointW.textContent = formatUnitVal(0);
+                pointH.textContent = formatUnitVal(0);
             }
         } else if (activeTool === 'MEASURE') {
             if (measureStart) {
@@ -1146,6 +1170,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 measureY2.textContent = formatUnitVal(targetEnd.y);
                 const dist = Math.hypot(targetEnd.x - measureStart.x, targetEnd.y - measureStart.y);
                 measureW.textContent = formatUnitVal(dist);
+            } else {
+                measureX1.textContent = formatUnitVal(0);
+                measureY1.textContent = formatUnitVal(0);
+                measureX2.textContent = formatUnitVal(0);
+                measureY2.textContent = formatUnitVal(0);
+                measureW.textContent = formatUnitVal(0);
             }
         }
     }
@@ -1174,7 +1204,6 @@ document.addEventListener("DOMContentLoaded", () => {
             zoomBtn.textContent = `${pct}%`;
         }
     }
-    // Khởi tạo Component Custom Dropdown
     function initDropdowns() {
         const dropdowns = document.querySelectorAll('.option-select-list');
         dropdowns.forEach(container => {
@@ -1223,9 +1252,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Lắng nghe sự thay đổi của Settings Checkbox
     [displayGrid, displayOrigin, displayPads, displayTracks, displayRegions].forEach(chk => {
-        chk.addEventListener('change', () => requestAnimationFrame(draw));
+        chk.addEventListener('change', () => {
+            if (activeTool === 'SELECT_AREA' && currentSelectedBounds) {
+                calculateAreaSelection();
+            }
+            requestAnimationFrame(draw);
+        });
     });
-    // Bắt đầu khởi chạy
+    // Bắt đầu khởi chạy Engine
     initDropdowns();
     resizeCanvas();
     setTool('MOVE');
