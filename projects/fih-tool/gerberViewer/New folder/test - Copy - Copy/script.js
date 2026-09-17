@@ -349,7 +349,7 @@ function toUnit(valInMM) {
     return valInMM * UNITS[currentUnit].scale;
 }
 function formatUnitVal(valInMM) {
-    if (valInMM === null || valInMM === undefined || isNaN(valInMM)) return `0.0000${UNITS[currentUnit].label}`;
+    if (valInMM === null || valInMM === undefined || isNaN(valInMM)) return `0${UNITS[currentUnit].label}`;
     return `${toUnit(valInMM).toFixed(UNITS[currentUnit].decimals)}${UNITS[currentUnit].label}`;
 }
 function getGeometryCenter(item) {
@@ -517,18 +517,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // Bảng trạng thái
     const boxArea = document.getElementById('boxArea');
     const boxMeasure = document.getElementById('boxMeasure');
-    // Text thông tin
+    // Text thông tin (Cập nhật đúng ID theo HTML mới)
     const realtimeX = document.getElementById('realtimeX');
     const realtimeY = document.getElementById('realtimeY');
     const pointX = document.getElementById('pointX');
     const pointY = document.getElementById('pointY');
     const pointW = document.getElementById('pointW');
     const pointH = document.getElementById('pointH');
-    const areaX = document.getElementById('areaX');
-    const areaY = document.getElementById('areaY');
-    const areaW = document.getElementById('areaW');
-    const areaH = document.getElementById('areaH');
-    const areaC = document.getElementById('areaC');
+    const measureX1 = document.getElementById('measureX1');
+    const measureY1 = document.getElementById('measureY1');
+    const measureX2 = document.getElementById('measureX2');
+    const measureY2 = document.getElementById('measureY2');
+    const measureW = document.getElementById('measureW');
     function resizeCanvas() {
         canvas.width = container.clientWidth;
         canvas.height = container.clientHeight;
@@ -671,19 +671,16 @@ document.addEventListener("DOMContentLoaded", () => {
         btnSelectpoint.classList.toggle('active', tool === 'SELECT_POINT');
         btnSelectarea.classList.toggle('active', tool === 'SELECT_AREA');
         btnMeasure.classList.toggle('active', tool === 'MEASURE');
-        // Bỏ chọn (btnUnselect) hoạt động khi không ở chế độ Move
         if (tool !== 'MOVE') {
             btnUnselect.classList.remove('not-allowed');
         } else {
             btnUnselect.classList.add('not-allowed');
         }
-        // Di chuyển về 0 (btnMovetozero) chỉ hỗ trợ khi ở Select Area
         if (tool === 'SELECT_AREA' && currentSelectedBounds) {
             btnMovetozero.classList.remove('not-allowed');
         } else {
             btnMovetozero.classList.add('not-allowed');
         }
-        // Khối hiển thị thông tin Footer
         if (tool === 'SELECT_POINT' || tool === 'SELECT_AREA') {
             boxArea.style.display = 'flex';
             boxMeasure.style.display = 'none';
@@ -893,22 +890,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function drawOrigin() {
         const originS = worldToScreen(0, 0);
-        // Đường kẻ ngang (Trục X)
         ctx.strokeStyle = '#444';
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(0, originS.y);
         ctx.lineTo(canvas.width, originS.y);
         ctx.stroke();
-        // Đường kẻ dọc (Trục Y)
         ctx.strokeStyle = '#444';
         ctx.beginPath();
         ctx.moveTo(originS.x, 0);
         ctx.lineTo(originS.x, canvas.height);
         ctx.stroke();
     }
+    // Vẽ chỉ báo Tâm (Crosshair Center Marker)
+    function drawCenterMarker(x, y, labelColor = '#38bdf8') {
+        const s = worldToScreen(x, y);
+        // Vòng tròn ngoài nét đứt
+        ctx.strokeStyle = labelColor;
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, 10, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        // Chữ thập tại tâm
+        ctx.beginPath();
+        ctx.moveTo(s.x - 7, s.y);
+        ctx.lineTo(s.x + 7, s.y);
+        ctx.moveTo(s.x, s.y - 7);
+        ctx.lineTo(s.x, s.y + 7);
+        ctx.stroke();
+    }
     function drawOverlay() {
         const nearest = findNearestGeometry(mouseWorld.x, mouseWorld.y);
+        // Hover vào điểm/đối tượng gần nhất
         if (nearest.center && (activeTool === 'SELECT_POINT' || activeTool === 'MEASURE')) {
             const s = worldToScreen(nearest.center.x, nearest.center.y);
             ctx.strokeStyle = '#38bdf8';
@@ -917,6 +932,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.arc(s.x, s.y, 8, 0, Math.PI * 2);
             ctx.stroke();
         }
+        // Vẽ khung chọn vùng (Select Area Box)
         if (boxStartWorld && boxEndWorld && (isBoxSelecting || activeTool === 'SELECT_AREA')) {
             const p1 = worldToScreen(boxStartWorld.x, boxStartWorld.y);
             const p2 = worldToScreen(boxEndWorld.x, boxEndWorld.y);
@@ -932,14 +948,15 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.strokeRect(bx, by, bw, bh);
             ctx.setLineDash([]);
         }
-        if (pinnedPoint) {
-            const s = worldToScreen(pinnedPoint.x, pinnedPoint.y);
-            ctx.strokeStyle = '#38bdf8';
-            ctx.lineWidth = 2.5;
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, 6, 0, Math.PI * 2);
-            ctx.stroke();
+        // 1. Hiển thị tâm vùng chọn (Point hoặc Area Centroid)
+        if (activeTool === 'SELECT_POINT' && pinnedPoint) {
+            drawCenterMarker(pinnedPoint.x, pinnedPoint.y, '#38bdf8');
+        } else if (activeTool === 'SELECT_AREA' && currentSelectedBounds) {
+            const cx = (currentSelectedBounds.minX + currentSelectedBounds.maxX) / 2;
+            const cy = (currentSelectedBounds.minY + currentSelectedBounds.maxY) / 2;
+            drawCenterMarker(cx, cy, '#38bdf8');
         }
+        // 2. Hiển thị đường đo & Tâm đường đo (Measure Line & Center)
         if (activeTool === 'MEASURE' && measureStart) {
             const targetEnd = measureEnd || (nearest.center ? nearest.center : {
                 x: mouseWorld.x,
@@ -947,6 +964,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             const p1 = worldToScreen(measureStart.x, measureStart.y);
             const p2 = worldToScreen(targetEnd.x, targetEnd.y);
+            // Đoạn thẳng đo
             ctx.strokeStyle = '#38bdf8';
             ctx.lineWidth = 2;
             ctx.setLineDash([5, 4]);
@@ -955,6 +973,17 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
             ctx.setLineDash([]);
+            // Hai điểm mút
+            [p1, p2].forEach(p => {
+                ctx.fillStyle = '#38bdf8';
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            // Tâm (trung điểm) đường đo
+            const midX = (measureStart.x + targetEnd.x) / 2;
+            const midY = (measureStart.y + targetEnd.y) / 2;
+            drawCenterMarker(midX, midY, '#f59e0b');
         }
     }
     // ==========================================
@@ -1094,8 +1123,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (pinnedPoint) {
                 pointX.textContent = formatUnitVal(pinnedPoint.x);
                 pointY.textContent = formatUnitVal(pinnedPoint.y);
-                pointW.textContent = "0.0000" + UNITS[currentUnit].label;
-                pointH.textContent = "0.0000" + UNITS[currentUnit].label;
+                pointW.textContent = "0" + UNITS[currentUnit].label;
+                pointH.textContent = "0" + UNITS[currentUnit].label;
             }
         } else if (activeTool === 'SELECT_AREA') {
             if (currentSelectedBounds) {
@@ -1110,13 +1139,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         } else if (activeTool === 'MEASURE') {
             if (measureStart) {
-                areaX.textContent = formatUnitVal(measureStart.x);
-                areaY.textContent = formatUnitVal(measureStart.y);
+                measureX1.textContent = formatUnitVal(measureStart.x);
+                measureY1.textContent = formatUnitVal(measureStart.y);
                 const targetEnd = measureEnd || (findNearestGeometry(mouseWorld.x, mouseWorld.y).center || mouseWorld);
-                areaW.textContent = formatUnitVal(targetEnd.x);
-                areaH.textContent = formatUnitVal(targetEnd.y);
+                measureX2.textContent = formatUnitVal(targetEnd.x);
+                measureY2.textContent = formatUnitVal(targetEnd.y);
                 const dist = Math.hypot(targetEnd.x - measureStart.x, targetEnd.y - measureStart.y);
-                areaC.textContent = formatUnitVal(dist);
+                measureW.textContent = formatUnitVal(dist);
             }
         }
     }
@@ -1165,7 +1194,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     const value = item.getAttribute("data-value");
                     selectBtn.textContent = item.textContent;
                     optionsList.classList.remove("is-open");
-                    // Đổi Đơn vị
                     if (container.classList.contains('option-unit')) {
                         if (UNITS[value]) {
                             currentUnit = value;
@@ -1173,7 +1201,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             requestAnimationFrame(draw);
                         }
                     }
-                    // Đổi Zoom Preset
                     if (container.classList.contains('option-zoom')) {
                         const pct = parseFloat(value);
                         if (!isNaN(pct)) {
