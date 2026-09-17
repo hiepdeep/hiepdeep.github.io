@@ -6,36 +6,36 @@ const UNITS = {
 	mm: {
 		scale: 1.0,
 		decimals: 4,
-		label: 'mm'
+		label: "mm"
 	},
 	cm: {
 		scale: 0.1,
 		decimals: 4,
-		label: 'cm'
+		label: "cm"
 	},
 	inch: {
 		scale: 1 / 25.4,
 		decimals: 5,
-		label: 'in'
+		label: "in"
 	},
 	mils: {
 		scale: 1000 / 25.4,
 		decimals: 2,
-		label: 'mil'
+		label: "mil"
 	},
 	micron: {
 		scale: 1000.0,
 		decimals: 2,
-		label: 'µm'
+		label: "µm"
 	}
 };
-let currentUnit = 'mm';
+let currentUnit = "mm";
 const SCREEN_PHYSICAL_PX_PER_MM = 96 / 25.4;
-const PRESET_COLORS = ['#00FF66', '#FF3366', '#33CCFF', '#FFCC00', '#CC66FF', '#FF9933'];
+const PRESET_COLORS = ["#00FF66", "#FF3366", "#33CCFF", "#FFCC00", "#CC66FF", "#FF9933"];
 
 // Biến quản lý Gerber & View
 let layers = [];
-let activeTool = 'MOVE'; // 'MOVE', 'SELECT_POINT', 'SELECT_AREA', 'MEASURE'
+let activeTool = "MOVE"; // "MOVE", "SELECT_POINT", "SELECT_AREA", "MEASURE"
 let zoom = SCREEN_PHYSICAL_PX_PER_MM;
 let panX = 0, panY = 0;
 
@@ -71,24 +71,24 @@ class GerberParser {
 			const body = amMatch[2];
 			const primitives = GerberParser.parseMacroBody(body, unitScale);
 			macros[macroName] = primitives;
-			if (macroName.startsWith('D')) macros[macroName.substring(1)] = primitives;
-			else macros['D' + macroName] = primitives;
+			if (macroName.startsWith("D")) macros[macroName.substring(1)] = primitives;
+			else macros["D" + macroName] = primitives;
 		}
 		const apertures = {};
 		const addRegex = /%ADD(\d+)([A-Za-z0-9_]+)(?:,([^%*]+))?\*%/g;
 		let addMatch;
 		while ((addMatch = addRegex.exec(text)) !== null) {
-			const id = 'D' + addMatch[1];
+			const id = "D" + addMatch[1];
 			const typeOrMacro = addMatch[2].toUpperCase();
 			const paramStr = addMatch[3];
-			if (['C', 'R', 'O', 'P'].includes(typeOrMacro)) {
-				const dimsRaw = paramStr ? paramStr.split('X').map(v => parseFloat(v)) : [0.1];
+			if (["C", "R", "O", "P"].includes(typeOrMacro)) {
+				const dimsRaw = paramStr ? paramStr.split("X").map(v => parseFloat(v)) : [0.1];
 				let dims = [];
-				if (typeOrMacro === 'C') {
+				if (typeOrMacro === "C") {
 					dims = [dimsRaw[0] * unitScale];
-				} else if (typeOrMacro === 'R' || typeOrMacro === 'O') {
+				} else if (typeOrMacro === "R" || typeOrMacro === "O") {
 					dims = [dimsRaw[0] * unitScale, (dimsRaw[1] || dimsRaw[0]) * unitScale];
-				} else if (typeOrMacro === 'P') {
+				} else if (typeOrMacro === "P") {
 					dims = [dimsRaw[0] * unitScale, dimsRaw[1] || 4, dimsRaw[2] || 0, dimsRaw[3] ? dimsRaw[3] * unitScale : 0];
 				}
 				apertures[id] = {
@@ -98,7 +98,7 @@ class GerberParser {
 			} else {
 				const prims = macros[typeOrMacro] || macros[addMatch[2]] || [];
 				apertures[id] = {
-					type: 'MACRO',
+					type: "MACRO",
 					macroName: typeOrMacro,
 					primitives: prims,
 					dims: [0.2, 0.2]
@@ -148,28 +148,28 @@ class GerberParser {
 		const items = [];
 		let currentX = 0, currentY = 0;
 		let currentAperture = null;
-		let interpMode = 'G01';
+		let interpMode = "G01";
 		let inRegion = false;
 		let regionContours = [];
 		let currentContour = [];
-		let currentD = '1';
-		const cleanText = text.replace(/[\r\n]/g, '');
-		const blocks = cleanText.split('*');
+		let currentD = "1";
+		const cleanText = text.replace(/[\r\n]/g, "");
+		const blocks = cleanText.split("*");
 		for (let block of blocks) {
 			block = block.trim();
-			if (!block || block.startsWith('%') || block.startsWith('G04')) continue;
-			if (block.includes('G36')) {
+			if (!block || block.startsWith("%") || block.startsWith("G04")) continue;
+			if (block.includes("G36")) {
 				inRegion = true;
 				regionContours = [];
 				currentContour = [];
 			}
-			if (/G0?1(?!\d)/i.test(block)) interpMode = 'G01';
-			else if (/G0?2(?!\d)/i.test(block)) interpMode = 'G02';
-			else if (/G0?3(?!\d)/i.test(block)) interpMode = 'G03';
+			if (/G0?1(?!\d)/i.test(block)) interpMode = "G01";
+			else if (/G0?2(?!\d)/i.test(block)) interpMode = "G02";
+			else if (/G0?3(?!\d)/i.test(block)) interpMode = "G03";
 			const g54Match = block.match(/G54\s*D(\d+)/i);
-			if (g54Match && apertures['D' + g54Match[1]]) currentAperture = apertures['D' + g54Match[1]];
+			if (g54Match && apertures["D" + g54Match[1]]) currentAperture = apertures["D" + g54Match[1]];
 			const apMatch = block.match(/(?:^|[^G])D([1-9]\d+)/i);
-			if (apMatch && apertures['D' + apMatch[1]]) currentAperture = apertures['D' + apMatch[1]];
+			if (apMatch && apertures["D" + apMatch[1]]) currentAperture = apertures["D" + apMatch[1]];
 			const xMatch = block.match(/X([+-]?\d+)/i);
 			const yMatch = block.match(/Y([+-]?\d+)/i);
 			const iMatch = block.match(/I([+-]?\d+)/i);
@@ -187,9 +187,9 @@ class GerberParser {
 			const offI = iMatch ? (parseCoord(iMatch[1], decX) || 0) : 0;
 			const offJ = jMatch ? (parseCoord(jMatch[1], decY) || 0) : 0;
 			let op = dMatch ? dMatch[1] : null;
-			if (op === '1' || op === '2') currentD = op;
+			if (op === "1" || op === "2") currentD = op;
 			else if (!op && (xMatch || yMatch)) op = currentD;
-			if (op === '2') {
+			if (op === "2") {
 				currentX = newX;
 				currentY = newY;
 				if (inRegion) {
@@ -202,22 +202,22 @@ class GerberParser {
 						y: currentY
 					});
 				}
-			} else if (op === '1') {
-				if (interpMode === 'G01') {
+			} else if (op === "1") {
+				if (interpMode === "G01") {
 					if (inRegion) currentContour.push({
 						x: newX,
 						y: newY
 					});
 					else items.push({
-						type: 'line',
+						type: "line",
 						x1: currentX,
 						y1: currentY,
 						x2: newX,
 						y2: newY,
 						width: currentAperture ? (currentAperture.dims[0] || 0.1) : 0.1
 					});
-				} else if (interpMode === 'G02' || interpMode === 'G03') {
-					const arcPts = linearizeArc(currentX, currentY, newX, newY, offI, offJ, interpMode === 'G03');
+				} else if (interpMode === "G02" || interpMode === "G03") {
+					const arcPts = linearizeArc(currentX, currentY, newX, newY, offI, offJ, interpMode === "G03");
 					if (inRegion) arcPts.forEach(pt => currentContour.push(pt));
 					else {
 						const width = currentAperture ? (currentAperture.dims[0] || 0.1) : 0.1;
@@ -227,7 +227,7 @@ class GerberParser {
 						};
 						arcPts.forEach(pt => {
 							items.push({
-								type: 'line',
+								type: "line",
 								x1: lastPt.x,
 								y1: lastPt.y,
 								x2: pt.x,
@@ -240,12 +240,12 @@ class GerberParser {
 				}
 				currentX = newX;
 				currentY = newY;
-			} else if (op === '3') {
+			} else if (op === "3") {
 				currentX = newX;
 				currentY = newY;
 				if (currentAperture && !inRegion) {
 					items.push({
-						type: 'pad',
+						type: "pad",
 						shape: currentAperture.type,
 						dims: currentAperture.dims,
 						macroName: currentAperture.macroName,
@@ -255,11 +255,11 @@ class GerberParser {
 					});
 				}
 			}
-			if (block.includes('G37')) {
+			if (block.includes("G37")) {
 				inRegion = false;
 				if (currentContour.length > 0) regionContours.push(currentContour);
 				if (regionContours.length > 0) items.push({
-					type: 'region',
+					type: "region",
 					contours: regionContours
 				});
 				regionContours = [];
@@ -270,16 +270,16 @@ class GerberParser {
 	}
 	static parseMacroBody(body, unitScale) {
 		const primitives = [];
-		const lines = body.split('*');
+		const lines = body.split("*");
 		for (let line of lines) {
 			line = line.trim();
-			if (!line || line.startsWith('0')) continue;
+			if (!line || line.startsWith("0")) continue;
 			const tokens = line.split(/[\s,]+/).filter(t => t.length > 0).map(t => parseFloat(t));
 			if (tokens.length < 2) continue;
 			const code = tokens[0], exposure = tokens[1];
 			if (code === 1 && tokens.length >= 5) {
 				primitives.push({
-					type: 'circle',
+					type: "circle",
 					exposure,
 					diam: tokens[2] * unitScale,
 					cx: tokens[3] * unitScale,
@@ -287,7 +287,7 @@ class GerberParser {
 				});
 			} else if (code === 20 && tokens.length >= 7) {
 				primitives.push({
-					type: 'line',
+					type: "line",
 					exposure,
 					width: tokens[2] * unitScale,
 					x1: tokens[3] * unitScale,
@@ -298,7 +298,7 @@ class GerberParser {
 				});
 			} else if (code === 21 && tokens.length >= 6) {
 				primitives.push({
-					type: 'rect',
+					type: "rect",
 					exposure,
 					w: tokens[2] * unitScale,
 					h: tokens[3] * unitScale,
@@ -321,7 +321,7 @@ class GerberParser {
 					});
 				}
 				primitives.push({
-					type: 'polygon',
+					type: "polygon",
 					exposure,
 					points: pts,
 					rot
@@ -341,19 +341,19 @@ function formatUnitVal(valInMM) {
 	return `${toUnit(valInMM).toFixed(UNITS[currentUnit].decimals)}${UNITS[currentUnit].label}`;
 }
 function getGeometryCenter(item) {
-	if (item.type === 'pad') return {
+	if (item.type === "pad") return {
 		x: item.x,
 		y: item.y,
 		label: `Pad ${item.shape}`,
 		item
 	};
-	if (item.type === 'line') return {
+	if (item.type === "line") return {
 		x: (item.x1 + item.x2) / 2,
 		y: (item.y1 + item.y2) / 2,
-		label: 'Track',
+		label: "Track",
 		item
 	};
-	if (item.type === 'region' && item.contours && item.contours.length > 0) {
+	if (item.type === "region" && item.contours && item.contours.length > 0) {
 		let minX = Infinity,
 			maxX = -Infinity,
 			minY = Infinity,
@@ -367,39 +367,39 @@ function getGeometryCenter(item) {
 		return {
 			x: (minX + maxX) / 2,
 			y: (minY + maxY) / 2,
-			label: 'Region',
+			label: "Region",
 			item
 		};
 	}
 	return null;
 }
 function getItemBoundingBox(item) {
-	if (item.type === 'pad') {
-		if (item.shape === 'MACRO' && item.primitives && item.primitives.length > 0) {
+	if (item.type === "pad") {
+		if (item.shape === "MACRO" && item.primitives && item.primitives.length > 0) {
 			let minX = Infinity,
 				maxX = -Infinity,
 				minY = Infinity,
 				maxY = -Infinity;
 			item.primitives.forEach(p => {
-				if (p.type === 'circle') {
+				if (p.type === "circle") {
 					minX = Math.min(minX, item.x + p.cx - p.diam / 2);
 					maxX = Math.max(maxX, item.x + p.cx + p.diam / 2);
 					minY = Math.min(minY, item.y + p.cy - p.diam / 2);
 					maxY = Math.max(maxY, item.y + p.cy + p.diam / 2);
-				} else if (p.type === 'line') {
+				} else if (p.type === "line") {
 					const r = p.width / 2;
 					minX = Math.min(minX, item.x + Math.min(p.x1, p.x2) - r);
 					maxX = Math.max(maxX, item.x + Math.max(p.x1, p.x2) + r);
 					minY = Math.min(minY, item.y + Math.min(p.y1, p.y2) - r);
 					maxY = Math.max(maxY, item.y + Math.max(p.y1, p.y2) + r);
-				} else if (p.type === 'rect') {
+				} else if (p.type === "rect") {
 					const w2 = p.w / 2,
 						h2 = p.h / 2;
 					minX = Math.min(minX, item.x + p.cx - w2);
 					maxX = Math.max(maxX, item.x + p.cx + w2);
 					minY = Math.min(minY, item.y + p.cy - h2);
 					maxY = Math.max(maxY, item.y + p.cy + h2);
-				} else if (p.type === 'polygon' && p.points) {
+				} else if (p.type === "polygon" && p.points) {
 					p.points.forEach(pt => {
 						minX = Math.min(minX, item.x + pt.x);
 						maxX = Math.max(maxX, item.x + pt.x);
@@ -423,7 +423,7 @@ function getItemBoundingBox(item) {
 			minY: item.y - h / 2,
 			maxY: item.y + h / 2
 		};
-	} else if (item.type === 'line') {
+	} else if (item.type === "line") {
 		const r = (item.width || 0.1) / 2;
 		return {
 			minX: Math.min(item.x1, item.x2) - r,
@@ -431,7 +431,7 @@ function getItemBoundingBox(item) {
 			minY: Math.min(item.y1, item.y2) - r,
 			maxY: Math.max(item.y1, item.y2) + r
 		};
-	} else if (item.type === 'region' && item.contours && item.contours.length > 0) {
+	} else if (item.type === "region" && item.contours && item.contours.length > 0) {
 		let minX = Infinity,
 			maxX = -Infinity,
 			minY = Infinity,
@@ -454,12 +454,12 @@ function getItemBoundingBox(item) {
 
 // Kiểm tra item có đang được bật hiển thị hay không
 function isItemVisible(item) {
-	const displayPads = document.getElementById('displayPads');
-	const displayTracks = document.getElementById('displayTracks');
-	const displayRegions = document.getElementById('displayRegions');
-	if (item.type === 'pad' && displayPads && !displayPads.checked) return false;
-	if (item.type === 'line' && displayTracks && !displayTracks.checked) return false;
-	if (item.type === 'region' && displayRegions && !displayRegions.checked) return false;
+	const displayPads = document.getElementById("displayPads");
+	const displayTracks = document.getElementById("displayTracks");
+	const displayRegions = document.getElementById("displayRegions");
+	if (item.type === "pad" && displayPads && !displayPads.checked) return false;
+	if (item.type === "line" && displayTracks && !displayTracks.checked) return false;
+	if (item.type === "region" && displayRegions && !displayRegions.checked) return false;
 	return true;
 }
 function findNearestGeometry(wx, wy) {
@@ -498,50 +498,50 @@ function clearAllSelections() {
 	boxStartWorld = null;
 	boxEndWorld = null;
 	isBoxSelecting = false;
-	const btnMovetozero = document.getElementById('btnMovetozero');
-	if (btnMovetozero) btnMovetozero.classList.add('not-allowed');
+	const btnMovetozero = document.getElementById("btnMovetozero");
+	if (btnMovetozero) btnMovetozero.classList.add("not-allowed");
 }
 
 // KẾT NỐI DOM VÀ QUẢN LÝ GIAO DIỆN
 document.addEventListener("DOMContentLoaded", () => {
-	const container = document.getElementById('canvasContainer');
-	const canvas = document.createElement('canvas');
-	canvas.id = 'gerberCanvas';
+	const container = document.getElementById("canvasContainer");
+	const canvas = document.createElement("canvas");
+	canvas.id = "gerberCanvas";
 	container.appendChild(canvas);
-	const ctx = canvas.getContext('2d');
-	const importInput = document.getElementById('importGerber');
-	const layerList = document.getElementById('layerList');
-	const lblLayerCount = document.getElementById('lblLayerCount');
-	const displayGrid = document.getElementById('displayGrid');
-	const displayOrigin = document.getElementById('displayOrigin');
-	const displayPads = document.getElementById('displayPads');
-	const displayTracks = document.getElementById('displayTracks');
-	const displayRegions = document.getElementById('displayRegions');
-	const btnMove = document.getElementById('btnMove');
-	const btnSelectpoint = document.getElementById('btnSelectpoint');
-	const btnSelectarea = document.getElementById('btnSelectarea');
-	const btnMeasure = document.getElementById('btnMeasure');
-	const btnUnselect = document.getElementById('btnUnselect');
-	const btnMovetozero = document.getElementById('btnMovetozero');
-	const boxArea = document.getElementById('boxArea');
-	const boxMeasure = document.getElementById('boxMeasure');
-	const realtimeX = document.getElementById('realtimeX');
-	const realtimeY = document.getElementById('realtimeY');
-	const pointX = document.getElementById('pointX');
-	const pointY = document.getElementById('pointY');
-	const pointW = document.getElementById('pointW');
-	const pointH = document.getElementById('pointH');
-	const measureX1 = document.getElementById('measureX1');
-	const measureY1 = document.getElementById('measureY1');
-	const measureX2 = document.getElementById('measureX2');
-	const measureY2 = document.getElementById('measureY2');
-	const measureW = document.getElementById('measureW');
+	const ctx = canvas.getContext("2d");
+	const importInput = document.getElementById("importGerber");
+	const layerList = document.getElementById("layerList");
+	const lblLayerCount = document.getElementById("lblLayerCount");
+	const displayGrid = document.getElementById("displayGrid");
+	const displayOrigin = document.getElementById("displayOrigin");
+	const displayPads = document.getElementById("displayPads");
+	const displayTracks = document.getElementById("displayTracks");
+	const displayRegions = document.getElementById("displayRegions");
+	const btnMove = document.getElementById("btnMove");
+	const btnSelectpoint = document.getElementById("btnSelectpoint");
+	const btnSelectarea = document.getElementById("btnSelectarea");
+	const btnMeasure = document.getElementById("btnMeasure");
+	const btnUnselect = document.getElementById("btnUnselect");
+	const btnMovetozero = document.getElementById("btnMovetozero");
+	const boxArea = document.getElementById("boxArea");
+	const boxMeasure = document.getElementById("boxMeasure");
+	const realtimeX = document.getElementById("realtimeX");
+	const realtimeY = document.getElementById("realtimeY");
+	const pointX = document.getElementById("pointX");
+	const pointY = document.getElementById("pointY");
+	const pointW = document.getElementById("pointW");
+	const pointH = document.getElementById("pointH");
+	const measureX1 = document.getElementById("measureX1");
+	const measureY1 = document.getElementById("measureY1");
+	const measureX2 = document.getElementById("measureX2");
+	const measureY2 = document.getElementById("measureY2");
+	const measureW = document.getElementById("measureW");
 	function resizeCanvas() {
 		canvas.width = container.clientWidth;
 		canvas.height = container.clientHeight;
 		requestAnimationFrame(draw);
 	}
-	window.addEventListener('resize', resizeCanvas);
+	window.addEventListener("resize", resizeCanvas);
 	function worldToScreen(wx, wy) {
 		return {
 			x: canvas.width / 2 + panX + wx * zoom,
@@ -577,34 +577,34 @@ document.addEventListener("DOMContentLoaded", () => {
 			reader.readAsText(file);
 		});
 	}
-	importInput.addEventListener('change', (e) => {
+	importInput.addEventListener("change", (e) => {
 		loadFiles(e.target.files);
-		importInput.value = '';
+		importInput.value = "";
 	});
 	// Bắt sự kiện khi kéo file vào vùng layerList
-	layerList.addEventListener('dragenter', (e) => {
+	layerList.addEventListener("dragenter", (e) => {
 		e.preventDefault();
-		layerList.classList.add('is-dragover');
+		layerList.classList.add("is-dragover");
 	});
-	layerList.addEventListener('dragover', (e) => {
+	layerList.addEventListener("dragover", (e) => {
 		e.preventDefault();
 		// Đảm bảo class vẫn tồn tại khi con trỏ di chuyển bên trong
-		if (!layerList.classList.contains('is-dragover')) {
-			layerList.classList.add('is-dragover');
+		if (!layerList.classList.contains("is-dragover")) {
+			layerList.classList.add("is-dragover");
 		}
 	});
 	// Xóa class khi kéo file ra khỏi vùng layerList
-	layerList.addEventListener('dragleave', (e) => {
+	layerList.addEventListener("dragleave", (e) => {
 		e.preventDefault();
 		// Chỉ xóa class khi con trỏ thực sự rời khỏi layerList (tránh bị flickering do các phần tử con)
 		if (!layerList.contains(e.relatedTarget)) {
-			layerList.classList.remove('is-dragover');
+			layerList.classList.remove("is-dragover");
 		}
 	});
 	// Xử lý thả file
-	layerList.addEventListener('drop', (e) => {
+	layerList.addEventListener("drop", (e) => {
 		e.preventDefault();
-		layerList.classList.remove('is-dragover'); // Xóa highlight sau khi thả file
+		layerList.classList.remove("is-dragover"); // Xóa highlight sau khi thả file
 		if (e.dataTransfer && e.dataTransfer.files.length > 0) loadFiles(e.dataTransfer.files);
 	});
 	function updateSidebar() {
@@ -613,28 +613,28 @@ document.addEventListener("DOMContentLoaded", () => {
 			layerList.innerHTML = `<span class="empty-state">Chưa có layer nào.<br>Hãy kéo thả file hoặc bấm "Mở file Gerber".</span>`;
 			return;
 		}
-		layerList.innerHTML = '';
+		layerList.innerHTML = "";
 		layers.forEach((layer, idx) => {
-			const itemEl = document.createElement('div');
-			itemEl.style.cssText = 'display:flex; align-items:center; gap:8px; margin-bottom:8px; background:#1a1a20; padding:6px; border-radius:4px; border:1px solid #262630;';
+			const itemEl = document.createElement("div");
+			itemEl.style.cssText = "display:flex; align-items:center; gap:8px; margin-bottom:8px; background:#1a1a20; padding:6px; border-radius:4px; border:1px solid #262630;";
 			itemEl.innerHTML = `
-				<input type="checkbox" ${layer.visible ? 'checked' : ''} style="accent-color:#0284c7; cursor:pointer;">
+				<input type="checkbox" ${layer.visible ? "checked" : ""} style="accent-color:#0284c7; cursor:pointer;">
 				<input type="color" value="${layer.color}" style="width:20px; height:20px; border:none; background:none; cursor:pointer;">
 				<span style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:11px; color:#e5e7eb;" title="${layer.name}">${layer.name}</span>
 				<button class="del-layer" style="background:none; border:none; color:#ef4444; cursor:pointer; font-weight:bold;">✕</button>
 			`;
-			const chk = itemEl.querySelector('input[type="checkbox"]');
-			const col = itemEl.querySelector('input[type="color"]');
-			const del = itemEl.querySelector('.del-layer');
-			chk.addEventListener('change', (e) => {
+			const chk = itemEl.querySelector("input[type='checkbox']");
+			const col = itemEl.querySelector("input[type='color']");
+			const del = itemEl.querySelector(".del-layer");
+			chk.addEventListener("change", (e) => {
 				layers[idx].visible = e.target.checked;
 				requestAnimationFrame(draw);
 			});
-			col.addEventListener('input', (e) => {
+			col.addEventListener("input", (e) => {
 				layers[idx].color = e.target.value;
 				requestAnimationFrame(draw);
 			});
-			del.addEventListener('click', () => {
+			del.addEventListener("click", () => {
 				layers.splice(idx, 1);
 				updateSidebar();
 				requestAnimationFrame(draw);
@@ -693,49 +693,49 @@ document.addEventListener("DOMContentLoaded", () => {
 	function setTool(tool) {
 		activeTool = tool;
 		// Tự động bỏ vùng chọn khi chuyển về chế độ Move
-		if (tool === 'MOVE') {
+		if (tool === "MOVE") {
 			clearAllSelections();
 		}
-		btnMove.classList.toggle('active', tool === 'MOVE');
-		btnSelectpoint.classList.toggle('active', tool === 'SELECT_POINT');
-		btnSelectarea.classList.toggle('active', tool === 'SELECT_AREA');
-		btnMeasure.classList.toggle('active', tool === 'MEASURE');
-		if (tool !== 'MOVE') {
-			btnUnselect.classList.remove('not-allowed');
+		btnMove.classList.toggle("active", tool === "MOVE");
+		btnSelectpoint.classList.toggle("active", tool === "SELECT_POINT");
+		btnSelectarea.classList.toggle("active", tool === "SELECT_AREA");
+		btnMeasure.classList.toggle("active", tool === "MEASURE");
+		if (tool !== "MOVE") {
+			btnUnselect.classList.remove("not-allowed");
 		} else {
-			btnUnselect.classList.add('not-allowed');
+			btnUnselect.classList.add("not-allowed");
 		}
-		if (tool === 'SELECT_AREA' && currentSelectedBounds) {
-			btnMovetozero.classList.remove('not-allowed');
+		if (tool === "SELECT_AREA" && currentSelectedBounds) {
+			btnMovetozero.classList.remove("not-allowed");
 		} else {
-			btnMovetozero.classList.add('not-allowed');
+			btnMovetozero.classList.add("not-allowed");
 		}
-		if (tool === 'SELECT_POINT' || tool === 'SELECT_AREA') {
-			boxArea.style.display = 'flex';
-			boxMeasure.style.display = 'none';
-		} else if (tool === 'MEASURE') {
-			boxArea.style.display = 'none';
-			boxMeasure.style.display = 'flex';
+		if (tool === "SELECT_POINT" || tool === "SELECT_AREA") {
+			boxArea.style.display = "flex";
+			boxMeasure.style.display = "none";
+		} else if (tool === "MEASURE") {
+			boxArea.style.display = "none";
+			boxMeasure.style.display = "flex";
 		} else {
-			boxArea.style.display = 'none';
-			boxMeasure.style.display = 'none';
+			boxArea.style.display = "none";
+			boxMeasure.style.display = "none";
 		}
-		canvas.style.cursor = tool === 'MOVE' ? 'grab' : 'crosshair';
+		canvas.style.cursor = tool === "MOVE" ? "grab" : "crosshair";
 		updateInfoUI();
 		requestAnimationFrame(draw);
 	}
-	btnMove.addEventListener('click', () => setTool('MOVE'));
-	btnSelectpoint.addEventListener('click', () => setTool('SELECT_POINT'));
-	btnSelectarea.addEventListener('click', () => setTool('SELECT_AREA'));
-	btnMeasure.addEventListener('click', () => setTool('MEASURE'));
-	btnUnselect.addEventListener('click', () => {
-		if (btnUnselect.classList.contains('not-allowed')) return;
+	btnMove.addEventListener("click", () => setTool("MOVE"));
+	btnSelectpoint.addEventListener("click", () => setTool("SELECT_POINT"));
+	btnSelectarea.addEventListener("click", () => setTool("SELECT_AREA"));
+	btnMeasure.addEventListener("click", () => setTool("MEASURE"));
+	btnUnselect.addEventListener("click", () => {
+		if (btnUnselect.classList.contains("not-allowed")) return;
 		clearAllSelections();
 		updateInfoUI();
 		requestAnimationFrame(draw);
 	});
-	btnMovetozero.addEventListener('click', () => {
-		if (btnMovetozero.classList.contains('not-allowed')) return;
+	btnMovetozero.addEventListener("click", () => {
+		if (btnMovetozero.classList.contains("not-allowed")) return;
 		if (!currentSelectedBounds) return;
 		const dx = -currentSelectedBounds.minX;
 		const dy = -currentSelectedBounds.minY;
@@ -749,7 +749,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					it.y1 += dy;
 					it.y2 += dy;
 				}
-				if (it.type === 'region' && it.contours) {
+				if (it.type === "region" && it.contours) {
 					it.contours.forEach(c => c.forEach(p => {
 						p.x += dx;
 						p.y += dy;
@@ -788,16 +788,16 @@ document.addEventListener("DOMContentLoaded", () => {
 			ctx.fillStyle = layer.color;
 			ctx.strokeStyle = layer.color;
 			layer.items.forEach(item => {
-				if (item.type === 'line' && displayTracks.checked) {
+				if (item.type === "line" && displayTracks.checked) {
 					ctx.lineWidth = item.width || 0.1;
-					ctx.lineCap = 'round';
+					ctx.lineCap = "round";
 					ctx.beginPath();
 					ctx.moveTo(item.x1, item.y1);
 					ctx.lineTo(item.x2, item.y2);
 					ctx.stroke();
-				} else if (item.type === 'pad' && displayPads.checked) {
+				} else if (item.type === "pad" && displayPads.checked) {
 					drawPadShape(ctx, item);
-				} else if (item.type === 'region' && displayRegions.checked) {
+				} else if (item.type === "region" && displayRegions.checked) {
 					ctx.beginPath();
 					item.contours.forEach(contour => {
 						contour.forEach((pt, i) => {
@@ -806,7 +806,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						});
 						ctx.closePath();
 					});
-					ctx.fill('evenodd');
+					ctx.fill("evenodd");
 				}
 			});
 		});
@@ -815,29 +815,29 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	function drawPadShape(ctx, pad) {
 		const {shape, dims, x, y, primitives} = pad;
-		if (shape === 'MACRO' && primitives && primitives.length > 0) {
+		if (shape === "MACRO" && primitives && primitives.length > 0) {
 			ctx.save();
 			ctx.translate(x, y);
 			primitives.forEach(p => {
 				ctx.save();
 				if (p.rot) ctx.rotate((p.rot * Math.PI) / 180);
-				if (p.type === 'circle') {
+				if (p.type === "circle") {
 					ctx.beginPath();
 					ctx.arc(p.cx, p.cy, p.diam / 2, 0, Math.PI * 2);
 					ctx.fill();
-				} else if (p.type === 'line') {
+				} else if (p.type === "line") {
 					ctx.lineWidth = p.width;
-					ctx.lineCap = 'butt';
+					ctx.lineCap = "butt";
 					ctx.beginPath();
 					ctx.moveTo(p.x1, p.y1);
 					ctx.lineTo(p.x2, p.y2);
 					ctx.stroke();
-				} else if (p.type === 'rect') {
+				} else if (p.type === "rect") {
 					ctx.save();
 					ctx.translate(p.cx, p.cy);
 					ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
 					ctx.restore();
-				} else if (p.type === 'polygon' && p.points) {
+				} else if (p.type === "polygon" && p.points) {
 					ctx.beginPath();
 					p.points.forEach((pt, i) => {
 						if (i === 0) ctx.moveTo(pt.x, pt.y);
@@ -853,13 +853,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		ctx.beginPath();
 		const w = (dims && dims[0]) ? dims[0] : 0.2;
-		if (shape === 'C') {
+		if (shape === "C") {
 			ctx.arc(x, y, w / 2, 0, Math.PI * 2);
 			ctx.fill();
-		} else if (shape === 'R') {
+		} else if (shape === "R") {
 			const h = (dims && dims[1]) ? dims[1] : w;
 			ctx.fillRect(x - w / 2, y - h / 2, w, h);
-		} else if (shape === 'O') {
+		} else if (shape === "O") {
 			const h = (dims && dims[1]) ? dims[1] : w;
 			if (w > h) {
 				const r = h / 2;
@@ -878,7 +878,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 	function drawGrid() {
-		ctx.strokeStyle = '#181818';
+		ctx.strokeStyle = "#181818";
 		ctx.lineWidth = 1;
 		let step = 1;
 		if (zoom < 5) step = 10;
@@ -904,19 +904,19 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	function drawOrigin() {
 		const originS = worldToScreen(0, 0);
-		ctx.strokeStyle = '#444';
+		ctx.strokeStyle = "#444";
 		ctx.lineWidth = 1;
 		ctx.beginPath();
 		ctx.moveTo(0, originS.y);
 		ctx.lineTo(canvas.width, originS.y);
 		ctx.stroke();
-		ctx.strokeStyle = '#444';
+		ctx.strokeStyle = "#444";
 		ctx.beginPath();
 		ctx.moveTo(originS.x, 0);
 		ctx.lineTo(originS.x, canvas.height);
 		ctx.stroke();
 	}
-	function drawCenterMarker(x, y, labelColor = '#38bdf8') {
+	function drawCenterMarker(x, y, labelColor = "#38bdf8") {
 		const s = worldToScreen(x, y);
 		ctx.strokeStyle = labelColor;
 		ctx.lineWidth = 1.5;
@@ -934,42 +934,42 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	function drawOverlay() {
 		const nearest = findNearestGeometry(mouseWorld.x, mouseWorld.y);
-		if (nearest.center && (activeTool === 'SELECT_POINT' || activeTool === 'MEASURE')) {
+		if (nearest.center && (activeTool === "SELECT_POINT" || activeTool === "MEASURE")) {
 			const s = worldToScreen(nearest.center.x, nearest.center.y);
-			ctx.strokeStyle = '#38bdf8';
+			ctx.strokeStyle = "#38bdf8";
 			ctx.lineWidth = 2;
 			ctx.beginPath();
 			ctx.arc(s.x, s.y, 8, 0, Math.PI * 2);
 			ctx.stroke();
 		}
-		if (boxStartWorld && boxEndWorld && (isBoxSelecting || activeTool === 'SELECT_AREA')) {
+		if (boxStartWorld && boxEndWorld && (isBoxSelecting || activeTool === "SELECT_AREA")) {
 			const p1 = worldToScreen(boxStartWorld.x, boxStartWorld.y);
 			const p2 = worldToScreen(boxEndWorld.x, boxEndWorld.y);
 			const bx = Math.min(p1.x, p2.x), by = Math.min(p1.y, p2.y);
 			const bw = Math.abs(p1.x - p2.x), bh = Math.abs(p1.y - p2.y);
-			ctx.strokeStyle = '#38bdf8';
+			ctx.strokeStyle = "#38bdf8";
 			ctx.lineWidth = 1.5;
 			ctx.setLineDash([5, 4]);
-			ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+			ctx.fillStyle = "rgba(56, 189, 248, 0.12)";
 			ctx.fillRect(bx, by, bw, bh);
 			ctx.strokeRect(bx, by, bw, bh);
 			ctx.setLineDash([]);
 		}
-		if (activeTool === 'SELECT_POINT' && pinnedPoint) {
-			drawCenterMarker(pinnedPoint.x, pinnedPoint.y, '#38bdf8');
-		} else if (activeTool === 'SELECT_AREA' && currentSelectedBounds) {
+		if (activeTool === "SELECT_POINT" && pinnedPoint) {
+			drawCenterMarker(pinnedPoint.x, pinnedPoint.y, "#38bdf8");
+		} else if (activeTool === "SELECT_AREA" && currentSelectedBounds) {
 			const cx = (currentSelectedBounds.minX + currentSelectedBounds.maxX) / 2;
 			const cy = (currentSelectedBounds.minY + currentSelectedBounds.maxY) / 2;
-			drawCenterMarker(cx, cy, '#38bdf8');
+			drawCenterMarker(cx, cy, "#38bdf8");
 		}
-		if (activeTool === 'MEASURE' && measureStart) {
+		if (activeTool === "MEASURE" && measureStart) {
 			const targetEnd = measureEnd || (nearest.center ? nearest.center : {
 				x: mouseWorld.x,
 				y: mouseWorld.y
 			});
 			const p1 = worldToScreen(measureStart.x, measureStart.y);
 			const p2 = worldToScreen(targetEnd.x, targetEnd.y);
-			ctx.strokeStyle = '#38bdf8';
+			ctx.strokeStyle = "#38bdf8";
 			ctx.lineWidth = 2;
 			ctx.setLineDash([5, 4]);
 			ctx.beginPath();
@@ -978,45 +978,45 @@ document.addEventListener("DOMContentLoaded", () => {
 			ctx.stroke();
 			ctx.setLineDash([]);
 			[p1, p2].forEach(p => {
-				ctx.fillStyle = '#38bdf8';
+				ctx.fillStyle = "#38bdf8";
 				ctx.beginPath();
 				ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
 				ctx.fill();
 			});
 			const midX = (measureStart.x + targetEnd.x) / 2;
 			const midY = (measureStart.y + targetEnd.y) / 2;
-			drawCenterMarker(midX, midY, '#f59e0b');
+			drawCenterMarker(midX, midY, "#f59e0b");
 		}
 	}
 	// TƯƠNG TÁC CHUỘT VÀ SỰ KIỆN CANVAS
-	canvas.addEventListener('mousedown', (e) => {
+	canvas.addEventListener("mousedown", (e) => {
 		if (e.button !== 0) return;
 		isDragging = true;
 		dragStartX = e.clientX;
 		dragStartY = e.clientY;
 		const rect = canvas.getBoundingClientRect();
 		const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
-		if (activeTool === 'SELECT_AREA') {
+		if (activeTool === "SELECT_AREA") {
 			isBoxSelecting = true;
 			boxStartWorld = screenToWorld(sx, sy);
 			boxEndWorld = {...boxStartWorld};
 			selectedGeometries = [];
 			calculatedCentroid = null;
 			currentSelectedBounds = null;
-			btnMovetozero.classList.add('not-allowed');
+			btnMovetozero.classList.add("not-allowed");
 		}
 	});
-	canvas.addEventListener('mousemove', (e) => {
+	canvas.addEventListener("mousemove", (e) => {
 		const rect = canvas.getBoundingClientRect();
 		const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
 		mouseWorld = screenToWorld(sx, sy);
 		if (isDragging) {
-			if (activeTool === 'MOVE') {
+			if (activeTool === "MOVE") {
 				panX += (e.clientX - dragStartX);
 				panY += (e.clientY - dragStartY);
 				dragStartX = e.clientX;
 				dragStartY = e.clientY;
-			} else if (activeTool === 'SELECT_AREA' && isBoxSelecting) {
+			} else if (activeTool === "SELECT_AREA" && isBoxSelecting) {
 				boxEndWorld = mouseWorld;
 			}
 		}
@@ -1025,12 +1025,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		updateInfoUI();
 		requestAnimationFrame(draw);
 	});
-	canvas.addEventListener('mouseup', (e) => {
+	canvas.addEventListener("mouseup", (e) => {
 		if (e.button !== 0) return;
 		const rect = canvas.getBoundingClientRect();
 		const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
 		const distDragged = Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY);
-		if (activeTool === 'SELECT_AREA' && isBoxSelecting) {
+		if (activeTool === "SELECT_AREA" && isBoxSelecting) {
 			isBoxSelecting = false;
 			calculateAreaSelection();
 		} else if (distDragged < 5) {
@@ -1040,7 +1040,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 	function handleCanvasClick(worldPt) {
 		const nearest = findNearestGeometry(worldPt.x, worldPt.y);
-		if (activeTool === 'SELECT_POINT') {
+		if (activeTool === "SELECT_POINT") {
 			pinnedPoint = nearest.center ? {
 				x: nearest.center.x,
 				y: nearest.center.y
@@ -1048,7 +1048,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				x: worldPt.x,
 				y: worldPt.y
 			};
-		} else if (activeTool === 'MEASURE') {
+		} else if (activeTool === "MEASURE") {
 			const targetObj = nearest.center ? nearest.center : {
 				x: worldPt.x,
 				y: worldPt.y
@@ -1104,16 +1104,16 @@ document.addEventListener("DOMContentLoaded", () => {
 				x: tightMaxX,
 				y: tightMaxY
 			};
-			btnMovetozero.classList.remove('not-allowed');
+			btnMovetozero.classList.remove("not-allowed");
 		} else {
 			currentSelectedBounds = null;
-			btnMovetozero.classList.add('not-allowed');
+			btnMovetozero.classList.add("not-allowed");
 		}
 		updateInfoUI();
 		requestAnimationFrame(draw);
 	}
 	function updateInfoUI() {
-		if (activeTool === 'SELECT_POINT') {
+		if (activeTool === "SELECT_POINT") {
 			if (pinnedPoint) {
 				pointX.textContent = formatUnitVal(pinnedPoint.x);
 				pointY.textContent = formatUnitVal(pinnedPoint.y);
@@ -1125,7 +1125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				pointW.textContent = formatUnitVal(0);
 				pointH.textContent = formatUnitVal(0);
 			}
-		} else if (activeTool === 'SELECT_AREA') {
+		} else if (activeTool === "SELECT_AREA") {
 			if (currentSelectedBounds) {
 				const cx = (currentSelectedBounds.minX + currentSelectedBounds.maxX) / 2;
 				const cy = (currentSelectedBounds.minY + currentSelectedBounds.maxY) / 2;
@@ -1141,7 +1141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				pointW.textContent = formatUnitVal(0);
 				pointH.textContent = formatUnitVal(0);
 			}
-		} else if (activeTool === 'MEASURE') {
+		} else if (activeTool === "MEASURE") {
 			if (measureStart) {
 				measureX1.textContent = formatUnitVal(measureStart.x);
 				measureY1.textContent = formatUnitVal(measureStart.y);
@@ -1160,7 +1160,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 	// ZOOM VÀ ĐƠN VỊ ĐO (DROPDOWN INTEGRATION)
-	canvas.addEventListener('wheel', (e) => {
+	canvas.addEventListener("wheel", (e) => {
 		e.preventDefault();
 		const rect = canvas.getBoundingClientRect();
 		const mouseX = e.clientX - rect.left, mouseY = e.clientY - rect.top;
@@ -1175,14 +1175,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		passive: false
 	});
 	function updateZoomLabel() {
-		const zoomBtn = document.querySelector('.option-zoom .option-select');
+		const zoomBtn = document.querySelector(".option-zoom .option-select");
 		if (zoomBtn) {
 			const pct = Math.round((zoom / SCREEN_PHYSICAL_PX_PER_MM) * 100);
 			zoomBtn.textContent = `${pct}%`;
 		}
 	}
 	function initDropdowns() {
-		const dropdowns = document.querySelectorAll('.option-select-list');
+		const dropdowns = document.querySelectorAll(".option-select-list");
 		dropdowns.forEach(container => {
 			const selectBtn = container.querySelector(".toggle-dropdown");
 			const optionsList = container.querySelector(".option-list");
@@ -1200,14 +1200,14 @@ document.addEventListener("DOMContentLoaded", () => {
 					const value = item.getAttribute("data-value");
 					selectBtn.textContent = item.textContent;
 					optionsList.classList.remove("is-open");
-					if (container.classList.contains('option-unit')) {
+					if (container.classList.contains("option-unit")) {
 						if (UNITS[value]) {
 							currentUnit = value;
 							updateInfoUI();
 							requestAnimationFrame(draw);
 						}
 					}
-					if (container.classList.contains('option-zoom')) {
+					if (container.classList.contains("option-zoom")) {
 						const pct = parseFloat(value);
 						if (!isNaN(pct)) {
 							const factor = pct / 100;
@@ -1229,8 +1229,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	// Lắng nghe sự thay đổi của Settings Checkbox
 	[displayGrid, displayOrigin, displayPads, displayTracks, displayRegions].forEach(chk => {
-		chk.addEventListener('change', () => {
-			if (activeTool === 'SELECT_AREA' && currentSelectedBounds) {
+		chk.addEventListener("change", () => {
+			if (activeTool === "SELECT_AREA" && currentSelectedBounds) {
 				calculateAreaSelection();
 			}
 			requestAnimationFrame(draw);
@@ -1239,5 +1239,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Bắt đầu khởi chạy Engine
 	initDropdowns();
 	resizeCanvas();
-	setTool('MOVE');
+	setTool("MOVE");
 });
