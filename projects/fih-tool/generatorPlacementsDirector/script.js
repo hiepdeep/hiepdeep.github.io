@@ -7,7 +7,7 @@ console.log("2. Tải lên file CAD (Nếu là hàng Telit thì ấn nút 'Telit
 console.log("3. Ấn nút 'Generator'.");
 console.log("4. Điền ô 'Assign', 'Side'.");
 console.log("5. Ấn nút 'Select Mode' và giữ chuột phải quét 1 điểm và ấn nút 'Get FD1' để tạo điểm Mark 1. Ấn nút 'Clear select' để bỏ chọn và quét điểm Mark 2.");
-console.log("6. Ấn nút 'Clear select' để bỏ chọn và phóng to 1 panel và quét chọn để lấy 1 panel.");
+console.log("6. Bôi chọn panel trên Canvas -> bấm 'Set Block' để đặt số thứ tự Panel (hoặc 'Clear Block' để xoá khỏi Block).");
 console.log("7. Ấn nút 'Export' để tạo bảng dữ liệu.");
 console.log("8. Ấn vào bảng dữ liệu đã tạo và Ctrl+C để sao chép dữ liệu rồi ném vào chương trình Director.");
 
@@ -19,7 +19,6 @@ const txtExport = document.getElementById("txt-generator");
 const table_basic = document.getElementById("txtExportTable-basic");
 const table_all = document.getElementById("txtExportTable-all");
 const rotate90 = document.getElementById("btn-turn90deg");
-const txtAssign = document.getElementById("setAssign");
 const txtSide = document.getElementById("setSide");
 const txtMark_X1 = document.getElementById("mark-x1");
 const txtMark_Y1 = document.getElementById("mark-y1");
@@ -29,6 +28,8 @@ const getMark_1 = document.getElementById("getMark1");
 const getMark_2 = document.getElementById("getMark2");
 const selectMode = document.getElementById("selectMode");
 const clearSelect = document.getElementById("btn-clearSelect");
+const btnSetBlock = document.getElementById("btn-setBlock");
+const btnClearBlock = document.getElementById("btn-clearBlock");
 const myCanvas = document.getElementById("myCanvas");
 const exportTableAll = document.getElementById("btn-exportTable");
 let $cads = 0, $cad = 0, $uncad = 0;
@@ -187,28 +188,41 @@ function renderCanvas() {
 
 	const dotRadius = Math.max(3, Math.min(6, scale * 1.5));
 
-	// Tối ưu 3-Pass Rendering (Không sử dụng .sort() để tiết kiệm CPU)
-	// Lượt 1: Part N/A (Thiếu Part = Màu xám - Nằm dưới cùng)
+	// Lượt 1: Các điểm thuộc Block (Làm mờ chấm tròn)
+	ctx.save();
+	ctx.globalAlpha = 0.35;
+	boardData.forEach(p => {
+		if (!p.selected && p.block !== "-") {
+			ctx.fillStyle = (!p.partNumber || p.partNumber === "N/A") ? "#9fafa1" : "#ffdf82";
+			ctx.beginPath();
+			ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
+			ctx.fill();
+		}
+	});
+	ctx.restore();
+
+	// Lượt 2: Các điểm tự do chưa thuộc Block nào
+	// 2a. Part N/A (Màu xám)
 	ctx.fillStyle = "#9fafa1";
 	boardData.forEach(p => {
-		if (!p.selected && (!p.partNumber || p.partNumber === "N/A")) {
+		if (!p.selected && p.block === "-" && (!p.partNumber || p.partNumber === "N/A")) {
 			ctx.beginPath();
 			ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
 			ctx.fill();
 		}
 	});
 
-	// Lượt 2: Có Part (Màu vàng đồng - Ở giữa)
+	// 2b. Có Part (Màu vàng đồng)
 	ctx.fillStyle = "#ffdf82";
 	boardData.forEach(p => {
-		if (!p.selected && p.partNumber && p.partNumber !== "N/A") {
+		if (!p.selected && p.block === "-" && p.partNumber && p.partNumber !== "N/A") {
 			ctx.beginPath();
 			ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
 			ctx.fill();
 		}
 	});
 
-	// Lượt 3: Đang chọn (Màu trắng - Nằm trên cùng)
+	// Lượt 3: Đang chọn (Màu trắng)
 	ctx.fillStyle = "#ffffff";
 	boardData.forEach(p => {
 		if (p.selected) {
@@ -218,7 +232,65 @@ function renderCanvas() {
 		}
 	});
 
-	// Vẽ khung bôi chọn (Marquee) khi đang giữ chuột phải kéo chọn vùng
+	// Lượt 4: Vẽ khung mờ và nhãn số thứ tự Block ở giữa Panel
+	const blocks = {};
+	boardData.forEach(p => {
+		if (p.block && p.block !== "-") {
+			if (!blocks[p.block]) blocks[p.block] = [];
+			blocks[p.block].push(p);
+		}
+	});
+
+	Object.keys(blocks).forEach(blockId => {
+		const pts = blocks[blockId];
+		let bMinX = Infinity, bMaxX = -Infinity, bMinY = Infinity, bMaxY = -Infinity;
+		pts.forEach(p => {
+			const cx = toCX(p.x);
+			const cy = toCY(p.y);
+			if (cx < bMinX) bMinX = cx;
+			if (cx > bMaxX) bMaxX = cx;
+			if (cy < bMinY) bMinY = cy;
+			if (cy > bMaxY) bMaxY = cy;
+		});
+
+		const padBox = dotRadius + 10;
+		const rectX = bMinX - padBox;
+		const rectY = bMinY - padBox;
+		const rectW = (bMaxX - bMinX) + padBox * 2;
+		const rectH = (bMaxY - bMinY) + padBox * 2;
+
+		ctx.save();
+		// Khung đường viền mờ
+		ctx.strokeStyle = "rgba(255, 255, 255, 0.45)";
+		ctx.lineWidth = 1.5;
+		ctx.setLineDash([4, 4]);
+		ctx.strokeRect(rectX, rectY, rectW, rectH);
+
+		// Hiển thị số Block ở trung tâm Panel
+		const midBlockX = (bMinX + bMaxX) / 2;
+		const midBlockY = (bMinY + bMaxY) / 2;
+		const fontSize = Math.max(14, Math.round(scale * 2.5));
+		ctx.font = `bold ${fontSize}px "Courier New", sans-serif`;
+		const text = `#${blockId}`;
+		const metrics = ctx.measureText(text);
+
+		// Khung nền nhãn text
+		ctx.fillStyle = "rgba(0, 0, 0, 0.65)";
+		ctx.fillRect(midBlockX - metrics.width / 2 - 6, midBlockY - fontSize / 2 - 4, metrics.width + 12, fontSize + 8);
+		ctx.strokeStyle = "rgba(255, 255, 255, 0.6)";
+		ctx.lineWidth = 1;
+		ctx.setLineDash([]);
+		ctx.strokeRect(midBlockX - metrics.width / 2 - 6, midBlockY - fontSize / 2 - 4, metrics.width + 12, fontSize + 8);
+
+		// Chữ nhãn
+		ctx.fillStyle = "#00ffff";
+		ctx.textAlign = "center";
+		ctx.textBaseline = "middle";
+		ctx.fillText(text, midBlockX, midBlockY);
+		ctx.restore();
+	});
+
+	// Lượt 5: Khung bôi chọn (Marquee) khi đang giữ chuột phải kéo chọn vùng
 	if (isSelecting) {
 		ctx.strokeStyle = "#00ffff";
 		ctx.lineWidth = 1;
@@ -369,7 +441,7 @@ btnExport.addEventListener("click", function(e) {
 		let rot = rowCADs[i][cads_Rotation] || "0";
 		const matchedRow = rowBOMs.slice(1).find(r => r[boms_SchemaRef] === ref);
 		let partNumber = matchedRow ? matchedRow[boms_PartNumber] : "N/A";
-		boardData.push({ ref, x, y, rot, partNumber, selected: false });
+		boardData.push({ ref, x, y, rot, partNumber, selected: false, block: "-" });
 	}
 	if (boardData.length > 0) {
 		origMinX = Math.min(...boardData.map(p => p.x));
@@ -451,15 +523,47 @@ clearSelect.addEventListener("click", function(e) {
 	renderCanvas();
 });
 
-// Tạo bảng dữ liệu đầy đủ
-exportTableAll.addEventListener("click", function(e) {
+// Nút Thiết lập Block (Set Block)
+btnSetBlock.addEventListener("click", function(e) {
 	e.preventDefault();
 	const selectedPoints = boardData.filter(p => p.selected);
 	if (selectedPoints.length === 0) {
-		alert("Vui lòng bật Select Mode và chọn các điểm thuộc Panel 1 trên Canvas!");
+		alert("Vui lòng bật Select Mode và bôi chọn các điểm trên Canvas trước!");
 		return;
 	}
-	const assignVal = txtAssign ? txtAssign.value : "";
+	const blockNum = prompt("Nhập số thứ tự panel (Block):", "1");
+	if (blockNum === null || blockNum.trim() === "") return;
+
+	const cleanBlockNum = blockNum.trim();
+	selectedPoints.forEach(p => {
+		p.block = cleanBlockNum;
+		p.selected = false;
+	});
+	renderCanvas();
+});
+
+// Nút Xoá Block (Clear Block)
+btnClearBlock.addEventListener("click", function(e) {
+	e.preventDefault();
+	const selectedPoints = boardData.filter(p => p.selected);
+	if (selectedPoints.length === 0) {
+		alert("Vui lòng bôi chọn các điểm trên Canvas để xóa khỏi Block!");
+		return;
+	}
+	selectedPoints.forEach(p => {
+		p.block = "-";
+		p.selected = false;
+	});
+	renderCanvas();
+});
+
+// Tạo bảng dữ liệu đầy đủ
+exportTableAll.addEventListener("click", function(e) {
+	e.preventDefault();
+	if (boardData.length === 0) {
+		alert("Chưa có dữ liệu Board!");
+		return;
+	}
 	const sideVal = txtSide ? txtSide.value : "";
 	let table = document.createElement("table");
 	let headerRow = table.insertRow();
@@ -478,20 +582,16 @@ exportTableAll.addEventListener("click", function(e) {
 	};
 	// 1. Thêm dòng dữ liệu Mark 1 (nếu có tọa độ X1, Y1)
 	if (txtMark_X1.value.trim() !== "" && txtMark_Y1.value.trim() !== "") {
-		addRow(["0", "Mark1", txtMark_X1.value.trim(), txtMark_Y1.value.trim(), "0", "0", "MARK", "", "Yes", "No", "FD1", "FD2", "No", "No", "Arc", "", "", "No", assignVal, sideVal]);
+		addRow(["0", "Mark1", txtMark_X1.value.trim(), txtMark_Y1.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "No", "No", "Arc", "", "", "No", "", sideVal]);
 	}
 	// 2. Thêm dòng dữ liệu Mark 2 (nếu có tọa độ X2, Y2)
 	if (txtMark_X2.value.trim() !== "" && txtMark_Y2.value.trim() !== "") {
-		addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "FD1", "FD2", "No", "No", "Arc", "", "", "No", assignVal, sideVal]);
+		addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "No", "No", "Arc", "", "", "No", "", sideVal]);
 	}
-	// 3. Thêm danh sách linh kiện đã được chọn thuộc Panel 1 (Loại bỏ Part N/A)
-	selectedPoints.forEach(p => {
+	// 3. Thêm danh sách linh kiện (Xuất cột Board tương ứng với Block đã set, loại bỏ Part N/A)
+	boardData.forEach(p => {
 		if (!p.partNumber || p.partNumber === "N/A") return; // Bỏ qua linh kiện N/A
-		addRow([
-			"1", p.ref, p.x, p.y, "0", p.rot,
-			p.partNumber, "", "Yes", "No", "FD1", "FD2", "", "",
-			"Arc", "", "", "No", assignVal, sideVal
-		]);
+		addRow([p.block || "-", p.ref, p.x, p.y, "0", p.rot, p.partNumber, "", "Yes", "No", "FD1", "FD2", "", "", "Arc", "", "", "No", "", sideVal]);
 	});
 	table_all.innerHTML = "";
 	table_all.appendChild(table);
