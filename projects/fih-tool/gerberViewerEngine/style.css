@@ -70,7 +70,7 @@ body {
 			overflow-y: auto;
 			transition: 0.2s ease;
 			&.is-dragover {
-				background: rgba(255, 255, 255, 0.1);
+				background: hsl(var(--hue-saturation-gray), 15%);
 			}
 			.empty-state {
 				pointer-events: none;
