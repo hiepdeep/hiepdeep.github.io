@@ -616,12 +616,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		layerList.innerHTML = "";
 		layers.forEach((layer, idx) => {
 			const itemEl = document.createElement("div");
-			itemEl.style.cssText = "display:flex; align-items:center; gap:8px; margin-bottom:8px; background:#1a1a20; padding:6px; border-radius:4px; border:1px solid #262630;";
+			itemEl.classList.add("layer");
 			itemEl.innerHTML = `
-				<input type="checkbox" ${layer.visible ? "checked" : ""} style="accent-color:#0284c7; cursor:pointer;">
-				<input type="color" value="${layer.color}" style="width:20px; height:20px; border:none; background:none; cursor:pointer;">
-				<span style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:11px; color:#e5e7eb;" title="${layer.name}">${layer.name}</span>
-				<button class="del-layer" style="background:none; border:none; color:#ef4444; cursor:pointer; font-weight:bold;">✕</button>
+				<input type="checkbox" ${layer.visible ? "checked" : ""}>
+				<input type="color" value="${layer.color}">
+				<span class="name-layer" title="${layer.name}">${layer.name}</span>
+				<button class="del-layer"></button>
 			`;
 			const chk = itemEl.querySelector("input[type='checkbox']");
 			const col = itemEl.querySelector("input[type='color']");
