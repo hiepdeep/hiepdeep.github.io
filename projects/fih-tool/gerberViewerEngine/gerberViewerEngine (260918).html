@@ -311,10 +311,12 @@
 			}
 			.box .main-control .toolbar .copyright {
 				flex: 1;
-				line-height: 30px;
 				text-align: right;
 				font-weight: bold;
 				color: hsl(var(--hue-saturation-gray), 60%);
+			}
+			.box .main-control .toolbar .copyright b {
+				color: hsl(var(--hue-saturation-gray), 80%);
 			}
 			.box .main-control .workspace {
 				-webkit-box-flex: 1;
@@ -491,7 +493,7 @@
 					<button id="btnUnselect" class="not-allowed">Bỏ chọn</button>
 					<span class="split">|</span>
 					<button id="btnMovetozero" class="not-allowed">Di chuyển vùng chọn về 0</button>
-					<span class="copyright">Copyright by HiepDz</span>
+					<span class="copyright">Copyright by <b>HiepDz</b></span>
 				</div>
 				<div class="workspace">
 					<div class="canvas-container" id="canvasContainer"></div>

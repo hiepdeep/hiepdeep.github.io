@@ -188,10 +188,12 @@ body {
 			}
 			.copyright {
 				flex: 1;
-				line-height: 30px;
 				text-align: right;
 				font-weight: bold;
 				color: hsl(var(--hue-saturation-gray), 60%);
+				b {
+					color: hsl(var(--hue-saturation-gray), 80%);
+				}
 			}
 		}
 		.workspace {
