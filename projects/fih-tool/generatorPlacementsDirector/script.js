@@ -88,17 +88,18 @@ document.getElementById("addBOMs").addEventListener("change", function() {
 			if (h === "Schema ref") schemaRefIndex = c;
 			if (h === "Object ID") objectIdIndex = c;
 		});
-		// 1. Dữ liệu BOMs đầy đủ (chỉ lọc Quantity == 1,00 và Schema ref không rỗng)
+		// 1. Dữ liệu BOMs đầy đủ (Quantity == 1,00 và Schema ref không rỗng)
 		let filteredRows = parsedRows.filter(row => (row[quantityIndex] || "") === "1,00" && (row[schemaRefIndex] || "") !== "");
 		let allData = [headers, ...filteredRows];
 		let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => (row[colIdx] || "").length)));
 		document.getElementById("importBOMs").value = allData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
-		// 2. Lọc danh sách Object ID duy nhất (Unique Object ID) và hiển thị vào textarea #sameBOMs
+		// 2. Lọc danh sách Object ID duy nhất (Yêu cầu: Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
 		let uniqueObjectMap = new Map();
 		parsedRows.forEach(row => {
 			let objId = row[objectIdIndex] || "";
-			// Kiểm tra điều kiện hợp lệ và lọc trùng Object ID
-			if (objId && (row[quantityIndex] || "") === "1,00" && !uniqueObjectMap.has(objId)) {
+			let schemaRef = row[schemaRefIndex] || "";
+			let qty = row[quantityIndex] || "";
+			if (objId && qty === "1,00" && schemaRef !== "" && !uniqueObjectMap.has(objId)) {
 				uniqueObjectMap.set(objId, row);
 			}
 		});
