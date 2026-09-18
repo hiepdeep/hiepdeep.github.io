@@ -582,16 +582,16 @@ exportTableAll.addEventListener("click", function(e) {
 	};
 	// 1. Thêm dòng dữ liệu Mark 1 (nếu có tọa độ X1, Y1)
 	if (txtMark_X1.value.trim() !== "" && txtMark_Y1.value.trim() !== "") {
-		addRow(["0", "Mark1", txtMark_X1.value.trim(), txtMark_Y1.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "No", "No", "Arc", "", "", "No", "", sideVal]);
+		addRow(["0", "Mark1", txtMark_X1.value.trim(), txtMark_Y1.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 	}
 	// 2. Thêm dòng dữ liệu Mark 2 (nếu có tọa độ X2, Y2)
 	if (txtMark_X2.value.trim() !== "" && txtMark_Y2.value.trim() !== "") {
-		addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "No", "No", "Arc", "", "", "No", "", sideVal]);
+		addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 	}
 	// 3. Thêm danh sách linh kiện (Xuất cột Board tương ứng với Block đã set, loại bỏ Part N/A)
 	boardData.forEach(p => {
 		if (!p.partNumber || p.partNumber === "N/A") return; // Bỏ qua linh kiện N/A
-		addRow([p.block || "-", p.ref, p.x, p.y, "0", p.rot, p.partNumber, "", "Yes", "No", "FD1", "FD2", "", "", "Arc", "", "", "No", "", sideVal]);
+		addRow([p.block || "-", p.ref, p.x, p.y, "0", p.rot, p.partNumber, "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 	});
 	table_all.innerHTML = "";
 	table_all.appendChild(table);

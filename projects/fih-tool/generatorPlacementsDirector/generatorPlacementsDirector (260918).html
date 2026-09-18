@@ -124,11 +124,11 @@
 				position: relative;
 				overflow: hidden;
 				cursor: pointer;
-				background: var(--bg-body-blue);
+				background: hsl(var(--hue-saturation-gray), 95%);
 			}
 			.btn-checkbox input:before {
 				content: "";
-				background: hsl(var(--hue-saturation-gray), 60%);
+				background: hsl(var(--hue-saturation-gray), 40%);
 				position: absolute;
 				width: calc((100% - 4px) / 3);
 				height: calc(100% - 4px);
@@ -143,7 +143,7 @@
 			.btn-checkbox input:checked:before {
 				width: calc((100% - 4px) / 2);
 				left: calc(100% - ((28px - 4px) / 2) - 2px);
-				background: hsl(var(--hue-saturation-green), 40%);
+				background: hsl(var(--hue-saturation-green), 50%);
 			}
 			.btn-checkbox span {
 				width: -webkit-max-content;
@@ -497,17 +497,30 @@
 				width: 100%;
 				height: 30px;
 				padding: 0 12px;
-				color: hsl(var(--hue-saturation-brown), 95%);
-				background: hsl(var(--hue-saturation-brown), 50%);
-				border: 1px solid hsl(var(--hue-saturation-brown), 45%);
+				color: hsl(var(--hue-saturation-gray), 40%);
+				background: hsl(var(--hue-saturation-gray), 95%);
+				border: 1px solid hsl(var(--hue-saturation-gray), 90%);
 			}
 			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button:hover {
-				background: hsl(var(--hue-saturation-brown), 45%);
-				border-color: hsl(var(--hue-saturation-brown), 40%);
+				background: hsl(var(--hue-saturation-gray), 90%);
+				border-color: hsl(var(--hue-saturation-gray), 85%);
 			}
 			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button:active {
-				background: hsl(var(--hue-saturation-brown), 40%);
-				border-color: hsl(var(--hue-saturation-brown), 35%);
+				background: hsl(var(--hue-saturation-gray), 85%);
+				border-color: hsl(var(--hue-saturation-gray), 80%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button#btn-setBlock {
+				color: hsl(var(--hue-saturation-teal), 95%);
+				background: hsl(var(--hue-saturation-teal), 50%);
+				border: 1px solid hsl(var(--hue-saturation-teal), 45%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button#btn-setBlock:hover {
+				background: hsl(var(--hue-saturation-teal), 45%);
+				border-color: hsl(var(--hue-saturation-teal), 40%);
+			}
+			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button#btn-setBlock:active {
+				background: hsl(var(--hue-saturation-teal), 40%);
+				border-color: hsl(var(--hue-saturation-teal), 35%);
 			}
 			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .myCanvas {
 				width: calc(270px * 16 / 9);
@@ -1233,16 +1246,16 @@
 				};
 				// 1. Thêm dòng dữ liệu Mark 1 (nếu có tọa độ X1, Y1)
 				if (txtMark_X1.value.trim() !== "" && txtMark_Y1.value.trim() !== "") {
-					addRow(["0", "Mark1", txtMark_X1.value.trim(), txtMark_Y1.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "No", "No", "Arc", "", "", "No", "", sideVal]);
+					addRow(["0", "Mark1", txtMark_X1.value.trim(), txtMark_Y1.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 				}
 				// 2. Thêm dòng dữ liệu Mark 2 (nếu có tọa độ X2, Y2)
 				if (txtMark_X2.value.trim() !== "" && txtMark_Y2.value.trim() !== "") {
-					addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "No", "No", "Arc", "", "", "No", "", sideVal]);
+					addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 				}
 				// 3. Thêm danh sách linh kiện (Xuất cột Board tương ứng với Block đã set, loại bỏ Part N/A)
 				boardData.forEach(p => {
 					if (!p.partNumber || p.partNumber === "N/A") return; // Bỏ qua linh kiện N/A
-					addRow([p.block || "-", p.ref, p.x, p.y, "0", p.rot, p.partNumber, "", "Yes", "No", "FD1", "FD2", "", "", "Arc", "", "", "No", "", sideVal]);
+					addRow([p.block || "-", p.ref, p.x, p.y, "0", p.rot, p.partNumber, "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 				});
 				table_all.innerHTML = "";
 				table_all.appendChild(table);

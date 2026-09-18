@@ -46,10 +46,10 @@ input, button {
 		position: relative;
 		overflow: hidden;
 		cursor: pointer;
-		background: var(--bg-body-blue);
+		background: hsl(var(--hue-saturation-gray), 95%);
 		&:before {
 			content: "";
-			background: hsl(var(--hue-saturation-gray), 60%);
+			background: hsl(var(--hue-saturation-gray), 40%);
 			position: absolute;
 			width: calc((100% - 4px) / 3);
 			height: calc(100% - 4px);
@@ -61,7 +61,7 @@ input, button {
 		&:checked:before {
 			width: calc((100% - 4px) / 2);
 			left: calc(100% - ((28px - 4px) / 2) - 2px);
-			background: hsl(var(--hue-saturation-green), 40%);
+			background: hsl(var(--hue-saturation-green), 50%);
 		}
 	}
 	span {
@@ -327,16 +327,29 @@ input, button {
 									width: 100%;
 									height: 30px;
 									padding: 0 12px;
-									color: hsl(var(--hue-saturation-brown), 95%);
-									background: hsl(var(--hue-saturation-brown), 50%);
-									border: 1px solid hsl(var(--hue-saturation-brown), 45%);
+									color: hsl(var(--hue-saturation-gray), 40%);
+									background: hsl(var(--hue-saturation-gray), 95%);
+									border: 1px solid hsl(var(--hue-saturation-gray), 90%);
 									&:hover {
-										background: hsl(var(--hue-saturation-brown), 45%);
-										border-color: hsl(var(--hue-saturation-brown), 40%);
+										background: hsl(var(--hue-saturation-gray), 90%);
+										border-color: hsl(var(--hue-saturation-gray), 85%);
 									}
 									&:active {
-										background: hsl(var(--hue-saturation-brown), 40%);
-										border-color: hsl(var(--hue-saturation-brown), 35%);
+										background: hsl(var(--hue-saturation-gray), 85%);
+										border-color: hsl(var(--hue-saturation-gray), 80%);
+									}
+									&#btn-setBlock {
+										color: hsl(var(--hue-saturation-teal), 95%);
+										background: hsl(var(--hue-saturation-teal), 50%);
+										border: 1px solid hsl(var(--hue-saturation-teal), 45%);
+										&:hover {
+											background: hsl(var(--hue-saturation-teal), 45%);
+											border-color: hsl(var(--hue-saturation-teal), 40%);
+										}
+										&:active {
+											background: hsl(var(--hue-saturation-teal), 40%);
+											border-color: hsl(var(--hue-saturation-teal), 35%);
+										}
 									}
 								}
 							}
