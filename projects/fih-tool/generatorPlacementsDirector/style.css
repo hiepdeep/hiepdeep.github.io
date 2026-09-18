@@ -204,7 +204,7 @@ input, button {
 				display: flex;
 				gap: 6px;
 				#txtExportTable-basic {
-					width: 100%;
+					flex: 1;
 					height: 386px;
 					padding: 6px;
 					background: var(--bg-box);
@@ -238,7 +238,7 @@ input, button {
 						display: flex;
 						gap: 6px;
 						.col-1 {
-							width: 334px;
+							width: 300px;
 							display: flex;
 							flex-direction: column;
 							gap: 6px;
