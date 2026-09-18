@@ -82,17 +82,30 @@ document.getElementById("addBOMs").addEventListener("change", function() {
 			if (headers.length === 0) headers = cells;
 			else parsedRows.push(cells);
 		}
-		let quantityIndex = 6, schemaRefIndex = 8, qtyCount = 0;
+		let quantityIndex = 6, schemaRefIndex = 8, objectIdIndex = 2, qtyCount = 0;
 		headers.forEach((h, c) => {
 			if (h === "Quantity" && ++qtyCount === 2) quantityIndex = c;
 			if (h === "Schema ref") schemaRefIndex = c;
+			if (h === "Object ID") objectIdIndex = c;
 		});
+		// 1. Dữ liệu BOMs đầy đủ (chỉ lọc Quantity == 1,00 và Schema ref không rỗng)
 		let filteredRows = parsedRows.filter(row => (row[quantityIndex] || "") === "1,00" && (row[schemaRefIndex] || "") !== "");
 		let allData = [headers, ...filteredRows];
 		let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => (row[colIdx] || "").length)));
-		document.getElementById("importBOMs").value = allData.map(row =>
-			row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")
-		).join("\n");
+		document.getElementById("importBOMs").value = allData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
+		// 2. Lọc danh sách Object ID duy nhất (Unique Object ID) và hiển thị vào textarea #sameBOMs
+		let uniqueObjectMap = new Map();
+		parsedRows.forEach(row => {
+			let objId = row[objectIdIndex] || "";
+			// Kiểm tra điều kiện hợp lệ và lọc trùng Object ID
+			if (objId && (row[quantityIndex] || "") === "1,00" && !uniqueObjectMap.has(objId)) {
+				uniqueObjectMap.set(objId, row);
+			}
+		});
+		let uniqueRows = Array.from(uniqueObjectMap.values());
+		let uniqueData = [headers, ...uniqueRows];
+		let uniqueColWidths = headers.map((_, colIdx) => Math.max(...uniqueData.map(row => (row[colIdx] || "").length)));
+		document.getElementById("sameBOMs").value = uniqueData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(uniqueColWidths[colIdx], " ")).join(" | ")).join("\n");
 	};
 	reader.readAsText(file);
 });
