@@ -186,6 +186,13 @@ body {
 			.split {
 				color: hsl(var(--hue-saturation-gray), 35%);
 			}
+			.copyright {
+				flex: 1;
+				line-height: 30px;
+				text-align: right;
+				font-weight: bold;
+				color: hsl(var(--hue-saturation-gray), 60%);
+			}
 		}
 		.workspace {
 			flex: 1;
