@@ -270,7 +270,8 @@ input, button {
 									align-items: center;
 									gap: 6px;
 									input {
-										width: 100%;
+										flex: 1;
+										width: 0;
 										height: 30px;
 										padding: 0 6px;
 										font-size: var(--fz-lv-4);

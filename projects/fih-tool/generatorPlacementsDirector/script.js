@@ -103,9 +103,17 @@ document.getElementById("addBOMs").addEventListener("change", function() {
 				uniqueObjectMap.set(objId, row);
 			}
 		});
-		let uniqueRows = Array.from(uniqueObjectMap.values());
-		let uniqueData = [headers, ...uniqueRows];
-		let uniqueColWidths = headers.map((_, colIdx) => Math.max(...uniqueData.map(row => (row[colIdx] || "").length)));
+		let objDescIndex = headers.indexOf("Object description");
+		let targetHeaders = ["Object ID", "Object description", "Schema ref"];
+		let uniqueRowsFiltered = Array.from(uniqueObjectMap.values()).map(row => [
+			row[objectIdIndex] || "",
+			objDescIndex !== -1 ? (row[objDescIndex] || "") : "",
+			row[schemaRefIndex] || ""
+		]);
+		let uniqueData = [targetHeaders, ...uniqueRowsFiltered];
+		let uniqueColWidths = targetHeaders.map((_, colIdx) =>
+			Math.max(...uniqueData.map(row => (row[colIdx] || "").length))
+		);
 		document.getElementById("sameBOMs").value = uniqueData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(uniqueColWidths[colIdx], " ")).join(" | ")).join("\n");
 	};
 	reader.readAsText(file);

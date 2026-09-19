@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
 		<meta charset="UTF-8">
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
@@ -419,7 +419,8 @@
 				gap: 6px;
 			}
 			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input {
-				width: 100%;
+				flex: 1;
+				width: 0;
 				height: 30px;
 				padding: 0 6px;
 				font-size: var(--fz-lv-4);
@@ -798,10 +799,18 @@
 							uniqueObjectMap.set(objId, row);
 						}
 					});
-					let uniqueRows = Array.from(uniqueObjectMap.values());
-					let uniqueData = [headers, ...uniqueRows];
-					let uniqueColWidths = headers.map((_, colIdx) => Math.max(...uniqueData.map(row => (row[colIdx] || "").length)));
-					document.getElementById("sameBOMs").value = uniqueData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(uniqueColWidths[colIdx], " ")).join(" | ")).join("\n");
+					let objDescIndex = headers.indexOf("Object description");
+					let targetHeaders = ["Object ID", "Object description", "Schema ref"];
+					let uniqueRowsFiltered = Array.from(uniqueObjectMap.values()).map(row => [
+						row[objectIdIndex] || "",
+						objDescIndex !== -1 ? (row[objDescIndex] || "") : "",
+						row[schemaRefIndex] || ""
+					]);
+					let uniqueData = [targetHeaders, ...uniqueRowsFiltered];
+					let uniqueColWidths = targetHeaders.map((_, colIdx) =>
+						Math.max(...uniqueData.map(row => (row[colIdx] || "").length))
+					);
+					document.getElementById("sameBOMs").value = uniqueData.map(row => row.map((cell, colIdx) => (cell || "").padEnd(uniqueColWidths[colIdx], " ")).join(" | ")).join("\n");
 				};
 				reader.readAsText(file);
 			});
