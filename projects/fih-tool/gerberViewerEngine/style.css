@@ -132,7 +132,7 @@ body {
 				}
 				.name-layer {
 					flex: 1;
-					color: hsl(var(--hue-saturation-gray), 80%);
+					color: hsl(var(--hue-saturation-gray), 60%);
 				}
 				button {
 					flex-shrink: 0;
