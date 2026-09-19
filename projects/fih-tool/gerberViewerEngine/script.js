@@ -31,7 +31,7 @@ const UNITS = {
 };
 let currentUnit = "mm";
 const SCREEN_PHYSICAL_PX_PER_MM = 96 / 25.4;
-const PRESET_COLORS = ["#00FF66", "#FF3366", "#33CCFF", "#FFCC00", "#CC66FF", "#FF9933"];
+const PRESET_COLORS = ["#40bf6a", "#e6c419", "#d94426", "#cc3380", "#6a40bf"];
 
 // Biến quản lý Gerber & View
 let layers = [];

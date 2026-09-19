@@ -30,10 +30,6 @@
 				--hue-saturation-green: 140deg, 50%;
 				--hue-saturation-blue: 210deg, 70%;
 				--hue-saturation-gray: 200deg, 10%;
-				--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
-				--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
-				--bg-box: hsl(var(--hue-saturation-gray), 100%);
-				--bd-box: hsl(var(--hue-saturation-gray), 90%);
 				--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
 				--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
 				--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
@@ -121,18 +117,18 @@
 				text-align: center;
 				padding: 0 12px;
 				cursor: pointer;
-				color: hsl(var(--hue-saturation-blue), 95%);
-				background: hsl(var(--hue-saturation-blue), 50%);
-				border: 1px solid hsl(var(--hue-saturation-blue), 45%);
+				color: hsl(var(--hue-saturation-green), 95%);
+				background: hsl(var(--hue-saturation-green), 50%);
+				border: 1px solid hsl(var(--hue-saturation-green), 45%);
 				border-radius: var(--bdrs-lv-4);
 			}
 			.box .sidebar .label-importfile .txt:hover {
-				background: hsl(var(--hue-saturation-blue), 45%);
-				border-color: hsl(var(--hue-saturation-blue), 40%);
+				background: hsl(var(--hue-saturation-green), 45%);
+				border-color: hsl(var(--hue-saturation-green), 40%);
 			}
 			.box .sidebar .label-importfile .txt:active {
-				background: hsl(var(--hue-saturation-blue), 40%);
-				border-color: hsl(var(--hue-saturation-blue), 35%);
+				background: hsl(var(--hue-saturation-green), 40%);
+				border-color: hsl(var(--hue-saturation-green), 35%);
 			}
 			.box .sidebar .sidebar-header {
 				-ms-flex-negative: 0;
@@ -153,7 +149,7 @@
 				color: hsl(var(--hue-saturation-gray), 80%);
 			}
 			.box .sidebar .sidebar-header #lblLayerCount {
-				color: hsl(var(--hue-saturation-blue), 50%);
+				color: hsl(var(--hue-saturation-green), 50%);
 				font-weight: bold;
 			}
 			.box .sidebar .layer-list {
@@ -481,11 +477,11 @@
 			}
 			.box .main-control .footer .status-box span {
 				line-height: 28px;
-				color: hsl(var(--hue-saturation-gray), 60%);
+				color: hsl(var(--hue-saturation-gray), 50%);
 			}
 			.box .main-control .footer .status-box span.val {
 				font-weight: bold;
-				color: hsl(var(--hue-saturation-green), 60%);
+				color: hsl(var(--hue-saturation-green), 50%);
 			}
 			.box .main-control .footer .status-box .option-select-list {
 				position: relative;
@@ -496,7 +492,7 @@
 				width: max-content;
 				line-height: 28px;
 				font-weight: bold;
-				color: hsl(var(--hue-saturation-green), 60%);
+				color: hsl(var(--hue-saturation-green), 50%);
 				cursor: pointer;
 			}
 			.box .main-control .footer .status-box .option-select-list .option-list {
@@ -536,7 +532,7 @@
 				width: max-content;
 				line-height: 28px;
 				padding: 0 12px;
-				color: hsl(var(--hue-saturation-gray), 60%);
+				color: hsl(var(--hue-saturation-gray), 50%);
 				cursor: pointer;
 			}
 			.box .main-control .footer .status-box .option-select-list .option-list span:hover {
@@ -705,7 +701,7 @@
 			};
 			let currentUnit = "mm";
 			const SCREEN_PHYSICAL_PX_PER_MM = 96 / 25.4;
-			const PRESET_COLORS = ["#00FF66", "#FF3366", "#33CCFF", "#FFCC00", "#CC66FF", "#FF9933"];
+			const PRESET_COLORS = ["#40bf6a", "#e6c419", "#d94426", "#cc3380", "#6a40bf"];
 			// Biến quản lý Gerber & View
 			let layers = [];
 			let activeTool = "MOVE"; // "MOVE", "SELECT_POINT", "SELECT_AREA", "MEASURE"
@@ -1545,7 +1541,7 @@
 					}
 				}
 				function drawGrid() {
-					ctx.strokeStyle = "#181818";
+					ctx.strokeStyle = "#171a1c";
 					ctx.lineWidth = 1;
 					let step = 1;
 					if (zoom < 5) step = 10;
@@ -1571,13 +1567,13 @@
 				}
 				function drawOrigin() {
 					const originS = worldToScreen(0, 0);
-					ctx.strokeStyle = "#444";
+					ctx.strokeStyle = "#22282a";
 					ctx.lineWidth = 1;
 					ctx.beginPath();
 					ctx.moveTo(0, originS.y);
 					ctx.lineTo(canvas.width, originS.y);
 					ctx.stroke();
-					ctx.strokeStyle = "#444";
+					ctx.strokeStyle = "#22282a";
 					ctx.beginPath();
 					ctx.moveTo(originS.x, 0);
 					ctx.lineTo(originS.x, canvas.height);
