@@ -861,7 +861,7 @@
 					}
 				}
 				function drawGrid() {
-					ctx.strokeStyle = "#0e1011";
+					ctx.strokeStyle = "#101214";
 					ctx.lineWidth = 1;
 					let step = 1;
 					if (zoom < 5) step = 10;
@@ -887,13 +887,13 @@
 				}
 				function drawOrigin() {
 					const originS = worldToScreen(0, 0);
-					ctx.strokeStyle = "rgba(38, 127, 217, 1)";
+					ctx.strokeStyle = "#171a1c";
 					ctx.lineWidth = 1;
 					ctx.beginPath();
 					ctx.moveTo(0, originS.y);
 					ctx.lineTo(canvas.width, originS.y);
 					ctx.stroke();
-					ctx.strokeStyle = "rgba(38, 127, 217, 1)";
+					ctx.strokeStyle = "#171a1c";
 					ctx.beginPath();
 					ctx.moveTo(originS.x, 0);
 					ctx.lineTo(originS.x, canvas.height);
