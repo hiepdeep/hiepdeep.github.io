@@ -105,6 +105,39 @@
 				        flex-direction: column;
 				z-index: 5;
 			}
+			.box .sidebar input[type=checkbox] {
+				-ms-flex-negative: 0;
+				    flex-shrink: 0;
+				display: block;
+				-webkit-appearance: none;
+				width: 20px;
+				height: 20px;
+				position: relative;
+				overflow: hidden;
+				cursor: pointer;
+				background: hsl(var(--hue-saturation-gray), 20%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .sidebar input[type=checkbox]:before {
+				content: "";
+				position: absolute;
+				width: calc((100% - 4px) / 3);
+				height: calc(100% - 4px);
+				left: 2px;
+				top: 50%;
+				-webkit-transform: translatey(-50%);
+				    -ms-transform: translatey(-50%);
+				        transform: translatey(-50%);
+				-webkit-transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
+				transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
+				background: hsl(var(--hue-saturation-gray), 60%);
+				border-radius: calc(var(--bdrs-lv-4) - 2px);
+			}
+			.box .sidebar input[type=checkbox]:checked:before {
+				width: calc((100% - 4px) / 2);
+				left: calc(100% - ((20px - 4px) / 2) - 2px);
+				background: hsl(var(--hue-saturation-gray), 80%);
+			}
 			.box .sidebar .label-importfile {
 				-ms-flex-negative: 0;
 				    flex-shrink: 0;
@@ -117,18 +150,16 @@
 				text-align: center;
 				padding: 0 12px;
 				cursor: pointer;
-				color: hsl(var(--hue-saturation-green), 95%);
-				background: hsl(var(--hue-saturation-green), 50%);
-				border: 1px solid hsl(var(--hue-saturation-green), 45%);
+				--hs: var(--hue-saturation-green);
+				color: hsl(var(--hs), 80%);
+				background: hsl(var(--hs), 25%);
+				border: 1px solid hsl(var(--hs), 30%);
 				border-radius: var(--bdrs-lv-4);
 			}
 			.box .sidebar .label-importfile .txt:hover {
-				background: hsl(var(--hue-saturation-green), 45%);
-				border-color: hsl(var(--hue-saturation-green), 40%);
-			}
-			.box .sidebar .label-importfile .txt:active {
-				background: hsl(var(--hue-saturation-green), 40%);
-				border-color: hsl(var(--hue-saturation-green), 35%);
+				color: hsl(var(--hs), 100%);
+				background: hsl(var(--hs), 35%);
+				border: 1px solid hsl(var(--hs), 40%);
 			}
 			.box .sidebar .sidebar-header {
 				-ms-flex-negative: 0;
@@ -149,7 +180,7 @@
 				color: hsl(var(--hue-saturation-gray), 80%);
 			}
 			.box .sidebar .sidebar-header #lblLayerCount {
-				color: hsl(var(--hue-saturation-green), 50%);
+				color: hsl(var(--hue-saturation-green), 60%);
 				font-weight: bold;
 			}
 			.box .sidebar .layer-list {
@@ -176,7 +207,7 @@
 				display: block;
 				padding: 12px;
 				text-align: center;
-				color: hsl(var(--hue-saturation-gray), 50%);
+				color: hsl(var(--hue-saturation-gray), 60%);
 			}
 			.box .sidebar .layer-list .layer {
 				display: -webkit-box;
@@ -191,39 +222,6 @@
 			.box .sidebar .layer-list .layer:nth-child(n+2) {
 				padding: 6px 0;
 				border-top: 1px solid hsl(var(--hue-saturation-gray), 15%);
-			}
-			.box .sidebar .layer-list .layer input[type=checkbox] {
-				-ms-flex-negative: 0;
-				    flex-shrink: 0;
-				display: block;
-				-webkit-appearance: none;
-				width: 20px;
-				height: 20px;
-				position: relative;
-				overflow: hidden;
-				cursor: pointer;
-				background: hsl(var(--hue-saturation-gray), 20%);
-				border-radius: var(--bdrs-lv-4);
-			}
-			.box .sidebar .layer-list .layer input[type=checkbox]:before {
-				content: "";
-				position: absolute;
-				width: calc((100% - 4px) / 3);
-				height: calc(100% - 4px);
-				left: 2px;
-				top: 50%;
-				-webkit-transform: translatey(-50%);
-				    -ms-transform: translatey(-50%);
-				        transform: translatey(-50%);
-				-webkit-transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
-				transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
-				background: hsl(var(--hue-saturation-gray), 40%);
-				border-radius: calc(var(--bdrs-lv-4) - 2px);
-			}
-			.box .sidebar .layer-list .layer input[type=checkbox]:checked:before {
-				width: calc((100% - 4px) / 2);
-				left: calc(100% - ((20px - 4px) / 2) - 2px);
-				background: hsl(var(--hue-saturation-gray), 80%);
 			}
 			.box .sidebar .layer-list .layer input[type=color] {
 				-ms-flex-negative: 0;
@@ -252,7 +250,7 @@
 				    flex-shrink: 0;
 				width: 20px;
 				height: 20px;
-				background: hsl(var(--hue-saturation-gray), 15%);
+				background: hsl(var(--hue-saturation-gray), 20%);
 				border: 0;
 				border-radius: var(--bdrs-lv-4);
 				position: relative;
@@ -265,7 +263,7 @@
 				height: 2px;
 				left: 50%;
 				top: 50%;
-				background: hsl(var(--hue-saturation-gray), 40%);
+				background: hsl(var(--hue-saturation-gray), 60%);
 				border-radius: 9px;
 			}
 			.box .sidebar .layer-list .layer button:before {
@@ -280,7 +278,7 @@
 			}
 			.box .sidebar .layer-list .layer button:hover:before,
 			.box .sidebar .layer-list .layer button:hover:after {
-				background: hsl(var(--hue-saturation-red), 40%);
+				background: hsl(var(--hue-saturation-red), 60%);
 			}
 			.box .sidebar .sidebar-settings {
 				-ms-flex-negative: 0;
@@ -310,37 +308,6 @@
 			}
 			.box .sidebar .sidebar-settings .label-checkbox:hover {
 				color: hsl(var(--hue-saturation-gray), 80%);
-			}
-			.box .sidebar .sidebar-settings .label-checkbox input {
-				display: block;
-				-webkit-appearance: none;
-				width: 20px;
-				height: 20px;
-				position: relative;
-				overflow: hidden;
-				cursor: pointer;
-				background: hsl(var(--hue-saturation-gray), 20%);
-				border-radius: var(--bdrs-lv-4);
-			}
-			.box .sidebar .sidebar-settings .label-checkbox input:before {
-				content: "";
-				position: absolute;
-				width: calc((100% - 4px) / 3);
-				height: calc(100% - 4px);
-				left: 2px;
-				top: 50%;
-				-webkit-transform: translatey(-50%);
-				    -ms-transform: translatey(-50%);
-				        transform: translatey(-50%);
-				-webkit-transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
-				transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
-				background: hsl(var(--hue-saturation-gray), 40%);
-				border-radius: calc(var(--bdrs-lv-4) - 2px);
-			}
-			.box .sidebar .sidebar-settings .label-checkbox input:checked:before {
-				width: calc((100% - 4px) / 2);
-				left: calc(100% - ((20px - 4px) / 2) - 2px);
-				background: hsl(var(--hue-saturation-gray), 80%);
 			}
 			.box .sidebar .sidebar-settings .label-checkbox .txt {
 				font-weight: bold;
@@ -376,42 +343,27 @@
 			.box .main-control .toolbar button {
 				height: 30px;
 				padding: 0 12px;
-				color: hsl(var(--hue-saturation-gray), 80%);
-				background: hsl(var(--hue-saturation-gray), 15%);
-				border: 1px solid hsl(var(--hue-saturation-gray), 25%);
+				--hs: var(--hue-saturation-gray);
+				color: hsl(var(--hs), 60%);
+				background: hsl(var(--hs), 15%);
+				border: 1px solid hsl(var(--hs), 20%);
 				border-radius: var(--bdrs-lv-4);
 			}
-			.box .main-control .toolbar button:hover {
-				color: hsl(var(--hue-saturation-gray), 85%);
-				background: hsl(var(--hue-saturation-gray), 20%);
-				border-color: hsl(var(--hue-saturation-gray), 30%);
-			}
+			.box .main-control .toolbar button:not(.not-allowed):hover,
 			.box .main-control .toolbar button.active {
-				color: hsl(var(--hue-saturation-gray), 95%);
-				background: hsl(var(--hue-saturation-gray), 35%);
-				border-color: hsl(var(--hue-saturation-gray), 45%);
+				color: hsl(var(--hs), 80%);
+				background: hsl(var(--hs), 25%);
+				border: 1px solid hsl(var(--hs), 30%);
 			}
 			.box .main-control .toolbar button#btnUnselect {
-				color: hsl(var(--hue-saturation-red), 80%);
-				background: hsl(var(--hue-saturation-red), 15%);
-				border: 1px solid hsl(var(--hue-saturation-red), 25%);
-			}
-			.box .main-control .toolbar button#btnUnselect:hover {
-				color: hsl(var(--hue-saturation-red), 85%);
-				background: hsl(var(--hue-saturation-red), 20%);
-				border-color: hsl(var(--hue-saturation-red), 30%);
-			}
-			.box .main-control .toolbar button#btnUnselect:active {
-				color: hsl(var(--hue-saturation-red), 95%);
-				background: hsl(var(--hue-saturation-red), 35%);
-				border-color: hsl(var(--hue-saturation-red), 45%);
+				--hs: var(--hue-saturation-red);
 			}
 			.box .main-control .toolbar button.not-allowed {
 				opacity: 0.5;
 				cursor: not-allowed;
 			}
 			.box .main-control .toolbar .split {
-				color: hsl(var(--hue-saturation-gray), 35%);
+				color: hsl(var(--hue-saturation-gray), 20%);
 			}
 			.box .main-control .toolbar .copyright {
 				-webkit-box-flex: 1;
@@ -427,7 +379,7 @@
 				-webkit-box-flex: 1;
 				    -ms-flex: 1;
 				        flex: 1;
-				background: hsl(var(--hue-saturation-gray), 8%);
+				background: hsl(var(--hue-saturation-gray), 5%);
 				cursor: crosshair;
 			}
 			.box .main-control .workspace .canvas-container {
@@ -477,11 +429,11 @@
 			}
 			.box .main-control .footer .status-box span {
 				line-height: 28px;
-				color: hsl(var(--hue-saturation-gray), 50%);
+				color: hsl(var(--hue-saturation-gray), 60%);
 			}
 			.box .main-control .footer .status-box span.val {
 				font-weight: bold;
-				color: hsl(var(--hue-saturation-green), 50%);
+				color: hsl(var(--hue-saturation-green), 60%);
 			}
 			.box .main-control .footer .status-box .option-select-list {
 				position: relative;
@@ -492,7 +444,7 @@
 				width: max-content;
 				line-height: 28px;
 				font-weight: bold;
-				color: hsl(var(--hue-saturation-green), 50%);
+				color: hsl(var(--hue-saturation-green), 60%);
 				cursor: pointer;
 			}
 			.box .main-control .footer .status-box .option-select-list .option-list {
@@ -507,7 +459,7 @@
 				    -ms-flex-direction: column;
 				        flex-direction: column;
 				background: hsl(var(--hue-saturation-gray), 15%);
-				border: 1px solid hsl(var(--hue-saturation-gray), 25%);
+				border: 1px solid hsl(var(--hue-saturation-gray), 20%);
 				border-radius: var(--bdrs-lv-4);
 				opacity: 0;
 				visibility: hidden;
@@ -532,7 +484,7 @@
 				width: max-content;
 				line-height: 28px;
 				padding: 0 12px;
-				color: hsl(var(--hue-saturation-gray), 50%);
+				color: hsl(var(--hue-saturation-gray), 60%);
 				cursor: pointer;
 			}
 			.box .main-control .footer .status-box .option-select-list .option-list span:hover {
@@ -702,12 +654,10 @@
 			let currentUnit = "mm";
 			const SCREEN_PHYSICAL_PX_PER_MM = 96 / 25.4;
 			const PRESET_COLORS = ["#40bf6a", "#e6c419", "#d94426", "#cc3380", "#6a40bf"];
-			// Biến quản lý Gerber & View
 			let layers = [];
 			let activeTool = "MOVE"; // "MOVE", "SELECT_POINT", "SELECT_AREA", "MEASURE"
 			let zoom = SCREEN_PHYSICAL_PX_PER_MM;
 			let panX = 0, panY = 0;
-			// Trạng thái các tương tác đồ họa
 			let pinnedPoint = null;
 			let measureStart = null, measureEnd = null;
 			let isBoxSelecting = false;
@@ -717,7 +667,7 @@
 			let currentSelectedBounds = null;
 			let isDragging = false;
 			let dragStartX = 0, dragStartY = 0;
-			let mouseWorld = {x: 0, y: 0};
+			let mouseWorld = { x: 0, y: 0 };
 			// PARSER GERBER (RS-274X PARSER ENGINE)
 			class GerberParser {
 				static parse(text, fileName) {
@@ -974,8 +924,7 @@
 								rot: tokens[6] || 0
 							});
 						} else if (code === 4) {
-							let rot = 0,
-								endIdx = tokens.length;
+							let rot = 0, endIdx = tokens.length;
 							if ((tokens.length - 3) % 2 === 1) {
 								rot = tokens[tokens.length - 1];
 								endIdx = tokens.length - 1;
@@ -1059,8 +1008,7 @@
 								minY = Math.min(minY, item.y + Math.min(p.y1, p.y2) - r);
 								maxY = Math.max(maxY, item.y + Math.max(p.y1, p.y2) + r);
 							} else if (p.type === "rect") {
-								const w2 = p.w / 2,
-									h2 = p.h / 2;
+								const w2 = p.w / 2, h2 = p.h / 2;
 								minX = Math.min(minX, item.x + p.cx - w2);
 								maxX = Math.max(maxX, item.x + p.cx + w2);
 								minY = Math.min(minY, item.y + p.cy - h2);
@@ -1325,12 +1273,7 @@
 							}
 						});
 					});
-					return hasItems ? {
-						minX,
-						maxX,
-						minY,
-						maxY
-					} : null;
+					return hasItems ? { minX, maxX, minY, maxY } : null;
 				}
 				function fitView() {
 					const bbox = getOverallBoundingBox();
@@ -1477,7 +1420,7 @@
 					drawOverlay();
 				}
 				function drawPadShape(ctx, pad) {
-					const {shape, dims, x, y, primitives} = pad;
+					const { shape, dims, x, y, primitives } = pad;
 					if (shape === "MACRO" && primitives && primitives.length > 0) {
 						ctx.save();
 						ctx.translate(x, y);
@@ -1541,7 +1484,7 @@
 					}
 				}
 				function drawGrid() {
-					ctx.strokeStyle = "#171a1c";
+					ctx.strokeStyle = "#0e1011";
 					ctx.lineWidth = 1;
 					let step = 1;
 					if (zoom < 5) step = 10;
@@ -1567,19 +1510,19 @@
 				}
 				function drawOrigin() {
 					const originS = worldToScreen(0, 0);
-					ctx.strokeStyle = "#22282a";
+					ctx.strokeStyle = "rgba(38, 127, 217, 1)";
 					ctx.lineWidth = 1;
 					ctx.beginPath();
 					ctx.moveTo(0, originS.y);
 					ctx.lineTo(canvas.width, originS.y);
 					ctx.stroke();
-					ctx.strokeStyle = "#22282a";
+					ctx.strokeStyle = "rgba(38, 127, 217, 1)";
 					ctx.beginPath();
 					ctx.moveTo(originS.x, 0);
 					ctx.lineTo(originS.x, canvas.height);
 					ctx.stroke();
 				}
-				function drawCenterMarker(x, y, labelColor = "#38bdf8") {
+				function drawCenterMarker(x, y, labelColor = "rgba(38, 127, 217, 1)") {
 					const s = worldToScreen(x, y);
 					ctx.strokeStyle = labelColor;
 					ctx.lineWidth = 1.5;
@@ -1599,10 +1542,10 @@
 					const nearest = findNearestGeometry(mouseWorld.x, mouseWorld.y);
 					if (nearest.center && (activeTool === "SELECT_POINT" || activeTool === "MEASURE")) {
 						const s = worldToScreen(nearest.center.x, nearest.center.y);
-						ctx.strokeStyle = "#38bdf8";
+						ctx.strokeStyle = "rgba(38, 127, 217, 1)";
 						ctx.lineWidth = 2;
 						ctx.beginPath();
-						ctx.arc(s.x, s.y, 8, 0, Math.PI * 2);
+						ctx.arc(s.x, s.y, 10, 0, Math.PI * 2);
 						ctx.stroke();
 					}
 					if (boxStartWorld && boxEndWorld && (isBoxSelecting || activeTool === "SELECT_AREA")) {
@@ -1610,20 +1553,20 @@
 						const p2 = worldToScreen(boxEndWorld.x, boxEndWorld.y);
 						const bx = Math.min(p1.x, p2.x), by = Math.min(p1.y, p2.y);
 						const bw = Math.abs(p1.x - p2.x), bh = Math.abs(p1.y - p2.y);
-						ctx.strokeStyle = "#38bdf8";
+						ctx.strokeStyle = "rgba(38, 127, 217, 0.5)";
 						ctx.lineWidth = 1.5;
 						ctx.setLineDash([5, 4]);
-						ctx.fillStyle = "rgba(56, 189, 248, 0.12)";
+						ctx.fillStyle = "rgba(38, 127, 217, 0.25)";
 						ctx.fillRect(bx, by, bw, bh);
 						ctx.strokeRect(bx, by, bw, bh);
 						ctx.setLineDash([]);
 					}
 					if (activeTool === "SELECT_POINT" && pinnedPoint) {
-						drawCenterMarker(pinnedPoint.x, pinnedPoint.y, "#38bdf8");
+						drawCenterMarker(pinnedPoint.x, pinnedPoint.y, "rgba(38, 127, 217, 1)");
 					} else if (activeTool === "SELECT_AREA" && currentSelectedBounds) {
 						const cx = (currentSelectedBounds.minX + currentSelectedBounds.maxX) / 2;
 						const cy = (currentSelectedBounds.minY + currentSelectedBounds.maxY) / 2;
-						drawCenterMarker(cx, cy, "#38bdf8");
+						drawCenterMarker(cx, cy, "rgba(38, 127, 217, 1)");
 					}
 					if (activeTool === "MEASURE" && measureStart) {
 						const targetEnd = measureEnd || (nearest.center ? nearest.center : {
@@ -1632,7 +1575,7 @@
 						});
 						const p1 = worldToScreen(measureStart.x, measureStart.y);
 						const p2 = worldToScreen(targetEnd.x, targetEnd.y);
-						ctx.strokeStyle = "#38bdf8";
+						ctx.strokeStyle = "rgba(38, 127, 217, 1)";
 						ctx.lineWidth = 2;
 						ctx.setLineDash([5, 4]);
 						ctx.beginPath();
@@ -1641,14 +1584,14 @@
 						ctx.stroke();
 						ctx.setLineDash([]);
 						[p1, p2].forEach(p => {
-							ctx.fillStyle = "#38bdf8";
+							ctx.fillStyle = "rgba(38, 127, 217, 1)";
 							ctx.beginPath();
 							ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
 							ctx.fill();
 						});
 						const midX = (measureStart.x + targetEnd.x) / 2;
 						const midY = (measureStart.y + targetEnd.y) / 2;
-						drawCenterMarker(midX, midY, "#f59e0b");
+						drawCenterMarker(midX, midY, "rgba(38, 127, 217, 1)");
 					}
 				}
 				// TƯƠNG TÁC CHUỘT VÀ SỰ KIỆN CANVAS
@@ -1662,7 +1605,7 @@
 					if (activeTool === "SELECT_AREA") {
 						isBoxSelecting = true;
 						boxStartWorld = screenToWorld(sx, sy);
-						boxEndWorld = {...boxStartWorld};
+						boxEndWorld = { ...boxStartWorld };
 						selectedGeometries = [];
 						calculatedCentroid = null;
 						currentSelectedBounds = null;

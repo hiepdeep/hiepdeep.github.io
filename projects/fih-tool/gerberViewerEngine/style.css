@@ -23,6 +23,35 @@ body {
 		display: flex;
 		flex-direction: column;
 		z-index: 5;
+		input[type="checkbox"] {
+			flex-shrink: 0;
+			display: block;
+			-webkit-appearance: none;
+			width: 20px;
+			height: 20px;
+			position: relative;
+			overflow: hidden;
+			cursor: pointer;
+			background: hsl(var(--hue-saturation-gray), 20%);
+			border-radius: var(--bdrs-lv-4);
+			&:before {
+				content: "";
+				position: absolute;
+				width: calc((100% - 4px) / 3);
+				height: calc(100% - 4px);
+				left: 2px;
+				top: 50%;
+				transform: translatey(-50%);
+				transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
+				background: hsl(var(--hue-saturation-gray), 60%);
+				border-radius: calc(var(--bdrs-lv-4) - 2px);
+			}
+			&:checked:before {
+				width: calc((100% - 4px) / 2);
+				left: calc(100% - ((20px - 4px) / 2) - 2px);
+				background: hsl(var(--hue-saturation-gray), 80%);
+			}
+		}
 		.label-importfile {
 			flex-shrink: 0;
 			padding: 12px;
@@ -33,17 +62,15 @@ body {
 				text-align: center;
 				padding: 0 12px;
 				cursor: pointer;
-				color: hsl(var(--hue-saturation-green), 95%);
-				background: hsl(var(--hue-saturation-green), 50%);
-				border: 1px solid hsl(var(--hue-saturation-green), 45%);
+				--hs: var(--hue-saturation-green);
+				color: hsl(var(--hs), 80%);
+				background: hsl(var(--hs), 25%);
+				border: 1px solid hsl(var(--hs), 30%);
 				border-radius: var(--bdrs-lv-4);
 				&:hover {
-					background: hsl(var(--hue-saturation-green), 45%);
-					border-color: hsl(var(--hue-saturation-green), 40%);
-				}
-				&:active {
-					background: hsl(var(--hue-saturation-green), 40%);
-					border-color: hsl(var(--hue-saturation-green), 35%);
+					color: hsl(var(--hs), 100%);
+					background: hsl(var(--hs), 35%);
+					border: 1px solid hsl(var(--hs), 40%);
 				}
 			}
 		}
@@ -58,7 +85,7 @@ body {
 				color: hsl(var(--hue-saturation-gray), 80%);
 			}
 			#lblLayerCount {
-				color: hsl(var(--hue-saturation-green), 50%);
+				color: hsl(var(--hue-saturation-green), 60%);
 				font-weight: bold;
 			}
 		}
@@ -77,7 +104,7 @@ body {
 				display: block;
 				padding: 12px;
 				text-align: center;
-				color: hsl(var(--hue-saturation-gray), 50%);
+				color: hsl(var(--hue-saturation-gray), 60%);
 			}
 			.layer {
 				display: flex;
@@ -87,35 +114,6 @@ body {
 				&:nth-child(n+2) {
 					padding: 6px 0;
 					border-top: 1px solid hsl(var(--hue-saturation-gray), 15%);
-				}
-				input[type="checkbox"] {
-					flex-shrink: 0;
-					display: block;
-					-webkit-appearance: none;
-					width: 20px;
-					height: 20px;
-					position: relative;
-					overflow: hidden;
-					cursor: pointer;
-					background: hsl(var(--hue-saturation-gray), 20%);
-					border-radius: var(--bdrs-lv-4);
-					&:before {
-						content: "";
-						position: absolute;
-						width: calc((100% - 4px) / 3);
-						height: calc(100% - 4px);
-						left: 2px;
-						top: 50%;
-						transform: translatey(-50%);
-						transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
-						background: hsl(var(--hue-saturation-gray), 40%);
-						border-radius: calc(var(--bdrs-lv-4) - 2px);
-					}
-					&:checked:before {
-						width: calc((100% - 4px) / 2);
-						left: calc(100% - ((20px - 4px) / 2) - 2px);
-						background: hsl(var(--hue-saturation-gray), 80%);
-					}
 				}
 				input[type="color"] {
 					flex-shrink: 0;
@@ -140,7 +138,7 @@ body {
 					flex-shrink: 0;
 					width: 20px;
 					height: 20px;
-					background: hsl(var(--hue-saturation-gray), 15%);
+					background: hsl(var(--hue-saturation-gray), 20%);
 					border: 0;
 					border-radius: var(--bdrs-lv-4);
 					position: relative;
@@ -151,7 +149,7 @@ body {
 						height: 2px;
 						left: 50%;
 						top: 50%;
-						background: hsl(var(--hue-saturation-gray), 40%);
+						background: hsl(var(--hue-saturation-gray), 60%);
 						border-radius: 9px;
 					}
 					&:before {
@@ -162,7 +160,7 @@ body {
 					}
 					&:hover {
 						&:before, &:after {
-							background: hsl(var(--hue-saturation-red), 40%);
+							background: hsl(var(--hue-saturation-red), 60%);
 						}
 					}
 				}
@@ -184,34 +182,6 @@ body {
 				color: hsl(var(--hue-saturation-gray), 60%);
 				&:hover {
 					color: hsl(var(--hue-saturation-gray), 80%);
-				}
-				input {
-					display: block;
-					-webkit-appearance: none;
-					width: 20px;
-					height: 20px;
-					position: relative;
-					overflow: hidden;
-					cursor: pointer;
-					background: hsl(var(--hue-saturation-gray), 20%);
-					border-radius: var(--bdrs-lv-4);
-					&:before {
-						content: "";
-						position: absolute;
-						width: calc((100% - 4px) / 3);
-						height: calc(100% - 4px);
-						left: 2px;
-						top: 50%;
-						transform: translatey(-50%);
-						transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
-						background: hsl(var(--hue-saturation-gray), 40%);
-						border-radius: calc(var(--bdrs-lv-4) - 2px);
-					}
-					&:checked:before {
-						width: calc((100% - 4px) / 2);
-						left: calc(100% - ((20px - 4px) / 2) - 2px);
-						background: hsl(var(--hue-saturation-gray), 80%);
-					}
 				}
 				.txt {
 					font-weight: bold;
@@ -236,34 +206,18 @@ body {
 			button {
 				height: 30px;
 				padding: 0 12px;
-				color: hsl(var(--hue-saturation-gray), 80%);
-				background: hsl(var(--hue-saturation-gray), 15%);
-				border: 1px solid hsl(var(--hue-saturation-gray), 25%);
+				--hs: var(--hue-saturation-gray);
+				color: hsl(var(--hs), 60%);
+				background: hsl(var(--hs), 15%);
+				border: 1px solid hsl(var(--hs), 20%);
 				border-radius: var(--bdrs-lv-4);
-				&:hover {
-					color: hsl(var(--hue-saturation-gray), 85%);
-					background: hsl(var(--hue-saturation-gray), 20%);
-					border-color: hsl(var(--hue-saturation-gray), 30%);
-				}
-				&.active {
-					color: hsl(var(--hue-saturation-gray), 95%);
-					background: hsl(var(--hue-saturation-gray), 35%);
-					border-color: hsl(var(--hue-saturation-gray), 45%);
+				&:not(.not-allowed):hover, &.active {
+					color: hsl(var(--hs), 80%);
+					background: hsl(var(--hs), 25%);
+					border: 1px solid hsl(var(--hs), 30%);
 				}
 				&#btnUnselect {
-					color: hsl(var(--hue-saturation-red), 80%);
-					background: hsl(var(--hue-saturation-red), 15%);
-					border: 1px solid hsl(var(--hue-saturation-red), 25%);
-					&:hover {
-						color: hsl(var(--hue-saturation-red), 85%);
-						background: hsl(var(--hue-saturation-red), 20%);
-						border-color: hsl(var(--hue-saturation-red), 30%);
-					}
-					&:active {
-						color: hsl(var(--hue-saturation-red), 95%);
-						background: hsl(var(--hue-saturation-red), 35%);
-						border-color: hsl(var(--hue-saturation-red), 45%);
-					}
+					--hs: var(--hue-saturation-red);
 				}
 				&.not-allowed {
 					opacity: 0.5;
@@ -271,7 +225,7 @@ body {
 				}
 			}
 			.split {
-				color: hsl(var(--hue-saturation-gray), 35%);
+				color: hsl(var(--hue-saturation-gray), 20%);
 			}
 			.copyright {
 				flex: 1;
@@ -284,7 +238,7 @@ body {
 		}
 		.workspace {
 			flex: 1;
-			background: hsl(var(--hue-saturation-gray), 8%);
+			background: hsl(var(--hue-saturation-gray), 5%);
 			cursor: crosshair;
 			.canvas-container {
 				display: block;
@@ -321,10 +275,10 @@ body {
 				border-radius: var(--bdrs-lv-4);
 				span {
 					line-height: 28px;
-					color: hsl(var(--hue-saturation-gray), 50%);
+					color: hsl(var(--hue-saturation-gray), 60%);
 					&.val {
 						font-weight: bold;
-						color: hsl(var(--hue-saturation-green), 50%);
+						color: hsl(var(--hue-saturation-green), 60%);
 					}
 				}
 				.option-select-list {
@@ -333,7 +287,7 @@ body {
 						width: max-content;
 						line-height: 28px;
 						font-weight: bold;
-						color: hsl(var(--hue-saturation-green), 50%);
+						color: hsl(var(--hue-saturation-green), 60%);
 						cursor: pointer;
 					}
 					.option-list {
@@ -343,7 +297,7 @@ body {
 						display: flex;
 						flex-direction: column;
 						background: hsl(var(--hue-saturation-gray), 15%);
-						border: 1px solid hsl(var(--hue-saturation-gray), 25%);
+						border: 1px solid hsl(var(--hue-saturation-gray), 20%);
 						border-radius: var(--bdrs-lv-4);
 						opacity: 0;
 						visibility: hidden;
