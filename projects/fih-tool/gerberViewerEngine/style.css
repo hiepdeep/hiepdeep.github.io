@@ -109,7 +109,7 @@ body {
 			.layer {
 				display: flex;
 				align-items: center;
-				gap: 8px;
+				gap: 6px;
 				padding-bottom: 6px;
 				&:nth-child(n+2) {
 					padding: 6px 0;
@@ -132,6 +132,9 @@ body {
 				}
 				.name-layer {
 					flex: 1;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					overflow: hidden;
 					color: hsl(var(--hue-saturation-gray), 60%);
 				}
 				button {
