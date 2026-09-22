@@ -193,7 +193,6 @@ function renderCanvas() {
 	if (!myCanvas.width || myCanvas.width === 0) initCanvasSize();
 	ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
 	if (boardData.length === 0) return;
-
 	// Dùng cache Bounding Box để tránh lặp tính toán
 	const { minX, maxX, minY, maxY } = boardBounds;
 	const dataW = maxX - minX || 1;
@@ -207,9 +206,7 @@ function renderCanvas() {
 	const midY = (minY + maxY) / 2;
 	const toCX = x => centerX + (x - midX) * scale;
 	const toCY = y => centerY - (y - midY) * scale;
-
 	const dotRadius = Math.max(3, Math.min(6, scale * 1.5));
-
 	// Lượt 1: Các điểm thuộc Block (Làm mờ chấm tròn)
 	ctx.save();
 	ctx.globalAlpha = 0.35;
@@ -222,10 +219,8 @@ function renderCanvas() {
 		}
 	});
 	ctx.restore();
-
-	// Lượt 2: Các điểm tự do chưa thuộc Block nào
-	// 2a. Part N/A (Màu xám)
-	ctx.fillStyle = "#9fafa1";
+	// Các điểm tự do chưa thuộc Block nào
+	ctx.fillStyle = "#9fafa1"; // Part N/A (Màu xám)
 	boardData.forEach(p => {
 		if (!p.selected && p.block === "-" && (!p.partNumber || p.partNumber === "N/A")) {
 			ctx.beginPath();
@@ -233,9 +228,7 @@ function renderCanvas() {
 			ctx.fill();
 		}
 	});
-
-	// 2b. Có Part (Màu vàng đồng)
-	ctx.fillStyle = "#ffdf82";
+	ctx.fillStyle = "#ffdf82"; // Có Part (Màu vàng đồng)
 	boardData.forEach(p => {
 		if (!p.selected && p.block === "-" && p.partNumber && p.partNumber !== "N/A") {
 			ctx.beginPath();
@@ -243,9 +236,7 @@ function renderCanvas() {
 			ctx.fill();
 		}
 	});
-
-	// Lượt 3: Đang chọn (Màu trắng)
-	ctx.fillStyle = "#ffffff";
+	ctx.fillStyle = "#ffffff"; // Đang chọn (Màu trắng)
 	boardData.forEach(p => {
 		if (p.selected) {
 			ctx.beginPath();
@@ -253,8 +244,7 @@ function renderCanvas() {
 			ctx.fill();
 		}
 	});
-
-	// Lượt 4: Vẽ khung mờ và nhãn số thứ tự Block ở giữa Panel
+	// Vẽ khung mờ và nhãn số thứ tự Block ở giữa Panel
 	const blocks = {};
 	boardData.forEach(p => {
 		if (p.block && p.block !== "-") {
@@ -262,7 +252,6 @@ function renderCanvas() {
 			blocks[p.block].push(p);
 		}
 	});
-
 	Object.keys(blocks).forEach(blockId => {
 		const pts = blocks[blockId];
 		let bMinX = Infinity, bMaxX = -Infinity, bMinY = Infinity, bMaxY = -Infinity;
@@ -274,20 +263,16 @@ function renderCanvas() {
 			if (cy < bMinY) bMinY = cy;
 			if (cy > bMaxY) bMaxY = cy;
 		});
-
 		const padBox = dotRadius + 10;
 		const rectX = bMinX - padBox;
 		const rectY = bMinY - padBox;
 		const rectW = (bMaxX - bMinX) + padBox * 2;
 		const rectH = (bMaxY - bMinY) + padBox * 2;
-
 		ctx.save();
-		// Khung đường viền mờ
 		ctx.strokeStyle = "rgba(255, 255, 255, 0.45)";
 		ctx.lineWidth = 1.5;
 		ctx.setLineDash([4, 4]);
 		ctx.strokeRect(rectX, rectY, rectW, rectH);
-
 		// Hiển thị số Block ở trung tâm Panel
 		const midBlockX = (bMinX + bMaxX) / 2;
 		const midBlockY = (bMinY + bMaxY) / 2;
@@ -295,7 +280,6 @@ function renderCanvas() {
 		ctx.font = `bold ${fontSize}px "Courier New", sans-serif`;
 		const text = `#${blockId}`;
 		const metrics = ctx.measureText(text);
-
 		// Khung nền nhãn text
 		ctx.fillStyle = "rgba(0, 0, 0, 0.65)";
 		ctx.fillRect(midBlockX - metrics.width / 2 - 6, midBlockY - fontSize / 2 - 4, metrics.width + 12, fontSize + 8);
@@ -303,7 +287,6 @@ function renderCanvas() {
 		ctx.lineWidth = 1;
 		ctx.setLineDash([]);
 		ctx.strokeRect(midBlockX - metrics.width / 2 - 6, midBlockY - fontSize / 2 - 4, metrics.width + 12, fontSize + 8);
-
 		// Chữ nhãn
 		ctx.fillStyle = "#00ffff";
 		ctx.textAlign = "center";
@@ -311,8 +294,7 @@ function renderCanvas() {
 		ctx.fillText(text, midBlockX, midBlockY);
 		ctx.restore();
 	});
-
-	// Lượt 5: Khung bôi chọn (Marquee) khi đang giữ chuột phải kéo chọn vùng
+	// Khung bôi chọn (Marquee) khi đang giữ chuột phải kéo chọn vùng
 	if (isSelecting) {
 		ctx.strokeStyle = "#00ffff";
 		ctx.lineWidth = 1;
@@ -335,7 +317,6 @@ myCanvas.addEventListener("wheel", function(e) {
 	const mouseY = e.clientY - rect.top;
 	const zoomFactor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
 	const newZoom = zoomLevel * zoomFactor;
-
 	if (newZoom <= 1.0) {
 		zoomLevel = 1.0;
 		panOffset = { x: 0, y: 0 };
@@ -498,9 +479,7 @@ rotate90.addEventListener("click", function(e) {
 		let newRot = ((parseFloat(p.rot) || 0) + 90) % 360;
 		p.rot = newRot.toString();
 	});
-
 	updateBoardBounds(); // Cập nhật cache Bounding Box sau khi xoay
-
 	// Render lại bảng và canvas
 	renderBasicTable();
 	zoomLevel = 1.0;
