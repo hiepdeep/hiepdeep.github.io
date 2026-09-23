@@ -1,4 +1,6 @@
 console.clear();
+console.log("Create: 14/09/2026. By HiepDz");
+console.log("Update: 23/09/2026. By HiepDz");
 // Khai báo tên biến Element, trạng thái dữ liệu
 const btnImport = document.getElementsByClassName("btn-import");
 const dataImport = document.getElementsByClassName("data-import");

@@ -609,128 +609,122 @@
 	</head>
 	<body>
 		<div class="box">
-			<div class="my-header">
-				<a class="title" href="">Generator Placements Director</a>
-				<div class="navigation-bar">
-					<button class="btn-import active">select <b>BOMs</b></button>
-					<span class="split">&gt;</span>
-					<button class="btn-import">select <b>CADs</b></button>
-					<span class="split">&gt;</span>
-					<button id="btn-generator">Generator</button>
-				</div>
+			<div class="toolbar">
+				<button class="btn-import active">Import BOMs</button>
+				<button class="btn-import">Import CADs</button>
+				<button id="btnGenerator">Generator</button>
 			</div>
 			<div class="main">
-				<div class="txt-import active">
+				<div class="data-import active">
 					<div class="label">
-						<label class="btn-importfile" for="addBOMs">
-							<input type="file" id="addBOMs" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
-							<span class="txt">Chọn file BOMs đã lưu</span>
+						<label class="label-importfile">
+							<input type="file" id="newBoms" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Mở file BOMs</span>
 						</label>
 					</div>
-					<textarea id="importBOMs" placeholder="Pls add BOMs.."></textarea>
-					<textarea id="sameBOMs" placeholder="Display the same Part Number.."></textarea>
+					<textarea id="importBOMs" placeholder="This is BOMs.."></textarea>
+					<textarea id="sameBOMs" placeholder="This is the same Part Number.."></textarea>
 				</div>
-				<div class="txt-import">
+				<div class="data-import">
 					<div class="label">
-						<label class="btn-importfile" for="addCADs">
-							<input type="file" id="addCADs" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
-							<span class="txt">Chọn file CADs đã lưu</span>
-						</label>
-						<label class="btn-checkbox" for="telitFormat" title="Xoay góc CADs cho dòng sản phẩm Telit">
+						<label class="label-checkbox">
 							<input type="checkbox" id="telitFormat">
 							<span class="txt">Telit Format</span>
 						</label>
+						<label class="label-importfile">
+							<input type="file" id="newCads" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Mở file CADs</span>
+						</label>
 					</div>
-					<textarea id="importCADs" placeholder="Pls add CADs.."></textarea>
+					<textarea id="importCADs" placeholder="This is CADs.."></textarea>
 				</div>
-				<div class="txt-export" id="txt-generator">
-					<div class="txtExportTable-customize">
-						<div id="txtExportTable-basic"></div>
-						<div class="canvas-box">
-							<div class="data">
-								<div class="col-1">
-									<button id="btn-turn90deg" title="Xoay cả bản mạch +90°">Xoay +90°</button>
-									<div class="get-point">
-										<div class="item">
-											<input type="text" id="setSide" placeholder="Side">
-										</div>
-										<div class="item">
-											<input type="text" id="mark-x1" placeholder="X1">
-											<input type="text" id="mark-y1" placeholder="Y1">
-											<button id="getMark1" title="Lấy toạ độ điểm Mark 1">Get FD1</button>
-										</div>
-										<div class="item">
-											<input type="text" id="mark-x2" placeholder="X2">
-											<input type="text" id="mark-y2" placeholder="Y2">
-											<button id="getMark2" title="Lấy toạ độ điểm Mark 2">Get FD2</button>
-										</div>
+				<div id="dataGenerator">
+					<div class="row-data data-basic">
+						<div class="table" id="tableBasic"></div>
+						<div class="control-customize">
+							<div class="customize">
+								<div class="col col-1">
+									<button id="btnTurn90" title="Xoay cả bản mạch +90°">Rotation +90°</button>
+									<input type="text" id="nameSide" placeholder="Side">
+									<div class="get-mark">
+										<input type="text" id="markX1" placeholder="X1">
+										<input type="text" id="markY1" placeholder="Y1">
+										<button id="getMark1" title="Lấy toạ độ điểm Mark 1">Get FD1</button>
+									</div>
+									<div class="get-mark">
+										<input type="text" id="markX2" placeholder="X2">
+										<input type="text" id="markY2" placeholder="Y2">
+										<button id="getMark2" title="Lấy toạ độ điểm Mark 2">Get FD2</button>
 									</div>
 								</div>
-								<div class="col-2">
-									<div class="action">
-										<label class="btn-checkbox" for="selectMode" title="Chế độ bôi chọn">
+								<div class="col col-2">
+									<div class="btn-action">
+										<label class="label-checkbox">
 											<input type="checkbox" id="selectMode">
 											<span class="txt">Select Mode</span>
 										</label>
-										<button id="btn-clearSelect" title="Bỏ chọn tất cả">Clear select</button>
-										<button id="btn-setBlock" title="Tạo Block cho vùng đang chọn">Set Block</button>
-										<button id="btn-clearBlock" title="Xoá Block cho vùng đang chọn">Clear Block</button>
+										<button id="clearSelect" title="Bỏ chọn tất cả">Clear select</button>
+										<button id="setBlock" title="Tạo Block cho vùng đang chọn">Set Block</button>
+										<button id="clearBlock" title="Xoá Block cho vùng đang chọn">Clear Block</button>
 									</div>
 									<div class="myCanvas">
 										<canvas id="myCanvas"></canvas>
 									</div>
 								</div>
 							</div>
-							<button id="btn-exportTable">Export</button>
+							<button id="btnExport">Export</button>
 						</div>
 					</div>
-					<div id="txtExportTable-all"></div>
+					<div class="row-data data-result">
+						<div class="table" id="tableResult"></div>
+					</div>
 				</div>
 			</div>
-			<div class="my-footer">
-				<div class="totals">
-					<span><strong id="total-cads">0</strong> CADs, </span>
-					<span><strong id="total-cad">0</strong> CAD includes Part, </span>
-					<span><strong id="total-uncad">0</strong> CAD missing Part.</span>
+			<div class="footer">
+				<div class="status-box">
+					<span id="sumParts" class="val">0</span>
+					<span>Part Number</span>
 				</div>
+				<div class="status-box" id="boxArea">
+					<span id="sumCads" class="val">0</span>
+					<span>Ref:</span>
+					<span>[</span>
+					<span id="onCad" class="val">0</span>
+					<span>includes, </span>
+					<span id="unCad" class="val">0</span>
+					<span>missing</span>
+					<span>]</span>
+				</div>
+				<span class="spacer"></span>
 				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
 			</div>
 		</div>
 		<script type="text/javascript">
 			console.clear();
-			console.log("Mã được tạo vào ngày 14/09/2026 bởi HiepDz");
-			console.log("");
-			console.log("Hướng dẫn sử dụng:");
-			console.log("1. Tải lên file BOM.");
-			console.log("2. Tải lên file CAD (Nếu là hàng Telit thì ấn nút 'Telit Format'.");
-			console.log("3. Ấn nút 'Generator'.");
-			console.log("4. Điền ô 'Assign', 'Side'.");
-			console.log("5. Ấn nút 'Select Mode' và giữ chuột phải quét 1 điểm và ấn nút 'Get FD1' để tạo điểm Mark 1. Ấn nút 'Clear select' để bỏ chọn và quét điểm Mark 2.");
-			console.log("6. Bôi chọn panel trên Canvas -> bấm 'Set Block' để đặt số thứ tự Panel (hoặc 'Clear Block' để xoá khỏi Block).");
-			console.log("7. Ấn nút 'Export' để tạo bảng dữ liệu.");
-			console.log("8. Ấn vào bảng dữ liệu đã tạo và Ctrl+C để sao chép dữ liệu rồi ném vào chương trình Director.");
+			console.log("Create: 14/09/2026. By HiepDz");
+			console.log("Update: 23/09/2026. By HiepDz");
 			// Khai báo tên biến Element, trạng thái dữ liệu
-			const btnImports = document.getElementsByClassName("btn-import");
-			const txtImports = document.getElementsByClassName("txt-import");
-			const btnExport = document.getElementById("btn-generator");
-			const txtExport = document.getElementById("txt-generator");
-			const table_basic = document.getElementById("txtExportTable-basic");
-			const table_all = document.getElementById("txtExportTable-all");
-			const rotate90 = document.getElementById("btn-turn90deg");
-			const txtSide = document.getElementById("setSide");
-			const txtMark_X1 = document.getElementById("mark-x1");
-			const txtMark_Y1 = document.getElementById("mark-y1");
-			const txtMark_X2 = document.getElementById("mark-x2");
-			const txtMark_Y2 = document.getElementById("mark-y2");
+			const btnImport = document.getElementsByClassName("btn-import");
+			const dataImport = document.getElementsByClassName("data-import");
+			const btnExport = document.getElementById("btnGenerator");
+			const dataExport = document.getElementById("dataGenerator");
+			const table_basic = document.getElementById("tableBasic");
+			const table_all = document.getElementById("tableResult");
+			const rotate90 = document.getElementById("btnTurn90");
+			const txtSide = document.getElementById("nameSide");
+			const txtMark_X1 = document.getElementById("markX1");
+			const txtMark_Y1 = document.getElementById("markY1");
+			const txtMark_X2 = document.getElementById("markX2");
+			const txtMark_Y2 = document.getElementById("markY2");
 			const getMark_1 = document.getElementById("getMark1");
 			const getMark_2 = document.getElementById("getMark2");
 			const selectMode = document.getElementById("selectMode");
-			const clearSelect = document.getElementById("btn-clearSelect");
-			const btnSetBlock = document.getElementById("btn-setBlock");
-			const btnClearBlock = document.getElementById("btn-clearBlock");
+			const clearSelect = document.getElementById("clearSelect");
+			const btnSetBlock = document.getElementById("setBlock");
+			const btnClearBlock = document.getElementById("clearBlock");
 			const myCanvas = document.getElementById("myCanvas");
-			const exportTableAll = document.getElementById("btn-exportTable");
-			let $cads = 0, $cad = 0, $uncad = 0;
+			const exportTableAll = document.getElementById("btnExport");
+			let $parts = 0, $cads = 0, $cad = 0, $uncad = 0;
 			let cadOriginalData = { headers: [], rows: [] };
 			let boardData = [];
 			const ctx = myCanvas.getContext("2d");
@@ -744,21 +738,21 @@
 			let selectStart = { x: 0, y: 0 };
 			let selectEnd = { x: 0, y: 0 };
 			// Chuyển Tab
-			for (let i = 0; i < btnImports.length; i++) {
-				btnImports[i].addEventListener("click", (e) => {
+			for (let i = 0; i < btnImport.length; i++) {
+				btnImport[i].addEventListener("click", (e) => {
 					e.preventDefault();
-					for (let j = 0; j < btnImports.length; j++) {
-						btnImports[j].classList.remove("active");
-						txtImports[j].classList.remove("active");
+					for (let j = 0; j < btnImport.length; j++) {
+						btnImport[j].classList.remove("active");
+						dataImport[j].classList.remove("active");
 					}
 					btnExport.classList.remove("active");
-					txtExport.classList.remove("active");
-					btnImports[i].classList.add("active");
-					txtImports[i].classList.add("active");
+					dataExport.classList.remove("active");
+					btnImport[i].classList.add("active");
+					dataImport[i].classList.add("active");
 				});
 			}
 			// Xử lý file BOMs
-			document.getElementById("addBOMs").addEventListener("change", function() {
+			document.getElementById("newBoms").addEventListener("change", function() {
 				let file = this.files[0];
 				if (!file) return;
 				let reader = new FileReader();
@@ -784,12 +778,12 @@
 						if (h === "Schema ref") schemaRefIndex = c;
 						if (h === "Object ID") objectIdIndex = c;
 					});
-					// 1. Dữ liệu BOMs đầy đủ (Quantity == 1,00 và Schema ref không rỗng)
+					// Dữ liệu BOMs đầy đủ (Quantity == 1,00 và Schema ref không rỗng)
 					let filteredRows = parsedRows.filter(row => (row[quantityIndex] || "") === "1,00" && (row[schemaRefIndex] || "") !== "");
 					let allData = [headers, ...filteredRows];
 					let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => (row[colIdx] || "").length)));
 					document.getElementById("importBOMs").value = allData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
-					// 2. Lọc danh sách Object ID duy nhất (Yêu cầu: Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
+					// Lọc danh sách Object ID duy nhất (Yêu cầu: Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
 					let uniqueObjectMap = new Map();
 					parsedRows.forEach(row => {
 						let objId = row[objectIdIndex] || "";
@@ -810,17 +804,18 @@
 					let uniqueColWidths = targetHeaders.map((_, colIdx) =>
 						Math.max(...uniqueData.map(row => (row[colIdx] || "").length))
 					);
-					document.getElementById("sameBOMs").value = uniqueData.map(row => row.map((cell, colIdx) => (cell || "").padEnd(uniqueColWidths[colIdx], " ")).join(" | ")).join("\n");
+					document.getElementById("sameBOMs").value = uniqueData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(uniqueColWidths[colIdx], " ")).join(" | ")).join("\n");
 				};
 				reader.readAsText(file);
 			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Xử lý file CADs
 			function formatCADsOutput(headers, rows) {
 				let allData = [headers, ...rows];
 				let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => String(row[colIdx] || "").length)));
 				return allData.map(row => row.map((cell, colIdx) => String(cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
 			}
-			document.getElementById("addCADs").addEventListener("change", function() {
+			document.getElementById("newCads").addEventListener("change", function() {
 				let file = this.files[0];
 				if (!file) return;
 				let reader = new FileReader();
@@ -861,9 +856,10 @@
 				}
 				document.getElementById("importCADs").value = formatCADsOutput(cadOriginalData.headers, processedRows);
 				$cads = cadOriginalData.rows.length;
-				document.getElementById("total-cads").innerText = $cads;
+				document.getElementById("sumCads").innerText = $cads;
 			}
 			document.getElementById("telitFormat").addEventListener("change", renderCADsTextarea);
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Cập nhật Cache Bounding Box
 			function updateBoardBounds() {
 				if (boardData.length === 0) return;
@@ -876,6 +872,7 @@
 				});
 				boardBounds = { minX, maxX, minY, maxY };
 			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Vẽ & quản lý Canvas
 			function initCanvasSize() {
 				const container = myCanvas.parentElement;
@@ -900,7 +897,7 @@
 				const toCX = x => centerX + (x - midX) * scale;
 				const toCY = y => centerY - (y - midY) * scale;
 				const dotRadius = Math.max(3, Math.min(6, scale * 1.5));
-				// Lượt 1: Các điểm thuộc Block (Làm mờ chấm tròn)
+				// Các điểm thuộc Block hoặc Mark (Làm mờ chấm tròn nếu thuộc Block)
 				ctx.save();
 				ctx.globalAlpha = 0.35;
 				boardData.forEach(p => {
@@ -912,27 +909,32 @@
 					}
 				});
 				ctx.restore();
-				// Lượt 2: Các điểm tự do chưa thuộc Block nào
-				// 2a. Part N/A (Màu xám)
-				ctx.fillStyle = "#9fafa1";
+				// Các điểm tự do chưa thuộc Block hay Mark nào
+				ctx.fillStyle = "#9fafa1"; // Part N/A (Màu xám)
 				boardData.forEach(p => {
-					if (!p.selected && p.block === "-" && (!p.partNumber || p.partNumber === "N/A")) {
+					if (!p.selected && p.block === "-" && !p.isMark && (!p.partNumber || p.partNumber === "N/A")) {
 						ctx.beginPath();
 						ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
 						ctx.fill();
 					}
 				});
-				// 2b. Có Part (Màu vàng đồng)
-				ctx.fillStyle = "#ffdf82";
+				ctx.fillStyle = "#ffdf82"; // Có Part (Màu vàng đồng)
 				boardData.forEach(p => {
-					if (!p.selected && p.block === "-" && p.partNumber && p.partNumber !== "N/A") {
+					if (!p.selected && p.block === "-" && !p.isMark && p.partNumber && p.partNumber !== "N/A") {
 						ctx.beginPath();
 						ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
 						ctx.fill();
 					}
 				});
-				// Lượt 3: Đang chọn (Màu trắng)
-				ctx.fillStyle = "#ffffff";
+				ctx.fillStyle = "#007bff"; // Mark (Xanh dương)
+				boardData.forEach(p => {
+					if (!p.selected && p.isMark) {
+						ctx.beginPath();
+						ctx.arc(toCX(p.x), toCY(p.y), dotRadius + 1, 0, Math.PI * 2);
+						ctx.fill();
+					}
+				});
+				ctx.fillStyle = "#ffffff"; // Đang chọn (Màu trắng)
 				boardData.forEach(p => {
 					if (p.selected) {
 						ctx.beginPath();
@@ -940,12 +942,18 @@
 						ctx.fill();
 					}
 				});
-				// Lượt 4: Vẽ khung mờ và nhãn số thứ tự Block ở giữa Panel
+				// Gom nhóm vẽ khung cho cả Block (#1, #2...) và Mark (#FD1, #FD2)
 				const blocks = {};
 				boardData.forEach(p => {
-					if (p.block && p.block !== "-") {
-						if (!blocks[p.block]) blocks[p.block] = [];
-						blocks[p.block].push(p);
+					let labelKey = null;
+					if (p.isMark) {
+						labelKey = p.markLabel; // #FD1 hoặc #FD2
+					} else if (p.block && p.block !== "-") {
+						labelKey = `#${p.block}`;
+					}
+					if (labelKey) {
+						if (!blocks[labelKey]) blocks[labelKey] = [];
+						blocks[labelKey].push(p);
 					}
 				});
 				Object.keys(blocks).forEach(blockId => {
@@ -965,17 +973,16 @@
 					const rectW = (bMaxX - bMinX) + padBox * 2;
 					const rectH = (bMaxY - bMinY) + padBox * 2;
 					ctx.save();
-					// Khung đường viền mờ
 					ctx.strokeStyle = "rgba(255, 255, 255, 0.45)";
 					ctx.lineWidth = 1.5;
 					ctx.setLineDash([4, 4]);
 					ctx.strokeRect(rectX, rectY, rectW, rectH);
-					// Hiển thị số Block ở trung tâm Panel
+					// Hiển thị số Block / Mark ở trung tâm
 					const midBlockX = (bMinX + bMaxX) / 2;
 					const midBlockY = (bMinY + bMaxY) / 2;
 					const fontSize = Math.max(14, Math.round(scale * 2.5));
 					ctx.font = `bold ${fontSize}px "Courier New", sans-serif`;
-					const text = `#${blockId}`;
+					const text = blockId;
 					const metrics = ctx.measureText(text);
 					// Khung nền nhãn text
 					ctx.fillStyle = "rgba(0, 0, 0, 0.65)";
@@ -984,14 +991,14 @@
 					ctx.lineWidth = 1;
 					ctx.setLineDash([]);
 					ctx.strokeRect(midBlockX - metrics.width / 2 - 6, midBlockY - fontSize / 2 - 4, metrics.width + 12, fontSize + 8);
-					// Chữ nhãn
-					ctx.fillStyle = "#00ffff";
+					// Chữ nhãn (#FD1/#FD2 có màu xanh nhạt hoặc sáng để nổi bật)
+					ctx.fillStyle = blockId.startsWith("#FD") ? "#70bfff" : "#00ffff";
 					ctx.textAlign = "center";
 					ctx.textBaseline = "middle";
 					ctx.fillText(text, midBlockX, midBlockY);
 					ctx.restore();
 				});
-				// Lượt 5: Khung bôi chọn (Marquee) khi đang giữ chuột phải kéo chọn vùng
+				// Khung bôi chọn (Marquee) khi đang giữ chuột phải kéo chọn vùng
 				if (isSelecting) {
 					ctx.strokeStyle = "#00ffff";
 					ctx.lineWidth = 1;
@@ -1004,6 +1011,7 @@
 					ctx.setLineDash([]);
 				}
 			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Tương tác chuột trên Canvas
 			myCanvas.addEventListener("contextmenu", e => e.preventDefault());
 			myCanvas.addEventListener("wheel", function(e) {
@@ -1085,6 +1093,7 @@
 					renderCanvas();
 				}
 			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Tạo bảng dữ liệu cơ bản
 			function renderBasicTable() {
 				let table = document.createElement("table");
@@ -1108,18 +1117,19 @@
 				});
 				table_basic.innerHTML = "";
 				table_basic.appendChild(table);
-				document.getElementById("total-cad").innerText = $cad;
-				document.getElementById("total-uncad").innerText = $uncad;
+				document.getElementById("onCad").innerText = $cad;
+				document.getElementById("unCad").innerText = $uncad;
 			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Khi nhấn nút Generator
 			btnExport.addEventListener("click", function(e) {
 				e.preventDefault();
-				for (let j = 0; j < btnImports.length; j++) {
-					btnImports[j].classList.remove("active");
-					txtImports[j].classList.remove("active");
+				for (let j = 0; j < btnImport.length; j++) {
+					btnImport[j].classList.remove("active");
+					dataImport[j].classList.remove("active");
 				}
 				btnExport.classList.add("active");
-				txtExport.classList.add("active");
+				dataExport.classList.add("active");
 				let rowBOMs = document.getElementById("importBOMs").value.trim().split("\n").map(r => r.split("|").map(c => c.trim()));
 				let rowCADs = document.getElementById("importCADs").value.trim().split("\n").map(r => r.split("|").map(c => c.trim()));
 				if (rowCADs.length <= 1 || !rowCADs[0][0]) return;
@@ -1143,7 +1153,7 @@
 				if (boardData.length > 0) {
 					origMinX = Math.min(...boardData.map(p => p.x));
 					origMinY = Math.min(...boardData.map(p => p.y));
-					updateBoardBounds(); // Cập nhật cache Bounding Box
+					updateBoardBounds();
 				}
 				renderBasicTable();
 				setTimeout(() => {
@@ -1153,6 +1163,7 @@
 					renderCanvas();
 				}, 50);
 			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Khi ấn nút xoay board +90°
 			rotate90.addEventListener("click", function(e) {
 				e.preventDefault();
@@ -1172,13 +1183,14 @@
 					let newRot = ((parseFloat(p.rot) || 0) + 90) % 360;
 					p.rot = newRot.toString();
 				});
-				updateBoardBounds(); // Cập nhật cache Bounding Box sau khi xoay
+				updateBoardBounds();
 				// Render lại bảng và canvas
 				renderBasicTable();
 				zoomLevel = 1.0;
 				panOffset = { x: 0, y: 0 };
 				renderCanvas();
 			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Lấy toạ độ điểm Mark
 			getMark_1.addEventListener("click", function(e) {
 				e.preventDefault();
@@ -1191,8 +1203,17 @@
 					alert("Vui lòng bôi chọn đúng 1 điểm trên Canvas để đặt làm Mark 1!");
 					return;
 				}
+				// Gán giá trị vào Input
 				txtMark_X1.value = selectedPoints[0].x;
 				txtMark_Y1.value = selectedPoints[0].y;
+				// Xóa trạng thái Mark cũ của FD1 (nếu có)
+				boardData.forEach(p => { if (p.markLabel === "#FD1") { p.isMark = false; p.markLabel = null; } });
+				// Thiết lập trạng thái Mark 1 cho điểm được chọn
+				selectedPoints[0].isMark = true;
+				selectedPoints[0].markLabel = "#FD1";
+				// YÊU CẦU 3: Tự động Clear Select sau khi xong
+				boardData.forEach(p => p.selected = false);
+				renderCanvas();
 			});
 			getMark_2.addEventListener("click", function(e) {
 				e.preventDefault();
@@ -1205,15 +1226,26 @@
 					alert("Vui lòng bôi chọn đúng 1 điểm trên Canvas để đặt làm Mark 2!");
 					return;
 				}
+				// Gán giá trị vào Input
 				txtMark_X2.value = selectedPoints[0].x;
 				txtMark_Y2.value = selectedPoints[0].y;
+				// Xóa trạng thái Mark cũ của FD2 (nếu có)
+				boardData.forEach(p => { if (p.markLabel === "#FD2") { p.isMark = false; p.markLabel = null; } });
+				// Thiết lập trạng thái Mark 2 cho điểm được chọn
+				selectedPoints[0].isMark = true;
+				selectedPoints[0].markLabel = "#FD2";
+				// YÊU CẦU 3: Tự động Clear Select sau khi xong
+				boardData.forEach(p => p.selected = false);
+				renderCanvas();
 			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Huỷ bỏ đánh dấu trong Canvas
 			clearSelect.addEventListener("click", function(e) {
 				e.preventDefault();
 				boardData.forEach(p => p.selected = false);
 				renderCanvas();
 			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Nút Thiết lập Block (Set Block)
 			btnSetBlock.addEventListener("click", function(e) {
 				e.preventDefault();
@@ -1222,16 +1254,30 @@
 					alert("Vui lòng bật Select Mode và bôi chọn các điểm trên Canvas trước!");
 					return;
 				}
-				const blockNum = prompt("Nhập số thứ tự panel (Block):", "1");
+				// Tự động tính số thứ tự Block tiếp theo
+				let maxBlock = 0;
+				boardData.forEach(p => {
+					if (p.block && p.block !== "-") {
+						let num = parseInt(p.block, 10);
+						if (!isNaN(num) && num > maxBlock) {
+							maxBlock = num;
+						}
+					}
+				});
+				let nextBlockNum = (maxBlock + 1).toString();
+				// Hiển thị Prompt với số thứ tự kế tiếp được điền sẵn
+				const blockNum = prompt("Nhập số thứ tự panel (Block):", nextBlockNum);
 				if (blockNum === null || blockNum.trim() === "") return;
 				const cleanBlockNum = blockNum.trim();
 				selectedPoints.forEach(p => {
 					p.block = cleanBlockNum;
+					// Tự động bỏ chọn điểm
 					p.selected = false;
 				});
 				renderCanvas();
 			});
-			// Nút Xoá Block (Clear Block)
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Nút xoá Block (Clear Block)
 			btnClearBlock.addEventListener("click", function(e) {
 				e.preventDefault();
 				const selectedPoints = boardData.filter(p => p.selected);
@@ -1241,10 +1287,12 @@
 				}
 				selectedPoints.forEach(p => {
 					p.block = "-";
+					// Tự động bỏ chọn điểm
 					p.selected = false;
 				});
 				renderCanvas();
 			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Tạo bảng dữ liệu đầy đủ
 			exportTableAll.addEventListener("click", function(e) {
 				e.preventDefault();
@@ -1268,15 +1316,15 @@
 						row.insertCell().textContent = val;
 					});
 				};
-				// 1. Thêm dòng dữ liệu Mark 1 (nếu có tọa độ X1, Y1)
+				// Thêm dòng dữ liệu Mark 1 (nếu có tọa độ X1, Y1)
 				if (txtMark_X1.value.trim() !== "" && txtMark_Y1.value.trim() !== "") {
 					addRow(["0", "Mark1", txtMark_X1.value.trim(), txtMark_Y1.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 				}
-				// 2. Thêm dòng dữ liệu Mark 2 (nếu có tọa độ X2, Y2)
+				// Thêm dòng dữ liệu Mark 2 (nếu có tọa độ X2, Y2)
 				if (txtMark_X2.value.trim() !== "" && txtMark_Y2.value.trim() !== "") {
 					addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 				}
-				// 3. Thêm danh sách linh kiện (Xuất cột Board tương ứng với Block đã set, loại bỏ Part N/A)
+				// Thêm danh sách linh kiện (Xuất cột Board tương ứng với Block đã set, loại bỏ Part N/A)
 				boardData.forEach(p => {
 					if (!p.partNumber || p.partNumber === "N/A") return; // Bỏ qua linh kiện N/A
 					addRow([p.block || "-", p.ref, p.x, p.y, "0", p.rot, p.partNumber, "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
@@ -1284,9 +1332,10 @@
 				table_all.innerHTML = "";
 				table_all.appendChild(table);
 			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Tự động căn chỉnh kích thước Canvas khi đổi kích thước cửa sổ
 			window.addEventListener("resize", () => {
-				if (txtExport.classList.contains("active")) {
+				if (dataExport.classList.contains("active")) {
 					initCanvasSize();
 					renderCanvas();
 				}
