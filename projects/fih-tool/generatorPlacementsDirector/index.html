@@ -11,90 +11,93 @@
 	</head>
 	<body>
 		<div class="box">
-			<div class="my-header">
-				<a class="title" href="">Generator Placements Director</a>
-				<div class="navigation-bar">
-					<button class="btn-import active">select <b>BOMs</b></button>
-					<span class="split">&gt;</span>
-					<button class="btn-import">select <b>CADs</b></button>
-					<span class="split">&gt;</span>
-					<button id="btn-generator">Generator</button>
-				</div>
+			<div class="toolbar">
+				<button class="btn-import active">Import BOMs</button>
+				<button class="btn-import">Import CADs</button>
+				<button id="btnGenerator">Generator</button>
 			</div>
 			<div class="main">
-				<div class="txt-import active">
+				<div class="data-import active">
 					<div class="label">
-						<label class="btn-importfile" for="addBOMs">
-							<input type="file" id="addBOMs" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
-							<span class="txt">Chọn file BOMs đã lưu</span>
+						<label class="label-importfile">
+							<input type="file" id="newBoms" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Mở file BOMs</span>
 						</label>
 					</div>
-					<textarea id="importBOMs" placeholder="Pls add BOMs.."></textarea>
-					<textarea id="sameBOMs" placeholder="Display the same Part Number.."></textarea>
+					<textarea id="importBOMs" placeholder="This is BOMs.."></textarea>
+					<textarea id="sameBOMs" placeholder="This is the same Part Number.."></textarea>
 				</div>
-				<div class="txt-import">
+				<div class="data-import">
 					<div class="label">
-						<label class="btn-importfile" for="addCADs">
-							<input type="file" id="addCADs" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
-							<span class="txt">Chọn file CADs đã lưu</span>
-						</label>
-						<label class="btn-checkbox" for="telitFormat" title="Xoay góc CADs cho dòng sản phẩm Telit">
+						<label class="label-checkbox">
 							<input type="checkbox" id="telitFormat">
 							<span class="txt">Telit Format</span>
 						</label>
+						<label class="label-importfile">
+							<input type="file" id="newCads" accept="text/*" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Mở file CADs</span>
+						</label>
 					</div>
-					<textarea id="importCADs" placeholder="Pls add CADs.."></textarea>
+					<textarea id="importCADs" placeholder="This is CADs.."></textarea>
 				</div>
-				<div class="txt-export" id="txt-generator">
-					<div class="txtExportTable-customize">
-						<div id="txtExportTable-basic"></div>
-						<div class="canvas-box">
-							<div class="data">
-								<div class="col-1">
-									<button id="btn-turn90deg" title="Xoay cả bản mạch +90°">Xoay +90°</button>
-									<div class="get-point">
-										<div class="item">
-											<input type="text" id="setSide" placeholder="Side">
-										</div>
-										<div class="item">
-											<input type="text" id="mark-x1" placeholder="X1">
-											<input type="text" id="mark-y1" placeholder="Y1">
-											<button id="getMark1" title="Lấy toạ độ điểm Mark 1">Get FD1</button>
-										</div>
-										<div class="item">
-											<input type="text" id="mark-x2" placeholder="X2">
-											<input type="text" id="mark-y2" placeholder="Y2">
-											<button id="getMark2" title="Lấy toạ độ điểm Mark 2">Get FD2</button>
-										</div>
+				<div id="dataGenerator">
+					<div class="row-data data-basic">
+						<div class="table" id="tableBasic"></div>
+						<div class="control-customize">
+							<div class="customize">
+								<div class="col col-1">
+									<button id="btnTurn90" title="Xoay cả bản mạch +90°">Rotation +90°</button>
+									<input type="text" id="nameSide" placeholder="Side">
+									<div class="get-mark">
+										<input type="text" id="markX1" placeholder="X1">
+										<input type="text" id="markY1" placeholder="Y1">
+										<button id="getMark1" title="Lấy toạ độ điểm Mark 1">Get FD1</button>
+									</div>
+									<div class="get-mark">
+										<input type="text" id="markX2" placeholder="X2">
+										<input type="text" id="markY2" placeholder="Y2">
+										<button id="getMark2" title="Lấy toạ độ điểm Mark 2">Get FD2</button>
 									</div>
 								</div>
-								<div class="col-2">
-									<div class="action">
-										<label class="btn-checkbox" for="selectMode" title="Chế độ bôi chọn">
+								<div class="col col-2">
+									<div class="btn-action">
+										<label class="label-checkbox">
 											<input type="checkbox" id="selectMode">
 											<span class="txt">Select Mode</span>
 										</label>
-										<button id="btn-clearSelect" title="Bỏ chọn tất cả">Clear select</button>
-										<button id="btn-setBlock" title="Tạo Block cho vùng đang chọn">Set Block</button>
-										<button id="btn-clearBlock" title="Xoá Block cho vùng đang chọn">Clear Block</button>
+										<button id="clearSelect" title="Bỏ chọn tất cả">Clear select</button>
+										<button id="setBlock" title="Tạo Block cho vùng đang chọn">Set Block</button>
+										<button id="clearBlock" title="Xoá Block cho vùng đang chọn">Clear Block</button>
 									</div>
 									<div class="myCanvas">
 										<canvas id="myCanvas"></canvas>
 									</div>
 								</div>
 							</div>
-							<button id="btn-exportTable">Export</button>
+							<button id="btnExport">Export</button>
 						</div>
 					</div>
-					<div id="txtExportTable-all"></div>
+					<div class="row-data data-result">
+						<div class="table" id="tableResult"></div>
+					</div>
 				</div>
 			</div>
-			<div class="my-footer">
-				<div class="totals">
-					<span><strong id="total-cads">0</strong> CADs, </span>
-					<span><strong id="total-cad">0</strong> CAD includes Part, </span>
-					<span><strong id="total-uncad">0</strong> CAD missing Part.</span>
+			<div class="footer">
+				<div class="status-box">
+					<span id="sumParts" class="val">0</span>
+					<span>Part Number</span>
 				</div>
+				<div class="status-box" id="boxArea">
+					<span id="sumCads" class="val">0</span>
+					<span>Ref:</span>
+					<span>[</span>
+					<span id="onCad" class="val">0</span>
+					<span>includes, </span>
+					<span id="unCad" class="val">0</span>
+					<span>missing</span>
+					<span>]</span>
+				</div>
+				<span class="spacer"></span>
 				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
 			</div>
 		</div>

@@ -1,38 +1,27 @@
 console.clear();
-console.log("Mã được tạo vào ngày 14/09/2026 bởi HiepDz");
-console.log("");
-console.log("Hướng dẫn sử dụng:");
-console.log("1. Tải lên file BOM.");
-console.log("2. Tải lên file CAD (Nếu là hàng Telit thì ấn nút 'Telit Format'.");
-console.log("3. Ấn nút 'Generator'.");
-console.log("4. Điền ô 'Assign', 'Side'.");
-console.log("5. Ấn nút 'Select Mode' và giữ chuột phải quét 1 điểm và ấn nút 'Get FD1' để tạo điểm Mark 1. Ấn nút 'Clear select' để bỏ chọn và quét điểm Mark 2.");
-console.log("6. Bôi chọn panel trên Canvas -> bấm 'Set Block' để đặt số thứ tự Panel (hoặc 'Clear Block' để xoá khỏi Block).");
-console.log("7. Ấn nút 'Export' để tạo bảng dữ liệu.");
-console.log("8. Ấn vào bảng dữ liệu đã tạo và Ctrl+C để sao chép dữ liệu rồi ném vào chương trình Director.");
 
 // Khai báo tên biến Element, trạng thái dữ liệu
-const btnImports = document.getElementsByClassName("btn-import");
-const txtImports = document.getElementsByClassName("txt-import");
-const btnExport = document.getElementById("btn-generator");
-const txtExport = document.getElementById("txt-generator");
-const table_basic = document.getElementById("txtExportTable-basic");
-const table_all = document.getElementById("txtExportTable-all");
-const rotate90 = document.getElementById("btn-turn90deg");
-const txtSide = document.getElementById("setSide");
-const txtMark_X1 = document.getElementById("mark-x1");
-const txtMark_Y1 = document.getElementById("mark-y1");
-const txtMark_X2 = document.getElementById("mark-x2");
-const txtMark_Y2 = document.getElementById("mark-y2");
+const btnImport = document.getElementsByClassName("btn-import");
+const dataImport = document.getElementsByClassName("data-import");
+const btnExport = document.getElementById("btnGenerator");
+const dataExport = document.getElementById("dataGenerator");
+const table_basic = document.getElementById("tableBasic");
+const table_all = document.getElementById("tableResult");
+const rotate90 = document.getElementById("btnTurn90");
+const txtSide = document.getElementById("nameSide");
+const txtMark_X1 = document.getElementById("markX1");
+const txtMark_Y1 = document.getElementById("markY1");
+const txtMark_X2 = document.getElementById("markX2");
+const txtMark_Y2 = document.getElementById("markY2");
 const getMark_1 = document.getElementById("getMark1");
 const getMark_2 = document.getElementById("getMark2");
 const selectMode = document.getElementById("selectMode");
-const clearSelect = document.getElementById("btn-clearSelect");
-const btnSetBlock = document.getElementById("btn-setBlock");
-const btnClearBlock = document.getElementById("btn-clearBlock");
+const clearSelect = document.getElementById("clearSelect");
+const btnSetBlock = document.getElementById("setBlock");
+const btnClearBlock = document.getElementById("clearBlock");
 const myCanvas = document.getElementById("myCanvas");
-const exportTableAll = document.getElementById("btn-exportTable");
-let $cads = 0, $cad = 0, $uncad = 0;
+const exportTableAll = document.getElementById("btnExport");
+let $parts = 0, $cads = 0, $cad = 0, $uncad = 0;
 let cadOriginalData = { headers: [], rows: [] };
 let boardData = [];
 const ctx = myCanvas.getContext("2d");
@@ -47,22 +36,23 @@ let selectStart = { x: 0, y: 0 };
 let selectEnd = { x: 0, y: 0 };
 
 // Chuyển Tab
-for (let i = 0; i < btnImports.length; i++) {
-	btnImports[i].addEventListener("click", (e) => {
+for (let i = 0; i < btnImport.length; i++) {
+	btnImport[i].addEventListener("click", (e) => {
 		e.preventDefault();
-		for (let j = 0; j < btnImports.length; j++) {
-			btnImports[j].classList.remove("active");
-			txtImports[j].classList.remove("active");
+		for (let j = 0; j < btnImport.length; j++) {
+			btnImport[j].classList.remove("active");
+			dataImport[j].classList.remove("active");
 		}
 		btnExport.classList.remove("active");
-		txtExport.classList.remove("active");
-		btnImports[i].classList.add("active");
-		txtImports[i].classList.add("active");
+		dataExport.classList.remove("active");
+		btnImport[i].classList.add("active");
+		dataImport[i].classList.add("active");
 	});
 }
+btnExport.click();
 
 // Xử lý file BOMs
-document.getElementById("addBOMs").addEventListener("change", function() {
+document.getElementById("newBoms").addEventListener("change", function() {
 	let file = this.files[0];
 	if (!file) return;
 	let reader = new FileReader();
@@ -125,7 +115,7 @@ function formatCADsOutput(headers, rows) {
 	let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => String(row[colIdx] || "").length)));
 	return allData.map(row => row.map((cell, colIdx) => String(cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
 }
-document.getElementById("addCADs").addEventListener("change", function() {
+document.getElementById("newCads").addEventListener("change", function() {
 	let file = this.files[0];
 	if (!file) return;
 	let reader = new FileReader();
@@ -166,7 +156,7 @@ function renderCADsTextarea() {
 	}
 	document.getElementById("importCADs").value = formatCADsOutput(cadOriginalData.headers, processedRows);
 	$cads = cadOriginalData.rows.length;
-	document.getElementById("total-cads").innerText = $cads;
+	document.getElementById("sumCads").innerText = $cads;
 }
 document.getElementById("telitFormat").addEventListener("change", renderCADsTextarea);
 
@@ -413,19 +403,19 @@ function renderBasicTable() {
 	});
 	table_basic.innerHTML = "";
 	table_basic.appendChild(table);
-	document.getElementById("total-cad").innerText = $cad;
-	document.getElementById("total-uncad").innerText = $uncad;
+	document.getElementById("onCad").innerText = $cad;
+	document.getElementById("unCad").innerText = $uncad;
 }
 
 // Khi nhấn nút Generator
 btnExport.addEventListener("click", function(e) {
 	e.preventDefault();
-	for (let j = 0; j < btnImports.length; j++) {
-		btnImports[j].classList.remove("active");
-		txtImports[j].classList.remove("active");
+	for (let j = 0; j < btnImport.length; j++) {
+		btnImport[j].classList.remove("active");
+		dataImport[j].classList.remove("active");
 	}
 	btnExport.classList.add("active");
-	txtExport.classList.add("active");
+	dataExport.classList.add("active");
 	let rowBOMs = document.getElementById("importBOMs").value.trim().split("\n").map(r => r.split("|").map(c => c.trim()));
 	let rowCADs = document.getElementById("importCADs").value.trim().split("\n").map(r => r.split("|").map(c => c.trim()));
 	if (rowCADs.length <= 1 || !rowCADs[0][0]) return;
@@ -600,7 +590,7 @@ exportTableAll.addEventListener("click", function(e) {
 
 // Tự động căn chỉnh kích thước Canvas khi đổi kích thước cửa sổ
 window.addEventListener("resize", () => {
-	if (txtExport.classList.contains("active")) {
+	if (dataExport.classList.contains("active")) {
 		initCanvasSize();
 		renderCanvas();
 	}
