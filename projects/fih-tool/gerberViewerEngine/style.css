@@ -109,7 +109,7 @@ body {
 			.layer {
 				display: flex;
 				align-items: center;
-				gap: 6px;
+				gap: 12px;
 				padding-bottom: 6px;
 				&:nth-child(n+2) {
 					padding: 6px 0;
@@ -180,7 +180,6 @@ body {
 				display: flex;
 				align-items: center;
 				gap: 12px;
-				padding: 0 6px 0 0;
 				cursor: pointer;
 				color: hsl(var(--hue-saturation-gray), 60%);
 				&:hover {
