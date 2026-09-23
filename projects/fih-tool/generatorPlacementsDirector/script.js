@@ -1,5 +1,4 @@
 console.clear();
-
 // Khai báo tên biến Element, trạng thái dữ liệu
 const btnImport = document.getElementsByClassName("btn-import");
 const dataImport = document.getElementsByClassName("data-import");
@@ -34,7 +33,6 @@ let panStart = { x: 0, y: 0 };
 let isSelecting = false;
 let selectStart = { x: 0, y: 0 };
 let selectEnd = { x: 0, y: 0 };
-
 // Chuyển Tab
 for (let i = 0; i < btnImport.length; i++) {
 	btnImport[i].addEventListener("click", (e) => {
@@ -49,8 +47,6 @@ for (let i = 0; i < btnImport.length; i++) {
 		dataImport[i].classList.add("active");
 	});
 }
-btnExport.click();
-
 // Xử lý file BOMs
 document.getElementById("newBoms").addEventListener("change", function() {
 	let file = this.files[0];
@@ -78,12 +74,12 @@ document.getElementById("newBoms").addEventListener("change", function() {
 			if (h === "Schema ref") schemaRefIndex = c;
 			if (h === "Object ID") objectIdIndex = c;
 		});
-		// 1. Dữ liệu BOMs đầy đủ (Quantity == 1,00 và Schema ref không rỗng)
+		// Dữ liệu BOMs đầy đủ (Quantity == 1,00 và Schema ref không rỗng)
 		let filteredRows = parsedRows.filter(row => (row[quantityIndex] || "") === "1,00" && (row[schemaRefIndex] || "") !== "");
 		let allData = [headers, ...filteredRows];
 		let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => (row[colIdx] || "").length)));
 		document.getElementById("importBOMs").value = allData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
-		// 2. Lọc danh sách Object ID duy nhất (Yêu cầu: Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
+		// Lọc danh sách Object ID duy nhất (Yêu cầu: Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
 		let uniqueObjectMap = new Map();
 		parsedRows.forEach(row => {
 			let objId = row[objectIdIndex] || "";
@@ -108,7 +104,7 @@ document.getElementById("newBoms").addEventListener("change", function() {
 	};
 	reader.readAsText(file);
 });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Xử lý file CADs
 function formatCADsOutput(headers, rows) {
 	let allData = [headers, ...rows];
@@ -159,7 +155,7 @@ function renderCADsTextarea() {
 	document.getElementById("sumCads").innerText = $cads;
 }
 document.getElementById("telitFormat").addEventListener("change", renderCADsTextarea);
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Cập nhật Cache Bounding Box
 function updateBoardBounds() {
 	if (boardData.length === 0) return;
@@ -172,7 +168,7 @@ function updateBoardBounds() {
 	});
 	boardBounds = { minX, maxX, minY, maxY };
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Vẽ & quản lý Canvas
 function initCanvasSize() {
 	const container = myCanvas.parentElement;
@@ -197,7 +193,7 @@ function renderCanvas() {
 	const toCX = x => centerX + (x - midX) * scale;
 	const toCY = y => centerY - (y - midY) * scale;
 	const dotRadius = Math.max(3, Math.min(6, scale * 1.5));
-	// Lượt 1: Các điểm thuộc Block (Làm mờ chấm tròn)
+	// Các điểm thuộc Block hoặc Mark (Làm mờ chấm tròn nếu thuộc Block)
 	ctx.save();
 	ctx.globalAlpha = 0.35;
 	boardData.forEach(p => {
@@ -209,10 +205,10 @@ function renderCanvas() {
 		}
 	});
 	ctx.restore();
-	// Các điểm tự do chưa thuộc Block nào
+	// Các điểm tự do chưa thuộc Block hay Mark nào
 	ctx.fillStyle = "#9fafa1"; // Part N/A (Màu xám)
 	boardData.forEach(p => {
-		if (!p.selected && p.block === "-" && (!p.partNumber || p.partNumber === "N/A")) {
+		if (!p.selected && p.block === "-" && !p.isMark && (!p.partNumber || p.partNumber === "N/A")) {
 			ctx.beginPath();
 			ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
 			ctx.fill();
@@ -220,9 +216,17 @@ function renderCanvas() {
 	});
 	ctx.fillStyle = "#ffdf82"; // Có Part (Màu vàng đồng)
 	boardData.forEach(p => {
-		if (!p.selected && p.block === "-" && p.partNumber && p.partNumber !== "N/A") {
+		if (!p.selected && p.block === "-" && !p.isMark && p.partNumber && p.partNumber !== "N/A") {
 			ctx.beginPath();
 			ctx.arc(toCX(p.x), toCY(p.y), dotRadius, 0, Math.PI * 2);
+			ctx.fill();
+		}
+	});
+	ctx.fillStyle = "#007bff"; // Mark (Xanh dương)
+	boardData.forEach(p => {
+		if (!p.selected && p.isMark) {
+			ctx.beginPath();
+			ctx.arc(toCX(p.x), toCY(p.y), dotRadius + 1, 0, Math.PI * 2);
 			ctx.fill();
 		}
 	});
@@ -234,12 +238,18 @@ function renderCanvas() {
 			ctx.fill();
 		}
 	});
-	// Vẽ khung mờ và nhãn số thứ tự Block ở giữa Panel
+	// Gom nhóm vẽ khung cho cả Block (#1, #2...) và Mark (#FD1, #FD2)
 	const blocks = {};
 	boardData.forEach(p => {
-		if (p.block && p.block !== "-") {
-			if (!blocks[p.block]) blocks[p.block] = [];
-			blocks[p.block].push(p);
+		let labelKey = null;
+		if (p.isMark) {
+			labelKey = p.markLabel; // #FD1 hoặc #FD2
+		} else if (p.block && p.block !== "-") {
+			labelKey = `#${p.block}`;
+		}
+		if (labelKey) {
+			if (!blocks[labelKey]) blocks[labelKey] = [];
+			blocks[labelKey].push(p);
 		}
 	});
 	Object.keys(blocks).forEach(blockId => {
@@ -263,12 +273,12 @@ function renderCanvas() {
 		ctx.lineWidth = 1.5;
 		ctx.setLineDash([4, 4]);
 		ctx.strokeRect(rectX, rectY, rectW, rectH);
-		// Hiển thị số Block ở trung tâm Panel
+		// Hiển thị số Block / Mark ở trung tâm
 		const midBlockX = (bMinX + bMaxX) / 2;
 		const midBlockY = (bMinY + bMaxY) / 2;
 		const fontSize = Math.max(14, Math.round(scale * 2.5));
 		ctx.font = `bold ${fontSize}px "Courier New", sans-serif`;
-		const text = `#${blockId}`;
+		const text = blockId;
 		const metrics = ctx.measureText(text);
 		// Khung nền nhãn text
 		ctx.fillStyle = "rgba(0, 0, 0, 0.65)";
@@ -277,8 +287,8 @@ function renderCanvas() {
 		ctx.lineWidth = 1;
 		ctx.setLineDash([]);
 		ctx.strokeRect(midBlockX - metrics.width / 2 - 6, midBlockY - fontSize / 2 - 4, metrics.width + 12, fontSize + 8);
-		// Chữ nhãn
-		ctx.fillStyle = "#00ffff";
+		// Chữ nhãn (#FD1/#FD2 có màu xanh nhạt hoặc sáng để nổi bật)
+		ctx.fillStyle = blockId.startsWith("#FD") ? "#70bfff" : "#00ffff";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";
 		ctx.fillText(text, midBlockX, midBlockY);
@@ -297,7 +307,7 @@ function renderCanvas() {
 		ctx.setLineDash([]);
 	}
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tương tác chuột trên Canvas
 myCanvas.addEventListener("contextmenu", e => e.preventDefault());
 myCanvas.addEventListener("wheel", function(e) {
@@ -379,7 +389,7 @@ myCanvas.addEventListener("mouseup", function(e) {
 		renderCanvas();
 	}
 });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tạo bảng dữ liệu cơ bản
 function renderBasicTable() {
 	let table = document.createElement("table");
@@ -406,7 +416,7 @@ function renderBasicTable() {
 	document.getElementById("onCad").innerText = $cad;
 	document.getElementById("unCad").innerText = $uncad;
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Khi nhấn nút Generator
 btnExport.addEventListener("click", function(e) {
 	e.preventDefault();
@@ -439,7 +449,7 @@ btnExport.addEventListener("click", function(e) {
 	if (boardData.length > 0) {
 		origMinX = Math.min(...boardData.map(p => p.x));
 		origMinY = Math.min(...boardData.map(p => p.y));
-		updateBoardBounds(); // Cập nhật cache Bounding Box
+		updateBoardBounds();
 	}
 	renderBasicTable();
 	setTimeout(() => {
@@ -449,7 +459,7 @@ btnExport.addEventListener("click", function(e) {
 		renderCanvas();
 	}, 50);
 });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Khi ấn nút xoay board +90°
 rotate90.addEventListener("click", function(e) {
 	e.preventDefault();
@@ -469,14 +479,14 @@ rotate90.addEventListener("click", function(e) {
 		let newRot = ((parseFloat(p.rot) || 0) + 90) % 360;
 		p.rot = newRot.toString();
 	});
-	updateBoardBounds(); // Cập nhật cache Bounding Box sau khi xoay
+	updateBoardBounds();
 	// Render lại bảng và canvas
 	renderBasicTable();
 	zoomLevel = 1.0;
 	panOffset = { x: 0, y: 0 };
 	renderCanvas();
 });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Lấy toạ độ điểm Mark
 getMark_1.addEventListener("click", function(e) {
 	e.preventDefault();
@@ -489,8 +499,17 @@ getMark_1.addEventListener("click", function(e) {
 		alert("Vui lòng bôi chọn đúng 1 điểm trên Canvas để đặt làm Mark 1!");
 		return;
 	}
+	// Gán giá trị vào Input
 	txtMark_X1.value = selectedPoints[0].x;
 	txtMark_Y1.value = selectedPoints[0].y;
+	// Xóa trạng thái Mark cũ của FD1 (nếu có)
+	boardData.forEach(p => { if (p.markLabel === "#FD1") { p.isMark = false; p.markLabel = null; } });
+	// Thiết lập trạng thái Mark 1 cho điểm được chọn
+	selectedPoints[0].isMark = true;
+	selectedPoints[0].markLabel = "#FD1";
+	// YÊU CẦU 3: Tự động Clear Select sau khi xong
+	boardData.forEach(p => p.selected = false);
+	renderCanvas();
 });
 getMark_2.addEventListener("click", function(e) {
 	e.preventDefault();
@@ -503,17 +522,26 @@ getMark_2.addEventListener("click", function(e) {
 		alert("Vui lòng bôi chọn đúng 1 điểm trên Canvas để đặt làm Mark 2!");
 		return;
 	}
+	// Gán giá trị vào Input
 	txtMark_X2.value = selectedPoints[0].x;
 	txtMark_Y2.value = selectedPoints[0].y;
+	// Xóa trạng thái Mark cũ của FD2 (nếu có)
+	boardData.forEach(p => { if (p.markLabel === "#FD2") { p.isMark = false; p.markLabel = null; } });
+	// Thiết lập trạng thái Mark 2 cho điểm được chọn
+	selectedPoints[0].isMark = true;
+	selectedPoints[0].markLabel = "#FD2";
+	// YÊU CẦU 3: Tự động Clear Select sau khi xong
+	boardData.forEach(p => p.selected = false);
+	renderCanvas();
 });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Huỷ bỏ đánh dấu trong Canvas
 clearSelect.addEventListener("click", function(e) {
 	e.preventDefault();
 	boardData.forEach(p => p.selected = false);
 	renderCanvas();
 });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Nút Thiết lập Block (Set Block)
 btnSetBlock.addEventListener("click", function(e) {
 	e.preventDefault();
@@ -522,18 +550,30 @@ btnSetBlock.addEventListener("click", function(e) {
 		alert("Vui lòng bật Select Mode và bôi chọn các điểm trên Canvas trước!");
 		return;
 	}
-	const blockNum = prompt("Nhập số thứ tự panel (Block):", "1");
+	// Tự động tính số thứ tự Block tiếp theo
+	let maxBlock = 0;
+	boardData.forEach(p => {
+		if (p.block && p.block !== "-") {
+			let num = parseInt(p.block, 10);
+			if (!isNaN(num) && num > maxBlock) {
+				maxBlock = num;
+			}
+		}
+	});
+	let nextBlockNum = (maxBlock + 1).toString();
+	// Hiển thị Prompt với số thứ tự kế tiếp được điền sẵn
+	const blockNum = prompt("Nhập số thứ tự panel (Block):", nextBlockNum);
 	if (blockNum === null || blockNum.trim() === "") return;
-
 	const cleanBlockNum = blockNum.trim();
 	selectedPoints.forEach(p => {
 		p.block = cleanBlockNum;
+		// Tự động bỏ chọn điểm
 		p.selected = false;
 	});
 	renderCanvas();
 });
-
-// Nút Xoá Block (Clear Block)
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Nút xoá Block (Clear Block)
 btnClearBlock.addEventListener("click", function(e) {
 	e.preventDefault();
 	const selectedPoints = boardData.filter(p => p.selected);
@@ -543,11 +583,12 @@ btnClearBlock.addEventListener("click", function(e) {
 	}
 	selectedPoints.forEach(p => {
 		p.block = "-";
+		// Tự động bỏ chọn điểm
 		p.selected = false;
 	});
 	renderCanvas();
 });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tạo bảng dữ liệu đầy đủ
 exportTableAll.addEventListener("click", function(e) {
 	e.preventDefault();
@@ -571,15 +612,15 @@ exportTableAll.addEventListener("click", function(e) {
 			row.insertCell().textContent = val;
 		});
 	};
-	// 1. Thêm dòng dữ liệu Mark 1 (nếu có tọa độ X1, Y1)
+	// Thêm dòng dữ liệu Mark 1 (nếu có tọa độ X1, Y1)
 	if (txtMark_X1.value.trim() !== "" && txtMark_Y1.value.trim() !== "") {
 		addRow(["0", "Mark1", txtMark_X1.value.trim(), txtMark_Y1.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 	}
-	// 2. Thêm dòng dữ liệu Mark 2 (nếu có tọa độ X2, Y2)
+	// Thêm dòng dữ liệu Mark 2 (nếu có tọa độ X2, Y2)
 	if (txtMark_X2.value.trim() !== "" && txtMark_Y2.value.trim() !== "") {
 		addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 	}
-	// 3. Thêm danh sách linh kiện (Xuất cột Board tương ứng với Block đã set, loại bỏ Part N/A)
+	// Thêm danh sách linh kiện (Xuất cột Board tương ứng với Block đã set, loại bỏ Part N/A)
 	boardData.forEach(p => {
 		if (!p.partNumber || p.partNumber === "N/A") return; // Bỏ qua linh kiện N/A
 		addRow([p.block || "-", p.ref, p.x, p.y, "0", p.rot, p.partNumber, "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
@@ -587,7 +628,7 @@ exportTableAll.addEventListener("click", function(e) {
 	table_all.innerHTML = "";
 	table_all.appendChild(table);
 });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tự động căn chỉnh kích thước Canvas khi đổi kích thước cửa sổ
 window.addEventListener("resize", () => {
 	if (dataExport.classList.contains("active")) {
