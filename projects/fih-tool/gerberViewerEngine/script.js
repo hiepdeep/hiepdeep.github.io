@@ -1,6 +1,6 @@
 console.clear();
-console.log("Gerber Viewer Engine - Mã nguồn xây dựng 17/09/2026 bởi HiepDz");
-console.log("Cập nhật mới nhất 23/09/2026 bởi HiepDz");
+console.log("Create: 17/09/2026. By HiepDz");
+console.log("Update: 23/09/2026. By HiepDz");
 console.log("Vesion 2.0");
 const UNITS = {
 	mm: {
