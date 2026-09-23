@@ -77,533 +77,487 @@
 				color: red;
 				font-size: var(--fz-lv-4);
 			}
+			::-webkit-scrollbar {
+				width: 0;
+				height: 0;
+			}
 			body {
-				background: var(--bg-body-blue);
+				background: hsl(var(--hue-saturation-gray), 95%);
 				display: -ms-grid;
 				display: grid;
+				place-items: center;
 				height: 100vh;
 				-webkit-user-select: none;
-				-moz-user-select: none;
-				-ms-user-select: none;
-				user-select: none;
-			}
-			input,
-			button {
-				border-radius: var(--bdrs-lv-5);
-			}
-			.btn-checkbox {
-				width: -webkit-max-content;
-				width: -moz-max-content;
-				width: max-content;
-				display: -webkit-box;
-				display: -ms-flexbox;
-				display: flex;
-				-webkit-box-align: center;
-				-ms-flex-align: center;
-				align-items: center;
-				gap: 6px;
-				padding: 0 6px 0 0;
-				cursor: pointer;
-				color: hsl(var(--hue-saturation-gray), 95%);
-				background: hsl(var(--hue-saturation-gray), 50%);
-				border: 1px solid hsl(var(--hue-saturation-gray), 45%);
-			}
-			.btn-checkbox:hover {
-				background: hsl(var(--hue-saturation-gray), 45%);
-				border-color: hsl(var(--hue-saturation-gray), 40%);
-			}
-			.btn-checkbox:active {
-				background: hsl(var(--hue-saturation-gray), 40%);
-				border-color: hsl(var(--hue-saturation-gray), 35%);
-			}
-			.btn-checkbox input {
-				display: block;
-				-webkit-appearance: none;
-				width: 28px;
-				height: 28px;
-				position: relative;
-				overflow: hidden;
-				cursor: pointer;
-				background: hsl(var(--hue-saturation-gray), 95%);
-			}
-			.btn-checkbox input:before {
-				content: "";
-				background: hsl(var(--hue-saturation-gray), 40%);
-				position: absolute;
-				width: calc((100% - 4px) / 3);
-				height: calc(100% - 4px);
-				left: 2px;
-				top: 50%;
-				-webkit-transform: translatey(-50%);
-				-ms-transform: translatey(-50%);
-				transform: translatey(-50%);
-				-webkit-transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
-				transition: 0.15s cubic-bezier(0.4, 0, 1, 1);
-			}
-			.btn-checkbox input:checked:before {
-				width: calc((100% - 4px) / 2);
-				left: calc(100% - ((28px - 4px) / 2) - 2px);
-				background: hsl(var(--hue-saturation-green), 50%);
-			}
-			.btn-checkbox span {
-				width: -webkit-max-content;
-				width: -moz-max-content;
-				width: max-content;
-				font-weight: bold;
-				color: inherit;
+				   -moz-user-select: none;
+				    -ms-user-select: none;
+				        user-select: none;
 			}
 			.box {
-				width: 100%;
-				height: 100vh;
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
 				-webkit-box-orient: vertical;
 				-webkit-box-direction: normal;
-				-ms-flex-direction: column;
-				flex-direction: column;
-				gap: 6px;
-				padding: 12px;
-				-webkit-user-select: none;
-				-moz-user-select: none;
-				-ms-user-select: none;
-				user-select: none;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				width: 100vw;
+				height: 100vh;
+				position: relative;
 			}
-			.box .my-header {
+			.box .toolbar {
 				-ms-flex-negative: 0;
-				flex-shrink: 0;
-				display: -webkit-box;
-				display: -ms-flexbox;
-				display: flex;
-				-webkit-box-pack: justify;
-				-ms-flex-pack: justify;
-				justify-content: space-between;
-				-webkit-box-align: center;
-				-ms-flex-align: center;
-				align-items: center;
-				padding: 12px;
-				background: var(--bg-box);
-				border: 1px solid var(--bd-box);
-				border-radius: var(--bdrs-lv-4);
-			}
-			.box .my-header .title {
-				font-weight: bold;
-				font-size: var(--fz-lv-3);
-				color: var(--color-lv-1);
-			}
-			.box .my-header .navigation-bar {
+				    flex-shrink: 0;
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
 				-webkit-box-align: center;
-				-ms-flex-align: center;
-				align-items: center;
+				    -ms-flex-align: center;
+				        align-items: center;
 				gap: 12px;
+				padding: 12px;
+				background: hsl(var(--hue-saturation-gray), 100%);
+				border-bottom: 1px solid hsl(var(--hue-saturation-gray), 90%);
 			}
-			.box .my-header .navigation-bar button {
-				cursor: pointer;
-			}
-			.box .my-header .navigation-bar button.btn-import {
-				all: unset;
-				color: var(--color-lv-3);
-				cursor: pointer;
-			}
-			.box .my-header .navigation-bar button.btn-import b {
-				font-weight: bold;
-				color: inherit;
-			}
-			.box .my-header .navigation-bar button.btn-import.active {
-				text-decoration: underline;
-			}
-			.box .my-header .navigation-bar button#btn-generator {
+			.box .toolbar button {
 				height: 30px;
 				padding: 0 12px;
-				color: hsl(var(--hue-saturation-blue), 95%);
-				background: hsl(var(--hue-saturation-blue), 50%);
-				border: 1px solid hsl(var(--hue-saturation-blue), 45%);
+				--hs: var(--hue-saturation-gray);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 90%);
+				border: 1px solid hsl(var(--hs), 80%);
+				border-radius: var(--bdrs-lv-4);
 			}
-			.box .my-header .navigation-bar button#btn-generator:hover {
-				background: hsl(var(--hue-saturation-blue), 45%);
-				border-color: hsl(var(--hue-saturation-blue), 40%);
+			.box .toolbar button:hover {
+				color: hsl(var(--hs), 40%);
+				border-color: hsl(var(--hs), 40%);
 			}
-			.box .my-header .navigation-bar button#btn-generator:active,
-			.box .my-header .navigation-bar button#btn-generator.active {
-				background: hsl(var(--hue-saturation-blue), 40%);
-				border-color: hsl(var(--hue-saturation-blue), 35%);
+			.box .toolbar button.active {
+				color: hsl(var(--hs), 90%);
+				background: hsl(var(--hs), 50%);
+				border-color: hsl(var(--hs), 40%);
 			}
-			.box .my-header .navigation-bar .split {
-				color: var(--color-placeholder);
+			.box .toolbar button#btnGenerator {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				--hs: var(--hue-saturation-blue);
+				color: hsl(var(--hs), 90%);
+				background: hsl(var(--hs), 50%);
+				border: 1px solid hsl(var(--hs), 40%);
+			}
+			.box .toolbar button#btnGenerator:hover {
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 45%);
+				border-color: hsl(var(--hs), 35%);
+			}
+			.box .toolbar button#btnGenerator.active {
+				color: hsl(var(--hs), 100%);
+				background: hsl(var(--hs), 40%);
+				border-color: hsl(var(--hs), 30%);
 			}
 			.box .main {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
-				-webkit-box-orient: vertical;
-				-webkit-box-direction: normal;
-				-ms-flex-direction: column;
-				flex-direction: column;
-				height: 100%;
-				overflow: hidden;
+				padding: 12px;
 			}
-			.box .main .txt-import {
-				height: 100%;
+			.box .main .label-checkbox {
+				height: 30px;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 12px;
+				padding: 0 12px;
+				background: hsl(var(--hs), 90%);
+				border: 1px solid hsl(var(--hs), 80%);
+				border-radius: var(--bdrs-lv-4);
+				cursor: pointer;
+			}
+			.box .main .label-checkbox input[type=checkbox] {
+				display: block;
+				-webkit-appearance: none;
+				width: 8px;
+				height: 8px;
+				position: relative;
+				overflow: hidden;
+				background: hsl(var(--hs), 50%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .label-checkbox .txt {
+				color: hsl(var(--hs), 50%);
+			}
+			.box .main .label-checkbox:hover {
+				border-color: hsl(var(--hs), 40%);
+			}
+			.box .main .label-checkbox:hover input[type=checkbox] {
+				background: hsl(var(--hs), 40%);
+			}
+			.box .main .label-checkbox:hover .txt {
+				color: hsl(var(--hs), 40%);
+			}
+			.box .main .label-checkbox:active,
+			.box .main .label-checkbox:has(input[type=checkbox]:checked) {
+				background: hsl(var(--hs), 50%);
+				border-color: hsl(var(--hs), 40%);
+			}
+			.box .main .label-checkbox:active input[type=checkbox],
+			.box .main .label-checkbox:has(input[type=checkbox]:checked) input[type=checkbox] {
+				background: hsl(var(--hs), 90%);
+			}
+			.box .main .label-checkbox:active .txt,
+			.box .main .label-checkbox:has(input[type=checkbox]:checked) .txt {
+				color: hsl(var(--hs), 90%);
+			}
+			.box .main .data-import {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
 				display: none;
 				-webkit-box-orient: vertical;
 				-webkit-box-direction: normal;
-				-ms-flex-direction: column;
-				flex-direction: column;
-				gap: 6px;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				gap: 12px;
 			}
-			.box .main .txt-import.active {
+			.box .main .data-import.active {
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
 			}
-			.box .main .txt-import .label {
+			.box .main .data-import .label {
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
-				-webkit-box-align: center;
-				-ms-flex-align: center;
-				align-items: center;
-				gap: 6px;
+				gap: 12px;
 			}
-			.box .main .txt-import .label label.btn-importfile {
-				width: 100%;
+			.box .main .data-import .label .label-checkbox {
+				-ms-flex-negative: 0;
+				    flex-shrink: 0;
+				--hs: var(--hue-saturation-pink);
 			}
-			.box .main .txt-import .label label.btn-importfile .txt {
+			.box .main .data-import .label .label-importfile {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+			}
+			.box .main .data-import .label .label-importfile .txt {
 				display: block;
 				line-height: 28px;
 				text-align: center;
+				padding: 0px 12px;
 				cursor: pointer;
-				color: hsl(var(--hue-saturation-gray), 95%);
-				background: hsl(var(--hue-saturation-gray), 50%);
-				border: 1px solid hsl(var(--hue-saturation-gray), 45%);
+				--hs: var(--hue-saturation-red);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 90%);
+				border: 1px solid hsl(var(--hs), 80%);
 				border-radius: var(--bdrs-lv-4);
 			}
-			.box .main .txt-import .label label.btn-importfile .txt:hover {
-				background: hsl(var(--hue-saturation-gray), 45%);
-				border-color: hsl(var(--hue-saturation-gray), 40%);
+			.box .main .data-import .label .label-importfile .txt:hover {
+				color: hsl(var(--hs), 40%);
+				border-color: hsl(var(--hs), 40%);
 			}
-			.box .main .txt-import .label label.btn-importfile .txt:active {
-				background: hsl(var(--hue-saturation-gray), 40%);
-				border-color: hsl(var(--hue-saturation-gray), 35%);
+			.box .main .data-import .label .label-importfile .txt:active {
+				color: hsl(var(--hs), 90%);
+				background: hsl(var(--hs), 50%);
+				border-color: hsl(var(--hs), 40%);
 			}
-			.box .main .txt-import .label label.btn-checkbox {
-				border-radius: var(--bdrs-lv-4);
-			}
-			.box .main .txt-import .label label.btn-checkbox input {
-				border-radius: 3px;
-			}
-			.box .main .txt-import .label label.btn-checkbox input:before {
-				border-radius: 1px;
-			}
-			.box .main .txt-import textarea {
+			.box .main .data-import textarea {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
 				width: 100%;
-				height: 100%;
 				padding: 12px;
-				font-size: var(--fz-lv-4);
-				color: var(--color-lv-3);
-				background: var(--bg-box);
-				border: 1px solid var(--bd-box);
+				--hs: var(--hue-saturation-gray);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 100%);
+				border: 1px solid hsl(var(--hs), 90%);
 				border-radius: var(--bdrs-lv-4);
 				resize: none;
 				overflow-y: scroll;
 			}
-			.box .main .txt-export {
+			.box .main .data-import textarea::-webkit-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea::-moz-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea:-ms-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea::-ms-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea::placeholder {
+				color: inherit;
+			}
+			.box .main #dataGenerator {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
 				display: none;
 				-webkit-box-orient: vertical;
 				-webkit-box-direction: normal;
-				-ms-flex-direction: column;
-				flex-direction: column;
-				gap: 6px;
-				height: 100%;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				gap: 12px;
 			}
-			.box .main .txt-export .txtExportTable-customize {
+			.box .main #dataGenerator.active {
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
-				gap: 6px;
 			}
-			.box .main .txt-export .txtExportTable-customize #txtExportTable-basic {
-				flex: 1;
-				height: 386px;
-				padding: 6px;
-				background: var(--bg-box);
-				border: 1px solid var(--bd-box);
+			.box .main #dataGenerator .row-data {
+				height: calc((100vh - 55px - 12px - 12px - 12px - 55px) / 2);
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				gap: 12px;
+			}
+			.box .main #dataGenerator .row-data .table {
+				width: 100%;
+				padding: 12px;
+				--hs: var(--hue-saturation-gray);
+				background: hsl(var(--hs), 100%);
+				border: 1px solid hsl(var(--hs), 90%);
 				border-radius: var(--bdrs-lv-4);
 				overflow-y: scroll;
 			}
-			.box .main .txt-export .txtExportTable-customize #txtExportTable-basic table {
+			.box .main #dataGenerator .row-data .table table {
 				border-collapse: collapse;
 				width: 100%;
 				-webkit-user-select: all;
-				-moz-user-select: all;
-				user-select: all;
+				   -moz-user-select: all;
+				        user-select: all;
 			}
-			.box .main .txt-export .txtExportTable-customize #txtExportTable-basic table tr th,
-			.box .main .txt-export .txtExportTable-customize #txtExportTable-basic table tr td {
+			.box .main #dataGenerator .row-data .table table tr th,
+			.box .main #dataGenerator .row-data .table table tr td {
 				padding: 6px;
 				text-align: left;
-				color: var(--color-lv-3);
+				color: hsl(var(--hs), 50%);
 			}
-			.box .main .txt-export .txtExportTable-customize #txtExportTable-basic table tr th {
+			.box .main #dataGenerator .row-data .table table tr th {
 				font-weight: bold;
-				border-bottom: 1px solid var(--bd-box);
+				border-bottom: 1px solid hsl(var(--hs), 90%);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box {
+			.box .main #dataGenerator .row-data.data-basic .control-customize {
 				-ms-flex-negative: 0;
-				flex-shrink: 0;
+				    flex-shrink: 0;
+				width: 800px;
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
 				-webkit-box-orient: vertical;
 				-webkit-box-direction: normal;
-				-ms-flex-direction: column;
-				flex-direction: column;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
 				gap: 6px;
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data {
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize {
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
 				gap: 6px;
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 {
-				width: 300px;
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col {
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
 				-webkit-box-orient: vertical;
 				-webkit-box-direction: normal;
-				-ms-flex-direction: column;
-				flex-direction: column;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
 				gap: 6px;
-				padding: 6px;
-				background: var(--bg-box);
-				border: 1px solid var(--bd-box);
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 #btnTurn90 {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				padding: 0 12px;
+				--hs: var(--hue-saturation-yellow);
+				color: hsl(var(--hs), 90%);
+				background: hsl(var(--hs), 50%);
+				border: 1px solid hsl(var(--hs), 40%);
 				border-radius: var(--bdrs-lv-4);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 #btn-turn90deg {
-				height: 100%;
-				padding: 0 12px;
-				color: hsl(var(--hue-saturation-orange), 95%);
-				background: hsl(var(--hue-saturation-orange), 50%);
-				border: 1px solid hsl(var(--hue-saturation-orange), 45%);
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 #btnTurn90:hover {
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 45%);
+				border-color: hsl(var(--hs), 35%);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 #btn-turn90deg:hover {
-				background: hsl(var(--hue-saturation-orange), 45%);
-				border-color: hsl(var(--hue-saturation-orange), 40%);
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 #btnTurn90:active {
+				color: hsl(var(--hs), 100%);
+				background: hsl(var(--hs), 40%);
+				border-color: hsl(var(--hs), 30%);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 #btn-turn90deg:active {
-				background: hsl(var(--hue-saturation-orange), 40%);
-				border-color: hsl(var(--hue-saturation-orange), 35%);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point {
-				display: -webkit-box;
-				display: -ms-flexbox;
-				display: flex;
-				-webkit-box-orient: vertical;
-				-webkit-box-direction: normal;
-				-ms-flex-direction: column;
-				flex-direction: column;
-				gap: 6px;
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item {
-				display: -webkit-box;
-				display: -ms-flexbox;
-				display: flex;
-				-webkit-box-align: center;
-				-ms-flex-align: center;
-				align-items: center;
-				gap: 6px;
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input {
-				flex: 1;
-				width: 0;
-				height: 30px;
-				padding: 0 6px;
-				font-size: var(--fz-lv-4);
-				color: var(--color-lv-2);
-				background: var(--bg-box);
-				border: 1px solid var(--bd-box);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input::-webkit-input-placeholder {
-				color: var(--color-placeholder);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input::-moz-placeholder {
-				color: var(--color-placeholder);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input:-ms-input-placeholder {
-				color: var(--color-placeholder);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input::-ms-input-placeholder {
-				color: var(--color-placeholder);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item input::placeholder {
-				color: var(--color-placeholder);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item button {
-				-ms-flex-negative: 0;
-				flex-shrink: 0;
-				width: -webkit-max-content;
-				width: -moz-max-content;
-				width: max-content;
-				height: 30px;
-				padding: 0 12px;
-				color: hsl(var(--hue-saturation-teal), 95%);
-				background: hsl(var(--hue-saturation-teal), 50%);
-				border: 1px solid hsl(var(--hue-saturation-teal), 45%);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item button:hover {
-				background: hsl(var(--hue-saturation-teal), 45%);
-				border-color: hsl(var(--hue-saturation-teal), 40%);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-1 .get-point .item button:active {
-				background: hsl(var(--hue-saturation-teal), 40%);
-				border-color: hsl(var(--hue-saturation-teal), 35%);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 {
-				display: -webkit-box;
-				display: -ms-flexbox;
-				display: flex;
-				-webkit-box-orient: vertical;
-				-webkit-box-direction: normal;
-				-ms-flex-direction: column;
-				flex-direction: column;
-				gap: 6px;
-				padding: 6px;
-				background: var(--bg-box);
-				border: 1px solid var(--bd-box);
-				border-radius: var(--bdrs-lv-4);
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action {
-				display: -webkit-box;
-				display: -ms-flexbox;
-				display: flex;
-				gap: 6px;
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action .btn-checkbox {
-				border-radius: 3px;
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action .btn-checkbox input {
-				background: var(--bg-box);
-				border-radius: 2px;
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action .btn-checkbox input:before {
-				border-radius: 0px;
-			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button {
-				min-width: max-content;
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 input {
 				width: 100%;
 				height: 30px;
+				padding: 0 6px;
+				--hs: var(--hue-saturation-gray);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 100%);
+				border: 1px solid hsl(var(--hs), 90%);
+				border-radius: var(--bdrs-lv-4);
+				resize: none;
+				overflow-y: scroll;
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 input::-webkit-input-placeholder {
+				color: inherit;
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 input::-moz-placeholder {
+				color: inherit;
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 input:-ms-input-placeholder {
+				color: inherit;
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 input::-ms-input-placeholder {
+				color: inherit;
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 input::placeholder {
+				color: inherit;
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 .get-mark {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				gap: 6px;
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 .get-mark button {
+				-ms-flex-negative: 0;
+				    flex-shrink: 0;
 				padding: 0 12px;
-				color: hsl(var(--hue-saturation-gray), 40%);
-				background: hsl(var(--hue-saturation-gray), 95%);
-				border: 1px solid hsl(var(--hue-saturation-gray), 90%);
+				--hs: var(--hue-saturation-orange);
+				color: hsl(var(--hs), 90%);
+				background: hsl(var(--hs), 50%);
+				border: 1px solid hsl(var(--hs), 40%);
+				border-radius: var(--bdrs-lv-4);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button:hover {
-				background: hsl(var(--hue-saturation-gray), 90%);
-				border-color: hsl(var(--hue-saturation-gray), 85%);
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 .get-mark button:hover {
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 45%);
+				border-color: hsl(var(--hs), 35%);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button:active {
-				background: hsl(var(--hue-saturation-gray), 85%);
-				border-color: hsl(var(--hue-saturation-gray), 80%);
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-1 .get-mark button:active {
+				color: hsl(var(--hs), 100%);
+				background: hsl(var(--hs), 40%);
+				border-color: hsl(var(--hs), 30%);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button#btn-setBlock {
-				color: hsl(var(--hue-saturation-teal), 95%);
-				background: hsl(var(--hue-saturation-teal), 50%);
-				border: 1px solid hsl(var(--hue-saturation-teal), 45%);
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-2 .btn-action {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				gap: 6px;
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button#btn-setBlock:hover {
-				background: hsl(var(--hue-saturation-teal), 45%);
-				border-color: hsl(var(--hue-saturation-teal), 40%);
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-2 .btn-action .label-checkbox {
+				--hs: var(--hue-saturation-brown);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .action button#btn-setBlock:active {
-				background: hsl(var(--hue-saturation-teal), 40%);
-				border-color: hsl(var(--hue-saturation-teal), 35%);
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-2 .btn-action button {
+				height: 30px;
+				padding: 0 12px;
+				--hs: var(--hue-saturation-gray);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 90%);
+				border: 1px solid hsl(var(--hs), 80%);
+				border-radius: var(--bdrs-lv-4);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .myCanvas {
-				width: calc(270px * 16 / 9);
-				height: 270px;
-				border-radius: 3px;
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-2 .btn-action button:hover {
+				color: hsl(var(--hs), 40%);
+				border-color: hsl(var(--hs), 40%);
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-2 .btn-action button:active,
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-2 .btn-action button.active {
+				color: hsl(var(--hs), 90%);
+				background: hsl(var(--hs), 50%);
+				border-color: hsl(var(--hs), 40%);
+			}
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-2 .myCanvas {
+				height: 240px;
+				border-radius: var(--bdrs-lv-4);
 				overflow: hidden;
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box .data .col-2 .myCanvas #myCanvas {
+			.box .main #dataGenerator .row-data.data-basic .control-customize .customize .col.col-2 .myCanvas canvas {
+				display: block;
 				width: 100%;
 				height: 100%;
 				background: hsl(var(--hue-saturation-green), 40%);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box #btn-exportTable {
-				width: 100%;
-				height: 60px;
+			.box .main #dataGenerator .row-data.data-basic .control-customize #btnExport {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
 				padding: 0 12px;
-				color: hsl(var(--hue-saturation-purple), 95%);
-				background: hsl(var(--hue-saturation-purple), 50%);
-				border: 1px solid hsl(var(--hue-saturation-purple), 45%);
+				--hs: var(--hue-saturation-purple);
+				color: hsl(var(--hs), 90%);
+				background: hsl(var(--hs), 50%);
+				border: 1px solid hsl(var(--hs), 40%);
 				border-radius: var(--bdrs-lv-4);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box #btn-exportTable:hover {
-				background: hsl(var(--hue-saturation-purple), 45%);
-				border-color: hsl(var(--hue-saturation-purple), 40%);
+			.box .main #dataGenerator .row-data.data-basic .control-customize #btnExport:hover {
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 45%);
+				border-color: hsl(var(--hs), 35%);
 			}
-			.box .main .txt-export .txtExportTable-customize .canvas-box #btn-exportTable:active,
-			.box .main .txt-export .txtExportTable-customize .canvas-box #btn-exportTable.active {
-				background: hsl(var(--hue-saturation-purple), 40%);
-				border-color: hsl(var(--hue-saturation-purple), 35%);
+			.box .main #dataGenerator .row-data.data-basic .control-customize #btnExport:active {
+				color: hsl(var(--hs), 100%);
+				background: hsl(var(--hs), 40%);
+				border-color: hsl(var(--hs), 30%);
 			}
-			.box .main .txt-export #txtExportTable-all {
-				width: 100%;
-				height: 100%;
-				padding: 6px;
-				background: var(--bg-box);
-				border: 1px solid var(--bd-box);
-				border-radius: var(--bdrs-lv-4);
-				overflow-y: scroll;
-			}
-			.box .main .txt-export #txtExportTable-all table {
-				border-collapse: collapse;
-				width: 100%;
-				-webkit-user-select: all;
-				-moz-user-select: all;
-				user-select: all;
-			}
-			.box .main .txt-export #txtExportTable-all table tr th,
-			.box .main .txt-export #txtExportTable-all table tr td {
-				padding: 6px;
-				text-align: left;
-				color: var(--color-lv-3);
-			}
-			.box .main .txt-export #txtExportTable-all table tr th {
-				font-weight: bold;
-				border-bottom: 1px solid var(--bd-box);
-			}
-			.box .main .txt-export.active {
+			.box .footer {
+				-ms-flex-negative: 0;
+				    flex-shrink: 0;
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 6px;
+				padding: 12px;
+				background: hsl(var(--hue-saturation-gray), 10%);
+				border-top: 1px solid hsl(var(--hue-saturation-gray), 15%);
 			}
-			.box .my-footer {
+			.box .footer .status-box {
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
-				-webkit-box-pack: justify;
-				-ms-flex-pack: justify;
-				justify-content: space-between;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 6px;
+				padding: 0 8px;
+				border: 1px solid hsl(var(--hue-saturation-gray), 15%);
+				border-radius: var(--bdrs-lv-4);
 			}
-			.box .my-footer .totals span {
-				color: var(--color-lv-4);
+			.box .footer .status-box span {
+				line-height: 28px;
+				color: hsl(var(--hue-saturation-gray), 60%);
 			}
-			.box .my-footer .totals span strong {
+			.box .footer .status-box span.val {
 				font-weight: bold;
-				color: inherit;
+				color: hsl(var(--hue-saturation-blue), 60%);
 			}
-			.box .my-footer .copyright {
-				color: var(--color-lv-4);
+			.box .footer .spacer {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
 			}
-			.box .my-footer .copyright b {
-				font-weight: bold;
-				color: inherit;
+			.box .footer .copyright {
+				text-align: right;
+				color: hsl(var(--hue-saturation-gray), 60%);
+			}
+			.box .footer .copyright b {
+				color: hsl(var(--hue-saturation-gray), 80%);
 			}
 		</style>
 	</head>
@@ -783,7 +737,7 @@
 					let allData = [headers, ...filteredRows];
 					let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => (row[colIdx] || "").length)));
 					document.getElementById("importBOMs").value = allData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
-					// Lọc danh sách Object ID duy nhất (Yêu cầu: Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
+					// Lọc danh sách Object ID duy nhất (Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
 					let uniqueObjectMap = new Map();
 					parsedRows.forEach(row => {
 						let objId = row[objectIdIndex] || "";
@@ -1211,7 +1165,7 @@
 				// Thiết lập trạng thái Mark 1 cho điểm được chọn
 				selectedPoints[0].isMark = true;
 				selectedPoints[0].markLabel = "#FD1";
-				// YÊU CẦU 3: Tự động Clear Select sau khi xong
+				// Tự động Clear Select sau khi xong
 				boardData.forEach(p => p.selected = false);
 				renderCanvas();
 			});
@@ -1234,7 +1188,7 @@
 				// Thiết lập trạng thái Mark 2 cho điểm được chọn
 				selectedPoints[0].isMark = true;
 				selectedPoints[0].markLabel = "#FD2";
-				// YÊU CẦU 3: Tự động Clear Select sau khi xong
+				// Tự động Clear Select sau khi xong
 				boardData.forEach(p => p.selected = false);
 				renderCanvas();
 			});

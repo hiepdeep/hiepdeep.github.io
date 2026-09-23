@@ -81,7 +81,7 @@ document.getElementById("newBoms").addEventListener("change", function() {
 		let allData = [headers, ...filteredRows];
 		let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => (row[colIdx] || "").length)));
 		document.getElementById("importBOMs").value = allData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
-		// Lọc danh sách Object ID duy nhất (Yêu cầu: Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
+		// Lọc danh sách Object ID duy nhất (Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
 		let uniqueObjectMap = new Map();
 		parsedRows.forEach(row => {
 			let objId = row[objectIdIndex] || "";
@@ -509,7 +509,7 @@ getMark_1.addEventListener("click", function(e) {
 	// Thiết lập trạng thái Mark 1 cho điểm được chọn
 	selectedPoints[0].isMark = true;
 	selectedPoints[0].markLabel = "#FD1";
-	// YÊU CẦU 3: Tự động Clear Select sau khi xong
+	// Tự động Clear Select sau khi xong
 	boardData.forEach(p => p.selected = false);
 	renderCanvas();
 });
@@ -532,7 +532,7 @@ getMark_2.addEventListener("click", function(e) {
 	// Thiết lập trạng thái Mark 2 cho điểm được chọn
 	selectedPoints[0].isMark = true;
 	selectedPoints[0].markLabel = "#FD2";
-	// YÊU CẦU 3: Tự động Clear Select sau khi xong
+	// Tự động Clear Select sau khi xong
 	boardData.forEach(p => p.selected = false);
 	renderCanvas();
 });
