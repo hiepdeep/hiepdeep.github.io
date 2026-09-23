@@ -1137,6 +1137,16 @@
 					let newRot = ((parseFloat(p.rot) || 0) + 90) % 360;
 					p.rot = newRot.toString();
 				});
+				const mark1 = boardData.find(p => p.markLabel === "#FD1");
+				if (mark1) {
+					txtMark_X1.value = mark1.x;
+					txtMark_Y1.value = mark1.y;
+				}
+				const mark2 = boardData.find(p => p.markLabel === "#FD2");
+				if (mark2) {
+					txtMark_X2.value = mark2.x;
+					txtMark_Y2.value = mark2.y;
+				}
 				updateBoardBounds();
 				// Render lại bảng và canvas
 				renderBasicTable();
