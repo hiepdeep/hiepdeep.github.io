@@ -80,7 +80,7 @@ document.getElementById("newBoms").addEventListener("change", function() {
 		let filteredRows = parsedRows.filter(row => (row[quantityIndex] || "") === "1,00" && (row[schemaRefIndex] || "") !== "");
 		let allData = [headers, ...filteredRows];
 		let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => (row[colIdx] || "").length)));
-		document.getElementById("importBOMs").value = allData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
+		document.getElementById("importBOMs").value = allData.map(row => row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
 		// Lọc danh sách Object ID duy nhất (Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
 		let uniqueObjectMap = new Map();
 		parsedRows.forEach(row => {
@@ -91,18 +91,27 @@ document.getElementById("newBoms").addEventListener("change", function() {
 				uniqueObjectMap.set(objId, row);
 			}
 		});
+		// Tổng số loại Part Number sử dụng
+		$parts = uniqueObjectMap.size;
+		document.getElementById("sumParts").innerText = $parts;
 		let objDescIndex = headers.indexOf("Object description");
 		let targetHeaders = ["Object ID", "Object description", "Schema ref"];
-		let uniqueRowsFiltered = Array.from(uniqueObjectMap.values()).map(row => [
-			row[objectIdIndex] || "",
-			objDescIndex !== -1 ? (row[objDescIndex] || "") : "",
-			row[schemaRefIndex] || ""
-		]);
-		let uniqueData = [targetHeaders, ...uniqueRowsFiltered];
-		let uniqueColWidths = targetHeaders.map((_, colIdx) =>
-			Math.max(...uniqueData.map(row => (row[colIdx] || "").length))
-		);
-		document.getElementById("sameBOMs").value = uniqueData.map(row =>row.map((cell, colIdx) => (cell || "").padEnd(uniqueColWidths[colIdx], " ")).join(" | ")).join("\n");
+		let containerSameBOMs = document.getElementById("sameBOMs");
+		let table = document.createElement("table");
+		let headerRow = table.insertRow();
+		targetHeaders.forEach(h => {
+			let th = document.createElement("th");
+			th.textContent = h;
+			headerRow.appendChild(th);
+		});
+		uniqueObjectMap.forEach(row => {
+			let tableRow = table.insertRow();
+			tableRow.insertCell().textContent = row[objectIdIndex] || "";
+			tableRow.insertCell().textContent = objDescIndex !== -1 ? (row[objDescIndex] || "") : "";
+			tableRow.insertCell().textContent = row[schemaRefIndex] || "";
+		});
+		containerSameBOMs.innerHTML = "";
+		containerSameBOMs.appendChild(table);
 	};
 	reader.readAsText(file);
 });
@@ -283,14 +292,14 @@ function renderCanvas() {
 		const text = blockId;
 		const metrics = ctx.measureText(text);
 		// Khung nền nhãn text
-		ctx.fillStyle = "rgba(0, 0, 0, 0.65)";
+		ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
 		ctx.fillRect(midBlockX - metrics.width / 2 - 6, midBlockY - fontSize / 2 - 4, metrics.width + 12, fontSize + 8);
 		ctx.strokeStyle = "rgba(255, 255, 255, 0.6)";
 		ctx.lineWidth = 1;
 		ctx.setLineDash([]);
 		ctx.strokeRect(midBlockX - metrics.width / 2 - 6, midBlockY - fontSize / 2 - 4, metrics.width + 12, fontSize + 8);
 		// Chữ nhãn (#FD1/#FD2 có màu xanh nhạt hoặc sáng để nổi bật)
-		ctx.fillStyle = blockId.startsWith("#FD") ? "#70bfff" : "#00ffff";
+		ctx.fillStyle = blockId.startsWith("#FD") ? "#e88c30" : "#53c6b3";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";
 		ctx.fillText(text, midBlockX, midBlockY);
@@ -298,7 +307,7 @@ function renderCanvas() {
 	});
 	// Khung bôi chọn (Marquee) khi đang giữ chuột phải kéo chọn vùng
 	if (isSelecting) {
-		ctx.strokeStyle = "#00ffff";
+		ctx.strokeStyle = "#53c6b3";
 		ctx.lineWidth = 1;
 		ctx.setLineDash([4, 4]);
 		const rectX = Math.min(selectStart.x, selectEnd.x);
@@ -508,7 +517,7 @@ getMark_1.addEventListener("click", function(e) {
 	}
 	const selectedPoints = boardData.filter(p => p.selected);
 	if (selectedPoints.length !== 1) {
-		alert("Vui lòng bôi chọn đúng 1 điểm trên Canvas để đặt làm Mark 1!");
+		alert("Vui lòng bôi chọn đúng 1 điểm trên bản mạch để đặt làm Mark 1!");
 		return;
 	}
 	// Gán giá trị vào Input
@@ -531,7 +540,7 @@ getMark_2.addEventListener("click", function(e) {
 	}
 	const selectedPoints = boardData.filter(p => p.selected);
 	if (selectedPoints.length !== 1) {
-		alert("Vui lòng bôi chọn đúng 1 điểm trên Canvas để đặt làm Mark 2!");
+		alert("Vui lòng bôi chọn đúng 1 điểm trên bản mạch để đặt làm Mark 2!");
 		return;
 	}
 	// Gán giá trị vào Input
@@ -559,7 +568,7 @@ btnSetBlock.addEventListener("click", function(e) {
 	e.preventDefault();
 	const selectedPoints = boardData.filter(p => p.selected);
 	if (selectedPoints.length === 0) {
-		alert("Vui lòng bật Select Mode và bôi chọn các điểm trên Canvas trước!");
+		alert("Vui lòng bật Select Mode và bôi chọn các điểm trên bản mạch trước!");
 		return;
 	}
 	// Tự động tính số thứ tự Block tiếp theo
@@ -590,7 +599,7 @@ btnClearBlock.addEventListener("click", function(e) {
 	e.preventDefault();
 	const selectedPoints = boardData.filter(p => p.selected);
 	if (selectedPoints.length === 0) {
-		alert("Vui lòng bôi chọn các điểm trên Canvas để xóa khỏi Block!");
+		alert("Vui lòng bôi chọn các điểm trên bản mạch để xóa khỏi Block!");
 		return;
 	}
 	selectedPoints.forEach(p => {
@@ -641,7 +650,7 @@ exportTableAll.addEventListener("click", function(e) {
 	table_all.appendChild(table);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// Tự động căn chỉnh kích thước Canvas khi đổi kích thước cửa sổ
+// Tự động căn chỉnh kích thước bản mạch khi đổi kích thước cửa sổ
 window.addEventListener("resize", () => {
 	if (dataExport.classList.contains("active")) {
 		initCanvasSize();

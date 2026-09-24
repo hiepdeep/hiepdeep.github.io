@@ -31,35 +31,32 @@ body {
 		button {
 			height: 30px;
 			padding: 0 12px;
-			--hs: var(--hue-saturation-gray);
+			--hs: var(--hue-saturation-teal);
 			color: hsl(var(--hs), 50%);
 			background: hsl(var(--hs), 90%);
 			border: 1px solid hsl(var(--hs), 80%);
 			border-radius: var(--bdrs-lv-4);
 			&:hover {
-				color: hsl(var(--hs), 40%);
-				border-color: hsl(var(--hs), 40%);
+				border-color: hsl(var(--hs), 65%);
 			}
-			&.active {
-				color: hsl(var(--hs), 90%);
-				background: hsl(var(--hs), 50%);
-				border-color: hsl(var(--hs), 40%);
+			&:active, &.active {
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 60%);
+				border-color: hsl(var(--hs), 50%);
 			}
 			&#btnGenerator {
 				flex: 1;
 				--hs: var(--hue-saturation-blue);
 				color: hsl(var(--hs), 90%);
-				background: hsl(var(--hs), 50%);
-				border: 1px solid hsl(var(--hs), 40%);
+				background: hsl(var(--hs), 60%);
+				border: 1px solid hsl(var(--hs), 50%);
 				&:hover {
-					color: hsl(var(--hs), 95%);
-					background: hsl(var(--hs), 45%);
-					border-color: hsl(var(--hs), 35%);
+					border-color: hsl(var(--hs), 40%);
 				}
-				&.active {
+				&:active, &.active {
 					color: hsl(var(--hs), 100%);
-					background: hsl(var(--hs), 40%);
-					border-color: hsl(var(--hs), 30%);
+					background: hsl(var(--hs), 50%);
+					border-color: hsl(var(--hs), 40%);
 				}
 			}
 		}
@@ -74,8 +71,8 @@ body {
 			align-items: center;
 			gap: 12px;
 			padding: 0 12px;
-			background: hsl(var(--hs), 90%);
-			border: 1px solid hsl(var(--hs), 80%);
+			background: hsl(var(--hs), 85%);
+			border: 1px solid hsl(var(--hs), 75%);
 			border-radius: var(--bdrs-lv-4);
 			cursor: pointer;
 			input[type="checkbox"] {
@@ -85,29 +82,47 @@ body {
 				height: 8px;
 				position: relative;
 				overflow: hidden;
-				background: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 45%);
 				border-radius: var(--bdrs-lv-4);
 			}
 			.txt {
-				color: hsl(var(--hs), 50%);
+				color: hsl(var(--hs), 45%);
 			}
 			&:hover {
-				border-color: hsl(var(--hs), 40%);
-				input[type="checkbox"] {
-					background: hsl(var(--hs), 40%);
-				}
-				.txt {
-					color: hsl(var(--hs), 40%);
-				}
+				border-color: hsl(var(--hs), 60%);
 			}
 			&:active, &:has(input[type="checkbox"]:checked) {
-				background: hsl(var(--hs), 50%);
-				border-color: hsl(var(--hs), 40%);
+				background: hsl(var(--hs), 55%);
+				border-color: hsl(var(--hs), 45%);
 				input[type="checkbox"] {
 					background: hsl(var(--hs), 90%);
 				}
 				.txt {
 					color: hsl(var(--hs), 90%);
+				}
+			}
+		}
+		.table {
+			width: 100%;
+			padding: 12px;
+			--hs: var(--hue-saturation-gray);
+			background: hsl(var(--hs), 100%);
+			border: 1px solid hsl(var(--hs), 90%);
+			border-radius: var(--bdrs-lv-4);
+			overflow-y: scroll;
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				user-select: all;
+				tr {
+					th, td {
+						padding-bottom: 6px;
+						text-align: left;
+						color: hsl(var(--hs), 50%);
+					}
+					th {
+						font-weight: bold;
+					}
 				}
 			}
 		}
@@ -136,18 +151,16 @@ body {
 						cursor: pointer;
 						--hs: var(--hue-saturation-green);
 						color: hsl(var(--hs), 90%);
-						background: hsl(var(--hs), 50%);
-						border: 1px solid hsl(var(--hs), 40%);
+						background: hsl(var(--hs), 55%);
+						border: 1px solid hsl(var(--hs), 45%);
 						border-radius: var(--bdrs-lv-4);
 						&:hover {
-							color: hsl(var(--hs), 95%);
-							background: hsl(var(--hs), 45%);
 							border-color: hsl(var(--hs), 35%);
 						}
 						&:active {
-							color: hsl(var(--hs), 100%);
-							background: hsl(var(--hs), 40%);
-							border-color: hsl(var(--hs), 30%);
+							color: hsl(var(--hs), 95%);
+							background: hsl(var(--hs), 45%);
+							border-color: hsl(var(--hs), 35%);
 						}
 					}
 				}
@@ -156,6 +169,7 @@ body {
 				flex: 1;
 				width: 100%;
 				padding: 12px;
+				line-height: 20px;
 				--hs: var(--hue-saturation-gray);
 				color: hsl(var(--hs), 50%);
 				background: hsl(var(--hs), 100%);
@@ -167,6 +181,10 @@ body {
 					color: inherit;
 				}
 			}
+			#sameBOMs {
+				flex: 1;
+			}
+
 		}
 		#dataGenerator {
 			flex: 1;
@@ -180,31 +198,6 @@ body {
 				height: calc((100vh - 55px - 12px - 12px - 12px - 55px) / 2);
 				display: flex;
 				gap: 12px;
-				.table {
-					width: 100%;
-					padding: 12px;
-					--hs: var(--hue-saturation-gray);
-					background: hsl(var(--hs), 100%);
-					border: 1px solid hsl(var(--hs), 90%);
-					border-radius: var(--bdrs-lv-4);
-					overflow-y: scroll;
-					table {
-						border-collapse: collapse;
-						width: 100%;
-						user-select: all;
-						tr {
-							th, td {
-								padding: 6px;
-								text-align: left;
-								color: hsl(var(--hs), 50%);
-							}
-							th {
-								font-weight: bold;
-								border-bottom: 1px solid hsl(var(--hs), 90%);
-							}
-						}
-					}
-				}
 				&.data-basic {
 					.control-customize {
 						flex-shrink: 0;
@@ -226,18 +219,16 @@ body {
 										padding: 0 12px;
 										--hs: var(--hue-saturation-yellow);
 										color: hsl(var(--hs), 90%);
-										background: hsl(var(--hs), 50%);
-										border: 1px solid hsl(var(--hs), 40%);
+										background: hsl(var(--hs), 55%);
+										border: 1px solid hsl(var(--hs), 45%);
 										border-radius: var(--bdrs-lv-4);
 										&:hover {
-											color: hsl(var(--hs), 95%);
-											background: hsl(var(--hs), 45%);
 											border-color: hsl(var(--hs), 35%);
 										}
 										&:active {
-											color: hsl(var(--hs), 100%);
-											background: hsl(var(--hs), 40%);
-											border-color: hsl(var(--hs), 30%);
+											color: hsl(var(--hs), 95%);
+											background: hsl(var(--hs), 45%);
+											border-color: hsl(var(--hs), 35%);
 										}
 									}
 									input {
@@ -249,8 +240,6 @@ body {
 										background: hsl(var(--hs), 100%);
 										border: 1px solid hsl(var(--hs), 90%);
 										border-radius: var(--bdrs-lv-4);
-										resize: none;
-										overflow-y: scroll;
 										&::placeholder {
 											color: inherit;
 										}
@@ -263,18 +252,16 @@ body {
 											padding: 0 12px;
 											--hs: var(--hue-saturation-orange);
 											color: hsl(var(--hs), 90%);
-											background: hsl(var(--hs), 50%);
-											border: 1px solid hsl(var(--hs), 40%);
+											background: hsl(var(--hs), 55%);
+											border: 1px solid hsl(var(--hs), 45%);
 											border-radius: var(--bdrs-lv-4);
 											&:hover {
-												color: hsl(var(--hs), 95%);
-												background: hsl(var(--hs), 45%);
 												border-color: hsl(var(--hs), 35%);
 											}
 											&:active {
-												color: hsl(var(--hs), 100%);
-												background: hsl(var(--hs), 40%);
-												border-color: hsl(var(--hs), 30%);
+												color: hsl(var(--hs), 95%);
+												background: hsl(var(--hs), 45%);
+												border-color: hsl(var(--hs), 35%);
 											}
 										}
 									}
@@ -290,18 +277,17 @@ body {
 											height: 30px;
 											padding: 0 12px;
 											--hs: var(--hue-saturation-gray);
-											color: hsl(var(--hs), 50%);
-											background: hsl(var(--hs), 90%);
-											border: 1px solid hsl(var(--hs), 80%);
+											color: hsl(var(--hs), 45%);
+											background: hsl(var(--hs), 85%);
+											border: 1px solid hsl(var(--hs), 75%);
 											border-radius: var(--bdrs-lv-4);
 											&:hover {
-												color: hsl(var(--hs), 40%);
-												border-color: hsl(var(--hs), 40%);
+												border-color: hsl(var(--hs), 60%);
 											}
 											&:active, &.active {
 												color: hsl(var(--hs), 90%);
-												background: hsl(var(--hs), 50%);
-												border-color: hsl(var(--hs), 40%);
+												background: hsl(var(--hs), 55%);
+												border-color: hsl(var(--hs), 45%);
 											}
 										}
 									}
@@ -324,18 +310,16 @@ body {
 							padding: 0 12px;
 							--hs: var(--hue-saturation-purple);
 							color: hsl(var(--hs), 90%);
-							background: hsl(var(--hs), 50%);
-							border: 1px solid hsl(var(--hs), 40%);
+							background: hsl(var(--hs), 55%);
+							border: 1px solid hsl(var(--hs), 45%);
 							border-radius: var(--bdrs-lv-4);
 							&:hover {
-								color: hsl(var(--hs), 95%);
-								background: hsl(var(--hs), 45%);
 								border-color: hsl(var(--hs), 35%);
 							}
 							&:active {
-								color: hsl(var(--hs), 100%);
-								background: hsl(var(--hs), 40%);
-								border-color: hsl(var(--hs), 30%);
+								color: hsl(var(--hs), 95%);
+								background: hsl(var(--hs), 45%);
+								border-color: hsl(var(--hs), 35%);
 							}
 						}
 					}
@@ -350,13 +334,13 @@ body {
 		gap: 6px;
 		padding: 12px;
 		background: hsl(var(--hue-saturation-gray), 10%);
-		border-top: 1px solid hsl(var(--hue-saturation-gray), 15%);
+		border-top: 1px solid hsl(var(--hue-saturation-gray), 20%);
 		.status-box {
 			display: flex;
 			align-items: center;
 			gap: 6px;
 			padding: 0 8px;
-			border: 1px solid hsl(var(--hue-saturation-gray), 15%);
+			border: 1px solid hsl(var(--hue-saturation-gray), 20%);
 			border-radius: var(--bdrs-lv-4);
 			span {
 				line-height: 28px;
