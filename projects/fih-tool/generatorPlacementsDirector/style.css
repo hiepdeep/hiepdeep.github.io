@@ -123,6 +123,11 @@ body {
 					th {
 						font-weight: bold;
 					}
+					&:last-child {
+						td {
+							padding-bottom: 0;
+						}
+					}
 				}
 			}
 		}
@@ -165,24 +170,11 @@ body {
 					}
 				}
 			}
-			textarea {
-				flex: 1;
-				width: 100%;
-				padding: 12px;
-				line-height: 20px;
-				--hs: var(--hue-saturation-gray);
-				color: hsl(var(--hs), 50%);
-				background: hsl(var(--hs), 100%);
-				border: 1px solid hsl(var(--hs), 90%);
-				border-radius: var(--bdrs-lv-4);
-				resize: none;
-				overflow-y: scroll;
-				&::placeholder {
-					color: inherit;
-				}
+			.table {
+				height: calc((100vh - 55px - 12px - 30px - 12px - 12px - 12px - 55px) / 2);
 			}
-			#sameBOMs {
-				flex: 1;
+			#importCADs {
+				height: calc(100vh - 55px - 12px - 30px - 12px - 12px - 55px);
 			}
 
 		}
