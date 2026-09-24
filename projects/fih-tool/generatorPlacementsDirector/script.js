@@ -1,6 +1,7 @@
 console.clear();
 console.log("Create: 14/09/2026. By HiepDz");
-console.log("Update: 23/09/2026. By HiepDz");
+console.log("Update: 24/09/2026. By HiepDz");
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Khai báo tên biến Element, trạng thái dữ liệu
 const btnImport = document.getElementsByClassName("btn-import");
 const dataImport = document.getElementsByClassName("data-import");
@@ -24,6 +25,7 @@ const myCanvas = document.getElementById("myCanvas");
 const exportTableAll = document.getElementById("btnExport");
 let $parts = 0, $cads = 0, $cad = 0, $uncad = 0;
 let cadOriginalData = { headers: [], rows: [] };
+let bomsOriginalData = { headers: [], rows: [] }; // Lưu trữ dữ liệu BOMs dạng mảng
 let boardData = [];
 const ctx = myCanvas.getContext("2d");
 let origMinX = 0, origMinY = 0;
@@ -35,6 +37,7 @@ let panStart = { x: 0, y: 0 };
 let isSelecting = false;
 let selectStart = { x: 0, y: 0 };
 let selectEnd = { x: 0, y: 0 };
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Chuyển Tab
 for (let i = 0; i < btnImport.length; i++) {
 	btnImport[i].addEventListener("click", (e) => {
@@ -49,6 +52,25 @@ for (let i = 0; i < btnImport.length; i++) {
 		dataImport[i].classList.add("active");
 	});
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Hàm hỗ trợ render bảng HTML từ Mảng headers và Mảng rows
+function createHTMLTable(headers, rows) {
+	let table = document.createElement("table");
+	let headerRow = table.insertRow();
+	headers.forEach(h => {
+		let th = document.createElement("th");
+		th.textContent = h;
+		headerRow.appendChild(th);
+	});
+	rows.forEach(r => {
+		let row = table.insertRow();
+		r.forEach(cell => {
+			row.insertCell().textContent = cell;
+		});
+	});
+	return table;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Xử lý file BOMs
 document.getElementById("newBoms").addEventListener("change", function() {
 	let file = this.files[0];
@@ -78,9 +100,11 @@ document.getElementById("newBoms").addEventListener("change", function() {
 		});
 		// Dữ liệu BOMs đầy đủ (Quantity == 1,00 và Schema ref không rỗng)
 		let filteredRows = parsedRows.filter(row => (row[quantityIndex] || "") === "1,00" && (row[schemaRefIndex] || "") !== "");
-		let allData = [headers, ...filteredRows];
-		let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => (row[colIdx] || "").length)));
-		document.getElementById("importBOMs").value = allData.map(row => row.map((cell, colIdx) => (cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
+		bomsOriginalData = { headers, rows: filteredRows };
+		// Render bảng cho #importBOMs
+		let divBOMs = document.getElementById("importBOMs");
+		divBOMs.innerHTML = "";
+		divBOMs.appendChild(createHTMLTable(headers, filteredRows));
 		// Lọc danh sách Object ID duy nhất (Quantity == 1,00, Schema ref không rỗng, và Object ID chưa xuất hiện)
 		let uniqueObjectMap = new Map();
 		parsedRows.forEach(row => {
@@ -91,37 +115,25 @@ document.getElementById("newBoms").addEventListener("change", function() {
 				uniqueObjectMap.set(objId, row);
 			}
 		});
-		// Tổng số loại Part Number sử dụng
+		// Cập nhật tổng số loại part duy nhất vào #sumParts
 		$parts = uniqueObjectMap.size;
 		document.getElementById("sumParts").innerText = $parts;
 		let objDescIndex = headers.indexOf("Object description");
 		let targetHeaders = ["Object ID", "Object description", "Schema ref"];
-		let containerSameBOMs = document.getElementById("sameBOMs");
-		let table = document.createElement("table");
-		let headerRow = table.insertRow();
-		targetHeaders.forEach(h => {
-			let th = document.createElement("th");
-			th.textContent = h;
-			headerRow.appendChild(th);
-		});
-		uniqueObjectMap.forEach(row => {
-			let tableRow = table.insertRow();
-			tableRow.insertCell().textContent = row[objectIdIndex] || "";
-			tableRow.insertCell().textContent = objDescIndex !== -1 ? (row[objDescIndex] || "") : "";
-			tableRow.insertCell().textContent = row[schemaRefIndex] || "";
-		});
-		containerSameBOMs.innerHTML = "";
-		containerSameBOMs.appendChild(table);
+		let uniqueRowsFiltered = Array.from(uniqueObjectMap.values()).map(row => [
+			row[objectIdIndex] || "",
+			objDescIndex !== -1 ? (row[objDescIndex] || "") : "",
+			row[schemaRefIndex] || ""
+		]);
+		// Render bảng cho #sameBOMs
+		let divSameBOMs = document.getElementById("sameBOMs");
+		divSameBOMs.innerHTML = "";
+		divSameBOMs.appendChild(createHTMLTable(targetHeaders, uniqueRowsFiltered));
 	};
 	reader.readAsText(file);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Xử lý file CADs
-function formatCADsOutput(headers, rows) {
-	let allData = [headers, ...rows];
-	let colWidths = headers.map((_, colIdx) => Math.max(...allData.map(row => String(row[colIdx] || "").length)));
-	return allData.map(row => row.map((cell, colIdx) => String(cell || "").padEnd(colWidths[colIdx], " ")).join(" | ")).join("\n");
-}
 document.getElementById("newCads").addEventListener("change", function() {
 	let file = this.files[0];
 	if (!file) return;
@@ -144,11 +156,11 @@ document.getElementById("newCads").addEventListener("change", function() {
 			}
 		}
 		cadOriginalData = { headers, rows: parsedRows };
-		renderCADsTextarea();
+		renderCADsTable();
 	};
 	reader.readAsText(file);
 });
-function renderCADsTextarea() {
+function renderCADsTable() {
 	if (cadOriginalData.headers.length === 0) return;
 	let isTelit = document.getElementById("telitFormat").checked;
 	let processedRows = cadOriginalData.rows.map(row => [...row]);
@@ -161,11 +173,13 @@ function renderCADsTextarea() {
 			}
 		});
 	}
-	document.getElementById("importCADs").value = formatCADsOutput(cadOriginalData.headers, processedRows);
+	let divCADs = document.getElementById("importCADs");
+	divCADs.innerHTML = "";
+	divCADs.appendChild(createHTMLTable(cadOriginalData.headers, processedRows));
 	$cads = cadOriginalData.rows.length;
 	document.getElementById("sumCads").innerText = $cads;
 }
-document.getElementById("telitFormat").addEventListener("change", renderCADsTextarea);
+document.getElementById("telitFormat").addEventListener("change", renderCADsTable);
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Cập nhật Cache Bounding Box
 function updateBoardBounds() {
@@ -254,7 +268,7 @@ function renderCanvas() {
 	boardData.forEach(p => {
 		let labelKey = null;
 		if (p.isMark) {
-			labelKey = p.markLabel; // #FD1 hoặc #FD2
+			labelKey = p.markLabel;
 		} else if (p.block && p.block !== "-") {
 			labelKey = `#${p.block}`;
 		}
@@ -344,13 +358,22 @@ myCanvas.addEventListener("mousedown", function(e) {
 	const rect = myCanvas.getBoundingClientRect();
 	const mouseX = e.clientX - rect.left;
 	const mouseY = e.clientY - rect.top;
-	if (e.button === 0) { // Chuột trái: Kéo di chuyển Canvas
+	if (e.button === 0) {
 		isPanning = true;
-		panStart = { x: mouseX - panOffset.x, y: mouseY - panOffset.y };
-	} else if (e.button === 2 && selectMode.checked) { // Chuột phải: Bôi quét chọn điểm
+		panStart = {
+			x: mouseX - panOffset.x,
+			y: mouseY - panOffset.y
+		};
+	} else if (e.button === 2 && selectMode.checked) {
 		isSelecting = true;
-		selectStart = { x: mouseX, y: mouseY };
-		selectEnd = { x: mouseX, y: mouseY };
+		selectStart = {
+			x: mouseX,
+			y: mouseY
+		};
+		selectEnd = {
+			x: mouseX,
+			y: mouseY
+		};
 	}
 });
 myCanvas.addEventListener("mousemove", function(e) {
@@ -362,7 +385,10 @@ myCanvas.addEventListener("mousemove", function(e) {
 		panOffset.y = mouseY - panStart.y;
 		renderCanvas();
 	} else if (isSelecting) {
-		selectEnd = { x: mouseX, y: mouseY };
+		selectEnd = {
+			x: mouseX,
+			y: mouseY
+		};
 		renderCanvas();
 	}
 });
@@ -437,26 +463,30 @@ btnExport.addEventListener("click", function(e) {
 	}
 	btnExport.classList.add("active");
 	dataExport.classList.add("active");
-	let rowBOMs = document.getElementById("importBOMs").value.trim().split("\n").map(r => r.split("|").map(c => c.trim()));
-	let rowCADs = document.getElementById("importCADs").value.trim().split("\n").map(r => r.split("|").map(c => c.trim()));
-	if (rowCADs.length <= 1 || !rowCADs[0][0]) return;
-	let boms_PartNumber = rowBOMs[0].indexOf("Object ID");
-	let boms_SchemaRef = rowBOMs[0].indexOf("Schema ref");
-	let cads_Designator = rowCADs[0].indexOf("Designator");
-	let cads_X = rowCADs[0].indexOf("Center-X(mm)");
-	let cads_Y = rowCADs[0].indexOf("Center-Y(mm)");
-	let cads_Rotation = rowCADs[0].indexOf("Rotation");
+	if (cadOriginalData.rows.length === 0 || bomsOriginalData.rows.length === 0) return;
+	let boms_PartNumber = bomsOriginalData.headers.indexOf("Object ID");
+	let boms_SchemaRef = bomsOriginalData.headers.indexOf("Schema ref");
+	let cads_Designator = cadOriginalData.headers.indexOf("Designator");
+	let cads_X = cadOriginalData.headers.indexOf("Center-X(mm)");
+	let cads_Y = cadOriginalData.headers.indexOf("Center-Y(mm)");
+	let cads_Rotation = cadOriginalData.headers.indexOf("Rotation");
+	let isTelit = document.getElementById("telitFormat").checked;
 	boardData = [];
-	for (let i = 1; i < rowCADs.length; i++) {
-		if (!rowCADs[i] || rowCADs[i].length < 4) continue;
-		let ref = rowCADs[i][cads_Designator];
-		let x = parseFloat(rowCADs[i][cads_X]) || 0;
-		let y = parseFloat(rowCADs[i][cads_Y]) || 0;
-		let rot = rowCADs[i][cads_Rotation] || "0";
-		const matchedRow = rowBOMs.slice(1).find(r => r[boms_SchemaRef] === ref);
+	cadOriginalData.rows.forEach(row => {
+		if (!row || row.length < 4) return;
+		let ref = row[cads_Designator];
+		let x = parseFloat(row[cads_X]) || 0;
+		let y = parseFloat(row[cads_Y]) || 0;
+		let rotVal = parseFloat(row[cads_Rotation]) || 0;
+		if (isTelit) {
+			rotVal -= 90;
+			if (rotVal === -90) rotVal = 270;
+		}
+		let rot = rotVal.toString();
+		const matchedRow = bomsOriginalData.rows.find(r => r[boms_SchemaRef] === ref);
 		let partNumber = matchedRow ? matchedRow[boms_PartNumber] : "N/A";
 		boardData.push({ ref, x, y, rot, partNumber, selected: false, block: "-" });
-	}
+	});
 	if (boardData.length > 0) {
 		origMinX = Math.min(...boardData.map(p => p.x));
 		origMinY = Math.min(...boardData.map(p => p.y));
@@ -475,15 +505,12 @@ btnExport.addEventListener("click", function(e) {
 rotate90.addEventListener("click", function(e) {
 	e.preventDefault();
 	if (boardData.length === 0) return;
-	// Xoay 90 độ theo chiều kim đồng hồ: (X_rot, Y_rot) = (Y, -X)
 	let rotatedCoords = boardData.map(p => ({
 		rotX: p.y,
 		rotY: -p.x
 	}));
-	// Tìm tọa độ nhỏ nhất hiện tại sau khi xoay
 	let currentMinX = Math.min(...rotatedCoords.map(c => c.rotX));
 	let currentMinY = Math.min(...rotatedCoords.map(c => c.rotY));
-	// Dịch chuyển để điểm góc bản mạch duy trì đúng khoảng cách gốc ban đầu (origMinX, origMinY)
 	boardData.forEach((p, index) => {
 		p.x = Math.round((rotatedCoords[index].rotX - currentMinX + origMinX) * 1000) / 1000;
 		p.y = Math.round((rotatedCoords[index].rotY - currentMinY + origMinY) * 1000) / 1000;
@@ -501,7 +528,6 @@ rotate90.addEventListener("click", function(e) {
 		txtMark_Y2.value = mark2.y;
 	}
 	updateBoardBounds();
-	// Render lại bảng và canvas
 	renderBasicTable();
 	zoomLevel = 1.0;
 	panOffset = { x: 0, y: 0 };
@@ -520,15 +546,16 @@ getMark_1.addEventListener("click", function(e) {
 		alert("Vui lòng bôi chọn đúng 1 điểm trên bản mạch để đặt làm Mark 1!");
 		return;
 	}
-	// Gán giá trị vào Input
 	txtMark_X1.value = selectedPoints[0].x;
 	txtMark_Y1.value = selectedPoints[0].y;
-	// Xóa trạng thái Mark cũ của FD1 (nếu có)
-	boardData.forEach(p => { if (p.markLabel === "#FD1") { p.isMark = false; p.markLabel = null; } });
-	// Thiết lập trạng thái Mark 1 cho điểm được chọn
+	boardData.forEach(p => {
+		if (p.markLabel === "#FD1") {
+			p.isMark = false;
+			p.markLabel = null;
+		}
+	});
 	selectedPoints[0].isMark = true;
 	selectedPoints[0].markLabel = "#FD1";
-	// Tự động Clear Select sau khi xong
 	boardData.forEach(p => p.selected = false);
 	renderCanvas();
 });
@@ -543,12 +570,14 @@ getMark_2.addEventListener("click", function(e) {
 		alert("Vui lòng bôi chọn đúng 1 điểm trên bản mạch để đặt làm Mark 2!");
 		return;
 	}
-	// Gán giá trị vào Input
 	txtMark_X2.value = selectedPoints[0].x;
 	txtMark_Y2.value = selectedPoints[0].y;
-	// Xóa trạng thái Mark cũ của FD2 (nếu có)
-	boardData.forEach(p => { if (p.markLabel === "#FD2") { p.isMark = false; p.markLabel = null; } });
-	// Thiết lập trạng thái Mark 2 cho điểm được chọn
+	boardData.forEach(p => {
+		if (p.markLabel === "#FD2") {
+			p.isMark = false;
+			p.markLabel = null;
+		}
+	});
 	selectedPoints[0].isMark = true;
 	selectedPoints[0].markLabel = "#FD2";
 	// Tự động Clear Select sau khi xong
@@ -626,18 +655,15 @@ exportTableAll.addEventListener("click", function(e) {
 		th.textContent = h;
 		headerRow.appendChild(th);
 	});
-	// Hàm hỗ trợ chèn 1 dòng dữ liệu vào bảng
 	const addRow = (data) => {
 		let row = table.insertRow();
 		data.forEach(val => {
 			row.insertCell().textContent = val;
 		});
 	};
-	// Thêm dòng dữ liệu Mark 1 (nếu có tọa độ X1, Y1)
 	if (txtMark_X1.value.trim() !== "" && txtMark_Y1.value.trim() !== "") {
 		addRow(["0", "Mark1", txtMark_X1.value.trim(), txtMark_Y1.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 	}
-	// Thêm dòng dữ liệu Mark 2 (nếu có tọa độ X2, Y2)
 	if (txtMark_X2.value.trim() !== "" && txtMark_Y2.value.trim() !== "") {
 		addRow(["0", "Mark2", txtMark_X2.value.trim(), txtMark_Y2.value.trim(), "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", "", sideVal]);
 	}
