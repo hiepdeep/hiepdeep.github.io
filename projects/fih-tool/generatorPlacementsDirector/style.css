@@ -47,7 +47,7 @@ body {
 			&#btnGenerator {
 				flex: 1;
 				--hs: var(--hue-saturation-blue);
-				color: hsl(var(--hs), 90%);
+				color: hsl(var(--hs), 95%);
 				background: hsl(var(--hs), 60%);
 				border: 1px solid hsl(var(--hs), 50%);
 				&:hover {
