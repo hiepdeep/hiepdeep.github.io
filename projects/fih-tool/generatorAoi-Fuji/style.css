@@ -155,6 +155,10 @@ body {
 				&#pastePlacement, &#importPartReportUnit, &#pasteInsertOrder {
 					flex: 1;
 				}
+				&.drag-over {
+					background: hsl(var(--hs), 90%);
+					border-color: hsl(var(--hs), 80%);
+				}
 			}
 		}
 		#dataGenerator {

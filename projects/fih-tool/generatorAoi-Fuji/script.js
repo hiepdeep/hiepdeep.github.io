@@ -35,9 +35,8 @@ document.getElementById("pastePlacement").addEventListener("input", (e) => {
 	document.getElementById("sumPlacement").innerText = e.target.value.trim().split("\n").length - 1;
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// PartReportUnit
-document.getElementById("newPartReportUnit").addEventListener("change", function() {
-	let files = this.files;
+// Hàm xử lý đọc danh sách file PartReportUnit
+function processPartReportUnitFiles(files) {
 	if (!files || files.length === 0) return;
 	let allDataRows = [];
 	let globalCounter = 1;
@@ -76,7 +75,35 @@ document.getElementById("newPartReportUnit").addEventListener("change", function
 		reader.readAsText(files[index]);
 	}
 	readIndividualFile(0);
+}
+// Xử lý khi chọn file bằng nút bấm "Mở file PartReportUnit"
+document.getElementById("newPartReportUnit").addEventListener("change", function() {
+	processPartReportUnitFiles(this.files);
 });
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Xử lý kéo thả (Drag & Drop) trực tiếp vào id="importPartReportUnit"
+const importPartReportUnitArea = document.getElementById("importPartReportUnit");
+if (importPartReportUnitArea) {
+	importPartReportUnitArea.addEventListener("dragover", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.classList.add("drag-over");
+	});
+	importPartReportUnitArea.addEventListener("dragleave", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.classList.remove("drag-over");
+	});
+	importPartReportUnitArea.addEventListener("drop", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.classList.remove("drag-over");
+		let files = e.dataTransfer.files;
+		if (files && files.length > 0) {
+			processPartReportUnitFiles(files);
+		}
+	});
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Insert Order
 document.getElementById("pasteInsertOrder").addEventListener("input", function(e) {
@@ -107,7 +134,9 @@ btnExport.addEventListener("click", function(e) {
 	let mark_LocationName = row_Mark[0].indexOf("Ref.");
 	let mark_X = row_Mark[0].indexOf("Pos X");
 	let mark_Y = row_Mark[0].indexOf("Pos Y");
-	let arr_Mark = [["Block", "Location Name", "X", "Y"]];
+	let arr_Mark = [
+		["Block", "Location Name", "X", "Y"]
+	];
 	for (let row = 1; row < row_Mark.length; row++) {
 		arr_Mark.push([]);
 		let newRowIndex = arr_Mark.length - 1;
@@ -134,7 +163,9 @@ btnExport.addEventListener("click", function(e) {
 	let place_Rotation = row_Place[0].indexOf("Rotation");
 	let place_PartNumber = row_Place[0].indexOf("Part Number");
 	let place_Assign = row_Place[0].indexOf("Assign");
-	let arr_Place = [["BoardRef", "Board", "Ref.", "Pos X", "Pos Y", "Rotation", "Part Number", "Assign"]];
+	let arr_Place = [
+		["BoardRef", "Board", "Ref.", "Pos X", "Pos Y", "Rotation", "Part Number", "Assign"]
+	];
 	for (let row = 1; row < row_Place.length; row++) {
 		arr_Place.push([]);
 		let newRowIndex = arr_Place.length - 1;
@@ -326,16 +357,13 @@ function convertFsSetPos(fsSetPos, type) {
 	if (x.length === 2) {
 		if (type == "M") {
 			return "M" + x[0];
-		}
-		else if (type == "F") {
+		} else if (type == "F") {
 			return "F" + x[1];
 		}
-	}
-	else if (x.length >= 3) {
+	} else if (x.length >= 3) {
 		if (type == "M") {
 			return "M" + x[0];
-		}
-		else if (type == "F") {
+		} else if (type == "F") {
 			return x[1] + x[2];
 		}
 	}
