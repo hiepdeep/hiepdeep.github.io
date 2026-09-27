@@ -1,0 +1,620 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>Converter Pana to Fuji | V01</title>
+		<style type="text/css">
+			a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+				outline: none;
+				vertical-align: baseline;
+			}
+			:link, button {
+				text-decoration: none;
+				cursor: pointer;
+				user-select: none;
+			}
+			:link, :hover, :focus, :active, :visited {
+				outline: none;
+			}
+			:root {
+				--hue-saturation-purple: 260deg, 50%;
+				--hue-saturation-pink: 330deg, 60%;
+				--hue-saturation-orange: 30deg, 80%;
+				--hue-saturation-brown: 20deg, 40%;
+				--hue-saturation-teal: 170deg, 50%;
+				--hue-saturation-yellow: 50deg, 80%;
+				--hue-saturation-red: 10deg, 70%;
+				--hue-saturation-green: 140deg, 50%;
+				--hue-saturation-blue: 210deg, 70%;
+				--hue-saturation-gray: 200deg, 10%;
+				--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
+				--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
+				--bg-box: hsl(var(--hue-saturation-gray), 100%);
+				--bd-box: hsl(var(--hue-saturation-gray), 90%);
+				--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
+				--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
+				--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
+				--color-lv-4: hsl(var(--hue-saturation-gray), 40%);
+				--color-white: hsl(var(--hue-saturation-gray), 95%);
+				--color-placeholder: hsl(var(--hue-saturation-gray), 70%);
+				--fz-lv-1: 18px;
+				--fz-lv-2: 16px;
+				--fz-lv-3: 14px;
+				--fz-lv-4: 12px;
+				--bdrs-lv-1: 16px;
+				--bdrs-lv-2: 12px;
+				--bdrs-lv-3: 8px;
+				--bdrs-lv-4: 4px;
+				--bdrs-lv-5: 2px;
+			}
+			iframe {
+				width: 100%;
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+			}
+			ol, ul, li {
+				list-style-type: none;
+			}
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: hsl(var(--hue-saturation-gray), 90%);
+				border-radius: 2px calc(var(--bdrs-lv-4) - 1px) calc(var(--bdrs-lv-4) - 1px) 2px;
+			}
+			::-webkit-scrollbar-thumb {
+				background: hsl(var(--hue-saturation-gray), 50%);
+				border-radius: 2px calc(var(--bdrs-lv-4) - 1px) calc(var(--bdrs-lv-4) - 1px) 2px;
+				cursor: pointer;
+			}
+			::-webkit-scrollbar-thumb:hover {
+				background: hsl(var(--hue-saturation-gray), 40%);
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				letter-spacing: 0.05em;
+				-webkit-tap-highlight-color: transparent;
+				-webkit-font-smoothing: antialiased;
+				font-family: "Courier New", sans-serif;
+				color: red;
+				font-size: var(--fz-lv-4);
+			}
+			body {
+				background: hsl(var(--hue-saturation-gray), 95%);
+				display: -ms-grid;
+				display: grid;
+				place-items: center;
+				height: 100vh;
+				-webkit-user-select: none;
+				   -moz-user-select: none;
+				    -ms-user-select: none;
+				        user-select: none;
+			}
+			.box {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				width: 100vw;
+				height: 100vh;
+				position: relative;
+			}
+			.box .toolbar {
+				-ms-flex-negative: 0;
+				    flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 12px;
+				padding: 12px;
+				background: hsl(var(--hue-saturation-gray), 100%);
+				border-bottom: 1px solid hsl(var(--hue-saturation-gray), 90%);
+			}
+			.box .toolbar button {
+				height: 30px;
+				padding: 0 12px;
+				--hs: var(--hue-saturation-teal);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 90%);
+				border: 1px solid hsl(var(--hs), 80%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .toolbar button:hover {
+				border-color: hsl(var(--hs), 65%);
+			}
+			.box .toolbar button:active,
+			.box .toolbar button.active {
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 60%);
+				border-color: hsl(var(--hs), 50%);
+			}
+			.box .toolbar button#btnGenerator {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				--hs: var(--hue-saturation-blue);
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 60%);
+				border: 1px solid hsl(var(--hs), 50%);
+			}
+			.box .toolbar button#btnGenerator:hover {
+				border-color: hsl(var(--hs), 40%);
+			}
+			.box .toolbar button#btnGenerator:active,
+			.box .toolbar button#btnGenerator.active {
+				color: hsl(var(--hs), 100%);
+				background: hsl(var(--hs), 50%);
+				border-color: hsl(var(--hs), 40%);
+			}
+			.box .main {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				padding: 12px;
+			}
+			.box .main .table {
+				width: 100%;
+				--hs: var(--hue-saturation-gray);
+				background: hsl(var(--hs), 100%);
+				border: 1px solid hsl(var(--hs), 90%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .table table {
+				border-collapse: collapse;
+				width: 100%;
+			}
+			.box .main .table table tr th,
+			.box .main .table table tr td {
+				text-align: left;
+				color: hsl(var(--hs), 50%);
+			}
+			.box .main .table table tr th {
+				font-weight: bold;
+			}
+			.box .main .data-import {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				display: none;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				gap: 12px;
+			}
+			.box .main .data-import.active {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.box .main .data-import .label {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				gap: 12px;
+			}
+			.box .main .data-import .label .label-importfile {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+			}
+			.box .main .data-import .label .label-importfile .txt {
+				display: block;
+				line-height: 28px;
+				text-align: center;
+				padding: 0px 12px;
+				cursor: pointer;
+				--hs: var(--hue-saturation-green);
+				color: hsl(var(--hs), 90%);
+				background: hsl(var(--hs), 55%);
+				border: 1px solid hsl(var(--hs), 45%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .data-import .label .label-importfile .txt:hover {
+				border-color: hsl(var(--hs), 35%);
+			}
+			.box .main .data-import .label .label-importfile .txt:active {
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 45%);
+				border-color: hsl(var(--hs), 35%);
+			}
+			.box .main .data-import .table table tr {
+				border-bottom: 1px solid hsl(var(--hs), 90%);
+			}
+			.box .main .data-import .table table tr:last-child {
+				border: 0;
+			}
+			.box .main .data-import .table table tr th {
+				padding: 12px;
+				-webkit-user-select: none;
+				   -moz-user-select: none;
+				    -ms-user-select: none;
+				        user-select: none;
+			}
+			.box .main .data-import .table table tr th:nth-child(even) {
+				border-left: 1px solid hsl(var(--hs), 90%);
+				border-right: 1px solid hsl(var(--hs), 90%);
+			}
+			.box .main .data-import .table table tr td:nth-child(even) {
+				border-left: 1px solid hsl(var(--hs), 90%);
+				border-right: 1px solid hsl(var(--hs), 90%);
+			}
+			.box .main .data-import .table table tr td input {
+				width: 100%;
+				padding: 12px 12px;
+				color: hsl(var(--hs), 50%);
+				background: 0;
+				border: 0;
+			}
+			.box .main .data-import .table table tr td input::-webkit-input-placeholder {
+				color: hsl(var(--hs), 50%);
+			}
+			.box .main .data-import .table table tr td input::-moz-placeholder {
+				color: hsl(var(--hs), 50%);
+			}
+			.box .main .data-import .table table tr td input:-ms-input-placeholder {
+				color: hsl(var(--hs), 50%);
+			}
+			.box .main .data-import .table table tr td input::-ms-input-placeholder {
+				color: hsl(var(--hs), 50%);
+			}
+			.box .main .data-import .table table tr td input::placeholder {
+				color: hsl(var(--hs), 50%);
+			}
+			.box .main .data-import textarea {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				width: 100%;
+				padding: 12px;
+				--hs: var(--hue-saturation-gray);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 100%);
+				border: 1px solid hsl(var(--hs), 90%);
+				border-radius: var(--bdrs-lv-4);
+				resize: none;
+			}
+			.box .main .data-import textarea::-webkit-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea::-moz-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea:-ms-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea::-ms-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea::placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea#pastePlacement,
+			.box .main .data-import textarea#importPartReportUnit,
+			.box .main .data-import textarea#pasteInsertOrder {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+			}
+			.box .main #dataGenerator {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				display: none;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				gap: 12px;
+			}
+			.box .main #dataGenerator.active {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.box .main #dataGenerator .table {
+				height: calc(100vh - 55px - 12px - 12px - 55px);
+				padding: 12px;
+				overflow-y: scroll;
+			}
+			.box .main #dataGenerator .table table {
+				-webkit-user-select: all;
+				   -moz-user-select: all;
+				        user-select: all;
+			}
+			.box .main #dataGenerator .table table tr th,
+			.box .main #dataGenerator .table table tr td {
+				padding-bottom: 6px;
+			}
+			.box .main #dataGenerator .table table tr:last-child td {
+				padding-bottom: 0;
+			}
+			.box .footer {
+				-ms-flex-negative: 0;
+				    flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 6px;
+				padding: 12px;
+				background: hsl(var(--hue-saturation-gray), 10%);
+				border-top: 1px solid hsl(var(--hue-saturation-gray), 20%);
+			}
+			.box .footer .status-box {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 6px;
+				padding: 0 8px;
+				border: 1px solid hsl(var(--hue-saturation-gray), 20%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .footer .status-box span {
+				line-height: 28px;
+				color: hsl(var(--hue-saturation-gray), 60%);
+			}
+			.box .footer .status-box span.val {
+				font-weight: bold;
+				color: hsl(var(--hue-saturation-blue), 60%);
+			}
+			.box .footer .spacer {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+			}
+			.box .footer .copyright {
+				text-align: right;
+				color: hsl(var(--hue-saturation-gray), 60%);
+			}
+			.box .footer .copyright b {
+				color: hsl(var(--hue-saturation-gray), 80%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="toolbar">
+				<button class="btn-import active">Mark & Placement</button>
+				<button id="btnGenerator">Converter</button>
+			</div>
+			<div class="main">
+				<div class="data-import active">
+					<div class="table" id="pasteMark">
+						<table>
+							<tr>
+								<th></th>
+								<th>X</th>
+								<th>Y</th>
+							</tr>
+							<tr>
+								<th>Mark 1</th>
+								<td><input type="tel" id="mark-X1" placeholder="0" pattern="[0-9.]*" required></td>
+								<td><input type="tel" id="mark-Y1" placeholder="0" pattern="[0-9.]*" required></td>
+							</tr>
+							<tr>
+								<th>Mark 2</th>
+								<td><input type="tel" id="mark-X2" placeholder="0" pattern="[0-9.]*" required></td>
+								<td><input type="tel" id="mark-Y2" placeholder="0" pattern="[0-9.]*" required></td>
+							</tr>
+						</table>
+					</div>
+					<div class="label">
+						<label class="label-importfile">
+							<input type="file" id="newCSV" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Mở file CSV</span>
+						</label>
+					</div>
+					<textarea id="importCSV" placeholder="This is data Placement.."></textarea>
+				</div>
+				<div id="dataGenerator">
+					<div class="table" id="tableResult"></div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="status-box">
+					<span id="sumPlacement" class="val">0</span>
+					<span>Placement</span>
+				</div>
+				<div class="status-box">
+					<span id="sumPoint" class="val">0</span>
+					<span>Point</span>
+				</div>
+				<span class="spacer"></span>
+				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			console.clear();
+			console.log("Create: 27/09/2026. By HiepDz");
+			console.log("Update: 27/09/2026. By HiepDz");
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Khai báo tên biến Element, trạng thái dữ liệu
+			const btnImport = document.getElementsByClassName("btn-import");
+			const dataImport = document.getElementsByClassName("data-import");
+			const btnExport = document.getElementById("btnGenerator");
+			const dataExport = document.getElementById("dataGenerator");
+			let $parts = 0, $cads = 0, $cad = 0, $uncad = 0;
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Chuyển Tab
+			for (let i = 0; i < btnImport.length; i++) {
+				btnImport[i].addEventListener("click", (e) => {
+					e.preventDefault();
+					for (let j = 0; j < btnImport.length; j++) {
+						btnImport[j].classList.remove("active");
+						dataImport[j].classList.remove("active");
+					}
+					btnExport.classList.remove("active");
+					dataExport.classList.remove("active");
+					btnImport[i].classList.add("active");
+					dataImport[i].classList.add("active");
+				});
+			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// CSV
+			document.getElementById("newCSV").addEventListener("change", function() {
+				let file = this.files[0];
+				if (!file) return;
+				let reader = new FileReader();
+				reader.onload = function(e) {
+					let result = e.target.result.trim();
+					let $a = [];
+					let $b = [];
+					let $c = [];
+					let $d = [];
+					let inputElement = document.getElementById("importCSV");
+					let txtInput = result.split("\n");
+					for (let x = 0; x < txtInput.length; x++) {
+						$a.push([]);
+						let cells = txtInput[x].split(",");
+						for (let xx = 0; xx < cells.length; xx++) {
+							$a[x].push(cells[xx].trim());
+						}
+					}
+					if ($a.length > 0 && $a[0].length > 0) {
+						for (let x = 0; x < $a[0].length; x++) {
+							$b.push([]);
+							$c.push([]);
+							$d.push([]);
+							for (let xx = 0; xx < $a.length; xx++) {
+								let cellValue = $a[xx][x] || "";
+								$b[x].push(cellValue);
+								$c[x].push(cellValue.length);
+							}
+							$d[x].push(Math.max.apply(null, $c[x]));
+							for (let u = 0; u < $b[x].length; u++) {
+								let uLength = $b[x][u].length;
+								let maxLength = $d[x][0];
+								if (uLength < maxLength) {
+									for (let k = 0; k < (maxLength - uLength); k++) {
+										$b[x][u] += " ";
+									}
+								}
+							}
+						}
+						let ee = "";
+						for (let x = 0; x < $b[0].length; x++) {
+							for (let xx = 0; xx < $b.length; xx++) {
+								ee += $b[xx][x];
+								if (xx < $b.length - 1) {
+									ee += " | ";
+								}
+							}
+							if (x < $b[0].length - 1) {
+								ee += "\n";
+							}
+						}
+						inputElement.value = ee.trim();
+						document.getElementById("sumPlacement").innerText = txtInput.length;
+					}
+				};
+				reader.readAsText(file);
+			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Generator
+			btnExport.addEventListener("click", function(e) {
+				e.preventDefault();
+				for (let j = 0; j < btnImport.length; j++) {
+					btnImport[j].classList.remove("active");
+					dataImport[j].classList.remove("active");
+				}
+				btnExport.classList.add("active");
+				dataExport.classList.add("active");
+				let data_CSV = document.getElementById("importCSV").value.trim();
+				let row_CSV = [];
+				let tempCSVRows = data_CSV.split("\n");
+				for (let x = 0; x < tempCSVRows.length; x++) {
+					row_CSV.push([]);
+					let cells = tempCSVRows[x].split("|");
+					for (let xx = 0; xx < cells.length; xx++) {
+						row_CSV[x].push(cells[xx].trim());
+					}
+				}
+				let csv_Board = row_CSV[0].indexOf("Pattern");
+				let csv_Ref = row_CSV[0].indexOf("Designator");
+				let csv_PosX = row_CSV[0].indexOf("X");
+				let csv_PosY = row_CSV[0].indexOf("Y");
+				let csv_Rotation = row_CSV[0].indexOf("Rotation");
+				let csv_PartNumber = row_CSV[0].indexOf("Part Name");
+				// Generator CAD
+				let sumPoint = 0;
+				let table = document.createElement("table");
+				let headerRow = table.insertRow();
+				["Board", "Ref.", "Pos X", "Pos Y", "Pos Z", "Rotation", "Part Number", "Place Before", "Gluing", "Skip", "Main Mark", "Sub Mark", "Sub Mark1", "Sub Mark2", "Carry Mode", "Stack Target", "Memo", "Tag", "Assign"].forEach(text => {
+					headerRow.appendChild(Object.assign(document.createElement("th"), { textContent: text }));
+				});
+				let mark = [
+					[
+						document.getElementById("mark-X1").value.trim() || 0,
+						document.getElementById("mark-Y1").value.trim() || 0
+					],
+					[
+						document.getElementById("mark-X2").value.trim() || 0,
+						document.getElementById("mark-Y2").value.trim() || 0
+					]
+				]
+				for (let i = 0; i < 2; i++) {
+					let row = table.insertRow();
+					["0", `Mark${i + 1}`, mark[i][0], mark[i][1], "0", "0", "MARK", "", "Yes", "No", "", "", "", "", "Arc", "", "", "No", ""].forEach(val => row.insertCell().textContent = val);
+				}
+				for (let i = 1; i < row_CSV.length; i++) {
+					sumPoint++;
+					let row = table.insertRow();
+					row.insertCell().textContent = row_CSV[i][csv_Board];
+					row.insertCell().textContent = row_CSV[i][csv_Ref];
+					row.insertCell().textContent = row_CSV[i][csv_PosX];
+					row.insertCell().textContent = row_CSV[i][csv_PosY];
+					row.insertCell().textContent = "0";
+					row.insertCell().textContent = rotateFormat(row_CSV[i][csv_Rotation]);
+					row.insertCell().textContent = row_CSV[i][csv_PartNumber];
+					row.insertCell().textContent = "";
+					row.insertCell().textContent = "Yes";
+					row.insertCell().textContent = "No";
+					row.insertCell().textContent = "";
+					row.insertCell().textContent = "";
+					row.insertCell().textContent = "";
+					row.insertCell().textContent = "";
+					row.insertCell().textContent = "Arc";
+					row.insertCell().textContent = "";
+					row.insertCell().textContent = "";
+					row.insertCell().textContent = "No";
+					row.insertCell().textContent = "";
+				}
+				document.getElementById("tableResult").innerHTML = "";
+				document.getElementById("tableResult").appendChild(table);
+				document.getElementById("sumPoint").innerText = sumPoint;
+			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Function
+			function rotateFormat(value) {
+				let num = Number(value);
+				if (isNaN(num)) return value;
+				let positiveAngle = ((num % 360) + 360) % 360;
+				return String(positiveAngle);
+			}
+		</script>
+	</body>
+</html>
