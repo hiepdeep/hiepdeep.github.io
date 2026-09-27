@@ -166,34 +166,7 @@ body {
 				display: flex;
 			}
 			.table {
-				width: 100%;
 				height: calc(100vh - 55px - 12px - 12px - 55px);
-				padding: 12px;
-				--hs: var(--hue-saturation-gray);
-				background: hsl(var(--hs), 100%);
-				border: 1px solid hsl(var(--hs), 90%);
-				border-radius: var(--bdrs-lv-4);
-				overflow-y: scroll;
-				table {
-					border-collapse: collapse;
-					width: 100%;
-					user-select: all;
-					tr {
-						th, td {
-							padding-bottom: 6px;
-							text-align: left;
-							color: hsl(var(--hs), 50%);
-						}
-						th {
-							font-weight: bold;
-						}
-						&:last-child {
-							td {
-								padding-bottom: 0;
-							}
-						}
-					}
-				}
 			}
 		}
 	}
