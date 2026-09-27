@@ -24,8 +24,9 @@ for (let i = 0; i < btnImport.length; i++) {
 	});
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// Hàm xử lý đọc nội dung file CSV
-function processCSVFile(file) {
+// CSV
+document.getElementById("newCSV").addEventListener("change", function() {
+	let file = this.files[0];
 	if (!file) return;
 	let reader = new FileReader();
 	reader.onload = function(e) {
@@ -81,48 +82,37 @@ function processCSVFile(file) {
 		}
 	};
 	reader.readAsText(file);
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Xử lý sự kiện khi chọn file từ nút "Mở file CSV"
-document.getElementById("newCSV").addEventListener("change", function() {
-	let file = this.files[0];
-	processCSVFile(file);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// Xử lý kéo thả file (Drag & Drop) vào id="importCSV"
+// Chức năng kéo thả file
 const importCSVArea = document.getElementById("importCSV");
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Hiệu ứng khi kéo file đè lên khu vực textarea
-importCSVArea.addEventListener("dragover", function(e) {
-	e.preventDefault();
-	e.stopPropagation();
-	this.classList.add("drag-over");
-});
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Bỏ hiệu ứng khi kéo file ra ngoài
-importCSVArea.addEventListener("dragleave", function(e) {
-	e.preventDefault();
-	e.stopPropagation();
-	this.classList.remove("drag-over");
-});
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Đọc và nạp dữ liệu khi thả file
-importCSVArea.addEventListener("drop", function(e) {
-	e.preventDefault();
-	e.stopPropagation();
-	this.classList.remove("drag-over");
-	let dt = e.dataTransfer;
-	let files = dt.files;
-	if (files.length > 0) {
-		let file = files[0];
-		// Kiểm tra đuôi file có phải .csv hay không (hoặc kiểu text)
-		if (file.name.endsWith('.csv') || file.type === "text/csv" || file.type === "text/plain") {
-			processCSVFile(file);
-		} else {
-			alert("Vui lòng thả file có định dạng CSV (.csv)!");
+if (importCSVArea) {
+	importCSVArea.addEventListener("dragover", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.classList.add("drag-over");
+	});
+	importCSVArea.addEventListener("dragleave", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.classList.remove("drag-over");
+	});
+	importCSVArea.addEventListener("drop", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.classList.remove("drag-over");
+		let files = e.dataTransfer.files;
+		if (files && files.length > 0) {
+			let fileInput = document.getElementById("newCSV");
+			// Gán file vừa kéo thả vào input #newCSV và kích hoạt lại sự kiện change sẵn có
+			let dataTransfer = new DataTransfer();
+			dataTransfer.items.add(files[0]);
+			fileInput.files = dataTransfer.files;
+
+			fileInput.dispatchEvent(new Event("change"));
 		}
-	}
-});
+	});
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Generator
 btnExport.addEventListener("click", function(e) {

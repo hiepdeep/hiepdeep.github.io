@@ -84,6 +84,36 @@ document.getElementById("newCSV").addEventListener("change", function() {
 	reader.readAsText(file);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+// Chức năng kéo thả file
+const importCSVArea = document.getElementById("importCSV");
+if (importCSVArea) {
+	importCSVArea.addEventListener("dragover", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.classList.add("drag-over");
+	});
+	importCSVArea.addEventListener("dragleave", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.classList.remove("drag-over");
+	});
+	importCSVArea.addEventListener("drop", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.classList.remove("drag-over");
+		let files = e.dataTransfer.files;
+		if (files && files.length > 0) {
+			let fileInput = document.getElementById("newCSV");
+			// Gán file vừa kéo thả vào input #newCSV và kích hoạt lại sự kiện change sẵn có
+			let dataTransfer = new DataTransfer();
+			dataTransfer.items.add(files[0]);
+			fileInput.files = dataTransfer.files;
+
+			fileInput.dispatchEvent(new Event("change"));
+		}
+	});
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Generator
 btnExport.addEventListener("click", function(e) {
 	e.preventDefault();
