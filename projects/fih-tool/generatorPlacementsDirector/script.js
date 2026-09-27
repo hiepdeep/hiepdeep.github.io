@@ -649,11 +649,8 @@ exportTableAll.addEventListener("click", function(e) {
 	const sideVal = txtSide ? txtSide.value : "";
 	let table = document.createElement("table");
 	let headerRow = table.insertRow();
-	const headers = ["Board", "Ref.", "Pos X", "Pos Y", "Pos Z", "Rotation", "Part Number", "Place Before", "Gluing", "Skip", "Main Mark", "Sub Mark", "Sub Mark1", "Sub Mark2", "Carry Mode", "Stack Target", "Memo", "Tag", "Assign", "Side"];
-	headers.forEach(h => {
-		let th = document.createElement("th");
-		th.textContent = h;
-		headerRow.appendChild(th);
+	["Board", "Ref.", "Pos X", "Pos Y", "Pos Z", "Rotation", "Part Number", "Place Before", "Gluing", "Skip", "Main Mark", "Sub Mark", "Sub Mark1", "Sub Mark2", "Carry Mode", "Stack Target", "Memo", "Tag", "Assign", "Side"].forEach(text => {
+		headerRow.appendChild(Object.assign(document.createElement("th"), { textContent: text }));
 	});
 	const addRow = (data) => {
 		let row = table.insertRow();
