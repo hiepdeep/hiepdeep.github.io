@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>Generator AOi from Fuji | V02</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="box">
+			<div class="toolbar">
+				<button class="btn-import active">Mark & Placement</button>
+				<button class="btn-import">PartReportUnit</button>
+				<button class="btn-import" style="display:none">Insert Order (Option)</button>
+				<button id="btnGenerator">Generator</button>
+			</div>
+			<div class="main">
+				<div class="data-import active">
+					<textarea rows="5" id="pasteMark" placeholder="Paste data Mark.."></textarea>
+					<textarea id="pastePlacement" placeholder="Paste data Placement.."></textarea>
+				</div>
+				<div class="data-import">
+					<div class="label">
+						<label class="label-importfile">
+							<input type="file" id="newPartReportUnit" accept="text/xml" data-title="Drag and drop a file" hidden="hidden" multiple>
+							<span class="txt">Mở file PartReportUnit</span>
+						</label>
+					</div>
+					<textarea id="importPartReportUnit" placeholder="This is data Placement.."></textarea>
+				</div>
+				<div class="data-import">
+					<textarea id="pasteInsertOrder" placeholder="Paste data Order.."></textarea>
+				</div>
+				<div id="dataGenerator">
+					<div class="table" id="tableResult"></div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="status-box">
+					<span id="sumPlacement" class="val">0</span>
+					<span>Placement</span>
+				</div>
+				<div class="status-box">
+					<span id="sumPartUnit" class="val">0</span>
+					<span>Part Report Unit</span>
+				</div>
+				<div class="status-box">
+					<span id="sumPoint" class="val">0</span>
+					<span>Point</span>
+				</div>
+				<span class="spacer"></span>
+				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>

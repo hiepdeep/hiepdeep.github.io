@@ -1,0 +1,785 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>Generator Placements Director | V02</title>
+		<style type="text/css">
+			a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+				outline: none;
+				vertical-align: baseline;
+			}
+			:link, button {
+				text-decoration: none;
+				cursor: pointer;
+				user-select: none;
+			}
+			:link, :hover, :focus, :active, :visited {
+				outline: none;
+			}
+			:root {
+				--hue-saturation-purple: 260deg, 50%;
+				--hue-saturation-pink: 330deg, 60%;
+				--hue-saturation-orange: 30deg, 80%;
+				--hue-saturation-brown: 20deg, 40%;
+				--hue-saturation-teal: 170deg, 50%;
+				--hue-saturation-yellow: 50deg, 80%;
+				--hue-saturation-red: 10deg, 70%;
+				--hue-saturation-green: 140deg, 50%;
+				--hue-saturation-blue: 210deg, 70%;
+				--hue-saturation-gray: 200deg, 10%;
+				--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
+				--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
+				--bg-box: hsl(var(--hue-saturation-gray), 100%);
+				--bd-box: hsl(var(--hue-saturation-gray), 90%);
+				--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
+				--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
+				--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
+				--color-lv-4: hsl(var(--hue-saturation-gray), 40%);
+				--color-white: hsl(var(--hue-saturation-gray), 95%);
+				--color-placeholder: hsl(var(--hue-saturation-gray), 70%);
+				--fz-lv-1: 18px;
+				--fz-lv-2: 16px;
+				--fz-lv-3: 14px;
+				--fz-lv-4: 12px;
+				--bdrs-lv-1: 16px;
+				--bdrs-lv-2: 12px;
+				--bdrs-lv-3: 8px;
+				--bdrs-lv-4: 4px;
+				--bdrs-lv-5: 2px;
+			}
+			iframe {
+				width: 100%;
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+			}
+			ol, ul, li {
+				list-style-type: none;
+			}
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: hsl(var(--hue-saturation-gray), 90%);
+				border-radius: 2px calc(var(--bdrs-lv-4) - 1px) calc(var(--bdrs-lv-4) - 1px) 2px;
+			}
+			::-webkit-scrollbar-thumb {
+				background: hsl(var(--hue-saturation-gray), 50%);
+				border-radius: 2px calc(var(--bdrs-lv-4) - 1px) calc(var(--bdrs-lv-4) - 1px) 2px;
+				cursor: pointer;
+			}
+			::-webkit-scrollbar-thumb:hover {
+				background: hsl(var(--hue-saturation-gray), 40%);
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				letter-spacing: 0.05em;
+				-webkit-tap-highlight-color: transparent;
+				-webkit-font-smoothing: antialiased;
+				font-family: "Courier New", sans-serif;
+				color: red;
+				font-size: var(--fz-lv-4);
+			}
+			body {
+				background: hsl(var(--hue-saturation-gray), 95%);
+				display: -ms-grid;
+				display: grid;
+				place-items: center;
+				height: 100vh;
+				-webkit-user-select: none;
+				   -moz-user-select: none;
+				    -ms-user-select: none;
+				        user-select: none;
+			}
+			.box {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				width: 100vw;
+				height: 100vh;
+				position: relative;
+			}
+			.box .toolbar {
+				-ms-flex-negative: 0;
+				    flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 12px;
+				padding: 12px;
+				background: hsl(var(--hue-saturation-gray), 100%);
+				border-bottom: 1px solid hsl(var(--hue-saturation-gray), 90%);
+			}
+			.box .toolbar button {
+				height: 30px;
+				padding: 0 12px;
+				--hs: var(--hue-saturation-teal);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 90%);
+				border: 1px solid hsl(var(--hs), 80%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .toolbar button:hover {
+				border-color: hsl(var(--hs), 65%);
+			}
+			.box .toolbar button:active,
+			.box .toolbar button.active {
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 60%);
+				border-color: hsl(var(--hs), 50%);
+			}
+			.box .toolbar button#btnGenerator {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				--hs: var(--hue-saturation-blue);
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 60%);
+				border: 1px solid hsl(var(--hs), 50%);
+			}
+			.box .toolbar button#btnGenerator:hover {
+				border-color: hsl(var(--hs), 40%);
+			}
+			.box .toolbar button#btnGenerator:active,
+			.box .toolbar button#btnGenerator.active {
+				color: hsl(var(--hs), 100%);
+				background: hsl(var(--hs), 50%);
+				border-color: hsl(var(--hs), 40%);
+			}
+			.box .main {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				padding: 12px;
+			}
+			.box .main .table {
+				width: 100%;
+				padding: 12px;
+				--hs: var(--hue-saturation-gray);
+				background: hsl(var(--hs), 100%);
+				border: 1px solid hsl(var(--hs), 90%);
+				border-radius: var(--bdrs-lv-4);
+				overflow-y: scroll;
+			}
+			.box .main .table table {
+				border-collapse: collapse;
+				width: 100%;
+				-webkit-user-select: all;
+				   -moz-user-select: all;
+				        user-select: all;
+			}
+			.box .main .table table tr th,
+			.box .main .table table tr td {
+				padding-bottom: 6px;
+				text-align: left;
+				color: hsl(var(--hs), 50%);
+			}
+			.box .main .table table tr th {
+				font-weight: bold;
+			}
+			.box .main .table table tr:last-child td {
+				padding-bottom: 0;
+			}
+			.box .main .data-import {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				display: none;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				gap: 12px;
+			}
+			.box .main .data-import.active {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.box .main .data-import .label {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				gap: 12px;
+			}
+			.box .main .data-import .label .label-importfile {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+			}
+			.box .main .data-import .label .label-importfile .txt {
+				display: block;
+				line-height: 28px;
+				text-align: center;
+				padding: 0px 12px;
+				cursor: pointer;
+				--hs: var(--hue-saturation-green);
+				color: hsl(var(--hs), 90%);
+				background: hsl(var(--hs), 55%);
+				border: 1px solid hsl(var(--hs), 45%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .main .data-import .label .label-importfile .txt:hover {
+				border-color: hsl(var(--hs), 35%);
+			}
+			.box .main .data-import .label .label-importfile .txt:active {
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 45%);
+				border-color: hsl(var(--hs), 35%);
+			}
+			.box .main .data-import textarea {
+				width: 100%;
+				padding: 12px;
+				--hs: var(--hue-saturation-gray);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 100%);
+				border: 1px solid hsl(var(--hs), 90%);
+				border-radius: var(--bdrs-lv-4);
+				resize: none;
+			}
+			.box .main .data-import textarea::-webkit-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea::-moz-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea:-ms-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea::-ms-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea::placeholder {
+				color: inherit;
+			}
+			.box .main .data-import textarea#pastePlacement,
+			.box .main .data-import textarea#importPartReportUnit,
+			.box .main .data-import textarea#pasteInsertOrder {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+			}
+			.box .main #dataGenerator {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				display: none;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				gap: 12px;
+			}
+			.box .main #dataGenerator.active {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.box .main #dataGenerator .table {
+				width: 100%;
+				height: calc(100vh - 55px - 12px - 12px - 55px);
+				padding: 12px;
+				--hs: var(--hue-saturation-gray);
+				background: hsl(var(--hs), 100%);
+				border: 1px solid hsl(var(--hs), 90%);
+				border-radius: var(--bdrs-lv-4);
+				overflow-y: scroll;
+			}
+			.box .main #dataGenerator .table table {
+				border-collapse: collapse;
+				width: 100%;
+				-webkit-user-select: all;
+				   -moz-user-select: all;
+				        user-select: all;
+			}
+			.box .main #dataGenerator .table table tr th,
+			.box .main #dataGenerator .table table tr td {
+				padding-bottom: 6px;
+				text-align: left;
+				color: hsl(var(--hs), 50%);
+			}
+			.box .main #dataGenerator .table table tr th {
+				font-weight: bold;
+			}
+			.box .main #dataGenerator .table table tr:last-child td {
+				padding-bottom: 0;
+			}
+			.box .footer {
+				-ms-flex-negative: 0;
+				    flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 6px;
+				padding: 12px;
+				background: hsl(var(--hue-saturation-gray), 10%);
+				border-top: 1px solid hsl(var(--hue-saturation-gray), 20%);
+			}
+			.box .footer .status-box {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 6px;
+				padding: 0 8px;
+				border: 1px solid hsl(var(--hue-saturation-gray), 20%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .footer .status-box span {
+				line-height: 28px;
+				color: hsl(var(--hue-saturation-gray), 60%);
+			}
+			.box .footer .status-box span.val {
+				font-weight: bold;
+				color: hsl(var(--hue-saturation-blue), 60%);
+			}
+			.box .footer .spacer {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+			}
+			.box .footer .copyright {
+				text-align: right;
+				color: hsl(var(--hue-saturation-gray), 60%);
+			}
+			.box .footer .copyright b {
+				color: hsl(var(--hue-saturation-gray), 80%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="toolbar">
+				<button class="btn-import active">Mark & Placement</button>
+				<button class="btn-import">PartReportUnit</button>
+				<button class="btn-import" style="display:none">Insert Order (Option)</button>
+				<button id="btnGenerator">Generator</button>
+			</div>
+			<div class="main">
+				<div class="data-import active">
+					<textarea rows="5" id="pasteMark" placeholder="Paste data Mark.."></textarea>
+					<textarea id="pastePlacement" placeholder="Paste data Placement.."></textarea>
+				</div>
+				<div class="data-import">
+					<div class="label">
+						<label class="label-importfile">
+							<input type="file" id="newPartReportUnit" accept="text/xml" data-title="Drag and drop a file" hidden="hidden" multiple>
+							<span class="txt">Mở file PartReportUnit</span>
+						</label>
+					</div>
+					<textarea id="importPartReportUnit" placeholder="This is data Placement.."></textarea>
+				</div>
+				<div class="data-import">
+					<textarea id="pasteInsertOrder" placeholder="Paste data Order.."></textarea>
+				</div>
+				<div id="dataGenerator">
+					<div class="table" id="tableResult"></div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="status-box">
+					<span id="sumPlacement" class="val">0</span>
+					<span>Placement</span>
+				</div>
+				<div class="status-box">
+					<span id="sumPartUnit" class="val">0</span>
+					<span>Part Report Unit</span>
+				</div>
+				<div class="status-box">
+					<span id="sumPoint" class="val">0</span>
+					<span>Point</span>
+				</div>
+				<span class="spacer"></span>
+				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			console.clear();
+			console.log("Create: 27/09/2026. By HiepDz");
+			console.log("Update: 27/09/2026. By HiepDz");
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Khai báo tên biến Element, trạng thái dữ liệu
+			const btnImport = document.getElementsByClassName("btn-import");
+			const dataImport = document.getElementsByClassName("data-import");
+			const btnExport = document.getElementById("btnGenerator");
+			const dataExport = document.getElementById("dataGenerator");
+			let $parts = 0, $cads = 0, $cad = 0, $uncad = 0;
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Chuyển Tab
+			for (let i = 0; i < btnImport.length; i++) {
+				btnImport[i].addEventListener("click", (e) => {
+					e.preventDefault();
+					for (let j = 0; j < btnImport.length; j++) {
+						btnImport[j].classList.remove("active");
+						dataImport[j].classList.remove("active");
+					}
+					btnExport.classList.remove("active");
+					dataExport.classList.remove("active");
+					btnImport[i].classList.add("active");
+					dataImport[i].classList.add("active");
+				});
+			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Mark
+			document.getElementById("pasteMark").addEventListener("input", (e) => {
+				e.target.value = formatData_1(e.target.value);
+			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Placement
+			document.getElementById("pastePlacement").addEventListener("input", (e) => {
+				e.target.value = formatData_1(e.target.value);
+				document.getElementById("sumPlacement").innerText = e.target.value.trim().split("\n").length - 1;
+			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// PartReportUnit
+			document.getElementById("newPartReportUnit").addEventListener("change", function() {
+				let files = this.files;
+				if (!files || files.length === 0) return;
+				let allDataRows = [];
+				let globalCounter = 1;
+				function readIndividualFile(index) {
+					if (index >= files.length) {
+						formatData_2("importPartReportUnit", allDataRows);
+						document.getElementById("sumPartUnit").innerText = globalCounter - 1;
+						return;
+					}
+					let reader = new FileReader();
+					reader.onload = function(e) {
+						let result = e.target.result.replace(/(\<\?)(.+)(\?\>)/gi, "").trim();
+						let tempDiv = document.createElement("div");
+						tempDiv.innerHTML = result;
+						let xml_partreportunit = tempDiv.getElementsByTagName("partreportunit");
+						let xml_unit = xml_partreportunit.length > 0 ? xml_partreportunit[0].getElementsByTagName("unit") : [];
+						for (let i = 0; i < xml_unit.length; i++) {
+							if (index > 0 && i === 0) continue;
+							let rowData = [];
+							let children = xml_unit[i].children;
+							for (let j = 0; j < children.length; j++) {
+								let cellText = (children[j].innerText || children[j].textContent || "").trim();
+								if (j === 0 && cellText !== "seqInsOrder") {
+									rowData.push(globalCounter.toString());
+								} else {
+									rowData.push(cellText);
+								}
+							}
+							if (rowData[0] !== "seqInsOrder") {
+								globalCounter++;
+							}
+							allDataRows.push(rowData);
+						}
+						readIndividualFile(index + 1);
+					};
+					reader.readAsText(files[index]);
+				}
+				readIndividualFile(0);
+			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Insert Order
+			document.getElementById("pasteInsertOrder").addEventListener("input", function(e) {
+				e.target.value = formatData_1(e.target.value);
+			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Generator
+			btnExport.addEventListener("click", function(e) {
+				e.preventDefault();
+				for (let j = 0; j < btnImport.length; j++) {
+					btnImport[j].classList.remove("active");
+					dataImport[j].classList.remove("active");
+				}
+				btnExport.classList.add("active");
+				dataExport.classList.add("active");
+				// Mark
+				let data_Mark = document.getElementById("pasteMark").value.trim();
+				let row_Mark = [];
+				let tempMarkRows = data_Mark.split("\n");
+				for (let x = 0; x < tempMarkRows.length; x++) {
+					row_Mark.push([]);
+					let cells = tempMarkRows[x].split("|");
+					for (let xx = 0; xx < cells.length; xx++) {
+						row_Mark[x].push(cells[xx].trim());
+					}
+				}
+				let mark_Block = row_Mark[0].indexOf("Board");
+				let mark_LocationName = row_Mark[0].indexOf("Ref.");
+				let mark_X = row_Mark[0].indexOf("Pos X");
+				let mark_Y = row_Mark[0].indexOf("Pos Y");
+				let arr_Mark = [["Block", "Location Name", "X", "Y"]];
+				for (let row = 1; row < row_Mark.length; row++) {
+					arr_Mark.push([]);
+					let newRowIndex = arr_Mark.length - 1;
+					arr_Mark[newRowIndex].push(row_Mark[row][mark_Block].trim());
+					arr_Mark[newRowIndex].push(row_Mark[row][mark_LocationName].trim());
+					arr_Mark[newRowIndex].push(row_Mark[row][mark_X].trim());
+					arr_Mark[newRowIndex].push(row_Mark[row][mark_Y].trim());
+				}
+				// Place
+				let data_Place = document.getElementById("pastePlacement").value.trim();
+				let row_Place = [];
+				let tempPlaceRows = data_Place.split("\n");
+				for (let x = 0; x < tempPlaceRows.length; x++) {
+					row_Place.push([]);
+					let cells = tempPlaceRows[x].split("|");
+					for (let xx = 0; xx < cells.length; xx++) {
+						row_Place[x].push(cells[xx].trim());
+					}
+				}
+				let place_Board = row_Place[0].indexOf("Board");
+				let place_Ref = row_Place[0].indexOf("Ref.");
+				let place_PosX = row_Place[0].indexOf("Pos X");
+				let place_PosY = row_Place[0].indexOf("Pos Y");
+				let place_Rotation = row_Place[0].indexOf("Rotation");
+				let place_PartNumber = row_Place[0].indexOf("Part Number");
+				let place_Assign = row_Place[0].indexOf("Assign");
+				let arr_Place = [["BoardRef", "Board", "Ref.", "Pos X", "Pos Y", "Rotation", "Part Number", "Assign"]];
+				for (let row = 1; row < row_Place.length; row++) {
+					arr_Place.push([]);
+					let newRowIndex = arr_Place.length - 1;
+					let brdNum = row_Place[row][place_Board].trim();
+					let ref = row_Place[row][place_Ref].trim();
+					arr_Place[newRowIndex].push(brdNum + ref);
+					arr_Place[newRowIndex].push(brdNum);
+					arr_Place[newRowIndex].push(ref);
+					arr_Place[newRowIndex].push(row_Place[row][place_PosX].trim());
+					arr_Place[newRowIndex].push(row_Place[row][place_PosY].trim());
+					arr_Place[newRowIndex].push(row_Place[row][place_Rotation].trim());
+					arr_Place[newRowIndex].push(row_Place[row][place_PartNumber].trim());
+					arr_Place[newRowIndex].push(row_Place[row][place_Assign].trim());
+				}
+				// PartReportUnit
+				let data_PartReportUnit = document.getElementById("importPartReportUnit").value.trim();
+				let row_PartReportUnit = [];
+				let tempPartReportUnitRows = data_PartReportUnit.split("\n");
+				for (let x = 0; x < tempPartReportUnitRows.length; x++) {
+					row_PartReportUnit.push([]);
+					let cells = tempPartReportUnitRows[x].split("|");
+					for (let xx = 0; xx < cells.length; xx++) {
+						row_PartReportUnit[x].push(cells[xx].trim());
+					}
+				}
+				let unit_seqBrdNum = row_PartReportUnit[0].indexOf("seqBrdNum");
+				let unit_seqRef = row_PartReportUnit[0].indexOf("seqRef");
+				let unit_seqPartNum = row_PartReportUnit[0].indexOf("seqPartNum");
+				let unit_fsSetPos = row_PartReportUnit[0].indexOf("fsSetPos");
+				let arr_PartReportUnit = [
+					["Board", "Ref.", "Part Number", "Mounter", "Feeder", "BoardRef"]
+				];
+				for (let row = 1; row < row_PartReportUnit.length; row++) {
+					arr_PartReportUnit.push([]);
+					let newRowIndex = arr_PartReportUnit.length - 1;
+					let brdNum = row_PartReportUnit[row][unit_seqBrdNum].trim();
+					let ref = row_PartReportUnit[row][unit_seqRef].trim();
+					arr_PartReportUnit[newRowIndex].push(brdNum);
+					arr_PartReportUnit[newRowIndex].push(ref);
+					arr_PartReportUnit[newRowIndex].push(row_PartReportUnit[row][unit_seqPartNum].trim());
+					arr_PartReportUnit[newRowIndex].push(convertFsSetPos(row_PartReportUnit[row][unit_fsSetPos].trim(), "M"));
+					arr_PartReportUnit[newRowIndex].push(convertFsSetPos(row_PartReportUnit[row][unit_fsSetPos].trim(), "F"));
+					arr_PartReportUnit[newRowIndex].push(brdNum + ref);
+				}
+				// Insert Order
+				let data_InsertOrder = document.getElementById("pasteInsertOrder").value.trim();
+				let hasInsertOrderData = data_InsertOrder.length > 0;
+				let arr_InsertOrder = [
+					["Reference", "Holder"]
+				];
+				if (hasInsertOrderData) {
+					let row_InsertOrder = [];
+					let tempInsertOrderRows = data_InsertOrder.split("\n");
+					for (let x = 0; x < tempInsertOrderRows.length; x++) {
+						row_InsertOrder.push([]);
+						let cells = tempInsertOrderRows[x].split("|");
+						for (let xx = 0; xx < cells.length; xx++) {
+							row_InsertOrder[x].push(cells[xx].trim());
+						}
+					}
+					let order_Reference = null;
+					let order_Holder = null;
+					if (row_InsertOrder.length > 0 && row_InsertOrder[0].length > 0) {
+						order_Reference = row_InsertOrder[0].indexOf("Reference");
+						order_Holder = row_InsertOrder[0].indexOf("Holder Number");
+					} else {
+						order_Reference = -1;
+						order_Holder = -1;
+					}
+					for (let row = 1; row < row_InsertOrder.length; row++) {
+						if (row_InsertOrder[row].length > order_Reference && row_InsertOrder[row].length > order_Holder && order_Reference !== -1 && order_Holder !== -1) {
+							arr_InsertOrder.push([]);
+							let newRowIndex = arr_InsertOrder.length - 1;
+							arr_InsertOrder[newRowIndex].push(row_InsertOrder[row][order_Reference].trim());
+							arr_InsertOrder[newRowIndex].push(row_InsertOrder[row][order_Holder].trim());
+						}
+					}
+				}
+				// Generator CAD
+				let table = document.createElement("table");
+				let headerRow = table.insertRow();
+				let headers = ["Block", "Location Name", "X", "Y", "Angle", "Part Number", "Mouter", "Feeder"];
+				if (hasInsertOrderData) {
+					headers.push("Holder");
+				}
+				for (let h = 0; h < headers.length; h++) {
+					let th = document.createElement("th");
+					th.textContent = headers[h];
+					headerRow.appendChild(th);
+				}
+				for (let tr_Mark = 1; tr_Mark < arr_Mark.length; tr_Mark++) {
+					if (arr_Mark[tr_Mark][0] == "0") {
+						let locationName = arr_Mark[tr_Mark][1];
+						let lastChar = locationName.charAt(locationName.length - 1);
+						let row = table.insertRow();
+						row.insertCell().textContent = arr_Mark[tr_Mark][0];
+						row.insertCell().textContent = arr_Mark[tr_Mark][1];
+						row.insertCell().textContent = arr_Mark[tr_Mark][2];
+						row.insertCell().textContent = arr_Mark[tr_Mark][3];
+						row.insertCell().textContent = "0";
+						row.insertCell().textContent = "Mark";
+						row.insertCell().textContent = "0";
+						row.insertCell().textContent = "0";
+						if (hasInsertOrderData) {
+							row.insertCell().textContent = "0";
+						}
+					}
+				}
+				let ref_PartUnit = arr_PartReportUnit[0].indexOf("BoardRef");
+				let sumPoint = 0;
+				for (let tr_PartUnit = 1; tr_PartUnit < arr_PartReportUnit.length; tr_PartUnit++) {
+					let boardRefKey = arr_PartReportUnit[tr_PartUnit][ref_PartUnit];
+					let board = vlookup(boardRefKey, arr_Place, 1);
+					let ref = vlookup(boardRefKey, arr_Place, 2);
+					let posX = vlookup(boardRefKey, arr_Place, 3);
+					let posY = vlookup(boardRefKey, arr_Place, 4);
+					let rotation = vlookup(boardRefKey, arr_Place, 5);
+					let partNumber = vlookup(boardRefKey, arr_Place, 6);
+					let assign = vlookup(boardRefKey, arr_Place, 7);
+					let mounter = arr_PartReportUnit[tr_PartUnit][3];
+					let feeder = arr_PartReportUnit[tr_PartUnit][4];
+					if (board && ref) {
+						sumPoint++;
+						let row = table.insertRow();
+						row.insertCell().textContent = board.trim();
+						row.insertCell().textContent = ref.trim();
+						row.insertCell().textContent = posX.trim();
+						row.insertCell().textContent = posY.trim();
+						row.insertCell().textContent = rotation.trim();
+						row.insertCell().textContent = partNumber.trim();
+						row.insertCell().textContent = assign.trim() + "-" + mounter.trim();
+						row.insertCell().textContent = feeder.trim();
+						if (hasInsertOrderData) {
+							let searchOrder = board.trim() + ":" + ref.trim();
+							let holderValue = getHolder(searchOrder, arr_InsertOrder);
+							let holderCell = holderValue ? "H" + holderValue.trim() : "";
+							row.insertCell().textContent = holderCell;
+						}
+					}
+				}
+				document.getElementById("tableResult").innerHTML = "";
+				document.getElementById("tableResult").appendChild(table);
+				document.getElementById("sumPoint").innerText = sumPoint;
+			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			function formatData_1(text) {
+				if (!text.trim()) return "";
+				const rows = text.trim().split("\n").map(row =>
+					row.split("\t").map(cell => cell.trim())
+				);
+				const numCols = Math.max(...rows.map(r => r.length));
+				const colWidths = Array(numCols).fill(0);
+				rows.forEach(row => {
+					row.forEach((cell, colIdx) => {
+						if (cell.length > colWidths[colIdx]) {
+							colWidths[colIdx] = cell.length;
+						}
+					});
+				});
+				return rows.map(row => {
+					return Array.from({length: numCols}, (_, i) => {
+						const cell = row[i] || "";
+						return cell.padEnd(colWidths[i], " ");
+					}).join(" | ");
+				}).join("\n");
+			}
+			function formatData_2(elementId, rows) {
+				const inputElement = document.getElementById(elementId);
+				if (!inputElement) return;
+				if (!rows || rows.length === 0 || !rows[0] || rows[0].length === 0) {
+					inputElement.value = "Lỗi: Không tìm thấy dữ liệu!";
+					return;
+				}
+				const maxCols = Math.max(...rows.map(row => row.length));
+				const colMaxLengths = Array.from({length: maxCols}, (_, colIdx) => {
+					return Math.max(...rows.map(row => (row[colIdx] ? String(row[colIdx]) : "").length));
+				});
+				const formattedText = rows.map(row => {
+					return Array.from({length: maxCols}, (_, colIdx) => {
+						const cellValue = row[colIdx] != null ? String(row[colIdx]) : "";
+						return cellValue.padEnd(colMaxLengths[colIdx], " ");
+					}).join(" | ");
+				}).join("\n");
+				inputElement.value = formattedText.trim();
+			}
+			function convertFsSetPos(fsSetPos, type) {
+				if (!fsSetPos) return;
+				let x = fsSetPos.split(/[\s-]+/);
+				if (x.length === 2) {
+					if (type == "M") {
+						return "M" + x[0];
+					}
+					else if (type == "F") {
+						return "F" + x[1];
+					}
+				}
+				else if (x.length >= 3) {
+					if (type == "M") {
+						return "M" + x[0];
+					}
+					else if (type == "F") {
+						return x[1] + x[2];
+					}
+				}
+				return;
+			}
+			function vlookup(key, range, col) {
+				for (let i = 0; i < range.length; i++) {
+					if (range[i].length > 6 && range[i][0] == key) {
+						return range[i][col];
+					}
+				}
+				return "";
+			}
+			function getHolder(searchOrderKey, arr) {
+				for (let i = 1; i < arr.length; i++) {
+					if (arr[i].length >= 2) {
+						let reference = arr[i][0];
+						let holder = arr[i][1];
+						if (reference === searchOrderKey) {
+							return holder;
+						}
+					}
+				}
+				return "";
+			}
+		</script>
+	</body>
+</html>
