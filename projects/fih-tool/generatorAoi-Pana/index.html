@@ -5,7 +5,7 @@
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-		<title>Generator AOi from Fuji | V02</title>
+		<title>Generator AOi from Pana | V02</title>
 		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
 		<link rel="stylesheet" href="style.css">
 	</head>
@@ -13,26 +13,36 @@
 		<div class="box">
 			<div class="toolbar">
 				<button class="btn-import active">Mark & Placement</button>
-				<button class="btn-import">PartReportUnit</button>
-				<button class="btn-import" style="display:none">Insert Order (Option)</button>
 				<button id="btnGenerator">Generator</button>
 			</div>
 			<div class="main">
 				<div class="data-import active">
-					<textarea rows="5" id="pasteMark" placeholder="Paste data Mark.."></textarea>
-					<textarea id="pastePlacement" placeholder="Paste data Placement.."></textarea>
-				</div>
-				<div class="data-import">
+					<div class="table" id="pasteMark">
+						<table>
+							<tr>
+								<th></th>
+								<th>X</th>
+								<th>Y</th>
+							</tr>
+							<tr>
+								<th>Mark 1</th>
+								<td><input type="tel" id="mark-X1" placeholder="0" pattern="[0-9.]*" required></td>
+								<td><input type="tel" id="mark-Y1" placeholder="0" pattern="[0-9.]*" required></td>
+							</tr>
+							<tr>
+								<th>Mark 2</th>
+								<td><input type="tel" id="mark-X2" placeholder="0" pattern="[0-9.]*" required></td>
+								<td><input type="tel" id="mark-Y2" placeholder="0" pattern="[0-9.]*" required></td>
+							</tr>
+						</table>
+					</div>
 					<div class="label">
 						<label class="label-importfile">
-							<input type="file" id="newPartReportUnit" accept="text/xml" data-title="Drag and drop a file" hidden="hidden" multiple>
-							<span class="txt">Mở file PartReportUnit</span>
+							<input type="file" id="newCSV" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Mở file CSV</span>
 						</label>
 					</div>
-					<textarea id="importPartReportUnit" placeholder="This is data Placement.."></textarea>
-				</div>
-				<div class="data-import">
-					<textarea id="pasteInsertOrder" placeholder="Paste data Order.."></textarea>
+					<textarea id="importCSV" placeholder="This is data Placement.."></textarea>
 				</div>
 				<div id="dataGenerator">
 					<div class="table" id="tableResult"></div>
@@ -42,10 +52,6 @@
 				<div class="status-box">
 					<span id="sumPlacement" class="val">0</span>
 					<span>Placement</span>
-				</div>
-				<div class="status-box">
-					<span id="sumPartUnit" class="val">0</span>
-					<span>Part Report Unit</span>
 				</div>
 				<div class="status-box">
 					<span id="sumPoint" class="val">0</span>
