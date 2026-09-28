@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>Same Part</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="box">
+			<div class="toolbar">
+				<button class="btn-import active">Part Fuji</button>
+				<button class="btn-import">Part Pana</button>
+			</div>
+			<div class="main">
+				<div class="data-import active">
+					<textarea id="pastePlacement" rows="10" placeholder="Paste data Placement.."></textarea>
+					<div class="table" id="samePart_F">This is data same Placement..</div>
+				</div>
+				<div class="data-import">
+					<div class="label">
+						<label class="label-importfile">
+							<input type="file" id="newCSV" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
+							<span class="txt">Mở file CSV</span>
+						</label>
+					</div>
+					<textarea id="importCSV" rows="10" placeholder="This is data Placement.."></textarea>
+					<div class="table" id="samePart_P">This is data same Placement..</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="status-box">
+					<span id="sumPlacement" class="val">0</span>
+					<span>Placement</span>
+				</div>
+				<span class="spacer"></span>
+				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>

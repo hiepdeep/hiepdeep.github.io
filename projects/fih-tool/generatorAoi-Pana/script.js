@@ -108,7 +108,6 @@ if (importCSVArea) {
 			let dataTransfer = new DataTransfer();
 			dataTransfer.items.add(files[0]);
 			fileInput.files = dataTransfer.files;
-
 			fileInput.dispatchEvent(new Event("change"));
 		}
 	});
