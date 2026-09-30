@@ -1,258 +1,279 @@
 console.clear();
-console.log("Create: 28/09/2026. By HiepDz");
-console.log("Update: 29/09/2026. By HiepDz");
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Khai báo Element
+console.log("Create: 30/09/2026. By HiepDz");
+console.log("Update: 30/09/2026. By HiepDz");
+/* ==========================================================================
+   1. QUẢN LÝ CHUYỂN TẠP (TABS) & KHAI BÁO DỮ LIỆU
+   ========================================================================== */
 const btnImport = document.getElementsByClassName("btn-import");
 const dataImport = document.getElementsByClassName("data-import");
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Chuyển Tab
-for (let i = 0; i < btnImport.length; i++) {
-	btnImport[i].addEventListener("click", (e) => {
+Array.from(btnImport).forEach((btn, i) => {
+	btn.addEventListener("click", (e) => {
 		e.preventDefault();
-		for (let j = 0; j < btnImport.length; j++) {
-			btnImport[j].classList.remove("active");
+		Array.from(btnImport).forEach((b, j) => {
+			b.classList.remove("active");
 			dataImport[j].classList.remove("active");
-		}
-		btnImport[i].classList.add("active");
+		});
+		btn.classList.add("active");
 		dataImport[i].classList.add("active");
+		// Cập nhật lại số lượng dữ liệu footer khi đổi tab
+		if (i === 0) {
+			updateFujiCounts();
+		} else {
+			updatePanaCounts();
+		}
 	});
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// TAB FUJI: Xử lý paste dữ liệu trực tiếp vào textarea
-document.getElementById("pastePlacement").addEventListener("input", (e) => {
-	const formattedText = formatData_1(e.target.value);
-	e.target.value = formattedText;
-	renderFujiTable(formattedText, "samePart_F");
 });
+// Lưu trữ dữ liệu Map (Part -> Ref/Designator) và Tổng số dòng dữ liệu thực tế
+const fujiData = {
+	1: null,
+	2: null,
+	count1: 0,
+	count2: 0
+};
+const panaData = {
+	1: null,
+	2: null,
+	count1: 0,
+	count2: 0
+};
+/* ==========================================================================
+   2. CÁC HÀM TRỢ GIÚP DÙNG CHUNG (HELPER FUNCTIONS)
+   ========================================================================== */
 /**
- * Tạo bảng cho Tab Fuji (Ref., Part Number, Assign)
- * - Ref.: Chỉ hiển thị 1 tên đầu tiên đại diện
+ * Tách dòng dữ liệu thành các ô hỗ trợ Tab (\t), Phẩy (,), Pipe (|) hoặc Khoảng trắng
  */
-function renderFujiTable(text, containerId) {
-	const container = document.getElementById(containerId);
-	if (!container) return;
-	container.innerHTML = "";
-	if (!text.trim()) {
-		container.textContent = "This is data same Placement..";
-		updateSumPlacement(0);
-		return;
-	}
-	const lines = text.trim().split("\n");
-	if (lines.length === 0) return;
-	const headers = lines[0].split("|").map(cell => cell.trim());
-	const refIndex = headers.findIndex(h => h.toLowerCase().startsWith("ref"));
-	const partNumberIndex = headers.findIndex(h => h.toLowerCase() === "part number");
-	const assignIndex = headers.findIndex(h => h.toLowerCase() === "assign");
-	if (partNumberIndex === -1 || refIndex === -1 || assignIndex === -1) {
-		container.textContent = "Không tìm thấy cột 'Ref.', 'Part Number' hoặc 'Assign'!";
-		return;
-	}
-	const partMap = new Map();
-	for (let i = 1; i < lines.length; i++) {
-		const cells = lines[i].split("|").map(cell => cell.trim());
-		const refVal = cells[refIndex] || "";
-		const partNum = cells[partNumberIndex] || "";
-		const assignVal = cells[assignIndex] || "";
-		if (!partNum) continue;
-		if (!partMap.has(partNum)) {
-			partMap.set(partNum, {
-				firstRef: refVal, // Chỉ lưu tên Ref. đầu tiên gặp
-				assignSet: new Set()
-			});
-		}
-		const entry = partMap.get(partNum);
-		if (!entry.firstRef && refVal) {
-			entry.firstRef = refVal;
-		}
-		if (assignVal) entry.assignSet.add(assignVal);
-	}
+function parseLineCells(line) {
+	if (line.includes("\t")) return line.split("\t");
+	if (line.includes("|")) return line.split("|");
+	if (line.includes(",")) return line.split(",");
+	return line.split(/\s{2,}/);
+}
+/**
+ * Cập nhật giá trị lên DOM theo ID
+ */
+function updateElementText(id, text) {
+	const el = document.getElementById(id);
+	if (el) el.textContent = text;
+}
+/**
+ * Cập nhật các thông số lên Footer
+ */
+function updateFooterStatus(sum1, sum2, totalPart) {
+	updateElementText("sumData_1", sum1);
+	updateElementText("sumData_2", sum2);
+	updateElementText("sumPlacement", totalPart);
+}
+/**
+ * Render một bảng dữ liệu HTML tiêu chuẩn (Header & Rows)
+ */
+function createHTMLTable(headers, rowsData) {
 	const table = document.createElement("table");
 	// Header
 	const headerRow = table.insertRow();
-	["Ref.", "Part Number", "Assign"].forEach(colName => {
+	headers.forEach(h => {
 		const th = document.createElement("th");
-		th.textContent = colName;
+		th.textContent = h;
 		headerRow.appendChild(th);
 	});
 	// Rows
-	partMap.forEach((data, partNum) => {
+	rowsData.forEach(rowData => {
 		const row = table.insertRow();
-		row.insertCell().textContent = data.firstRef || "";
-		row.insertCell().textContent = partNum;
-		row.insertCell().textContent = Array.from(data.assignSet).join(", ");
+		rowData.forEach(cellText => {
+			row.insertCell().textContent = cellText;
+		});
 	});
-	container.appendChild(table);
-	updateSumPlacement(partMap.size);
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// TAB PANA: Xử lý Tải File CSV và Kéo thả File
-const fileInput = document.getElementById("newCSV");
-// 1. Tải file CSV từ nút chọn file
-fileInput.addEventListener("change", function() {
-	let file = this.files[0];
-	if (file) {
-		processCSVFile(file);
-	}
-});
-// 2. Chức năng kéo thả file CSV
-const importCSVArea = document.getElementById("importCSV");
-if (importCSVArea) {
-	// Khóa không cho nhập thủ công vào textarea
-	importCSVArea.setAttribute("readonly", true);
-	importCSVArea.addEventListener("dragover", function(e) {
-		e.preventDefault();
-		e.stopPropagation();
-		this.classList.add("drag-over");
-	});
-	importCSVArea.addEventListener("dragleave", function(e) {
-		e.preventDefault();
-		e.stopPropagation();
-		this.classList.remove("drag-over");
-	});
-	importCSVArea.addEventListener("drop", function(e) {
-		e.preventDefault();
-		e.stopPropagation();
-		this.classList.remove("drag-over");
-		let files = e.dataTransfer.files;
-		if (files && files.length > 0) {
-			processCSVFile(files[0]);
-		}
-	});
+	return table;
 }
 /**
- * Đọc file CSV, định dạng dữ liệu vào textarea và tự động sinh bảng cho Tab Pana
+ * Render bảng tổng hợpPart duy nhất từ 2 Map
  */
-function processCSVFile(file) {
-	let reader = new FileReader();
+function renderCombinedTable(containerId, map1, map2, col1Name, col2Name) {
+	const container = document.getElementById(containerId);
+	if (!container) return 0;
+	container.innerHTML = "";
+	if ((!map1 || map1.size === 0) && (!map2 || map2.size === 0)) {
+		container.textContent = "This is data same Placement..";
+		return 0;
+	}
+	const allParts = new Set([
+		...(map1 ? map1.keys() : []),
+		...(map2 ? map2.keys() : [])
+	]);
+	const rows = [];
+	allParts.forEach(part => {
+		const desig1 = map1 ? map1.get(part) : null;
+		const desig2 = map2 ? map2.get(part) : null;
+		let finalDesig = "";
+		if (desig1 && desig2) {
+			finalDesig = `${desig1} / ${desig2}`;
+		} else if (desig1) {
+			finalDesig = desig1;
+		} else {
+			finalDesig = desig2;
+		}
+		rows.push([finalDesig, part]);
+	});
+	const table = createHTMLTable([col1Name, col2Name], rows);
+	container.appendChild(table);
+	return allParts.size;
+}
+/* ==========================================================================
+   3. XỬ LÝ PART FUJI (TEXTAREA PASTE DATA)
+   ========================================================================== */
+const textarea1 = document.getElementById("pastePlacement_1");
+const textarea2 = document.getElementById("pastePlacement_2");
+if (textarea1) textarea1.addEventListener("input", function() {
+	processFujiTextarea(this, 1);
+});
+if (textarea2) textarea2.addEventListener("input", function() {
+	processFujiTextarea(this, 2);
+});
+function processFujiTextarea(textareaEl, index) {
+	const text = textareaEl.value;
+	if (!text.trim()) {
+		fujiData[index] = null;
+		fujiData[`count${index}`] = 0;
+		updateFujiCounts();
+		return;
+	}
+	const lines = text.split(/\r?\n/).filter(line => line.trim() !== "");
+	if (lines.length === 0) return;
+	// Tìm vị trí cột Ref và Part Number từ tiêu đề
+	const headers = parseLineCells(lines[0]).map(c => c.toLowerCase());
+	const refIndex = headers.findIndex(h => h.includes("ref"));
+	const partIndex = headers.findIndex(h => h.includes("part number") || h.includes("part"));
+	if (refIndex === -1 || partIndex === -1) {
+		fujiData[index] = null;
+		fujiData[`count${index}`] = 0;
+		updateFujiCounts();
+		return;
+	}
+	const partMap = new Map();
+	const formattedRows = [{
+		ref: "Ref.",
+		part: "Part Number"
+	}];
+	let validDataCount = 0;
+	for (let i = 1; i < lines.length; i++) {
+		const cells = parseLineCells(lines[i]);
+		const refVal = (cells[refIndex] || "").trim();
+		const partVal = (cells[partIndex] || "").trim();
+		if (!partVal) continue;
+		validDataCount++;
+		if (!partMap.has(partVal)) {
+			partMap.set(partVal, refVal);
+		}
+		formattedRows.push({
+			ref: refVal,
+			part: partVal
+		});
+	}
+	// Lưu bộ nhớ
+	fujiData[index] = partMap;
+	fujiData[`count${index}`] = validDataCount;
+	// Căn dóng dải cột bằng ' | '
+	let maxRefLen = 0,
+		maxPartLen = 0;
+	formattedRows.forEach(r => {
+		if (r.ref.length > maxRefLen) maxRefLen = r.ref.length;
+		if (r.part.length > maxPartLen) maxPartLen = r.part.length;
+	});
+	textareaEl.value = formattedRows.map(r =>
+		`${r.ref.padEnd(maxRefLen, " ")} | ${r.part.padEnd(maxPartLen, " ")}`
+	).join("\n");
+	updateFujiCounts();
+}
+function updateFujiCounts() {
+	const totalParts = renderCombinedTable(
+		"samePart_F",
+		fujiData[1],
+		fujiData[2],
+		"Ref.",
+		"Part Number"
+	);
+	updateFooterStatus(fujiData.count1, fujiData.count2, totalParts);
+}
+/* ==========================================================================
+   4. XỬ LÝ PART PANA (IMPORT CSV FILE / DRAG & DROP)
+   ========================================================================== */
+const importLabels = document.querySelectorAll(".label-importfile");
+importLabels.forEach((label, index) => {
+	const fileIndex = index + 1;
+	const fileInput = label.querySelector("input[type='file']");
+	if (fileInput) {
+		fileInput.addEventListener("change", function() {
+			if (this.files && this.files[0]) processCSVFile(this.files[0], fileIndex);
+		});
+	}
+	label.addEventListener("dragover", (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		label.classList.add("drag-over");
+	});
+	label.addEventListener("dragleave", (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		label.classList.remove("drag-over");
+	});
+	label.addEventListener("drop", (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		label.classList.remove("drag-over");
+		if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+			processCSVFile(e.dataTransfer.files[0], fileIndex);
+		}
+	});
+});
+function processCSVFile(file, fileIndex) {
+	const reader = new FileReader();
 	reader.onload = function(e) {
-		let result = e.target.result.trim();
-		let rawRows = result.split("\n");
-		let parsedMatrix = [];
-		for (let x = 0; x < rawRows.length; x++) {
-			let cells = rawRows[x].split(",");
-			parsedMatrix.push(cells.map(cell => cell.trim()));
+		const text = e.target.result.trim();
+		if (!text) return;
+		const lines = text.split(/\r?\n/).filter(line => line.trim() !== "");
+		if (lines.length === 0) return;
+		const headers = lines[0].split(",").map(cell => cell.trim().toLowerCase());
+		const desigIndex = headers.findIndex(h => h === "designator" || h.startsWith("ref"));
+		const partIndex = headers.findIndex(h => h === "part name" || h === "part");
+		const containerId = `importCSV_${fileIndex}`;
+		const container = document.getElementById(containerId);
+		if (desigIndex === -1 || partIndex === -1) {
+			if (container) container.textContent = "Không tìm thấy cột 'Designator' hoặc 'Part Name'!";
+			return;
 		}
-		if (parsedMatrix.length > 0 && parsedMatrix[0].length > 0) {
-			// Căn chỉnh độ rộng các cột hiển thị dạng "|"
-			let numCols = parsedMatrix[0].length;
-			let colWidths = Array(numCols).fill(0);
-			for (let col = 0; col < numCols; col++) {
-				for (let row = 0; row < parsedMatrix.length; row++) {
-					let val = parsedMatrix[row][col] || "";
-					if (val.length > colWidths[col]) {
-						colWidths[col] = val.length;
-					}
-				}
+		const partMap = new Map();
+		const rowsData = [];
+		let validDataCount = 0;
+		for (let i = 1; i < lines.length; i++) {
+			const cells = lines[i].split(",").map(cell => cell.trim());
+			const desigVal = cells[desigIndex] || "";
+			const partVal = cells[partIndex] || "";
+			if (!partVal) continue;
+			validDataCount++;
+			if (!partMap.has(partVal)) {
+				partMap.set(partVal, desigVal);
 			}
-			let formattedLines = [];
-			for (let row = 0; row < parsedMatrix.length; row++) {
-				let rowCells = [];
-				for (let col = 0; col < numCols; col++) {
-					let cellVal = parsedMatrix[row][col] || "";
-					rowCells.push(cellVal.padEnd(colWidths[col], " "));
-				}
-				formattedLines.push(rowCells.join(" | "));
-			}
-			const formattedText = formattedLines.join("\n");
-			// Hiển thị chuỗi dạng | lên textarea
-			document.getElementById("importCSV").value = formattedText;
-			// Trích xuất dữ liệu tạo bảng Pana (Designator, Part Name, Slot)
-			renderPanaTable(parsedMatrix, "samePart_P");
+			rowsData.push([desigVal, partVal]);
 		}
+		// Lưu bộ nhớ
+		panaData[fileIndex] = partMap;
+		panaData[`count${fileIndex}`] = validDataCount;
+		// Render bảng đơn lẻ của file CSV vừa chọn
+		if (container) {
+			container.innerHTML = "";
+			const table = createHTMLTable(["Designator", "Part Name"], rowsData);
+			container.appendChild(table);
+		}
+		updatePanaCounts();
 	};
 	reader.readAsText(file);
 }
-/**
- * Tạo bảng cho Tab Pana từ ma trận dữ liệu CSV (Designator, Part Name, Slot)
- * - Designator: Chỉ hiển thị 1 tên đầu tiên đại diện
- */
-function renderPanaTable(matrix, containerId) {
-	const container = document.getElementById(containerId);
-	if (!container) return;
-	container.innerHTML = "";
-	if (!matrix || matrix.length === 0) {
-		container.textContent = "This is data same Placement..";
-		updateSumPlacement(0);
-		return;
-	}
-	// Lấy dòng header
-	const headers = matrix[0].map(h => h.trim());
-	// Tìm index của 3 cột cần thiết
-	const designatorIndex = headers.findIndex(h => h.toLowerCase() === "designator");
-	const partNameIndex = headers.findIndex(h => h.toLowerCase() === "part name");
-	const slotIndex = headers.findIndex(h => h.toLowerCase() === "slot");
-	if (designatorIndex === -1 || partNameIndex === -1 || slotIndex === -1) {
-		container.textContent = "Không tìm thấy cột 'Designator', 'Part Name' hoặc 'Slot'!";
-		return;
-	}
-	// Gom nhóm Slot và lấy Designator đại diện theo từng Part Name duy nhất
-	const partMap = new Map();
-	for (let i = 1; i < matrix.length; i++) {
-		const row = matrix[i];
-		const designatorVal = row[designatorIndex] || "";
-		const partName = row[partNameIndex] || "";
-		const slotVal = row[slotIndex] || "";
-		if (!partName) continue;
-		if (!partMap.has(partName)) {
-			partMap.set(partName, {
-				firstDesignator: designatorVal, // Chỉ lưu 1 tên Designator đầu tiên
-				slotSet: new Set()
-			});
-		}
-		const entry = partMap.get(partName);
-		if (!entry.firstDesignator && designatorVal) {
-			entry.firstDesignator = designatorVal;
-		}
-		if (slotVal) entry.slotSet.add(slotVal);
-	}
-	// Dựng bảng HTML bằng DOM API
-	const table = document.createElement("table");
-	// Header
-	const headerRow = table.insertRow();
-	["Designator", "Part Name", "Slot"].forEach(colName => {
-		const th = document.createElement("th");
-		th.textContent = colName;
-		headerRow.appendChild(th);
-	});
-	// Rows
-	partMap.forEach((data, partName) => {
-		const row = table.insertRow();
-		row.insertCell().textContent = data.firstDesignator || "";
-		row.insertCell().textContent = partName;
-		row.insertCell().textContent = Array.from(data.slotSet).join(", ");
-	});
-	container.appendChild(table);
-	updateSumPlacement(partMap.size);
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Hàm bổ trợ
-function updateSumPlacement(count) {
-	const sumElement = document.getElementById("sumPlacement");
-	if (sumElement) {
-		sumElement.textContent = count;
-	}
-}
-function formatData_1(text) {
-	if (!text.trim()) return "";
-	const rows = text.trim().split("\n").map(row =>
-		row.split("\t").map(cell => cell.trim())
+function updatePanaCounts() {
+	const totalParts = renderCombinedTable(
+		"samePart_P",
+		panaData[1],
+		panaData[2],
+		"Designator",
+		"Part Name"
 	);
-	const numCols = Math.max(...rows.map(r => r.length));
-	const colWidths = Array(numCols).fill(0);
-	rows.forEach(row => {
-		row.forEach((cell, colIdx) => {
-			if (cell.length > colWidths[colIdx]) {
-				colWidths[colIdx] = cell.length;
-			}
-		});
-	});
-	return rows.map(row => {
-		return Array.from({
-			length: numCols
-		}, (_, i) => {
-			const cell = row[i] || "";
-			return cell.padEnd(colWidths[i], " ");
-		}).join(" | ");
-	}).join("\n");
+	updateFooterStatus(panaData.count1, panaData.count2, totalParts);
 }

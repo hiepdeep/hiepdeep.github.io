@@ -100,55 +100,39 @@ body {
 			&.active {
 				display: flex;
 			}
-			.label {
+			.item {
 				display: flex;
 				gap: 12px;
+				textarea {
+					width: 100%;
+					padding: 12px;
+					--hs: var(--hue-saturation-gray);
+					color: hsl(var(--hs), 50%);
+					background: hsl(var(--hs), 100%);
+					border: 1px solid hsl(var(--hs), 90%);
+					border-radius: var(--bdrs-lv-4);
+					resize: none;
+					&::placeholder {
+						color: inherit;
+					}
+					&.drag-over {
+						background: hsl(var(--hs), 90%);
+						border-color: hsl(var(--hs), 80%);
+					}
+				}
 				.label-importfile {
-					flex: 1;
-					.txt {
-						display: block;
-						line-height: 28px;
-						text-align: center;
-						padding: 0px 12px;
+					width: 100%;
+					.table {
+						height: 166px;
+					}
+					&:hover .table, &.drag-over .table {
+						border-color: hsl(var(--hs), 65%);
 						cursor: pointer;
-						--hs: var(--hue-saturation-green);
-						color: hsl(var(--hs), 90%);
-						background: hsl(var(--hs), 55%);
-						border: 1px solid hsl(var(--hs), 45%);
-						border-radius: var(--bdrs-lv-4);
-						&:hover {
-							border-color: hsl(var(--hs), 35%);
-						}
-						&:active {
-							color: hsl(var(--hs), 95%);
-							background: hsl(var(--hs), 45%);
-							border-color: hsl(var(--hs), 35%);
-						}
 					}
 				}
 			}
-			textarea {
-				width: 100%;
-				padding: 12px;
-				--hs: var(--hue-saturation-gray);
-				color: hsl(var(--hs), 50%);
-				background: hsl(var(--hs), 100%);
-				border: 1px solid hsl(var(--hs), 90%);
-				border-radius: var(--bdrs-lv-4);
-				resize: none;
-				&::placeholder {
-					color: inherit;
-				}
-				&.drag-over {
-					background: hsl(var(--hs), 90%);
-					border-color: hsl(var(--hs), 80%);
-				}
-			}
-			#samePart_F {
+			#samePart_F, #samePart_P {
 				height: calc(100vh - 55px - 12px - 166px - 12px - 12px - 55px);
-			}
-			#samePart_P {
-				height: calc(100vh - 55px - 12px - 30px - 12px - 166px - 12px - 12px - 55px);
 			}
 		}
 	}

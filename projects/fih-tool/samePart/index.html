@@ -17,24 +17,38 @@
 			</div>
 			<div class="main">
 				<div class="data-import active">
-					<textarea id="pastePlacement" rows="10" placeholder="Paste data Placement.."></textarea>
+					<div class="item">
+						<textarea id="pastePlacement_1" rows="10" placeholder="Paste data 1.."></textarea>
+						<textarea id="pastePlacement_2" rows="10" placeholder="Paste data 2.."></textarea>
+					</div>
 					<div class="table" id="samePart_F">This is data same Placement..</div>
 				</div>
 				<div class="data-import">
-					<div class="label">
+					<div class="item">
 						<label class="label-importfile">
-							<input type="file" id="newCSV" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
-							<span class="txt">Mở file CSV</span>
+							<input type="file" id="newCSV_1" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
+							<div class="table" id="importCSV_1">Select data 1..</div>
+						</label>
+						<label class="label-importfile">
+							<input type="file" id="newCSV_2" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
+							<div class="table" id="importCSV_2">Select data 2..</div>
 						</label>
 					</div>
-					<textarea id="importCSV" rows="10" placeholder="This is data Placement.."></textarea>
 					<div class="table" id="samePart_P">This is data same Placement..</div>
 				</div>
 			</div>
 			<div class="footer">
 				<div class="status-box">
+					<span id="sumData_1" class="val">0</span>
+					<span>Data</span>
+				</div>
+				<div class="status-box">
+					<span id="sumData_2" class="val">0</span>
+					<span>Data</span>
+				</div>
+				<div class="status-box">
 					<span id="sumPlacement" class="val">0</span>
-					<span>Placement</span>
+					<span>Part</span>
 				</div>
 				<span class="spacer"></span>
 				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
