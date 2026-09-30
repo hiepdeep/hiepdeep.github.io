@@ -1,9 +1,8 @@
 console.clear();
-console.log("Create: 30/09/2026. By HiepDz");
+console.log("Create: 28/09/2026. By HiepDz");
 console.log("Update: 30/09/2026. By HiepDz");
-/* ==========================================================================
-   1. QUẢN LÝ CHUYỂN TẠP (TABS) & KHAI BÁO DỮ LIỆU
-   ========================================================================== */
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Chuyển Tab
 const btnImport = document.getElementsByClassName("btn-import");
 const dataImport = document.getElementsByClassName("data-import");
 Array.from(btnImport).forEach((btn, i) => {
@@ -23,59 +22,41 @@ Array.from(btnImport).forEach((btn, i) => {
 		}
 	});
 });
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Lưu trữ dữ liệu Map (Part -> Ref/Designator) và Tổng số dòng dữ liệu thực tế
-const fujiData = {
-	1: null,
-	2: null,
-	count1: 0,
-	count2: 0
-};
-const panaData = {
-	1: null,
-	2: null,
-	count1: 0,
-	count2: 0
-};
-/* ==========================================================================
-   2. CÁC HÀM TRỢ GIÚP DÙNG CHUNG (HELPER FUNCTIONS)
-   ========================================================================== */
-/**
- * Tách dòng dữ liệu thành các ô hỗ trợ Tab (\t), Phẩy (,), Pipe (|) hoặc Khoảng trắng
- */
+const fujiData = { 1: null, 2: null, count1: 0, count2: 0 };
+const panaData = { 1: null, 2: null, count1: 0, count2: 0 };
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Tách dòng dữ liệu thành các ô hỗ trợ Tab (\t), Phẩy (,), Pipe (|) hoặc Khoảng trắng
 function parseLineCells(line) {
 	if (line.includes("\t")) return line.split("\t");
 	if (line.includes("|")) return line.split("|");
 	if (line.includes(",")) return line.split(",");
 	return line.split(/\s{2,}/);
 }
-/**
- * Cập nhật giá trị lên DOM theo ID
- */
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Cập nhật giá trị lên DOM theo ID
 function updateElementText(id, text) {
 	const el = document.getElementById(id);
 	if (el) el.textContent = text;
 }
-/**
- * Cập nhật các thông số lên Footer
- */
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Cập nhật các thông số lên Footer
 function updateFooterStatus(sum1, sum2, totalPart) {
 	updateElementText("sumData_1", sum1);
 	updateElementText("sumData_2", sum2);
 	updateElementText("sumPlacement", totalPart);
 }
-/**
- * Render một bảng dữ liệu HTML tiêu chuẩn (Header & Rows)
- */
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Render một bảng dữ liệu HTML tiêu chuẩn (Header & Rows)
 function createHTMLTable(headers, rowsData) {
 	const table = document.createElement("table");
-	// Header
 	const headerRow = table.insertRow();
 	headers.forEach(h => {
 		const th = document.createElement("th");
 		th.textContent = h;
 		headerRow.appendChild(th);
 	});
-	// Rows
 	rowsData.forEach(rowData => {
 		const row = table.insertRow();
 		rowData.forEach(cellText => {
@@ -84,15 +65,14 @@ function createHTMLTable(headers, rowsData) {
 	});
 	return table;
 }
-/**
- * Render bảng tổng hợpPart duy nhất từ 2 Map
- */
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Render bảng tổng hợpPart duy nhất từ 2 Map
 function renderCombinedTable(containerId, map1, map2, col1Name, col2Name) {
 	const container = document.getElementById(containerId);
 	if (!container) return 0;
 	container.innerHTML = "";
 	if ((!map1 || map1.size === 0) && (!map2 || map2.size === 0)) {
-		container.textContent = "This is data same Placement..";
+		container.textContent = "Các Part được sử dụng.";
 		return 0;
 	}
 	const allParts = new Set([
@@ -117,9 +97,8 @@ function renderCombinedTable(containerId, map1, map2, col1Name, col2Name) {
 	container.appendChild(table);
 	return allParts.size;
 }
-/* ==========================================================================
-   3. XỬ LÝ PART FUJI (TEXTAREA PASTE DATA)
-   ========================================================================== */
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// XỬ LÝ PART FUJI (TEXTAREA PASTE DATA)
 const textarea1 = document.getElementById("pastePlacement_1");
 const textarea2 = document.getElementById("pastePlacement_2");
 if (textarea1) textarea1.addEventListener("input", function() {
@@ -171,31 +150,21 @@ function processFujiTextarea(textareaEl, index) {
 	// Lưu bộ nhớ
 	fujiData[index] = partMap;
 	fujiData[`count${index}`] = validDataCount;
-	// Căn dóng dải cột bằng ' | '
-	let maxRefLen = 0,
-		maxPartLen = 0;
+	// Căn dóng dải cột bằng " | "
+	let maxRefLen = 0, maxPartLen = 0;
 	formattedRows.forEach(r => {
 		if (r.ref.length > maxRefLen) maxRefLen = r.ref.length;
 		if (r.part.length > maxPartLen) maxPartLen = r.part.length;
 	});
-	textareaEl.value = formattedRows.map(r =>
-		`${r.ref.padEnd(maxRefLen, " ")} | ${r.part.padEnd(maxPartLen, " ")}`
-	).join("\n");
+	textareaEl.value = formattedRows.map(r => `${r.ref.padEnd(maxRefLen, " ")} | ${r.part.padEnd(maxPartLen, " ")}`).join("\n");
 	updateFujiCounts();
 }
 function updateFujiCounts() {
-	const totalParts = renderCombinedTable(
-		"samePart_F",
-		fujiData[1],
-		fujiData[2],
-		"Ref.",
-		"Part Number"
-	);
+	const totalParts = renderCombinedTable("samePart_F", fujiData[1], fujiData[2], "Ref.", "Part Number");
 	updateFooterStatus(fujiData.count1, fujiData.count2, totalParts);
 }
-/* ==========================================================================
-   4. XỬ LÝ PART PANA (IMPORT CSV FILE / DRAG & DROP)
-   ========================================================================== */
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// XỬ LÝ PART PANA (IMPORT CSV FILE / DRAG & DROP)
 const importLabels = document.querySelectorAll(".label-importfile");
 importLabels.forEach((label, index) => {
 	const fileIndex = index + 1;
@@ -268,12 +237,6 @@ function processCSVFile(file, fileIndex) {
 	reader.readAsText(file);
 }
 function updatePanaCounts() {
-	const totalParts = renderCombinedTable(
-		"samePart_P",
-		panaData[1],
-		panaData[2],
-		"Designator",
-		"Part Name"
-	);
+	const totalParts = renderCombinedTable("samePart_P", panaData[1], panaData[2], "Designator", "Part Name");
 	updateFooterStatus(panaData.count1, panaData.count2, totalParts);
 }

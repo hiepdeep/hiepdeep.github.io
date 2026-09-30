@@ -1,0 +1,589 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>Generator Placements Director | V02</title>
+		<style type="text/css">
+			a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+				outline: none;
+				vertical-align: baseline;
+			}
+			:link, button {
+				text-decoration: none;
+				cursor: pointer;
+				user-select: none;
+			}
+			:link, :hover, :focus, :active, :visited {
+				outline: none;
+			}
+			:root {
+				--hue-saturation-purple: 260deg, 50%;
+				--hue-saturation-pink: 330deg, 60%;
+				--hue-saturation-orange: 30deg, 80%;
+				--hue-saturation-brown: 20deg, 40%;
+				--hue-saturation-teal: 170deg, 50%;
+				--hue-saturation-yellow: 50deg, 80%;
+				--hue-saturation-red: 10deg, 70%;
+				--hue-saturation-green: 140deg, 50%;
+				--hue-saturation-blue: 210deg, 70%;
+				--hue-saturation-gray: 200deg, 10%;
+				--bg-body-blue: hsl(var(--hue-saturation-blue), 95%);
+				--bg-body-gray: hsl(var(--hue-saturation-gray), 95%);
+				--bg-box: hsl(var(--hue-saturation-gray), 100%);
+				--bd-box: hsl(var(--hue-saturation-gray), 90%);
+				--color-lv-1: hsl(var(--hue-saturation-gray), 10%);
+				--color-lv-2: hsl(var(--hue-saturation-gray), 20%);
+				--color-lv-3: hsl(var(--hue-saturation-gray), 30%);
+				--color-lv-4: hsl(var(--hue-saturation-gray), 40%);
+				--color-white: hsl(var(--hue-saturation-gray), 95%);
+				--color-placeholder: hsl(var(--hue-saturation-gray), 70%);
+				--fz-lv-1: 18px;
+				--fz-lv-2: 16px;
+				--fz-lv-3: 14px;
+				--fz-lv-4: 12px;
+				--bdrs-lv-1: 16px;
+				--bdrs-lv-2: 12px;
+				--bdrs-lv-3: 8px;
+				--bdrs-lv-4: 4px;
+				--bdrs-lv-5: 2px;
+			}
+			iframe {
+				width: 100%;
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+			}
+			ol, ul, li {
+				list-style-type: none;
+			}
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: hsl(var(--hue-saturation-gray), 90%);
+				border-radius: 2px calc(var(--bdrs-lv-4) - 1px) calc(var(--bdrs-lv-4) - 1px) 2px;
+			}
+			::-webkit-scrollbar-thumb {
+				background: hsl(var(--hue-saturation-gray), 50%);
+				border-radius: 2px calc(var(--bdrs-lv-4) - 1px) calc(var(--bdrs-lv-4) - 1px) 2px;
+				cursor: pointer;
+			}
+			::-webkit-scrollbar-thumb:hover {
+				background: hsl(var(--hue-saturation-gray), 40%);
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				letter-spacing: 0.05em;
+				-webkit-tap-highlight-color: transparent;
+				-webkit-font-smoothing: antialiased;
+				font-family: "Courier New", sans-serif;
+				color: red;
+				font-size: var(--fz-lv-4);
+			}
+			body {
+				background: hsl(var(--hue-saturation-gray), 95%);
+				display: -ms-grid;
+				display: grid;
+				place-items: center;
+				height: 100vh;
+				-webkit-user-select: none;
+				   -moz-user-select: none;
+				    -ms-user-select: none;
+				        user-select: none;
+			}
+			.box {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				width: 100vw;
+				height: 100vh;
+				position: relative;
+			}
+			.box .toolbar {
+				-ms-flex-negative: 0;
+				    flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 12px;
+				padding: 12px;
+				background: hsl(var(--hue-saturation-gray), 100%);
+				border-bottom: 1px solid hsl(var(--hue-saturation-gray), 90%);
+			}
+			.box .toolbar button {
+				width: 100%;
+				height: 30px;
+				padding: 0 12px;
+				--hs: var(--hue-saturation-teal);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 90%);
+				border: 1px solid hsl(var(--hs), 80%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .toolbar button:hover {
+				border-color: hsl(var(--hs), 65%);
+			}
+			.box .toolbar button:active,
+			.box .toolbar button.active {
+				color: hsl(var(--hs), 95%);
+				background: hsl(var(--hs), 60%);
+				border-color: hsl(var(--hs), 50%);
+			}
+			.box .main {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				padding: 12px;
+			}
+			.box .main .table {
+				width: 100%;
+				padding: 12px;
+				--hs: var(--hue-saturation-gray);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 100%);
+				border: 1px solid hsl(var(--hs), 90%);
+				border-radius: var(--bdrs-lv-4);
+				overflow-y: scroll;
+			}
+			.box .main .table table {
+				border-collapse: collapse;
+				width: 100%;
+				-webkit-user-select: all;
+				   -moz-user-select: all;
+				        user-select: all;
+			}
+			.box .main .table table tr th,
+			.box .main .table table tr td {
+				padding-bottom: 6px;
+				text-align: left;
+				color: hsl(var(--hs), 50%);
+			}
+			.box .main .table table tr th {
+				font-weight: bold;
+			}
+			.box .main .table table tr:last-child td {
+				padding-bottom: 0;
+			}
+			.box .main .data-import {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				display: none;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				    -ms-flex-direction: column;
+				        flex-direction: column;
+				gap: 12px;
+			}
+			.box .main .data-import.active {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.box .main .data-import .item {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				gap: 12px;
+			}
+			.box .main .data-import .item textarea {
+				width: 100%;
+				padding: 12px;
+				--hs: var(--hue-saturation-gray);
+				color: hsl(var(--hs), 50%);
+				background: hsl(var(--hs), 100%);
+				border: 1px solid hsl(var(--hs), 90%);
+				border-radius: var(--bdrs-lv-4);
+				resize: none;
+			}
+			.box .main .data-import .item textarea::-webkit-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import .item textarea::-moz-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import .item textarea:-ms-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import .item textarea::-ms-input-placeholder {
+				color: inherit;
+			}
+			.box .main .data-import .item textarea::placeholder {
+				color: inherit;
+			}
+			.box .main .data-import .item textarea.drag-over {
+				background: hsl(var(--hs), 90%);
+				border-color: hsl(var(--hs), 80%);
+			}
+			.box .main .data-import .item .label-importfile {
+				width: 100%;
+			}
+			.box .main .data-import .item .label-importfile .table {
+				height: 166px;
+			}
+			.box .main .data-import .item .label-importfile:hover .table,
+			.box .main .data-import .item .label-importfile.drag-over .table {
+				border-color: hsl(var(--hs), 65%);
+				cursor: pointer;
+			}
+			.box .main .data-import #samePart_F,
+			.box .main .data-import #samePart_P {
+				height: calc(100vh - 55px - 12px - 166px - 12px - 12px - 55px);
+			}
+			.box .footer {
+				-ms-flex-negative: 0;
+				    flex-shrink: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 6px;
+				padding: 12px;
+				background: hsl(var(--hue-saturation-gray), 10%);
+				border-top: 1px solid hsl(var(--hue-saturation-gray), 20%);
+			}
+			.box .footer .status-box {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				gap: 6px;
+				padding: 0 8px;
+				border: 1px solid hsl(var(--hue-saturation-gray), 20%);
+				border-radius: var(--bdrs-lv-4);
+			}
+			.box .footer .status-box span {
+				line-height: 28px;
+				color: hsl(var(--hue-saturation-gray), 60%);
+			}
+			.box .footer .status-box span.val {
+				font-weight: bold;
+				color: hsl(var(--hue-saturation-blue), 60%);
+			}
+			.box .footer .spacer {
+				-webkit-box-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+			}
+			.box .footer .copyright {
+				text-align: right;
+				color: hsl(var(--hue-saturation-gray), 60%);
+			}
+			.box .footer .copyright b {
+				color: hsl(var(--hue-saturation-gray), 80%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="toolbar">
+				<button class="btn-import active">Part Fuji</button>
+				<button class="btn-import">Part Pana</button>
+			</div>
+			<div class="main">
+				<div class="data-import active">
+					<div class="item">
+						<textarea id="pastePlacement_1" rows="10" placeholder="Sao chép bảng 'Placement' và dán vào đây."></textarea>
+						<textarea id="pastePlacement_2" rows="10" placeholder="Sao chép bảng 'Placement' và dán vào đây."></textarea>
+					</div>
+					<div class="table" id="samePart_F">Các Part được sử dụng.</div>
+				</div>
+				<div class="data-import">
+					<div class="item">
+						<label class="label-importfile">
+							<input type="file" id="newCSV_1" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
+							<div class="table" id="importCSV_1">Mở file CSV hoặc kéo thả file vào đây.</div>
+						</label>
+						<label class="label-importfile">
+							<input type="file" id="newCSV_2" accept="text/csv" data-title="Drag and drop a file" hidden="hidden">
+							<div class="table" id="importCSV_2">Mở file CSV hoặc kéo thả file vào đây.</div>
+						</label>
+					</div>
+					<div class="table" id="samePart_P">Các Part được sử dụng.</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="status-box">
+					<span id="sumData_1" class="val">0</span>
+					<span>Data</span>
+				</div>
+				<div class="status-box">
+					<span id="sumData_2" class="val">0</span>
+					<span>Data</span>
+				</div>
+				<div class="status-box">
+					<span id="sumPlacement" class="val">0</span>
+					<span>Part</span>
+				</div>
+				<span class="spacer"></span>
+				<span class="copyright">Created, maintained and evolved by <b>HiepDeep</b>.</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			console.clear();
+			console.log("Create: 28/09/2026. By HiepDz");
+			console.log("Update: 30/09/2026. By HiepDz");
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Chuyển Tab
+			const btnImport = document.getElementsByClassName("btn-import");
+			const dataImport = document.getElementsByClassName("data-import");
+			Array.from(btnImport).forEach((btn, i) => {
+				btn.addEventListener("click", (e) => {
+					e.preventDefault();
+					Array.from(btnImport).forEach((b, j) => {
+						b.classList.remove("active");
+						dataImport[j].classList.remove("active");
+					});
+					btn.classList.add("active");
+					dataImport[i].classList.add("active");
+					// Cập nhật lại số lượng dữ liệu footer khi đổi tab
+					if (i === 0) {
+						updateFujiCounts();
+					} else {
+						updatePanaCounts();
+					}
+				});
+			});
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Lưu trữ dữ liệu Map (Part -> Ref/Designator) và Tổng số dòng dữ liệu thực tế
+			const fujiData = { 1: null, 2: null, count1: 0, count2: 0 };
+			const panaData = { 1: null, 2: null, count1: 0, count2: 0 };
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Tách dòng dữ liệu thành các ô hỗ trợ Tab (\t), Phẩy (,), Pipe (|) hoặc Khoảng trắng
+			function parseLineCells(line) {
+				if (line.includes("\t")) return line.split("\t");
+				if (line.includes("|")) return line.split("|");
+				if (line.includes(",")) return line.split(",");
+				return line.split(/\s{2,}/);
+			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Cập nhật giá trị lên DOM theo ID
+			function updateElementText(id, text) {
+				const el = document.getElementById(id);
+				if (el) el.textContent = text;
+			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Cập nhật các thông số lên Footer
+			function updateFooterStatus(sum1, sum2, totalPart) {
+				updateElementText("sumData_1", sum1);
+				updateElementText("sumData_2", sum2);
+				updateElementText("sumPlacement", totalPart);
+			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Render một bảng dữ liệu HTML tiêu chuẩn (Header & Rows)
+			function createHTMLTable(headers, rowsData) {
+				const table = document.createElement("table");
+				const headerRow = table.insertRow();
+				headers.forEach(h => {
+					const th = document.createElement("th");
+					th.textContent = h;
+					headerRow.appendChild(th);
+				});
+				rowsData.forEach(rowData => {
+					const row = table.insertRow();
+					rowData.forEach(cellText => {
+						row.insertCell().textContent = cellText;
+					});
+				});
+				return table;
+			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Render bảng tổng hợpPart duy nhất từ 2 Map
+			function renderCombinedTable(containerId, map1, map2, col1Name, col2Name) {
+				const container = document.getElementById(containerId);
+				if (!container) return 0;
+				container.innerHTML = "";
+				if ((!map1 || map1.size === 0) && (!map2 || map2.size === 0)) {
+					container.textContent = "Các Part được sử dụng.";
+					return 0;
+				}
+				const allParts = new Set([
+					...(map1 ? map1.keys() : []),
+					...(map2 ? map2.keys() : [])
+				]);
+				const rows = [];
+				allParts.forEach(part => {
+					const desig1 = map1 ? map1.get(part) : null;
+					const desig2 = map2 ? map2.get(part) : null;
+					let finalDesig = "";
+					if (desig1 && desig2) {
+						finalDesig = `${desig1} / ${desig2}`;
+					} else if (desig1) {
+						finalDesig = desig1;
+					} else {
+						finalDesig = desig2;
+					}
+					rows.push([finalDesig, part]);
+				});
+				const table = createHTMLTable([col1Name, col2Name], rows);
+				container.appendChild(table);
+				return allParts.size;
+			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// XỬ LÝ PART FUJI (TEXTAREA PASTE DATA)
+			const textarea1 = document.getElementById("pastePlacement_1");
+			const textarea2 = document.getElementById("pastePlacement_2");
+			if (textarea1) textarea1.addEventListener("input", function() {
+				processFujiTextarea(this, 1);
+			});
+			if (textarea2) textarea2.addEventListener("input", function() {
+				processFujiTextarea(this, 2);
+			});
+			function processFujiTextarea(textareaEl, index) {
+				const text = textareaEl.value;
+				if (!text.trim()) {
+					fujiData[index] = null;
+					fujiData[`count${index}`] = 0;
+					updateFujiCounts();
+					return;
+				}
+				const lines = text.split(/\r?\n/).filter(line => line.trim() !== "");
+				if (lines.length === 0) return;
+				// Tìm vị trí cột Ref và Part Number từ tiêu đề
+				const headers = parseLineCells(lines[0]).map(c => c.toLowerCase());
+				const refIndex = headers.findIndex(h => h.includes("ref"));
+				const partIndex = headers.findIndex(h => h.includes("part number") || h.includes("part"));
+				if (refIndex === -1 || partIndex === -1) {
+					fujiData[index] = null;
+					fujiData[`count${index}`] = 0;
+					updateFujiCounts();
+					return;
+				}
+				const partMap = new Map();
+				const formattedRows = [{
+					ref: "Ref.",
+					part: "Part Number"
+				}];
+				let validDataCount = 0;
+				for (let i = 1; i < lines.length; i++) {
+					const cells = parseLineCells(lines[i]);
+					const refVal = (cells[refIndex] || "").trim();
+					const partVal = (cells[partIndex] || "").trim();
+					if (!partVal) continue;
+					validDataCount++;
+					if (!partMap.has(partVal)) {
+						partMap.set(partVal, refVal);
+					}
+					formattedRows.push({
+						ref: refVal,
+						part: partVal
+					});
+				}
+				// Lưu bộ nhớ
+				fujiData[index] = partMap;
+				fujiData[`count${index}`] = validDataCount;
+				// Căn dóng dải cột bằng " | "
+				let maxRefLen = 0, maxPartLen = 0;
+				formattedRows.forEach(r => {
+					if (r.ref.length > maxRefLen) maxRefLen = r.ref.length;
+					if (r.part.length > maxPartLen) maxPartLen = r.part.length;
+				});
+				textareaEl.value = formattedRows.map(r => `${r.ref.padEnd(maxRefLen, " ")} | ${r.part.padEnd(maxPartLen, " ")}`).join("\n");
+				updateFujiCounts();
+			}
+			function updateFujiCounts() {
+				const totalParts = renderCombinedTable("samePart_F", fujiData[1], fujiData[2], "Ref.", "Part Number");
+				updateFooterStatus(fujiData.count1, fujiData.count2, totalParts);
+			}
+			////////////////////////////////////////////////////////////////////////////////////////////////////
+			// XỬ LÝ PART PANA (IMPORT CSV FILE / DRAG & DROP)
+			const importLabels = document.querySelectorAll(".label-importfile");
+			importLabels.forEach((label, index) => {
+				const fileIndex = index + 1;
+				const fileInput = label.querySelector("input[type='file']");
+				if (fileInput) {
+					fileInput.addEventListener("change", function() {
+						if (this.files && this.files[0]) processCSVFile(this.files[0], fileIndex);
+					});
+				}
+				label.addEventListener("dragover", (e) => {
+					e.preventDefault();
+					e.stopPropagation();
+					label.classList.add("drag-over");
+				});
+				label.addEventListener("dragleave", (e) => {
+					e.preventDefault();
+					e.stopPropagation();
+					label.classList.remove("drag-over");
+				});
+				label.addEventListener("drop", (e) => {
+					e.preventDefault();
+					e.stopPropagation();
+					label.classList.remove("drag-over");
+					if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+						processCSVFile(e.dataTransfer.files[0], fileIndex);
+					}
+				});
+			});
+			function processCSVFile(file, fileIndex) {
+				const reader = new FileReader();
+				reader.onload = function(e) {
+					const text = e.target.result.trim();
+					if (!text) return;
+					const lines = text.split(/\r?\n/).filter(line => line.trim() !== "");
+					if (lines.length === 0) return;
+					const headers = lines[0].split(",").map(cell => cell.trim().toLowerCase());
+					const desigIndex = headers.findIndex(h => h === "designator" || h.startsWith("ref"));
+					const partIndex = headers.findIndex(h => h === "part name" || h === "part");
+					const containerId = `importCSV_${fileIndex}`;
+					const container = document.getElementById(containerId);
+					if (desigIndex === -1 || partIndex === -1) {
+						if (container) container.textContent = "Không tìm thấy cột 'Designator' hoặc 'Part Name'!";
+						return;
+					}
+					const partMap = new Map();
+					const rowsData = [];
+					let validDataCount = 0;
+					for (let i = 1; i < lines.length; i++) {
+						const cells = lines[i].split(",").map(cell => cell.trim());
+						const desigVal = cells[desigIndex] || "";
+						const partVal = cells[partIndex] || "";
+						if (!partVal) continue;
+						validDataCount++;
+						if (!partMap.has(partVal)) {
+							partMap.set(partVal, desigVal);
+						}
+						rowsData.push([desigVal, partVal]);
+					}
+					// Lưu bộ nhớ
+					panaData[fileIndex] = partMap;
+					panaData[`count${fileIndex}`] = validDataCount;
+					// Render bảng đơn lẻ của file CSV vừa chọn
+					if (container) {
+						container.innerHTML = "";
+						const table = createHTMLTable(["Designator", "Part Name"], rowsData);
+						container.appendChild(table);
+					}
+					updatePanaCounts();
+				};
+				reader.readAsText(file);
+			}
+			function updatePanaCounts() {
+				const totalParts = renderCombinedTable("samePart_P", panaData[1], panaData[2], "Designator", "Part Name");
+				updateFooterStatus(panaData.count1, panaData.count2, totalParts);
+			}
+		</script>
+	</body>
+</html>
