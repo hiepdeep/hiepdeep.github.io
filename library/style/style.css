@@ -111,6 +111,10 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, ci
 	--bdrs-lv-5: 2px;
 }
 
+::-webkit-scrollbar {
+	width: 6px;
+}
+
 * {
 	margin: 0;
 	padding: 0;
