@@ -457,19 +457,19 @@
 			let $parts = 0, $cads = 0, $cad = 0, $uncad = 0;
 			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// Chuyển Tab
-			for (let i = 0; i < btnImport.length; i++) {
-				btnImport[i].addEventListener("click", (e) => {
+			Array.from(btnImport).forEach((btn, i) => {
+				btn.addEventListener("click", (e) => {
 					e.preventDefault();
-					for (let j = 0; j < btnImport.length; j++) {
-						btnImport[j].classList.remove("active");
+					Array.from(btnImport).forEach((b, j) => {
+						b.classList.remove("active");
 						dataImport[j].classList.remove("active");
-					}
+					});
 					btnExport.classList.remove("active");
 					dataExport.classList.remove("active");
-					btnImport[i].classList.add("active");
+					btn.classList.add("active");
 					dataImport[i].classList.add("active");
 				});
-			}
+			});
 			////////////////////////////////////////////////////////////////////////////////////////////////////
 			// CSV
 			document.getElementById("newCSV").addEventListener("change", function() {
@@ -555,7 +555,6 @@
 						let dataTransfer = new DataTransfer();
 						dataTransfer.items.add(files[0]);
 						fileInput.files = dataTransfer.files;
-
 						fileInput.dispatchEvent(new Event("change"));
 					}
 				});
@@ -593,7 +592,7 @@
 				let sumPoint = 0;
 				let table = document.createElement("table");
 				let headerRow = table.insertRow();
-				["Board", "Location Name", "X", "Y", "Angle", "Part Number", "Mouter", "Feeder", "Holder"].forEach(text => {
+				["Board", "Location Name", "X", "Y", "Angle", "Part Number", "Mouter", "Feeder"].forEach(text => {
 					headerRow.appendChild(Object.assign(document.createElement("th"), { textContent: text }));
 				});
 				let mark = [
@@ -608,12 +607,12 @@
 				]
 				for (let i = 0; i < 2; i++) {
 					let row = table.insertRow();
-					["0", `Mark${i + 1}`, mark[i][0], mark[i][1], "0", "Mark", "0", "0", "0"].forEach(val => row.insertCell().textContent = val);
+					["0", `Mark${i + 1}`, mark[i][0], mark[i][1], "0", "Mark", "0", "0"].forEach(val => row.insertCell().textContent = val);
 				}
 				for (let i = 1; i < row_CSV.length; i++) {
 					sumPoint++;
 					let machine = row_CSV[i][csv_Head] - Math.floor(row_CSV[i][csv_Head] / 2);
-					let feeder = row_CSV[i][csv_Feeder].replace(/^.*0+/, "");
+					let feeder = row_CSV[i][csv_Feeder].replace(/^.+?0+/, "");
 					let row = table.insertRow();
 					row.insertCell().textContent = row_CSV[i][csv_Board];
 					row.insertCell().textContent = row_CSV[i][csv_Ref];
@@ -622,8 +621,7 @@
 					row.insertCell().textContent = row_CSV[i][csv_Rotation];
 					row.insertCell().textContent = row_CSV[i][csv_PartNumber];
 					row.insertCell().textContent = "M" + machine + "_T" + row_CSV[i][csv_Head];
-					row.insertCell().textContent = "F0" + feeder;
-					row.insertCell().textContent = "H" + row_CSV[i][csv_Holder];
+					row.insertCell().textContent = "F" + feeder;
 				}
 				document.getElementById("tableResult").innerHTML = "";
 				document.getElementById("tableResult").appendChild(table);
