@@ -4,7 +4,7 @@
 }
 
 * {
-	font-family: "Courier New", sans-serif;
+	font-family: "Shantell Sans", cursive;
 	font-size: var(--fz-lv-4);
 	color: red;
 }
@@ -164,7 +164,7 @@ body {
 				}
 				h3 {
 					color: hsl(var(--hs), 30%);
-					font-size: 26px;
+					font-size: 22px;
 				}
 			}
 			.cal-body {
@@ -179,7 +179,7 @@ body {
 					&.days {
 						li {
 							color: hsl(var(--hue-saturation-gray), 30%);
-							font-size: 20px;
+							font-size: 18px;
 							text-align: center;
 						}
 					}
@@ -197,12 +197,17 @@ body {
 							&.old {
 								opacity: 0.3;
 							}
+							&[data-day] {
+								cursor: pointer;
+								&:hover:not([today]) {
+									border-color: hsl(var(--hue-saturation-blue), 80%);
+								}
+							}
 							.day {
 								font-size: 14px;
 								color: hsl(var(--hue-saturation-gray), 50%);
 								display: block;
 								text-align: right;
-								font-family: "IBM Plex Mono", monospace;
 							}
 							.data-task {
 								width: 100%;
@@ -233,7 +238,6 @@ body {
 								}
 							}
 							&[sunday] {
-								border-color: hsl(var(--hue-saturation-gray), 85%);
 								.data-task {
 									span {
 										&.half-day, &.overtime {
@@ -258,16 +262,17 @@ body {
 							&[ns] {
 								position: relative;
 								&:before {
-									content: "\ef44";
-									font-family: "Material Symbols Rounded";
-									font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 200, "opsz" 20;
-									color: hsl(var(--hue-saturation-gray), 60%);
+									content: "";
 									position: absolute;
 									left: 6px;
-									top: 6px;
-									font-size: 13px;
-									display: grid;
-									place-items: center;
+									top: 8px;
+									width: 14px;
+									height: 14px;
+									mask-image: url("https://hiepdeep.github.io/library/pictures/svg/night.svg");
+									mask-position: center;
+									mask-repeat: no-repeat;
+									mask-size: contain;
+									background-color: hsl(var(--hue-saturation-gray), 50%);
 								}
 								.data-task {
 									span {
