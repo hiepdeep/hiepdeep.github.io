@@ -164,7 +164,7 @@ body {
 				}
 				h3 {
 					color: hsl(var(--hs), 30%);
-					font-size: var(--fz-lv-1);
+					font-size: 26px;
 				}
 			}
 			.cal-body {
@@ -179,7 +179,7 @@ body {
 					&.days {
 						li {
 							color: hsl(var(--hue-saturation-gray), 30%);
-							font-size: var(--fz-lv-3);
+							font-size: 20px;
 							text-align: center;
 						}
 					}
@@ -198,6 +198,7 @@ body {
 								opacity: 0.3;
 							}
 							.day {
+								font-size: 14px;
 								color: hsl(var(--hue-saturation-gray), 50%);
 								display: block;
 								text-align: right;

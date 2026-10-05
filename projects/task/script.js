@@ -159,7 +159,7 @@ async function renderCalendar() {
 		}
 		const isToday = i === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? "today" : "";
 		datesHtml += `
-			<li ${isSunday ? "sunday" : ""} ${isToday} ${attrs.ns} data-day="${i}" style="cursor: pointer;">
+			<li ${isSunday ? "sunday" : ""} ${isToday} ${attrs.ns} data-day="${i}"
 				<span class="day">${dayKey}</span>
 				<div class="data-task">
 					<span class="half-day" ${attrs.morning}></span>
