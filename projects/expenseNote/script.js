@@ -35,7 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		let timeMonth = getTime.getMonth() + 1;
 		timeYear = timeYear.toString();
 		timeMonth = timeMonth.toString().padStart(2, "0");
-		let returnTime = `${timeYear}/${timeMonth}`;
+		// let returnTime = `${timeYear}/${timeMonth}`;
+		let returnTime = `${timeYear}/01`;
 		const data = {
 			person: $personSelect,
 			description: $description,
