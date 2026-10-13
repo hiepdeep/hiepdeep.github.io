@@ -5,62 +5,275 @@ const app = firebase.initializeApp({
 const database = firebase.database();
 const db = "so-chi-tieu";
 
-let allItems = [];
-let currentView = { person: null, type: null };
-
 document.addEventListener("DOMContentLoaded", () => {
 	renderViewsChart("chart-view");
-	renderChitieu();
-	document.forms["form"]["form-amount"].addEventListener("input", function(e) {
-		let value = this.value.replace(/\D/g, "");
-		const formattedValue = new Intl.NumberFormat("vi-VN").format(value);
-		this.value = formattedValue;
-	});
-	document.forms["form"].addEventListener("submit", async function(event) {
-		event.preventDefault();
-		const $personSelect = document.forms["form"]["form-person"].value;
-		const $description = document.forms["form"]["form-description"].value.trim();
-		const $amount = document.forms["form"]["form-amount"].value.trim().replace(/\./g, "").trim();
-		const $type = document.forms["form"]["form-type"].value;
-		if (!$description) {
-			alert("Vui lòng nhập mô tả chi tiêu.");
-			return;
-		}
-		if (!/^\d+$/.test($amount)) {
-			alert("Vui lòng chỉ nhập số vào ô số tiền.");
-			return;
-		}
-		let getTime = new Date();
-		let timeYear = getTime.getFullYear();
-		let timeMonth = getTime.getMonth() + 1;
-		timeYear = timeYear.toString();
-		timeMonth = timeMonth.toString().padStart(2, "0");
-		// let returnTime = `${timeYear}/${timeMonth}`;
-		let returnTime = `${timeYear}/01`;
-		const data = {
-			person: $personSelect,
-			description: $description,
-			amount: $amount,
-			type: $type,
-			status: "unpaid",
-			creationDate: createTimes()
-		};
-		database.ref(`${db}/${returnTime}`).push(data).then(() => {
-			document.forms["form"].reset();
-			renderChitieu();
-			renderViewsChart("chart-view");
-		}).catch((error) => {
-			console.error("Lỗi khi tạo chi tiêu mới:", error);
-		});
-	});
+	initApp();
 });
 
+// Hàm khởi tạo toàn bộ ứng dụng: Lắng nghe dữ liệu, render thống kê và xử lý form/click
+function initApp() {
+	// 1. Mặc định khi mở trang, thẻ #dataResult không hiện gì
+	const dataResultEl = document.getElementById("dataResult");
+	if (dataResultEl) {
+		dataResultEl.innerHTML = "";
+	}
+	// Lắng nghe dữ liệu realtime từ Firebase theo năm hiện tại
+	const currentYear = new Date().getFullYear().toString();
+	database.ref(`${db}/${currentYear}`).on("value", (snapshot) => {
+		const yearData = snapshot.val() || {};
+		processAndRenderData(yearData);
+	});
+	// 1. Chức năng nhập dữ liệu form
+	const form = document.getElementById("form");
+	if (form) {
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+			const person = form.querySelector('input[name="form-person"]:checked')?.value || "hiep";
+			const description = form.querySelector('input[name="form-description"]').value.trim();
+			const amountStr = form.querySelector('input[name="form-amount"]').value.trim().replace(/\./g, "");
+			const type = form.querySelector('input[name="form-type"]:checked')?.value || "expense";
+			if (!description || !amountStr || isNaN(amountStr)) {
+				alert("Vui lòng nhập đầy đủ mô tả và số tiền hợp lệ!");
+				return;
+			}
+			const amount = amountStr;
+			// Tạo chuỗi thời gian định dạng YYYY/MM/DD HH:mm:ss:SSS giống mẫu dữ liệu
+			const now = new Date();
+			const year = now.getFullYear().toString();
+			const month = String(now.getMonth() + 1).padStart(2, "0");
+			const day = String(now.getDate()).padStart(2, "0");
+			const hours = String(now.getHours()).padStart(2, "0");
+			const minutes = String(now.getMinutes()).padStart(2, "0");
+			const seconds = String(now.getSeconds()).padStart(2, "0");
+			const millis = String(now.getMilliseconds()).padStart(3, "0");
+			const creationDate = `${year}/${month}/${day} ${hours}:${minutes}:${seconds}:${millis}`;
+			const newItem = {
+				amount: amount,
+				creationDate: creationDate,
+				description: description,
+				person: person,
+				status: "unpaid", // Mặc định mục mới tạo là chưa thanh toán
+				type: type
+			};
+			// Đẩy dữ liệu lên Firebase namespaced theo năm và tháng
+			database.ref(`${db}/${year}/${month}`).push(newItem)
+				.then(() => {
+					form.reset();
+					document.getElementById("hiep").checked = true;
+					document.getElementById("form-expense").checked = true;
+				})
+				.catch((error) => {
+					console.error("Lỗi khi thêm dữ liệu: ", error);
+				});
+		});
+	}
+}
+
+// Xử lý tính toán và hiển thị dữ liệu tổng hợp lên .data-basic, đồng thời gắn sự kiện click cho các nút xem chi tiết
+function processAndRenderData(yearData) {
+	let hieuTotalsExpenseCount = 0;
+	let hieuSumsExpenseVal = 0;
+	let hiepTotalsExpenseCount = 0;
+	let hiepSumsExpenseVal = 0;
+	let hieuTotalsBorrowCount = 0;
+	let hieuSumsBorrowVal = 0;
+	let hiepTotalsBorrowCount = 0;
+	let hiepSumsBorrowVal = 0;
+	const categoriesData = {
+		"expense-hieu": [],
+		"expense-hiep": [],
+		"borrow-hieu": [],
+		"borrow-hiep": []
+	};
+	for (let month in yearData) {
+		const entries = yearData[month];
+		for (let id in entries) {
+			const item = entries[id];
+			const amount = parseInt(item.amount) || 0;
+			const isUnpaid = item.status === "unpaid";
+			const wrappedItem = {
+				...item,
+				id: id
+			};
+			if (item.type === "expense") {
+				if (item.person === "hieu") {
+					categoriesData["expense-hieu"].push(wrappedItem);
+					if (isUnpaid) {
+						hieuTotalsExpenseCount++;
+						hieuSumsExpenseVal += amount;
+					}
+				} else if (item.person === "hiep") {
+					categoriesData["expense-hiep"].push(wrappedItem);
+					if (isUnpaid) {
+						hiepTotalsExpenseCount++;
+						hiepSumsExpenseVal += amount;
+					}
+				}
+			} else if (item.type === "borrow") {
+				if (item.person === "hieu") {
+					categoriesData["borrow-hieu"].push(wrappedItem);
+					if (isUnpaid) {
+						hieuTotalsBorrowCount++;
+						hieuSumsBorrowVal += amount;
+					}
+				} else if (item.person === "hiep") {
+					categoriesData["borrow-hiep"].push(wrappedItem);
+					if (isUnpaid) {
+						hiepTotalsBorrowCount++;
+						hiepSumsBorrowVal += amount;
+					}
+				}
+			}
+		}
+	}
+	// Hiển thị ra DOM phần .data-basic
+	document.getElementById("hieu-totals-expense").textContent = hieuTotalsExpenseCount;
+	document.getElementById("hieu-sums-expense").textContent = formatCurrency(hieuSumsExpenseVal);
+	document.getElementById("hiep-totals-expense").textContent = hiepTotalsExpenseCount;
+	document.getElementById("hiep-sums-expense").textContent = formatCurrency(hiepSumsExpenseVal);
+	document.getElementById("hieu-totals-borrow").textContent = hieuTotalsBorrowCount;
+	document.getElementById("hieu-sums-borrow").textContent = formatCurrency(hieuSumsBorrowVal);
+	document.getElementById("hiep-totals-borrow").textContent = hiepTotalsBorrowCount;
+	document.getElementById("hiep-sums-borrow").textContent = formatCurrency(hiepSumsBorrowVal);
+	// Tính toán số dư ròng giữa 2 người để quyết định ai cần trả ai
+	let balanceHieuPayHiep = 0;
+	let balanceHiepPayHieu = 0;
+	let netHieuOwesHiep = 0;
+	let netHiepOwesHieu = 0;
+	for (let key in categoriesData) {
+		categoriesData[key].forEach(item => {
+			if (item.status === "unpaid") {
+				const amt = parseInt(item.amount) || 0;
+				if (item.type === "expense") {
+					if (item.person === "hiep") {
+						netHieuOwesHiep += amt / 2;
+					} else {
+						netHiepOwesHieu += amt / 2;
+					}
+				} else if (item.type === "borrow") {
+					if (item.person === "hieu") {
+						netHiepOwesHieu += amt;
+					} else {
+						netHieuOwesHiep += amt;
+					}
+				}
+			}
+		});
+	}
+	let finalBalance = netHieuOwesHiep - netHiepOwesHieu;
+	if (finalBalance > 0) {
+		balanceHieuPayHiep = finalBalance;
+		balanceHiepPayHieu = 0;
+	} else if (finalBalance < 0) {
+		balanceHieuPayHiep = 0;
+		balanceHiepPayHieu = -finalBalance;
+	} else {
+		balanceHieuPayHiep = 0;
+		balanceHiepPayHieu = 0;
+	}
+	document.getElementById("hieu-pay-hiep").textContent = formatCurrency(balanceHieuPayHiep);
+	document.getElementById("hiep-pay-hieu").textContent = formatCurrency(balanceHiepPayHieu);
+	// Gắn sự kiện click cho các nút mở chi tiết trong .data-basic kèm theo tiêu đề tương ứng của mục nhỏ
+	setupDetailButton("openbox-expense-hieu", categoriesData["expense-hieu"], "Chi trả của Hiếu:");
+	setupDetailButton("openbox-expense-hiep", categoriesData["expense-hiep"], "Chi trả của Hiệp:");
+	setupDetailButton("openbox-borrow-hieu", categoriesData["borrow-hieu"], "Hiệp vay mượn của Hiếu:");
+	setupDetailButton("openbox-borrow-hiep", categoriesData["borrow-hiep"], "Hiếu vay mượn của Hiệp:");
+}
+
+// Helper: Định dạng số tiền có dấu chấm phân cách hàng nghìn
+function formatCurrency(num) {
+	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+// Hàm thiết lập sự kiện bấm nút hiển thị dữ liệu chi tiết vào #dataResult và cập nhật H3 bảng to
+function setupDetailButton(buttonId, itemsList, sectionTitle) {
+	const btn = document.getElementById(buttonId);
+	if (!btn) return;
+	const newBtn = btn.cloneNode(true);
+	btn.parentNode.replaceChild(newBtn, btn);
+	newBtn.addEventListener("click", () => {
+		const dataResultEl = document.getElementById("dataResult");
+		if (!dataResultEl) return;
+		// Tìm thẻ H3 của bảng to (nằm trong cột thứ 2) để cập nhật tiêu đề mục nhỏ sang
+		const colRightTitleH3 = document.querySelector(".box .col:nth-child(2) .title h3");
+		if (colRightTitleH3) {
+			colRightTitleH3.textContent = sectionTitle;
+		}
+		dataResultEl.innerHTML = "";
+		if (!itemsList || itemsList.length === 0) {
+			dataResultEl.innerHTML = `<li style="background:transparent; border:none; text-align:center; color:#777; grid-column: 1 / -1;">Không có dữ liệu chi tiết.</li>`;
+			return;
+		}
+		const sortedList = [...itemsList].sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
+		sortedList.forEach(item => {
+			const li = document.createElement("li");
+			li.setAttribute("data-key", item.id || "");
+			li.setAttribute("data-type", item.type || "");
+			li.setAttribute("data-status", item.status || "unpaid");
+			if (item.status === "paid") {
+				li.classList.add("item-paid");
+				li.style.cursor = "default";
+				li.style.opacity = "0.7";
+			} else {
+				li.classList.add("item-unpaid");
+				li.style.cursor = "pointer";
+			}
+			let displayDate = "";
+			if (item.creationDate) {
+				displayDate = item.creationDate.split(" ")[0].replace(/-/g, "/");
+			}
+			const formattedAmount = formatCurrency(parseInt(item.amount) || 0);
+			const statusText = item.status === "paid" ? "Đã thanh toán" : "Chưa thanh toán";
+			li.innerHTML = `
+				<div class="item-row">
+					<div class="item-col time">
+						<span class="material-symbols-rounded">calendar_today</span>
+						<span class="text">${displayDate}</span>
+					</div>
+					<span class="item-col status">${statusText}</span>
+				</div>
+				<div class="item-row">
+					<div class="item-col description">${item.description || ""}</div>
+					<div class="item-col amount">${formattedAmount}</div>
+				</div>
+			`;
+			// Chỉ cho phép ấn vào các mục "Chưa thanh toán" (unpaid) để xác nhận thanh toán
+			if (item.status === "unpaid") {
+				li.addEventListener("click", () => {
+					const confirmMsg = `Xác nhận thanh toán ${formattedAmount}đ cho "${item.description}"?`;
+					if (confirm(confirmMsg)) {
+						toggleItemStatus(item);
+					}
+				});
+			}
+			dataResultEl.appendChild(li);
+		});
+	});
+}
+
+// Hàm hỗ trợ đổi trạng thái thanh toán và cập nhật lên Firebase
+function toggleItemStatus(item) {
+	if (!item.id || !item.creationDate) return;
+	const year = item.creationDate.substring(0, 4);
+	const month = item.creationDate.substring(5, 7);
+	const newStatus = "paid";
+	database.ref(`${db}/${year}/${month}/${item.id}`).update({
+		status: newStatus
+	}).then(() => {
+		// Dữ liệu Realtime từ Firebase sẽ tự động gọi lại on("value") để refresh giao diện
+	}).catch((error) => {
+		console.error("Lỗi cập nhật trạng thái: ", error);
+	});
+}
+
+// Render biểu đồ thống kê
 async function renderViewsChart(ctxId) {
 	const chartView = document.getElementById("return-chart");
 	const myCanvas = document.getElementById(ctxId);
+	if (!chartView || !myCanvas) return;
 	const ctx = myCanvas.getContext("2d");
 	myCanvas.width = chartView.getBoundingClientRect().width - 2;
-	myCanvas.height = document.getElementsByClassName("form")[0].getBoundingClientRect().height - 2;
+	myCanvas.height = chartView.getBoundingClientRect().height - 2;
 	const currentYear = new Date().getFullYear().toString();
 	const snapshot = await database.ref(`${db}/${currentYear}`).once("value");
 	const yearData = snapshot.val() || {};
@@ -81,8 +294,8 @@ async function renderViewsChart(ctxId) {
 	const maxVal = Math.max(...values) || 1;
 	const total_month = values.length;
 	const gap = 12;
-	const paddingTop = gap;
-	const paddingBottom = 30;
+	const paddingTop = gap * 0;
+	const paddingBottom = 30 - 12;
 	const slot_width = (myCanvas.width - (gap * (total_month + 1))) / total_month;
 	const borderRadius = [4, 4, 2, 2];
 	let progress = 0;
@@ -114,166 +327,3 @@ async function renderViewsChart(ctxId) {
 	}
 	animate();
 }
-
-async function renderChitieu() {
-	const snapshot = await database.ref(db).once("value");
-	const data = snapshot.val() || {};
-	allItems = [];
-	for (let year in data) {
-		for (let month in data[year]) {
-			const entries = data[year][month];
-			for (let id in entries) {
-				allItems.push({
-					id: id,
-					path: `${db}/${year}/${month}/${id}`,
-					...entries[id]
-				});
-			}
-		}
-	}
-	allItems.sort((a, b) => {
-		const formatDate = (str) => {
-			if (!str) return 0;
-			const lastColon = str.lastIndexOf(":");
-			const standardStr = str.substring(0, lastColon) + "." + str.substring(lastColon + 1);
-			return new Date(standardStr).getTime();
-		};
-		return formatDate(b.creationDate) - formatDate(a.creationDate);
-	});
-	const id_tag = {
-		hieu_totals_expense: document.getElementById("hieu-totals-expense"),
-		hiep_totals_expense: document.getElementById("hiep-totals-expense"),
-		hieu_totals_borrow: document.getElementById("hieu-totals-borrow"),
-		hiep_totals_borrow: document.getElementById("hiep-totals-borrow"),
-		hieu_sums_expense: document.getElementById("hieu-sums-expense"),
-		hiep_sums_expense: document.getElementById("hiep-sums-expense"),
-		hieu_sums_borrow: document.getElementById("hieu-sums-borrow"),
-		hiep_sums_borrow: document.getElementById("hiep-sums-borrow"),
-		hieu_pay_hiep: document.getElementById("hieu-pay-hiep"),
-		hiep_pay_hieu: document.getElementById("hiep-pay-hieu")
-	};
-	let num_hieu_totals_expense = 0,
-		num_hiep_totals_expense = 0,
-		num_hieu_totals_borrow = 0,
-		num_hiep_totals_borrow = 0,
-		num_hieu_sums_expense = 0,
-		num_hiep_sums_expense = 0,
-		num_hieu_sums_borrow = 0,
-		num_hiep_sums_borrow = 0,
-		num_hieu_pay_hiep = 0,
-		num_hiep_pay_hieu = 0;
-	allItems.forEach(item => {
-		if (item.status === "unpaid") {
-			const amount = parseInt(item.amount) || 0;
-			if (item.person === "hieu") {
-				if (item.type === "expense") {
-					num_hieu_totals_expense++;
-					num_hieu_sums_expense += amount;
-				} else if (item.type === "borrow") {
-					num_hieu_totals_borrow++;
-					num_hieu_sums_borrow += amount;
-				}
-			} else if (item.person === "hiep") {
-				if (item.type === "expense") {
-					num_hiep_totals_expense++;
-					num_hiep_sums_expense += amount;
-				} else if (item.type === "borrow") {
-					num_hiep_totals_borrow++;
-					num_hiep_sums_borrow += amount;
-				}
-			}
-		}
-	});
-	let hieu_owes_hiep = (num_hiep_sums_expense / 2) + num_hiep_sums_borrow;
-	let hiep_owes_hieu = (num_hieu_sums_expense / 2) + num_hieu_sums_borrow;
-	if (hieu_owes_hiep > hiep_owes_hieu) {
-		num_hieu_pay_hiep = hieu_owes_hiep - hiep_owes_hieu;
-		num_hiep_pay_hieu = 0;
-	} else {
-		num_hiep_pay_hieu = hiep_owes_hieu - hieu_owes_hiep;
-		num_hieu_pay_hiep = 0;
-	}
-	const formatMoney = (amount) => new Intl.NumberFormat("vi-VN").format(amount);
-	id_tag.hieu_totals_expense.textContent = num_hieu_totals_expense;
-	id_tag.hiep_totals_expense.textContent = num_hiep_totals_expense;
-	id_tag.hieu_totals_borrow.textContent = num_hieu_totals_borrow;
-	id_tag.hiep_totals_borrow.textContent = num_hiep_totals_borrow;
-	id_tag.hieu_sums_expense.textContent = formatMoney(num_hieu_sums_expense);
-	id_tag.hiep_sums_expense.textContent = formatMoney(num_hiep_sums_expense);
-	id_tag.hieu_sums_borrow.textContent = formatMoney(num_hieu_sums_borrow);
-	id_tag.hiep_sums_borrow.textContent = formatMoney(num_hiep_sums_borrow);
-	id_tag.hieu_pay_hiep.textContent = formatMoney(num_hieu_pay_hiep);
-	id_tag.hiep_pay_hieu.textContent = formatMoney(num_hiep_pay_hieu);
-}
-
-function renderDetailBox(person, type) {
-	document.getElementById("close-return-lists-box").addEventListener("click", function() {
-		event.preventDefault();
-		document.getElementById("return-lists-box").classList.remove("open-box");
-	});
-	currentView.person = person;
-    currentView.type = type;
-	const titleBox = document.getElementById("title-box");
-	const listContainer = document.getElementById("return-lists");
-	const personName = person === "hieu" ? "Hiếu" : "Hiệp";
-    const typeName = type === "expense" ? "chi trả" : "cho vay";
-	titleBox.getElementsByTagName("h3")[0].innerText = `Lịch sử ${typeName} của ${personName}:`;
-	const filteredItems = allItems.filter(item => item.person === person && item.type === type);
-	if (filteredItems.length === 0) {
-		listContainer.innerHTML = `<div style="text-align: center; color: var(--color-placeholder);">Không có dữ liệu</div>`;
-		return;
-	}
-	listContainer.innerHTML = "";
-	filteredItems.forEach(item => {
-		const li = document.createElement("li");
-		const statusAttr = item.status === "paid" ? "txt-light-gray" : "txt-light-green";
-		const statusText = item.status === "paid" ? "Đã thanh toán" : "Chưa thanh toán";
-		li.setAttribute("data-key", item.id);
-		li.setAttribute("data-type", item.type);
-		li.setAttribute(statusAttr, "");
-		const dateDisplay = item.creationDate ? item.creationDate.split(' ')[0] : "N/A";
-		const amountDisplay = new Intl.NumberFormat("vi-VN").format(item.amount);
-		li.innerHTML = `
-			<div class="item-row">
-				<div class="item-col time">
-					<i class="material-symbols-rounded">calendar_today</i>
-					<span class="text">${dateDisplay}</span>
-				</div>
-				<span class="item-col status" ${statusAttr}>${statusText}</span>
-			</div>
-			<div class="item-row">
-				<div class="item-col description">${item.description}</div>
-				<div class="item-col amount">${amountDisplay}</div>
-			</div>
-		`;
-		listContainer.appendChild(li);
-		if (item.status === "unpaid") {
-			li.addEventListener("click", async () => {
-				const confirmDel = confirm(`Xác nhận thanh toán ${amountDisplay}đ cho "${item.description}"?`);
-				if (confirmDel) {
-					try {
-						await database.ref(item.path).update({
-							status: "paid"
-						});
-						renderViewsChart("chart-view");
-						await renderChitieu();
-						renderDetailBox(currentView.person, currentView.type);
-					} catch (error) {
-						console.error("Lỗi khi xác nhận:", error);
-					}
-				}
-			});
-		}
-	});
-}
-
-function openDetailBox(person, type) {
-	renderDetailBox(person, type);
-	const box = document.getElementById("return-lists-box");
-	box.classList.add("open-box");
-}
-
-document.getElementById("openbox-expense-hieu").addEventListener("click", () => openDetailBox("hieu", "expense"));
-document.getElementById("openbox-expense-hiep").addEventListener("click", () => openDetailBox("hiep", "expense"));
-document.getElementById("openbox-borrow-hieu").addEventListener("click", () => openDetailBox("hieu", "borrow"));
-document.getElementById("openbox-borrow-hiep").addEventListener("click", () => openDetailBox("hiep", "borrow"));
