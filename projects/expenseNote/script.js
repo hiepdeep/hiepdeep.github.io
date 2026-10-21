@@ -260,6 +260,7 @@ function toggleItemStatus(item) {
 	database.ref(`${db}/${year}/${month}/${item.id}`).update({
 		status: newStatus
 	}).then(() => {
+		initApp();
 		// Dữ liệu Realtime từ Firebase sẽ tự động gọi lại on("value") để refresh giao diện
 	}).catch((error) => {
 		console.error("Lỗi cập nhật trạng thái: ", error);
