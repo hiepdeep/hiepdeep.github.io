@@ -5,6 +5,9 @@ const app = firebase.initializeApp({
 const database = firebase.database();
 const db = "so-chi-tieu";
 
+// Biến lưu trữ ID của nút chi tiết đang được mở gần nhất
+let activeDetailButtonId = null;
+
 document.addEventListener("DOMContentLoaded", () => {
 	renderViewsChart("chart-view");
 	initApp();
@@ -14,8 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
 function initApp() {
 	// 1. Mặc định khi mở trang, thẻ #dataResult không hiện gì
 	const dataResultEl = document.getElementById("dataResult");
-	if (dataResultEl) {
+	if (dataResultEl && !activeDetailButtonId) {
 		dataResultEl.innerHTML = "";
+	}
+	// Xử lý tự động thêm dấu chấm (.) phân cách hàng nghìn khi nhập số tiền
+	const amountInput = document.querySelector('input[name="form-amount"]');
+	if (amountInput) {
+		amountInput.addEventListener("input", (e) => {
+			let value = e.target.value.replace(/\D/g, ""); // Chỉ giữ lại các ký tự số
+			if (value) {
+				value = parseInt(value, 10).toString();
+				e.target.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			} else {
+				e.target.value = "";
+			}
+		});
 	}
 	// Lắng nghe dữ liệu realtime từ Firebase theo năm hiện tại
 	const currentYear = new Date().getFullYear().toString();
@@ -56,15 +72,15 @@ function initApp() {
 				type: type
 			};
 			// Đẩy dữ liệu lên Firebase namespaced theo năm và tháng
-			database.ref(`${db}/${year}/${month}`).push(newItem)
-				.then(() => {
-					form.reset();
-					document.getElementById("hiep").checked = true;
-					document.getElementById("form-expense").checked = true;
-				})
-				.catch((error) => {
-					console.error("Lỗi khi thêm dữ liệu: ", error);
-				});
+			database.ref(`${db}/${year}/${month}`).push(newItem).then(() => {
+				form.reset();
+				document.getElementById("hiep").checked = true;
+				document.getElementById("form-expense").checked = true;
+				// Reset và render lại biểu đồ mới ngay sau khi submit thành công
+				renderViewsChart("chart-view");
+			}).catch((error) => {
+				console.error("Lỗi khi thêm dữ liệu: ", error);
+			});
 		});
 	}
 }
@@ -178,6 +194,13 @@ function processAndRenderData(yearData) {
 	setupDetailButton("openbox-expense-hiep", categoriesData["expense-hiep"], "Chi trả của Hiệp:");
 	setupDetailButton("openbox-borrow-hieu", categoriesData["borrow-hieu"], "Hiệp vay mượn của Hiếu:");
 	setupDetailButton("openbox-borrow-hiep", categoriesData["borrow-hiep"], "Hiếu vay mượn của Hiệp:");
+	// Nếu đang mở một danh mục chi tiết nào trước đó, tự động render lại danh mục đó với dữ liệu mới nhất từ Firebase
+	if (activeDetailButtonId) {
+		if (activeDetailButtonId === "openbox-expense-hieu") renderDetailView("openbox-expense-hieu", categoriesData["expense-hieu"], "Chi trả của Hiếu:");
+		else if (activeDetailButtonId === "openbox-expense-hiep") renderDetailView("openbox-expense-hiep", categoriesData["expense-hiep"], "Chi trả của Hiệp:");
+		else if (activeDetailButtonId === "openbox-borrow-hieu") renderDetailView("openbox-borrow-hieu", categoriesData["borrow-hieu"], "Hiệp vay mượn của Hiếu:");
+		else if (activeDetailButtonId === "openbox-borrow-hiep") renderDetailView("openbox-borrow-hiep", categoriesData["borrow-hiep"], "Hiếu vay mượn của Hiệp:");
+	}
 }
 
 // Helper: Định dạng số tiền có dấu chấm phân cách hàng nghìn
@@ -192,62 +215,67 @@ function setupDetailButton(buttonId, itemsList, sectionTitle) {
 	const newBtn = btn.cloneNode(true);
 	btn.parentNode.replaceChild(newBtn, btn);
 	newBtn.addEventListener("click", () => {
-		const dataResultEl = document.getElementById("dataResult");
-		if (!dataResultEl) return;
-		// Tìm thẻ H3 của bảng to (nằm trong cột thứ 2) để cập nhật tiêu đề mục nhỏ sang
-		const colRightTitleH3 = document.querySelector(".box .col:nth-child(2) .title h3");
-		if (colRightTitleH3) {
-			colRightTitleH3.textContent = sectionTitle;
+		activeDetailButtonId = buttonId; // Ghi nhớ nút đang được chọn xem
+		renderDetailView(buttonId, itemsList, sectionTitle);
+	});
+}
+
+// Hàm render thực tế phần nội dung chi tiết vào #dataResult
+function renderDetailView(buttonId, itemsList, sectionTitle) {
+	const dataResultEl = document.getElementById("dataResult");
+	if (!dataResultEl) return;
+	const colRightTitleH3 = document.querySelector(".box .col:nth-child(2) .title h3");
+	if (colRightTitleH3) {
+		colRightTitleH3.textContent = sectionTitle;
+	}
+	dataResultEl.innerHTML = "";
+	if (!itemsList || itemsList.length === 0) {
+		dataResultEl.innerHTML = `<li style="background:transparent; border:none; text-align:center; color:#777;">Không có dữ liệu chi tiết.</li>`;
+		return;
+	}
+	const sortedList = [...itemsList].sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
+	sortedList.forEach(item => {
+		const li = document.createElement("li");
+		li.setAttribute("data-key", item.id || "");
+		li.setAttribute("data-type", item.type || "");
+		li.setAttribute("data-status", item.status || "unpaid");
+		if (item.status === "paid") {
+			li.classList.add("item-paid");
+			li.style.cursor = "default";
+			li.style.opacity = "0.7";
+		} else {
+			li.classList.add("item-unpaid");
+			li.style.cursor = "pointer";
 		}
-		dataResultEl.innerHTML = "";
-		if (!itemsList || itemsList.length === 0) {
-			dataResultEl.innerHTML = `<li style="background:transparent; border:none; text-align:center; color:#777; grid-column: 1 / -1;">Không có dữ liệu chi tiết.</li>`;
-			return;
+		let displayDate = "";
+		if (item.creationDate) {
+			displayDate = item.creationDate.split(" ")[0].replace(/-/g, "/");
 		}
-		const sortedList = [...itemsList].sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
-		sortedList.forEach(item => {
-			const li = document.createElement("li");
-			li.setAttribute("data-key", item.id || "");
-			li.setAttribute("data-type", item.type || "");
-			li.setAttribute("data-status", item.status || "unpaid");
-			if (item.status === "paid") {
-				li.classList.add("item-paid");
-				li.style.cursor = "default";
-				li.style.opacity = "0.7";
-			} else {
-				li.classList.add("item-unpaid");
-				li.style.cursor = "pointer";
-			}
-			let displayDate = "";
-			if (item.creationDate) {
-				displayDate = item.creationDate.split(" ")[0].replace(/-/g, "/");
-			}
-			const formattedAmount = formatCurrency(parseInt(item.amount) || 0);
-			const statusText = item.status === "paid" ? "Đã thanh toán" : "Chưa thanh toán";
-			li.innerHTML = `
-				<div class="item-row">
-					<div class="item-col time">
-						<span class="material-symbols-rounded">calendar_today</span>
-						<span class="text">${displayDate}</span>
-					</div>
-					<span class="item-col status">${statusText}</span>
+		const formattedAmount = formatCurrency(parseInt(item.amount) || 0);
+		const statusText = item.status === "paid" ? "Đã thanh toán" : "Chưa thanh toán";
+		li.innerHTML = `
+			<div class="item-row">
+				<div class="item-col time">
+					<span class="material-symbols-rounded">calendar_today</span>
+					<span class="text">${displayDate}</span>
 				</div>
-				<div class="item-row">
-					<div class="item-col description">${item.description || ""}</div>
-					<div class="item-col amount">${formattedAmount}</div>
-				</div>
-			`;
-			// Chỉ cho phép ấn vào các mục "Chưa thanh toán" (unpaid) để xác nhận thanh toán
-			if (item.status === "unpaid") {
-				li.addEventListener("click", () => {
-					const confirmMsg = `Xác nhận thanh toán ${formattedAmount}đ cho "${item.description}"?`;
-					if (confirm(confirmMsg)) {
-						toggleItemStatus(item);
-					}
-				});
-			}
-			dataResultEl.appendChild(li);
-		});
+				<span class="item-col status">${statusText}</span>
+			</div>
+			<div class="item-row">
+				<div class="item-col description">${item.description || ""}</div>
+				<div class="item-col amount">${formattedAmount}</div>
+			</div>
+		`;
+		// Chỉ cho phép ấn vào các mục "Chưa thanh toán" (unpaid) để xác nhận thanh toán
+		if (item.status === "unpaid") {
+			li.addEventListener("click", () => {
+				const confirmMsg = `Xác nhận thanh toán ${formattedAmount}đ cho "${item.description}"?`;
+				if (confirm(confirmMsg)) {
+					toggleItemStatus(item);
+				}
+			});
+		}
+		dataResultEl.appendChild(li);
 	});
 }
 
@@ -261,7 +289,8 @@ function toggleItemStatus(item) {
 		status: newStatus
 	}).then(() => {
 		initApp();
-		// Dữ liệu Realtime từ Firebase sẽ tự động gọi lại on("value") để refresh giao diện
+		// Sau khi đổi trạng thái, vẽ lại biểu đồ để cập nhật số liệu mới nhất
+		renderViewsChart("chart-view");
 	}).catch((error) => {
 		console.error("Lỗi cập nhật trạng thái: ", error);
 	});
@@ -310,7 +339,7 @@ async function renderViewsChart(ctxId) {
 			const x = gap + (slot_width + gap) * index;
 			const baseY = myCanvas.height - paddingBottom;
 			const y = baseY - currentBarHeight;
-			ctx.fillStyle = val === maxVal ? "hsl(210deg, 70%, 50%)" : "hsl(210deg, 70%, 60%)";
+			ctx.fillStyle = val === maxVal ? "hsl(210deg, 70%, 60%)" : "hsl(210deg, 70%, 60%)";
 			ctx.beginPath();
 			ctx.roundRect(x, y, slot_width, currentBarHeight, borderRadius);
 			ctx.fill();
