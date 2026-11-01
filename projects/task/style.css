@@ -53,93 +53,27 @@ body {
 					--hs: var(--hue-saturation-purple);
 				}
 			}
-		}
-		.form {
-			flex-shrink: 0;
-			form {
-				display: flex;
-				flex-direction: column;
-				gap: 6px;
-				.check {
-					display: flex;
-					flex-direction: column;
-					gap: 6px;
-					label {
-						width: 100%;
-						height: 40px;
-						display: flex;
-						align-items: center;
-						gap: 12px;
-						padding: 0 12px;
-						--hs: var(--hue-saturation-blue);
-						background: hsl(var(--hs), 95%);
-						border: 1px solid hsl(var(--hs), 85%);
-						border-radius: var(--bdrs-lv-4);
-						cursor: pointer;
-						input[type="checkbox"] {
-							display: block;
-							-webkit-appearance: none;
-							width: 8px;
-							height: 8px;
-							position: relative;
-							overflow: hidden;
-							background: hsl(var(--hs), 55%);
-							border-radius: var(--bdrs-lv-4);
-						}
-						span {
-							color: hsl(var(--hs), 55%);
-						}
-						&:hover {
-							border-color: hsl(var(--hs), 60%);
-						}
-						&:active, &:has(input[type="checkbox"]:checked) {
-							background: hsl(var(--hs), 65%);
-							border-color: hsl(var(--hs), 55%);
-							input[type="checkbox"] {
-								background: hsl(var(--hs), 100%);
-							}
-							span {
-								color: hsl(var(--hs), 100%);
-							}
-						}
-					}
-					.gr {
-						display: flex;
-						gap: 6px;
-					}
-				}
-				button {
-					height: 60px;
-					padding: 0 12px;
-					--hs: var(--hue-saturation-purple);
-					color: hsl(var(--hs), 90%);
-					background: hsl(var(--hs), 55%);
-					border: 1px solid hsl(var(--hs), 45%);
-					border-radius: var(--bdrs-lv-4);
-					&:hover {
-						border-color: hsl(var(--hs), 35%);
-					}
-					&:active {
-						color: hsl(var(--hs), 95%);
-						background: hsl(var(--hs), 45%);
-						border-color: hsl(var(--hs), 35%);
-					}
-				}
+			.spacer {
+				flex: 1;
 			}
 		}
 	}
 	.main {
 		flex: 1;
 		padding: 12px;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
 		.calendar {
 			display: flex;
 			flex-direction: column;
 			gap: 12px;
 			height: 100%;
 			padding: 12px;
-			background: var(--bg-box);
-			border: 1px solid var(--bd-box);
-			border-radius: var(--bdrs-lv-4);
+			--hs: var(--hue-saturation-gray);
+			background: hsl(var(--hs), 100%);
+			border: 1px solid hsl(var(--hs), 90%);
+			border-radius: var(--bdrs-lv-3);
 			.cal-head {
 				flex-shrink: 0;
 				display: flex;
@@ -300,6 +234,84 @@ body {
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+		.form {
+			flex-shrink: 0;
+			padding: 12px;
+			--hs: var(--hue-saturation-gray);
+			background: hsl(var(--hs), 100%);
+			border: 1px solid hsl(var(--hs), 90%);
+			border-radius: var(--bdrs-lv-3);
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+				.check {
+					display: flex;
+					flex-direction: column;
+					gap: 6px;
+					label {
+						width: 100%;
+						height: 40px;
+						display: flex;
+						align-items: center;
+						gap: 12px;
+						padding: 0 12px;
+						--hs: var(--hue-saturation-purple);
+						background: hsl(var(--hs), 95%);
+						border: 1px solid hsl(var(--hs), 90%);
+						border-radius: var(--bdrs-lv-4);
+						cursor: pointer;
+						input[type="checkbox"] {
+							display: block;
+							-webkit-appearance: none;
+							width: 8px;
+							height: 8px;
+							position: relative;
+							overflow: hidden;
+							background: hsl(var(--hs), 55%);
+							border-radius: var(--bdrs-lv-4);
+						}
+						span {
+							color: hsl(var(--hs), 55%);
+						}
+						&:hover {
+							border-color: hsl(var(--hs), 80%);
+						}
+						&:active, &:has(input[type="checkbox"]:checked) {
+							background: hsl(var(--hs), 65%);
+							border-color: hsl(var(--hs), 55%);
+							input[type="checkbox"] {
+								background: hsl(var(--hs), 100%);
+							}
+							span {
+								color: hsl(var(--hs), 100%);
+							}
+						}
+					}
+					.gr {
+						display: flex;
+						gap: 6px;
+					}
+				}
+				button {
+					height: 50px;
+					padding: 0 12px;
+					--hs: var(--hue-saturation-purple);
+					color: hsl(var(--hs), 90%);
+					background: hsl(var(--hs), 55%);
+					border: 1px solid hsl(var(--hs), 45%);
+					border-radius: var(--bdrs-lv-4);
+					&:hover {
+						border-color: hsl(var(--hs), 35%);
+					}
+					&:active {
+						color: hsl(var(--hs), 95%);
+						background: hsl(var(--hs), 45%);
+						border-color: hsl(var(--hs), 35%);
 					}
 				}
 			}
