@@ -261,8 +261,8 @@ body {
 						gap: 12px;
 						padding: 0 12px;
 						--hs: var(--hue-saturation-purple);
-						background: hsl(var(--hs), 95%);
-						border: 1px solid hsl(var(--hs), 90%);
+						background: hsl(var(--hs), 98%);
+						border: 1px solid hsl(var(--hs), 93%);
 						border-radius: var(--bdrs-lv-4);
 						cursor: pointer;
 						input[type="checkbox"] {
@@ -272,18 +272,18 @@ body {
 							height: 8px;
 							position: relative;
 							overflow: hidden;
-							background: hsl(var(--hs), 55%);
+							background: hsl(var(--hs), 60%);
 							border-radius: var(--bdrs-lv-4);
 						}
 						span {
-							color: hsl(var(--hs), 55%);
+							color: hsl(var(--hs), 60%);
 						}
 						&:hover {
 							border-color: hsl(var(--hs), 80%);
 						}
 						&:active, &:has(input[type="checkbox"]:checked) {
 							background: hsl(var(--hs), 65%);
-							border-color: hsl(var(--hs), 55%);
+							border-color: hsl(var(--hs), 60%);
 							input[type="checkbox"] {
 								background: hsl(var(--hs), 100%);
 							}
