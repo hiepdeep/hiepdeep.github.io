@@ -1,0 +1,216 @@
+:root {
+	--bg-color: #f6f8fa;
+	--sidebar-bg: #ffffff;
+	--border-color: #d1d5db;
+	--primary-color: #2ea44f;
+	--danger-color: #d73a49;
+	--text-main: #24292e;
+	--text-muted: #586069;
+}
+
+* {
+	font-family: "Quicksand", sans-serif;
+	color: red;
+	font-size: var(--fz-lv-4);
+}
+
+body {
+	background: var(--bg-body-blue);
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	background: var(--bg-color);
+	color: var(--text-main);
+	display: flex;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.config-bar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	background: #eaeef2;
+	padding: 6px 15px;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	border-bottom: 1px solid var(--border-color);
+	font-size: 0.8rem;
+	z-index: 10;
+	input {
+		padding: 4px 8px;
+		border: 1px solid var(--border-color);
+		border-radius: 4px;
+		font-size: 0.8rem;
+	}
+	button {
+		padding: 4px 10px;
+		background: #e1e4e8;
+		border: 1px solid var(--border-color);
+		border-radius: 4px;
+		cursor: pointer;
+		font-weight: bold;
+
+		&:hover {
+			background: #d1d5db;
+		}
+
+	}
+}
+
+.app-container {
+	display: flex;
+	width: 100vw;
+	height: calc(100vh - 35px);
+	margin-top: 35px;
+}
+
+.sidebar {
+	width: 300px;
+	background: var(--sidebar-bg);
+	border-right: 1px solid var(--border-color);
+	display: flex;
+	flex-direction: column;
+}
+
+.sidebar-header {
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--border-color);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.btn-new {
+	background: var(--primary-color);
+	color: white;
+	border: none;
+	padding: 6px 12px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 0.85rem;
+	&:hover {
+		background: #2c974b;
+	}
+
+}
+
+.note-list {
+	overflow-y: auto;
+	flex: 1;
+}
+
+.note-item {
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--border-color);
+	cursor: pointer;
+	transition: background 0.2s;
+	&:hover {
+		background: #f1f3f5;
+	}
+	&.active {
+		background: #ddf4ff;
+		border-left: 4px solid #0969da;
+	}
+}
+
+.note-item-title {
+	font-weight: bold;
+	font-size: 0.9rem;
+	margin-bottom: 4px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.note-item-date {
+	font-size: 0.7rem;
+	color: var(--text-muted);
+}
+
+.editor-container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	background: #ffffff;
+}
+
+.editor-toolbar {
+	padding: 10px 20px;
+	border-bottom: 1px solid var(--border-color);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #fafbfc;
+}
+
+.sync-status {
+	font-size: 0.85rem;
+	color: var(--text-muted);
+	font-style: italic;
+}
+
+.btn {
+	padding: 6px 14px;
+	border-radius: 6px;
+	border: 1px solid var(--border-color);
+	background: white;
+	cursor: pointer;
+	font-size: 0.85rem;
+	font-weight: 500;
+}
+
+.btn-delete {
+	color: var(--danger-color);
+	border-color: rgba(215, 58, 73, 0.4);
+	&:hover {
+		background: #ffeef0;
+	}
+
+}
+
+.editor-body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	gap: 15px;
+}
+
+.note-title-input {
+	font-size: 1.4rem;
+	font-weight: bold;
+	border: none;
+	outline: none;
+	width: 100%;
+	border-bottom: 2px solid transparent;
+	padding-bottom: 5px;
+	&:focus {
+		border-bottom-color: var(--primary-color);
+	}
+
+}
+
+.note-content-input {
+	flex: 1;
+	font-size: 1rem;
+	border: none;
+	outline: none;
+	width: 100%;
+	resize: none;
+	line-height: 1.5;
+	font-family: inherit;
+}
+
+.empty-state {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--text-muted);
+	font-size: 1.1rem;
+}

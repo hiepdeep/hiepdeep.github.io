@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vn">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link rel="icon" href="https://hiepdeep.github.io/library/pictures/favicon/gesture_48dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png">
+		<title>NoteBook</title>
+		<link rel="stylesheet" href="https://hiepdeep.github.io/library/style/style.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="config-bar">
+			<span><b>GitHub Sync:</b></span>
+			<input type="password" id="ghToken" placeholder="PAT Token" style="width: 300px;" />
+			<input type="text" id="ghOwner" placeholder="Owner (User/Org)" style="width: 200px;" />
+			<input type="text" id="ghRepo" placeholder="Repo Name" style="width: 200px;" />
+			<button onclick="saveConfigAndReload()">Lưu & Tải dữ liệu</button>
+			<span id="globalStatus" style="color: #0969da; font-weight: bold; margin-left: auto;"></span>
+		</div>
+		<div class="app-container">
+			<div class="sidebar">
+				<div class="sidebar-header">
+					<b>Danh sách ghi chú</b>
+					<button class="btn-new" onclick="createNewNote()">+ Tạo mới</button>
+				</div>
+				<div class="note-list" id="noteList">
+					<div style="padding: 20px; text-align: center; color: #6a737d; font-size: 0.85rem;">Đang tải từ GitHub...</div>
+				</div>
+			</div>
+			<div class="editor-container">
+				<div class="empty-state" id="emptyState">Chưa chọn ghi chú nào</div>
+				<div id="activeEditor" style="display: none; flex: 1; flex-direction: column; height: 100%;">
+					<div class="editor-toolbar">
+						<span class="sync-status" id="syncStatus">Đã đồng bộ</span>
+						<button class="btn btn-delete" onclick="deleteActiveNote()">Xóa ghi chú này</button>
+					</div>
+					<div class="editor-body">
+						<input type="text" id="noteTitle" class="note-title-input" placeholder="Tiêu đề ghi chú...">
+						<textarea id="noteContent" class="note-content-input" placeholder="Viết nội dung ghi chú ở đây... (Tự động lưu realtime lên GitHub)"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src='https://hiepdeep.github.io/library/script/function/functions.js'></script>
+		<script src="script.js"></script>
+	</body>
+</html>
