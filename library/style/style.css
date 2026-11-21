@@ -148,8 +148,9 @@ ol, ul, li {
 		border-color: hsl(var(--hs), 35%);
 	}
 	&:active {
-		background: hsl(var(--hs), 40%);
-		border-color: hsl(var(--hs), 30%);
+		transform: scale(0.95);
+		/* background: hsl(var(--hs), 40%); */
+		/* border-color: hsl(var(--hs), 30%); */
 	}
 }
 
